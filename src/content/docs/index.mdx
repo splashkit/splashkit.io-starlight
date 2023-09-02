@@ -1,0 +1,66 @@
+---
+title: Splashkit
+description: Get started building your docs site with Starlight.
+template: splash
+
+hero:
+  tagline: SplashKit is a beginner's all-purpose software toolkit.
+  image:
+    file: ../../assets/box.webp
+  actions:
+    - text: Documentation
+      link: /guides/example/
+      icon: right-arrow
+      variant: primary
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+---
+
+import { Code } from "astro/components";
+
+### To install SplashKit Beta, copy and paste the following into your terminal:
+
+#### Beta Release
+
+To install SplashKit Beta, copy and paste the following into your terminal:
+
+<Code
+  code={`bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)`}
+  lang="shell"
+/>
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Features
+
+<CardGrid stagger>
+  <Card title="Easy Integration" icon="pencil">
+    Splashkit SDK offers seamless integration with your existing development
+    environment, making it easy to incorporate powerful graphics and game
+    development capabilities into your projects.
+  </Card>
+  <Card title="Cross-Platform Support:" icon="add-document">
+    Develop games and applications that run on multiple platforms, including
+    Windows, macOS, Linux, and a few more using a single codebase with Splashkit
+    SDK. Supports **C++, C# and pyhton** .
+  </Card>
+  <Card title="Rich Graphics and Animation" icon="setting">
+    Create stunning visuals and captivating animations with Splashkit's
+    comprehensive set of graphics and animation tools. Bring your ideas to life
+    with ease.
+  </Card>
+  <Card title="Game Development Made Simple" icon="open-book">
+    Whether you're a beginner or an experienced game developer, Splashkit SDK
+    provides a user-friendly interface and a wide range of features to simplify
+    the game development process.
+  </Card>
+  <Card title="Extensive Documentation" icon="open-book">
+    Access detailed documentation and tutorials to help you get started quickly
+    and make the most out of Splashkit SDK. Learn at your own pace and explore
+    the vast possibilities.
+  </Card>
+  <Card title="Continuous Updates and Support" icon="open-book">
+    Splashkit SDK is regularly updated with new features and improvements. Benefit from ongoing support and stay up-to-date with the latest advancements in game development.
+  </Card>
+</CardGrid>
