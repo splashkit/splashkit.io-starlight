@@ -15,9 +15,14 @@ export default defineConfig({
 			sidebar: [ 
 				{
 					label: 'Installation',
+					autogenerate: { directory: 'installation', collapsed: true, },
+				},
+				{
+					label: 'Components',
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Example Guide', link: '/guides/example/' },
+						{ label: 'Aman', link: '/guides/abc/' },
 					],
 				},
 				{
