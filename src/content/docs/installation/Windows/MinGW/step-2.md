@@ -20,7 +20,7 @@ Once you have MSYS2 installed, you can install the SplashKit library:
 
     This can also be found on the [SplashKit](http://www.splashkit.io) home page.
 
-    ![](./images/gif/6.gif)
+    ![](/gifs/windows/6.gif)
 
 1. Restart the terminal and execute `skm` to test it was successfully installed.
 

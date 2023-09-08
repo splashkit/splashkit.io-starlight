@@ -8,11 +8,11 @@ can download and install Visual Studio Code to use as a source code editor.
 ## Steps:
 1. Download [Visual Studio Code](https://code.visualstudio.com/)
 
-    ![Downloading Visual Studio Code for Ubuntu](./images/gifs/download-vsc.gif)
+    ![Downloading Visual Studio Code for Ubuntu](/gifs/linux/download-vsc.gif)
 
 2. Open up a terminal.
 
-    ![Opening a terminal in Ubuntu](./images/gifs/open-terminal.gif)
+    ![Opening a terminal in Ubuntu](/gifs/linux/open-terminal.gif)
 
 3. Install Visual Studio Code
 
@@ -30,6 +30,6 @@ can download and install Visual Studio Code to use as a source code editor.
     sudo dpkg -i code_1.*.deb
     ```
 
-    ![Installing Visual Studio Code on Ubuntu](./images/gifs/install-vsc.gif)
+    ![Installing Visual Studio Code on Ubuntu](/gifs/linux/install-vsc.gif)
 
 

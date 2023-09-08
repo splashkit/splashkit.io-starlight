@@ -9,6 +9,7 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/splashkit',
 			},
+			favicon: '/public/images/favicon.svg',
 			logo: {
 				src: './src/assets/favicon.svg',
 			  },
@@ -19,11 +20,21 @@ export default defineConfig({
 				},
 				{
 					label: 'Components',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', link: '/guides/example/' },
-						{ label: 'Aman', link: '/guides/abc/' },
-					],
+					// items: [
+					// 	// Each item here is one entry in the navigation menu.
+					// 	{ label: 'Example Guide', link: '/guides/example/' },
+					// 	{ label: 'Aman', link: '/guides/abc/' },
+					// ],
+					autogenerate: { directory: 'components', collapsed: false, },
+				},
+				{
+					label: 'Guides',
+					// items: [
+					// 	// Each item here is one entry in the navigation menu.
+					// 	{ label: 'Example Guide', link: '/guides/example/' },
+					// 	{ label: 'Aman', link: '/guides/abc/' },
+					// ],
+					autogenerate: { directory: 'guides', collapsed: true, },
 				},
 				{
 					label: 'Troubleshooting',
@@ -32,7 +43,9 @@ export default defineConfig({
 					// 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
 					// 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
 					// ],
+					collapsed: false,
 					autogenerate: { directory: 'troubleshoot', collapsed: true, },
+					badge: 'New'
 				},
 				
 			],

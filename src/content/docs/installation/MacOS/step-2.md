@@ -13,7 +13,7 @@ tags: installation,mac
 
     This is the code from the [SplashKit Homepage](http://splashkit.io).
 
-    ![](./images/gif/2.gif)
+    ![](/gifs/macos/2.gif)
 
 1. Restart the terminal and execute `skm` to test it was successfully installed.
 

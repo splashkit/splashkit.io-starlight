@@ -1,8 +1,5 @@
 ---
-
 title: Installing Xcode Command Line Tools
-tags: installation,mac
-
 ---
 
 The Command Line Tools provided by Xcode provide a large amount of developer
@@ -26,6 +23,6 @@ to execute it.
 xcode-select --install
 ```
 
-![Installing Command Line Tools](./images/gif/installing-cmd-line-tools.gif)
+![Installing Command Line Tools](/gifs/macos/installing-cmd-line-tools.gif)
 
 

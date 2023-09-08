@@ -13,7 +13,7 @@ Installing .NET on macOS is necessary because it provides a cross-platform devel
 1. Firstly, we need to install the [Homebrew Package Manager](https://brew.sh).
    Copy and paste the command given on the website into your terminal.
 
-    ![Installing Homebrew](../images/gif/install-brew.gif)
+    ![Installing Homebrew](/gifs/macos/install-brew.gif)
 
     You will need to enter in your password into the terminal to install
     Homebrew. Whilst you may type into the keyboard, no password characters
@@ -44,7 +44,7 @@ Installing .NET on macOS is necessary because it provides a cross-platform devel
     $ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
     ```
 
-    ![Known issues with dotnet install](../images/gif/dotnet-known-issues.gif)
+    ![Known issues with dotnet install](/gifs/macos/dotnet-known-issues.gif)
 
     Should you have any other installation issues, review the .NET core [release notes](https://github.com/dotnet/core/tree/master/release-notes)
     or raise an issue on [GitHub](https://github.com/splashkit/splashkit-macos/issues).
@@ -66,5 +66,5 @@ Installing .NET on macOS is necessary because it provides a cross-platform devel
     You can use the <kbd>⌘+x</kbd> to open the panel. Then search for the name
     and click install:
 
-    ![Installing VSCode C# Extensions](../images/gif/extensions.gif)
+    ![Installing VSCode C# Extensions](/gifs/macos/extensions.gif)
 

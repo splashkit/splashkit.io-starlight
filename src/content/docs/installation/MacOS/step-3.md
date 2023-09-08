@@ -7,8 +7,8 @@ Visual Studio Code is essential for macOS because it provides a powerful and ver
 ## Steps:
 1. Download `Visual Studio Code`, found at [code.visualstudio.com](https://code.visualstudio.com).
 
-    ![](./images/gif//4.gif)
+    ![](/gifs/macos/4.gif)
 
 1. Install Visual Studio Code.
 
-    ![](./images/gif//5.gif)
+    ![](/gifs/macos/5.gif)

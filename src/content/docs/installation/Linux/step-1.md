@@ -5,7 +5,7 @@ The Splashkit Manager is essential for Linux users as it simplifies the installa
 ## Steps
 1. Open up a terminal.
 
-    ![Opening a terminal in Linux](./images/gifs/open-terminal.gif)
+    ![Opening a terminal in Linux](/gifs/linux/open-terminal.gif)
 
 2. Ensure you have **curl** and **git** installed, these are used in the SplashKit install process.
 

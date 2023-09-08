@@ -14,17 +14,17 @@ To get programming with C#, you can install the Dotnet Core tools.
     pacman -S mingw-w64-{x86_64,i686}-gcc mingw-w64-{i686,x86_64}-gdb
     ```
 
-    ![](../images/gif/install-gpp-msys.gif)
+    ![](/gifs/windows/install-gpp-msys.gif)
 
 1. Go to the [dotnet core](https://www.microsoft.com/net/core) page.
 
     Select `windows`, `command line/other` then download the `.net core sdk`.
 
-    ![](../images/gif/8.gif)
+    ![](/gifs/windows/8.gif)
 
 1. Run the installer and continue through the install wizard with default values.
 
-    ![](../images/gif/9.gif)
+    ![](/gifs/windows/9.gif)
 
 1. Install the C# extension in Visual Studio Code.
 

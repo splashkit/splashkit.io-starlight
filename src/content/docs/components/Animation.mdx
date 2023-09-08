@@ -1,0 +1,1705 @@
+---
+title: Animations
+description: Animations in SplashKit can be used to move between cells in bitmaps and sprites. Each animation generates a number sequence that can then be used when drawing bitmaps.
+prev:
+  link: /installation/windows/mingw/
+  label: Windows Installation for splashkit
+---
+
+:::tip[Animations]
+Animations in SplashKit can be used to move between cells in bitmaps and sprites. Each animation generates a number sequence that can then be used when drawing bitmaps.
+:::
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+import { Code } from "astro/components";
+
+# Animations Guides
+
+# FUNCTIONS
+
+## Animation Count [🔗](#animation-count)
+
+Returns the number of [`Animation`](/components/types/#animation)s within an [`Animation Script`](/components/types/#animation-script).
+
+**Return Type**
+
+- Integer
+
+Returns an `Integer` equal to the total number of animations in the script.
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to count the animations in. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int animation_count(animation_script script)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code={`public int AnimationScript.AnimationCount { get }
+public static int SplashKit.AnimationCount(AnimationScript script);
+`}
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code={`function AnimationCount(script: AnimationScript): Integer`}
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def animation_count(script):`} lang="cs" />
+  </TabItem>
+</Tabs>
+
+## Animation Current Cell [🔗](#animation-current-cell)
+
+Returns the current cell (the part of the image or sprite) of this animation. This can be used to animate an image or sprite.
+
+**Return Type**
+
+- Integer
+
+Returns the current cell of the animation passed to the method.
+
+**Parameters**
+
+| Name | Type                                 | Description                                                     |
+| ---- | ------------------------------------ | --------------------------------------------------------------- |
+| Anim | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to return the cell of. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int animation_current_cell(animation anim)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code={`public int Animation.CurrentCell { get; }
+public static int SplashKit.AnimationCurrentCell(Animation anim);`}
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code={`function AnimationCurrentCell(anim: Animation): Integer`}
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def animation_current_cell(anim):`} lang="python" />
+  </TabItem>
+</Tabs>
+
+## Animation Current Vector [🔗](#animation-current-vector)
+
+Returns the [`Vector 2D`](/components/types/#vector-2d) assigned to the current frame in the animation.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d)
+
+Returns the [`Vector 2D`](/components/types/#vector-2d) assigned to the current frame in the animation.
+
+**Parameters**
+
+| Name | Type                                 | Description                           |
+| ---- | ------------------------------------ | ------------------------------------- |
+| Anim | [`Animation`](/components/types/#animation) | The animation to check the vector of. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="vector_2d animation_current_vector(animation anim)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public Vector2D Animation.CurrentVector { get; }
+public static Vector2D SplashKit.AnimationCurrentVector(Animation anim);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationCurrentVector(anim: Animation): Vector2D"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def animation_current_vector(anim):" lang="python" />
+  </TabItem>
+</Tabs>
+
+## Animation Ended [🔗](#animation-ended)
+
+Checks if an [`Animation`](/components/types/#animation) has ended.
+
+**Return Type**
+
+- Boolean
+
+Returns a `Boolean` denoting whether the [`Animation`](/components/types/#animation) has ended.
+
+**Parameters**
+
+| Name | Type                                 | Description             |
+| ---- | ------------------------------------ | ----------------------- |
+| Anim | [`Animation`](/components/types/#animation) | The animation to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="bool animation_ended(animation anim)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public bool Animation.Ended { get }
+public static bool SplashKit.AnimationEnded(Animation anim);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationEnded(anim: Animation): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def animation_ended(anim):" lang="python" />
+  </TabItem>
+</Tabs>
+
+## Animation Entered Frame [🔗](#animation-entered-frame)
+
+Returns true if the [`Animation`](/components/types/#animation) entered a new frame on its last update. This can be used to trigger actions on frames within an animation.
+
+**Return Type**
+
+- Boolean
+
+Returns a `Boolean` denoting whether the [`Animation`](/components/types/#animation) has entered a new frame.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The animation to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool animation_entered_frame(animation anim)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public bool Animation.EnteredFrame { get }public static bool SplashKit.AnimationEnteredFrame(Animation anim);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationEnteredFrame(anim: Animation): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_entered_frame(anim):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Animation Frame Time [🔗](#animation-frame-time)
+
+Returns the amount of time spent in the current frame. When this exceeds the frame's duration, the animation moves to the next frame.
+
+**Return Type**
+
+- Float
+
+Returns the amount of time spent in the current frame as a `Float`.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The animation to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="float animation_frame_time(animation anim)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public float Animation.FrameTime { get; }
+public static float SplashKit.AnimationFrameTime(Animation anim);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationFrameTime(anim: Animation): Single"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_frame_time(anim):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+## Animation Index [🔗](#animation-index)
+
+Searches an [`Animation Script`](/components/types/#animation-script) for an [`Animation`](/components/types/#animation) and returns its index.
+
+**Return Type**
+
+- Integer
+
+Returns the index of the [`Animation`](/components/types/#animation) in the [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name   | Type          | Description                                       |
+| ------ | ------------- | ------------------------------------------------- |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to look for the [`Animation`](/components/types/#animation) in. |
+| Name   | `String`      | The name of the [`Animation`](/components/types/#animation) to look for. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="int animation_index(animation_script script, const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public int AnimationScript.AnimationIndex(string name);
+public static int SplashKit.AnimationIndex(AnimationScript script, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationIndex(script: AnimationScript; const name: String): Integer"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_index(script, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Animation Name [🔗](#animation-name)
+
+Searches an [`Animation Script`](/components/types/#animation-script) for an animation and returns its name.
+
+**Return Type**
+
+- String
+
+Returns the name of the [`Animation`](/components/types/#animation) in the [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Temp | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to search for. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="string animation_name(animation temp)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string Animation.Name { get; }
+public static string SplashKit.AnimationName(Animation temp);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationName(temp: Animation): String"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_name(temp):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Animation Script Name [🔗](#animation-script-name)
+
+Returns the name of an [`Animation Script`](/components/types/#animation-script).
+
+**Return Type**
+
+- String
+
+Returns a `String` that is the name of the animation script passed to the method.
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to return the name of.      |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="string animation_script_name(animation_script script)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string AnimationScript.Name { get; }
+public static string SplashKit.AnimationScriptName(AnimationScript script);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationScriptName(script: AnimationScript): String"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_script_name(script):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Animation Script Named [🔗](#animation-script-named)
+
+Loads and returns an [`Animation Script`](/components/types/#animation-script). The supplied filename is used to locate the [`Animation Script`](/components/types/#animation-script) to load. The supplied name indicates the name to use to refer to this in SplashKit. The [`Animation Script`](/components/types/#animation-script) can then be retrieved by passing this name to the `animation_script_named` method.
+
+**Return Type**
+
+- [`Animation Script`](/components/types/#animation-script)
+
+Returns the newly loaded [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name | Type     | Description                                 |
+| ---- | -------- | ------------------------------------------- |
+| Name | `String` | Indicates the name used to locate the `animation_script` to load. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation_script animation_script_named(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static AnimationScript Animation.AnimationScriptNamed(string name);
+public static AnimationScript SplashKit.AnimationScriptNamed(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AnimationScriptNamed(const name: String): AnimationScript"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def animation_script_named(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Assign Animation [🧬](#group-assign-animation)
+:::note
+This function is overloaded. The following versions exist:
+
+- [Assign Animation (anim: `Animation`, script: `Animation Script`, name: `String`)](#assign-animation--1)
+- [Assign Animation (anim: `Animation`, script: `Animation Script`, name: `String`, with_sound: `Boolean`)](#assign-animation--2)
+- [Assign Animation (anim: `Animation`, script: `Animation Script`, idx: `Integer`)](#assign-animation--3)
+- [Assign Animation (anim: `Animation`, script: `Animation Script`, idx: `Integer`, with_sound: `Boolean`)](#assign-animation--4)
+- [Assign Animation (anim: `Animation`, script_name: `String`, name: `String`)](#assign-animation--5)
+- [Assign Animation (anim: `Animation`, script_name: `String`, name: `String`, with_sound: `Boolean`)](#assign-animation--6)
+- [Assign Animation (anim: `Animation`, idx: `Integer`)](#assign-animation--7)
+- [Assign Animation (anim: `Animation`, idx: `Integer`, with_sound: `Boolean`)](#assign-animation--8)
+- [Assign Animation (anim: `Animation`, name: `String`)](#assign-animation--9)
+- [Assign Animation (anim: `Animation`, name: `String`, with_sound: `Boolean`)](#assign-animation--10)
+
+:::
+
+### Assign Animation [🤖](#assign-animation--1)
+
+Setup an [`Animation`](/components/types/#animation) to follow the script from an indicated name. This will switch the animation to use the supplied script. It locates the name of the animation within the animation script and sets the `Anim` to start at that point in the script.
+
+**Parameters**
+
+| Name   | Type                          | Description                                              |
+| ------ | ----------------------------- | -------------------------------------------------------- |
+| Anim   | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned. |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to assign the [`Animation`](/components/types/#animation) to. |
+| Name   | `String`                      | The name of the [`Animation`](/components/types/#animation) to be assigned. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, animation_script script, const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(AnimationScript script, string name);
+public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; script: AnimationScript; const name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_with_script(anim, script, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+[//]: # (assign-animation-with-script)
+### Assign Animation [🤖](#assign-animation--2)
+
+Assigns an [`Animation`](/components/types/#animation) to an [`Animation Script`](/components/types/#animation-script). This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Parameters**
+
+| Name        | Type                                  | Description                                     |
+| ----------- | ------------------------------------- | ----------------------------------------------- |
+| Anim        | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned. |
+| Script      | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to assign the [`Animation`](/components/types/#animation) to. |
+| Name        | `String`                              | The name of the [`Animation`](/components/types/#animation) to be assigned. |
+| With Sound  | `Boolean`                             | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, animation_script script, const string &name, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(AnimationScript script, string name, bool withSound);
+public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, string name, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; script: AnimationScript; const name: String; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_with_script_and_sound(anim, script, name, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--3)
+
+Assigns an [`Animation`](/components/types/#animation) to an [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name  | Type                                               | Description                                               |
+| ----- | -------------------------------------------------- | --------------------------------------------------------- |
+| Anim  | [`Animation`](/components/types/#animation)              | The [`Animation`](/components/types/#animation) to be assigned. |
+| Script| [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to assign the [`Animation`](/components/types/#animation) to. |
+| Idx   | `Integer`                                          | The index of the [`Animation`](/components/types/#animation) to create. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, animation_script script, int idx)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(AnimationScript script, int idx);
+public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, int idx);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; script: AnimationScript; idx: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_index_with_script(anim, script, idx):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--4)
+
+Assigns an [`Animation`](/components/types/#animation) to an [`Animation Script`](/components/types/#animation-script). This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Parameters**
+
+| Name        | Type             | Description                                                      |
+| ----------- | ---------------- | ---------------------------------------------------------------- |
+| Anim        | [`Animation`](/components/types/#animation)        | The [`Animation`](/components/types/#animation) to be assigned.         |
+| Script      | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to assign the [`Animation`](/components/types/#animation) to. |
+| Idx         | `Integer`         | The index of the [`Animation`](/components/types/#animation) to create.  |
+| With Sound  | `Boolean`         | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, animation_script script, int idx, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(AnimationScript script, int idx, bool withSound);
+public static void SplashKit.AssignAnimation(Animation anim, AnimationScript script, int idx, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; script: AnimationScript; idx: Integer; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_index_with_script_and_sound(anim, script, idx, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--5)
+
+Assigns an [`Animation`](/components/types/#animation) to an [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name         | Type             | Description                                           |
+| ------------ | ---------------- | ----------------------------------------------------- |
+| Anim         | [`Animation`](/components/types/#animation) | The `Animation` to be assigned.                  |
+| Script Name  | `String`         | The name of the `Animation Script` to assign the `Animation` to. |
+| Name         | `String`         | The name of the `Animation` to be assigned.              |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, const string &amp;script_name, const string &amp;name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(string scriptName, string name);
+public static void SplashKit.AssignAnimation(Animation anim, string scriptName, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; const scriptName: String; const name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_with_script_named(anim, script_name, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--6)
+
+Assigns an [`Animation`](/components/types/#animation) to an [`Animation Script`](/components/types/#animation-script). This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Parameters**
+
+| Name        | Type         | Description                                                         |
+| ----------- | ------------ | ------------------------------------------------------------------- |
+| Anim        | [`Animation`](/components/types/#animation) | The `Animation` to be assigned.                         |
+| Script Name | `String`     | The name of the `Animation Script` to assign the `Animation` to.    |
+| Name        | `String`     | The name of the `Animation` to be assigned.                        |
+| With Sound  | `Boolean`    | Denotes whether the `Animation` should play audio.                  |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, const string &script_name, const string &name, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(string scriptName, string name, bool withSound);
+public static void SplashKit.AssignAnimation(Animation anim, string scriptName, string name, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; const scriptName: String; const name: String; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_with_script_named_and_sound(anim, script_name, name, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+### Assign Animation [🤖](#assign-animation--7)
+
+Setup an [`Animation`](/components/types/#animation) to follow the script from an indicated index. This uses the index from the current animation script and sets the supplied animation to start at that point in the script.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned. |
+| Idx  | `Integer` | The index of the animation to use from its current script. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, int idx)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(int idx);
+public static void SplashKit.AssignAnimation(Animation anim, int idx);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; idx: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_index(anim, idx):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--8)
+
+Setup an [`Animation`](/components/types/#animation) to follow the script from an indicated index. This uses the index from the current animation script and sets the supplied animation to start at that point in the script.
+
+**Parameters**
+
+| Name        | Type             | Description                                            |
+| ----------- | ---------------- | ------------------------------------------------------ |
+| Anim        | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned. |
+| Idx         | `Integer`        | The index of the animation to use from its current script. |
+| With Sound  | `Boolean`        | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, int idx, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(int idx, bool withSound);
+public static void SplashKit.AssignAnimation(Animation anim, int idx, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; idx: Integer; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_index_with_sound(anim, idx, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--9)
+
+Setup an [`Animation`](/components/types/#animation) to follow the script from an indicated name. This locates the name of the animation from the current animation script and sets the supplied animation to start at that point in the script.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned. |
+| Name | `String` | The name of the animation to use from its current script. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, string name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(string name);
+public static void SplashKit.AssignAnimation(Animation anim, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation(anim, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Assign Animation [🤖](#assign-animation--10)
+
+Setup an [`Animation`](/components/types/#animation) to follow the script from an indicated name. This locates the name of the animation from the current animation script and sets the supplied animation to start at that point in the script.
+
+**Parameters**
+
+| Name        | Type            | Description                                            |
+| ----------- | --------------- | ------------------------------------------------------ |
+| Anim        | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be assigned.  |
+| Name        | `String`        | The name of the animation to use from its current script. |
+| With Sound  | `Boolean`       | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void assign_animation(animation anim, string name, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.AssignAnimation(string name, bool withSound);
+public static void SplashKit.AssignAnimation(Animation anim, string name, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure AssignAnimation(anim: Animation; name: String; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def assign_animation_with_sound(anim, name, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+
+## Create Animation [🧬](#group-create-animation)
+
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Create Animation (script: `Animation Script`, idx: `Integer`, with_sound: `Boolean`)**](#create-animation--1)
+- [**Create Animation (script: `Animation Script`, name: `String`)**](#create-animation--2)
+- [**Create Animation (script: `Animation Script`, name: `String`, with_sound: `Boolean`)**](#create-animation--3)
+- [**Create Animation (script_name: `String`, name: `String`)**](#create-animation--4)
+- [**Create Animation (script_name: `String`, name: `String`, with_sound: `Boolean`)**](#create-animation--5)
+:::
+
+### Create Animation [🤖](#create-animation--1)
+
+Creates an animation from an [`Animation Script`](/components/types/#animation-script). This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Return Type**
+
+- [`Animation`](/components/types/#animation)
+
+Returns the newly created [`Animation`](/components/types/#animation).
+
+**Parameters**
+
+| Name        | Type                    | Description                                       |
+| ----------- | ----------------------- | ------------------------------------------------- |
+| Script      | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to create the [`Animation`](/components/types/#animation) from. |
+| Idx         | `Integer`               | The index of the [`Animation`](/components/types/#animation) to create. |
+| With Sound  | `Boolean`               | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation create_animation(animation_script script, int idx, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static Animation Animation.CreateAnimation(AnimationScript script, int idx, bool withSound);
+public static Animation SplashKit.CreateAnimation(AnimationScript script, int idx, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CreateAnimation(script: AnimationScript; idx: Integer; withSound: Boolean): Animation"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def create_animation_from_index_with_sound(script, idx, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+
+### Create Animation [🤖](#create-animation)
+
+Creates an animation from an [`Animation Script`](/components/types/#animation-script).
+
+**Return Type**
+
+- [`Animation`](/components/types/#animation)
+
+Returns the newly created [`Animation`](/components/types/#animation).
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to create the [`Animation`](/components/types/#animation) from. |
+| Name   | `String`                                           | The name for the new [`Animation`](/components/types/#animation).                         |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation create_animation(animation_script script, const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public Animation AnimationScript.CreateAnimation(string name);
+public static Animation SplashKit.CreateAnimation(AnimationScript script, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CreateAnimation(script: AnimationScript; const name: String): Animation"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def create_animation(script, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Create Animation [🤖](#create-animation-with-sound)
+
+Creates an animation from an [`Animation Script`](/components/types/#animation-script). This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Return Type**
+
+- [`Animation`](/components/types/#animation)
+
+Returns the newly created [`Animation`](/components/types/#animation).
+
+**Parameters**
+
+| Name       | Type                              | Description                                          |
+| ---------- | --------------------------------- | ---------------------------------------------------- |
+| Script     | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to create the [`Animation`](/components/types/#animation) from. |
+| Name       | `String`                          | The name for the new [`Animation`](/components/types/#animation). |
+| With Sound | `Boolean`                         | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation create_animation(animation_script script, const string &name, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public Animation AnimationScript.CreateAnimation(string name, bool withSound);
+public static Animation SplashKit.CreateAnimation(AnimationScript script, string name, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CreateAnimation(script: AnimationScript; const name: String; withSound: Boolean): Animation"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def create_animation_with_sound(script, name, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Create Animation [🤖](#create-animation-from-script-named)
+
+Creates an animation from an [`Animation Script`](/components/types/#animation-script)'s name. This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Return Type**
+
+- [`Animation`](/components/types/#animation)
+
+Returns the newly created [`Animation`](/components/types/#animation).
+
+**Parameters**
+
+| Name         | Type    | Description                                               |
+| ------------ | ------- | --------------------------------------------------------- |
+| Script Name  | `String` | The name of the [`Animation Script`](/components/types/#animation-script) to create the [`Animation`](/components/types/#animation) from. |
+| Name         | `String` | The name for the new [`Animation`](/components/types/#animation). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation create_animation(const string &script_name, const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static Animation Animation.CreateAnimation(string scriptName, string name);
+public static Animation SplashKit.CreateAnimation(string scriptName, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CreateAnimation(const scriptName: String; const name: String): Animation"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def create_animation_from_script_named(script_name, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Create Animation [🤖](#create-animation-from-script-named-with-sound)
+
+Creates an animation from an [`Animation Script`](/components/types/#animation-script)'s name. This may play a sound effect if the animation is set to play a sound effect on its first frame.
+
+**Return Type**
+
+- [`Animation`](/components/types/#animation)
+
+Returns the newly created [`Animation`](/components/types/#animation).
+
+**Parameters**
+
+| Name         | Type       | Description                                               |
+| ------------ | ---------- | --------------------------------------------------------- |
+| Script Name  | `String`   | The name of the [`Animation Script`](/components/types/#animation-script) to create the [`Animation`](/components/types/#animation) from. |
+| Name         | `String`   | The name for the new [`Animation`](/components/types/#animation). |
+| With Sound   | `Boolean`  | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation create_animation(const string &script_name, const string &name, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static Animation Animation.CreateAnimation(string scriptName, string name, bool withSound);
+public static Animation SplashKit.CreateAnimation(string scriptName, string name, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CreateAnimation(const scriptName: String; const name: String; withSound: Boolean): Animation"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def create_animation_from_script_named_with_sound(script_name, name, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+## Free All Animation Scripts [🤖](#free-all-animation-scripts)
+
+Frees all loaded [`Animation Script`](/components/types/#animation-script)s.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void free_all_animation_scripts()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Animation.FreeAllAnimationScripts();
+public static void SplashKit.FreeAllAnimationScripts();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FreeAllAnimationScripts()"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def free_all_animation_scripts():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+## Free Animation [🤖](#free-animation)
+
+Disposes of the resources used in the animation.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Ani  | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to be disposed of. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void free_animation(animation ani)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.FreeAnimation();
+public static void SplashKit.FreeAnimation(Animation ani);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FreeAnimation(ani: Animation)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def free_animation(ani):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+## Free Animation Script [🧬](#group-free-animation-script)
+:::note
+This function is overloaded. The following versions exist:
+
+- [Free Animation Script (script_to_free: `Animation Script`)](/api/animations/#free-animation-script)
+- [Free Animation Script (name: `String`)](/api/animations/#free-animation-script-with-name)
+:::
+
+### Free Animation Script [🤖](#free-animation-script)
+
+Frees loaded animation frames data. Use this when you will no longer be using the animation for any purpose, including within a sprite.
+
+**Parameters**
+
+| Name          | Type                                             | Description                            |
+| ------------- | ------------------------------------------------ | -------------------------------------- |
+| Script To Free | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to be freed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void free_animation_script(animation_script script_to_free)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void AnimationScript.FreeAnimationScript();
+public static void SplashKit.FreeAnimationScript(AnimationScript scriptToFree);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FreeAnimationScript(scriptToFree: AnimationScript)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def free_animation_script(script_to_free):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Free Animation Script [🤖](#free-animation-script-with-name)
+
+Frees loaded [`Animation Script`](/components/types/#animation-script) data. Use this when you will no longer be using the animation for any purpose, including within a sprite.
+
+**Parameters**
+
+| Name | Type   | Description                                        |
+| ---- | ------ | -------------------------------------------------- |
+| Name | String | The name of the [`Animation Script`](/components/types/#animation-script) to be freed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void free_animation_script(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Animation.FreeAnimationScript(string name);
+public static void SplashKit.FreeAnimationScript(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FreeAnimationScript(const name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def free_animation_script_with_name(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+
+
+## Has Animation Named [🔗](#has-animation-named)
+
+Returns whether an [`Animation Script`](/components/types/#animation-script) has been loaded with the given name.
+
+**Return Type**
+
+- Boolean
+
+Returns a `Boolean` that denotes whether the [`Animation Script`](/components/types/#animation-script) has been loaded.
+
+**Parameters**
+
+| Name   | Type     | Description                                           |
+| ------ | -------- | ----------------------------------------------------- |
+| Script | [`Animation Script`](/components/types/#animation-script) | The [`Animation Script`](/components/types/#animation-script) to check. |
+| Name   | String   | The name of the [`Animation Script`](/components/types/#animation-script) to look for. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool has_animation_named(animation_script script, const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public bool AnimationScript.HasAnimationNamed(string name);
+public static bool SplashKit.HasAnimationNamed(AnimationScript script, string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function HasAnimationNamed(script: AnimationScript; const name: String): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def has_animation_named(script, name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+
+## Has Animation Script [🔗](#has-animation-script)
+
+Determines if SplashKit has animation frames loaded for the supplied name. This checks against all loaded animation frames, those loaded without a name are assigned the filename as a default.
+
+**Return Type**
+
+- Boolean
+
+Returns the `Boolean` that denotes if the animation has the [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Name | `String` | The name of the animation script to look for. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool has_animation_script(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Animation.HasAnimationScript(string name);
+public static bool SplashKit.HasAnimationScript(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function HasAnimationScript(const name: String): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def has_animation_script(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+## Load Animation Script [🔗](#load-animation-script)
+
+Load animation details from an animation frames file.
+
+**Return Type**
+
+- [`Animation Script`](/components/types/#animation-script)
+
+Returns the newly loaded [`Animation Script`](/components/types/#animation-script).
+
+**Parameters**
+
+| Name     | Type     | Description                                  |
+| -------- | -------- | -------------------------------------------- |
+| Name     | `String` | The name of the [`Animation Script`](/components/types/#animation-script). |
+| Filename | `String` | The file to load the [`Animation Script`](/components/types/#animation-script) from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="animation_script load_animation_script(const string &name, const string &filename)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static AnimationScript SplashKit.LoadAnimationScript(string name, string filename);
+public AnimationScript(string name, string filename);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function LoadAnimationScript(const name: String; const filename: String): AnimationScript"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def load_animation_script(name, filename):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+
+- [Using Animations](/articles/guides/tags/animations/animation/) (Opens in a new window)
+
+## Restart Animation [🧬](#group-restart-animation)
+:::note
+This function is overloaded. The following versions exist:
+
+- [Restart Animation (anim: `Animation`)](#restart-animation--1)
+- [Restart Animation (anim: `Animation`, with_sound: `Boolean`)](#restart-animation--2)
+:::
+
+
+### Restart Animation [🤖](#restart-animation--1)
+
+Restarts an `Animation`[]().
+
+**Parameters**
+
+| Name | Type        | Description        |
+| ---- | ----------- | ------------------ |
+| anim | `Animation` | The animation to restart. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void restart_animation(animation anim)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.RestartAnimation();
+public static void SplashKit.RestartAnimation(Animation anim);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure RestartAnimation(anim: Animation)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def restart_animation(anim):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### Restart Animation [🤖](#restart-animation--2)
+
+Restarts an `Animation`[](). This may play a sound effect if the first frame triggers a sound.
+
+**Parameters**
+
+| Name       | Type        | Description                              |
+| ---------- | ----------- | ---------------------------------------- |
+| anim       | `Animation` | The animation to restart.                |
+| with_sound | `Boolean`   | Whether to include sound when restarting. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void restart_animation_with_sound(animation anim, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.RestartAnimation(bool withSound);
+public static void SplashKit.RestartAnimation(Animation anim, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure RestartAnimationWithSound(anim: Animation; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def restart_animation_with_sound(anim, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+
+## Update Animation [🧬](#group-update-animation)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Update Animation** (anim: `Animation`, pct: `Float`, with_sound: `Boolean`)](#update-animation--1) 
+
+- [**Update Animation** (anim: `Animation`) ](#update-animation--2) 
+
+- [**Update Animation** (anim: `Animation`, pct: `Float`)](#update-animation--3) 
+:::
+
+### Update Animation [🤖](#update-animation--1)
+
+Updates the animation, updating the time spent and possibly moving to a new frame in the animation. This may play a sound effect if the new frame triggers a sound.
+
+**Parameters**
+
+| Name       | Type                                               | Description                                         |
+| ---------- | -------------------------------------------------- | --------------------------------------------------- |
+| Anim       | [`Animation`](/components/types/#animation)              | The [`Animation`](/components/types/#animation) to update. |
+| Pct        | `Float`                                            | The amount that the frame time will be incremented. |
+| With Sound | `Boolean`                                          | Denotes whether the [`Animation`](/components/types/#animation) should play audio. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void update_animation(animation anim, float pct, bool with_sound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Animation.UpdateAnimation(Animation anim, float pct, bool withSound);
+public static void SplashKit.UpdateAnimation(Animation anim, float pct, bool withSound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure UpdateAnimation(anim: Animation; pct: Single; withSound: Boolean)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def update_animation_percent_with_sound(anim, pct, with_sound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Update Animation [🤖](#update-animation--2)
+
+Updates the animation, updating the time spent and possibly moving to a new frame in the animation. This may play a sound effect if the new frame triggers a sound.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to update. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void update_animation(animation anim)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.UpdateAnimation();
+public static void SplashKit.UpdateAnimation(Animation anim);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure UpdateAnimation(anim: Animation)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def update_animation(anim):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Update Animation [🤖](#update-animation--3)
+
+Updates the animation, updating the time spent and possibly moving to a new frame in the animation. This may play a sound effect if the new frame triggers a sound.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Anim | [`Animation`](/components/types/#animation) | The [`Animation`](/components/types/#animation) to update. |
+| Pct | `Float` | The amount that the frame time will be incremented. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void update_animation(animation anim, float pct)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Animation.UpdateAnimation(float pct);
+public static void SplashKit.UpdateAnimation(Animation anim, float pct);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure UpdateAnimation(anim: Animation; pct: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def update_animation_percent(anim, pct):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+

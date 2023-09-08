@@ -9,9 +9,9 @@ Installing Visual Studio Code on Windows is essential for developers as it provi
 ## Steps:
 1. Download [Visual Studio Code](https://code.visualstudio.com)
 
-    ![](./images/gif/10.gif)
+    ![](/gifs/windows/10.gif)
 
 1. Run the installer.
 
-    ![](./images/gif/11.gif)
+    ![](/gifs/windows/11.gif)
 
