@@ -5,9 +5,52 @@ description: Animations in SplashKit can be used to move between cells in bitmap
 :::tip[Utilities]
 :::
 
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+import { Code } from "astro/components";
 
 # Functions
-## Current Ticks
+
+## Current Ticks [🔗](#current-ticks)
+
+Gets the number of milliseconds that have passed since the program was started.
+
+**Return Type**
+
+- Unsigned Integer
+
+The number of milliseconds passed.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="unsigned int current_ticks()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static uint Utilities.CurrentTicks();
+public static uint SplashKit.CurrentTicks();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function CurrentTicks(): Cardinal"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def current_ticks():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
 ## Delay
 ## Display Dialog
 ## File As String
