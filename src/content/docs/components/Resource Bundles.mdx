@@ -3,15 +3,186 @@ title: Resource Bundles
 description: Animations in SplashKit can be used to move between cells in bitmaps and sprites. Each animation generates a number sequence that can then be used when drawing bitmaps.
 ---
 :::tip[SplashKit resource bundles allow you to quickly and easily load a number of resources in the `Resources` folder.]
-Supports the loading and freeing of game resource bundles. Resource types include images, sounds, music and animation files to name a few. Resource files must be saved in specific locations of a Resources folder for your game.
+Supports the loading and freeing of game resource bundles. Resource types include images, sounds, music and animation files to name a few. Resource files must be saved in specific locations of a `Resources` folder for your game.
 :::
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# Functions
-## Free Resource Bundle
-## Has Resource Bundle
-## Load Resource Bundle
+## Functions
+##
+
+## Free Resource Bundle [🔗](#free-resource-bundle)
+
+When you are finished with the resources in a bundle, you can free them all by calling this procedure. It will free the resource bundle and all of the associated resources.
+
+**Parameters**
+
+| Name | Type     | Description                        |
+| ---- | -------- | ---------------------------------- |
+| Name | `String` | The name of the resource bundle to be freed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void free_resource_bundle(const string name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void ResourceBundle.FreeResourceBundle(string name);
+public static void SplashKit.FreeResourceBundle(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FreeResourceBundle(name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def free_resource_bundle(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Has Resource Bundle [🔗](#has-resource-bundle)
+
+Returns true when the named resource bundle has already been loaded.
+
+**Return Type**
+
+- Boolean
+
+True when the bundle is already loaded.
+
+**Parameters**
+
+| Name | Type     | Description              |
+| ---- | -------- | ------------------------ |
+| Name | `String` | The name of the resource bundle. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool has_resource_bundle(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool ResourceBundle.HasResourceBundle(string name);
+public static bool SplashKit.HasResourceBundle(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function HasResourceBundle(const name: String): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def has_resource_bundle(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+---
+## Load Resource Bundle [🔗](#load-resource-bundle)
+Loads all of the resources in the resource bundle. The resource bundle is a text file that describes the resources you want to load. These rescources are then loaded when you call this procedure, and can all be released when you call `Release Resource Bundle`.
+
+Save the resource bundle text files into your projects `Resources` in the `Bundles` folder. Use the following as the format for each of the resources.
+
+Start a line with a // to have it ignored when the bundle is loaded. This can be used to add comments to your bundle.
+
+- To load an **animation** use the format:
+`ANIM,name,filename`
+
+For example, the following will load an animation named "WalkingScript" that loads the animation from "kermit.txt" in your games animation `Resources`.
+
+`ANIM,WalkingScript,kermit.txt`
+
+- To load a **bitmap** use the format:
+`BMP,name,filename`
+
+For example, the following will load a bitmap named "Logo" using the "Logo.png" file.
+
+`BITMAP,Logo,logo.png`
+
+- To load a bitmap that has a number of cells, you can extend the bitmap format with the cell details. This has the format:
+`BMP,name,filename,cell-width,cell-height,columns,rows,count`
+
+The following will setup the "Player" bitmap to have cells that are 75 pixels wide, and 42 pixels height. There are 4 columns in 1 row, giving a total of 4 cells.
+
+`BITMAP,Player,player.png,75,42,4,1,4`
+
+- To load a font use FONT,name,filename. For example, the following loads a font named "GameFont" that represents the "demolition.otf".
+`FONT,GameFont,demolition.otf`
+
+- To load music, use MUSIC,name,filename. The following loads "GameMusic" for the "magical_night.ogg" file.
+`MUSIC,GameMusic,magical_night.ogg`
+
+- To load a sound effect, use SOUND,name,filename. For example the following loads "error" from the "error.wav" file.
+`SOUND,error,error.wav`
+
+- To create a timer use TIMER,name. The following creates a timer named as "my timer".
+`TIMER,my timer`
+
+- You can also load another resource bundle using BUNDLE,name,filename. The following loads "another bundle" from the "another.txt" file.
+`BUNDLE,another bundle,another.txt`
+### Parameters
+
+| Name     | Type     | Description                    |
+| -------- | -------- | ------------------------------ |
+| Name     | `String` | The name of the bundle when it is loaded. |
+| Filename | `String` | The filename to load.          |
+
+### Signatures
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void load_resource_bundle(const string &name, const string &filename)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void ResourceBundle.LoadResourceBundle(string name, string filename);
+public static void SplashKit.LoadResourceBundle(string name, string filename);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure LoadResourceBundle(const name: String; const filename: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def load_resource_bundle(name, filename):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+
+
 

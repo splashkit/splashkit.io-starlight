@@ -14,9 +14,11 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# Animations Guides
+##
+## Animations Guides
 
-# FUNCTIONS
+##
+## Functions
 
 ## Animation Count [🔗](#animation-count)
 
@@ -51,13 +53,14 @@ public static int SplashKit.AnimationCount(AnimationScript script);
   <TabItem label="Pascal">
     <Code
       code={`function AnimationCount(script: AnimationScript): Integer`}
-      lang="cs"
+      lang="pascal"
     />
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def animation_count(script):`} lang="cs" />
+    <Code code={`def animation_count(script):`} lang="python" />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Current Cell [🔗](#animation-current-cell)
 
@@ -97,7 +100,8 @@ public static int SplashKit.AnimationCurrentCell(Animation anim);`}
   <TabItem label="Python">
     <Code code={`def animation_current_cell(anim):`} lang="python" />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Current Vector [🔗](#animation-current-vector)
 
@@ -140,7 +144,8 @@ public static Vector2D SplashKit.AnimationCurrentVector(Animation anim);"
   <TabItem label="Python">
     <Code code="def animation_current_vector(anim):" lang="python" />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Ended [🔗](#animation-ended)
 
@@ -180,7 +185,8 @@ public static bool SplashKit.AnimationEnded(Animation anim);"
   <TabItem label="Python">
     <Code code="def animation_ended(anim):" lang="python" />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Entered Frame [🔗](#animation-entered-frame)
 
@@ -225,7 +231,8 @@ Returns a `Boolean` denoting whether the [`Animation`](/components/types/#animat
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ---
 
@@ -273,7 +280,8 @@ public static float SplashKit.AnimationFrameTime(Animation anim);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 ## Animation Index [🔗](#animation-index)
@@ -321,7 +329,8 @@ public static int SplashKit.AnimationIndex(AnimationScript script, string name);
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Name [🔗](#animation-name)
 
@@ -367,7 +376,8 @@ public static string SplashKit.AnimationName(Animation temp);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Script Name [🔗](#animation-script-name)
 
@@ -413,7 +423,8 @@ public static string SplashKit.AnimationScriptName(AnimationScript script);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Animation Script Named [🔗](#animation-script-named)
 
@@ -459,7 +470,8 @@ public static AnimationScript SplashKit.AnimationScriptNamed(string name);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ## Assign Animation [🧬](#group-assign-animation)
 :::note
@@ -518,7 +530,8 @@ public static void SplashKit.AssignAnimation(Animation anim, AnimationScript scr
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 [//]: # (assign-animation-with-script)
 ### Assign Animation [🤖](#assign-animation--2)
@@ -562,7 +575,8 @@ public static void SplashKit.AssignAnimation(Animation anim, AnimationScript scr
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--3)
 
@@ -604,7 +618,8 @@ public static void SplashKit.AssignAnimation(Animation anim, AnimationScript scr
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--4)
 
@@ -647,7 +662,8 @@ public static void SplashKit.AssignAnimation(Animation anim, AnimationScript scr
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--5)
 
@@ -689,7 +705,8 @@ public static void SplashKit.AssignAnimation(Animation anim, string scriptName, 
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--6)
 
@@ -732,7 +749,8 @@ public static void SplashKit.AssignAnimation(Animation anim, string scriptName, 
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 ### Assign Animation [🤖](#assign-animation--7)
@@ -774,7 +792,8 @@ public static void SplashKit.AssignAnimation(Animation anim, int idx);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--8)
 
@@ -816,7 +835,8 @@ public static void SplashKit.AssignAnimation(Animation anim, int idx, bool withS
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--9)
 
@@ -857,7 +877,8 @@ public static void SplashKit.AssignAnimation(Animation anim, string name);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Assign Animation [🤖](#assign-animation--10)
 
@@ -899,7 +920,8 @@ public static void SplashKit.AssignAnimation(Animation anim, string name, bool w
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -962,7 +984,8 @@ public static Animation SplashKit.CreateAnimation(AnimationScript script, int id
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -1012,7 +1035,8 @@ public static Animation SplashKit.CreateAnimation(AnimationScript script, string
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Create Animation [🤖](#create-animation-with-sound)
 
@@ -1060,7 +1084,8 @@ public static Animation SplashKit.CreateAnimation(AnimationScript script, string
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Create Animation [🤖](#create-animation-from-script-named)
 
@@ -1107,7 +1132,8 @@ public static Animation SplashKit.CreateAnimation(string scriptName, string name
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Create Animation [🤖](#create-animation-from-script-named-with-sound)
 
@@ -1155,7 +1181,8 @@ public static Animation SplashKit.CreateAnimation(string scriptName, string name
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -1191,7 +1218,8 @@ public static void SplashKit.FreeAllAnimationScripts();"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -1233,7 +1261,8 @@ public static void SplashKit.FreeAnimation(Animation ani);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 ## Free Animation Script [🧬](#group-free-animation-script)
@@ -1282,7 +1311,8 @@ public static void SplashKit.FreeAnimationScript(AnimationScript scriptToFree);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Free Animation Script [🤖](#free-animation-script-with-name)
 
@@ -1322,7 +1352,8 @@ public static void SplashKit.FreeAnimationScript(string name);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -1373,7 +1404,8 @@ public static bool SplashKit.HasAnimationNamed(AnimationScript script, string na
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 
@@ -1421,7 +1453,8 @@ public static bool SplashKit.HasAnimationScript(string name);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 ## Load Animation Script [🔗](#load-animation-script)
@@ -1469,7 +1502,8 @@ public AnimationScript(string name, string filename);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 **Guides**
 
@@ -1522,7 +1556,8 @@ public static void SplashKit.RestartAnimation(Animation anim);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ---
 
@@ -1565,7 +1600,8 @@ public static void SplashKit.RestartAnimation(Animation anim, bool withSound);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 
 ## Update Animation [🧬](#group-update-animation)
@@ -1619,7 +1655,8 @@ public static void SplashKit.UpdateAnimation(Animation anim, float pct, bool wit
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Update Animation [🤖](#update-animation--2)
 
@@ -1659,7 +1696,8 @@ public static void SplashKit.UpdateAnimation(Animation anim);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---
 
 ### Update Animation [🤖](#update-animation--3)
 
@@ -1700,4 +1738,5 @@ public static void SplashKit.UpdateAnimation(Animation anim, float pct);"
       lang="python"
     />
   </TabItem>
-</Tabs>
+</Tabs> 
+---

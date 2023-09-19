@@ -10,27 +10,716 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-## FUNCTIONS
+## Functions
+##
 
-### Database Named
-### Free All Databases
-### Free All Query Results
-### Free Database
-### Free Query Result
-### Get Next Row
-### Has Database
-### Has Row
-### Open Database
-### Query Column For Boolean
-### Query Column For Double
-### Query Column For Integer
-### Query Column For String
-### Query Success
-### Query Type Of Col
-### Reset Query Result
-### Rows Changed
-### Run Sql
+## Database Named [🔗](#database-named)
+
+Retrieves a `database` that has been loaded into SplashKit.
+
+**Return Type**
+
+- [`Database`](/components/database/#database) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the database to return. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`database database_named(string name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Database Database.DatabaseNamed(string name);
+public static Database SplashKit.DatabaseNamed(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def database_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DatabaseNamed(name: String): Database`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free All Databases [🔗](#free-all-databases)
+
+Releases all of the databases which have been loaded.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_all_databases()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Database.FreeAllDatabases();
+public static void SplashKit.FreeAllDatabases();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_all_databases():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeAllDatabases()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free All Query Results [🔗](#free-all-query-results)
+
+Frees all of the databases which have been loaded.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_all_query_results()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Database.FreeAllQueryResults();
+public static void SplashKit.FreeAllQueryResults();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_all_query_results():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeAllQueryResults()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free Database [🧬](#group-free-database)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Free Database** (db_to_close: `Database`)](/components/database/#free-database--1)
+
+- [**Free Database** (name_of_db_to_close: `String`)](/components/database/#free-database--2)
+:::
+---
+
+
+### Free Database [🤖](#free-database--1)
+
+Frees the SplashKit resources associated with the database.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_to_close | [`Database`](/components/database/#database) | The `database` whose resources should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_database(database db_to_close)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Database.FreeDatabase();
+public static void SplashKit.FreeDatabase(Database dbToClose);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_database(db_to_close):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeDatabase(dbToClose: Database)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Free Database [🤖](#free-database--2)
+
+Frees the SplashKit resources associated with the database at a given name.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name_of_db_to_close | `String` | The `string` denoting where the database is which should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_database(string name_of_db_to_close)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Database.FreeDatabase(string nameOfDbToClose);
+public static void SplashKit.FreeDatabase(string nameOfDbToClose);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_database_named(name_of_db_to_close):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeDatabase(nameOfDbToClose: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free Query Result [🔗](#free-query-result)
+
+Releases the SplashKit resources associated with the query.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| query | [`Query Result`](/components/database/#query-result) | The ](/components/database/#query-result) whose resources should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_query_result(query_result query)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void QueryResult.FreeQueryResult();
+public static void SplashKit.FreeQueryResult(QueryResult query);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_query_result(query):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeQueryResult(query: QueryResult)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Get Next Row [🔗](#get-next-row)
+
+Gets the next row available on a given `query_result`.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to move to the next row on. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool get_next_row(query_result db_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool QueryResult.GetNextRow();
+public static bool SplashKit.GetNextRow(QueryResult dbResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def get_next_row(db_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function GetNextRow(dbResult: QueryResult): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Database [🔗](#has-database)
+
+Determines if SplashKit has a database loaded for the supplied name.
+This checks against all databases loaded, those loaded without a name
+are assigned the filename as a default. If this returns `false`, you may
+want to use `load_database` to load in a specific database and give
+it the desired name.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the database you want to check for.
+This will match the name you used when opening the database in open_database |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_database(string name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Database.HasDatabase(string name);
+public static bool SplashKit.HasDatabase(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_database(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasDatabase(name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Row [🔗](#has-row)
+
+Checks if a given [`Query Result`](/components/database/#query-result) has a valid row of data.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to check for a valid row of data on. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_row(query_result db_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool QueryResult.HasRow { get }
+public static bool SplashKit.HasRow(QueryResult dbResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_row(db_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasRow(dbResult: QueryResult): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Open Database [🔗](#open-database)
+
+Loads or creates, and returns a database.
+
+The supplied `filename` is the name of the file of the database. The
+supplied `name` indicates the name to use to refer to this `database`.
+The `database` can then be retrieved by passing this `name` to
+the `database_named` function. If the database file does not exist, it
+will be created for you.
+
+**Return Type**
+
+- [`Database`](/components/database/#database) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name used to refer to the database. |
+| filename | `String` | The filename used to locate the database to use. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`database open_database(string name, string filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Database SplashKit.OpenDatabase(string name, string filename);
+public Database(string name, string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def open_database(name, filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function OpenDatabase(name: String; filename: String): Database`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Column For Bool [🔗](#query-column-for-bool)
+
+Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a bool.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to perform the query on. |
+| col | `Integer` | The column you would like to query data from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool query_column_for_bool(query_result db_result, int col)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool QueryResult.QueryColumnForBool(int col);
+public static bool SplashKit.QueryColumnForBool(QueryResult dbResult, int col);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_column_for_bool(db_result, col):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QueryColumnForBool(dbResult: QueryResult; col: Integer): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Column For Double [🔗](#query-column-for-double)
+
+Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a double.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to perform the query on. |
+| col | `Integer` | The column you would like to query data from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double query_column_for_double(query_result db_result, int col)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public double QueryResult.QueryColumnForDouble(int col);
+public static double SplashKit.QueryColumnForDouble(QueryResult dbResult, int col);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_column_for_double(db_result, col):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QueryColumnForDouble(dbResult: QueryResult; col: Integer): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Column For Int [🔗](#query-column-for-int)
+
+Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for an integer.
+
+**Return Type**
+
+- `Integer` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to perform the query on. |
+| col | `Integer` | The column you would like to query data from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int query_column_for_int(query_result db_result, int col)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public int QueryResult.QueryColumnForInt(int col);
+public static int SplashKit.QueryColumnForInt(QueryResult dbResult, int col);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_column_for_int(db_result, col):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QueryColumnForInt(dbResult: QueryResult; col: Integer): Integer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Column For String [🔗](#query-column-for-string)
+
+Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a string.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to perform the query on. |
+| col | `Integer` | The column you would like to query data from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string query_column_for_string(query_result db_result, int col)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string QueryResult.QueryColumnForString(int col);
+public static string SplashKit.QueryColumnForString(QueryResult dbResult, int col);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_column_for_string(db_result, col):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QueryColumnForString(dbResult: QueryResult; col: Integer): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Success [🔗](#query-success)
+
+Checks if the most recent query at the given [`Query Result`](/components/database/#query-result) was a success or failure.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to check the success of. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool query_success(query_result db_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool QueryResult.Successful { get }
+public static bool SplashKit.QuerySuccess(QueryResult dbResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_success(db_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuerySuccess(dbResult: QueryResult): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Query Type Of Col [🔗](#query-type-of-col)
+
+Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for the data type at its postition.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to perform the query on. |
+| col | `Integer` | The column you would like to know the data type of |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string query_type_of_col(query_result db_result, int col)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string QueryResult.QueryTypeOfCol(int col);
+public static string SplashKit.QueryTypeOfCol(QueryResult dbResult, int col);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def query_type_of_col(db_result, col):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QueryTypeOfCol(dbResult: QueryResult; col: Integer): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Reset Query Result [🔗](#reset-query-result)
+
+Resets a query_result back to its initial state, ready to be re-executed.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db_result | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) to reset. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void reset_query_result(query_result db_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void QueryResult.ResetQueryResult();
+public static void SplashKit.ResetQueryResult(QueryResult dbResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def reset_query_result(db_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ResetQueryResult(dbResult: QueryResult)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rows Changed [🔗](#rows-changed)
+
+Calculates the number of row changed in the database at the last time
+a changing query was performed on the given database.
+
+**Return Type**
+
+- `Integer` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db | [`Database`](/components/database/#database) | The database to check how many rows changed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int rows_changed(database db)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public int Database.RowsChanged();
+public static int SplashKit.RowsChanged(Database db);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rows_changed(db):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RowsChanged(db: Database): Integer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Run Sql [🧬](#group-run-sql)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Run Sql** (db: `Database`, sql: `String`)](/components/types/#run-sql--1)
+
+- [**Run Sql** (database_name: `String`, sql: `String`)](/components/types/#run-sql--2)
+:::
+---
+
+
+### Run Sql [🤖](#run-sql--1)
+
+Returns the [`Query Result`](/components/database/#query-result) for the query passed into `sql`.
+
+**Return Type**
+
+- [`Query Result`](/components/database/#query-result) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| db | [`Database`](/components/database/#database) | The database to perform `sql` on. |
+| sql | `String` | The sql statement to perform on `db`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`query_result run_sql(database db, string sql)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public QueryResult Database.RunSql(string sql);
+public static QueryResult SplashKit.RunSql(Database db, string sql);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def run_sql(db, sql):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RunSql(db: Database; sql: String): QueryResult`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Run Sql [🤖](#run-sql--2)
+
+Returns the [`Query Result`](/components/database/#query-result) for the query passed into `sql`.
+
+**Return Type**
+
+- [`Query Result`](/components/database/#query-result) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| database_name | `String` | The string name of the database to perform `sql` on. |
+| sql | `String` | The sql statement to perform on the database at `database_name`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`query_result run_sql(string database_name, string sql)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static QueryResult Database.RunSql(string databaseName, string sql);
+public static QueryResult SplashKit.RunSql(string databaseName, string sql);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def run_sql_from_name(database_name, sql):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RunSql(databaseName: String; sql: String): QueryResult`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
 
 ## TYPES
-### Database
-### Query Result
+### Database [🔗](#database)
+The [`Database`](/components/database/#database) type is used to refer to databases that can be manipulated by the SplashKit database code. Databases are:
+
+- opened with [Open Database](/components/database/#open-database),
+
+- and must be released using [Free Database](/components/database/#free-database) (to release a specific database) or `Delete All Databases` (to release all loaded databases).
+
+### Query Result [🔗](#query-result)
+
+The [`Query Result`](/components/database/#query-result) type is used to store the result of performing a query on the database. It can:
+
+- Show the success or failure of a query using [`Query Success`](/components/database/#query-success).
+
+- Store the data from queries that return data. This data is accessed using [`Query Column For Boolean`](/components/database/#query-column-for-boolean), [`Query Column For Integer`](/components/database/#query-column-for-integer), [`Query Column For String`](/components/database/#query-column-for-string), and [`Query Column For Double`](/components/database/#query-column-for-double).
+
+---
+

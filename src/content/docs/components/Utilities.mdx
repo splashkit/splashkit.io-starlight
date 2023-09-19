@@ -9,7 +9,9 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# Functions
+## Functions
+##
+
 
 ## Current Ticks [🔗](#current-ticks)
 
@@ -51,16 +53,624 @@ public static uint SplashKit.CurrentTicks();"
   </TabItem>
 </Tabs>
 
-## Delay
-## Display Dialog
-## File As String
-## Convert To Double
-## Convert To Integer
-## Is Double
-## Is Integer
-## Is Number
-## To Lowercase
-## To Uppercase
-## Trim
-## Rnd
+## Delay [🔗](#delay)
 
+Puts the program to sleep for a specified number of milliseconds. If this is larger than 1 second, SplashKit will check to see if the user tries to quit during the delay. If the user does quit, the delay function returns without waiting.
+
+**Parameters**
+
+| Name         | Type              | Description                          |
+| ------------ | ----------------- | ------------------------------------ |
+| Milliseconds | `Unsigned Integer` | The number of milliseconds to wait    |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void delay(unsigned int milliseconds)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Utilities.Delay(uint milliseconds);
+            public static void SplashKit.Delay(uint milliseconds);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure Delay(milliseconds: Cardinal)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def delay(milliseconds):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Display Dialog[🔗](#display-dialog)
+
+Display a dialog to the screen with a message for the user.
+
+**Parameters**
+
+| Name           | Type                                  | Description                      |
+| -------------- | ------------------------------------- | -------------------------------- |
+| Title          | `String`                              | The title of the dialog window.  |
+| Msg            | `String`                              | The message for the dialog window. |
+| Output Font    | [`Font`](/components/types/#font)    | The font for the dialog text.    |
+| Font Size      | `Integer`                             | The size of the font for the dialog text. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+  code={`void display_dialog(const string &title, const string &msg, font &output_font, int font_size)`}
+  lang="cpp"
+/>
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+  code={`public static void Utilities.DisplayDialog(string title, string msg, Font outputFont, int fontSize);
+public static void SplashKit.DisplayDialog(string title, string msg, Font outputFont, int fontSize);`}
+  lang="cs"
+/>
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+  code={`procedure DisplayDialog(const title: String; const msg: String; outputFont: Font; fontSize: Integer)`}
+  lang="pascal"
+/>
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+  code={`def display_dialog(title, msg, output_font, font_size):`}
+  lang="python"
+/>
+  </TabItem>
+</Tabs>
+
+## File As String [🔗](#file-as-string)
+
+Return a SplashKit resource of [Resource Kind](/components/types/#resource-kind) with name `Filename` as a string.
+
+**Return Type**
+- `String`: The file loaded into a string.
+
+**Parameters**
+
+| Name     | Type                  | Description                  |
+| -------- | --------------------- | ---------------------------- |
+| Filename | `String`              | The filename of the resource. |
+| Kind     | [Resource Kind](/components/types/#resource-kind) | The kind of resource.        |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code={`string file_as_string(string filename, resource_kind kind)`}
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code={`public static string Utilities.FileAsString(string filename, ResourceKind kind);
+public static string SplashKit.FileAsString(string filename, ResourceKind kind);`}
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code={`function FileAsString(filename: String; kind: ResourceKind): String`}
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code={`def file_as_string(filename, kind):`}
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Convert To Double [🔗](#convert-to-double)
+
+Convert the passed-in string into a double. This can fail in an error if the value is not a number, consider using [Is Number](/components/utilities/#is-number) to check before converting a string.
+
+**Return Type**
+- `Double`: The double value read from the text.
+
+**Parameters**
+
+| Name   | Type   | Description                      |
+| ------ | ------ | -------------------------------- |
+| Text   | String | The text to convert.             |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="double convert_to_double(const string &text)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static double Utilities.ConvertToDouble(string text);
+public static double SplashKit.ConvertToDouble(string text);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function ConvertToDouble(const text: String): Double"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def convert_to_double(text):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+
+## Convert To Integer [🔗](#convert-to-integer)
+
+Convert the passed-in string into an integer. This can fail in an error if the value is not an integer, consider using [`Is Integer`](/components/utilities/#is-integer) to check before converting a string.
+
+**Return Type**
+- `Integer`: The integer value read from the text.
+
+**Parameters**
+
+| Name   | Type     | Description                 |
+| ------ | -------- | --------------------------- |
+| Text   | `String` | The text to convert.        |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="int convert_to_integer(const string &text)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static int Utilities.ConvertToInteger(string text);
+public static int SplashKit.ConvertToInteger(string text);"
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function ConvertToInteger(const text: String): Integer"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def convert_to_integer(text):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+## Is Double [🔗](#is-double)
+
+Checks if a string contains a number.
+
+**Return Type**
+- `Boolean`: True if the text contains a number (and only a number).
+
+**Parameters**
+
+| Name   | Type   | Description                        |
+| ------ | ------ | ---------------------------------- |
+| Text   | `String` | The text to check.                 |
+
+**Signatures**
+<Tabs>
+  <TabItem label="C++">
+    <Code code="bool is_double(const string &text)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code="public static bool Utilities.IsDouble(string text);" lang="csharp" />
+    <Code code="public static bool SplashKit.IsDouble(string text);" lang="csharp" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function IsDouble(const text: String): Boolean" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def is_double(text):" lang="python" />
+  </TabItem>
+</Tabs>
+
+## Is Integer [🔗](#is-integer)
+
+Checks if a string contains an integer value.
+
+**Return Type**
+- `Boolean`: True if the text contains a whole number (and only a whole number).
+
+**Parameters**
+
+| Name   | Type       | Description                     |
+| ------ | ---------- | ------------------------------- |
+| Text   | `String`   | The text to check.              |
+
+**Signatures**
+<Tabs>
+  <TabItem label="C++">
+    <Code
+  code={`bool is_integer(const string &text)`}
+  lang="cpp"
+/>
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+  code={`public static bool Utilities.IsInteger(string text);
+public static bool SplashKit.IsInteger(string text);`}
+  lang="cs"
+/>
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+  code={`function IsInteger(const text: String): Boolean`}
+  lang="pascal"
+/>
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+  code={`def is_integer(text):`}
+  lang="python"
+/>
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+## Is Number [🔗](#is-number)
+
+Checks if a string contains a number.
+
+**Return Type**
+- `Boolean`: True if the text contains a number (and only a number).
+
+**Parameters**
+
+| Name   | Type     | Description           |
+| ------ | -------- | --------------------- |
+| Text   | `String` | The text to check.    |
+
+**Signatures**
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code={`bool is_number(const string &text)`}
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code={`public static bool Utilities.IsNumber(string text);
+public static bool SplashKit.IsNumber(string text);`}
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code={`function IsNumber(const text: String): Boolean`}
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code={`def is_number(text):`}
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+## To Lowercase [🔗](#is-lowercase)
+
+Return a lowercase version of the passed-in string.
+
+**Return Type**
+- `String`: A lowercase version of the passed-in text.
+
+**Parameters**
+| Name   | Type   | Description              |
+| ------ | ------ | ------------------------ |
+| Text   | `String` | The text to convert.     |
+
+**Signatures**
+<Tabs>
+  <TabItem label="C++">
+    <Code
+  code={`string to_lowercase(const string &text)`}
+  lang="cpp"
+/>
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+  code={`public static string Utilities.ToLowercase(string text);
+public static string SplashKit.ToLowercase(string text);`}
+  lang="cs"
+/>
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+  code={`function ToLowercase(const text: String): String;`}
+  lang="pascal"
+/>
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+  code={`def to_lowercase(text):`}
+  lang="python"
+/>
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+## To Uppercase [🔗](#to-uppercase)
+
+Return a UPPERCASE version of the passed-in string.
+
+**Return Type**
+- `String`: An uppercase version of the passed-in text.
+
+**Parameters**
+
+| Name   | Type   | Description                    |
+| ------ | ------ | ------------------------------ |
+| Text   | `String` | The text to convert. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="string to_uppercase(const string &text)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static string Utilities.ToUppercase(string text);
+public static string SplashKit.ToUppercase(string text);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function ToUppercase(const text: String): String"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def to_uppercase(text):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+
+## Trim [🔗](#trim)
+
+Return a new string that removes the spaces from the start and end of the input string.
+
+**Return Type**
+
+- `String`: A new string with the contents of `Text`, after removing spaces from the start and end.
+
+**Parameters**
+
+| Name   | Type     | Description                        |
+| ------ | -------- | ---------------------------------- |
+| Text   | `String` | The string to trim.                |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code={`string trim(const string &text)`}
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code={`public static string Utilities.Trim(string text);
+public static string SplashKit.Trim(string text);`}
+      lang="cs"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code={`function Trim(const text: String): String`}
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code={`def trim(text):`}
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+**Guides**
+
+- [Useful Utilities](/articles/guides/tags/utilities/useful-utilities/)
+
+
+## Rnd [🧬](#group-rnd)
+
+This function is overloaded. The following versions exist:
+:::note
+- [Rnd  (min: `Integer`, max: `Integer`)](/components/types/#rnd-range ) 
+- [Rnd ()](/components/types/#rnd ) 
+- [Rnd (ubound: `Integer`)](/components/types/#rnd-integer ) 
+:::
+
+### Rnd [🤖](#rnd-range)
+
+Generates a random number between 'min' and `Max`, including 'min' and 'max'.
+ 
+**Return Type**
+
+- Integer
+
+Returns an `Integer` between and including `Min` and `Max`.
+
+**Parameters**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Min  | `Integer` | The `Integer` representing the minimum bound. |
+| Max  | `Integer` | The `Integer` representing the maximum bound. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="int rnd(int min, int max)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static int Random.Rnd(int min, int max);
+public static int SplashKit.Rnd(int min, int max);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function Rnd(min: Integer; max: Integer): Integer"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def rnd_range(min, max):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Rnd [🤖](#rnd)
+
+Generates a random number between 0 and 1.
+
+**Return Type**
+
+- Float
+
+Returns a `Float` between `0` and `1`.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="float rnd()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static float Random.Rnd();
+public static float SplashKit.Rnd();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function Rnd(): Single"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def rnd():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>
+
+### Rnd [🤖](#rnd-integer)
+
+Generates a random number between 0 and `Ubound`.
+
+**Return Type**
+
+- Integer
+
+Returns an `Integer` between `0` and `Ubound`.
+
+**Parameters**
+
+| Name   | Type     | Description                            |
+| ------ | -------- | -------------------------------------- |
+| Ubound | Integer  | The `Integer` representing the upper bound. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="int rnd(int ubound)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static int Random.Rnd(int ubound);
+public static int SplashKit.Rnd(int ubound);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function Rnd(ubound: Integer): Integer"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def rnd_int(ubound):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs>

@@ -2,47 +2,1847 @@
 title: Audio
 description: SplashKit Audio allows you to load and play music and sound effects.
 ---
+
 :::tip[SplashKit Audio allows you to load and play music and sound effects.]
-SplashKit's audio library allows you to easily load and play music and sound effects within your programs. To get started with audio the first thing you need to do is load a sound effect or music file. You can do this by calling the Load Sound Effect(string Name) function to the Load Music(string Name) function.
+SplashKit's audio library allows you to easily load and play music and sound effects within your programs. To get started with audio the first thing you need to do is load a sound effect or music file. You can do this by calling the `Load Sound Effect(string Name)` function to the `Load Music(string Name)` function.
 :::
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# FUNCTIONS
+## 
+## Audio Guides
 
-## Fade Music In
-## Fade Music Out
-## Free All Music
-## Free Music
-## Has Music
-## Load Music
-## Music Filename
-## Music Name
-## Music Named
-## Music Playing
-## Music Volume
-## Pause Music
-## Play Music
-## Resume Music
-## Set Music Volume
-## Stop Music
-## Fade All Sound Effects Out
-## Fade Sound Effect Out
-## Free All Sound Effects
-## Free Sound Effect
-## Has Sound Effect
-## Load Sound Effect
-## Play Sound Effect
-## Sound Effect Filename
-## Sound Effect Name
-## Sound Effect Named
-## Sound Effect Playing
-## Stop Sound Effect
-## Audio Ready
-## Close Audio
-## Open Audio
-# TYPES
-## Music
-## Sound Effect
+## 
+## Functions
+
+## 
+## Fade Music In [🧬](#group-fade-music-in)
+
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Fade Music In** (name: `String`, ms: `Integer`)](#fade-music-in--1)
+  
+- [**Fade Music In** (name: `String`, times: `Integer`, ms: `Integer`)](#fade-music-in--2)
+
+- [**Fade Music In** (data: `Music`, ms: `Integer`)](#fade-music-in--3)
+
+- [**Fade Music In** (data: `Music`, times: `Integer`, ms: `Integer`)](#fade-music-in--4)
+:::
+
+### Fade Music In [🤖](#fade-music-in--1)
+
+Fades the music file matching the name to full volume over a specified number of milliseconds.
+
+**Parameters**
+
+| Name | Type    | Description                                                                                    |
+| ---- | ------- | ---------------------------------------------------------------------------------------------- |
+| Name | String  | The name of the [`Music`](/components/audio/#music) file to play.                              |
+| Ms   | Integer | How many milliseconds it takes to fade the [`Music`](/components/audio/#music) to full volume. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void fade_music_in(const string &name, int ms)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FadeMusicIn(string name, int ms);
+public static void SplashKit.FadeMusicIn(string name, int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FadeMusicIn(const name: String; ms: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_music_in_named(name, ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Fade Music In [🤖](#fade-music-in--2)
+
+Fades music file matching the name to full volume over a specified number of milliseconds and loops a specified number of times.
+
+**Parameters**
+
+| Name  | Type      | Description                                                                                    |
+| ----- | --------- | ---------------------------------------------------------------------------------------------- |
+| Name  | `String`  | The name of the [`Music`](/components/audio/#music) file to play.                              |
+| Times | `Integer` | Controls the number of times the music is played.                                              |
+| Ms    | `Integer` | How many milliseconds it takes to fade the [`Music`](/components/audio/#music) to full volume. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void fade_music_in(const string &amp;name, int times, int ms)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FadeMusicIn(string name, int times, int ms);
+public static void SplashKit.FadeMusicIn(string name, int times, int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FadeMusicIn(const name: String; times: Integer; ms: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def fade_music_in_named_with_times(name, times, ms):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Fade Music In [🤖](#fade-music-in--3)
+
+Fades music up to full volume over a specified number of milliseconds.
+
+**Parameters**
+
+| Name | Type                                | Description                                                                                    |
+| ---- | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Data | [`Music`](/components/audio/#music) | The name of the [`Music`](/components/audio/#music) to play.                                   |
+| Ms   | `Integer`                           | How many milliseconds it takes to fade the [`Music`](/components/audio/#music) to full volume. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void fade_music_in(music data, int ms)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.FadeMusicIn(int ms);
+public static void SplashKit.FadeMusicIn(Music data, int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FadeMusicIn(data: Music; ms: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_music_in(data, ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Fade Music In [🤖](#fade-music-in--4)
+
+Fades music up to full volume over a specified number of milliseconds for a specified number of times.
+
+**Parameters**
+
+| Name  | Type                                | Description                                                                                    |
+| ----- | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Data  | [`Music`](/components/audio/#music) | The name of the [`Music`](/components/audio/#music) to play.                                   |
+| Times | `Integer`                           | Controls the number of times the music is played.                                              |
+| Ms    | `Integer`                           | How many milliseconds it takes to fade the [`Music`](/components/audio/#music) to full volume. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void fade_music_in(music data, int times, int ms)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.FadeMusicIn(int times, int ms);
+public static void SplashKit.FadeMusicIn(Music data, int times, int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FadeMusicIn(data: Music; times: Integer; ms: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_music_in_with_times(data, times, ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+
+## Fade Music Out [🔗](#fade-music-out)
+
+Fades music out over a specified number of milliseconds.
+
+**Parameters**
+
+| Name | Type      | Description                                                                         |
+| ---- | --------- | ----------------------------------------------------------------------------------- |
+| Ms   | `Integer` | How many milliseconds it takes to fade the [`Music`](/components/audio/#music) out. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void fade_music_out(int ms)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FadeMusicOut(int ms);
+public static void SplashKit.FadeMusicOut(int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FadeMusicOut(ms: Integer)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_music_out(ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Free All Music [🔗](#free-all-music)
+
+Releases all of the music files that have been loaded.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void free_all_music()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FreeAllMusic();
+public static void SplashKit.FreeAllMusic();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FreeAllMusic()" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def free_all_music():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Free Music [🔗](#free-music)
+
+Releases the SplashKit resources associated with music.
+
+**Parameters**
+
+| Name   | Type                                | Description                                        |
+| ------ | ----------------------------------- | -------------------------------------------------- |
+| Effect | [`Music`](/components/audio/#music) | The music file whose resources should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void free_music(music effect)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.FreeMusic();
+public static void SplashKit.FreeMusic(Music effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FreeMusic(effect: Music)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def free_music(effect):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Has Music [🔗](#has-music)
+
+Determines if SplashKit has a music file loaded for the supplied name. This checks against all music files loaded; those loaded without a name are assigned the filename as a default. If this returns `False`, you may want to use [`Load Music`](/api/audio/#load-music) to load in a specific sound effect and give it the desired name.
+
+**Return Type**
+
+- Boolean
+
+Returns `True` if there is a music file with the given `Name` that has been loaded.
+
+**Parameters**
+
+| Name | Type   | Description                                  |
+| ---- | ------ | -------------------------------------------- |
+| Name | String | The name to check if a music file is loaded. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="bool has_music(const string &name)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Audio.HasMusic(string name);
+public static bool SplashKit.HasMusic(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function HasMusic(const name: String): Boolean" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def has_music(name):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Load Music [🔗](#load-music)
+
+Loads and returns a music value. The supplied `Filename` is used to locate the music file to load. The supplied `Name` indicates the name to use to refer to this Music value. The [`Music`](/components/audio/#music) can then be retrieved by passing this `Name` to the [`Music Named`](/components/audio/#music-named) function.
+
+**Return Type**
+
+- [`Music`](/components/audio/#music)
+
+A new music resource.
+
+**Parameters**
+
+| Name     | Type     | Description                             |
+| -------- | -------- | --------------------------------------- |
+| Name     | `String` | The name of the resource for SplashKit. |
+| Filename | `String` | The filename to load.                   |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="music load_music(const string &name, const string &filename)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static Music SplashKit.LoadMusic(string name, string filename);
+public Music(string name, string filename);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function LoadMusic(const name: String; const filename: String): Music"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def load_music(name, filename):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Music Filename [🔗](#music-filename)
+
+Returns the filename of the music data.
+
+**Return Type**
+
+- String
+
+Returns a string with the filename of the [`Music`](/components/audio/#music) file.
+
+**Parameters**
+
+| Name | Type                                | Description        |
+| ---- | ----------------------------------- | ------------------ |
+| Data | [`Music`](/components/audio/#music) | The music resource |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="string music_filename(music data)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string Music.Filename { get; }
+public static string SplashKit.MusicFilename(Music data);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function MusicFilename(data: Music): String" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def music_filename(data):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Music Name [🔗](#music-name)
+
+Returns the name that SplashKit uses to refer to this music data.
+
+**Return Type**
+
+- String
+
+Returns a string with the name of the [`Music`](/components/audio/#music) that SplashKit refers to.
+
+**Parameters**
+
+| Name | Type                                | Description         |
+| ---- | ----------------------------------- | ------------------- |
+| Data | [`Music`](/components/audio/#music) | The music resource. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="string music_name(music data)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string Music.Name { get; }
+public static string SplashKit.MusicName(Music data);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function MusicName(data: Music): String" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def music_name(data):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Music Named [🔗](#music-named)
+
+Retrieves a [`Music`](/components/audio/#music) that has been loaded into SplashKit.
+
+**Return Type**
+
+- [`Music`](/components/audio/#music)
+
+Returns the [`Music`](/components/audio/#music) that has been loaded with the specified `Name` using [`Load Music`](/api/audio/#load-music).
+
+**Parameters**
+
+| Name | Type     | Description                           |
+| ---- | -------- | ------------------------------------- |
+| Name | `String` | The name of the music file to return. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="Music music_named(const string &name)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static Music Audio.MusicNamed(string name);
+public static Music SplashKit.MusicNamed(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function MusicNamed(const name: String): Music" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def music_named(name):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Music Playing [🔗](#music-playing)
+
+Checks whether music is currently playing.
+
+**Return Type**
+
+- Boolean
+
+Returns a `Boolean` value representing whether music is currently playing.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="bool music_playing()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Audio.Playing { get; }
+public static bool SplashKit.MusicPlaying();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function MusicPlaying(): Boolean" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def music_playing():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Music Volume [🔗](#music-volume)
+
+Returns the volume of the currently playing [`Music`](/components/audio/#music).
+
+**Return Type**
+
+- Float
+
+Returns the percentage of the currently playing [`Music`](/components/audio/#music).
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="float music_volume()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static float Audio.Volume { get; }
+public static float SplashKit.MusicVolume();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="function MusicVolume(): Single" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def music_volume():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Pause Music [🔗](#pause-music)
+
+Pauses currently playing music - see `resume_music` to continue playing.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void pause_music()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PauseMusic();
+public static void SplashKit.PauseMusic();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure PauseMusic()" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def pause_music():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Play Music [🧬](#group-play-music)
+
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Play Music** (name: `String`)](#play-music--1)
+- [**Play Music** (name: `String`, times: `Integer`)](#play-music--2)
+- [**Play Music** (data: `Music`)](#play-music--3)
+- [**Play Music** (data: `Music`, times: `Integer`)](#play-music--4)
+- [**Play Music** (data: `Music`, times: `Integer`, volume: `Float`)](#play-music--5)
+  :::
+
+### Play Music [🤖](#play-music--1)
+
+Plays the music file that matches the name once at full volume.
+
+**Parameters**
+
+| Name | Type     | Description                                                  |
+| ---- | -------- | ------------------------------------------------------------ |
+| Name | `String` | The name of the [`Music`](/components/audio/#music) to play. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void play_music(const string &name)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlayMusic(string name);
+public static void SplashKit.PlayMusic(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure PlayMusic(const name: String)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_music_named(name):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Music [🤖](#play-music--2)
+
+Plays the music file that matches the name a specified number of times at full volume.
+
+**Parameters**
+
+| Name  | Type      | Description                                                  |
+| ----- | --------- | ------------------------------------------------------------ |
+| Name  | `String`  | The name of the [`Music`](/components/audio/#music) to play. |
+| Times | `Integer` | Controls the number of times the music is played.            |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_music(const string &amp;name, int times)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlayMusic(string name, int times);
+public static void SplashKit.PlayMusic(string name, int times);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlayMusic(const name: String; times: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_music_named_with_times(name, times):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Music [🤖](#play-music--3)
+
+Plays a music file once at full volume.
+
+**Parameters**
+
+| Name | Type                                | Description                                                  |
+| ---- | ----------------------------------- | ------------------------------------------------------------ |
+| Data | [`Music`](/components/audio/#music) | The name of the [`Music`](/components/audio/#music) to play. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void play_music(music data)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.PlayMusic();
+public static void SplashKit.PlayMusic(Music data);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure PlayMusic(data: Music)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_music(data):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Music [🤖](#play-music--4)
+
+Plays a music file a specified number of times at full volume.
+
+**Parameters**
+
+| Name  | Type                                | Description                                                  |
+| ----- | ----------------------------------- | ------------------------------------------------------------ |
+| Data  | [`Music`](/components/audio/#music) | The name of the [`Music`](/components/audio/#music) to play. |
+| Times | `Integer`                           | Controls the number of times the music is played.            |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void play_music(music data, int times)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.PlayMusic(int times);
+public static void SplashKit.PlayMusic(Music data, int times);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlayMusic(data: Music; times: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_music_with_times(data, times):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Music [🤖](#play-music--5)
+
+Plays a music file for a specified number of times and playback volume.
+
+**Parameters**
+
+| Name   | Type                                | Description                                                                                                                           |
+| ------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Data   | [`Music`](/components/audio/#music) | The name of the [`Music`](/components/audio/#music) to play.                                                                          |
+| Times  | Integer                             | Controls the number of times the music is played.                                                                                     |
+| Volume | Float                               | Indicates the percentage of the original volume to play the [`Music`](/components/audio/#music) at. This must be between `0` and `1`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_music(music data, int times, float volume)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void Music.PlayMusic(int times, float volume);
+public static void SplashKit.PlayMusic(Music data, int times, float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlayMusic(data: Music; times: Integer; volume: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_music_with_times_and_volume(data, times, volume):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+## Resume Music [🔗](#resume-music)
+
+Resumes currently paused music - see pause_music to pause playing music.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void resume_music()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.ResumeMusic();
+public static void SplashKit.ResumeMusic();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure ResumeMusic()" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def resume_music():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Set Music Volume [🔗](#set-music-volume)
+
+Sets the volume of the currently playing [`Music`](/components/audio/#music). Must be between 0 and 1, e.g. 0.1 is 10%.
+
+**Parameters**
+
+| Name   | Type    | Description                                                                                                                           |
+| ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Volume | `Float` | Indicates the percentage of the original volume to play the [`Music`](/components/audio/#music) at. This must be between `0` and `1`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void set_music_volume(float volume)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.Volume { set }
+public static void SplashKit.SetMusicVolume(float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure SetMusicVolume(volume: Single)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def set_music_volume(volume):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Stop Music [🔗](#stop-music)
+
+Stops currently playing music.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void stop_music()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.StopMusic();
+public static void SplashKit.StopMusic();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure StopMusic()" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def stop_music():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Fade All Sound Effects Out [🔗](#fade-all-sound-effects-out)
+
+Fades out all [`Sound Effect`](/components/audio/#sound-effect)s over the specified milliseconds.
+
+**Parameters**
+
+| Name | Type      | Description                                               |
+| ---- | --------- | --------------------------------------------------------- |
+| Ms   | `Integer` | The number of milliseconds to fade out all sound effects. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void fade_all_sound_effects_out(int ms)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FadeAllSoundEffectsOut(int ms);
+public static void SplashKit.FadeAllSoundEffectsOut(int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FadeAllSoundEffectsOut(ms: Integer)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_all_sound_effects_out(ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Fade Sound Effect Out [🔗](#fade-sound-effect-out)
+
+Fades out the [`Sound Effect`](/components/audio/#sound-effect) over the specified milliseconds.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                                                   |
+| ------ | ------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) to fade out.                            |
+| Ms     | `Integer`                                         | The number of milliseconds to fade out the [`Sound Effect`](/components/audio/#sound-effect). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void fade_sound_effect_out(sound_effect effect, int ms)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.FadeSoundEffectOut(int ms);
+public static void SplashKit.FadeSoundEffectOut(SoundEffect effect, int ms);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure FadeSoundEffectOut(effect: SoundEffect; ms: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def fade_sound_effect_out(effect, ms):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Free All Sound Effects [🔗](#free-all-sound-effects)
+
+Releases all of the sound effects that have been loaded.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void free_all_sound_effects()" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.FreeAllSoundEffects();
+public static void SplashKit.FreeAllSoundEffects();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FreeAllSoundEffects()" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def free_all_sound_effects():" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Free Sound Effect [🔗](#free-sound-effect)
+
+Releases the SplashKit resources associated with the sound effect.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                                               |
+| ------ | ------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) whose resources should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void free_sound_effect(sound_effect effect)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.FreeSoundEffect();
+public static void SplashKit.FreeSoundEffect(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure FreeSoundEffect(effect: SoundEffect)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def free_sound_effect(effect):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Has Sound Effect [🔗](#has-sound-effect)
+
+Determines if SplashKit has a sound effect loaded for the supplied name. This checks against all sounds loaded; those loaded without a name are assigned the filename as a default. If this returns `False`, you may want to use [`Load Sound Effect`](/api/audio/#load-sound-effect) to load in a specific sound effect and give it the desired name.
+
+**Return Type**
+
+- Boolean
+
+Returns `True` if there is a sound effect with the given `Name` has been loaded.
+
+**Parameters**
+
+| Name | Type     | Description                                    |
+| ---- | -------- | ---------------------------------------------- |
+| Name | `String` | The name to check if a sound effect is loaded. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="bool has_sound_effect(const string &name)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Audio.HasSoundEffect(string name);
+public static bool SplashKit.HasSoundEffect(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function HasSoundEffect(const name: String): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def has_sound_effect(name):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Load Sound Effect [🔗](#load-sound-effect)
+
+The supplied `Filename` is used to locate the sound effect to load. The supplied `Name` indicates the name to use to refer to this [`Sound Effect`](/components/audio/#sound-effect). The [`Sound Effect`](/components/audio/#sound-effect) can then be retrieved by passing this `Name` to the [`Sound Effect Named`](/api/audio/#sound-effect-named) function.
+
+**Return Type**
+
+- [`Sound Effect`](/components/audio/#sound-effect)
+
+A new [`Sound Effect`](/components/audio/#sound-effect) with the initialized values provided.
+
+**Parameters**
+
+| Name     | Type     | Description                                   |
+| -------- | -------- | --------------------------------------------- |
+| Name     | `String` | The name used to refer to the sound effect.   |
+| Filename | `String` | The filename used to locate the sound effect. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="sound_effect load_sound_effect(const string &name, const string &filename)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static SoundEffect SplashKit.LoadSoundEffect(string name, string filename);
+public SoundEffect(string name, string filename);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function LoadSoundEffect(const name: String; const filename: String): SoundEffect"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def load_sound_effect(name, filename):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Play Sound Effect [🧬](#group-play-sound-effect)
+
+This function is overloaded. The following versions exist.
+
+- [Play Sound Effect (name: String)](#play-sound-effect--1)
+- [Play Sound Effect (name: String, volume: Float)](#play-sound-effect--2)
+- [Play Sound Effect (name: String, times: Integer)](#play-sound-effect--3)
+- [Play Sound Effect (name: String, times: Integer, volume: Float)](#play-sound-effect--4)
+- [Play Sound Effect (effect: Sound Effect)](#play-sound-effect--5)
+- [Play Sound Effect (effect: Sound Effect, volume: Float)](#play-sound-effect--6)
+- [Play Sound Effect (effect: Sound Effect, times: Integer)](#play-sound-effect--7)
+- [Play Sound Effect (effect: Sound Effect, times: Integer, volume: Float)](#play-sound-effect--8)
+
+### Play Sound Effect [🤖](#play-sound-effect--1)
+
+Plays a sound effect once at full volume.
+
+**Parameters**
+
+| Name | Type     | Description                     |
+| ---- | -------- | ------------------------------- |
+| Name | `String` | The name of the effect to play. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void play_sound_effect(const string &amp;name)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlaySoundEffect(string name);
+public static void SplashKit.PlaySoundEffect(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure PlaySoundEffect(const name: String)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_sound_effect_named(name):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--2)
+
+Plays a sound effect once at full volume.
+
+**Parameters**
+
+| Name   | Type     | Description                                                             |
+| ------ | -------- | ----------------------------------------------------------------------- |
+| Name   | `String` | The name of the effect to play.                                         |
+| Volume | `Float`  | The volume to play the [Sound Effect](/components/audio/#sound-effect). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(const string &name, float volume)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlaySoundEffect(string name, float volume);
+public static void SplashKit.PlaySoundEffect(string name, float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(const name: String; volume: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_named_with_volume(name, volume):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--3)
+
+Plays a sound effect for a specified number of times at full volume.
+
+**Parameters**
+
+| Name  | Type    | Description                                              |
+| ----- | ------- | -------------------------------------------------------- |
+| Name  | String  | The name of the effect to play.                          |
+| Times | Integer | Controls the number of times the sound effect is played. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(const string &amp;name, int times)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlaySoundEffect(string name, int times);
+public static void SplashKit.PlaySoundEffect(string name, int times);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(const name: String; times: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_named_with_times(name, times):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--4)
+
+Plays a sound effect for a specified number of times and playback volume.
+
+**Parameters**
+
+| Name   | Type      | Description                                                                                                                                         |
+| ------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name   | `String`  | The name of the effect to play.                                                                                                                     |
+| Times  | `Integer` | Controls the number of times the sound effect is played.                                                                                            |
+| Volume | `Float`   | Indicates the percentage of the original volume to play the [`Sound Effect`](/components/audio/#sound-effect) at. This must be between `0` and `1`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(const string &amp;name, int times, float volume)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.PlaySoundEffect(string name, int times, float volume);
+public static void SplashKit.PlaySoundEffect(string name, int times, float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(const name: String; times: Integer; volume: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_named_with_times_and_volume(name, times, volume):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--5)
+
+Plays a sound effect once at full volume.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                               |
+| ------ | ------------------------------------------------- | --------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The effect indicates which sound effect to start playing. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="void play_sound_effect(sound_effect effect)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.PlaySoundEffect();
+public static void SplashKit.PlaySoundEffect(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code="procedure PlaySoundEffect(effect: SoundEffect)" lang="pascal" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def play_sound_effect(effect):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--6)
+
+Plays a sound effect once at playback volume.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                                                                                                     |
+| ------ | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The effect indicates which sound effect to start playing.                                                                                       |
+| Volume | Float                                             | Indicates the percentage of the original volume to play the [`Sound Effect`](/components/audio/#sound-effect) at. This must be between 0 and 1. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(sound_effect effect, float volume)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.PlaySoundEffect(float volume);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(effect: SoundEffect; volume: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_with_volume(effect, volume):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+### Play Sound Effect [🤖](#play-sound-effect--7)
+
+Plays a sound effect once at full volume.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                               |
+| ------ | ------------------------------------------------- | --------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The effect indicates which sound effect to start playing. |
+| Times  | `Integer`                                         | Controls the number of times the sound effect is played.  |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(sound_effect effect, int times)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.PlaySoundEffect(int times);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(effect: SoundEffect; times: Integer)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_with_times(effect, times):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Play Sound Effect [🤖](#play-sound-effect--8)
+
+This version of [`Play Sound Effect`](/api/audio/#play-sound-effect) allows you to control both the number of times the [`Sound Effect`](/api/audio/#sound-effect) is repeated and its playback volume.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                                                                                                  |
+| ------ | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The effect indicates which sound effect to start playing.                                                                                    |
+| Times  | `Integer`                                         | Controls the number of times the sound effect is played.                                                                                     |
+| Volume | `Float`                                           | Indicates the percentage of the original volume to play the [`Sound Effect`](/api/audio/#sound-effect) at. This must be between `0` and `1`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void play_sound_effect(sound_effect effect, int times, float volume)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.PlaySoundEffect(int times, float volume);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times, float volume);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure PlaySoundEffect(effect: SoundEffect; times: Integer; volume: Single)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def play_sound_effect_with_times_and_volume(effect, times, volume):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+## Sound Effect Filename [🔗](#sound-effect-filename)
+
+Returns the filename of the [`Sound Effect`](/components/audio/#sound-effect) that has been loaded by SplashKit.
+
+**Return Type**
+
+- String
+
+Returns the filename of the [`Sound Effect`](/components/audio/#sound-effect) that has been loaded.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                     |
+| ------ | ------------------------------------------------- | --------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="string sound_effect_filename(sound_effect effect)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string SoundEffect.Filename { get; }
+public static string SplashKit.SoundEffectFilename(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function SoundEffectFilename(effect: SoundEffect): String"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def sound_effect_filename(effect):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+## Sound Effect Name [🔗](#sound-effect-name)
+
+Returns the name of the [`Sound Effect`](/components/audio/#sound-effect) that has been loaded by SplashKit.
+
+**Return Type**
+
+- String
+
+Returns the name of the [`Sound Effect`](/components/audio/#sound-effect) that has been loaded.
+
+**Parameters**
+
+| Name   | Type                                              | Description                                                     |
+| ------ | ------------------------------------------------- | --------------------------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code="string sound_effect_name(sound_effect effect)" lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public string SoundEffect.Name { get; }
+public static string SplashKit.SoundEffectName(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function SoundEffectName(effect: SoundEffect): String"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code="def sound_effect_name(effect):" lang="python" />
+  </TabItem>
+</Tabs> 
+---
+
+
+
+## Sound Effect Named [🔗](#sound-effect-named)
+
+Retrieves a [`Sound Effect`](/components/audio/#sound-effect) that has been loaded into SplashKit. If the sound effect has not been loaded, this will attempt to use the name to locate the file for you. If a file can be found, the sound effect is loaded and returned.
+
+**Return Type**
+
+- [`Sound Effect`](/api/audio/#sound-effect)
+
+Returns the [`Sound Effect`](/api/audio/#sound-effect) that has been loaded with the specified `Name` using [`Load Sound Effect`](/api/audio/#load-sound-effect).
+
+**Parameters**
+
+| Name | Type       | Description                   |
+| ---- | ---------- | ----------------------------- |
+| Name | `String`   | The name of the sound effect to return. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="sound_effect sound_effect_named(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static SoundEffect Audio.SoundEffectNamed(string name);
+public static SoundEffect SplashKit.SoundEffectNamed(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function SoundEffectNamed(const name: String): SoundEffect"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def sound_effect_named(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+## Sound Effect Playing [🧬](#group-sound-effect-playing)
+:::note
+This function is overloaded. The following versions exist:
+- [**Sound Effect Playing** (*name* : `String`) ](#sound-effect-playing--1)
+- [**Sound Effect Playing** (*effect* : `Sound Effect`) ](#sound-effect-playing--2)
+:::
+### Sound Effect Playing [🤖](#sound-effect-playing--1)
+
+Checks whether the [`Sound Effect`](/components/audio/#sound-effect) that matches the name is currently playing.
+
+**Return Type**
+
+- Boolean
+
+Returns whether the "sound_effect" that matches the name is currently playing or not.
+
+**Parameters**
+
+| Name | Type      | Description                                        |
+| ---- | --------- | -------------------------------------------------- |
+| Name | `String`  | The name of the [`Sound Effect`](/components/audio/#sound-effect). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool sound_effect_playing(const string &name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Audio.SoundEffectPlaying(string name);
+public static bool SplashKit.SoundEffectPlaying(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function SoundEffectPlaying(const name: String): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def sound_effect_playing_named(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+### Sound Effect Playing [🤖](#sound-effect-playing--2)
+
+Checks whether the [`Sound Effect`](/components/audio/#sound-effect) is currently playing.
+
+**Return Type**
+
+- Boolean
+
+Returns whether the "sound_effect" is currently playing or not.
+
+**Parameters**
+
+| Name   | Type                      | Description                              |
+| ------ | ------------------------- | ---------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) to be tested. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool sound_effect_playing(sound_effect effect)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public bool SoundEffect.IsPlaying { get; }
+public static bool SplashKit.SoundEffectPlaying(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function SoundEffectPlaying(effect: SoundEffect): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def sound_effect_playing(effect):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+
+## Stop Sound Effect [🧬](#group-stop-sound-effect)
+
+This function is overloaded. The following versions exist:
+- [**Stop Sound Effect** (name: `String`)](#stop-sound-effect--1)
+- [**Stop Sound Effect** (effect: `Sound Effect`)](#stop-sound-effect--2)
+
+### Stop Sound Effect [🤖](#stop-sound-effect--1)
+
+Stops the [`Sound Effect`](/components/audio/#sound-effect) that matches the name, if it is currently playing.
+
+**Parameters**
+
+| Name | Type    | Description                                  |
+| ---- | ------- | -------------------------------------------- |
+| Name | `String`| The name of the [`Sound Effect`](/components/audio/#sound-effect) to stop. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void stop_sound_effect(const string &amp;name)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.StopSoundEffect(string name);
+public static void SplashKit.StopSoundEffect(string name);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure StopSoundEffect(const name: String)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def stop_sound_effect_named(name):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+### Stop Sound Effect [🤖](#stop-sound-effect--2)
+
+Stops the [`Sound Effect`](/components/audio/#sound-effect) if it is currently playing.
+
+**Parameters**
+
+| Name   | Type                 | Description                                    |
+| ------ | -------------------- | ---------------------------------------------- |
+| Effect | [`Sound Effect`](/components/audio/#sound-effect) | The [`Sound Effect`](/components/audio/#sound-effect) to stop. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void stop_sound_effect(sound_effect effect)"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public void SoundEffect.StopSoundEffect();
+public static void SplashKit.StopSoundEffect(SoundEffect effect);"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure StopSoundEffect(effect: SoundEffect)"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def stop_sound_effect(effect):"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+
+## Audio Ready [🔗](#audio-ready)
+
+Checks if SplashKit audio is currently ready to be used.
+
+Should this return `False`, you may want to use [`Open Audio`](/components/types/#open-audio) to enable audio.
+
+**Return Type**
+
+- Boolean
+
+Returns `True` if the audio has been initialized.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="bool audio_ready()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static bool Audio.IsReady { get; }
+public static bool SplashKit.AudioReady();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="function AudioReady(): Boolean"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def audio_ready():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+
+## Close Audio [🔗](#close-audio)
+
+Turns off audio, stopping all current sound effects and music.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void close_audio()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.CloseAudio();
+public static void SplashKit.CloseAudio();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure CloseAudio()"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def close_audio():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+## Open Audio [🔗](#open-audio)
+
+Starts the SplashKit audio system working.
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code
+      code="void open_audio()"
+      lang="cpp"
+    />
+  </TabItem>
+  <TabItem label="C#">
+    <Code
+      code="public static void Audio.OpenAudio();
+public static void SplashKit.OpenAudio();"
+      lang="csharp"
+    />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code
+      code="procedure OpenAudio()"
+      lang="pascal"
+    />
+  </TabItem>
+  <TabItem label="Python">
+    <Code
+      code="def open_audio():"
+      lang="python"
+    />
+  </TabItem>
+</Tabs> 
+---
+
+## 
+## 
+## Types
+
+### Music [🧾](#music)
+
+The Music type is used to refer to music that can be played by SplashKit. Music files are loaded with [**Load Music**](/components/audio/#load-music), played using [**Play Music**](/components/audio/#play-music), and must be released using [**Free Music**](/components/audio/#free-music).
+
+Unlike [**Sound Effect**](/components/audio/#sound-effect)s, there can only be one music track playing at a time. Playing a new track will stop the currently playing music and switch to the new track.
+
+
+### Sound Effect [🧾](#sound-effect)
+
+The [`Sound Effect`](/components/audio/#sound-effect) type is used to refer to sound effects that can be played by the SplashKit audio code. Sound effects are:
+
+- loaded with [`Load Sound Effect`](/components/audio/#load-sound-effect),
+- played using [`Play Sound Effect`](/components/audio/#play-sound-effect),
+- and must be released using `Delete Sound Effect` (to release a specific sound effect) or `Delete All Sound Effects` (to release all loaded sound effects).
+
+SplashKit will mix the audio from multiple sound effects, making it possible to play multiple [`Sound Effect`](/components/audio/#sound-effect)s, or even to play the same [`Sound Effect`](/components/audio/#sound-effect) multiple times.
+
+You can check if a [`Sound Effect`](/components/audio/#sound-effect) is currently playing using [`Sound Effect Playing`](/components/audio/#sound-effect-playing).
+
+To stop a [`Sound Effect`](/components/audio/#sound-effect) playing, use [`Stop Sound Effect`](/components/types/#stop-sound-effect). This will stop all instances of this one sound effect from playing.
+
+Use [`Music`](/components/audio/#music) for background music for your games.
+

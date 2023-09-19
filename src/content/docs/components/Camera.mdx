@@ -10,28 +10,941 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# Functions
-## Camera Position
-## Camera X
-## Camera Y
-## Center Camera On
-## Move Camera By
-## Move Camera To
-## Point In Window
-## Point On Screen
-## Rect In Window
-## Rect On Screen
-## Screen Center
-## Screen Rectangle
-## Set Camera Position
-## Set Camera X
-## Set Camera Y
-## To Screen
-## To Screen X
-## To Screen Y
-## To World
-## To World X
-## To World Y
-## Vector World To Screen
-## Window Area
+## Camera Guides
+##
+## Functions
+##
+
+## Camera Position [🔗](#camera-position)
+
+Returns the position of the camera in game coordinates. This will be the
+coordinate of the upper left corner of the screen.
+
+**Return Type**
+
+- [Point 2D](/components/types/#point-2d)
+
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d camera_position()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Camera.Position { get }
+public static Point2D SplashKit.CameraPosition();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def camera_position():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CameraPosition(): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Camera X [🔗](#camera-x)
+
+Returns the x location of the camera in game coordinates. This represents
+the left most x value shown on the screen, with the right of the screen
+being at camera x + screen width.
+
+**Return Type**
+
+- `Double`
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double camera_x()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.X { get }
+public static double SplashKit.CameraX();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def camera_x():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CameraX(): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Camera Y [🔗](#camera-y)
+
+Returns the y location of the camera in game coordinates. This represents
+the stop most y value shown on the screen, with bottom of screen being
+at camera y + screen height.
+
+**Return Type**
+
+- `Double`
+
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double camera_y()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.Y { get }
+public static double SplashKit.CameraY();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def camera_y():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CameraY(): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Center Camera On [🧬](#group-center-camera-on)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Center Camera On** (s: `Sprite`, offset: `Vector 2D`)](/components/camera/#center-camera-on--1)
+
+- [**Center Camera On** (s: `Sprite`, offset_x: `Double`, offset_y: `Double`)](/components/camera/#center-camera-on--2)
+:::
+---
+
+### Center Camera On [🤖](#center-camera-on--1)
+
+Set the camera view to be centered over the specific sprite. The offset
+vector allows you to move the sprite from the direct center of the screen.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [Sprite](/components/sprites/#sprite) | The sprite to track. |
+| offset | [Vector 2D](/components/types/#vector-2d) | The amount to offset the camera, allowing you to position
+the sprite away from the center of the screen. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void center_camera_on(sprite s, const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.CenterCameraOn(Sprite s, Vector2D offset);
+public static void SplashKit.CenterCameraOn(Sprite s, Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def center_camera_on_vector(s, offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CenterCameraOn(s: Sprite; const offset: Vector2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
+### Center Camera On [🤖](#center-camera-on--2)
+
+Set the camera view to be centered over the specific sprite. The offset
+vector allows you to move the sprite from the direct center of the screen.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [Sprite](/components/sprites/#sprite) | The sprite to track. |
+| offset_x | `Double` | An additional offset added to the camera, allowing you to
+position the sprite offset from the center of the screen. |
+| offset_y | `Double` | An additional offset added to the camera, allowing you to
+position the sprite offset from the center of the screen. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void center_camera_on(sprite s, double offset_x, double offset_y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.CenterCameraOn(Sprite s, double offsetX, double offsetY);
+public static void SplashKit.CenterCameraOn(Sprite s, double offsetX, double offsetY);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def center_camera_on(s, offset_x, offset_y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CenterCameraOn(s: Sprite; offsetX: Double; offsetY: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Move Camera By [🧬](#group-move-camera-by)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Move Camera By** (offset: `Vector 2D`)](/components/camera/#move-camera-by--1)
+
+- [**Move Camera By** (dx: `Double`, dy: `Double`)](/components/camera/#move-camera-by--2)
+:::
+---
+
+
+### Move Camera By [🤖](#move-camera-by--1)
+
+Move the camera (offset its world x and y values) using the specified
+vector. For example, if you move the camera by the same speed vector of
+a sprite the camera will "track" (be locked on to) the sprite as it moves.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| offset | [Vector 2D](/components/types/#vector-2d) | The amount to move the camera. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void move_camera_by(const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.MoveCameraBy(Vector2D offset);
+public static void SplashKit.MoveCameraBy(Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def move_camera_by_vector(offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure MoveCameraBy(const offset: Vector2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Move Camera By [🤖](#move-camera-by--2)
+
+Move the camera (offset its world x and y values) using the specified
+dx (change in x) and dy (change in x) values.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| dx | `Double` | The amount to move the camera along the x axis. |
+| dy | `Double` | The amount to move the camera along the y axis. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void move_camera_by(double dx, double dy)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.MoveCameraBy(double dx, double dy);
+public static void SplashKit.MoveCameraBy(double dx, double dy);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def move_camera_by(dx, dy):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure MoveCameraBy(dx: Double; dy: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Move Camera To [🧬](#group-move-camera-to)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Move Camera To** (pt: `Point 2D`)](/components/camera/#move-camera-to--1)
+
+- [**Move Camera To** (x: `Double`, y: `Double`)](/components/camera/#move-camera-to--2)
+:::
+---
+
+
+### Move Camera To [🤖](#move-camera-to--1)
+
+Move the camera view (screen top left) to a specified point in the world.
+This will be the new top left corner of the screen.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [Point 2D](/components/types/#point-2d) | The new camera location |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void move_camera_to(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.MoveCameraTo(Point2D pt);
+public static void SplashKit.MoveCameraTo(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def move_camera_to_point(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure MoveCameraTo(const pt: Point2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Move Camera To [🤖](#move-camera-to--2)
+
+Move the camera view to a world location specified by the x and y values.
+This will be the new top left corner of the screen.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The new camera x location |
+| y | `Double` | The new camera y location |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void move_camera_to(double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.MoveCameraTo(double x, double y);
+public static void SplashKit.MoveCameraTo(double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def move_camera_to(x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure MoveCameraTo(x: Double; y: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point In Window [🔗](#point-in-window)
+
+Tests if the point is in the window.
+
+**Return Type**
+
+- Boolean
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| wind | [Window](/components/types/#window) | The window to check |
+| pt | [Point 2D](/components/types/#point-2d) | The point to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_in_window(window wind, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Camera.PointInWindow(Window wind, Point2D pt);
+public static bool SplashKit.PointInWindow(Window wind, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_in_window(wind, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointInWindow(wind: Window; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point On Screen [🔗](#point-on-screen)
+
+Tests if the point is on the screen.
+
+**Return Type**
+
+- Boolean
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [Point 2D](/components/types/#point-2d) | The point to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_on_screen(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Camera.PointOnScreen(Point2D pt);
+public static bool SplashKit.PointOnScreen(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_on_screen(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointOnScreen(const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rect In Window [🔗](#rect-in-window)
+
+Tests if the rectangle is within the bounds of the window.
+
+**Return Type**
+
+- Boolean
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| wind | [Window](/components/types/#window) | The window to check |
+| rect | [Rectangle](/components/types/#rectangle) | The rectangle to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool rect_in_window(window wind, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Camera.RectInWindow(Window wind, Rectangle rect);
+public static bool SplashKit.RectInWindow(Window wind, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rect_in_window(wind, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectInWindow(wind: Window; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rect On Screen [🔗](#rect-on-screen)
+
+Tests if the rectangle is on the screen.
+
+**Return Type**
+
+- Boolean
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [Rectangle](/components/types/#rectangle) | The rectangle to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool rect_on_screen(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Camera.RectOnScreen(Rectangle rect);
+public static bool SplashKit.RectOnScreen(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rect_on_screen(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectOnScreen(const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Screen Center [🔗](#screen-center)
+
+Returns the center of the screen in world coordinates.
+
+**Return Type**
+
+- [Point 2D](/components/types/#point-2d)
+
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d screen_center()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Camera.ScreenCenter { get }
+public static Point2D SplashKit.ScreenCenter();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def screen_center():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScreenCenter(): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Screen Rectangle [🔗](#screen-rectangle)
+
+Returns a rectangle that represents the dimensions of the window.
+
+**Return Type**
+
+- [Rectangle](/components/types/#rectangle)
+
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle screen_rectangle()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Camera.ScreenRectangle { get }
+public static Rectangle SplashKit.ScreenRectangle();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def screen_rectangle():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScreenRectangle(): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Camera Position [🔗](#set-camera-position)
+
+Change the position of the camera to a specified world coordinate. This
+will then be the new top left most position of the screen within the world.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pos | [Point 2D](/components/types/#point-2d) | The new location of the camera. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_camera_position(point_2d pos)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.Position { set }
+public static void SplashKit.SetCameraPosition(Point2D pos);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_camera_position(pos):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetCameraPosition(pos: Point2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Camera X [🔗](#set-camera-x)
+
+Change the X position of the camera to a specified world coordinate. This
+will then be the new left most position of the screen within the world.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The new x coordinate for the camera |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_camera_x(double x)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.X { set }
+public static void SplashKit.SetCameraX(double x);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_camera_x(x):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetCameraX(x: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Camera Y [🔗](#set-camera-y)
+
+Change the Y position of the camera to a specified world coordinate. This
+will then be the new top most position of the screen within the world.
+
+**Return Type**
+
+- `Void`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| y | `Double` | The new y coordinate for the camera |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_camera_y(double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Camera.Y { set }
+public static void SplashKit.SetCameraY(double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_camera_y(y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetCameraY(y: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To Screen [🧬](#group-to-screen)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**To Screen** (pt: `Point 2D`)](/components/camera/#to-screen--1)
+
+- [**To Screen** (rect: `Rectangle`)](/components/camera/#to-screen--2)
+:::
+---
+
+### To Screen [🤖](#to-screen--1)
+
+Convert the passed in world coordinates to screen coordinates.
+
+**Return Type**
+
+- [Point 2D](/components/types/#point-2d)
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [Point 2D](/components/types/#point-2d) | The point to convert - this should be in world coordinates. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d to_screen(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Camera.ToScreen(Point2D pt);
+public static Point2D SplashKit.ToScreen(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_screen_point(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToScreen(const pt: Point2D): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To Screen [🤖](#to-screen--2)
+
+Convert the rectangle in world coordinates to screen coordinates.
+
+**Return Type**
+
+- [Rectangle](/components/types/#rectangle)
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [Rectangle](/components/types/#rectangle) | The rectangle to convert - this should be in world coordinates. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle to_screen(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Camera.ToScreen(Rectangle rect);
+public static Rectangle SplashKit.ToScreen(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_screen_rectangle(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToScreen(const rect: Rectangle): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To Screen X [🔗](#to-screen-x)
+
+Translate a world x value to the current screen x value which is based on
+the camera position.
+
+**Return Type**
+
+- `Double`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| world_x | `Double` | The value of the x coordinate to translate to screen. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double to_screen_x(double world_x)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.ToScreenX(double worldX);
+public static double SplashKit.ToScreenX(double worldX);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_screen_x(world_x):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToScreenX(worldX: Double): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To Screen Y [🔗](#to-screen-y)
+
+Translate a world y value to the current screen y value set by the camera.
+
+**Return Type**
+
+- `Double`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| world_y | `Double` | The value of the y coordinate to translate to screen. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double to_screen_y(double world_y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.ToScreenY(double worldY);
+public static double SplashKit.ToScreenY(double worldY);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_screen_y(world_y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToScreenY(worldY: Double): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To World [🔗](#to-world)
+
+Converts the passed in point from screen coordinates to world coordinates.
+
+**Return Type**
+
+- [Point 2D](/components/types/#point-2d)
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [Point 2D](/components/types/#point-2d) | The point in screen coordinates. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d to_world(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Camera.ToWorld(Point2D pt);
+public static Point2D SplashKit.ToWorld(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_world(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToWorld(const pt: Point2D): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To World X [🔗](#to-world-x)
+
+Translate a screen x value (based on the camera) to a world x value
+
+**Return Type**
+
+- `Double`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| screen_x | `Double` | The value of the x coordinate on screen to translate to
+the world. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double to_world_x(double screen_x)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.ToWorldX(double screenX);
+public static double SplashKit.ToWorldX(double screenX);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_world_x(screen_x):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToWorldX(screenX: Double): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## To World Y [🔗](#to-world-y)
+
+Translate a screen y value (based on the camera) to a world y value
+
+**Return Type**
+
+- `Double`
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| screen_y | `Double` | The value of the y coordinate on screen to translate to
+the world. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double to_world_y(double screen_y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Camera.ToWorldY(double screenY);
+public static double SplashKit.ToWorldY(double screenY);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def to_world_y(screen_y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ToWorldY(screenY: Double): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector World To Screen [🔗](#vector-world-to-screen)
+
+Returns a vector that can transform points from world to screen coordinates.
+
+**Return Type**
+
+- Vector 2D
+
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_world_to_screen()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Camera.VectorWorldToScreen { get }
+public static Vector2D SplashKit.VectorWorldToScreen();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_world_to_screen():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorWorldToScreen(): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Window Area [🔗](#window-area)
+
+Returns a rectangle that represents the dimensions of the window based
+on the camera.
+
+**Return Type**
+
+- [Rectangle](/components/types/#rectangle)
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| wind | [Window](/components/types/#window) | The window |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle window_area(window wind)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Rectangle Window.Area { get }
+public static Rectangle SplashKit.WindowArea(Window wind);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def window_area(wind):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function WindowArea(wind: Window): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
 

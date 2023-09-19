@@ -10,14 +10,265 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-# Functions
-## Deregister Free Notifier
-## Path To Resource
-## Path To Resources
-## Register Free Notifier
-## Set Resources Path
+## Functions
+##
 
-# Types
+## Deregister Free Notifier [🔗](#deregister-free-notifier)
+
+Remove the function from the list of functions receiving notification
+of resource freeing.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| handler | [Free Notifier](/components/resources/#free-notifier) | The function to remove |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void deregister_free_notifier(free_notifier *handler)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Resources.DeregisterFreeNotifier(FreeNotifier handler);
+public static void SplashKit.DeregisterFreeNotifier(FreeNotifier handler);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def deregister_free_notifier(handler):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure DeregisterFreeNotifier(handler: FreeNotifier)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Path To Resource [🔗](#path-to-resource)
+
+Gets the path to a give file of a certain resource kind.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| filename | [String](/String) | The name of the file of the resource kind. |
+| kind | [Resource Kind](/components/resources/#resource-kind) | The kind of resource you are loading. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string path_to_resource(const string &filename, resource_kind kind)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Resources.PathToResource(string filename, ResourceKind kind);
+public static string SplashKit.PathToResource(string filename, ResourceKind kind);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def path_to_resource(filename, kind):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PathToResource(const filename: String; kind: ResourceKind): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Path To Resources [🧬](#group-path-to-resources)
+:::note
+This function is overloaded. The following versions exist:
+
+- [**Path To Resources**](/components/resources/#path-to-resources--1)
+
+- [**Path To Resources** (kind: `Resource Kind`)](/components/resources/#path-to-resources--2)
+:::
+---
+
+
+### Path To Resources [🤖](#path-to-resources--1)
+
+Returns the path to the resources folder for the SplashKit program. This
+will be auto detected at startup, but can be changed using
+`set_resources_path`.
+
+**Return Type**
+
+- `String` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string path_to_resources()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Resources.PathToResources();
+public static string SplashKit.PathToResources();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def path_to_resources():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PathToResources(): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Path To Resources [🤖](#path-to-resources--2)
+
+Returns the path to the folder containing a given resource kind. This is
+the path SplashkKit will search when you load a resource.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| kind | [Resource Kind](/components/resources/#resource-kind) | The type of resource you want the path for. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string path_to_resources(resource_kind kind)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Resources.PathToResources(ResourceKind kind);
+public static string SplashKit.PathToResources(ResourceKind kind);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def path_to_resources_for_kind(kind):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PathToResources(kind: ResourceKind): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Register Free Notifier [🔗](#register-free-notifier)
+
+Register a function to be called when any resource is freed.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| fn | [Free Notifier](/components/resources/#free-notifier) | The function to be called when a resource is freed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void register_free_notifier(free_notifier *fn)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Resources.RegisterFreeNotifier(FreeNotifier fn);
+public static void SplashKit.RegisterFreeNotifier(FreeNotifier fn);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def register_free_notifier(fn):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure RegisterFreeNotifier(fn: FreeNotifier)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Resources Path [🔗](#set-resources-path)
+
+Sets the path to the SplashKit resources folder. Resource paths are then
+located within this folder.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| path | [String](/String) | The file path to the SplashKit Resources folder. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_resources_path(const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Resources.SetResourcesPath(string path);
+public static void SplashKit.SetResourcesPath(string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_resources_path(path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetResourcesPath(const path: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
+## Types
+##
+
 ## Free Notifier
-## Resource Kind
+
+The free notifier can be registered with the system. It is called every time a resource is freed.
+
+---
+## Resource Kind [🔗](#resource-kind)
+SplashKit is able to manage a number of different kinds of resources for you.
+
+**Constants**
+
+- Animation Resource
+  - Animation scripts are loaded as Animation resources. These are located in the project's `/Resources/animations` folder.
+
+- Bundle Resource
+  - Resource bundles contain lists of other resources. These are located in the project's `/Resources/bundles` folder.
+
+- Database Resource
+  - Database resources are located in the `/Resources/databases` folder.
+
+- Font Resource
+  - Fonts resources are located in the `/Resources/fonts` folder.
+
+- Image Resource
+  - Image resources are located in the `/Resources/images` folder.
+
+- JSON Resource
+  - JSON resources are located in the project's `/Resources/json` folder.
+
+- Music Resource
+  - Music resources can be played as music and live in the program's `/Resources/sounds` folder.
+
+- Server Resource
+  - Server resources can be sent as responses to web server requests.
+
+- Sound Resource
+  - Sound resources can be played as sound effects and live in the program's `/Resources/sounds` folder.
+
+- Timer Resource
+  - Timer resources are not saved to file but can be created by SplashKit resource bundles.
+
+- Other Resource
+  - Other resources can be loaded directly and will be located in the project's `/Resources` folder.
+
+---
+
 
