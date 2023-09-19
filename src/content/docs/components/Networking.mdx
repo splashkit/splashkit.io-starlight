@@ -13,99 +13,4198 @@ import { Code } from "astro/components";
 ## Functions
 ##
 
-## Download Bitmap
-## Download Font
-## Download Music
-## Download Sound Effect
-## Free Response
-## HTTP GET
-## HTTP POST
-## HTTP Response To String
-## Save Response To File
-## Has Incoming Requests
-## Is DELETE Request For
-## Is GET Request For
-## Is Options Request For
-## Is POST Request For
-## Is PUT Request For
-## Is Request For
-## Is Trace Request For
-## Next Web Request
-## Request Body
-## Request Has Query Parameter
-## Request Method
-## Request Query Parameter
-## Request Query String
-## Request URI
-## Request URI Stubs
-## Send Css File Response
-## Send File Response
-## Send HTML File Response
-## Send Javascript File Response
-## Send Response
-## Split URI Stubs
-## Start Web Server
-## Stop Web Server
-## Accept All New Connections
-## Accept New Connection
-## Broadcast Message
-## Check Network Activity
-## Clear Messages
-## Close All Connections
-## Close All Servers
-## Close Connection
-## Close Message
-## Close Server
-## Connection Count
-## Connection IP
-## Connection Named
-## Connection Port
-## Create Server
-## Decimal To Hexadecimal
-## Fetch New Connection
-## Has Connection
-## Has Messages
-## Has New Connections
-## Has Server
-## Hexadecimal Str To IPv4
-## Hexadecimal To Decimal String
-## IPv4 To Decimal
-## IPv4 To Hexadecimal
-## IPv4 To Str
-## Is Connection Open
-## Last Connection
-## Message Connection
-## Message Count
-## Message Data
-## Message Data Bytes
-## Message Host
-## Message Port
-## Message Protocol
-## My IP
-## Name For Connection
-## New Connection Count
-## Open Connection
-## Read Message
-## Read Message Data
-## Reconnect
-## Release All Connections
-## Reset New Connection Count
-## Retrieve Connection
-## Send Message To
-## Server Has New Connection
-## Server Named
-## Set Udp Packet Size
-## Udp Packet Size
+## Download Bitmap [🔗](#download-bitmap)
+
+ 
+Download an image from a web server and load it into SplashKit so that
+you can use it.
+
+**Return Type**
+
+- [`Bitmap`](/components/types/#bitmap) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the bitmap resource when it is loaded |
+| url | `String` | The URL path to the image resoure |
+| port | unsigned short | The port to connect to on the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bitmap download_bitmap(const string &name, const string &url, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Bitmap SplashKit.DownloadBitmap(string name, string url, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def download_bitmap(name, url, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DownloadBitmap(const name: String; const url: String; port: Word): Bitmap`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Download Font [🔗](#download-font)
+
+ 
+Download a font from a web server and load it into SplashKit so that
+you can use it.
+
+**Return Type**
+
+- [`Font`](/components/types/#font) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the font resource when it is loaded |
+| url | `String` | The URL path to the font resoure |
+| port | unsigned short | The port to connect to on the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`font download_font(const string &name, const string &url, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Font SplashKit.DownloadFont(string name, string url, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def download_font(name, url, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DownloadFont(const name: String; const url: String; port: Word): Font`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Download Music [🔗](#download-music)
+
+ 
+Download a music file from a web server and load it into SplashKit so
+that you can use it.
+
+**Return Type**
+
+- [`Music`](/components/audio/#music) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the music resource when it is loaded |
+| url | `String` | The URL path to the music resoure |
+| port | unsigned short | The port to connect to on the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`music download_music(const string &name, const string &url, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Music SplashKit.DownloadMusic(string name, string url, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def download_music(name, url, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DownloadMusic(const name: String; const url: String; port: Word): Music`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Download Sound Effect [🔗](#download-sound-effect)
+
+ 
+Download a sound effect from a web server and load it into SplashKit so
+that you can use it.
+
+**Return Type**
+
+- [`Sound Effect`](/components/audio/#sound-effect) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the sound effect resource when it is loaded |
+| url | `String` | The URL path to the sound effect resoure |
+| port | unsigned short | The port to connect to on the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`sound_effect download_sound_effect(const string &name, const string &url, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static SoundEffect SplashKit.DownloadSoundEffect(string name, string url, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def download_sound_effect(name, url, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DownloadSoundEffect(const name: String; const url: String; port: Word): SoundEffect`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free Response [🔗](#free-response)
+
+ 
+Free the response resource.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| response | [`HTTP Response`](/components/networking/#http-response) | The response to free |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_response(http_response response)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpResponse.FreeResponse();
+public static void SplashKit.FreeResponse(HttpResponse response);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_response(response):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeResponse(response: HttpResponse)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Http Get [🔗](#http-get)
+
+ 
+Make a get request to access a resource on the internet.
+
+**Return Type**
+
+- [`HTTP Response`](/components/networking/#http-response) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| url | `String` | The path to the resource, for example http://splashkit.io |
+| port | unsigned short | The port on the server (80 for http, 443 for https) |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`http_response http_get(const string &url, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static HttpResponse SplashKit.HttpGet(string url, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def http_get(url, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HttpGet(const url: String; port: Word): HttpResponse`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Http Post [🧬](#group-http-post)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Http Post** (url: string, port: unsigned short, body: string, headers: vector )](/components/networking/#http-post--1)
+- [**Http Post** (url: string, port: unsigned short, body: string )](/components/networking/#http-post--2)
+
+:::
+
+### Http Post [🤖](#http-post--1) 
+Post the supplied information to the indicated url with the given headers.
+
+**Return Type**
+
+- [`HTTP Response`](/components/networking/#http-response) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| url | `String` | The url of the server to post the data to |
+| port | unsigned short | The port to connect to on the server |
+| body | `String` | The body of the message to post |
+| headers | vector | The headers of the request |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`http_response http_post(const string &url, unsigned short port, const string &body, const vector<string> &headers)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static HttpResponse SplashKit.HttpPost(string url, ushort port, string body, List<string> headers);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def http_post_with_headers(url, port, body, headers):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HttpPost(const url: String; port: Word; const body: String; const headers: ArrayOfString): HttpResponse`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Http Post [🤖](#http-post--2) 
+Post the supplied information to the indicated url.
+
+**Return Type**
+
+- [`HTTP Response`](/components/networking/#http-response) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| url | `String` | The url of the server to post the data to |
+| port | unsigned short | The port to connect to on the server |
+| body | `String` | The body of the message to post |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`http_response http_post(const string &url, unsigned short port, string body)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static HttpResponse SplashKit.HttpPost(string url, ushort port, string body);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def http_post(url, port, body):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HttpPost(const url: String; port: Word; body: String): HttpResponse`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Http Response To String [🔗](#http-response-to-string)
+
+ 
+Read the HTTP response and convert it to text
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| response | [`HTTP Response`](/components/networking/#http-response) | The response from the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string http_response_to_string(http_response response)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string SplashKit.HttpResponseToString(HttpResponse response);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def http_response_to_string(response):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HttpResponseToString(response: HttpResponse): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Save Response To File [🔗](#save-response-to-file)
+
+ 
+Save the HTTP response downloaded into a file.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| response | [`HTTP Response`](/components/networking/#http-response) | The response from the server |
+| path | `String` | The path to the file where the response should be saved |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void save_response_to_file(http_response response, string path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void SplashKit.SaveResponseToFile(HttpResponse response, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def save_response_to_file(response, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SaveResponseToFile(response: HttpResponse; path: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Incoming Requests [🔗](#has-incoming-requests)
+
+ 
+Returns true if the given `web_sever` has pending requests.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Web Server`](/components/networking/#web-server) | The [`Web Server`](/components/networking/#web-server) to check for waiting requests. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_incoming_requests(web_server server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool WebServer.HasIncomingRequests { get }
+public static bool SplashKit.HasIncomingRequests(WebServer server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_incoming_requests(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasIncomingRequests(server: WebServer): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Delete Request For [🔗](#is-delete-request-for)
+
+ 
+Checks if a request wants to delete a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_delete_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsDeleteRequestFor(string path);
+public static bool SplashKit.IsDeleteRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_delete_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsDeleteRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Get Request For [🔗](#is-get-request-for)
+
+ 
+Checks if a request wants to get a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_get_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsGetRequestFor(string path);
+public static bool SplashKit.IsGetRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_get_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsGetRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Options Request For [🔗](#is-options-request-for)
+
+ 
+Checks if a request wants to check options for given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_options_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsOptionsRequestFor(string path);
+public static bool SplashKit.IsOptionsRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_options_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsOptionsRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Post Request For [🔗](#is-post-request-for)
+
+ 
+Checks if a request wants to create (post) a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_post_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsPostRequestFor(string path);
+public static bool SplashKit.IsPostRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_post_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsPostRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Put Request For [🔗](#is-put-request-for)
+
+ 
+Checks if a request wants to update (put) a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_put_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsPutRequestFor(string path);
+public static bool SplashKit.IsPutRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_put_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsPutRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Request For [🔗](#is-request-for)
+
+ 
+Checks if a request is after a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| method | [`HTTP Method`](/components/networking/#http-method) | The kind of request |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_request_for(http_request request, http_method method, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsRequestFor(HttpMethod method, string path);
+public static bool SplashKit.IsRequestFor(HttpRequest request, HttpMethod method, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_request_for(request, method, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsRequestFor(request: HttpRequest; method: HttpMethod; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Trace Request For [🔗](#is-trace-request-for)
+
+ 
+Checks if a request wants to trace a given resource.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| request | [`HTTP Request`](/components/networking/#http-request) | The request to check |
+| path | `String` | The resource/route path |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_trace_request_for(http_request request, const string &path)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.IsTraceRequestFor(string path);
+public static bool SplashKit.IsTraceRequestFor(HttpRequest request, string path);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_trace_request_for(request, path):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsTraceRequestFor(request: HttpRequest; const path: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Next Web Request [🔗](#next-web-request)
+
+ 
+Returns the next request on a given [`Web Server`](/components/networking/#web-server) instance
+
+**Return Type**
+
+- [`HTTP Request`](/components/networking/#http-request) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Web Server`](/components/networking/#web-server) | The [`Web Server`](/components/networking/#web-server) to get the [`HTTP Request`](/components/networking/#http-request) from. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`http_request next_web_request(web_server server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public HttpRequest WebServer.NextWebRequest { get }
+public static HttpRequest SplashKit.NextWebRequest(WebServer server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def next_web_request(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function NextWebRequest(server: WebServer): HttpRequest`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Body [🔗](#request-body)
+
+ 
+Returns the body of the request.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string request_body(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string HttpRequest.Body { get }
+public static string SplashKit.RequestBody(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_body(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestBody(r: HttpRequest): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Has Query Parameter [🔗](#request-has-query-parameter)
+
+ 
+Returns true if the parameter exists in the query string.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+| name | `String` | The name of the parameter to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool request_has_query_parameter(http_request r, const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool HttpRequest.RequestHasQueryParameter(string name);
+public static bool SplashKit.RequestHasQueryParameter(HttpRequest r, string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_has_query_parameter(r, name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestHasQueryParameter(r: HttpRequest; const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Method [🔗](#request-method)
+
+ 
+Returns the HTTP method of the client request.
+
+**Return Type**
+
+- [`HTTP Method`](/components/networking/#http-method) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`http_method request_method(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public HttpMethod HttpRequest.Method { get }
+public static HttpMethod SplashKit.RequestMethod(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_method(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestMethod(r: HttpRequest): HttpMethod`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Query Parameter [🔗](#request-query-parameter)
+
+ 
+Returns the value of a parameter from within the query string, or the supplied default
+if no matching parameter is found.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+| name | `String` | The name of the parameter to fetch |
+| default_value | `String` | The value to return if the named parameter is not in the query string. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string request_query_parameter(http_request r, const string &name, const string &default_value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string HttpRequest.RequestQueryParameter(string name, string defaultValue);
+public static string SplashKit.RequestQueryParameter(HttpRequest r, string name, string defaultValue);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_query_parameter(r, name, default_value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestQueryParameter(r: HttpRequest; const name: String; const defaultValue: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Query String [🔗](#request-query-string)
+
+ 
+Returns the URI query string of the client request.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string request_query_string(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string HttpRequest.QueryString { get }
+public static string SplashKit.RequestQueryString(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_query_string(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestQueryString(r: HttpRequest): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Uri [🔗](#request-uri)
+
+ 
+Returns the server URI of the client request.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | A request object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string request_uri(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string HttpRequest.URI { get }
+public static string SplashKit.RequestURI(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_uri(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestURI(r: HttpRequest): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Request Uri Stubs [🔗](#request-uri-stubs)
+
+ 
+Returns an array of strings representing each stub of the URI.
+
+For example a request sent to http://localhost:8080/names/0 returns...
+
+["names", "0"]
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request for retrieving URI to split into stubs. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<string> request_uri_stubs(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public List<string> HttpRequest.URIStubs { get }
+public static List<string> SplashKit.RequestURIStubs(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def request_uri_stubs(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RequestURIStubs(r: HttpRequest): ArrayOfString`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send Css File Response [🔗](#send-css-file-response)
+
+ 
+Serves a css file to the given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request which is asking for the resource. |
+| filename | `String` | The name of the file in Resources/server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_css_file_response(http_request r, const string &filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendCSSFileResponse(string filename);
+public static void SplashKit.SendCSSFileResponse(HttpRequest r, string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_css_file_response(r, filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendCSSFileResponse(r: HttpRequest; const filename: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send File Response [🔗](#send-file-response)
+
+ 
+Serves a file to the given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request which is asking for the resource. |
+| filename | `String` | The name of the file in Resources/server |
+| content_type | `String` | The type of content being send: |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_file_response(http_request r, const string &filename, const string &content_type)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendFileResponse(string filename, string contentType);
+public static void SplashKit.SendFileResponse(HttpRequest r, string filename, string contentType);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_file_response(r, filename, content_type):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendFileResponse(r: HttpRequest; const filename: String; const contentType: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send Html File Response [🔗](#send-html-file-response)
+
+ 
+Serves a HTML file to the given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request which is asking for the resource. |
+| filename | `String` | The name of the file in Resources/server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_html_file_response(http_request r, const string &filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendHtmlFileResponse(string filename);
+public static void SplashKit.SendHtmlFileResponse(HttpRequest r, string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_html_file_response(r, filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendHtmlFileResponse(r: HttpRequest; const filename: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send Javascript File Response [🔗](#send-javascript-file-response)
+
+ 
+Serves a javascript file to the given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request which is asking for the resource. |
+| filename | `String` | The name of the file in Resources/server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_javascript_file_response(http_request r, const string &filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendJavascriptFileResponse(string filename);
+public static void SplashKit.SendJavascriptFileResponse(HttpRequest r, string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_javascript_file_response(r, filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendJavascriptFileResponse(r: HttpRequest; const filename: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send Response [🧬](#group-send-response)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Send Response** (r: http_request )](/components/networking/#send-response--1)
+- [**Send Response** (r: http_request, message: string )](/components/networking/#send-response--2)
+- [**Send Response** (r: http_request, code: http_status_code )](/components/networking/#send-response--3)
+- [**Send Response** (r: http_request, code: http_status_code, message: string )](/components/networking/#send-response--4)
+- [**Send Response** (r: http_request, code: http_status_code, message: string, content_type: string )](/components/networking/#send-response--5)
+- [**Send Response** (r: http_request, j: json )](/components/networking/#send-response--6)
+
+:::
+
+### Send Response [🤖](#send-response--1) 
+Sends a response with no content to a [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The [`HTTP Request`](/components/networking/#http-request) to send the response to |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse();
+public static void SplashKit.SendResponse(HttpRequest r);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response_empty(r):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Response [🤖](#send-response--2) 
+Sends a message to a given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request to be sent. |
+| message | `String` | The message to be sent |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r, const string &message)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse(string message);
+public static void SplashKit.SendResponse(HttpRequest r, string message);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response(r, message):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest; const message: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Response [🤖](#send-response--3) 
+Sends a response code to a given [`HTTP Request`](/components/networking/#http-request).
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The [`HTTP Request`](/components/networking/#http-request) to send the response to |
+| code | [`HTTP Status Code`](/components/types/#http-status-code) | The [HTTP status code](See https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be sent. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r, http_status_code code)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse(HttpStatusCode code);
+public static void SplashKit.SendResponse(HttpRequest r, HttpStatusCode code);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response_json_with_status(r, code):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest; code: HttpStatusCode)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Response [🤖](#send-response--4) 
+Sends a message to a given [`HTTP Request`](/components/networking/#http-request) with the specified content type.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The [`HTTP Request`](/components/networking/#http-request) to send the response to |
+| code | [`HTTP Status Code`](/components/types/#http-status-code) | The [HTTP status code](See https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be sent. |
+| message | `String` | The messsage, in the form of a [`HTTP Response`](/components/networking/#http-response), to be sent. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r, http_status_code code, const string &message)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse(HttpStatusCode code, string message);
+public static void SplashKit.SendResponse(HttpRequest r, HttpStatusCode code, string message);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response_with_status(r, code, message):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest; code: HttpStatusCode; const message: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Response [🤖](#send-response--5) 
+Sends a message to a given [`HTTP Request`](/components/networking/#http-request) with the specified content type.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The [`HTTP Request`](/components/networking/#http-request) to send the response to |
+| code | [`HTTP Status Code`](/components/types/#http-status-code) | The [HTTP status code](See https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be sent. |
+| message | `String` | The messsage, in the form of a [`HTTP Response`](/components/networking/#http-response), to be sent. |
+| content_type | `String` | The content type of the response. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r, http_status_code code, const string &message, const string &content_type)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse(HttpStatusCode code, string message, string contentType);
+public static void SplashKit.SendResponse(HttpRequest r, HttpStatusCode code, string message, string contentType);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response_with_status_and_content_type(r, code, message, content_type):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest; code: HttpStatusCode; const message: String; const contentType: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Response [🤖](#send-response--6) 
+Send a JSON response to a given [`HTTP Request`](/components/networking/#http-request)
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| r | [`HTTP Request`](/components/networking/#http-request) | The request the response belongs to. |
+| j | [`JSON`](/components/json/#json) | The json to be sent. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void send_response(http_request r, json j)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void HttpRequest.SendResponse(Json j);
+public static void SplashKit.SendResponse(HttpRequest r, Json j);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_response_json(r, j):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SendResponse(r: HttpRequest; j: Json)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Split Uri Stubs [🔗](#split-uri-stubs)
+
+ 
+Returns an array of strings representing each stub of the URI.
+
+For example a request sent to http://localhost:8080/names/0 returns...
+
+["names", "0"]
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| uri | `String` | The URI to split into stubs. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<string> split_uri_stubs(const string &uri)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static List<string> WebServer.SplitURIStubs(string uri);
+public static List<string> SplashKit.SplitURIStubs(string uri);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def split_uri_stubs(uri):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SplitURIStubs(const uri: String): ArrayOfString`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Start Web Server [🧬](#group-start-web-server)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Start Web Server** ()](/components/networking/#start-web-server--1)
+- [**Start Web Server** (port: unsigned short )](/components/networking/#start-web-server--2)
+
+:::
+
+### Start Web Server [🤖](#start-web-server--1) 
+Creates a new web server instance and starts it.
+
+**Return Type**
+
+- [`Web Server`](/components/networking/#web-server) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`web_server start_web_server()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static WebServer SplashKit.StartWebServer();
+public WebServer();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def start_web_server_with_default_port():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function StartWebServer(): WebServer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Start Web Server [🤖](#start-web-server--2) 
+Starts the web server on a given port number.
+
+**Return Type**
+
+- [`Web Server`](/components/networking/#web-server) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| port | unsigned short | The port number to connect through. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`web_server start_web_server(unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static WebServer SplashKit.StartWebServer(ushort port);
+public WebServer(ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def start_web_server(port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function StartWebServer(port: Word): WebServer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Stop Web Server [🔗](#stop-web-server)
+
+ 
+Stops a given [`Web Server`](/components/networking/#web-server) instance.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Web Server`](/components/networking/#web-server) | The server instance to stop. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void stop_web_server(web_server server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void WebServer.StopWebServer();
+public static void SplashKit.StopWebServer(WebServer server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def stop_web_server(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure StopWebServer(server: WebServer)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Accept All New Connections [🔗](#accept-all-new-connections)
+
+ 
+Accept new connections for all servers.
+
+**Return Type**
+
+- `Boolean` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool accept_all_new_connections()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.AcceptAllNewConnections();
+public static bool SplashKit.AcceptAllNewConnections();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def accept_all_new_connections():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function AcceptAllNewConnections(): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Accept New Connection [🔗](#accept-new-connection)
+
+ 
+Accept new connections for a server
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool accept_new_connection(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool ServerSocket.AcceptNewConnection();
+public static bool SplashKit.AcceptNewConnection(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def accept_new_connection(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function AcceptNewConnection(server: ServerSocket): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Broadcast Message [🧬](#group-broadcast-message)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Broadcast Message** (a_msg: string, svr: server_socket )](/components/networking/#broadcast-message--1)
+- [**Broadcast Message** (a_msg: string )](/components/networking/#broadcast-message--2)
+- [**Broadcast Message** (a_msg: string, name: string )](/components/networking/#broadcast-message--3)
+
+:::
+
+### Broadcast Message [🤖](#broadcast-message--1) 
+Broadcast a message to all connections of a server.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_msg | `String` | The message to send |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server to send the message to. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void broadcast_message(const string &a_msg, server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void ServerSocket.BroadcastMessage(string aMsg);
+public static void SplashKit.BroadcastMessage(string aMsg, ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def broadcast_message(a_msg, svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure BroadcastMessage(const aMsg: String; svr: ServerSocket)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Broadcast Message [🤖](#broadcast-message--2) 
+Broadcase a message to all of the connections.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_msg | `String` | The message to send |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void broadcast_message(const string &a_msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.BroadcastMessage(string aMsg);
+public static void SplashKit.BroadcastMessage(string aMsg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def broadcast_message_to_all(a_msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure BroadcastMessage(const aMsg: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Broadcast Message [🤖](#broadcast-message--3) 
+Broadcast a message to all connections of a server.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_msg | `String` | The message to send |
+| name | `String` | The name of the server to send the message to. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void broadcast_message(const string &a_msg, const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.BroadcastMessage(string aMsg, string name);
+public static void SplashKit.BroadcastMessage(string aMsg, string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def broadcast_message_to_server_named(a_msg, name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure BroadcastMessage(const aMsg: String; const name: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Check Network Activity [🔗](#check-network-activity)
+
+ 
+Check network activity, looking for new connections and messages.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void check_network_activity()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.CheckNetworkActivity();
+public static void SplashKit.CheckNetworkActivity();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def check_network_activity():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CheckNetworkActivity()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Clear Messages [🧬](#group-clear-messages)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Clear Messages** (name: string )](/components/networking/#clear-messages--1)
+- [**Clear Messages** (a_connection: connection )](/components/networking/#clear-messages--2)
+- [**Clear Messages** (svr: server_socket )](/components/networking/#clear-messages--3)
+
+:::
+
+### Clear Messages [🤖](#clear-messages--1) 
+Clear all of the messages from a server or connection with the supplied name.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection or the server to clear. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void clear_messages(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.ClearMessages(string name);
+public static void SplashKit.ClearMessages(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def clear_messages_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ClearMessages(const name: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Clear Messages [🤖](#clear-messages--2) 
+Clear all of the messages from a connection.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void clear_messages(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Connection.ClearMessages();
+public static void SplashKit.ClearMessages(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def clear_messages_from_connection(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ClearMessages(aConnection: Connection)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Clear Messages [🤖](#clear-messages--3) 
+Clear all of the messages from a server.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server to clear the messages from |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void clear_messages(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void ServerSocket.ClearMessages();
+public static void SplashKit.ClearMessages(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def clear_messages_from_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ClearMessages(svr: ServerSocket)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Close All Connections [🔗](#close-all-connections)
+
+ 
+Close all of the connections you have opened. This does not close
+connections to servers.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void close_all_connections()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.CloseAllConnections();
+public static void SplashKit.CloseAllConnections();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_all_connections():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CloseAllConnections()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Close All Servers [🔗](#close-all-servers)
+
+ 
+Close all of the servers that are currently open.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void close_all_servers()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.CloseAllServers();
+public static void SplashKit.CloseAllServers();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_all_servers():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CloseAllServers()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Close Connection [🧬](#group-close-connection)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Close Connection** (a_connection: connection )](/components/networking/#close-connection--1)
+- [**Close Connection** (name: string )](/components/networking/#close-connection--2)
+
+:::
+
+### Close Connection [🤖](#close-connection--1) 
+Close the connection
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection to close |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool close_connection(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Connection.CloseConnection();
+public static bool SplashKit.CloseConnection(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_connection(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CloseConnection(aConnection: Connection): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Close Connection [🤖](#close-connection--2) 
+Close the connection
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection to close |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool close_connection(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.CloseConnection(string name);
+public static bool SplashKit.CloseConnection(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_connection_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CloseConnection(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Close Message [🔗](#close-message)
+
+ 
+Closes the message.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to close |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void close_message(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Message.CloseMessage();
+public static void SplashKit.CloseMessage(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_message(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure CloseMessage(msg: Message)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Close Server [🧬](#group-close-server)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Close Server** (name: string )](/components/networking/#close-server--1)
+- [**Close Server** (svr: server_socket )](/components/networking/#close-server--2)
+
+:::
+
+### Close Server [🤖](#close-server--1) 
+Closes the server with the indicated name.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to close |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool close_server(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.CloseServer(string name);
+public static bool SplashKit.CloseServer(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_server_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CloseServer(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Close Server [🤖](#close-server--2) 
+Closes the server, all connections with clients will be shut and
+the port will be closed.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server to close |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool close_server(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool ServerSocket.CloseServer();
+public static bool SplashKit.CloseServer(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def close_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CloseServer(svr: ServerSocket): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Connection Count [🧬](#group-connection-count)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Connection Count** (name: string )](/components/networking/#connection-count--1)
+- [**Connection Count** (server: server_socket )](/components/networking/#connection-count--2)
+
+:::
+
+### Connection Count [🤖](#connection-count--1) 
+Returns the number of clients connected to a server.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int connection_count(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static uint Networking.ConnectionCount(string name);
+public static uint SplashKit.ConnectionCount(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_count_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionCount(const name: String): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Connection Count [🤖](#connection-count--2) 
+Returns the number of clients connected to a server.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int connection_count(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public uint ServerSocket.ConnectionCount { get }
+public static uint SplashKit.ConnectionCount(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_count(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionCount(server: ServerSocket): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Connection Ip [🧬](#group-connection-ip)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Connection Ip** (a_connection: connection )](/components/networking/#connection-ip--1)
+- [**Connection Ip** (name: string )](/components/networking/#connection-ip--2)
+
+:::
+
+### Connection Ip [🤖](#connection-ip--1) 
+Gets the ip address of the passed in connection.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int connection_ip(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public uint Connection.IP { get }
+public static uint SplashKit.ConnectionIP(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_ip(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionIP(aConnection: Connection): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Connection Ip [🤖](#connection-ip--2) 
+Gets the ip address of the connection with the supplied name.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int connection_ip(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static uint Networking.ConnectionIP(string name);
+public static uint SplashKit.ConnectionIP(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_ip_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionIP(const name: String): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Connection Named [🔗](#connection-named)
+
+ 
+Fetch the connection with the indicated name.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection to fetch |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection connection_named(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection Networking.ConnectionNamed(string name);
+public static Connection SplashKit.ConnectionNamed(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionNamed(const name: String): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Connection Port [🧬](#group-connection-port)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Connection Port** (a_connection: connection )](/components/networking/#connection-port--1)
+- [**Connection Port** (name: string )](/components/networking/#connection-port--2)
+
+:::
+
+### Connection Port [🤖](#connection-port--1) 
+Gets the port of the connection.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned short connection_port(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public ushort Connection.Port { get }
+public static ushort SplashKit.ConnectionPort(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_port(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionPort(aConnection: Connection): Word`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Connection Port [🤖](#connection-port--2) 
+Gets the part of the connection.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned short connection_port(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static ushort Networking.ConnectionPort(string name);
+public static ushort SplashKit.ConnectionPort(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def connection_port_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ConnectionPort(const name: String): Word`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Create Server [🧬](#group-create-server)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Create Server** (name: string, port: unsigned short )](/components/networking/#create-server--1)
+- [**Create Server** (name: string, port: unsigned short, protocol: connection_type )](/components/networking/#create-server--2)
+
+:::
+
+### Create Server [🤖](#create-server--1) 
+Creates a new TCP server that can accept connections from other programs.
+
+**Return Type**
+
+- [`Server Socket`](/components/networking/#server-socket) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name used to access the Server in splashkit |
+| port | unsigned short | The port that clients will use to connect to the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`server_socket create_server(const string &name, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static ServerSocket SplashKit.CreateServer(string name, ushort port);
+public ServerSocket(string name, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def create_server_with_port(name, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CreateServer(const name: String; port: Word): ServerSocket`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Create Server [🤖](#create-server--2) 
+Creates a new server that can accept connections from other programs.
+
+**Return Type**
+
+- [`Server Socket`](/components/networking/#server-socket) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name used to access the Server in splashkit |
+| port | unsigned short | The port that clients will use to connect to the server |
+| protocol | [`Connection Type`](/components/networking/#connection-type) | The protocol used by the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`server_socket create_server(const string &name, unsigned short port, connection_type protocol)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static ServerSocket SplashKit.CreateServer(string name, ushort port, ConnectionType protocol);
+public ServerSocket(string name, ushort port, ConnectionType protocol);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def create_server_with_port_and_protocol(name, port, protocol):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CreateServer(const name: String; port: Word; protocol: ConnectionType): ServerSocket`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Dec To Hex [🔗](#dec-to-hex)
+
+ 
+Converts the supplied decimal integer into it's hexadecimal representation.
+e.g. 0x7F000001 from 2130706433
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_dec | unsigned int | decimal to be converted to a hexadecimal number string |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string dec_to_hex(unsigned int a_dec)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.DecToHex(uint aDec);
+public static string SplashKit.DecToHex(uint aDec);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def dec_to_hex(a_dec):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DecToHex(aDec: Cardinal): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Fetch New Connection [🔗](#fetch-new-connection)
+
+ 
+Get the oldest new connections made to the server, and
+reduces the new connection count by 1.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection fetch_new_connection(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Connection ServerSocket.FetchNewConnection();
+public static Connection SplashKit.FetchNewConnection(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def fetch_new_connection(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function FetchNewConnection(server: ServerSocket): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Connection [🔗](#has-connection)
+
+ 
+Does the connection with the supplied name exist?
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_connection(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.HasConnection(string name);
+public static bool SplashKit.HasConnection(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_connection(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasConnection(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Messages [🧬](#group-has-messages)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Has Messages** ()](/components/networking/#has-messages--1)
+- [**Has Messages** (con: connection )](/components/networking/#has-messages--2)
+- [**Has Messages** (name: string )](/components/networking/#has-messages--3)
+- [**Has Messages** (svr: server_socket )](/components/networking/#has-messages--4)
+
+:::
+
+### Has Messages [🤖](#has-messages--1) 
+Checks if there are any messages waiting to be read.
+
+**Return Type**
+
+- `Boolean` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_messages()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.HasMessages { get }
+public static bool SplashKit.HasMessages();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_messages():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasMessages(): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Has Messages [🤖](#has-messages--2) 
+Checks if a connection has messages waiting to be read.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| con | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_messages(connection con)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Connection.HasMessages { get }
+public static bool SplashKit.HasMessages(Connection con);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_messages_on_connection(con):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasMessages(con: Connection): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Has Messages [🤖](#has-messages--3) 
+Checks if a server or connection has any messages.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server or connection to check. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_messages(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.HasMessages(string name);
+public static bool SplashKit.HasMessages(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_messages_on_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasMessages(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Has Messages [🤖](#has-messages--4) 
+Checks if a server has any messages waiting to be read.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_messages(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool ServerSocket.HasMessages { get }
+public static bool SplashKit.HasMessages(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_messages_on_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasMessages(svr: ServerSocket): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has New Connections [🔗](#has-new-connections)
+
+ 
+Checks if any of the servers have new connections.
+
+**Return Type**
+
+- `Boolean` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_new_connections()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.HasNewConnections();
+public static bool SplashKit.HasNewConnections();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_new_connections():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasNewConnections(): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Has Server [🔗](#has-server)
+
+ 
+Checks if there is a server with the indicated name.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool has_server(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.HasServer(string name);
+public static bool SplashKit.HasServer(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def has_server(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HasServer(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Hex Str To Ipv4 [🔗](#hex-str-to-ipv4)
+
+ 
+The supplied hexadecimal string is translated into ipv4 standard address string.
+Function handles hex strings starting with or without 0x.
+e.g. 127.0.0.1 from 0x7F000001
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_hex | `String` | hexadecimal ipv4 string to convert |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string hex_str_to_ipv4(const string &a_hex)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.HexStrToIpv4(string aHex);
+public static string SplashKit.HexStrToIpv4(string aHex);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def hex_str_to_ipv4(a_hex):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HexStrToIpv4(const aHex: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Hex To Dec String [🔗](#hex-to-dec-string)
+
+ 
+The supplied hexadecimal string is converted into it's decimal representation
+e.g. 7F into 127
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_hex | `String` | hexadecimal string to convert |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string hex_to_dec_string(const string &a_hex)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.HexToDecString(string aHex);
+public static string SplashKit.HexToDecString(string aHex);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def hex_to_dec_string(a_hex):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function HexToDecString(const aHex: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Ipv4 To Dec [🔗](#ipv4-to-dec)
+
+ 
+Encodes the supplied ipv4 address string (in format X.X.X.X) into a single integer
+e.g. 127.0.0.1 into 2130706433
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_ip | `String` | ipv4 address to encode |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int ipv4_to_dec(const string &a_ip)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static uint Networking.Ipv4ToDec(string aIP);
+public static uint SplashKit.Ipv4ToDec(string aIP);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def ipv4_to_dec(a_ip):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Ipv4ToDec(const aIP: String): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Ipv4 To Hex [🔗](#ipv4-to-hex)
+
+ 
+Converts an ipv4 address into it's hexadecimal representation
+e.g. 0x7F000001 from 127.0.0.1
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_ip | `String` | ip address to convert |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string ipv4_to_hex(const string &a_ip)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.Ipv4ToHex(string aIP);
+public static string SplashKit.Ipv4ToHex(string aIP);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def ipv4_to_hex(a_ip):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Ipv4ToHex(const aIP: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Ipv4 To Str [🔗](#ipv4-to-str)
+
+ 
+Decodes the supplied unsigned 32 bit integer into it's ipv4 address form
+e.g. 2130706433 into 127.0.0.1
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| ip | unsigned int | integer to be decoded |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string ipv4_to_str(unsigned int ip)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.Ipv4ToStr(uint ip);
+public static string SplashKit.Ipv4ToStr(uint ip);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def ipv4_to_str(ip):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Ipv4ToStr(ip: Cardinal): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Connection Open [🧬](#group-is-connection-open)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Is Connection Open** (con: connection )](/components/networking/#is-connection-open--1)
+- [**Is Connection Open** (name: string )](/components/networking/#is-connection-open--2)
+
+:::
+
+### Is Connection Open [🤖](#is-connection-open--1) 
+Checks if the connection currently is open.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| con | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_connection_open(connection con)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Connection.IsOpen { get }
+public static bool SplashKit.IsConnectionOpen(Connection con);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_connection_open(con):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsConnectionOpen(con: Connection): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Is Connection Open [🤖](#is-connection-open--2) 
+Checks if the connection with the supplied name currently is open.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_connection_open(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.IsConnectionOpen(string name);
+public static bool SplashKit.IsConnectionOpen(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_connection_open_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsConnectionOpen(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Last Connection [🧬](#group-last-connection)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Last Connection** (name: string )](/components/networking/#last-connection--1)
+- [**Last Connection** (server: server_socket )](/components/networking/#last-connection--2)
+
+:::
+
+### Last Connection [🤖](#last-connection--1) 
+Gets the last client that connected to a server.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection last_connection(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection Networking.LastConnection(string name);
+public static Connection SplashKit.LastConnection(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def last_connection_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LastConnection(const name: String): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Last Connection [🤖](#last-connection--2) 
+Gets the last client that connected to a server.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection last_connection(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Connection ServerSocket.LastConnection { get }
+public static Connection SplashKit.LastConnection(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def last_connection(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LastConnection(server: ServerSocket): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Connection [🔗](#message-connection)
+
+ 
+Returns the connection that sent a message.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection message_connection(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection Networking.MessageConnection(Message msg);
+public static Connection SplashKit.MessageConnection(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_connection(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageConnection(msg: Message): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Count [🧬](#group-message-count)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Message Count** (svr: server_socket )](/components/networking/#message-count--1)
+- [**Message Count** (a_connection: connection )](/components/networking/#message-count--2)
+- [**Message Count** (name: string )](/components/networking/#message-count--3)
+
+:::
+
+### Message Count [🤖](#message-count--1) 
+Returns the number of messages on a server.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int message_count(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public uint ServerSocket.MessageCount { get }
+public static uint SplashKit.MessageCount(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_count_on_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageCount(svr: ServerSocket): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Message Count [🤖](#message-count--2) 
+Returns the number of messages on a connection.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int message_count(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public uint Connection.MessageCount { get }
+public static uint SplashKit.MessageCount(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_count_on_connection(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageCount(aConnection: Connection): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Message Count [🤖](#message-count--3) 
+Returns the number of messages on a server or connection.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server or connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int message_count(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static uint Networking.MessageCount(string name);
+public static uint SplashKit.MessageCount(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_count_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageCount(const name: String): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Data [🔗](#message-data)
+
+ 
+Gets the body of a message as a string.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string message_data(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string Message.Data { get }
+public static string SplashKit.MessageData(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_data(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageData(msg: Message): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Data Bytes [🔗](#message-data-bytes)
+
+ 
+Gets the body of a message as a list of bytes.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<int8_t> message_data_bytes(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public List<byte> Message.DataBytes { get }
+public static List<byte> SplashKit.MessageDataBytes(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_data_bytes(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageDataBytes(msg: Message): ArrayOfChar`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Host [🔗](#message-host)
+
+ 
+Returns the host who made the message.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string message_host(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string Message.Host { get }
+public static string SplashKit.MessageHost(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_host(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageHost(msg: Message): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Port [🔗](#message-port)
+
+ 
+Returns the port used to send a message.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned short message_port(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public ushort Message.Port { get }
+public static ushort SplashKit.MessagePort(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_port(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessagePort(msg: Message): Word`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Message Protocol [🔗](#message-protocol)
+
+ 
+Returns the protocol used to send a message.
+
+**Return Type**
+
+- [`Connection Type`](/components/networking/#connection-type) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| msg | [`Message`](/components/networking/#message) | The message to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection_type message_protocol(message msg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public ConnectionType Message.Protocol { get }
+public static ConnectionType SplashKit.MessageProtocol(Message msg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def message_protocol(msg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MessageProtocol(msg: Message): ConnectionType`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## My Ip [🔗](#my-ip)
+
+ 
+Returns the ipv4 string of the localhost loopback for the current computer.
+
+**Return Type**
+
+- `String` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string my_ip()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.MyIP();
+public static string SplashKit.MyIP();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def my_ip():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MyIP(): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Name For Connection [🔗](#name-for-connection)
+
+ 
+Returns the name SplashKit would use for a connection made to a server
+from a host to a port.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| host | `String` | The host name |
+| port | unsigned int | The port |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string name_for_connection(const string host, const unsigned int port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.NameForConnection(string host, uint port);
+public static string SplashKit.NameForConnection(string host, uint port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def name_for_connection(host, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function NameForConnection(host: String; port: Cardinal): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## New Connection Count [🔗](#new-connection-count)
+
+ 
+Get the number of new connections made to the server.
+The count will increase as the server accepts new connections.
+The count decreases each time you fetch a new connection, or
+can be set to 0 if you reset the new connection count.
+
+**Return Type**
+
+- `Integer` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int new_connection_count(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public int ServerSocket.NewConnectionCount { get }
+public static int SplashKit.NewConnectionCount(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def new_connection_count(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function NewConnectionCount(server: ServerSocket): Integer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Open Connection [🧬](#group-open-connection)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Open Connection** (name: string, host: string, port: unsigned short )](/components/networking/#open-connection--1)
+- [**Open Connection** (name: string, host: string, port: unsigned short, protocol: connection_type )](/components/networking/#open-connection--2)
+
+:::
+
+### Open Connection [🤖](#open-connection--1) 
+Opens a TCP connection to a server using the supplied details.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name for the connection |
+| host | `String` | The address of the server |
+| port | unsigned short | The server's port |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection open_connection(const string &name, const string &host, unsigned short port)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection SplashKit.OpenConnection(string name, string host, ushort port);
+public Connection(string name, string host, ushort port);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def open_connection(name, host, port):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function OpenConnection(const name: String; const host: String; port: Word): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Open Connection [🤖](#open-connection--2) 
+Opens a connection to a server using the supplied details.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name for the connection |
+| host | `String` | The address of the server |
+| port | unsigned short | The server's port |
+| protocol | [`Connection Type`](/components/networking/#connection-type) | The protocol used to connect to the server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection open_connection(const string &name, const string &host, unsigned short port, connection_type protocol)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection SplashKit.OpenConnection(string name, string host, ushort port, ConnectionType protocol);
+public Connection(string name, string host, ushort port, ConnectionType protocol);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def open_connection_with_protocol(name, host, port, protocol):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function OpenConnection(const name: String; const host: String; port: Word; protocol: ConnectionType): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Read Message [🧬](#group-read-message)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Read Message** ()](/components/networking/#read-message--1)
+- [**Read Message** (a_connection: connection )](/components/networking/#read-message--2)
+- [**Read Message** (name: string )](/components/networking/#read-message--3)
+- [**Read Message** (svr: server_socket )](/components/networking/#read-message--4)
+
+:::
+
+### Read Message [🤖](#read-message--1) 
+Read a message from the network (from a server or connection).
+
+**Return Type**
+
+- [`Message`](/components/networking/#message) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`message read_message()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Message Networking.ReadMessage();
+public static Message SplashKit.ReadMessage();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessage(): Message`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Read Message [🤖](#read-message--2) 
+Reads the first message from the connection.
+
+**Return Type**
+
+- [`Message`](/components/networking/#message) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | A connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`message read_message(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Message Connection.ReadMessage();
+public static Message SplashKit.ReadMessage(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_from_connection(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessage(aConnection: Connection): Message`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Read Message [🤖](#read-message--3) 
+Reads the first message from a connection or server.
+
+**Return Type**
+
+- [`Message`](/components/networking/#message) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of a connection or server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`message read_message(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Message Networking.ReadMessage(string name);
+public static Message SplashKit.ReadMessage(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessage(const name: String): Message`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Read Message [🤖](#read-message--4) 
+Reads the first message from the server.
+
+**Return Type**
+
+- [`Message`](/components/networking/#message) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | A server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`message read_message(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Message ServerSocket.ReadMessage();
+public static Message SplashKit.ReadMessage(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_from_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessage(svr: ServerSocket): Message`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Read Message Data [🧬](#group-read-message-data)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Read Message Data** (name: string )](/components/networking/#read-message-data--1)
+- [**Read Message Data** (a_connection: connection )](/components/networking/#read-message-data--2)
+- [**Read Message Data** (svr: server_socket )](/components/networking/#read-message-data--3)
+
+:::
+
+### Read Message Data [🤖](#read-message-data--1) 
+Read message data from a connection or server.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection or server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string read_message_data(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Networking.ReadMessageData(string name);
+public static string SplashKit.ReadMessageData(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_data_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessageData(const name: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Read Message Data [🤖](#read-message-data--2) 
+Read message data from a connection.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string read_message_data(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string Connection.ReadMessageData();
+public static string SplashKit.ReadMessageData(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_data_from_connection(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessageData(aConnection: Connection): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Read Message Data [🤖](#read-message-data--3) 
+Read message data from a server.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| svr | [`Server Socket`](/components/networking/#server-socket) | The server |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string read_message_data(server_socket svr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string ServerSocket.ReadMessageData();
+public static string SplashKit.ReadMessageData(ServerSocket svr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def read_message_data_from_server(svr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ReadMessageData(svr: ServerSocket): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Reconnect [🧬](#group-reconnect)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Reconnect** (a_connection: connection )](/components/networking/#reconnect--1)
+- [**Reconnect** (name: string )](/components/networking/#reconnect--2)
+
+:::
+
+### Reconnect [🤖](#reconnect--1) 
+Attempt to reconnect the connection.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection to reconnect |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void reconnect(connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Connection.Reconnect();
+public static void SplashKit.Reconnect(Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def reconnect(a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure Reconnect(aConnection: Connection)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Reconnect [🤖](#reconnect--2) 
+Attempt to reconnect the connection.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the connection to reconnect. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void reconnect(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.Reconnect(string name);
+public static void SplashKit.Reconnect(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def reconnect_from_name(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure Reconnect(const name: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Release All Connections [🔗](#release-all-connections)
+
+ 
+Close and release the resources used by all of the connections.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void release_all_connections()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.ReleaseAllConnections();
+public static void SplashKit.ReleaseAllConnections();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def release_all_connections():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ReleaseAllConnections()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Reset New Connection Count [🔗](#reset-new-connection-count)
+
+ 
+Allows you to reset the new connection count to 0.
+(The connections are kept)
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void reset_new_connection_count(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void ServerSocket.ResetNewConnectionCount();
+public static void SplashKit.ResetNewConnectionCount(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def reset_new_connection_count(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ResetNewConnectionCount(server: ServerSocket)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Retrieve Connection [🧬](#group-retrieve-connection)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Retrieve Connection** (name: string, idx: int )](/components/networking/#retrieve-connection--1)
+- [**Retrieve Connection** (server: server_socket, idx: int )](/components/networking/#retrieve-connection--2)
+
+:::
+
+### Retrieve Connection [🤖](#retrieve-connection--1) 
+Get a connection from the server.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server |
+| idx | `Integer` | The index of the connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection retrieve_connection(const string &name, int idx)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Connection Networking.RetrieveConnection(string name, int idx);
+public static Connection SplashKit.RetrieveConnection(string name, int idx);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def retrieve_connection_named(name, idx):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RetrieveConnection(const name: String; idx: Integer): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Retrieve Connection [🤖](#retrieve-connection--2) 
+Get a connection from the server.
+
+**Return Type**
+
+- [`Connection`](/components/networking/#connection) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server |
+| idx | `Integer` | The index of the connection |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`connection retrieve_connection(server_socket server, int idx)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Connection ServerSocket.RetrieveConnection(int idx);
+public static Connection SplashKit.RetrieveConnection(ServerSocket server, int idx);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def retrieve_connection(server, idx):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RetrieveConnection(server: ServerSocket; idx: Integer): Connection`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Send Message To [🧬](#group-send-message-to)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Send Message To** (a_msg: string, a_connection: connection )](/components/networking/#send-message-to--1)
+- [**Send Message To** (a_msg: string, name: string )](/components/networking/#send-message-to--2)
+
+:::
+
+### Send Message To [🤖](#send-message-to--1) 
+Send a message to the connection.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_msg | `String` | The message to send |
+| a_connection | [`Connection`](/components/networking/#connection) | The connection to send the message to |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool send_message_to(const string &a_msg, connection a_connection)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Connection.SendMessageTo(string aMsg);
+public static bool SplashKit.SendMessageTo(string aMsg, Connection aConnection);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_message_to_connection(a_msg, a_connection):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SendMessageTo(const aMsg: String; aConnection: Connection): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Send Message To [🤖](#send-message-to--2) 
+Send a message to the connection with the given name.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| a_msg | `String` | The message to send |
+| name | `String` | The name of the connection to send the message to |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool send_message_to(const string &a_msg, const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.SendMessageTo(string aMsg, string name);
+public static bool SplashKit.SendMessageTo(string aMsg, string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def send_message_to_name(a_msg, name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SendMessageTo(const aMsg: String; const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Server Has New Connection [🧬](#group-server-has-new-connection)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Server Has New Connection** (name: string )](/components/networking/#server-has-new-connection--1)
+- [**Server Has New Connection** (server: server_socket )](/components/networking/#server-has-new-connection--2)
+
+:::
+
+### Server Has New Connection [🤖](#server-has-new-connection--1) 
+Checks of there are new connections waiting for a server.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool server_has_new_connection(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Networking.ServerHasNewConnection(string name);
+public static bool SplashKit.ServerHasNewConnection(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def server_has_new_connection_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ServerHasNewConnection(const name: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Server Has New Connection [🤖](#server-has-new-connection--2) 
+Checks of there are new connections waiting for a server.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| server | [`Server Socket`](/components/networking/#server-socket) | The server to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool server_has_new_connection(server_socket server)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool ServerSocket.HasNewConnections { get }
+public static bool SplashKit.ServerHasNewConnection(ServerSocket server);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def server_has_new_connection(server):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ServerHasNewConnection(server: ServerSocket): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Server Named [🔗](#server-named)
+
+ 
+Gets the server with the indicated name.
+
+**Return Type**
+
+- [`Server Socket`](/components/networking/#server-socket) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| name | `String` | The name of the server to get |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`server_socket server_named(const string &name)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static ServerSocket Networking.ServerNamed(string name);
+public static ServerSocket SplashKit.ServerNamed(string name);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def server_named(name):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ServerNamed(const name: String): ServerSocket`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Udp Packet Size [🔗](#set-udp-packet-size)
+
+ 
+Change the size of the UDP packets.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| udp_packet_size | unsigned int | The new packet size. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_udp_packet_size(unsigned int udp_packet_size)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Networking.UDPPacketSize { set }
+public static void SplashKit.SetUDPPacketSize(uint udpPacketSize);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_udp_packet_size(udp_packet_size):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetUDPPacketSize(udpPacketSize: Cardinal)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Udp Packet Size [🔗](#udp-packet-size)
+
+ 
+Returns the size SplashKit is using for UDP packets.
+
+**Return Type**
+
+- undefined 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`unsigned int udp_packet_size()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static uint Networking.UDPPacketSize { get }
+public static uint SplashKit.UDPPacketSize();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def udp_packet_size():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function UDPPacketSize(): Cardinal`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
 
 ## Types
 ##
 
-## Connection
-## Connection Type
-## HTTP Method
-## HTTP Request
-## HTTP Response
-## Message
-## Server Socket
-## Web Server
+## Connection [🧾](#connection)
+A connection represents the communication channel from a client going to a server. This can be used for the client and the server to send and receive messages.
 
+---
+
+## Connection Type [🧾](#connection-type)
+
+The kind of protocol used for a server or connection.
+
+**Constants**
+
+| Name    | Description                                                                                             |
+| ------- | ------------------------------------------------------------------------------------------------------- |
+| Tcp     | Uses the TCP protocol. SplashKit can send messages of any size, and repackage it from you at the other end. Messages are reliably transferred.                     |
+| Udp     | Uses the UDP protocol. SplashKit will send messages of up to 1024 bytes (by default). You need to handle packaging anything larger than this.                          |
+| Unknown | The protocol is unknown, usually due to the connection or server being invalid or closed.              |
+
+---
+
+
+## HTTP Method [🧾](#http-method)
+
+The method token is used to indicate the kind of action to be performed on the server. See [W3 specifications](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html).
+
+**Constants**
+
+| Name                 | Description                    |
+| -------------------- | ------------------------------ |
+| HTTP GET Method      | A get method                   |
+| HTTP POST Method     | A post method                  |
+| HTTP PUT Method      | A put method                   |
+| HTTP DELETE Method   | A delete method                |
+| HTTP Options Method  | An options method              |
+| HTTP Trace Method    | A trace method                 |
+| Unknown HTTP Method  | A method not recognized by SplashKit |
+
+---
+
+
+## HTTP Request [🧾](#http-request)
+The request contains the details of the resource the user is requesting.
+
+---
+
+## HTTP Response [🧾](#http-response)
+A HTTP response is a resource that comes back from a HTTP request. This may be the text related to a web page, or the data related to a resource. Once you have used the response, you need to make sure to call [Free Response](/components/networking/#free-response).
+
+---
+
+## Message [🧾](#message)
+A message contains data that has been transferred between a client connection and a server (or visa versa).
+
+---
+
+## Server Socket [🧾](#server-socket)
+A server represents a network resource that clients can connect to. The server will receive messages from all of the client connections, and can be used to access the clients connected to the server.
+
+---
+
+## Web Server [🧾](#web-server)
+The web server is able to listen for incomming requests, and you can then provide the response.
+
+---

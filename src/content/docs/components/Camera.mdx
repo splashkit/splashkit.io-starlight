@@ -17,13 +17,13 @@ import { Code } from "astro/components";
 
 ## Camera Position [🔗](#camera-position)
 
+ 
 Returns the position of the camera in game coordinates. This will be the
 coordinate of the upper left corner of the screen.
 
 **Return Type**
 
-- [Point 2D](/components/types/#point-2d)
-
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Signatures**
 
@@ -46,13 +46,14 @@ public static Point2D SplashKit.CameraPosition();`} lang="csharp" />
 ---
 ## Camera X [🔗](#camera-x)
 
+ 
 Returns the x location of the camera in game coordinates. This represents
 the left most x value shown on the screen, with the right of the screen
 being at camera x + screen width.
 
 **Return Type**
 
-- `Double`
+- `Double` 
 
 **Signatures**
 
@@ -75,14 +76,14 @@ public static double SplashKit.CameraX();`} lang="csharp" />
 ---
 ## Camera Y [🔗](#camera-y)
 
+ 
 Returns the y location of the camera in game coordinates. This represents
 the stop most y value shown on the screen, with bottom of screen being
 at camera y + screen height.
 
 **Return Type**
 
-- `Double`
-
+- `Double` 
 
 **Signatures**
 
@@ -104,30 +105,30 @@ public static double SplashKit.CameraY();`} lang="csharp" />
 
 ---
 ## Center Camera On [🧬](#group-center-camera-on)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Center Camera On** (s: `Sprite`, offset: `Vector 2D`)](/components/camera/#center-camera-on--1)
+- [**Center Camera On** (s: sprite, offset: vector_2d )](/components/camera/#center-camera-on--1)
+- [**Center Camera On** (s: sprite, offset_x: double, offset_y: double )](/components/camera/#center-camera-on--2)
 
-- [**Center Camera On** (s: `Sprite`, offset_x: `Double`, offset_y: `Double`)](/components/camera/#center-camera-on--2)
 :::
----
 
-### Center Camera On [🤖](#center-camera-on--1)
-
+### Center Camera On [🤖](#center-camera-on--1) 
 Set the camera view to be centered over the specific sprite. The offset
 vector allows you to move the sprite from the direct center of the screen.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| s | [Sprite](/components/sprites/#sprite) | The sprite to track. |
-| offset | [Vector 2D](/components/types/#vector-2d) | The amount to offset the camera, allowing you to position
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to track. |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The amount to offset the camera, allowing you to position
 the sprite away from the center of the screen. |
 
 **Signatures**
@@ -149,21 +150,19 @@ public static void SplashKit.CenterCameraOn(Sprite s, Vector2D offset);`} lang="
 </Tabs>
 
 ---
-
-### Center Camera On [🤖](#center-camera-on--2)
-
+### Center Camera On [🤖](#center-camera-on--2) 
 Set the camera view to be centered over the specific sprite. The offset
 vector allows you to move the sprite from the direct center of the screen.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| s | [Sprite](/components/sprites/#sprite) | The sprite to track. |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to track. |
 | offset_x | `Double` | An additional offset added to the camera, allowing you to
 position the sprite offset from the center of the screen. |
 | offset_y | `Double` | An additional offset added to the camera, allowing you to
@@ -189,31 +188,30 @@ public static void SplashKit.CenterCameraOn(Sprite s, double offsetX, double off
 
 ---
 ## Move Camera By [🧬](#group-move-camera-by)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Move Camera By** (offset: `Vector 2D`)](/components/camera/#move-camera-by--1)
+- [**Move Camera By** (offset: vector_2d )](/components/camera/#move-camera-by--1)
+- [**Move Camera By** (dx: double, dy: double )](/components/camera/#move-camera-by--2)
 
-- [**Move Camera By** (dx: `Double`, dy: `Double`)](/components/camera/#move-camera-by--2)
 :::
----
 
-
-### Move Camera By [🤖](#move-camera-by--1)
-
+### Move Camera By [🤖](#move-camera-by--1) 
 Move the camera (offset its world x and y values) using the specified
 vector. For example, if you move the camera by the same speed vector of
 a sprite the camera will "track" (be locked on to) the sprite as it moves.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| offset | [Vector 2D](/components/types/#vector-2d) | The amount to move the camera. |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The amount to move the camera. |
 
 **Signatures**
 
@@ -234,14 +232,13 @@ public static void SplashKit.MoveCameraBy(Vector2D offset);`} lang="csharp" />
 </Tabs>
 
 ---
-### Move Camera By [🤖](#move-camera-by--2)
-
+### Move Camera By [🤖](#move-camera-by--2) 
 Move the camera (offset its world x and y values) using the specified
 dx (change in x) and dy (change in x) values.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -270,30 +267,29 @@ public static void SplashKit.MoveCameraBy(double dx, double dy);`} lang="csharp"
 
 ---
 ## Move Camera To [🧬](#group-move-camera-to)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Move Camera To** (pt: `Point 2D`)](/components/camera/#move-camera-to--1)
+- [**Move Camera To** (pt: point_2d )](/components/camera/#move-camera-to--1)
+- [**Move Camera To** (x: double, y: double )](/components/camera/#move-camera-to--2)
 
-- [**Move Camera To** (x: `Double`, y: `Double`)](/components/camera/#move-camera-to--2)
 :::
----
 
-
-### Move Camera To [🤖](#move-camera-to--1)
-
+### Move Camera To [🤖](#move-camera-to--1) 
 Move the camera view (screen top left) to a specified point in the world.
 This will be the new top left corner of the screen.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| pt | [Point 2D](/components/types/#point-2d) | The new camera location |
+| pt | [`Point 2D`](/components/types/#point-2d) | The new camera location |
 
 **Signatures**
 
@@ -314,14 +310,13 @@ public static void SplashKit.MoveCameraTo(Point2D pt);`} lang="csharp" />
 </Tabs>
 
 ---
-## Move Camera To [🤖](#move-camera-to--2)
-
+### Move Camera To [🤖](#move-camera-to--2) 
 Move the camera view to a world location specified by the x and y values.
 This will be the new top left corner of the screen.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -351,18 +346,19 @@ public static void SplashKit.MoveCameraTo(double x, double y);`} lang="csharp" /
 ---
 ## Point In Window [🔗](#point-in-window)
 
+ 
 Tests if the point is in the window.
 
 **Return Type**
 
-- Boolean
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/types/#window) | The window to check |
-| pt | [Point 2D](/components/types/#point-2d) | The point to check. |
+| wind | window | The window to check |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to check. |
 
 **Signatures**
 
@@ -385,17 +381,18 @@ public static bool SplashKit.PointInWindow(Window wind, Point2D pt);`} lang="csh
 ---
 ## Point On Screen [🔗](#point-on-screen)
 
+ 
 Tests if the point is on the screen.
 
 **Return Type**
 
-- Boolean
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| pt | [Point 2D](/components/types/#point-2d) | The point to check. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to check. |
 
 **Signatures**
 
@@ -418,18 +415,19 @@ public static bool SplashKit.PointOnScreen(Point2D pt);`} lang="csharp" />
 ---
 ## Rect In Window [🔗](#rect-in-window)
 
+ 
 Tests if the rectangle is within the bounds of the window.
 
 **Return Type**
 
-- Boolean
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/types/#window) | The window to check |
-| rect | [Rectangle](/components/types/#rectangle) | The rectangle to check. |
+| wind | window | The window to check |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to check. |
 
 **Signatures**
 
@@ -452,17 +450,18 @@ public static bool SplashKit.RectInWindow(Window wind, Rectangle rect);`} lang="
 ---
 ## Rect On Screen [🔗](#rect-on-screen)
 
+ 
 Tests if the rectangle is on the screen.
 
 **Return Type**
 
-- Boolean
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| rect | [Rectangle](/components/types/#rectangle) | The rectangle to check. |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to check. |
 
 **Signatures**
 
@@ -485,12 +484,12 @@ public static bool SplashKit.RectOnScreen(Rectangle rect);`} lang="csharp" />
 ---
 ## Screen Center [🔗](#screen-center)
 
+ 
 Returns the center of the screen in world coordinates.
 
 **Return Type**
 
-- [Point 2D](/components/types/#point-2d)
-
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Signatures**
 
@@ -513,12 +512,12 @@ public static Point2D SplashKit.ScreenCenter();`} lang="csharp" />
 ---
 ## Screen Rectangle [🔗](#screen-rectangle)
 
+ 
 Returns a rectangle that represents the dimensions of the window.
 
 **Return Type**
 
-- [Rectangle](/components/types/#rectangle)
-
+- [`Rectangle`](/components/types/#rectangle) 
 
 **Signatures**
 
@@ -541,18 +540,19 @@ public static Rectangle SplashKit.ScreenRectangle();`} lang="csharp" />
 ---
 ## Set Camera Position [🔗](#set-camera-position)
 
+ 
 Change the position of the camera to a specified world coordinate. This
 will then be the new top left most position of the screen within the world.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| pos | [Point 2D](/components/types/#point-2d) | The new location of the camera. |
+| pos | [`Point 2D`](/components/types/#point-2d) | The new location of the camera. |
 
 **Signatures**
 
@@ -575,12 +575,13 @@ public static void SplashKit.SetCameraPosition(Point2D pos);`} lang="csharp" />
 ---
 ## Set Camera X [🔗](#set-camera-x)
 
+ 
 Change the X position of the camera to a specified world coordinate. This
 will then be the new left most position of the screen within the world.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -609,12 +610,13 @@ public static void SplashKit.SetCameraX(double x);`} lang="csharp" />
 ---
 ## Set Camera Y [🔗](#set-camera-y)
 
+ 
 Change the Y position of the camera to a specified world coordinate. This
 will then be the new top most position of the screen within the world.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -642,28 +644,28 @@ public static void SplashKit.SetCameraY(double y);`} lang="csharp" />
 
 ---
 ## To Screen [🧬](#group-to-screen)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**To Screen** (pt: `Point 2D`)](/components/camera/#to-screen--1)
+- [**To Screen** (pt: point_2d )](/components/camera/#to-screen--1)
+- [**To Screen** (rect: rectangle )](/components/camera/#to-screen--2)
 
-- [**To Screen** (rect: `Rectangle`)](/components/camera/#to-screen--2)
 :::
----
 
-### To Screen [🤖](#to-screen--1)
-
+### To Screen [🤖](#to-screen--1) 
 Convert the passed in world coordinates to screen coordinates.
 
 **Return Type**
 
-- [Point 2D](/components/types/#point-2d)
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| pt | [Point 2D](/components/types/#point-2d) | The point to convert - this should be in world coordinates. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to convert - this should be in world coordinates. |
 
 **Signatures**
 
@@ -684,19 +686,18 @@ public static Point2D SplashKit.ToScreen(Point2D pt);`} lang="csharp" />
 </Tabs>
 
 ---
-## To Screen [🤖](#to-screen--2)
-
+### To Screen [🤖](#to-screen--2) 
 Convert the rectangle in world coordinates to screen coordinates.
 
 **Return Type**
 
-- [Rectangle](/components/types/#rectangle)
+- [`Rectangle`](/components/types/#rectangle) 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| rect | [Rectangle](/components/types/#rectangle) | The rectangle to convert - this should be in world coordinates. |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to convert - this should be in world coordinates. |
 
 **Signatures**
 
@@ -719,12 +720,13 @@ public static Rectangle SplashKit.ToScreen(Rectangle rect);`} lang="csharp" />
 ---
 ## To Screen X [🔗](#to-screen-x)
 
+ 
 Translate a world x value to the current screen x value which is based on
 the camera position.
 
 **Return Type**
 
-- `Double`
+- `Double` 
 
 **Parameters**
 
@@ -753,11 +755,12 @@ public static double SplashKit.ToScreenX(double worldX);`} lang="csharp" />
 ---
 ## To Screen Y [🔗](#to-screen-y)
 
+ 
 Translate a world y value to the current screen y value set by the camera.
 
 **Return Type**
 
-- `Double`
+- `Double` 
 
 **Parameters**
 
@@ -786,17 +789,18 @@ public static double SplashKit.ToScreenY(double worldY);`} lang="csharp" />
 ---
 ## To World [🔗](#to-world)
 
+ 
 Converts the passed in point from screen coordinates to world coordinates.
 
 **Return Type**
 
-- [Point 2D](/components/types/#point-2d)
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| pt | [Point 2D](/components/types/#point-2d) | The point in screen coordinates. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point in screen coordinates. |
 
 **Signatures**
 
@@ -819,11 +823,12 @@ public static Point2D SplashKit.ToWorld(Point2D pt);`} lang="csharp" />
 ---
 ## To World X [🔗](#to-world-x)
 
+ 
 Translate a screen x value (based on the camera) to a world x value
 
 **Return Type**
 
-- `Double`
+- `Double` 
 
 **Parameters**
 
@@ -853,11 +858,12 @@ public static double SplashKit.ToWorldX(double screenX);`} lang="csharp" />
 ---
 ## To World Y [🔗](#to-world-y)
 
+ 
 Translate a screen y value (based on the camera) to a world y value
 
 **Return Type**
 
-- `Double`
+- `Double` 
 
 **Parameters**
 
@@ -887,12 +893,12 @@ public static double SplashKit.ToWorldY(double screenY);`} lang="csharp" />
 ---
 ## Vector World To Screen [🔗](#vector-world-to-screen)
 
+ 
 Returns a vector that can transform points from world to screen coordinates.
 
 **Return Type**
 
-- Vector 2D
-
+- [`Vector 2D`](/components/types/#vector-2d) 
 
 **Signatures**
 
@@ -915,18 +921,19 @@ public static Vector2D SplashKit.VectorWorldToScreen();`} lang="csharp" />
 ---
 ## Window Area [🔗](#window-area)
 
+ 
 Returns a rectangle that represents the dimensions of the window based
 on the camera.
 
 **Return Type**
 
-- [Rectangle](/components/types/#rectangle)
+- [`Rectangle`](/components/types/#rectangle) 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/types/#window) | The window |
+| wind | window | The window |
 
 **Signatures**
 

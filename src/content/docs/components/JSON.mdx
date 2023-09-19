@@ -12,33 +12,1163 @@ import { Code } from "astro/components";
 
 ## Functions
 ##
+## Create Json [🧬](#group-create-json)
 
-## Create JSON
-## Free All JSON
-## Free JSON
-## JSON Count Keys
-## JSON From Color
-## JSON From File
-## JSON From String
-## JSON Has Key
-## JSON Read Array
-## JSON Read Boolean
-## JSON Read Number
-## JSON Read Number As Double
-## JSON Read Number As Integer
-## JSON Read Object
-## JSON Read String
-## JSON Set Array
-## JSON Set Boolean
-## JSON Set Number
-## JSON Set Object
-## JSON Set String
-## JSON To Color
-## JSON To File
-## JSON To String
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Create Json** ()](/components/json/#create-json--1)
+- [**Create Json** (json_string: string )](/components/json/#create-json--2)
+
+:::
+
+### Create Json [🤖](#create-json--1) 
+The empty [`JSON`](/components/json/#json) object returned can be filled with data and read by the
+functions and procedures prefixed with `json_add_` and `json_read_`
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json create_json()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Json SplashKit.CreateJson();
+public Json();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def create_json():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CreateJson(): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Create Json [🤖](#create-json--2) 
+`string json_string` must be valid JSON.
+The [`JSON`](/components/json/#json) object returned can be filled with data and read by the functions
+and procedures prefixed with `json_add_` and `json_read_`
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| json_string | `String` | The JSON formatted `String` to be converted to a [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json create_json(string json_string)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Json SplashKit.CreateJson(string jsonString);
+public Json(string jsonString);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def create_json_from_string(json_string):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CreateJson(jsonString: String): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free All Json [🔗](#free-all-json)
+
+ 
+Releases all of the [`JSON`](/components/json/#json) objects which have been loaded.
+
+**Return Type**
+
+- `Void` 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_all_json()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Json.FreeAllJson();
+public static void SplashKit.FreeAllJson();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_all_json():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeAllJson()`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Free Json [🔗](#free-json)
+
+ 
+Frees the SplashKit resources associated with the [`JSON`](/components/json/#json) object.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object whose resources should be released. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void free_json(json j)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.FreeJson();
+public static void SplashKit.FreeJson(Json j);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def free_json(j):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure FreeJson(j: Json)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Count Keys [🔗](#json-count-keys)
+
+ 
+Returns the count of keys in the top-level [`JSON`](/components/json/#json) object.
+
+**Return Type**
+
+- `Integer` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object to count keys. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int json_count_keys(json j)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public int Json.JsonCountKeys();
+public static int SplashKit.JsonCountKeys(Json j);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_count_keys(j):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonCountKeys(j: Json): Integer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json From Color [🔗](#json-from-color)
+
+ 
+Converts a [`Color`](/components/types/#color) to a [`JSON`](/components/json/#json) object.
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| clr | [`Color`](/components/types/#color) | The [`Color`](/components/types/#color) to convert to [`JSON`](/components/json/#json). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json json_from_color(color clr)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Json Json.JsonFromColor(Color clr);
+public static Json SplashKit.JsonFromColor(Color clr);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_from_color(clr):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonFromColor(clr: Color): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json From File [🔗](#json-from-file)
+
+ 
+Reads a [`JSON`](/components/json/#json) object from a JSON string stored in `Resources/json/filename`
+and loads the data into the returned [`JSON`](/components/json/#json) object.
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| filename | `String` | The filename of the file to be written to `Resources/json/`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json json_from_file(const string &filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Json Json.JsonFromFile(string filename);
+public static Json SplashKit.JsonFromFile(string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_from_file(filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonFromFile(const filename: String): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json From String [🔗](#json-from-string)
+
+ 
+Reads a [`JSON`](/components/json/#json) object from a `String` in the JSON format.
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j_string | `String` | A `String` in the JSON format. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json json_from_string(const string &j_string)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Json Json.JsonFromString(string jString);
+public static Json SplashKit.JsonFromString(string jString);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_from_string(j_string):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonFromString(const jString: String): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Has Key [🔗](#json-has-key)
+
+ 
+Checks if the [`JSON`](/components/json/#json) object contains the given `String` key.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object to check for the given key. |
+| key | `String` | The `String` key to be checked. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool json_has_key(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Json.JsonHasKey(string key);
+public static bool SplashKit.JsonHasKey(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_has_key(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonHasKey(j: Json; key: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Array [🧬](#group-json-read-array)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--1)
+- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--2)
+- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--3)
+- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--4)
+
+:::
+
+### Json Read Array [🤖](#json-read-array--1) 
+Reads an array of `Double` values from the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+| out_result | vector | The array which will be filled with the data stored for `String` key. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_read_array(json j, string key, vector<double> &out_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonReadArray(string key, ref List<double> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<double> outResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_array_of_double(j, key, out_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfDouble)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Read Array [🤖](#json-read-array--2) 
+Reads an array of [`JSON`](/components/json/#json) object values from the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+| out_result | vector | The array which will be filled with the data stored for `String` key. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_read_array(json j, string key, vector<json> &out_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonReadArray(string key, ref List<Json> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<Json> outResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_array_of_json(j, key, out_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfJson)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Read Array [🤖](#json-read-array--3) 
+Reads an array of `String` values from the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+| out_result | vector | The array which will be filled with the data stored for `String` key. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_read_array(json j, string key, vector<string> &out_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonReadArray(string key, ref List<string> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<string> outResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_array_of_string(j, key, out_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfString)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Read Array [🤖](#json-read-array--4) 
+Reads an array of `Boolean` values from the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+| out_result | vector | The array which will be filled with the data stored for `String` key. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_read_array(json j, string key, vector<bool> &out_result)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonReadArray(string key, ref List<bool> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<bool> outResult);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_array_of_bool(j, key, out_result):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfBoolean)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Bool [🔗](#json-read-bool)
+
+ 
+Reads a `Boolean` value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool json_read_bool(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Json.JsonReadBool(string key);
+public static bool SplashKit.JsonReadBool(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_bool(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadBool(j: Json; key: String): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Number [🔗](#json-read-number)
+
+ 
+Reads a `Float` value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float json_read_number(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public float Json.JsonReadNumber(string key);
+public static float SplashKit.JsonReadNumber(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_number(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadNumber(j: Json; key: String): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Number As Double [🔗](#json-read-number-as-double)
+
+ 
+Reads a `Double` value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double json_read_number_as_double(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public double Json.JsonReadNumberAsDouble(string key);
+public static double SplashKit.JsonReadNumberAsDouble(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_number_as_double(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadNumberAsDouble(j: Json; key: String): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Number As Int [🔗](#json-read-number-as-int)
+
+ 
+Reads a `integer` value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Integer` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`int json_read_number_as_int(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public int Json.JsonReadNumberAsInt(string key);
+public static int SplashKit.JsonReadNumberAsInt(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_number_as_int(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadNumberAsInt(j: Json; key: String): Integer`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read Object [🔗](#json-read-object)
+
+ 
+Reads a [`JSON`](/components/json/#json) object value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- [`JSON`](/components/json/#json) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`json json_read_object(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public Json Json.JsonReadObject(string key);
+public static Json SplashKit.JsonReadObject(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_object(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadObject(j: Json; key: String): Json`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Read String [🔗](#json-read-string)
+
+ 
+Reads a `String` value from the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
+| key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string json_read_string(json j, string key)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public string Json.JsonReadString(string key);
+public static string SplashKit.JsonReadString(Json j, string key);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_read_string(j, key):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonReadString(j: Json; key: String): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Set Array [🧬](#group-json-set-array)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--1)
+- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--2)
+- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--3)
+- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--4)
+
+:::
+
+### Json Set Array [🤖](#json-set-array--1) 
+Adds an array of `String` values to the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_array(json j, string key, vector<string> value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetArray(string key, List<string> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<string> value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_array_of_string(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfString)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Set Array [🤖](#json-set-array--2) 
+Adds an array of `Double` values to the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_array(json j, string key, vector<double> value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetArray(string key, List<double> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<double> value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_array_of_double(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfDouble)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Set Array [🤖](#json-set-array--3) 
+Adds an array of `Boolean` values to the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_array(json j, string key, vector<bool> value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetArray(string key, List<bool> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<bool> value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_array_of_bool(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfBoolean)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Set Array [🤖](#json-set-array--4) 
+Adds an array of [`JSON`](/components/json/#json) object values to the [`JSON`](/components/json/#json) object for
+the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_array(json j, string key, vector<json> value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetArray(string key, List<Json> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<Json> value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_array_of_json(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfJson)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Set Bool [🔗](#json-set-bool)
+
+ 
+Adds a `Boolean` value to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | `Boolean` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_bool(json j, string key, bool value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetBool(string key, bool value);
+public static void SplashKit.JsonSetBool(Json j, string key, bool value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_bool(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetBool(j: Json; key: String; value: Boolean)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Set Number [🧬](#group-json-set-number)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Json Set Number** (j: json, key: string, value: int )](/components/json/#json-set-number--1)
+- [**Json Set Number** (j: json, key: string, value: double )](/components/json/#json-set-number--2)
+- [**Json Set Number** (j: json, key: string, value: float )](/components/json/#json-set-number--3)
+
+:::
+
+### Json Set Number [🤖](#json-set-number--1) 
+Adds an `Integer` value to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | `Integer` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_number(json j, string key, int value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetNumber(string key, int value);
+public static void SplashKit.JsonSetNumber(Json j, string key, int value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_number_integer(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Integer)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Set Number [🤖](#json-set-number--2) 
+Adds a `Double` value to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | `Double` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_number(json j, string key, double value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetNumber(string key, double value);
+public static void SplashKit.JsonSetNumber(Json j, string key, double value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_number_double(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Double)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Json Set Number [🤖](#json-set-number--3) 
+Adds a `Float` value to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | `Float` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_number(json j, string key, float value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetNumber(string key, float value);
+public static void SplashKit.JsonSetNumber(Json j, string key, float value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_number_float(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Single)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Set Object [🔗](#json-set-object)
+
+ 
+Adds a [`JSON`](/components/json/#json) object to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| obj | [`JSON`](/components/json/#json) | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_object(json j, string key, json obj)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetObject(string key, Json obj);
+public static void SplashKit.JsonSetObject(Json j, string key, Json obj);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_object(j, key, obj):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetObject(j: Json; key: String; obj: Json)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json Set String [🔗](#json-set-string)
+
+ 
+Adds a `String` value to the [`JSON`](/components/json/#json) object for the given `String` key.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
+| key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
+| value | `String` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_set_string(json j, string key, string value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public void Json.JsonSetString(string key, string value);
+public static void SplashKit.JsonSetString(Json j, string key, string value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_set_string(j, key, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonSetString(j: Json; key: String; value: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json To Color [🔗](#json-to-color)
+
+ 
+Converts a [`JSON`](/components/json/#json) object to a [`Color`](/components/types/#color) object.
+
+**Return Type**
+
+- [`Color`](/components/types/#color) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) to convert to a [`Color`](/components/types/#color). |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`color json_to_color(json j)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Color Json.JsonToColor(Json j);
+public static Color SplashKit.JsonToColor(Json j);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_to_color(j):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonToColor(j: Json): Color`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json To File [🔗](#json-to-file)
+
+ 
+Writes the [`JSON`](/components/json/#json) object to a JSON string stored in `Resources/json/filename`.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object to be written to file. |
+| filename | `String` | The filename of the file to be stored in `Resources/json/` |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void json_to_file(json j, const string &filename)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Json.JsonToFile(Json j, string filename);
+public static void SplashKit.JsonToFile(Json j, string filename);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_to_file(j, filename):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure JsonToFile(j: Json; const filename: String)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Json To String [🔗](#json-to-string)
+
+ 
+Converts and returns the [`JSON`](/components/json/#json) object as a `String`.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object to be converted to a `String`. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string json_to_string(json j)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Json.JsonToString(Json j);
+public static string SplashKit.JsonToString(Json j);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def json_to_string(j):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function JsonToString(j: Json): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
 
 ## Types
 ##
 
-## JSON
+## JSON [🧾](#json)
+The JSON type is used to refer to objects in the JSON format that can be manipulated by the SplashKit JSON functions and procedures.
 
+All JSON objects are:
+
+- created with `Create JSON()` or `Create JSON(string S)` or `JSON From String(string S)` or `JSON From File(json J)`
+
+- and must be released using `Free JSON()` (to release a specific json object) or `Free All JSON()` (to release all loadedjson objects).

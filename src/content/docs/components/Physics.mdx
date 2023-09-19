@@ -13,54 +13,2693 @@ import { Code } from "astro/components";
 ## Functions
 ##
 
-## Bitmap Circle Collision
-## Bitmap Collision
-## Bitmap Point Collision
-## Bitmap Rectangle Collision
-## Sprite Bitmap Collision
-## Sprite Collision
-## Sprite Point Collision
-## Sprite Rectangle Collision
-## Apply Matrix
-## Identity Matrix
-## Matrix Inverse
-## Matrix Multiply
-## Matrix To String
-## Rotation Matrix
-## Scale Matrix
-## Scale Rotate Translate Matrix
-## Translation Matrix
-## Angle Between
-## Dot Product
-## Is Zero Vector
-## Ray Intersection Point
-## Unit Vector
-## Vector Add
-## Vector Angle
-## Vector From Angle
-## Vector From Line
-## Vector From Point To Rect
-## Vector In Rect
-## Vector Invert
-## Vector Limit
-## Vector Magnitude
-## Vector Magnitude Sqared
-## Vector Multiply
-## Vector Normal
-## Vector Out Of Circle From Circle
-## Vector Out Of Circle From Point
-## Vector Out Of Rect From Circle
-## Vector Out Of Rect From Point
-## Vector Out Of Rect From Rect
-## Vector Point To Point
-## Vector Subtract
-## Vector To
-## Vector To String
-## Vectors Equal
-## Vectors Not Equal
+## Bitmap Circle Collision [🧬](#group-bitmap-circle-collision)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Bitmap Circle Collision** (bmp: bitmap, pt: point_2d, circ: circle )](/components/physics/#bitmap-circle-collision--1)
+- [**Bitmap Circle Collision** (bmp: bitmap, x: double, y: double, circ: circle )](/components/physics/#bitmap-circle-collision--2)
+- [**Bitmap Circle Collision** (bmp: bitmap, cell: int, translation: matrix_2d, circ: circle )](/components/physics/#bitmap-circle-collision--3)
+- [**Bitmap Circle Collision** (bmp: bitmap, cell: int, pt: point_2d, circ: circle )](/components/physics/#bitmap-circle-collision--4)
+- [**Bitmap Circle Collision** (bmp: bitmap, cell: int, x: double, y: double, circ: circle )](/components/physics/#bitmap-circle-collision--5)
+
+:::
+
+### Bitmap Circle Collision [🤖](#bitmap-circle-collision--1) 
+Tests if a bitmap drawn at `pt` would intersect with a circle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| pt | [`Point 2D`](/components/types/#point-2d) | The location where the bitmap is drawn |
+| circ | [`Circle`](/components/types/#circle) | The circle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_circle_collision(bitmap bmp, const point_2d &pt, const circle &circ)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCircleCollision(Point2D pt, Circle circ);
+public static bool SplashKit.BitmapCircleCollision(Bitmap bmp, Point2D pt, Circle circ);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_circle_collision_at_point(bmp, pt, circ):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCircleCollision(bmp: Bitmap; const pt: Point2D; const circ: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Circle Collision [🤖](#bitmap-circle-collision--2) 
+Tests if a bitmap drawn at `x`, `y` would intersect with a circle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+| circ | [`Circle`](/components/types/#circle) | The circle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_circle_collision(bitmap bmp, double x, double y, const circle &circ)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCircleCollision(double x, double y, Circle circ);
+public static bool SplashKit.BitmapCircleCollision(Bitmap bmp, double x, double y, Circle circ);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_circle_collision(bmp, x, y, circ):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCircleCollision(bmp: Bitmap; x: Double; y: Double; const circ: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Circle Collision [🤖](#bitmap-circle-collision--3) 
+Tests if a bitmap cell drawn using a passed in translation, will
+intersect with a circle. You can use this to detect collisions between
+bitmaps and circles.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| translation | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix used to transfrom the bitmap when drawing |
+| circ | [`Circle`](/components/types/#circle) | The circle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_circle_collision(bitmap bmp, int cell, const matrix_2d &translation, const circle &circ)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCircleCollision(int cell, Matrix2D translation, Circle circ);
+public static bool SplashKit.BitmapCircleCollision(Bitmap bmp, int cell, Matrix2D translation, Circle circ);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_circle_collision_for_cell_with_translation(bmp, cell, translation, circ):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCircleCollision(bmp: Bitmap; cell: Integer; const translation: Matrix2D; const circ: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Circle Collision [🤖](#bitmap-circle-collision--4) 
+Tests if a bitmap cell drawn at `pt` would intersect with a circle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| pt | [`Point 2D`](/components/types/#point-2d) | The location where the bitmap is drawn |
+| circ | [`Circle`](/components/types/#circle) | The circle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_circle_collision(bitmap bmp, int cell, const point_2d &pt, const circle &circ)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCircleCollision(int cell, Point2D pt, Circle circ);
+public static bool SplashKit.BitmapCircleCollision(Bitmap bmp, int cell, Point2D pt, Circle circ);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_circle_collision_for_cell_at_point(bmp, cell, pt, circ):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCircleCollision(bmp: Bitmap; cell: Integer; const pt: Point2D; const circ: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Circle Collision [🤖](#bitmap-circle-collision--5) 
+Tests if a bitmap cell drawn at `x`, `y` would intersect with a circle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+| circ | [`Circle`](/components/types/#circle) | The circle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_circle_collision(bitmap bmp, int cell, double x, double y, const circle &circ)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCircleCollision(int cell, double x, double y, Circle circ);
+public static bool SplashKit.BitmapCircleCollision(Bitmap bmp, int cell, double x, double y, Circle circ);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_circle_collision_for_cell(bmp, cell, x, y, circ):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCircleCollision(bmp: Bitmap; cell: Integer; x: Double; y: Double; const circ: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Bitmap Collision [🧬](#group-bitmap-collision)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Bitmap Collision** (bmp1: bitmap, x1: double, y1: double, bmp2: bitmap, x2: double, y2: double )](/components/physics/#bitmap-collision--1)
+- [**Bitmap Collision** (bmp1: bitmap, pt1: point_2d, bmp2: bitmap, pt2: point_2d )](/components/physics/#bitmap-collision--2)
+- [**Bitmap Collision** (bmp1: bitmap, cell1: int, matrix1: matrix_2d, bmp2: bitmap, cell2: int, matrix2: matrix_2d )](/components/physics/#bitmap-collision--3)
+- [**Bitmap Collision** (bmp1: bitmap, cell1: int, pt1: point_2d, bmp2: bitmap, cell2: int, pt2: point_2d )](/components/physics/#bitmap-collision--4)
+- [**Bitmap Collision** (bmp1: bitmap, cell1: int, x1: double, y1: double, bmp2: bitmap, cell2: int, x2: double, y2: double )](/components/physics/#bitmap-collision--5)
+
+:::
+
+### Bitmap Collision [🤖](#bitmap-collision--1) 
+Check if two bitmaps collide.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp1 | [`Bitmap`](/components/types/#bitmap) | The first bitmap |
+| x1 | `Double` | The x location where the first bitmap is drawn |
+| y1 | `Double` | The y location where the first bitmap is drawn |
+| bmp2 | [`Bitmap`](/components/types/#bitmap) | The second bitmap |
+| x2 | `Double` | The x location where the second bitmap is drawn |
+| y2 | `Double` | The y location where the second bitmap is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_collision(bitmap bmp1, double x1, double y1, bitmap bmp2, double x2, double y2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCollision(double x1, double y1, Bitmap bmp2, double x2, double y2);
+public static bool SplashKit.BitmapCollision(Bitmap bmp1, double x1, double y1, Bitmap bmp2, double x2, double y2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_collision(bmp1, x1, y1, bmp2, x2, y2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCollision(bmp1: Bitmap; x1: Double; y1: Double; bmp2: Bitmap; x2: Double; y2: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Collision [🤖](#bitmap-collision--2) 
+Check if two bitmaps collide.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp1 | [`Bitmap`](/components/types/#bitmap) | The first bitmap |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The point where bitmap 1 is drawn |
+| bmp2 | [`Bitmap`](/components/types/#bitmap) | The second bitmap |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The point where bitmap 2 is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_collision(bitmap bmp1, const point_2d &pt1, bitmap bmp2, const point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCollision(Point2D pt1, Bitmap bmp2, Point2D pt2);
+public static bool SplashKit.BitmapCollision(Bitmap bmp1, Point2D pt1, Bitmap bmp2, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_collision_at_points(bmp1, pt1, bmp2, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCollision(bmp1: Bitmap; const pt1: Point2D; bmp2: Bitmap; const pt2: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Collision [🤖](#bitmap-collision--3) 
+Check if two bitmaps collide, based on their cell and transform
+matricies.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp1 | [`Bitmap`](/components/types/#bitmap) | The first bitmap |
+| cell1 | `Integer` | The cell of the first bitmap. |
+| matrix1 | [`Matrix 2D`](/components/physics/#matrix-2d) | The transformation for the first matrix |
+| bmp2 | [`Bitmap`](/components/types/#bitmap) | The second bitmap |
+| cell2 | `Integer` | The cell of the second bitmap. |
+| matrix2 | [`Matrix 2D`](/components/physics/#matrix-2d) | The transformation for the second matrix |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_collision(bitmap bmp1, int cell1, const matrix_2d &matrix1, bitmap bmp2, int cell2, const matrix_2d &matrix2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCollision(int cell1, Matrix2D matrix1, Bitmap bmp2, int cell2, Matrix2D matrix2);
+public static bool SplashKit.BitmapCollision(Bitmap bmp1, int cell1, Matrix2D matrix1, Bitmap bmp2, int cell2, Matrix2D matrix2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_collision_for_cells_with_translations(bmp1, cell1, matrix1, bmp2, cell2, matrix2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCollision(bmp1: Bitmap; cell1: Integer; const matrix1: Matrix2D; bmp2: Bitmap; cell2: Integer; const matrix2: Matrix2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Collision [🤖](#bitmap-collision--4) 
+Check if two bitmaps collide.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp1 | [`Bitmap`](/components/types/#bitmap) | The first bitmap |
+| cell1 | `Integer` | The cell of the first bitmap. |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The point where bitmap 1 is drawn |
+| bmp2 | [`Bitmap`](/components/types/#bitmap) | The second bitmap |
+| cell2 | `Integer` | The cell of the second bitmap. |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The point where bitmap 2 is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_collision(bitmap bmp1, int cell1, const point_2d &pt1, bitmap bmp2, int cell2, const point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCollision(int cell1, Point2D pt1, Bitmap bmp2, int cell2, Point2D pt2);
+public static bool SplashKit.BitmapCollision(Bitmap bmp1, int cell1, Point2D pt1, Bitmap bmp2, int cell2, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_collision_for_cells_at_points(bmp1, cell1, pt1, bmp2, cell2, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCollision(bmp1: Bitmap; cell1: Integer; const pt1: Point2D; bmp2: Bitmap; cell2: Integer; const pt2: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Collision [🤖](#bitmap-collision--5) 
+Check if two bitmaps collide.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp1 | [`Bitmap`](/components/types/#bitmap) | The first bitmap |
+| cell1 | `Integer` | The cell of the first bitmap. |
+| x1 | `Double` | The x location where the first bitmap is drawn |
+| y1 | `Double` | The y location where the first bitmap is drawn |
+| bmp2 | [`Bitmap`](/components/types/#bitmap) | The second bitmap |
+| cell2 | `Integer` | The cell of the second bitmap. |
+| x2 | `Double` | The x location where the second bitmap is drawn |
+| y2 | `Double` | The y location where the second bitmap is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_collision(bitmap bmp1, int cell1, double x1, double y1, bitmap bmp2, int cell2, double x2, double y2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapCollision(int cell1, double x1, double y1, Bitmap bmp2, int cell2, double x2, double y2);
+public static bool SplashKit.BitmapCollision(Bitmap bmp1, int cell1, double x1, double y1, Bitmap bmp2, int cell2, double x2, double y2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_collision_for_cells(bmp1, cell1, x1, y1, bmp2, cell2, x2, y2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapCollision(bmp1: Bitmap; cell1: Integer; x1: Double; y1: Double; bmp2: Bitmap; cell2: Integer; x2: Double; y2: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Bitmap Point Collision [🧬](#group-bitmap-point-collision)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Bitmap Point Collision** (bmp: bitmap, translation: matrix_2d, pt: point_2d )](/components/physics/#bitmap-point-collision--1)
+- [**Bitmap Point Collision** (bmp: bitmap, bmp_pt: point_2d, pt: point_2d )](/components/physics/#bitmap-point-collision--2)
+- [**Bitmap Point Collision** (bmp: bitmap, bmp_x: double, bmp_y: double, x: double, y: double )](/components/physics/#bitmap-point-collision--3)
+- [**Bitmap Point Collision** (bmp: bitmap, cell: int, translation: matrix_2d, pt: point_2d )](/components/physics/#bitmap-point-collision--4)
+- [**Bitmap Point Collision** (bmp: bitmap, cell: int, bmp_pt: point_2d, pt: point_2d )](/components/physics/#bitmap-point-collision--5)
+- [**Bitmap Point Collision** (bmp: bitmap, cell: int, bmp_x: double, bmp_y: double, x: double, y: double )](/components/physics/#bitmap-point-collision--6)
+
+:::
+
+### Bitmap Point Collision [🤖](#bitmap-point-collision--1) 
+Tests if a bitmap drawn using the passed in translation matrix would draw a pixel
+at the passed in point. Use to check collisions between a point and a bitmap.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test. |
+| translation | [`Matrix 2D`](/components/physics/#matrix-2d) | The translation matrix that represents the position, scale,
+and rotation of the bitmap when it is drawn. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point in the resulting drawing that is being tested. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, const matrix_2d &translation, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(Matrix2D translation, Point2D pt);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, Matrix2D translation, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision_with_translation(bmp, translation, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; const translation: Matrix2D; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Point Collision [🤖](#bitmap-point-collision--2) 
+Tests if a bitmap drawn at the `bmp_pt` point would draw a pixel
+at point `pt`. Use to check collisions between a point and a bitmap.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test. |
+| bmp_pt | [`Point 2D`](/components/types/#point-2d) | The point where the bitmap is drawn. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point in the resulting drawing that is being tested. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, const point_2d &bmp_pt, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(Point2D bmpPt, Point2D pt);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, Point2D bmpPt, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision_at_point(bmp, bmp_pt, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; const bmpPt: Point2D; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Point Collision [🤖](#bitmap-point-collision--3) 
+Tests if a bitmap drawn at x,y would draw a pixel at the passed in point. Use 
+to check collisions between a point and a bitmap.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test. |
+| bmp_x | `Double` | The x location where the bitmap is drawn |
+| bmp_y | `Double` | The y location where the bitmap is drawn |
+| x | `Double` | The x location of the point to test |
+| y | `Double` | The y location of the point to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, double bmp_x, double bmp_y, double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(double bmpX, double bmpY, double x, double y);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, double bmpX, double bmpY, double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision(bmp, bmp_x, bmp_y, x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; bmpX: Double; bmpY: Double; x: Double; y: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Point Collision [🤖](#bitmap-point-collision--4) 
+Tests if a bitmap cell drawn using the passed in translation matrix would draw a pixel
+at the passed in point.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test. |
+| cell | `Integer` | The cell of the bitmap to check. |
+| translation | [`Matrix 2D`](/components/physics/#matrix-2d) | The translation matrix that represents the position, scale,
+and rotation of the bitmap when it is drawn. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point in the resulting drawing that is being tested. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, int cell, const matrix_2d &translation, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(int cell, Matrix2D translation, Point2D pt);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, int cell, Matrix2D translation, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision_for_cell_with_translation(bmp, cell, translation, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; cell: Integer; const translation: Matrix2D; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Point Collision [🤖](#bitmap-point-collision--5) 
+Tests if a cell of a bitmap drawn at x,y would draw a pixel at the passed in point. Use
+to check collisions between a point and a bitmap.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to test |
+| bmp_pt | [`Point 2D`](/components/types/#point-2d) | The point where the bitmap is drawn. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point in the resulting drawing that is being tested. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, int cell, const point_2d &bmp_pt, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(int cell, Point2D bmpPt, Point2D pt);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, int cell, Point2D bmpPt, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision_for_cell_at_point(bmp, cell, bmp_pt, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; cell: Integer; const bmpPt: Point2D; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Point Collision [🤖](#bitmap-point-collision--6) 
+Tests if a cell of a bitmap drawn at x,y would draw a pixel at the passed in point. Use
+to check collisions between a point and a bitmap.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to test |
+| bmp_x | `Double` | The x location where the bitmap is drawn |
+| bmp_y | `Double` | The y location where the bitmap is drawn |
+| x | `Double` | The x location of the point to test |
+| y | `Double` | The y location of the point to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_point_collision(bitmap bmp, int cell, double bmp_x, double bmp_y, double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapPointCollision(int cell, double bmpX, double bmpY, double x, double y);
+public static bool SplashKit.BitmapPointCollision(Bitmap bmp, int cell, double bmpX, double bmpY, double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_point_collision_for_cell(bmp, cell, bmp_x, bmp_y, x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapPointCollision(bmp: Bitmap; cell: Integer; bmpX: Double; bmpY: Double; x: Double; y: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Bitmap Rectangle Collision [🧬](#group-bitmap-rectangle-collision)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Bitmap Rectangle Collision** (bmp: bitmap, pt: point_2d, rect: rectangle )](/components/physics/#bitmap-rectangle-collision--1)
+- [**Bitmap Rectangle Collision** (bmp: bitmap, x: double, y: double, rect: rectangle )](/components/physics/#bitmap-rectangle-collision--2)
+- [**Bitmap Rectangle Collision** (bmp: bitmap, cell: int, translation: matrix_2d, rect: rectangle )](/components/physics/#bitmap-rectangle-collision--3)
+- [**Bitmap Rectangle Collision** (bmp: bitmap, cell: int, pt: point_2d, rect: rectangle )](/components/physics/#bitmap-rectangle-collision--4)
+- [**Bitmap Rectangle Collision** (bmp: bitmap, cell: int, x: double, y: double, rect: rectangle )](/components/physics/#bitmap-rectangle-collision--5)
+
+:::
+
+### Bitmap Rectangle Collision [🤖](#bitmap-rectangle-collision--1) 
+Tests if a bitmap drawn at `pt` would intersect with a rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| pt | [`Point 2D`](/components/types/#point-2d) | The location where the bitmap is drawn |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_rectangle_collision(bitmap bmp, const point_2d &pt, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapRectangleCollision(Point2D pt, Rectangle rect);
+public static bool SplashKit.BitmapRectangleCollision(Bitmap bmp, Point2D pt, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_rectangle_collision_at_point(bmp, pt, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapRectangleCollision(bmp: Bitmap; const pt: Point2D; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Rectangle Collision [🤖](#bitmap-rectangle-collision--2) 
+Tests if a bitmap drawn at `x`, `y` would intersect with a rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_rectangle_collision(bitmap bmp, double x, double y, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapRectangleCollision(double x, double y, Rectangle rect);
+public static bool SplashKit.BitmapRectangleCollision(Bitmap bmp, double x, double y, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_rectangle_collision(bmp, x, y, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapRectangleCollision(bmp: Bitmap; x: Double; y: Double; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Rectangle Collision [🤖](#bitmap-rectangle-collision--3) 
+Tests if a bitmap cell drawn using a passed in translation, will
+intersect with a rectangle. You can use this to detect collisions between
+bitmaps and rectangles.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| translation | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix used to transfrom the bitmap when drawing |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_rectangle_collision(bitmap bmp, int cell, const matrix_2d &translation, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapRectangleCollision(int cell, Matrix2D translation, Rectangle rect);
+public static bool SplashKit.BitmapRectangleCollision(Bitmap bmp, int cell, Matrix2D translation, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_rectangle_collision_for_cell_with_translation(bmp, cell, translation, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapRectangleCollision(bmp: Bitmap; cell: Integer; const translation: Matrix2D; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Rectangle Collision [🤖](#bitmap-rectangle-collision--4) 
+Tests if a bitmap cell drawn at `pt` would intersect with a rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| pt | [`Point 2D`](/components/types/#point-2d) | The location where the bitmap is drawn |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_rectangle_collision(bitmap bmp, int cell, const point_2d &pt, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapRectangleCollision(int cell, Point2D pt, Rectangle rect);
+public static bool SplashKit.BitmapRectangleCollision(Bitmap bmp, int cell, Point2D pt, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_rectangle_collision_for_cell_at_point(bmp, cell, pt, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapRectangleCollision(bmp: Bitmap; cell: Integer; const pt: Point2D; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Bitmap Rectangle Collision [🤖](#bitmap-rectangle-collision--5) 
+Tests if a cell of the bitmap drawn at `x`, `y` would intersect with a rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool bitmap_rectangle_collision(bitmap bmp, int cell, double x, double y, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Bitmap.BitmapRectangleCollision(int cell, double x, double y, Rectangle rect);
+public static bool SplashKit.BitmapRectangleCollision(Bitmap bmp, int cell, double x, double y, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def bitmap_rectangle_collision_for_cell(bmp, cell, x, y, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function BitmapRectangleCollision(bmp: Bitmap; cell: Integer; x: Double; y: Double; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Sprite Bitmap Collision [🧬](#group-sprite-bitmap-collision)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Sprite Bitmap Collision** (s: sprite, bmp: bitmap, x: double, y: double )](/components/physics/#sprite-bitmap-collision--1)
+- [**Sprite Bitmap Collision** (s: sprite, bmp: bitmap, cell: int, pt: point_2d )](/components/physics/#sprite-bitmap-collision--2)
+- [**Sprite Bitmap Collision** (s: sprite, bmp: bitmap, cell: int, x: double, y: double )](/components/physics/#sprite-bitmap-collision--3)
+
+:::
+
+### Sprite Bitmap Collision [🤖](#sprite-bitmap-collision--1) 
+Tests if a sprite will collide with a bitmap drawn at the indicated
+location.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to test |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_bitmap_collision(sprite s, bitmap bmp, double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpriteBitmapCollision(Bitmap bmp, double x, double y);
+public static bool SplashKit.SpriteBitmapCollision(Sprite s, Bitmap bmp, double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_bitmap_collision(s, bmp, x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpriteBitmapCollision(s: Sprite; bmp: Bitmap; x: Double; y: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Sprite Bitmap Collision [🤖](#sprite-bitmap-collision--2) 
+Tests if a sprite will collide with a bitmap drawn at the indicated
+location.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to test |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point where the bitmap is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_bitmap_collision(sprite s, bitmap bmp, int cell, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpriteBitmapCollision(Bitmap bmp, int cell, Point2D pt);
+public static bool SplashKit.SpriteBitmapCollision(Sprite s, Bitmap bmp, int cell, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_bitmap_collision_with_cell_at_point(s, bmp, cell, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpriteBitmapCollision(s: Sprite; bmp: Bitmap; cell: Integer; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Sprite Bitmap Collision [🤖](#sprite-bitmap-collision--3) 
+Tests if a sprite will collide with a bitmap drawn at the indicated
+location.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to test |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap to test |
+| cell | `Integer` | The cell of the bitmap to check |
+| x | `Double` | The x location where the bitmap is drawn |
+| y | `Double` | The y location where the bitmap is drawn |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_bitmap_collision(sprite s, bitmap bmp, int cell, double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpriteBitmapCollision(Bitmap bmp, int cell, double x, double y);
+public static bool SplashKit.SpriteBitmapCollision(Sprite s, Bitmap bmp, int cell, double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_bitmap_collision_with_cell(s, bmp, cell, x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpriteBitmapCollision(s: Sprite; bmp: Bitmap; cell: Integer; x: Double; y: Double): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Sprite Collision [🔗](#sprite-collision)
+
+ 
+Tests if two given sprites `s1` and `s2` are collided
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s1 | [`Sprite`](/components/sprites/#sprite) | the first [`Sprite`](/components/sprites/#sprite) to test |
+| s2 | [`Sprite`](/components/sprites/#sprite) | the second [`Sprite`](/components/sprites/#sprite) to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_collision(sprite s1, sprite s2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpriteCollision(Sprite s2);
+public static bool SplashKit.SpriteCollision(Sprite s1, Sprite s2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_collision(s1, s2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpriteCollision(s1: Sprite; s2: Sprite): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Sprite Point Collision [🔗](#sprite-point-collision)
+
+ 
+Tests if a sprite is drawn at a given point.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to test |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_point_collision(sprite s, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpritePointCollision(Point2D pt);
+public static bool SplashKit.SpritePointCollision(Sprite s, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_point_collision(s, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpritePointCollision(s: Sprite; const pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Sprite Rectangle Collision [🔗](#sprite-rectangle-collision)
+
+ 
+Tests if a sprite is drawn within an given area (rectangle).
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| s | [`Sprite`](/components/sprites/#sprite) | The sprite to test |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool sprite_rectangle_collision(sprite s, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public bool Sprite.SpriteRectangleCollision(Rectangle rect);
+public static bool SplashKit.SpriteRectangleCollision(Sprite s, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sprite_rectangle_collision(s, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SpriteRectangleCollision(s: Sprite; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Apply Matrix [🧬](#group-apply-matrix)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Apply Matrix** (matrix: matrix_2d, q: quad )](/components/physics/#apply-matrix--1)
+- [**Apply Matrix** (m: matrix_2d, tri: triangle )](/components/physics/#apply-matrix--2)
+
+:::
+
+### Apply Matrix [🤖](#apply-matrix--1) 
+Use a matrix to transform all of the points in a quad.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| matrix | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix with the transformations needed. |
+| q | [`Quad`](/components/types/#quad) | The quad to transform. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void apply_matrix(const matrix_2d &matrix, quad &q)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Matrix2D.ApplyMatrix(Matrix2D matrix, ref Quad q);
+public static void SplashKit.ApplyMatrix(Matrix2D matrix, ref Quad q);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def apply_matrix_to_quad(matrix, q):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ApplyMatrix(const matrix: Matrix2D; var q: Quad)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Apply Matrix [🤖](#apply-matrix--2) 
+Use a matrix to transform all of the points in a triangle.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| m | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix to be applied to the triangle. |
+| tri | [`Triangle`](/components/types/#triangle) | The triangle to tranform. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void apply_matrix(const matrix_2d &m, triangle &tri)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Matrix2D.ApplyMatrix(Matrix2D m, ref Triangle tri);
+public static void SplashKit.ApplyMatrix(Matrix2D m, ref Triangle tri);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def apply_matrix_to_triangle(m, tri):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure ApplyMatrix(const m: Matrix2D; var tri: Triangle)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Identity Matrix [🔗](#identity-matrix)
+
+ 
+Returns the identity matrix. When a matrix_2d or Vector is multiplied by
+the identity matrix the result is the original matrix or vector.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d identity_matrix()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.IdentityMatrix();
+public static Matrix2D SplashKit.IdentityMatrix();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def identity_matrix():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IdentityMatrix(): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Matrix Inverse [🔗](#matrix-inverse)
+
+ 
+Calculate the inverse of a matrix.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| m | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix to invert. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d matrix_inverse(const matrix_2d &m)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.MatrixInverse(Matrix2D m);
+public static Matrix2D SplashKit.MatrixInverse(Matrix2D m);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def matrix_inverse(m):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MatrixInverse(const m: Matrix2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Matrix Multiply [🧬](#group-matrix-multiply)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Matrix Multiply** (m: matrix_2d, pt: point_2d )](/components/physics/#matrix-multiply--1)
+- [**Matrix Multiply** (m1: matrix_2d, m2: matrix_2d )](/components/physics/#matrix-multiply--2)
+- [**Matrix Multiply** (m: matrix_2d, v: vector_2d )](/components/physics/#matrix-multiply--3)
+
+:::
+
+### Matrix Multiply [🤖](#matrix-multiply--1) 
+Multiplies the [`Point 2D`](/components/types/#point-2d) parameter `v with the [`Matrix 2D`](/components/physics/#matrix-2d) `m and
+returns the result as a [`Point 2D`](/components/types/#point-2d). Use this to transform the vector with
+the matrix (to apply scaling, rotation or translation effects).
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| m | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix with the transformation to apply. |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to be transformed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d matrix_multiply(const matrix_2d &m, const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Matrix2D.MatrixMultiply(Matrix2D m, Point2D pt);
+public static Point2D SplashKit.MatrixMultiply(Matrix2D m, Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def matrix_multiply_point(m, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MatrixMultiply(const m: Matrix2D; const pt: Point2D): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Matrix Multiply [🤖](#matrix-multiply--2) 
+Multiplies the two [`Matrix 2D`](/components/physics/#matrix-2d) parameters, `m1` by `m2`, and returns
+the result as a new [`Matrix 2D`](/components/physics/#matrix-2d). Use this to combine the effects to two
+matrix transformations.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| m1 | [`Matrix 2D`](/components/physics/#matrix-2d) | The first matrix |
+| m2 | [`Matrix 2D`](/components/physics/#matrix-2d) | The second matrix |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d matrix_multiply(const matrix_2d &m1, const matrix_2d &m2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.MatrixMultiply(Matrix2D m1, Matrix2D m2);
+public static Matrix2D SplashKit.MatrixMultiply(Matrix2D m1, Matrix2D m2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def matrix_multiply_matrix(m1, m2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MatrixMultiply(const m1: Matrix2D; const m2: Matrix2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Matrix Multiply [🤖](#matrix-multiply--3) 
+Multiplies the `Vector` parameter `v` with the [`Matrix 2D`](/components/physics/#matrix-2d) `m` and
+returns the result as a `Vector`. Use this to transform the vector with
+the matrix (to apply scaling, rotation or translation effects).
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| m | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix with the transformation to apply. |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector to be transformed. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d matrix_multiply(const matrix_2d &m, const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Matrix2D.MatrixMultiply(Matrix2D m, Vector2D v);
+public static Vector2D SplashKit.MatrixMultiply(Matrix2D m, Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def matrix_multiply_vector(m, v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MatrixMultiply(const m: Matrix2D; const v: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Matrix To String [🔗](#matrix-to-string)
+
+ 
+This function returns a string representation of a Matrix.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| matrix | [`Matrix 2D`](/components/physics/#matrix-2d) | The matrix to convert to a string. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string matrix_to_string(const matrix_2d &matrix)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Matrix2D.MatrixToString(Matrix2D matrix);
+public static string SplashKit.MatrixToString(Matrix2D matrix);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def matrix_to_string(matrix):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function MatrixToString(const matrix: Matrix2D): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rotation Matrix [🔗](#rotation-matrix)
+
+ 
+Returns a rotation matrix that rotates 2d points by the angle.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| deg | `Double` | The amount to rotate points |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d rotation_matrix(double deg)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.RotationMatrix(double deg);
+public static Matrix2D SplashKit.RotationMatrix(double deg);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rotation_matrix(deg):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RotationMatrix(deg: Double): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Scale Matrix [🧬](#group-scale-matrix)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Scale Matrix** (scale: point_2d )](/components/physics/#scale-matrix--1)
+- [**Scale Matrix** (scale: vector_2d )](/components/physics/#scale-matrix--2)
+- [**Scale Matrix** (scale: double )](/components/physics/#scale-matrix--3)
+
+:::
+
+### Scale Matrix [🤖](#scale-matrix--1) 
+Create a scale matrix that scales x and y to
+different degrees.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| scale | [`Point 2D`](/components/types/#point-2d) | The amount to scale, with separate x and y components. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d scale_matrix(const point_2d &scale)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.ScaleMatrix(Point2D scale);
+public static Matrix2D SplashKit.ScaleMatrix(Point2D scale);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def scale_matrix_from_point(scale):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScaleMatrix(const scale: Point2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Scale Matrix [🤖](#scale-matrix--2) 
+Create a scale matrix that scales x and y to
+different degrees.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| scale | [`Vector 2D`](/components/types/#vector-2d) | The amount to scale, with separate x and y components. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d scale_matrix(const vector_2d &scale)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.ScaleMatrix(Vector2D scale);
+public static Matrix2D SplashKit.ScaleMatrix(Vector2D scale);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def scale_matrix_from_vector(scale):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScaleMatrix(const scale: Vector2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Scale Matrix [🤖](#scale-matrix--3) 
+Returns a matrix that can be used to scale 2d points (both x and y).
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| scale | `Double` | The amount to scale points by. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d scale_matrix(double scale)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.ScaleMatrix(double scale);
+public static Matrix2D SplashKit.ScaleMatrix(double scale);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def scale_matrix(scale):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScaleMatrix(scale: Double): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Scale Rotate Translate Matrix [🔗](#scale-rotate-translate-matrix)
+
+ 
+Create a matrix that can scale, rotate then translate geometry points.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| scale | [`Point 2D`](/components/types/#point-2d) | The amount to scale |
+| deg | `Double` | The amount to rotate |
+| translate | [`Point 2D`](/components/types/#point-2d) | The amount to move |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d scale_rotate_translate_matrix(const point_2d &scale, double deg, const point_2d &translate)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.ScaleRotateTranslateMatrix(Point2D scale, double deg, Point2D translate);
+public static Matrix2D SplashKit.ScaleRotateTranslateMatrix(Point2D scale, double deg, Point2D translate);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def scale_rotate_translate_matrix(scale, deg, translate):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ScaleRotateTranslateMatrix(const scale: Point2D; deg: Double; const translate: Point2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Translation Matrix [🧬](#group-translation-matrix)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Translation Matrix** (pt: point_2d )](/components/physics/#translation-matrix--1)
+- [**Translation Matrix** (pt: vector_2d )](/components/physics/#translation-matrix--2)
+- [**Translation Matrix** (dx: double, dy: double )](/components/physics/#translation-matrix--3)
+
+:::
+
+### Translation Matrix [🤖](#translation-matrix--1) 
+Returns a translation matric used to translate 2d points by the
+distance in the point_2d.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to translate to. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d translation_matrix(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.TranslationMatrix(Point2D pt);
+public static Matrix2D SplashKit.TranslationMatrix(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def translation_matrix_to_point(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TranslationMatrix(const pt: Point2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Translation Matrix [🤖](#translation-matrix--2) 
+Returns a translation matric used to translate 2d points by the
+distance in the vector_2d.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Vector 2D`](/components/types/#vector-2d) | The point to translate to. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d translation_matrix(const vector_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.TranslationMatrix(Vector2D pt);
+public static Matrix2D SplashKit.TranslationMatrix(Vector2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def translation_matrix_from_vector(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TranslationMatrix(const pt: Vector2D): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Translation Matrix [🤖](#translation-matrix--3) 
+Returns a matrix that can be used to translate 2d points. Moving them
+by dx and dy.
+
+**Return Type**
+
+- [`Matrix 2D`](/components/physics/#matrix-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| dx | `Double` | The amount to move points along the x axis. |
+| dy | `Double` | The amount to move points along the y axis. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`matrix_2d translation_matrix(double dx, double dy)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Matrix2D Matrix2D.TranslationMatrix(double dx, double dy);
+public static Matrix2D SplashKit.TranslationMatrix(double dx, double dy);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def translation_matrix(dx, dy):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TranslationMatrix(dx: Double; dy: Double): Matrix2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Angle Between [🔗](#angle-between)
+
+ 
+Calculates the angle from one vector to another.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The second vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double angle_between(const vector_2d &v1, const vector_2d &v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Vector2D.AngleBetween(Vector2D v1, Vector2D v2);
+public static double SplashKit.AngleBetween(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def angle_between(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function AngleBetween(const v1: Vector2D; const v2: Vector2D): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Dot Product [🔗](#dot-product)
+
+ 
+Calculates the dot product (scalar product) between the two vector
+parameters provided (`v1` and `v2`). It returns the result as a
+scalar value.
+
+If the result is 0.0 it means that the vectors are orthogonal (at right
+angles to each other). If `v1` and `v2` are unit vectors (length of
+1.0) and the dot product is 1.0, it means that `v1` and `v2` vectors
+are parallel.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The other vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double dot_product(const vector_2d &v1, const vector_2d &v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Vector2D.DotProduct(Vector2D v1, Vector2D v2);
+public static double SplashKit.DotProduct(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def dot_product(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DotProduct(const v1: Vector2D; const v2: Vector2D): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Is Zero Vector [🔗](#is-zero-vector)
+
+ 
+Returns if the vector is a null/zero vector -- having no size or direction.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool is_zero_vector(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Vector2D.IsZeroVector(Vector2D v);
+public static bool SplashKit.IsZeroVector(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def is_zero_vector(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function IsZeroVector(const v: Vector2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Ray Intersection Point [🔗](#ray-intersection-point)
+
+ 
+Casts a ray in a heading and returns true is it intersects with a line
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| from_pt | [`Point 2D`](/components/types/#point-2d) | The origin of the ray |
+| heading | [`Vector 2D`](/components/types/#vector-2d) | The direction the ray is heading (as a [`Vector 2D`](/components/types/#vector-2d)) |
+| l | [`Line`](/components/types/#line) | The line to be checked |
+| pt | [`Point 2D`](/components/types/#point-2d) | Outputs the point where the line and ray intersect |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool ray_intersection_point(const point_2d &from_pt, const vector_2d &heading, const line &l, point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Vector2D.RayIntersectionPoint(Point2D fromPt, Vector2D heading, Line l, ref Point2D pt);
+public static bool SplashKit.RayIntersectionPoint(Point2D fromPt, Vector2D heading, Line l, ref Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def ray_intersection_point(from_pt, heading, l, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RayIntersectionPoint(const fromPt: Point2D; const heading: Vector2D; const l: Line; var pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Unit Vector [🔗](#unit-vector)
+
+ 
+Returns the unit vector of the parameter vector (v). The unit vector has a
+magnitude of 1, resulting in a vector that indicates the direction of
+the original vector.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d unit_vector(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.UnitVector(Vector2D v);
+public static Vector2D SplashKit.UnitVector(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def unit_vector(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function UnitVector(const v: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Add [🔗](#vector-add)
+
+ 
+Adds the two passed in vectors returns the result as new [`Vector 2D`](/components/types/#vector-2d).
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector. |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The other vector. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_add(const vector_2d &v1, const vector_2d &v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorAdd(Vector2D v1, Vector2D v2);
+public static Vector2D SplashKit.VectorAdd(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_add(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorAdd(const v1: Vector2D; const v2: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Angle [🔗](#vector-angle)
+
+ 
+Calculates the angle of a vector
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double vector_angle(const vector_2d v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Vector2D.VectorAngle(Vector2D v);
+public static double SplashKit.VectorAngle(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_angle(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorAngle(v: Vector2D): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector From Angle [🔗](#vector-from-angle)
+
+ 
+Returns a [`Vector 2D`](/components/types/#vector-2d) from the supplied angle and distance.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| angle | `Double` | The angle in degrees |
+| magnitude | `Double` | The length of the vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_from_angle(double angle, double magnitude)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorFromAngle(double angle, double magnitude);
+public static Vector2D SplashKit.VectorFromAngle(double angle, double magnitude);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_from_angle(angle, magnitude):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorFromAngle(angle: Double; magnitude: Double): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector From Line [🔗](#vector-from-line)
+
+ 
+Returns a vector that points from the start to the end of a line.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_from_line(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorFromLine(Line l);
+public static Vector2D SplashKit.VectorFromLine(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_from_line(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorFromLine(const l: Line): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector From Point To Rect [🔗](#vector-from-point-to-rect)
+
+ 
+Returns a vector from a point to a rectangle.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_from_point_to_rect(const point_2d &pt, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorFromPointToRect(Point2D pt, Rectangle rect);
+public static Vector2D SplashKit.VectorFromPointToRect(Point2D pt, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_from_point_to_rect(pt, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorFromPointToRect(const pt: Point2D; const rect: Rectangle): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector In Rect [🔗](#vector-in-rect)
+
+ 
+Returns true if the resulting vector would end in the rectangle if
+placed at the origin.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool vector_in_rect(const vector_2d &v, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Vector2D.VectorInRect(Vector2D v, Rectangle rect);
+public static bool SplashKit.VectorInRect(Vector2D v, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_in_rect(v, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorInRect(const v: Vector2D; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Invert [🔗](#vector-invert)
+
+ 
+Returns a new Vector that is an inverted version of the parameter
+vector (v). In other words, the -/+ sign of the x and y values are changed.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_invert(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorInvert(Vector2D v);
+public static Vector2D SplashKit.VectorInvert(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_invert(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorInvert(const v: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Limit [🔗](#vector-limit)
+
+ 
+Returns a scaled vector that ensures the new vector points
+in the same direction as v, but has a magnitude that is
+limited to the length specified in the limit prameter.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+| limit | `Double` | Its maximum magnitude |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_limit(const vector_2d &v, double limit)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorLimit(Vector2D v, double limit);
+public static Vector2D SplashKit.VectorLimit(Vector2D v, double limit);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_limit(v, limit):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorLimit(const v: Vector2D; limit: Double): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Magnitude [🔗](#vector-magnitude)
+
+ 
+Returns the magnitude (or "length") of the vector.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double vector_magnitude(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Vector2D.VectorMagnitude(Vector2D v);
+public static double SplashKit.VectorMagnitude(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_magnitude(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorMagnitude(const v: Vector2D): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Magnitude Sqared [🔗](#vector-magnitude-sqared)
+
+ 
+Returns the squared magnitude (or "length") of the vector.
+
+**Return Type**
+
+- `Double` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`double vector_magnitude_sqared(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static double Vector2D.VectorMagnitudeSqared(Vector2D v);
+public static double SplashKit.VectorMagnitudeSqared(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_magnitude_sqared(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorMagnitudeSqared(const v: Vector2D): Double`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Multiply [🔗](#vector-multiply)
+
+ 
+Multiplies the vector by the passed in value.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The original vector |
+| s | `Double` | The amount to multiply by |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_multiply(const vector_2d &v1, double s)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorMultiply(Vector2D v1, double s);
+public static Vector2D SplashKit.VectorMultiply(Vector2D v1, double s);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_multiply(v1, s):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorMultiply(const v1: Vector2D; s: Double): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Normal [🔗](#vector-normal)
+
+ 
+Returns a new [`Vector 2D`](/components/types/#vector-2d) that is perpendicular ("normal") to the parameter
+vector `v` provided. The concept of a "normal" vector is usually
+extracted from (or associated with) a line.
+
+Note: when passed a zero or null vector (a vector with no
+magnitude or direction) then this function returns a zero/null vector.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_normal(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorNormal(Vector2D v);
+public static Vector2D SplashKit.VectorNormal(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_normal(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorNormal(const v: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Out Of Circle From Circle [🔗](#vector-out-of-circle-from-circle)
+
+ 
+Returns a vector to back one circle out of another, assuming the first circle was
+moving at a specified velocity.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| src | [`Circle`](/components/types/#circle) | The circle that is moving |
+| bounds | [`Circle`](/components/types/#circle) | The area you want to move the circle out of |
+| velocity | [`Vector 2D`](/components/types/#vector-2d) | The circle's velocity |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_out_of_circle_from_circle(const circle &src, const circle &bounds, const vector_2d &velocity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorOutOfCircleFromCircle(Circle src, Circle bounds, Vector2D velocity);
+public static Vector2D SplashKit.VectorOutOfCircleFromCircle(Circle src, Circle bounds, Vector2D velocity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_out_of_circle_from_circle(src, bounds, velocity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorOutOfCircleFromCircle(const src: Circle; const bounds: Circle; const velocity: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Out Of Circle From Point [🔗](#vector-out-of-circle-from-point)
+
+ 
+Returns the vector out to move a point back out of a circle,
+given the point was moving at the specified velocity.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point that is moving |
+| c | [`Circle`](/components/types/#circle) | The circle you want to move the point out of |
+| velocity | [`Vector 2D`](/components/types/#vector-2d) | The point's velocity |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_out_of_circle_from_point(const point_2d &pt, const circle &c, const vector_2d &velocity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorOutOfCircleFromPoint(Point2D pt, Circle c, Vector2D velocity);
+public static Vector2D SplashKit.VectorOutOfCircleFromPoint(Point2D pt, Circle c, Vector2D velocity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_out_of_circle_from_point(pt, c, velocity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorOutOfCircleFromPoint(const pt: Point2D; const c: Circle; const velocity: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Out Of Rect From Circle [🔗](#vector-out-of-rect-from-circle)
+
+ 
+Returns a vector that can be used to move a circle back out of a rectangle,
+given that the circle is moving at the specified velocity.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle that is moving |
+| rect | [`Rectangle`](/components/types/#rectangle) | The area you wan to move the circle out of |
+| velocity | [`Vector 2D`](/components/types/#vector-2d) | The circle's velocity |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_out_of_rect_from_circle(const circle &c, const rectangle &rect, const vector_2d &velocity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorOutOfRectFromCircle(Circle c, Rectangle rect, Vector2D velocity);
+public static Vector2D SplashKit.VectorOutOfRectFromCircle(Circle c, Rectangle rect, Vector2D velocity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_out_of_rect_from_circle(c, rect, velocity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorOutOfRectFromCircle(const c: Circle; const rect: Rectangle; const velocity: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Out Of Rect From Point [🔗](#vector-out-of-rect-from-point)
+
+ 
+Determines the vector needed to move back from point `pt` out of rectangle `rect` given
+the point was moving at the velocity specified.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point you want to move out of a rectangle |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to move out of |
+| velocity | [`Vector 2D`](/components/types/#vector-2d) | The velocity of the point. This is used to determine
+where the point should return to. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_out_of_rect_from_point(const point_2d &pt, const rectangle &rect, const vector_2d &velocity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorOutOfRectFromPoint(Point2D pt, Rectangle rect, Vector2D velocity);
+public static Vector2D SplashKit.VectorOutOfRectFromPoint(Point2D pt, Rectangle rect, Vector2D velocity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_out_of_rect_from_point(pt, rect, velocity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorOutOfRectFromPoint(const pt: Point2D; const rect: Rectangle; const velocity: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Out Of Rect From Rect [🔗](#vector-out-of-rect-from-rect)
+
+ 
+Returns the vector needed to move rectangle `src` back out of rectangle `bounds`
+assuming the rectangle was moving at the velocity specified.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| src | [`Rectangle`](/components/types/#rectangle) | The rectangle you want to move. |
+| bounds | [`Rectangle`](/components/types/#rectangle) | The area you want to move the rectangle out of |
+| velocity | [`Vector 2D`](/components/types/#vector-2d) | The velocity of the `src` rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_out_of_rect_from_rect(const rectangle &src, const rectangle &bounds, const vector_2d &velocity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorOutOfRectFromRect(Rectangle src, Rectangle bounds, Vector2D velocity);
+public static Vector2D SplashKit.VectorOutOfRectFromRect(Rectangle src, Rectangle bounds, Vector2D velocity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_out_of_rect_from_rect(src, bounds, velocity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorOutOfRectFromRect(const src: Rectangle; const bounds: Rectangle; const velocity: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Point To Point [🔗](#vector-point-to-point)
+
+ 
+Returns a [`Vector 2D`](/components/types/#vector-2d) created from the difference from the `p1` to
+the second `p2` points (`Point2D`).
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| start | [`Point 2D`](/components/types/#point-2d) | The starting point |
+| end_pt | [`Point 2D`](/components/types/#point-2d) | The ending point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_point_to_point(const point_2d &start, const point_2d &end_pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorPointToPoint(Point2D start, Point2D endPt);
+public static Vector2D SplashKit.VectorPointToPoint(Point2D start, Point2D endPt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_point_to_point(start, end_pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorPointToPoint(const start: Point2D; const endPt: Point2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector Subtract [🔗](#vector-subtract)
+
+ 
+Subtracts the second vector parameter (`v2`) from the first vector
+(`v1`) and returns the result as new [`Vector 2D`](/components/types/#vector-2d).
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector. |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The other vector. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_subtract(const vector_2d &v1, const vector_2d &v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorSubtract(Vector2D v1, Vector2D v2);
+public static Vector2D SplashKit.VectorSubtract(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_subtract(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorSubtract(const v1: Vector2D; const v2: Vector2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector To [🧬](#group-vector-to)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Vector To** (p1: point_2d )](/components/physics/#vector-to--1)
+- [**Vector To** (x: double, y: double )](/components/physics/#vector-to--2)
+
+:::
+
+### Vector To [🤖](#vector-to--1) 
+Returns a new [`Vector 2D`](/components/types/#vector-2d) using the x and y value of a [`Point 2D`](/components/types/#point-2d) parameter.
+This is a vector from the origin to that point.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| p1 | [`Point 2D`](/components/types/#point-2d) | The point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_to(const point_2d &p1)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorTo(Point2D p1);
+public static Vector2D SplashKit.VectorTo(Point2D p1);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_to_point(p1):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorTo(const p1: Point2D): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Vector To [🤖](#vector-to--2) 
+Returns a vector to the indicated point.
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The amount to move horizontally |
+| y | `Double` | The amount to move vertically |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d vector_to(double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Vector2D.VectorTo(double x, double y);
+public static Vector2D SplashKit.VectorTo(double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_to(x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorTo(x: Double; y: Double): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vector To String [🔗](#vector-to-string)
+
+ 
+Get a text description of the [`Vector 2D`](/components/types/#vector-2d).
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string vector_to_string(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Vector2D.VectorToString(Vector2D v);
+public static string SplashKit.VectorToString(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vector_to_string(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorToString(const v: Vector2D): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vectors Equal [🔗](#vectors-equal)
+
+ 
+Determines if two vectors are the same.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The other vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool vectors_equal(const vector_2d &v1, const vector_2d v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Vector2D.VectorsEqual(Vector2D v1, Vector2D v2);
+public static bool SplashKit.VectorsEqual(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vectors_equal(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorsEqual(const v1: Vector2D; v2: Vector2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Vectors Not Equal [🔗](#vectors-not-equal)
+
+ 
+Determines if two vectors are not the same.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v1 | [`Vector 2D`](/components/types/#vector-2d) | The first vector |
+| v2 | [`Vector 2D`](/components/types/#vector-2d) | The other vector |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool vectors_not_equal(const vector_2d &v1, const vector_2d v2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Vector2D.VectorsNotEqual(Vector2D v1, Vector2D v2);
+public static bool SplashKit.VectorsNotEqual(Vector2D v1, Vector2D v2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def vectors_not_equal(v1, v2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function VectorsNotEqual(const v1: Vector2D; v2: Vector2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+
 
 ## Types
 ##
 
-## Matrix 2D
+## Matrix 2D [🧾](#matrix-2d)
 
+In SplashKit, matrices can be used to combine together a number of
+operations that need to be performed on [`Vector 2D`](/components/types/#vector-2d) values. You can
+translate, rotate, and scale, and combine these together into a
+single matrix that can then be applied to vectors and points.
+
+**Fields**
+
+| Name     | Type     | Description        |
+| -------- | -------- | ------------------ |
+| Elements | `Double` | The elements of the matrix |
+
+---

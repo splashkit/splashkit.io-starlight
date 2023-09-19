@@ -10,76 +10,2962 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
-## Functions
 ##
+## Functions
+## 
+## Closest Point On Line [🔗](#closest-point-on-line)
 
-## Closest Point On Line
-## Closest Point On Lines
-## Line From
-## Line Intersection Point
-## Line Intersects Circle
-## Line Intersects Lines
-## Line Intersects Rect
-## Line Length
-## Line Length Squared
-## Line Mid Point
-## Line Normal
-## Line To String
-## Lines From
-## Lines Intersect
-## Inset Rectangle
-## Intersection
-## Rectangle Around
-## Rectangle Bottom
-## Rectangle Center
-## Rectangle From
-## Rectangle Left
-## Rectangle Offset By
-## Rectangle Right
-## Rectangle To String
-## Rectangle Top
-## Rectangles Intersect
-## Triangle Barycenter
-## Triangle From
-## Triangle Rectangle Intersect
-## Triangle To String
-## Triangles Intersect
-## Point At
-## Point At Origin
-## Point In Circle
-## Point In Quad
-## Point In Rectangle
-## Point In Triangle
-## Point Line Distance
-## Point Offset By
-## Point Offset From Origin
-## Point On Line
-## Point Point Angle
-## Point Point Distance
-## Point To String
-## Random Bitmap Point
-## Random Screen Point
-## Random Window Point
-## Same Point
-## Center Point
-## Circle At
-## Circle Radius
-## Circle X
-## Circle Y
-## Circles Intersect
-## Closest Point On Circle
-## Closest Point On Line From Circle
-## Closest Point On Rect From Circle
-## Distant Point On Circle
-## Distant Point On Circle Heading
-## Ray Circle Intersect Distance
-## Tangent Points
-## Widest Points
-## Quad From
-## Quads Intersect
-## Set Quad Point
-## Triangles From
-## Cosine
-## Sine
-## Tangent
+ 
+Gets the closest point on the line to a given point.
 
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| from_pt | [`Point 2D`](/components/types/#point-2d) | The point to test (usually somewhere near the line) |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d closest_point_on_line(const point_2d from_pt, const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.ClosestPointOnLine(Point2D fromPt, Line l);
+public static Point2D SplashKit.ClosestPointOnLine(Point2D fromPt, Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def closest_point_on_line(from_pt, l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ClosestPointOnLine(fromPt: Point2D; const l: Line): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Closest Point On Lines [🔗](#closest-point-on-lines)
+
+ 
+Get the point closest to `from pt` that is on one of the supplied lines.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| from_pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| lines | `Vector` | The lines to check |
+| line_idx | `Integer` | After the call this will store the index of the line that
+had the matching point. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d closest_point_on_lines(const point_2d from_pt, const vector<line> &lines, int &line_idx)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.ClosestPointOnLines(Point2D fromPt, List<Line> lines, ref int lineIdx);
+public static Point2D SplashKit.ClosestPointOnLines(Point2D fromPt, List<Line> lines, ref int lineIdx);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def closest_point_on_lines(from_pt, lines, line_idx):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ClosestPointOnLines(fromPt: Point2D; const lines: ArrayOfLine; var lineIdx: Integer): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line From [🧬](#group-line-from)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Line From** (start: point_2d, end_pt: point_2d )](/components/geometry/#line-from--1)
+- [**Line From** (start: point_2d, offset: vector_2d )](/components/geometry/#line-from--2)
+- [**Line From** (v: vector_2d )](/components/geometry/#line-from--3)
+- [**Line From** (x1: double, y1: double, x2: double, y2: double )](/components/geometry/#line-from--4)
+
+:::
+
+### Line From [🤖](#line-from--1) 
+Create a line from one point to another.
+
+**Return Type**
+
+- [`Line`](/components/types/#line) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| start | [`Point 2D`](/components/types/#point-2d) | The start of the line |
+| end_pt | [`Point 2D`](/components/types/#point-2d) | The end of the line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`line line_from(const point_2d &start, const point_2d &end_pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Line Geometry.LineFrom(Point2D start, Point2D endPt);
+public static Line SplashKit.LineFrom(Point2D start, Point2D endPt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_from_point_to_point(start, end_pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineFrom(const start: Point2D; const endPt: Point2D): Line`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Line From [🤖](#line-from--2) 
+Creates a line that starts at a point, and follows a given vector.
+
+**Return Type**
+
+- [`Line`](/components/types/#line) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| start | [`Point 2D`](/components/types/#point-2d) | The start of the line |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The offset to the end of the line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`line line_from(const point_2d &start, const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Line Geometry.LineFrom(Point2D start, Vector2D offset);
+public static Line SplashKit.LineFrom(Point2D start, Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_from_start_with_offset(start, offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineFrom(const start: Point2D; const offset: Vector2D): Line`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Line From [🤖](#line-from--3) 
+Gets a line that goes from the origin and ends at the end of the vector.
+
+**Return Type**
+
+- [`Line`](/components/types/#line) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| v | [`Vector 2D`](/components/types/#vector-2d) | The offset from the origin for the end of the line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`line line_from(const vector_2d &v)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Line Geometry.LineFrom(Vector2D v);
+public static Line SplashKit.LineFrom(Vector2D v);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_from_vector(v):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineFrom(const v: Vector2D): Line`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Line From [🤖](#line-from--4) 
+Create a line from one point to another.
+
+**Return Type**
+
+- [`Line`](/components/types/#line) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x1 | `Double` | The x value of the start of the line |
+| y1 | `Double` | The y value of the start of the line |
+| x2 | `Double` | The x value of the end of the line |
+| y2 | `Double` | The y value of the end of the line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`line line_from(double x1, double y1, double x2, double y2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Line Geometry.LineFrom(double x1, double y1, double x2, double y2);
+public static Line SplashKit.LineFrom(double x1, double y1, double x2, double y2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_from(x1, y1, x2, y2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineFrom(x1: Double; y1: Double; x2: Double; y2: Double): Line`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Intersection Point [🔗](#line-intersection-point)
+
+ 
+Returns the point at which two lines would intersect. This point may lie
+past the end of one or both lines.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| line1 | [`Line`](/components/types/#line) | The first line |
+| line2 | [`Line`](/components/types/#line) | The other line |
+| pt | [`Point 2D`](/components/types/#point-2d) | The resulting point where they intersect |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool line_intersection_point(const line &line1, const line &line2, point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.LineIntersectionPoint(Line line1, Line line2, ref Point2D pt);
+public static bool SplashKit.LineIntersectionPoint(Line line1, Line line2, ref Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_intersection_point(line1, line2, pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineIntersectionPoint(const line1: Line; const line2: Line; var pt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Intersects Circle [🔗](#line-intersects-circle)
+
+ 
+Returns true if the line intersects the circle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+| c | [`Circle`](/components/types/#circle) | The circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool line_intersects_circle(const line &l, const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.LineIntersectsCircle(Line l, Circle c);
+public static bool SplashKit.LineIntersectsCircle(Line l, Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_intersects_circle(l, c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineIntersectsCircle(const l: Line; const c: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Intersects Lines [🔗](#line-intersects-lines)
+
+ 
+Returns true if the line intersects any of the lines.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line to check |
+| lines | `Vector` | The lines to check against |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool line_intersects_lines(const line &l, const vector<line> &lines)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.LineIntersectsLines(Line l, List<Line> lines);
+public static bool SplashKit.LineIntersectsLines(Line l, List<Line> lines);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_intersects_lines(l, lines):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineIntersectsLines(const l: Line; const lines: ArrayOfLine): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Intersects Rect [🔗](#line-intersects-rect)
+
+ 
+Returns true if the line intersects the rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool line_intersects_rect(const line &l, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.LineIntersectsRect(Line l, Rectangle rect);
+public static bool SplashKit.LineIntersectsRect(Line l, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_intersects_rect(l, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineIntersectsRect(const l: Line; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Length [🔗](#line-length)
+
+ 
+Returns the length of a line.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float line_length(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.LineLength(Line l);
+public static float SplashKit.LineLength(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_length(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineLength(const l: Line): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Length Squared [🔗](#line-length-squared)
+
+ 
+Returns the squared length of the line. You can also get the
+`line_length`.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float line_length_squared(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.LineLengthSquared(Line l);
+public static float SplashKit.LineLengthSquared(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_length_squared(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineLengthSquared(const l: Line): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Mid Point [🔗](#line-mid-point)
+
+ 
+Returns the center point of the line.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d line_mid_point(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.LineMidPoint(Line l);
+public static Point2D SplashKit.LineMidPoint(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_mid_point(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineMidPoint(const l: Line): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line Normal [🔗](#line-normal)
+
+ 
+The line normal (a perpendicular vector).
+
+**Return Type**
+
+- [`Vector 2D`](/components/types/#vector-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector_2d line_normal(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Vector2D Geometry.LineNormal(Line l);
+public static Vector2D SplashKit.LineNormal(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_normal(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineNormal(const l: Line): Vector2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Line To String [🔗](#line-to-string)
+
+ 
+Returns a text description of the line.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| ln | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string line_to_string(const line &ln)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Geometry.LineToString(Line ln);
+public static string SplashKit.LineToString(Line ln);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def line_to_string(ln):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LineToString(const ln: Line): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Lines From [🧬](#group-lines-from)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Lines From** (rect: rectangle )](/components/geometry/#lines-from--1)
+- [**Lines From** (t: triangle )](/components/geometry/#lines-from--2)
+
+:::
+
+### Lines From [🤖](#lines-from--1) 
+Returns an array of lines from a supplied rectangle.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to get the lines from |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<line> lines_from(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static List<Line> Geometry.LinesFrom(Rectangle rect);
+public static List<Line> SplashKit.LinesFrom(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def lines_from_rectangle(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LinesFrom(const rect: Rectangle): ArrayOfLine`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Lines From [🤖](#lines-from--2) 
+Returns an array of lines from the details in the triangle.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| t | [`Triangle`](/components/types/#triangle) | The triangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<line> lines_from(const triangle &t)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static List<Line> Geometry.LinesFrom(Triangle t);
+public static List<Line> SplashKit.LinesFrom(Triangle t);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def lines_from_triangle(t):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LinesFrom(const t: Triangle): ArrayOfLine`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Lines Intersect [🔗](#lines-intersect)
+
+ 
+Returns true if the two lines intersect.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l1 | [`Line`](/components/types/#line) | The first line |
+| l2 | [`Line`](/components/types/#line) | The other line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool lines_intersect(const line &l1, const line &l2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.LinesIntersect(Line l1, Line l2);
+public static bool SplashKit.LinesIntersect(Line l1, Line l2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def lines_intersect(l1, l2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function LinesIntersect(const l1: Line; const l2: Line): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Inset Rectangle [🔗](#inset-rectangle)
+
+ 
+Return a rectangle that is inset an amount from a given rectangle.
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to inset |
+| inset_amount | `Float` | The amount to inset the rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle inset_rectangle(const rectangle &rect, float inset_amount)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.InsetRectangle(Rectangle rect, float insetAmount);
+public static Rectangle SplashKit.InsetRectangle(Rectangle rect, float insetAmount);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def inset_rectangle(rect, inset_amount):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function InsetRectangle(const rect: Rectangle; insetAmount: Single): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Intersection [🔗](#intersection)
+
+ 
+Returns a rectangle that represents the intersection of two rectangles.
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect1 | [`Rectangle`](/components/types/#rectangle) | The first rectangle |
+| rect2 | [`Rectangle`](/components/types/#rectangle) | The second rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle intersection(const rectangle &rect1, const rectangle &rect2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.Intersection(Rectangle rect1, Rectangle rect2);
+public static Rectangle SplashKit.Intersection(Rectangle rect1, Rectangle rect2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def intersection(rect1, rect2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Intersection(const rect1: Rectangle; const rect2: Rectangle): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Around [🧬](#group-rectangle-around)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Rectangle Around** (t: triangle )](/components/geometry/#rectangle-around--1)
+- [**Rectangle Around** (c: circle )](/components/geometry/#rectangle-around--2)
+- [**Rectangle Around** (l: line )](/components/geometry/#rectangle-around--3)
+
+:::
+
+### Rectangle Around [🤖](#rectangle-around--1) 
+Returns a rectangle that surrounds a given triangle
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| t | [`Triangle`](/components/types/#triangle) | The triangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_around(const triangle &t)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleAround(Triangle t);
+public static Rectangle SplashKit.RectangleAround(Triangle t);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_around_triangle(t):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleAround(const t: Triangle): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Rectangle Around [🤖](#rectangle-around--2) 
+Returns a rectangle that surrounds a given circle
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_around(const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleAround(Circle c);
+public static Rectangle SplashKit.RectangleAround(Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_around_circle(c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleAround(const c: Circle): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Rectangle Around [🤖](#rectangle-around--3) 
+Returns a rectangle that surrounds a given line segment
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_around(const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleAround(Line l);
+public static Rectangle SplashKit.RectangleAround(Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_around_line(l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleAround(const l: Line): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Bottom [🔗](#rectangle-bottom)
+
+ 
+The location of the bottom of the rectangle.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float rectangle_bottom(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.RectangleBottom(Rectangle rect);
+public static float SplashKit.RectangleBottom(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_bottom(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleBottom(const rect: Rectangle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Center [🔗](#rectangle-center)
+
+ 
+Returns the center point of a given rectangle
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d rectangle_center(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.RectangleCenter(Rectangle rect);
+public static Point2D SplashKit.RectangleCenter(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_center(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleCenter(const rect: Rectangle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle From [🧬](#group-rectangle-from)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Rectangle From** (pt: point_2d, width: double, height: double )](/components/geometry/#rectangle-from--1)
+- [**Rectangle From** (pt1: point_2d, pt2: point_2d )](/components/geometry/#rectangle-from--2)
+- [**Rectangle From** (x: double, y: double, width: double, height: double )](/components/geometry/#rectangle-from--3)
+
+:::
+
+### Rectangle From [🤖](#rectangle-from--1) 
+Returns a rectangle at the specified point with a given width and height
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The origin for the rectangle |
+| width | `Double` | Its width |
+| height | `Double` | Its height |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_from(const point_2d pt, const double width, const double height)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleFrom(Point2D pt, double width, double height);
+public static Rectangle SplashKit.RectangleFrom(Point2D pt, double width, double height);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_from_point_and_size(pt, width, height):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleFrom(pt: Point2D; width: Double; height: Double): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Rectangle From [🤖](#rectangle-from--2) 
+Returns a rectangle with pt1 and pt2 defining the two distant edge points.
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The first point |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The second point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_from(const point_2d pt1, const point_2d pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleFrom(Point2D pt1, Point2D pt2);
+public static Rectangle SplashKit.RectangleFrom(Point2D pt1, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_from_points(pt1, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleFrom(pt1: Point2D; pt2: Point2D): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Rectangle From [🤖](#rectangle-from--3) 
+Returns a rectangle from a given x,y location with the specified width
+and height.
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The x coordinate of the rectangle |
+| y | `Double` | The y coordinate of the rectangle |
+| width | `Double` | The width of the rectangle |
+| height | `Double` | The height of the rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_from(double x, double y, double width, double height)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleFrom(double x, double y, double width, double height);
+public static Rectangle SplashKit.RectangleFrom(double x, double y, double width, double height);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_from(x, y, width, height):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleFrom(x: Double; y: Double; width: Double; height: Double): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Left [🔗](#rectangle-left)
+
+ 
+The location of the left edge of the rectangle.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float rectangle_left(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.RectangleLeft(Rectangle rect);
+public static float SplashKit.RectangleLeft(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_left(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleLeft(const rect: Rectangle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Offset By [🔗](#rectangle-offset-by)
+
+ 
+Returns a rectangle that is moved by the provided vector.
+
+**Return Type**
+
+- [`Rectangle`](/components/types/#rectangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The original rectangle |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The amount and direction for the rectangle to move |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`rectangle rectangle_offset_by(const rectangle &rect, const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Rectangle Geometry.RectangleOffsetBy(Rectangle rect, Vector2D offset);
+public static Rectangle SplashKit.RectangleOffsetBy(Rectangle rect, Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_offset_by(rect, offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleOffsetBy(const rect: Rectangle; const offset: Vector2D): Rectangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Right [🔗](#rectangle-right)
+
+ 
+The location of the right edge of the rectangle.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float rectangle_right(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.RectangleRight(Rectangle rect);
+public static float SplashKit.RectangleRight(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_right(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleRight(const rect: Rectangle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle To String [🔗](#rectangle-to-string)
+
+ 
+Get a text representation of the passed in rectangle.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string rectangle_to_string(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Geometry.RectangleToString(Rectangle rect);
+public static string SplashKit.RectangleToString(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_to_string(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleToString(const rect: Rectangle): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangle Top [🔗](#rectangle-top)
+
+ 
+The top of the rectangle.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float rectangle_top(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.RectangleTop(Rectangle rect);
+public static float SplashKit.RectangleTop(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangle_top(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectangleTop(const rect: Rectangle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Rectangles Intersect [🔗](#rectangles-intersect)
+
+ 
+Returns true if the two rectangles intersect.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect1 | [`Rectangle`](/components/types/#rectangle) | The first rectangle |
+| rect2 | [`Rectangle`](/components/types/#rectangle) | The second rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool rectangles_intersect(const rectangle &rect1, const rectangle &rect2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.RectanglesIntersect(Rectangle rect1, Rectangle rect2);
+public static bool SplashKit.RectanglesIntersect(Rectangle rect1, Rectangle rect2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def rectangles_intersect(rect1, rect2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RectanglesIntersect(const rect1: Rectangle; const rect2: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangle Barycenter [🔗](#triangle-barycenter)
+
+ 
+Return the barycenter of the triangle. This is one way of calculating the
+center point of a triangle.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| tri | [`Triangle`](/components/types/#triangle) | The triangle to get the center of |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d triangle_barycenter(const triangle &tri)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.TriangleBarycenter(Triangle tri);
+public static Point2D SplashKit.TriangleBarycenter(Triangle tri);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangle_barycenter(tri):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TriangleBarycenter(const tri: Triangle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangle From [🧬](#group-triangle-from)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Triangle From** (p1: point_2d, p2: point_2d, p3: point_2d )](/components/geometry/#triangle-from--1)
+- [**Triangle From** (x1: double, y1: double, x2: double, y2: double, x3: double, y3: double )](/components/geometry/#triangle-from--2)
+
+:::
+
+### Triangle From [🤖](#triangle-from--1) 
+Generate a triangle from a set of points.
+
+**Return Type**
+
+- [`Triangle`](/components/types/#triangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| p1 | [`Point 2D`](/components/types/#point-2d) | The first point of the triangle |
+| p2 | [`Point 2D`](/components/types/#point-2d) | The second point of the triangle |
+| p3 | [`Point 2D`](/components/types/#point-2d) | The third point of the triangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`triangle triangle_from(const point_2d &p1, const point_2d &p2, const point_2d &p3)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Triangle Geometry.TriangleFrom(Point2D p1, Point2D p2, Point2D p3);
+public static Triangle SplashKit.TriangleFrom(Point2D p1, Point2D p2, Point2D p3);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangle_from(p1, p2, p3):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TriangleFrom(const p1: Point2D; const p2: Point2D; const p3: Point2D): Triangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Triangle From [🤖](#triangle-from--2) 
+Generate a triangle from a set of points.
+
+**Return Type**
+
+- [`Triangle`](/components/types/#triangle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x1 | `Double` | The x coordinate for the first point |
+| y1 | `Double` | The y coordinate for the first point |
+| x2 | `Double` | The x coordinate for the second point |
+| y2 | `Double` | The y coordinate for the second point |
+| x3 | `Double` | The x coordinate for the third point |
+| y3 | `Double` | The y coordinate for the third point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`triangle triangle_from(double x1, double y1, double x2, double y2, double x3, double y3)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Triangle Geometry.TriangleFrom(double x1, double y1, double x2, double y2, double x3, double y3);
+public static Triangle SplashKit.TriangleFrom(double x1, double y1, double x2, double y2, double x3, double y3);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangle_from__from_coordinates(x1, y1, x2, y2, x3, y3):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TriangleFrom(x1: Double; y1: Double; x2: Double; y2: Double; x3: Double; y3: Double): Triangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangle Rectangle Intersect [🔗](#triangle-rectangle-intersect)
+
+ 
+Returns true if the triangle intersects with the rectangle.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| tri | [`Triangle`](/components/types/#triangle) | The triangle to test |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to test |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool triangle_rectangle_intersect(const triangle &tri, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.TriangleRectangleIntersect(Triangle tri, Rectangle rect);
+public static bool SplashKit.TriangleRectangleIntersect(Triangle tri, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangle_rectangle_intersect(tri, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TriangleRectangleIntersect(const tri: Triangle; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangle To String [🔗](#triangle-to-string)
+
+ 
+Returns a text description of the triangle.
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| tri | [`Triangle`](/components/types/#triangle) | The triangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string triangle_to_string(const triangle &tri)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Geometry.TriangleToString(Triangle tri);
+public static string SplashKit.TriangleToString(Triangle tri);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangle_to_string(tri):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TriangleToString(const tri: Triangle): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangles Intersect [🔗](#triangles-intersect)
+
+ 
+Returns true if the two triangles intersect.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| t1 | [`Triangle`](/components/types/#triangle) | The first triangle |
+| t2 | [`Triangle`](/components/types/#triangle) | The other triangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool triangles_intersect(const triangle &t1, const triangle &t2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.TrianglesIntersect(Triangle t1, Triangle t2);
+public static bool SplashKit.TrianglesIntersect(Triangle t1, Triangle t2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangles_intersect(t1, t2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TrianglesIntersect(const t1: Triangle; const t2: Triangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point At [🔗](#point-at)
+
+ 
+Returns a point at the given location.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The x value of the coordinate |
+| y | `Double` | The y value of the coordinate |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d point_at(double x, double y)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.PointAt(double x, double y);
+public static Point2D SplashKit.PointAt(double x, double y);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_at(x, y):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointAt(x: Double; y: Double): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point At Origin [🔗](#point-at-origin)
+
+ 
+Returns a point representing the origin.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d point_at_origin()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.PointAtOrigin();
+public static Point2D SplashKit.PointAtOrigin();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_at_origin():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointAtOrigin(): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point In Circle [🔗](#point-in-circle)
+
+ 
+Returns true if the point `pt` is in the circle `c`.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| c | [`Circle`](/components/types/#circle) | The circle to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_in_circle(const point_2d &pt, const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointInCircle(Point2D pt, Circle c);
+public static bool SplashKit.PointInCircle(Point2D pt, Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_in_circle(pt, c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointInCircle(const pt: Point2D; const c: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point In Quad [🔗](#point-in-quad)
+
+ 
+Tests if a point is in a quad.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test. |
+| q | [`Quad`](/components/types/#quad) | The quad to check if the point is within. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_in_quad(const point_2d &pt, const quad &q)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointInQuad(Point2D pt, Quad q);
+public static bool SplashKit.PointInQuad(Point2D pt, Quad q);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_in_quad(pt, q):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointInQuad(const pt: Point2D; const q: Quad): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point In Rectangle [🔗](#point-in-rectangle)
+
+ 
+Returns true if point `pt` is in the Rectangle `rect`.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_in_rectangle(const point_2d &pt, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointInRectangle(Point2D pt, Rectangle rect);
+public static bool SplashKit.PointInRectangle(Point2D pt, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_in_rectangle(pt, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointInRectangle(const pt: Point2D; const rect: Rectangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point In Triangle [🔗](#point-in-triangle)
+
+ 
+Returns true if the point `pt` is in the Triangle `tri`.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| tri | [`Triangle`](/components/types/#triangle) | The triangle to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_in_triangle(const point_2d &pt, const triangle &tri)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointInTriangle(Point2D pt, Triangle tri);
+public static bool SplashKit.PointInTriangle(Point2D pt, Triangle tri);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_in_triangle(pt, tri):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointInTriangle(const pt: Point2D; const tri: Triangle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point Line Distance [🔗](#point-line-distance)
+
+ 
+Returns the distance from a point to a line.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float point_line_distance(const point_2d &pt, const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.PointLineDistance(Point2D pt, Line l);
+public static float SplashKit.PointLineDistance(Point2D pt, Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_line_distance(pt, l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointLineDistance(const pt: Point2D; const l: Line): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point Offset By [🔗](#point-offset-by)
+
+ 
+Calculate the [`Point 2D`](/components/types/#point-2d) that is offset from the `start_point` by the
+`offset`
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| start_point | [`Point 2D`](/components/types/#point-2d) | The starting point |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The distance and direction to move |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d point_offset_by(const point_2d &start_point, const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.PointOffsetBy(Point2D startPoint, Vector2D offset);
+public static Point2D SplashKit.PointOffsetBy(Point2D startPoint, Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_offset_by(start_point, offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointOffsetBy(const startPoint: Point2D; const offset: Vector2D): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point Offset From Origin [🔗](#point-offset-from-origin)
+
+ 
+Returns the point offset from the origin by the provided vector.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| offset | [`Vector 2D`](/components/types/#vector-2d) | The distance and direction to move |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d point_offset_from_origin(const vector_2d &offset)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.PointOffsetFromOrigin(Vector2D offset);
+public static Point2D SplashKit.PointOffsetFromOrigin(Vector2D offset);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_offset_from_origin(offset):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointOffsetFromOrigin(const offset: Vector2D): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point On Line [🧬](#group-point-on-line)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Point On Line** (pt: point_2d, l: line )](/components/geometry/#point-on-line--1)
+- [**Point On Line** (pt: point_2d, l: line, proximity: float )](/components/geometry/#point-on-line--2)
+
+:::
+
+### Point On Line [🤖](#point-on-line--1) 
+Returns true if point `pt` is on the line `l`.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| l | [`Line`](/components/types/#line) | The line to check |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_on_line(const point_2d &pt, const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointOnLine(Point2D pt, Line l);
+public static bool SplashKit.PointOnLine(Point2D pt, Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_on_line(pt, l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointOnLine(const pt: Point2D; const l: Line): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Point On Line [🤖](#point-on-line--2) 
+Returns true when the point `pt` is on the line `l`. The
+proximity value is used to set the sensitivity -- higher values
+effectively make the line thicker.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test |
+| l | [`Line`](/components/types/#line) | The line to check |
+| proximity | `Float` | The sensitivity to allow close approximities |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool point_on_line(const point_2d &pt, const line &l, float proximity)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.PointOnLine(Point2D pt, Line l, float proximity);
+public static bool SplashKit.PointOnLine(Point2D pt, Line l, float proximity);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_on_line_with_proximity(pt, l, proximity):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointOnLine(const pt: Point2D; const l: Line; proximity: Single): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point Point Angle [🔗](#point-point-angle)
+
+ 
+Returns the angle between two points in degrees.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The first point |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The other point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float point_point_angle(const point_2d &pt1, const point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.PointPointAngle(Point2D pt1, Point2D pt2);
+public static float SplashKit.PointPointAngle(Point2D pt1, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_point_angle(pt1, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointPointAngle(const pt1: Point2D; const pt2: Point2D): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point Point Distance [🔗](#point-point-distance)
+
+ 
+Returns the distance between two points.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The first point |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The other point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float point_point_distance(const point_2d &pt1, const point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.PointPointDistance(Point2D pt1, Point2D pt2);
+public static float SplashKit.PointPointDistance(Point2D pt1, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_point_distance(pt1, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointPointDistance(const pt1: Point2D; const pt2: Point2D): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Point To String [🔗](#point-to-string)
+
+ 
+Get a text description of the [`Point 2D`](/components/types/#point-2d).
+
+**Return Type**
+
+- `String` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point details |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`string point_to_string(const point_2d &pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static string Geometry.PointToString(Point2D pt);
+public static string SplashKit.PointToString(Point2D pt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def point_to_string(pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function PointToString(const pt: Point2D): String`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Random Bitmap Point [🔗](#random-bitmap-point)
+
+ 
+Returns a random point within the bounds of the bitmap.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The bitmap |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d random_bitmap_point(bitmap bmp)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.RandomBitmapPoint(Bitmap bmp);
+public static Point2D SplashKit.RandomBitmapPoint(Bitmap bmp);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def random_bitmap_point(bmp):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RandomBitmapPoint(bmp: Bitmap): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Random Screen Point [🔗](#random-screen-point)
+
+ 
+Returns a random point on the current window.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d random_screen_point()`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.RandomScreenPoint();
+public static Point2D SplashKit.RandomScreenPoint();`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def random_screen_point():`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RandomScreenPoint(): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Random Window Point [🔗](#random-window-point)
+
+ 
+Returns a random point on the provided window.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| wind | window | The window |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d random_window_point(window wind)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.RandomWindowPoint(Window wind);
+public static Point2D SplashKit.RandomWindowPoint(Window wind);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def random_window_point(wind):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RandomWindowPoint(wind: Window): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Same Point [🔗](#same-point)
+
+ 
+Returns True of `pt1` is at the same point as `pt2`. This checks at an
+integer level, indicating the two points refer to the same pixel.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | The first point |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | The other point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool same_point(const point_2d &pt1, const point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.SamePoint(Point2D pt1, Point2D pt2);
+public static bool SplashKit.SamePoint(Point2D pt1, Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def same_point(pt1, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function SamePoint(const pt1: Point2D; const pt2: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Center Point [🔗](#center-point)
+
+ 
+Returns the center point of the circle.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle to get the center point |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d center_point(const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.CenterPoint(Circle c);
+public static Point2D SplashKit.CenterPoint(Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def center_point(c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CenterPoint(const c: Circle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Circle At [🧬](#group-circle-at)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Circle At** (pt: point_2d, radius: double )](/components/geometry/#circle-at--1)
+- [**Circle At** (x: double, y: double, radius: double )](/components/geometry/#circle-at--2)
+
+:::
+
+### Circle At [🤖](#circle-at--1) 
+Returns a circle at the indicated point and radius.
+
+**Return Type**
+
+- [`Circle`](/components/types/#circle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The location of the center of the circle |
+| radius | `Double` | The radius of the circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`circle circle_at(const point_2d &pt, double radius)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Circle Geometry.CircleAt(Point2D pt, double radius);
+public static Circle SplashKit.CircleAt(Point2D pt, double radius);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circle_at(pt, radius):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CircleAt(const pt: Point2D; radius: Double): Circle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Circle At [🤖](#circle-at--2) 
+Returns a circle at the indicated point and radius.
+
+**Return Type**
+
+- [`Circle`](/components/types/#circle) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x | `Double` | The x location of the circle |
+| y | `Double` | The y location of the circle |
+| radius | `Double` | The radius of the circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`circle circle_at(double x, double y, double radius)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Circle Geometry.CircleAt(double x, double y, double radius);
+public static Circle SplashKit.CircleAt(double x, double y, double radius);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circle_at_from_points(x, y, radius):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CircleAt(x: Double; y: Double; radius: Double): Circle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Circle Radius [🔗](#circle-radius)
+
+ 
+Returns the circle radius.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float circle_radius(const circle c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.CircleRadius(Circle c);
+public static float SplashKit.CircleRadius(Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circle_radius(c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CircleRadius(c: Circle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Circle X [🔗](#circle-x)
+
+ 
+Returns the circle x value.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float circle_x(const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.CircleX(Circle c);
+public static float SplashKit.CircleX(Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circle_x(c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CircleX(const c: Circle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Circle Y [🔗](#circle-y)
+
+ 
+Returns the circle y value.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float circle_y(const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.CircleY(Circle c);
+public static float SplashKit.CircleY(Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circle_y(c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CircleY(const c: Circle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Circles Intersect [🔗](#circles-intersect)
+
+ 
+Detects if two circles intersect. This can be used to detect collisions between
+bounding circles.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c1 | [`Circle`](/components/types/#circle) | The circle to test if intersects with c2 |
+| c2 | [`Circle`](/components/types/#circle) | The circle to test if intersects with c1 |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool circles_intersect(circle c1, circle c2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.CirclesIntersect(Circle c1, Circle c2);
+public static bool SplashKit.CirclesIntersect(Circle c1, Circle c2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def circles_intersect(c1, c2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function CirclesIntersect(c1: Circle; c2: Circle): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Closest Point On Circle [🔗](#closest-point-on-circle)
+
+ 
+The closest point on the circle to the given point.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| from_pt | [`Point 2D`](/components/types/#point-2d) | The point to test from |
+| c | [`Circle`](/components/types/#circle) | The circle you want to get a point on its circumference |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d closest_point_on_circle(const point_2d &from_pt, const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.ClosestPointOnCircle(Point2D fromPt, Circle c);
+public static Point2D SplashKit.ClosestPointOnCircle(Point2D fromPt, Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def closest_point_on_circle(from_pt, c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ClosestPointOnCircle(const fromPt: Point2D; const c: Circle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Closest Point On Line From Circle [🔗](#closest-point-on-line-from-circle)
+
+ 
+Returns the closest point on a line to a circle.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+| l | [`Line`](/components/types/#line) | The line |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d closest_point_on_line_from_circle(const circle &c, const line &l)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.ClosestPointOnLineFromCircle(Circle c, Line l);
+public static Point2D SplashKit.ClosestPointOnLineFromCircle(Circle c, Line l);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def closest_point_on_line_from_circle(c, l):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ClosestPointOnLineFromCircle(const c: Circle; const l: Line): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Closest Point On Rect From Circle [🔗](#closest-point-on-rect-from-circle)
+
+ 
+Returns the closest point on a rectangle to a circle.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d closest_point_on_rect_from_circle(const circle &c, const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.ClosestPointOnRectFromCircle(Circle c, Rectangle rect);
+public static Point2D SplashKit.ClosestPointOnRectFromCircle(Circle c, Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def closest_point_on_rect_from_circle(c, rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function ClosestPointOnRectFromCircle(const c: Circle; const rect: Rectangle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Distant Point On Circle [🔗](#distant-point-on-circle)
+
+ 
+The furthest point on the circle to the given point.
+
+**Return Type**
+
+- [`Point 2D`](/components/types/#point-2d) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point to test from |
+| c | [`Circle`](/components/types/#circle) | The circle you want to get a point on its circumference |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`point_2d distant_point_on_circle(const point_2d &pt, const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Point2D Geometry.DistantPointOnCircle(Point2D pt, Circle c);
+public static Point2D SplashKit.DistantPointOnCircle(Point2D pt, Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def distant_point_on_circle(pt, c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DistantPointOnCircle(const pt: Point2D; const c: Circle): Point2D`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Distant Point On Circle Heading [🔗](#distant-point-on-circle-heading)
+
+ 
+Determines the opposite side of a circle given a collision point and a
+heading.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| pt | [`Point 2D`](/components/types/#point-2d) | The point from which the test is being made |
+| c | [`Circle`](/components/types/#circle) | The circle |
+| heading | [`Vector 2D`](/components/types/#vector-2d) | The direction the point is heading |
+| opposite_pt | [`Point 2D`](/components/types/#point-2d) | After the call, this is set to the point on the
+opposite side of the circle from pt when it is
+heading in the given direction. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool distant_point_on_circle_heading(const point_2d &pt, const circle &c, const vector_2d &heading, point_2d &opposite_pt)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.DistantPointOnCircleHeading(Point2D pt, Circle c, Vector2D heading, ref Point2D oppositePt);
+public static bool SplashKit.DistantPointOnCircleHeading(Point2D pt, Circle c, Vector2D heading, ref Point2D oppositePt);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def distant_point_on_circle_heading(pt, c, heading, opposite_pt):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function DistantPointOnCircleHeading(const pt: Point2D; const c: Circle; const heading: Vector2D; var oppositePt: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Ray Circle Intersect Distance [🔗](#ray-circle-intersect-distance)
+
+ 
+Calculates the distance from a ray cast from a point to a given circle.
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| ray_origin | [`Point 2D`](/components/types/#point-2d) | The origin of the ray |
+| ray_heading | [`Vector 2D`](/components/types/#vector-2d) | The direction of the ray |
+| c | [`Circle`](/components/types/#circle) | The circle being tested |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float ray_circle_intersect_distance(const point_2d &ray_origin, const vector_2d &ray_heading, const circle &c)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.RayCircleIntersectDistance(Point2D rayOrigin, Vector2D rayHeading, Circle c);
+public static float SplashKit.RayCircleIntersectDistance(Point2D rayOrigin, Vector2D rayHeading, Circle c);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def ray_circle_intersect_distance(ray_origin, ray_heading, c):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function RayCircleIntersectDistance(const rayOrigin: Point2D; const rayHeading: Vector2D; const c: Circle): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Tangent Points [🔗](#tangent-points)
+
+ 
+Returns the two tangent points on the circle given the indicated point.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| from_pt | [`Point 2D`](/components/types/#point-2d) | The source point |
+| c | [`Circle`](/components/types/#circle) | The circle |
+| p1 | [`Point 2D`](/components/types/#point-2d) | If this returns true, then `p1` contains one of the points |
+| p2 | [`Point 2D`](/components/types/#point-2d) | If this returns true, then `p2` contains one of the points |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool tangent_points(const point_2d &from_pt, const circle &c, point_2d &p1, point_2d &p2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.TangentPoints(Point2D fromPt, Circle c, ref Point2D p1, ref Point2D p2);
+public static bool SplashKit.TangentPoints(Point2D fromPt, Circle c, ref Point2D p1, ref Point2D p2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def tangent_points(from_pt, c, p1, p2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TangentPoints(const fromPt: Point2D; const c: Circle; var p1: Point2D; var p2: Point2D): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Widest Points [🔗](#widest-points)
+
+ 
+Calculates the two points on a circles radius that lie along the given
+vector. This represents the points on the circle when the `Vector` is
+placed at the circle's center point.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| c | [`Circle`](/components/types/#circle) | The circle |
+| along | [`Vector 2D`](/components/types/#vector-2d) | The `Vector` representing the line along which the points lie. |
+| pt1 | [`Point 2D`](/components/types/#point-2d) | After the call, this is set to one of the widest points |
+| pt2 | [`Point 2D`](/components/types/#point-2d) | After the call, this is set to one of the widest points |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void widest_points(const circle &c, const vector_2d &along, point_2d &pt1, point_2d &pt2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Geometry.WidestPoints(Circle c, Vector2D along, ref Point2D pt1, ref Point2D pt2);
+public static void SplashKit.WidestPoints(Circle c, Vector2D along, ref Point2D pt1, ref Point2D pt2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def widest_points(c, along, pt1, pt2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure WidestPoints(const c: Circle; const along: Vector2D; var pt1: Point2D; var pt2: Point2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Quad From [🧬](#group-quad-from)
+
+:::note
+
+This function is overloaded. The following versions exist:
+
+- [**Quad From** (p1: point_2d, p2: point_2d, p3: point_2d, p4: point_2d )](/components/geometry/#quad-from--1)
+- [**Quad From** (rect: rectangle )](/components/geometry/#quad-from--2)
+- [**Quad From** (rect: rectangle, transform: matrix_2d )](/components/geometry/#quad-from--3)
+- [**Quad From** (x_top_left: double, y_top_left: double, x_top_right: double, y_top_right: double, x_bottom_left: double, y_bottom_left: double, x_bottom_right: double, y_bottom_right: double )](/components/geometry/#quad-from--4)
+
+:::
+
+### Quad From [🤖](#quad-from--1) 
+Returns a quad from the passed in points.
+
+**Return Type**
+
+- [`Quad`](/components/types/#quad) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| p1 | [`Point 2D`](/components/types/#point-2d) | The top left of the quad. |
+| p2 | [`Point 2D`](/components/types/#point-2d) | The top right of the quad |
+| p3 | [`Point 2D`](/components/types/#point-2d) | The bottom left of the quad |
+| p4 | [`Point 2D`](/components/types/#point-2d) | The bottom right of the quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`quad quad_from(const point_2d &p1, const point_2d &p2, const point_2d &p3, const point_2d &p4)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Quad Geometry.QuadFrom(Point2D p1, Point2D p2, Point2D p3, Point2D p4);
+public static Quad SplashKit.QuadFrom(Point2D p1, Point2D p2, Point2D p3, Point2D p4);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def quad_from_points(p1, p2, p3, p4):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuadFrom(const p1: Point2D; const p2: Point2D; const p3: Point2D; const p4: Point2D): Quad`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Quad From [🤖](#quad-from--2) 
+Returns a quad from the x-y points of a given recatangle
+
+**Return Type**
+
+- [`Quad`](/components/types/#quad) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to convert to a quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`quad quad_from(const rectangle &rect)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Quad Geometry.QuadFrom(Rectangle rect);
+public static Quad SplashKit.QuadFrom(Rectangle rect);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def quad_from_rectangle(rect):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuadFrom(const rect: Rectangle): Quad`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Quad From [🤖](#quad-from--3) 
+Returns a quad from the rectangle, then applies the transformation to
+the quads points.
+
+**Return Type**
+
+- [`Quad`](/components/types/#quad) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| rect | [`Rectangle`](/components/types/#rectangle) | The rectangle to transform to a quad. |
+| transform | [`Matrix 2D`](/components/physics/#matrix-2d) | A transform to apply to the resulting quad. |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`quad quad_from(const rectangle &rect, const matrix_2d &transform)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Quad Geometry.QuadFrom(Rectangle rect, Matrix2D transform);
+public static Quad SplashKit.QuadFrom(Rectangle rect, Matrix2D transform);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def quad_from_rectangle_with_transformation(rect, transform):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuadFrom(const rect: Rectangle; const transform: Matrix2D): Quad`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+### Quad From [🤖](#quad-from--4) 
+Returns a quad for the passed in x & y points.
+
+**Return Type**
+
+- [`Quad`](/components/types/#quad) 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| x_top_left | `Double` | X coordinate of the top left of the quad |
+| y_top_left | `Double` | Y coordinate of the top left of the quad |
+| x_top_right | `Double` | X coordinate of the top right of the quad |
+| y_top_right | `Double` | Y coordinate of the top right of the quad |
+| x_bottom_left | `Double` | X coordinate of the bottom left of the quad |
+| y_bottom_left | `Double` | Y coordinate of the bottom left of the quad |
+| x_bottom_right | `Double` | X coordinate of the bottom right of the quad |
+| y_bottom_right | `Double` | Y coordinate of the bottom right of the quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`quad quad_from(double x_top_left, double y_top_left, double x_top_right, double y_top_right, double x_bottom_left, double y_bottom_left, double x_bottom_right, double y_bottom_right)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static Quad Geometry.QuadFrom(double xTopLeft, double yTopLeft, double xTopRight, double yTopRight, double xBottomLeft, double yBottomLeft, double xBottomRight, double yBottomRight);
+public static Quad SplashKit.QuadFrom(double xTopLeft, double yTopLeft, double xTopRight, double yTopRight, double xBottomLeft, double yBottomLeft, double xBottomRight, double yBottomRight);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def quad_from(x_top_left, y_top_left, x_top_right, y_top_right, x_bottom_left, y_bottom_left, x_bottom_right, y_bottom_right):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuadFrom(xTopLeft: Double; yTopLeft: Double; xTopRight: Double; yTopRight: Double; xBottomLeft: Double; yBottomLeft: Double; xBottomRight: Double; yBottomRight: Double): Quad`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Quads Intersect [🔗](#quads-intersect)
+
+ 
+Returns true if two quads intersect.
+
+**Return Type**
+
+- `Boolean` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| q1 | [`Quad`](/components/types/#quad) | The first quad |
+| q2 | [`Quad`](/components/types/#quad) | The second quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`bool quads_intersect(const quad &q1, const quad &q2)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static bool Geometry.QuadsIntersect(Quad q1, Quad q2);
+public static bool SplashKit.QuadsIntersect(Quad q1, Quad q2);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def quads_intersect(q1, q2):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function QuadsIntersect(const q1: Quad; const q2: Quad): Boolean`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Set Quad Point [🔗](#set-quad-point)
+
+ 
+Change a point in a quad.
+
+**Return Type**
+
+- `Void` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| q | [`Quad`](/components/types/#quad) | The quad to change |
+| idx | `Integer` | The index of the point: 0 is top left, 1 is top right, 2 is
+bottom left, and 3 is bottom right |
+| value | [`Point 2D`](/components/types/#point-2d) | The new value for that point in the quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`void set_quad_point(quad &q, int idx, const point_2d &value)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static void Geometry.SetQuadPoint(ref Quad q, int idx, Point2D value);
+public static void SplashKit.SetQuadPoint(ref Quad q, int idx, Point2D value);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def set_quad_point(q, idx, value):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`procedure SetQuadPoint(var q: Quad; idx: Integer; const value: Point2D)`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Triangles From [🔗](#triangles-from)
+
+ 
+Returns the two triangles that make up a quad in a vector.
+
+**Return Type**
+
+- undefined 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| q | [`Quad`](/components/types/#quad) | The quad |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`vector<triangle> triangles_from(const quad &q)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static List<Triangle> Geometry.TrianglesFrom(Quad q);
+public static List<Triangle> SplashKit.TrianglesFrom(Quad q);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def triangles_from(q):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function TrianglesFrom(const q: Quad): ArrayOfTriangle`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Cosine [🔗](#cosine)
+
+ 
+Returns the cosine of the supplied angle (in degrees).
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| degrees | `Float` | The angle in degrees |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float cosine(float degrees)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.Cosine(float degrees);
+public static float SplashKit.Cosine(float degrees);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def cosine(degrees):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Cosine(degrees: Single): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Sine [🔗](#sine)
+
+ 
+Returns the sine of the supplied angle (in degrees).
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| degrees | `Float` | The angle in degrees |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float sine(float degrees)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.Sine(float degrees);
+public static float SplashKit.Sine(float degrees);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sine(degrees):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Sine(degrees: Single): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---
+## Tangent [🔗](#tangent)
+
+ 
+Returns the tangent of the supplied angle (in degrees).
+
+**Return Type**
+
+- `Float` 
+
+**Parameters**
+
+| Name   | Type                                               | Description                                                                        |
+| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| degrees | `Float` | The angle in degrees |
+
+**Signatures**
+
+<Tabs>
+  <TabItem label="C++">
+    <Code code={`float tangent(float degrees)`} lang="cpp" />
+  </TabItem>
+  <TabItem label="C#">
+    <Code code={`public static float Geometry.Tangent(float degrees);
+public static float SplashKit.Tangent(float degrees);`} lang="csharp" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def tangent(degrees):`} lang="python" />
+  </TabItem>
+  <TabItem label="Pascal">
+    <Code code={`function Tangent(degrees: Single): Single`} lang="pascal" />
+  </TabItem>
+</Tabs>
+
+---

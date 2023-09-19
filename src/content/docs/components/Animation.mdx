@@ -14,6 +14,8 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 import { Code } from "astro/components";
 
+
+
 ##
 ## Animations Guides
 
@@ -26,7 +28,7 @@ Returns the number of [`Animation`](/components/types/#animation)s within an [`A
 
 **Return Type**
 
-- Integer
+- `Integer`
 
 Returns an `Integer` equal to the total number of animations in the script.
 
@@ -68,7 +70,7 @@ Returns the current cell (the part of the image or sprite) of this animation. Th
 
 **Return Type**
 
-- Integer
+- `Integer`
 
 Returns the current cell of the animation passed to the method.
 
@@ -153,7 +155,9 @@ Checks if an [`Animation`](/components/types/#animation) has ended.
 
 **Return Type**
 
-- Boolean
+- `Boolean`
+
+
 
 Returns a `Boolean` denoting whether the [`Animation`](/components/types/#animation) has ended.
 
@@ -194,7 +198,9 @@ Returns true if the [`Animation`](/components/types/#animation) entered a new fr
 
 **Return Type**
 
-- Boolean
+- `Boolean`
+
+
 
 Returns a `Boolean` denoting whether the [`Animation`](/components/types/#animation) has entered a new frame.
 
@@ -290,7 +296,7 @@ Searches an [`Animation Script`](/components/types/#animation-script) for an [`A
 
 **Return Type**
 
-- Integer
+- `Integer`
 
 Returns the index of the [`Animation`](/components/types/#animation) in the [`Animation Script`](/components/types/#animation-script).
 
@@ -1269,11 +1275,11 @@ public static void SplashKit.FreeAnimation(Animation ani);"
 :::note
 This function is overloaded. The following versions exist:
 
-- [Free Animation Script (script_to_free: `Animation Script`)](/api/animations/#free-animation-script)
-- [Free Animation Script (name: `String`)](/api/animations/#free-animation-script-with-name)
+- [Free Animation Script (script_to_free: `Animation Script`)](/components/animations/#free-animation--1)
+- [Free Animation Script (name: `String`)](/components/animations/#free-animation-script--2)
 :::
 
-### Free Animation Script [🤖](#free-animation-script)
+### Free Animation Script [🤖](#free-animation-script--1)
 
 Frees loaded animation frames data. Use this when you will no longer be using the animation for any purpose, including within a sprite.
 
@@ -1314,7 +1320,7 @@ public static void SplashKit.FreeAnimationScript(AnimationScript scriptToFree);"
 </Tabs> 
 ---
 
-### Free Animation Script [🤖](#free-animation-script-with-name)
+### Free Animation Script [🤖](#free-animation-script--2)
 
 Frees loaded [`Animation Script`](/components/types/#animation-script) data. Use this when you will no longer be using the animation for any purpose, including within a sprite.
 
@@ -1365,7 +1371,9 @@ Returns whether an [`Animation Script`](/components/types/#animation-script) has
 
 **Return Type**
 
-- Boolean
+- `Boolean`
+
+
 
 Returns a `Boolean` that denotes whether the [`Animation Script`](/components/types/#animation-script) has been loaded.
 
@@ -1415,7 +1423,9 @@ Determines if SplashKit has animation frames loaded for the supplied name. This 
 
 **Return Type**
 
-- Boolean
+- `Boolean`
+
+
 
 Returns the `Boolean` that denotes if the animation has the [`Animation Script`](/components/types/#animation-script).
 

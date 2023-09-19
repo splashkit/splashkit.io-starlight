@@ -15,7 +15,8 @@ import { Code } from "astro/components";
 
 ## Database Named [🔗](#database-named)
 
-Retrieves a `database` that has been loaded into SplashKit.
+ 
+Retrieves a [`Database`](/components/database/#database) that has been loaded into SplashKit.
 
 **Return Type**
 
@@ -48,6 +49,7 @@ public static Database SplashKit.DatabaseNamed(string name);`} lang="csharp" />
 ---
 ## Free All Databases [🔗](#free-all-databases)
 
+ 
 Releases all of the databases which have been loaded.
 
 **Return Type**
@@ -75,6 +77,7 @@ public static void SplashKit.FreeAllDatabases();`} lang="csharp" />
 ---
 ## Free All Query Results [🔗](#free-all-query-results)
 
+ 
 Frees all of the databases which have been loaded.
 
 **Return Type**
@@ -101,18 +104,17 @@ public static void SplashKit.FreeAllQueryResults();`} lang="csharp" />
 
 ---
 ## Free Database [🧬](#group-free-database)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Free Database** (db_to_close: `Database`)](/components/database/#free-database--1)
+- [**Free Database** (db_to_close: database )](/components/database/#free-database--1)
+- [**Free Database** (name_of_db_to_close: string )](/components/database/#free-database--2)
 
-- [**Free Database** (name_of_db_to_close: `String`)](/components/database/#free-database--2)
 :::
----
 
-
-### Free Database [🤖](#free-database--1)
-
+### Free Database [🤖](#free-database--1) 
 Frees the SplashKit resources associated with the database.
 
 **Return Type**
@@ -123,7 +125,7 @@ Frees the SplashKit resources associated with the database.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| db_to_close | [`Database`](/components/database/#database) | The `database` whose resources should be released. |
+| db_to_close | [`Database`](/components/database/#database) | The [`Database`](/components/database/#database) whose resources should be released. |
 
 **Signatures**
 
@@ -144,8 +146,7 @@ public static void SplashKit.FreeDatabase(Database dbToClose);`} lang="csharp" /
 </Tabs>
 
 ---
-### Free Database [🤖](#free-database--2)
-
+### Free Database [🤖](#free-database--2) 
 Frees the SplashKit resources associated with the database at a given name.
 
 **Return Type**
@@ -156,7 +157,7 @@ Frees the SplashKit resources associated with the database at a given name.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| name_of_db_to_close | `String` | The `string` denoting where the database is which should be released. |
+| name_of_db_to_close | `String` | The `String` denoting where the database is which should be released. |
 
 **Signatures**
 
@@ -179,6 +180,7 @@ public static void SplashKit.FreeDatabase(string nameOfDbToClose);`} lang="cshar
 ---
 ## Free Query Result [🔗](#free-query-result)
 
+ 
 Releases the SplashKit resources associated with the query.
 
 **Return Type**
@@ -189,7 +191,7 @@ Releases the SplashKit resources associated with the query.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| query | [`Query Result`](/components/database/#query-result) | The ](/components/database/#query-result) whose resources should be released. |
+| query | [`Query Result`](/components/database/#query-result) | The [`Query Result`](/components/database/#query-result) whose resources should be released. |
 
 **Signatures**
 
@@ -212,7 +214,8 @@ public static void SplashKit.FreeQueryResult(QueryResult query);`} lang="csharp"
 ---
 ## Get Next Row [🔗](#get-next-row)
 
-Gets the next row available on a given `query_result`.
+ 
+Gets the next row available on a given [`Query Result`](/components/database/#query-result).
 
 **Return Type**
 
@@ -245,6 +248,7 @@ public static bool SplashKit.GetNextRow(QueryResult dbResult);`} lang="csharp" /
 ---
 ## Has Database [🔗](#has-database)
 
+ 
 Determines if SplashKit has a database loaded for the supplied name.
 This checks against all databases loaded, those loaded without a name
 are assigned the filename as a default. If this returns `false`, you may
@@ -283,6 +287,7 @@ public static bool SplashKit.HasDatabase(string name);`} lang="csharp" />
 ---
 ## Has Row [🔗](#has-row)
 
+ 
 Checks if a given [`Query Result`](/components/database/#query-result) has a valid row of data.
 
 **Return Type**
@@ -316,11 +321,12 @@ public static bool SplashKit.HasRow(QueryResult dbResult);`} lang="csharp" />
 ---
 ## Open Database [🔗](#open-database)
 
+ 
 Loads or creates, and returns a database.
 
 The supplied `filename` is the name of the file of the database. The
-supplied `name` indicates the name to use to refer to this `database`.
-The `database` can then be retrieved by passing this `name` to
+supplied `name` indicates the name to use to refer to this [`Database`](/components/database/#database).
+The [`Database`](/components/database/#database) can then be retrieved by passing this `name` to
 the `database_named` function. If the database file does not exist, it
 will be created for you.
 
@@ -356,6 +362,7 @@ public Database(string name, string filename);`} lang="csharp" />
 ---
 ## Query Column For Bool [🔗](#query-column-for-bool)
 
+ 
 Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a bool.
 
 **Return Type**
@@ -390,6 +397,7 @@ public static bool SplashKit.QueryColumnForBool(QueryResult dbResult, int col);`
 ---
 ## Query Column For Double [🔗](#query-column-for-double)
 
+ 
 Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a double.
 
 **Return Type**
@@ -424,6 +432,7 @@ public static double SplashKit.QueryColumnForDouble(QueryResult dbResult, int co
 ---
 ## Query Column For Int [🔗](#query-column-for-int)
 
+ 
 Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for an integer.
 
 **Return Type**
@@ -458,6 +467,7 @@ public static int SplashKit.QueryColumnForInt(QueryResult dbResult, int col);`} 
 ---
 ## Query Column For String [🔗](#query-column-for-string)
 
+ 
 Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for a string.
 
 **Return Type**
@@ -492,6 +502,7 @@ public static string SplashKit.QueryColumnForString(QueryResult dbResult, int co
 ---
 ## Query Success [🔗](#query-success)
 
+ 
 Checks if the most recent query at the given [`Query Result`](/components/database/#query-result) was a success or failure.
 
 **Return Type**
@@ -525,6 +536,7 @@ public static bool SplashKit.QuerySuccess(QueryResult dbResult);`} lang="csharp"
 ---
 ## Query Type Of Col [🔗](#query-type-of-col)
 
+ 
 Queries a given column in the current row of the [`Query Result`](/components/database/#query-result) for the data type at its postition.
 
 **Return Type**
@@ -559,6 +571,7 @@ public static string SplashKit.QueryTypeOfCol(QueryResult dbResult, int col);`} 
 ---
 ## Reset Query Result [🔗](#reset-query-result)
 
+ 
 Resets a query_result back to its initial state, ready to be re-executed.
 
 **Return Type**
@@ -592,6 +605,7 @@ public static void SplashKit.ResetQueryResult(QueryResult dbResult);`} lang="csh
 ---
 ## Rows Changed [🔗](#rows-changed)
 
+ 
 Calculates the number of row changed in the database at the last time
 a changing query was performed on the given database.
 
@@ -625,18 +639,17 @@ public static int SplashKit.RowsChanged(Database db);`} lang="csharp" />
 
 ---
 ## Run Sql [🧬](#group-run-sql)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Run Sql** (db: `Database`, sql: `String`)](/components/types/#run-sql--1)
+- [**Run Sql** (db: database, sql: string )](/components/database/#run-sql--1)
+- [**Run Sql** (database_name: string, sql: string )](/components/database/#run-sql--2)
 
-- [**Run Sql** (database_name: `String`, sql: `String`)](/components/types/#run-sql--2)
 :::
----
 
-
-### Run Sql [🤖](#run-sql--1)
-
+### Run Sql [🤖](#run-sql--1) 
 Returns the [`Query Result`](/components/database/#query-result) for the query passed into `sql`.
 
 **Return Type**
@@ -669,8 +682,7 @@ public static QueryResult SplashKit.RunSql(Database db, string sql);`} lang="csh
 </Tabs>
 
 ---
-### Run Sql [🤖](#run-sql--2)
-
+### Run Sql [🤖](#run-sql--2) 
 Returns the [`Query Result`](/components/database/#query-result) for the query passed into `sql`.
 
 **Return Type**
@@ -706,14 +718,14 @@ public static QueryResult SplashKit.RunSql(string databaseName, string sql);`} l
 
 
 ## TYPES
-### Database [🔗](#database)
+### Database [🧾](#database)
 The [`Database`](/components/database/#database) type is used to refer to databases that can be manipulated by the SplashKit database code. Databases are:
 
 - opened with [Open Database](/components/database/#open-database),
 
 - and must be released using [Free Database](/components/database/#free-database) (to release a specific database) or `Delete All Databases` (to release all loaded databases).
 
-### Query Result [🔗](#query-result)
+### Query Result [🧾](#query-result)
 
 The [`Query Result`](/components/database/#query-result) type is used to store the result of performing a query on the database. It can:
 

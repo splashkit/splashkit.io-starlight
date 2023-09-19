@@ -16,12 +16,17 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 ```
 .
 ├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   ├── docs/
-│   │   └── config.ts
-│   └── env.d.ts
+└── src/
+    ├── assets/
+    ├── content/
+    │   ├── docs/
+    │   ├── components/
+    │   ├── guides/
+    │   ├── installation/
+    │   └── troubleshoot/
+    ├── styles/
+    ├── config.ts
+    └── env.d.ts
 ├── astro.config.mjs
 ├── package.json
 └── tsconfig.json

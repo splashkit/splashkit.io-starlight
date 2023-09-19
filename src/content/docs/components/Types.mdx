@@ -4,16 +4,16 @@ description: Animations in SplashKit can be used to move between cells in bitmap
 ---
 
 
-## Animation [🔗](#animation)
+## Animation [🧾](#animation)
 Animations are created from an [`Animation Script`](). Each animation tracks the current frame for one animation sequence. You update this animation and draw with it. This allows you to have the one script being used to create lots of individual animations, where each animation is potentially at a different frame.
 
-## Animation Script [🔗](#animation-script)
+## Animation Script [🧾](#animation-script)
 Animations in SplashKit are controlled by an animation script. This script tells SplashKit how long to play each frame, which cell in the bitmap the frame relates to, and which is the next frame. You load these scripts from file and can then use them to create animations that are used with the drawing options when you draw a bitmap.
 
-## Bitmap [🔗](#bitmap)
+## Bitmap [🧾](#bitmap)
 Bitmaps represent image resources in SplashKit. You can load these from file, download them from the internet, or create and draw them yourself. Once created or loaded, you can draw the bitmap and you can draw onto the bitmap.
 
-## Circle [🔗](#circle)
+## Circle [🧾](#circle)
 
 Circles have a center point and a radius. This means that, unlike shapes like the [`Rectangle`](/components/types/#rectangle), the circle extends out both left and right, and up and down from the point you position it at.
 
@@ -26,9 +26,8 @@ Circles have a center point and a radius. This means that, unlike shapes like th
 
 ---
 
-**Note:** This Markdown representation retains the original structure and content from the provided HTML code, including links and the table of fields. The code blocks are formatted using `<Code>` as requested.
 
-## Color [🔗](#color)
+## Color [🧾](#color)
 
 Colors can be used when drawing shapes and clearing surfaces. Color in SplashKit does include an alpha value used for opacity, which allows you to have partially transparent colors.
 
@@ -42,10 +41,10 @@ Colors can be used when drawing shapes and clearing surfaces. Color in SplashKit
 | A | `Float` | The alpha component of the color (between 0 and 1.0) |
 
 
-## Display [🔗](#display)
+## Display [🧾](#display)
 Each display value represents a physical display attached to the computer. You can use this to query the displays position and size.
 
-## Drawing Dest [🔗](#drawing-dest)
+## Drawing Dest [🧾](#drawing-dest)
 
 Determines the effect of the camera on a drawing operation.
 
@@ -58,7 +57,7 @@ Determines the effect of the camera on a drawing operation.
 | Draw Default   | means camera has an affect only if drawn to a window. |
 
 
-## Drawing Options [🔗](#drawing-options)
+## Drawing Options [🧾](#drawing-options)
 
 Drawing options allow you to customize drawing options. These should be initialized using the drawing option functions.
 
@@ -82,10 +81,10 @@ Drawing options allow you to customize drawing options. These should be initiali
 | Anim               | [`Animation`](/components/types/#animation) | The animation to use, which overrides the part option.            |
 
 
-## Font [🔗](#font)
+## Font [🧾](#font)
 Fonts are used to draw text in SplashKit. These can be loaded from file or downloaded from the internet. Once you have a font you can use the draw text procedures to use that font when drawing.
 
-## Font Style [🔗](#font-style)
+## Font Style [🧾](#font-style)
 
 Use font styles to set the style of a font. Setting the style is time-consuming, so create alternative font variables for each different style you want to work with. Note that these values can be logically ORed together to combine styles, e.g., `BoldFont` or `ItalicFont` = both bold and italic.
 
@@ -99,7 +98,7 @@ Use font styles to set the style of a font. Setting the style is time-consuming,
 | Underline Font | Underlined font.      |
 
 
-## HTTP Status Code [🔗](#http-status-code)
+## HTTP Status Code [🧾](#http-status-code)
 
 
 Defines the HTTP status codes supported by SplashKit. Refer to [this article](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) for a detailed description of each code.
@@ -123,7 +122,7 @@ Defines the HTTP status codes supported by SplashKit. Refer to [this article](ht
 
 
 
-## Line [🔗](#line)
+## Line [🧾](#line)
 
 A line goes from a start point to an end point.
 
@@ -134,7 +133,7 @@ A line goes from a start point to an end point.
 | Start Point  | [`Point 2D`](/components/types/#point-2d) | The start of the line. |
 | End Point    | [`Point 2D`](/components/types/#point-2d) | The end of the line.   |
 
-## Point 2D [🔗](#point-2d)
+## Point 2D [🧾](#point-2d)
 
 A Point2D represents a location in Cartesian coordinates (x, y). The x value represents the distance from the left edge of the window or bitmap, increasing in value as you travel right. The y value represents the distance from the top edge of the window or bitmap and increases as you travel down toward the bottom.
 
@@ -149,7 +148,7 @@ Point2D is a great way to keep track of the location of something in a 2D space 
 
 
 
-## Quad [🔗](#quad)
+## Quad [🧾](#quad)
 
 Quads (quadrilaterals) are shapes with 4 sides, but unlike [`Rectangle`](/components/types/#rectangle), these shapes can have axes that do not line up with the screen/bitmap axis.
 
@@ -163,7 +162,7 @@ Points should be constructed with the top left as the first point, top right as 
 
 
 
-## Rectangle [🔗](#rectangle)
+## Rectangle [🧾](#rectangle)
 
 Rectangles are simple rectangle shapes that exist at a point and have a set width and height. This means that the rectangle always has edges that follow the sides of the [`Window`](/api/windows/#window) or [`Bitmap`](/components/types/#bitmap) (so they are aligned with the x and y axes). The rectangle's position is its top left corner - it then extends to the right and down from this position.
 
@@ -177,7 +176,7 @@ Rectangles are simple rectangle shapes that exist at a point and have a set widt
 | Height | `Double` | The height of the rectangle                   |
 
 
-## Triangle [🔗](#triangle)
+## Triangle [🧾](#triangle)
 
 A triangle consists of three points, being the three points of the triangle.
 
@@ -188,7 +187,7 @@ A triangle consists of three points, being the three points of the triangle.
 | Points | [`Point 2D`](/components/types/#point-2d) | The points of the triangle |
 
 
-## Vector 2D [🔗](#vector-2d)
+## Vector 2D [🧾](#vector-2d)
 
 Vectors represent a direction and distance, and can be visualized as an arrow from one point to another in 2-dimensional space. Internally, the [`Vector 2D`](/components/types/#vector-2d) is stored as its x and y components.
 

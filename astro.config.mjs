@@ -6,6 +6,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Splashkit',
+			customCss: ["./src/styles/custom.css"],
 			social: {
 				github: 'https://github.com/splashkit',
 			},
