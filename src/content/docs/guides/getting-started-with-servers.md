@@ -1,9 +1,5 @@
 ---
 title: Getting Started With Servers
-date: 2018-07-14 08:09 UTC
-tags: networking
-author: Andrew Cain and Isaac Wallis
-author_url: http://github.com/franknsten
 description: This guide is an intruduction to using web servers
 
 ---

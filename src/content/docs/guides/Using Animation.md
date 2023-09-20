@@ -1,8 +1,6 @@
 ---
 
 title: Using Animations
-date: 2018-05-29 10:00 UTC
-author: Andrew Cain
 description: Animations allow you to switch between different images to make a more visually dynamic entity 
   on the screen. Splashkit allows you to create animations and use these together with sprite sheets to create these animations.
 

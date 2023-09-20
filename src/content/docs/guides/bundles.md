@@ -1,9 +1,5 @@
 ---
 title: Loading Resources with Bundles
-date: 2018-06-05 10:00 UTC
-author: Andrew Cain
-author_url:
-tags: starter
 description: Simplify the process of loading your program's resources using a resource bundle. This file lists the different resources you want loaded, which can then be loaded and freed as a group.
 ---
 

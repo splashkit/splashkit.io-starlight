@@ -13,7 +13,7 @@
     "@astrojs/prism": "^3.0.0",
     "@astrojs/solid-js": "^3.0.1",
     "@astrojs/starlight": "^0.8.0",
-    "astro": "^2.10.5",
+    "astro": "^2.10.15",
     "astro-expressive-code": "^0.23.0",
     "sharp": "^0.32.3",
     "solid-js": "^1.7.12",

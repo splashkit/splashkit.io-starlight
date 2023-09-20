@@ -1,9 +1,5 @@
 ---
 title: Understanding Double Buffering
-date: 2018-05-30 10:00 UTC
-author: Various
-author_url:
-tags: starter
 description: SplashKit uses double buffering to make animations smooth, but this means you need to do a few steps in order to get images appearing on the screen as you expect. In this article we discuss the basics of double buffering and the idea of the painters model.
 
 ---

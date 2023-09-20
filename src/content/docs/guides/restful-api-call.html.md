@@ -1,10 +1,6 @@
 ---
 
 title: How to make a RESTful API call using Splashkit
-date: 2018-10-03 12:00 UTC
-author: Cyrill Illi
-author_url:
-tags: networking
 description: In the world of web services and microservices many companies make their data availlable through a REST APIIn this document we want to use Splashkit to make a RESTful API call.
 
 ---

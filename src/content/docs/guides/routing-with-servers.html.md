@@ -1,11 +1,6 @@
 ---
 title: Routing With Servers
-date: 2018-08-10 05:43 UTC
-tags: networking
-author: Isaac Wallis
-author_url: http://github.com/franknsten
 description: This guide is an intruduction to delivering different content based on route requested
-
 ---
 
 This article extends the skills gained from <%= link_to 'getting started with servers', '2018-07-14-getting-started-with-servers.html', :relative => true %>, specifically around serving different files for different paths

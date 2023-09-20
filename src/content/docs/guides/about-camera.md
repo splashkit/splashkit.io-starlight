@@ -1,10 +1,6 @@
 ---
 
 title: Using the Splashkit Camera
-date: 2018-08-16 10:00 UTC
-author: Andrew Cain and others
-author_url:
-tags: camera
 description: See how the camera works, and how to draw to the different coordinate systems in your program.
 
 ---

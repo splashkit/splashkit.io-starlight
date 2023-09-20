@@ -1,9 +1,5 @@
 ---
 title: Get started with SplashKit Audio
-date: 2018-06-10 10:00 UTC
-author: Various
-author_url:
-tags: audio
 description: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
 
 ---

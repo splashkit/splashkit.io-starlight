@@ -1,12 +1,6 @@
 ---
-
 title: Reading Text
-date: 2018-10-02 10:00 UTC
-author: Andrew Cain and others
-author_url:
-tags: starter
 description: See how to read text from the user, both from command line and graphical applications.
-
 ---
 
 This article shows you how to get started reading text from the user. This includes reading text from the command line but also how to read text from within a graphical application.

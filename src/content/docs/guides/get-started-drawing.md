@@ -1,10 +1,6 @@
 ---
 
 title: Getting Started Drawing using Procedures
-date: 2018-05-30 10:00 UTC
-author: Andrew Cain
-author_url:
-tags: starter
 description: This article provide a quick overview of getting started with SplashKit. It includes how to 
   create a window and do some basic drawing in order to create a small animation. This is a 
   great place to start with SplashKit.
