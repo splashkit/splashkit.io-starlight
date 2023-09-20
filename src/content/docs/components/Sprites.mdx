@@ -8,19 +8,18 @@ SplashKit Sprites allows you to create images you can easily move and animate.
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
-
 ## Call For All Sprites [🧬](#group-call-for-all-sprites)
 
 :::note
 
 This function is overloaded. The following versions exist:
 
-- [**Call For All Sprites** (fn: sprite_float_function, val: float )](/components/sprites/#call-for-all-sprites--1)
-- [**Call For All Sprites** (fn: sprite_function )](/components/sprites/#call-for-all-sprites--2)
+- [**Call For All Sprites** (fn: sprite_float_function, val: float, )](/components/sprites/#call-for-all-sprites--1)
+- [**Call For All Sprites** (fn: sprite_function, )](/components/sprites/#call-for-all-sprites--2)
 
 :::
 
@@ -42,17 +41,25 @@ Call the supplied function for all sprites in the current pack.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void call_for_all_sprites(sprite_float_function *fn, float val)`} lang="cpp" />
+```cpp
+void call_for_all_sprites(sprite_float_function *fn, float val)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.CallForAllSprites(SpriteFloatFunction fn, float val);
-public static void SplashKit.CallForAllSprites(SpriteFloatFunction fn, float val);`} lang="csharp" />
+```csharp
+public static void Sprite.CallForAllSprites(SpriteFloatFunction fn, float val);
+public static void SplashKit.CallForAllSprites(SpriteFloatFunction fn, float val);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def call_for_all_sprites_with_value(fn, val):`} lang="python" />
+```python
+def call_for_all_sprites_with_value(fn, val):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure CallForAllSprites(fn: SpriteFloatFunction; val: Single)`} lang="pascal" />
+```pascal
+procedure CallForAllSprites(fn: SpriteFloatFunction; val: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -74,17 +81,25 @@ Call the supplied function for all sprites in the current pack.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void call_for_all_sprites(sprite_function *fn)`} lang="cpp" />
+```cpp
+void call_for_all_sprites(sprite_function *fn)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.CallForAllSprites(SpriteFunction fn);
-public static void SplashKit.CallForAllSprites(SpriteFunction fn);`} lang="csharp" />
+```csharp
+public static void Sprite.CallForAllSprites(SpriteFunction fn);
+public static void SplashKit.CallForAllSprites(SpriteFunction fn);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def call_for_all_sprites(fn):`} lang="python" />
+```python
+def call_for_all_sprites(fn):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure CallForAllSprites(fn: SpriteFunction)`} lang="pascal" />
+```pascal
+procedure CallForAllSprites(fn: SpriteFunction)
+```
   </TabItem>
 </Tabs>
 
@@ -108,17 +123,25 @@ Register a procedure to be called when an events occur on any sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void call_on_sprite_event(sprite_event_handler *handler)`} lang="cpp" />
+```cpp
+void call_on_sprite_event(sprite_event_handler *handler)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.CallOnSpriteEvent(SpriteEventHandler handler);
-public static void SplashKit.CallOnSpriteEvent(SpriteEventHandler handler);`} lang="csharp" />
+```csharp
+public static void Sprite.CallOnSpriteEvent(SpriteEventHandler handler);
+public static void SplashKit.CallOnSpriteEvent(SpriteEventHandler handler);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def call_on_sprite_event(handler):`} lang="python" />
+```python
+def call_on_sprite_event(handler):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure CallOnSpriteEvent(handler: SpriteEventHandler)`} lang="pascal" />
+```pascal
+procedure CallOnSpriteEvent(handler: SpriteEventHandler)
+```
   </TabItem>
 </Tabs>
 
@@ -143,17 +166,25 @@ Position, Width and Height.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`point_2d center_point(sprite s)`} lang="cpp" />
+```cpp
+point_2d center_point(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Point2D Sprite.CenterPoint { get }
-public static Point2D SplashKit.CenterPoint(Sprite s);`} lang="csharp" />
+```csharp
+public Point2D Sprite.CenterPoint { get }
+public static Point2D SplashKit.CenterPoint(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def center_point(s):`} lang="python" />
+```python
+def center_point(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CenterPoint(s: Sprite): Point2D`} lang="pascal" />
+```pascal
+function CenterPoint(s: Sprite): Point2D
+```
   </TabItem>
 </Tabs>
 
@@ -164,12 +195,12 @@ public static Point2D SplashKit.CenterPoint(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Create Sprite** (layer: bitmap )](/components/sprites/#create-sprite--1)
-- [**Create Sprite** (layer: bitmap, ani: animation_script )](/components/sprites/#create-sprite--2)
-- [**Create Sprite** (bitmap_name: string )](/components/sprites/#create-sprite--3)
-- [**Create Sprite** (name: string, layer: bitmap )](/components/sprites/#create-sprite--4)
-- [**Create Sprite** (name: string, layer: bitmap, ani: animation_script )](/components/sprites/#create-sprite--5)
-- [**Create Sprite** (bitmap_name: string, animation_name: string )](/components/sprites/#create-sprite--6)
+- [**Create Sprite** (layer: bitmap, )](/components/sprites/#create-sprite--1)
+- [**Create Sprite** (layer: bitmap, ani: animation_script, )](/components/sprites/#create-sprite--2)
+- [**Create Sprite** (bitmap_name: string, )](/components/sprites/#create-sprite--3)
+- [**Create Sprite** (name: string, layer: bitmap, )](/components/sprites/#create-sprite--4)
+- [**Create Sprite** (name: string, layer: bitmap, ani: animation_script, )](/components/sprites/#create-sprite--5)
+- [**Create Sprite** (bitmap_name: string, animation_name: string, )](/components/sprites/#create-sprite--6)
 
 :::
 
@@ -196,17 +227,25 @@ for resource management purposes.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(bitmap layer)`} lang="cpp" />
+```cpp
+sprite create_sprite(bitmap layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(Bitmap layer);
-public Sprite(Bitmap layer);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(Bitmap layer);
+public Sprite(Bitmap layer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite(layer):`} lang="python" />
+```python
+def create_sprite(layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(layer: Bitmap): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(layer: Bitmap): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -236,17 +275,25 @@ for resource management purposes.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(bitmap layer, animation_script ani)`} lang="cpp" />
+```cpp
+sprite create_sprite(bitmap layer, animation_script ani)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(Bitmap layer, AnimationScript ani);
-public Sprite(Bitmap layer, AnimationScript ani);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(Bitmap layer, AnimationScript ani);
+public Sprite(Bitmap layer, AnimationScript ani);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_with_animation(layer, ani):`} lang="python" />
+```python
+def create_sprite_with_animation(layer, ani):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(layer: Bitmap; ani: AnimationScript): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(layer: Bitmap; ani: AnimationScript): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -274,17 +321,25 @@ for resource management purposes.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(const string &bitmap_name)`} lang="cpp" />
+```cpp
+sprite create_sprite(const string &bitmap_name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(string bitmapName);
-public Sprite(string bitmapName);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(string bitmapName);
+public Sprite(string bitmapName);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_with_bitmap_named(bitmap_name):`} lang="python" />
+```python
+def create_sprite_with_bitmap_named(bitmap_name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(const bitmapName: String): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(const bitmapName: String): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -310,17 +365,25 @@ collisions, no animation, the layer have name 'layer1'.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(const string &name, bitmap layer)`} lang="cpp" />
+```cpp
+sprite create_sprite(const string &name, bitmap layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(string name, Bitmap layer);
-public Sprite(string name, Bitmap layer);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(string name, Bitmap layer);
+public Sprite(string name, Bitmap layer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_named(name, layer):`} lang="python" />
+```python
+def create_sprite_named(name, layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(const name: String; layer: Bitmap): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(const name: String; layer: Bitmap): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -347,17 +410,25 @@ collisions, the specified animation template, the layer have name 'layer1'.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(const string &name, bitmap layer, animation_script ani)`} lang="cpp" />
+```cpp
+sprite create_sprite(const string &name, bitmap layer, animation_script ani)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(string name, Bitmap layer, AnimationScript ani);
-public Sprite(string name, Bitmap layer, AnimationScript ani);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(string name, Bitmap layer, AnimationScript ani);
+public Sprite(string name, Bitmap layer, AnimationScript ani);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_named_with_animation(name, layer, ani):`} lang="python" />
+```python
+def create_sprite_named_with_animation(name, layer, ani):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(const name: String; layer: Bitmap; ani: AnimationScript): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(const name: String; layer: Bitmap; ani: AnimationScript): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -383,17 +454,25 @@ sprite. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite create_sprite(const string &bitmap_name, const string &animation_name)`} lang="cpp" />
+```cpp
+sprite create_sprite(const string &bitmap_name, const string &animation_name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite SplashKit.CreateSprite(string bitmapName, string animationName);
-public Sprite(string bitmapName, string animationName);`} lang="csharp" />
+```csharp
+public static Sprite SplashKit.CreateSprite(string bitmapName, string animationName);
+public Sprite(string bitmapName, string animationName);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_with_bitmap_and_animation_named(bitmap_name, animation_name):`} lang="python" />
+```python
+def create_sprite_with_bitmap_and_animation_named(bitmap_name, animation_name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateSprite(const bitmapName: String; const animationName: String): Sprite`} lang="pascal" />
+```pascal
+function CreateSprite(const bitmapName: String; const animationName: String): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -419,17 +498,25 @@ the calls to draw_all_sprites and update_all_sprites.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void create_sprite_pack(const string &name)`} lang="cpp" />
+```cpp
+void create_sprite_pack(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.CreateSpritePack(string name);
-public static void SplashKit.CreateSpritePack(string name);`} lang="csharp" />
+```csharp
+public static void Sprite.CreateSpritePack(string name);
+public static void SplashKit.CreateSpritePack(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_sprite_pack(name):`} lang="python" />
+```python
+def create_sprite_pack(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure CreateSpritePack(const name: String)`} lang="pascal" />
+```pascal
+procedure CreateSpritePack(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -447,17 +534,25 @@ Returns the name of the currently selected sprite_pack.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string current_sprite_pack()`} lang="cpp" />
+```cpp
+string current_sprite_pack()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Sprite.CurrentSpritePack();
-public static string SplashKit.CurrentSpritePack();`} lang="csharp" />
+```csharp
+public static string Sprite.CurrentSpritePack();
+public static string SplashKit.CurrentSpritePack();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def current_sprite_pack():`} lang="python" />
+```python
+def current_sprite_pack():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CurrentSpritePack(): String`} lang="pascal" />
+```pascal
+function CurrentSpritePack(): String
+```
   </TabItem>
 </Tabs>
 
@@ -476,17 +571,25 @@ switched to select between different sets of sprites.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void draw_all_sprites()`} lang="cpp" />
+```cpp
+void draw_all_sprites()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.DrawAllSprites();
-public static void SplashKit.DrawAllSprites();`} lang="csharp" />
+```csharp
+public static void Sprite.DrawAllSprites();
+public static void SplashKit.DrawAllSprites();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def draw_all_sprites():`} lang="python" />
+```python
+def draw_all_sprites():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DrawAllSprites()`} lang="pascal" />
+```pascal
+procedure DrawAllSprites()
+```
   </TabItem>
 </Tabs>
 
@@ -497,9 +600,9 @@ public static void SplashKit.DrawAllSprites();`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Draw Sprite** (s: sprite, offset: vector_2d )](/components/sprites/#draw-sprite--1)
-- [**Draw Sprite** (s: sprite )](/components/sprites/#draw-sprite--2)
-- [**Draw Sprite** (s: sprite, x_offset: double, y_offset: double )](/components/sprites/#draw-sprite--3)
+- [**Draw Sprite** (s: sprite, offset: vector_2d, )](/components/sprites/#draw-sprite--1)
+- [**Draw Sprite** (s: sprite, )](/components/sprites/#draw-sprite--2)
+- [**Draw Sprite** (s: sprite, x_offset: double, y_offset: double, )](/components/sprites/#draw-sprite--3)
 
 :::
 
@@ -524,17 +627,25 @@ use the standard ''draw_sprite'' routine.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void draw_sprite(sprite s, const vector_2d &offset)`} lang="cpp" />
+```cpp
+void draw_sprite(sprite s, const vector_2d &offset)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.DrawSprite(Vector2D offset);
-public static void SplashKit.DrawSprite(Sprite s, Vector2D offset);`} lang="csharp" />
+```csharp
+public void Sprite.DrawSprite(Vector2D offset);
+public static void SplashKit.DrawSprite(Sprite s, Vector2D offset);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def draw_sprite_offset_by(s, offset):`} lang="python" />
+```python
+def draw_sprite_offset_by(s, offset):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DrawSprite(s: Sprite; const offset: Vector2D)`} lang="pascal" />
+```pascal
+procedure DrawSprite(s: Sprite; const offset: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -560,17 +671,25 @@ used in most cases.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void draw_sprite(sprite s)`} lang="cpp" />
+```cpp
+void draw_sprite(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.DrawSprite();
-public static void SplashKit.DrawSprite(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.DrawSprite();
+public static void SplashKit.DrawSprite(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def draw_sprite(s):`} lang="python" />
+```python
+def draw_sprite(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DrawSprite(s: Sprite)`} lang="pascal" />
+```pascal
+procedure DrawSprite(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -597,17 +716,25 @@ use the standard `draw_sprite` routine.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void draw_sprite(sprite s, double x_offset, double y_offset)`} lang="cpp" />
+```cpp
+void draw_sprite(sprite s, double x_offset, double y_offset)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.DrawSprite(double xOffset, double yOffset);
-public static void SplashKit.DrawSprite(Sprite s, double xOffset, double yOffset);`} lang="csharp" />
+```csharp
+public void Sprite.DrawSprite(double xOffset, double yOffset);
+public static void SplashKit.DrawSprite(Sprite s, double xOffset, double yOffset);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def draw_sprite_offset_x_y(s, x_offset, y_offset):`} lang="python" />
+```python
+def draw_sprite_offset_x_y(s, x_offset, y_offset):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DrawSprite(s: Sprite; xOffset: Double; yOffset: Double)`} lang="pascal" />
+```pascal
+procedure DrawSprite(s: Sprite; xOffset: Double; yOffset: Double)
+```
   </TabItem>
 </Tabs>
 
@@ -625,17 +752,25 @@ Releases all of the sprites that have been loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_sprites()`} lang="cpp" />
+```cpp
+void free_all_sprites()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.FreeAllSprites();
-public static void SplashKit.FreeAllSprites();`} lang="csharp" />
+```csharp
+public static void Sprite.FreeAllSprites();
+public static void SplashKit.FreeAllSprites();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_sprites():`} lang="python" />
+```python
+def free_all_sprites():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllSprites()`} lang="pascal" />
+```pascal
+procedure FreeAllSprites()
+```
   </TabItem>
 </Tabs>
 
@@ -659,17 +794,25 @@ Free the resources associated with a sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_sprite(sprite s)`} lang="cpp" />
+```cpp
+void free_sprite(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.FreeSprite();
-public static void SplashKit.FreeSprite(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.FreeSprite();
+public static void SplashKit.FreeSprite(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_sprite(s):`} lang="python" />
+```python
+def free_sprite(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeSprite(s: Sprite)`} lang="pascal" />
+```pascal
+procedure FreeSprite(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -693,17 +836,25 @@ Frees the sprite pack and all of its sprites.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_sprite_pack(const string &name)`} lang="cpp" />
+```cpp
+void free_sprite_pack(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.FreeSpritePack(string name);
-public static void SplashKit.FreeSpritePack(string name);`} lang="csharp" />
+```csharp
+public static void Sprite.FreeSpritePack(string name);
+public static void SplashKit.FreeSpritePack(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_sprite_pack(name):`} lang="python" />
+```python
+def free_sprite_pack(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeSpritePack(const name: String)`} lang="pascal" />
+```pascal
+procedure FreeSpritePack(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -729,17 +880,25 @@ are assigned a default.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_sprite(const string &name)`} lang="cpp" />
+```cpp
+bool has_sprite(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Sprite.HasSprite(string name);
-public static bool SplashKit.HasSprite(string name);`} lang="csharp" />
+```csharp
+public static bool Sprite.HasSprite(string name);
+public static bool SplashKit.HasSprite(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_sprite(name):`} lang="python" />
+```python
+def has_sprite(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasSprite(const name: String): Boolean`} lang="pascal" />
+```pascal
+function HasSprite(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -763,17 +922,25 @@ Indicates if a given sprite_pack has already been created.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_sprite_pack(const string &name)`} lang="cpp" />
+```cpp
+bool has_sprite_pack(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Sprite.HasSpritePack(string name);
-public static bool SplashKit.HasSpritePack(string name);`} lang="csharp" />
+```csharp
+public static bool Sprite.HasSpritePack(string name);
+public static bool SplashKit.HasSpritePack(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_sprite_pack(name):`} lang="python" />
+```python
+def has_sprite_pack(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasSpritePack(const name: String): Boolean`} lang="pascal" />
+```pascal
+function HasSpritePack(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -784,10 +951,10 @@ public static bool SplashKit.HasSpritePack(string name);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Move Sprite** (s: sprite )](/components/sprites/#move-sprite--1)
-- [**Move Sprite** (s: sprite, distance: vector_2d )](/components/sprites/#move-sprite--2)
-- [**Move Sprite** (s: sprite, distance: vector_2d, pct: float )](/components/sprites/#move-sprite--3)
-- [**Move Sprite** (s: sprite, pct: float )](/components/sprites/#move-sprite--4)
+- [**Move Sprite** (s: sprite, )](/components/sprites/#move-sprite--1)
+- [**Move Sprite** (s: sprite, distance: vector_2d, )](/components/sprites/#move-sprite--2)
+- [**Move Sprite** (s: sprite, distance: vector_2d, pct: float, )](/components/sprites/#move-sprite--3)
+- [**Move Sprite** (s: sprite, pct: float, )](/components/sprites/#move-sprite--4)
 
 :::
 
@@ -810,17 +977,25 @@ the ''update_sprite'' routine.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_sprite(sprite s)`} lang="cpp" />
+```cpp
+void move_sprite(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveSprite();
-public static void SplashKit.MoveSprite(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.MoveSprite();
+public static void SplashKit.MoveSprite(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_sprite(s):`} lang="python" />
+```python
+def move_sprite(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveSprite(s: Sprite)`} lang="pascal" />
+```pascal
+procedure MoveSprite(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -847,17 +1022,25 @@ move the sprite. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_sprite(sprite s, const vector_2d &distance)`} lang="cpp" />
+```cpp
+void move_sprite(sprite s, const vector_2d &distance)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveSprite(Vector2D distance);
-public static void SplashKit.MoveSprite(Sprite s, Vector2D distance);`} lang="csharp" />
+```csharp
+public void Sprite.MoveSprite(Vector2D distance);
+public static void SplashKit.MoveSprite(Sprite s, Vector2D distance);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_sprite_by_vector(s, distance):`} lang="python" />
+```python
+def move_sprite_by_vector(s, distance):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveSprite(s: Sprite; const distance: Vector2D)`} lang="pascal" />
+```pascal
+procedure MoveSprite(s: Sprite; const distance: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -885,17 +1068,25 @@ move the sprite. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_sprite(sprite s, const vector_2d &distance, float pct)`} lang="cpp" />
+```cpp
+void move_sprite(sprite s, const vector_2d &distance, float pct)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveSprite(Vector2D distance, float pct);
-public static void SplashKit.MoveSprite(Sprite s, Vector2D distance, float pct);`} lang="csharp" />
+```csharp
+public void Sprite.MoveSprite(Vector2D distance, float pct);
+public static void SplashKit.MoveSprite(Sprite s, Vector2D distance, float pct);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_sprite_by_vector_percent(s, distance, pct):`} lang="python" />
+```python
+def move_sprite_by_vector_percent(s, distance, pct):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveSprite(s: Sprite; const distance: Vector2D; pct: Single)`} lang="pascal" />
+```pascal
+procedure MoveSprite(s: Sprite; const distance: Vector2D; pct: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -920,17 +1111,25 @@ updated using the ''update_sprite'' routines that require a percentage.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_sprite(sprite s, float pct)`} lang="cpp" />
+```cpp
+void move_sprite(sprite s, float pct)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveSprite(float pct);
-public static void SplashKit.MoveSprite(Sprite s, float pct);`} lang="csharp" />
+```csharp
+public void Sprite.MoveSprite(float pct);
+public static void SplashKit.MoveSprite(Sprite s, float pct);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_sprite_percent(s, pct):`} lang="python" />
+```python
+def move_sprite_percent(s, pct):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveSprite(s: Sprite; pct: Single)`} lang="pascal" />
+```pascal
+procedure MoveSprite(s: Sprite; pct: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -956,17 +1155,25 @@ This method moves a sprite to a given position in the game.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_sprite_to(sprite s, double x, double y)`} lang="cpp" />
+```cpp
+void move_sprite_to(sprite s, double x, double y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveSpriteTo(double x, double y);
-public static void SplashKit.MoveSpriteTo(Sprite s, double x, double y);`} lang="csharp" />
+```csharp
+public void Sprite.MoveSpriteTo(double x, double y);
+public static void SplashKit.MoveSpriteTo(Sprite s, double x, double y);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_sprite_to(s, x, y):`} lang="python" />
+```python
+def move_sprite_to(s, x, y):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveSpriteTo(s: Sprite; x: Double; y: Double)`} lang="pascal" />
+```pascal
+procedure MoveSpriteTo(s: Sprite; x: Double; y: Double)
+```
   </TabItem>
 </Tabs>
 
@@ -992,17 +1199,25 @@ with the draw_all_sprites and update_all_sprites code.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void select_sprite_pack(const string &name)`} lang="cpp" />
+```cpp
+void select_sprite_pack(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.SelectSpritePack(string name);
-public static void SplashKit.SelectSpritePack(string name);`} lang="csharp" />
+```csharp
+public static void Sprite.SelectSpritePack(string name);
+public static void SplashKit.SelectSpritePack(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def select_sprite_pack(name):`} lang="python" />
+```python
+def select_sprite_pack(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SelectSpritePack(const name: String)`} lang="pascal" />
+```pascal
+procedure SelectSpritePack(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1028,17 +1243,25 @@ Adds a new layer to the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_add_layer(sprite s, bitmap new_layer, const string &layer_name)`} lang="cpp" />
+```cpp
+int sprite_add_layer(sprite s, bitmap new_layer, const string &layer_name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteAddLayer(Bitmap newLayer, string layerName);
-public static int SplashKit.SpriteAddLayer(Sprite s, Bitmap newLayer, string layerName);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteAddLayer(Bitmap newLayer, string layerName);
+public static int SplashKit.SpriteAddLayer(Sprite s, Bitmap newLayer, string layerName);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_add_layer(s, new_layer, layer_name):`} lang="python" />
+```python
+def sprite_add_layer(s, new_layer, layer_name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAddLayer(s: Sprite; newLayer: Bitmap; const layerName: String): Integer`} lang="pascal" />
+```pascal
+function SpriteAddLayer(s: Sprite; newLayer: Bitmap; const layerName: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -1065,17 +1288,25 @@ this vector_2d is used to move the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_add_to_velocity(sprite s, const vector_2d &value)`} lang="cpp" />
+```cpp
+void sprite_add_to_velocity(sprite s, const vector_2d &value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteAddToVelocity(Vector2D value);
-public static void SplashKit.SpriteAddToVelocity(Sprite s, Vector2D value);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteAddToVelocity(Vector2D value);
+public static void SplashKit.SpriteAddToVelocity(Sprite s, Vector2D value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_add_to_velocity(s, value):`} lang="python" />
+```python
+def sprite_add_to_velocity(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteAddToVelocity(s: Sprite; const value: Vector2D)`} lang="pascal" />
+```pascal
+procedure SpriteAddToVelocity(s: Sprite; const value: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -1086,8 +1317,8 @@ public static void SplashKit.SpriteAddToVelocity(Sprite s, Vector2D value);`} la
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Add Value** (s: sprite, name: string )](/components/sprites/#sprite-add-value--1)
-- [**Sprite Add Value** (s: sprite, name: string, init_val: float )](/components/sprites/#sprite-add-value--2)
+- [**Sprite Add Value** (s: sprite, name: string, )](/components/sprites/#sprite-add-value--1)
+- [**Sprite Add Value** (s: sprite, name: string, init_val: float, )](/components/sprites/#sprite-add-value--2)
 
 :::
 
@@ -1109,17 +1340,25 @@ Adds a new kind of value to the sprite
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_add_value(sprite s, const string &name)`} lang="cpp" />
+```cpp
+void sprite_add_value(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteAddValue(string name);
-public static void SplashKit.SpriteAddValue(Sprite s, string name);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteAddValue(string name);
+public static void SplashKit.SpriteAddValue(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_add_value(s, name):`} lang="python" />
+```python
+def sprite_add_value(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteAddValue(s: Sprite; const name: String)`} lang="pascal" />
+```pascal
+procedure SpriteAddValue(s: Sprite; const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1144,17 +1383,25 @@ to the value passed in.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_add_value(sprite s, const string &name, float init_val)`} lang="cpp" />
+```cpp
+void sprite_add_value(sprite s, const string &name, float init_val)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteAddValue(string name, float initVal);
-public static void SplashKit.SpriteAddValue(Sprite s, string name, float initVal);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteAddValue(string name, float initVal);
+public static void SplashKit.SpriteAddValue(Sprite s, string name, float initVal);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_add_value_with_default(s, name, init_val):`} lang="python" />
+```python
+def sprite_add_value_with_default(s, name, init_val):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteAddValue(s: Sprite; const name: String; initVal: Single)`} lang="pascal" />
+```pascal
+procedure SpriteAddValue(s: Sprite; const name: String; initVal: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1180,17 +1427,25 @@ at 0,0.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`point_2d sprite_anchor_point(sprite s)`} lang="cpp" />
+```cpp
+point_2d sprite_anchor_point(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Point2D Sprite.AnchorPoint { get }
-public static Point2D SplashKit.SpriteAnchorPoint(Sprite s);`} lang="csharp" />
+```csharp
+public Point2D Sprite.AnchorPoint { get }
+public static Point2D SplashKit.SpriteAnchorPoint(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_anchor_point(s):`} lang="python" />
+```python
+def sprite_anchor_point(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAnchorPoint(s: Sprite): Point2D`} lang="pascal" />
+```pascal
+function SpriteAnchorPoint(s: Sprite): Point2D
+```
   </TabItem>
 </Tabs>
 
@@ -1215,17 +1470,25 @@ coordinates, based upon the position of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`point_2d sprite_anchor_position(sprite s)`} lang="cpp" />
+```cpp
+point_2d sprite_anchor_position(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Point2D Sprite.SpriteAnchorPosition(Sprite s);
-public static Point2D SplashKit.SpriteAnchorPosition(Sprite s);`} lang="csharp" />
+```csharp
+public static Point2D Sprite.SpriteAnchorPosition(Sprite s);
+public static Point2D SplashKit.SpriteAnchorPosition(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_anchor_position(s):`} lang="python" />
+```python
+def sprite_anchor_position(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAnchorPosition(s: Sprite): Point2D`} lang="pascal" />
+```pascal
+function SpriteAnchorPosition(s: Sprite): Point2D
+```
   </TabItem>
 </Tabs>
 
@@ -1249,17 +1512,25 @@ Indicates if the sprites animation has ended.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_animation_has_ended(sprite s)`} lang="cpp" />
+```cpp
+bool sprite_animation_has_ended(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Sprite.AnimationHasEnded { get }
-public static bool SplashKit.SpriteAnimationHasEnded(Sprite s);`} lang="csharp" />
+```csharp
+public bool Sprite.AnimationHasEnded { get }
+public static bool SplashKit.SpriteAnimationHasEnded(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_animation_has_ended(s):`} lang="python" />
+```python
+def sprite_animation_has_ended(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAnimationHasEnded(s: Sprite): Boolean`} lang="pascal" />
+```pascal
+function SpriteAnimationHasEnded(s: Sprite): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1283,17 +1554,25 @@ Returns the name of the sprite's current animation.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string sprite_animation_name(sprite s)`} lang="cpp" />
+```cpp
+string sprite_animation_name(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Sprite.SpriteAnimationName();
-public static string SplashKit.SpriteAnimationName(Sprite s);`} lang="csharp" />
+```csharp
+public string Sprite.SpriteAnimationName();
+public static string SplashKit.SpriteAnimationName(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_animation_name(s):`} lang="python" />
+```python
+def sprite_animation_name(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAnimationName(s: Sprite): String`} lang="pascal" />
+```pascal
+function SpriteAnimationName(s: Sprite): String
+```
   </TabItem>
 </Tabs>
 
@@ -1318,17 +1597,25 @@ Determines if a sprite is at a given point.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_at(sprite s, const point_2d &pt)`} lang="cpp" />
+```cpp
+bool sprite_at(sprite s, const point_2d &pt)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Sprite.SpriteAt(Sprite s, Point2D pt);
-public static bool SplashKit.SpriteAt(Sprite s, Point2D pt);`} lang="csharp" />
+```csharp
+public static bool Sprite.SpriteAt(Sprite s, Point2D pt);
+public static bool SplashKit.SpriteAt(Sprite s, Point2D pt);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_at(s, pt):`} lang="python" />
+```python
+def sprite_at(s, pt):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteAt(s: Sprite; const pt: Point2D): Boolean`} lang="pascal" />
+```pascal
+function SpriteAt(s: Sprite; const pt: Point2D): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1353,17 +1640,25 @@ Sends the layer specified forward in the visible layer order.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_bring_layer_forward(sprite s, int visible_layer)`} lang="cpp" />
+```cpp
+void sprite_bring_layer_forward(sprite s, int visible_layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteBringLayerForward(int visibleLayer);
-public static void SplashKit.SpriteBringLayerForward(Sprite s, int visibleLayer);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteBringLayerForward(int visibleLayer);
+public static void SplashKit.SpriteBringLayerForward(Sprite s, int visibleLayer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_bring_layer_forward(s, visible_layer):`} lang="python" />
+```python
+def sprite_bring_layer_forward(s, visible_layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteBringLayerForward(s: Sprite; visibleLayer: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteBringLayerForward(s: Sprite; visibleLayer: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -1388,17 +1683,25 @@ Sends the layer specified to the front in the visible layer order.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_bring_layer_to_front(sprite s, int visible_layer)`} lang="cpp" />
+```cpp
+void sprite_bring_layer_to_front(sprite s, int visible_layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteBringLayerToFront(int visibleLayer);
-public static void SplashKit.SpriteBringLayerToFront(Sprite s, int visibleLayer);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteBringLayerToFront(int visibleLayer);
+public static void SplashKit.SpriteBringLayerToFront(Sprite s, int visibleLayer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_bring_layer_to_front(s, visible_layer):`} lang="python" />
+```python
+def sprite_bring_layer_to_front(s, visible_layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteBringLayerToFront(s: Sprite; visibleLayer: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteBringLayerToFront(s: Sprite; visibleLayer: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -1423,17 +1726,25 @@ Register a procedure to call when events occur on the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_call_on_event(sprite s, sprite_event_handler *handler)`} lang="cpp" />
+```cpp
+void sprite_call_on_event(sprite s, sprite_event_handler *handler)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteCallOnEvent(SpriteEventHandler handler);
-public static void SplashKit.SpriteCallOnEvent(Sprite s, SpriteEventHandler handler);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteCallOnEvent(SpriteEventHandler handler);
+public static void SplashKit.SpriteCallOnEvent(Sprite s, SpriteEventHandler handler);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_call_on_event(s, handler):`} lang="python" />
+```python
+def sprite_call_on_event(s, handler):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteCallOnEvent(s: Sprite; handler: SpriteEventHandler)`} lang="pascal" />
+```pascal
+procedure SpriteCallOnEvent(s: Sprite; handler: SpriteEventHandler)
+```
   </TabItem>
 </Tabs>
 
@@ -1457,17 +1768,25 @@ Gets a circle in the bounds of the base layer of the indicated sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`circle sprite_circle(sprite s)`} lang="cpp" />
+```cpp
+circle sprite_circle(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Circle Sprite.SpriteCircle();
-public static Circle SplashKit.SpriteCircle(Sprite s);`} lang="csharp" />
+```csharp
+public Circle Sprite.SpriteCircle();
+public static Circle SplashKit.SpriteCircle(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_circle(s):`} lang="python" />
+```python
+def sprite_circle(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCircle(s: Sprite): Circle`} lang="pascal" />
+```pascal
+function SpriteCircle(s: Sprite): Circle
+```
   </TabItem>
 </Tabs>
 
@@ -1492,17 +1811,25 @@ other objects in the game.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bitmap sprite_collision_bitmap(sprite s)`} lang="cpp" />
+```cpp
+bitmap sprite_collision_bitmap(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Bitmap Sprite.CollisionBitmap { get }
-public static Bitmap SplashKit.SpriteCollisionBitmap(Sprite s);`} lang="csharp" />
+```csharp
+public Bitmap Sprite.CollisionBitmap { get }
+public static Bitmap SplashKit.SpriteCollisionBitmap(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_collision_bitmap(s):`} lang="python" />
+```python
+def sprite_collision_bitmap(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCollisionBitmap(s: Sprite): Bitmap`} lang="pascal" />
+```pascal
+function SpriteCollisionBitmap(s: Sprite): Bitmap
+```
   </TabItem>
 </Tabs>
 
@@ -1526,17 +1853,25 @@ Gets a circle in the bounds of the indicated sprite's collision rectangle.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`circle sprite_collision_circle(sprite s)`} lang="cpp" />
+```cpp
+circle sprite_collision_circle(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Circle Sprite.SpriteCollisionCircle();
-public static Circle SplashKit.SpriteCollisionCircle(Sprite s);`} lang="csharp" />
+```csharp
+public Circle Sprite.SpriteCollisionCircle();
+public static Circle SplashKit.SpriteCollisionCircle(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_collision_circle(s):`} lang="python" />
+```python
+def sprite_collision_circle(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCollisionCircle(s: Sprite): Circle`} lang="pascal" />
+```pascal
+function SpriteCollisionCircle(s: Sprite): Circle
+```
   </TabItem>
 </Tabs>
 
@@ -1561,17 +1896,25 @@ determining if the sprite has collided with other objects in the game.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`collision_test_kind sprite_collision_kind(sprite s)`} lang="cpp" />
+```cpp
+collision_test_kind sprite_collision_kind(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public CollisionTestKind Sprite.CollisionKind { get }
-public static CollisionTestKind SplashKit.SpriteCollisionKind(Sprite s);`} lang="csharp" />
+```csharp
+public CollisionTestKind Sprite.CollisionKind { get }
+public static CollisionTestKind SplashKit.SpriteCollisionKind(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_collision_kind(s):`} lang="python" />
+```python
+def sprite_collision_kind(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCollisionKind(s: Sprite): CollisionTestKind`} lang="pascal" />
+```pascal
+function SpriteCollisionKind(s: Sprite): CollisionTestKind
+```
   </TabItem>
 </Tabs>
 
@@ -1595,17 +1938,25 @@ Returns the collision rectangle for the specified sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`rectangle sprite_collision_rectangle(sprite s)`} lang="cpp" />
+```cpp
+rectangle sprite_collision_rectangle(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Rectangle Sprite.CollisionRectangle { get }
-public static Rectangle SplashKit.SpriteCollisionRectangle(Sprite s);`} lang="csharp" />
+```csharp
+public Rectangle Sprite.CollisionRectangle { get }
+public static Rectangle SplashKit.SpriteCollisionRectangle(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_collision_rectangle(s):`} lang="python" />
+```python
+def sprite_collision_rectangle(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCollisionRectangle(s: Sprite): Rectangle`} lang="pascal" />
+```pascal
+function SpriteCollisionRectangle(s: Sprite): Rectangle
+```
   </TabItem>
 </Tabs>
 
@@ -1630,17 +1981,25 @@ updated when the sprite's animation data is updated.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_current_cell(sprite s)`} lang="cpp" />
+```cpp
+int sprite_current_cell(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.CurrentCell { get }
-public static int SplashKit.SpriteCurrentCell(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.CurrentCell { get }
+public static int SplashKit.SpriteCurrentCell(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_current_cell(s):`} lang="python" />
+```python
+def sprite_current_cell(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCurrentCell(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteCurrentCell(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -1665,17 +2024,25 @@ to determine what part of the bitmap should be used when the sprite is drawn.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`rectangle sprite_current_cell_rectangle(sprite s)`} lang="cpp" />
+```cpp
+rectangle sprite_current_cell_rectangle(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Rectangle Sprite.CurrentCellRectangle { get }
-public static Rectangle SplashKit.SpriteCurrentCellRectangle(Sprite s);`} lang="csharp" />
+```csharp
+public Rectangle Sprite.CurrentCellRectangle { get }
+public static Rectangle SplashKit.SpriteCurrentCellRectangle(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_current_cell_rectangle(s):`} lang="python" />
+```python
+def sprite_current_cell_rectangle(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteCurrentCellRectangle(s: Sprite): Rectangle`} lang="pascal" />
+```pascal
+function SpriteCurrentCellRectangle(s: Sprite): Rectangle
+```
   </TabItem>
 </Tabs>
 
@@ -1699,17 +2066,25 @@ Returns the X value of the sprite's velocity.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_dx(sprite s)`} lang="cpp" />
+```cpp
+float sprite_dx(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Dx { get }
-public static float SplashKit.SpriteDx(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Dx { get }
+public static float SplashKit.SpriteDx(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_dx(s):`} lang="python" />
+```python
+def sprite_dx(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteDx(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteDx(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -1733,17 +2108,25 @@ Returns the Y value of the sprite's velocity.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_dy(sprite s)`} lang="cpp" />
+```cpp
+float sprite_dy(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Dy { get }
-public static float SplashKit.SpriteDy(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Dy { get }
+public static float SplashKit.SpriteDy(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_dy(s):`} lang="python" />
+```python
+def sprite_dy(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteDy(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteDy(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -1768,17 +2151,25 @@ Indicates if the sprite has a value with the given name.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_has_value(sprite s, string name)`} lang="cpp" />
+```cpp
+bool sprite_has_value(sprite s, string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Sprite.SpriteHasValue(Sprite s, string name);
-public static bool SplashKit.SpriteHasValue(Sprite s, string name);`} lang="csharp" />
+```csharp
+public static bool Sprite.SpriteHasValue(Sprite s, string name);
+public static bool SplashKit.SpriteHasValue(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_has_value(s, name):`} lang="python" />
+```python
+def sprite_has_value(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteHasValue(s: Sprite; name: String): Boolean`} lang="pascal" />
+```pascal
+function SpriteHasValue(s: Sprite; name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1802,17 +2193,25 @@ Returns the direction the sprite is heading in degrees.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_heading(sprite s)`} lang="cpp" />
+```cpp
+float sprite_heading(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Heading { get }
-public static float SplashKit.SpriteHeading(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Heading { get }
+public static float SplashKit.SpriteHeading(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_heading(s):`} lang="python" />
+```python
+def sprite_heading(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteHeading(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteHeading(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -1836,17 +2235,25 @@ The current height of the sprite (aligned to the Y axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_height(sprite s)`} lang="cpp" />
+```cpp
+int sprite_height(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.Height { get }
-public static int SplashKit.SpriteHeight(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.Height { get }
+public static int SplashKit.SpriteHeight(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_height(s):`} lang="python" />
+```python
+def sprite_height(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteHeight(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteHeight(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -1857,8 +2264,8 @@ public static int SplashKit.SpriteHeight(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Hide Layer** (s: sprite, name: string )](/components/sprites/#sprite-hide-layer--1)
-- [**Sprite Hide Layer** (s: sprite, id: int )](/components/sprites/#sprite-hide-layer--2)
+- [**Sprite Hide Layer** (s: sprite, name: string, )](/components/sprites/#sprite-hide-layer--1)
+- [**Sprite Hide Layer** (s: sprite, id: int, )](/components/sprites/#sprite-hide-layer--2)
 
 :::
 
@@ -1880,17 +2287,25 @@ Hide the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_hide_layer(sprite s, const string &name)`} lang="cpp" />
+```cpp
+void sprite_hide_layer(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteHideLayer(string name);
-public static void SplashKit.SpriteHideLayer(Sprite s, string name);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteHideLayer(string name);
+public static void SplashKit.SpriteHideLayer(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_hide_layer_named(s, name):`} lang="python" />
+```python
+def sprite_hide_layer_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteHideLayer(s: Sprite; const name: String)`} lang="pascal" />
+```pascal
+procedure SpriteHideLayer(s: Sprite; const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1913,17 +2328,25 @@ Hide the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_hide_layer(sprite s, int id)`} lang="cpp" />
+```cpp
+void sprite_hide_layer(sprite s, int id)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteHideLayer(int id);
-public static void SplashKit.SpriteHideLayer(Sprite s, int id);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteHideLayer(int id);
+public static void SplashKit.SpriteHideLayer(Sprite s, int id);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_hide_layer(s, id):`} lang="python" />
+```python
+def sprite_hide_layer(s, id):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteHideLayer(s: Sprite; id: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteHideLayer(s: Sprite; id: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -1934,8 +2357,8 @@ public static void SplashKit.SpriteHideLayer(Sprite s, int id);`} lang="csharp" 
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer** (s: sprite, name: string )](/components/sprites/#sprite-layer--1)
-- [**Sprite Layer** (s: sprite, idx: int )](/components/sprites/#sprite-layer--2)
+- [**Sprite Layer** (s: sprite, name: string, )](/components/sprites/#sprite-layer--1)
+- [**Sprite Layer** (s: sprite, idx: int, )](/components/sprites/#sprite-layer--2)
 
 :::
 
@@ -1957,17 +2380,25 @@ Returns the bitmap of the indicated layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bitmap sprite_layer(sprite s, const string &name)`} lang="cpp" />
+```cpp
+bitmap sprite_layer(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Bitmap Sprite.SpriteLayer(string name);
-public static Bitmap SplashKit.SpriteLayer(Sprite s, string name);`} lang="csharp" />
+```csharp
+public Bitmap Sprite.SpriteLayer(string name);
+public static Bitmap SplashKit.SpriteLayer(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_named(s, name):`} lang="python" />
+```python
+def sprite_layer_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayer(s: Sprite; const name: String): Bitmap`} lang="pascal" />
+```pascal
+function SpriteLayer(s: Sprite; const name: String): Bitmap
+```
   </TabItem>
 </Tabs>
 
@@ -1990,17 +2421,25 @@ Returns the bitmap of the indicated layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bitmap sprite_layer(sprite s, int idx)`} lang="cpp" />
+```cpp
+bitmap sprite_layer(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Bitmap Sprite.SpriteLayer(int idx);
-public static Bitmap SplashKit.SpriteLayer(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public Bitmap Sprite.SpriteLayer(int idx);
+public static Bitmap SplashKit.SpriteLayer(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_at_index(s, idx):`} lang="python" />
+```python
+def sprite_layer_at_index(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayer(s: Sprite; idx: Integer): Bitmap`} lang="pascal" />
+```pascal
+function SpriteLayer(s: Sprite; idx: Integer): Bitmap
+```
   </TabItem>
 </Tabs>
 
@@ -2011,8 +2450,8 @@ public static Bitmap SplashKit.SpriteLayer(Sprite s, int idx);`} lang="csharp" /
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer Circle** (s: sprite, name: string )](/components/sprites/#sprite-layer-circle--1)
-- [**Sprite Layer Circle** (s: sprite, idx: int )](/components/sprites/#sprite-layer-circle--2)
+- [**Sprite Layer Circle** (s: sprite, name: string, )](/components/sprites/#sprite-layer-circle--1)
+- [**Sprite Layer Circle** (s: sprite, idx: int, )](/components/sprites/#sprite-layer-circle--2)
 
 :::
 
@@ -2034,17 +2473,25 @@ Gets a circle in the bounds of the indicated layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`circle sprite_layer_circle(sprite s, const string &name)`} lang="cpp" />
+```cpp
+circle sprite_layer_circle(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Circle Sprite.SpriteLayerCircle(string name);
-public static Circle SplashKit.SpriteLayerCircle(Sprite s, string name);`} lang="csharp" />
+```csharp
+public Circle Sprite.SpriteLayerCircle(string name);
+public static Circle SplashKit.SpriteLayerCircle(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_circle_named(s, name):`} lang="python" />
+```python
+def sprite_layer_circle_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerCircle(s: Sprite; const name: String): Circle`} lang="pascal" />
+```pascal
+function SpriteLayerCircle(s: Sprite; const name: String): Circle
+```
   </TabItem>
 </Tabs>
 
@@ -2067,17 +2514,25 @@ Gets a circle in the bounds of the indicated layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`circle sprite_layer_circle(sprite s, int idx)`} lang="cpp" />
+```cpp
+circle sprite_layer_circle(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Circle Sprite.SpriteLayerCircle(int idx);
-public static Circle SplashKit.SpriteLayerCircle(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public Circle Sprite.SpriteLayerCircle(int idx);
+public static Circle SplashKit.SpriteLayerCircle(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_circle_at_index(s, idx):`} lang="python" />
+```python
+def sprite_layer_circle_at_index(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerCircle(s: Sprite; idx: Integer): Circle`} lang="pascal" />
+```pascal
+function SpriteLayerCircle(s: Sprite; idx: Integer): Circle
+```
   </TabItem>
 </Tabs>
 
@@ -2101,17 +2556,25 @@ Returns the number of layers within the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_count(sprite s)`} lang="cpp" />
+```cpp
+int sprite_layer_count(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.LayerCount { get }
-public static int SplashKit.SpriteLayerCount(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.LayerCount { get }
+public static int SplashKit.SpriteLayerCount(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_count(s):`} lang="python" />
+```python
+def sprite_layer_count(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerCount(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerCount(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2122,8 +2585,8 @@ public static int SplashKit.SpriteLayerCount(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer Height** (s: sprite, name: string )](/components/sprites/#sprite-layer-height--1)
-- [**Sprite Layer Height** (s: sprite, idx: int )](/components/sprites/#sprite-layer-height--2)
+- [**Sprite Layer Height** (s: sprite, name: string, )](/components/sprites/#sprite-layer-height--1)
+- [**Sprite Layer Height** (s: sprite, idx: int, )](/components/sprites/#sprite-layer-height--2)
 
 :::
 
@@ -2145,17 +2608,25 @@ The height of a given layer of the sprite (aligned to the Y axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_height(sprite s, const string &name)`} lang="cpp" />
+```cpp
+int sprite_layer_height(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteLayerHeight(string name);
-public static int SplashKit.SpriteLayerHeight(Sprite s, string name);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteLayerHeight(string name);
+public static int SplashKit.SpriteLayerHeight(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_height_named(s, name):`} lang="python" />
+```python
+def sprite_layer_height_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerHeight(s: Sprite; const name: String): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerHeight(s: Sprite; const name: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2178,17 +2649,25 @@ The height of a given layer of the sprite (aligned to the Y axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_height(sprite s, int idx)`} lang="cpp" />
+```cpp
+int sprite_layer_height(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteLayerHeight(int idx);
-public static int SplashKit.SpriteLayerHeight(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteLayerHeight(int idx);
+public static int SplashKit.SpriteLayerHeight(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_height(s, idx):`} lang="python" />
+```python
+def sprite_layer_height(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerHeight(s: Sprite; idx: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerHeight(s: Sprite; idx: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2213,17 +2692,25 @@ Returns the index of the specified layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_index(sprite s, const string &name)`} lang="cpp" />
+```cpp
+int sprite_layer_index(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteLayerIndex(string name);
-public static int SplashKit.SpriteLayerIndex(Sprite s, string name);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteLayerIndex(string name);
+public static int SplashKit.SpriteLayerIndex(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_index(s, name):`} lang="python" />
+```python
+def sprite_layer_index(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerIndex(s: Sprite; const name: String): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerIndex(s: Sprite; const name: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2248,17 +2735,25 @@ Returns the name of the specified layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string sprite_layer_name(sprite s, int idx)`} lang="cpp" />
+```cpp
+string sprite_layer_name(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Sprite.SpriteLayerName(int idx);
-public static string SplashKit.SpriteLayerName(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public string Sprite.SpriteLayerName(int idx);
+public static string SplashKit.SpriteLayerName(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_name(s, idx):`} lang="python" />
+```python
+def sprite_layer_name(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerName(s: Sprite; idx: Integer): String`} lang="pascal" />
+```pascal
+function SpriteLayerName(s: Sprite; idx: Integer): String
+```
   </TabItem>
 </Tabs>
 
@@ -2269,8 +2764,8 @@ public static string SplashKit.SpriteLayerName(Sprite s, int idx);`} lang="cshar
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer Offset** (s: sprite, name: string )](/components/sprites/#sprite-layer-offset--1)
-- [**Sprite Layer Offset** (s: sprite, idx: int )](/components/sprites/#sprite-layer-offset--2)
+- [**Sprite Layer Offset** (s: sprite, name: string, )](/components/sprites/#sprite-layer-offset--1)
+- [**Sprite Layer Offset** (s: sprite, idx: int, )](/components/sprites/#sprite-layer-offset--2)
 
 :::
 
@@ -2292,17 +2787,25 @@ Gets the offset of the specified layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d sprite_layer_offset(sprite s, const string &name)`} lang="cpp" />
+```cpp
+vector_2d sprite_layer_offset(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Vector2D Sprite.SpriteLayerOffset(string name);
-public static Vector2D SplashKit.SpriteLayerOffset(Sprite s, string name);`} lang="csharp" />
+```csharp
+public Vector2D Sprite.SpriteLayerOffset(string name);
+public static Vector2D SplashKit.SpriteLayerOffset(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_offset_named(s, name):`} lang="python" />
+```python
+def sprite_layer_offset_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerOffset(s: Sprite; const name: String): Vector2D`} lang="pascal" />
+```pascal
+function SpriteLayerOffset(s: Sprite; const name: String): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -2325,17 +2828,25 @@ Gets the offset of the specified layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d sprite_layer_offset(sprite s, int idx)`} lang="cpp" />
+```cpp
+vector_2d sprite_layer_offset(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Vector2D Sprite.SpriteLayerOffset(int idx);
-public static Vector2D SplashKit.SpriteLayerOffset(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public Vector2D Sprite.SpriteLayerOffset(int idx);
+public static Vector2D SplashKit.SpriteLayerOffset(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_offset(s, idx):`} lang="python" />
+```python
+def sprite_layer_offset(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerOffset(s: Sprite; idx: Integer): Vector2D`} lang="pascal" />
+```pascal
+function SpriteLayerOffset(s: Sprite; idx: Integer): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -2346,8 +2857,8 @@ public static Vector2D SplashKit.SpriteLayerOffset(Sprite s, int idx);`} lang="c
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer Rectangle** (s: sprite, name: string )](/components/sprites/#sprite-layer-rectangle--1)
-- [**Sprite Layer Rectangle** (s: sprite, idx: int )](/components/sprites/#sprite-layer-rectangle--2)
+- [**Sprite Layer Rectangle** (s: sprite, name: string, )](/components/sprites/#sprite-layer-rectangle--1)
+- [**Sprite Layer Rectangle** (s: sprite, idx: int, )](/components/sprites/#sprite-layer-rectangle--2)
 
 :::
 
@@ -2369,17 +2880,25 @@ Gets a rectangle that surrounds the indicated layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`rectangle sprite_layer_rectangle(sprite s, const string &name)`} lang="cpp" />
+```cpp
+rectangle sprite_layer_rectangle(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Rectangle Sprite.SpriteLayerRectangle(string name);
-public static Rectangle SplashKit.SpriteLayerRectangle(Sprite s, string name);`} lang="csharp" />
+```csharp
+public Rectangle Sprite.SpriteLayerRectangle(string name);
+public static Rectangle SplashKit.SpriteLayerRectangle(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_rectangle_named(s, name):`} lang="python" />
+```python
+def sprite_layer_rectangle_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerRectangle(s: Sprite; const name: String): Rectangle`} lang="pascal" />
+```pascal
+function SpriteLayerRectangle(s: Sprite; const name: String): Rectangle
+```
   </TabItem>
 </Tabs>
 
@@ -2402,17 +2921,25 @@ Gets a rectangle that surrounds the indicated layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`rectangle sprite_layer_rectangle(sprite s, int idx)`} lang="cpp" />
+```cpp
+rectangle sprite_layer_rectangle(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Rectangle Sprite.SpriteLayerRectangle(int idx);
-public static Rectangle SplashKit.SpriteLayerRectangle(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public Rectangle Sprite.SpriteLayerRectangle(int idx);
+public static Rectangle SplashKit.SpriteLayerRectangle(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_rectangle_at_index(s, idx):`} lang="python" />
+```python
+def sprite_layer_rectangle_at_index(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerRectangle(s: Sprite; idx: Integer): Rectangle`} lang="pascal" />
+```pascal
+function SpriteLayerRectangle(s: Sprite; idx: Integer): Rectangle
+```
   </TabItem>
 </Tabs>
 
@@ -2423,8 +2950,8 @@ public static Rectangle SplashKit.SpriteLayerRectangle(Sprite s, int idx);`} lan
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Layer Width** (s: sprite, name: string )](/components/sprites/#sprite-layer-width--1)
-- [**Sprite Layer Width** (s: sprite, idx: int )](/components/sprites/#sprite-layer-width--2)
+- [**Sprite Layer Width** (s: sprite, name: string, )](/components/sprites/#sprite-layer-width--1)
+- [**Sprite Layer Width** (s: sprite, idx: int, )](/components/sprites/#sprite-layer-width--2)
 
 :::
 
@@ -2446,17 +2973,25 @@ The width of a given layer of the sprite (aligned to the X axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_width(sprite s, const string &name)`} lang="cpp" />
+```cpp
+int sprite_layer_width(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteLayerWidth(string name);
-public static int SplashKit.SpriteLayerWidth(Sprite s, string name);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteLayerWidth(string name);
+public static int SplashKit.SpriteLayerWidth(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_width_named(s, name):`} lang="python" />
+```python
+def sprite_layer_width_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerWidth(s: Sprite; const name: String): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerWidth(s: Sprite; const name: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2479,17 +3014,25 @@ The width of a given layer of the sprite (aligned to the X axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_layer_width(sprite s, int idx)`} lang="cpp" />
+```cpp
+int sprite_layer_width(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteLayerWidth(int idx);
-public static int SplashKit.SpriteLayerWidth(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteLayerWidth(int idx);
+public static int SplashKit.SpriteLayerWidth(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_layer_width(s, idx):`} lang="python" />
+```python
+def sprite_layer_width(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLayerWidth(s: Sprite; idx: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteLayerWidth(s: Sprite; idx: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -2514,17 +3057,25 @@ space of the passed in sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`matrix_2d sprite_location_matrix(sprite s)`} lang="cpp" />
+```cpp
+matrix_2d sprite_location_matrix(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Matrix2D Sprite.LocationMatrix { get }
-public static Matrix2D SplashKit.SpriteLocationMatrix(Sprite s);`} lang="csharp" />
+```csharp
+public Matrix2D Sprite.LocationMatrix { get }
+public static Matrix2D SplashKit.SpriteLocationMatrix(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_location_matrix(s):`} lang="python" />
+```python
+def sprite_location_matrix(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteLocationMatrix(s: Sprite): Matrix2D`} lang="pascal" />
+```pascal
+function SpriteLocationMatrix(s: Sprite): Matrix2D
+```
   </TabItem>
 </Tabs>
 
@@ -2550,17 +3101,25 @@ velocitys after the collision.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_mass(sprite s)`} lang="cpp" />
+```cpp
+float sprite_mass(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Mass { get }
-public static float SplashKit.SpriteMass(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Mass { get }
+public static float SplashKit.SpriteMass(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_mass(s):`} lang="python" />
+```python
+def sprite_mass(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteMass(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteMass(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -2586,17 +3145,25 @@ When this returns false the location of the sprite is its top left corner.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_move_from_anchor_point(sprite s)`} lang="cpp" />
+```cpp
+bool sprite_move_from_anchor_point(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Sprite.MoveFromAnchorPoint { get }
-public static bool SplashKit.SpriteMoveFromAnchorPoint(Sprite s);`} lang="csharp" />
+```csharp
+public bool Sprite.MoveFromAnchorPoint { get }
+public static bool SplashKit.SpriteMoveFromAnchorPoint(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_move_from_anchor_point(s):`} lang="python" />
+```python
+def sprite_move_from_anchor_point(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteMoveFromAnchorPoint(s: Sprite): Boolean`} lang="pascal" />
+```pascal
+function SpriteMoveFromAnchorPoint(s: Sprite): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -2624,17 +3191,25 @@ sprite arrives it will raise the sprite_arrived event.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_move_to(sprite s, const point_2d &pt, float taking_seconds)`} lang="cpp" />
+```cpp
+void sprite_move_to(sprite s, const point_2d &pt, float taking_seconds)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteMoveTo(Point2D pt, float takingSeconds);
-public static void SplashKit.SpriteMoveTo(Sprite s, Point2D pt, float takingSeconds);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteMoveTo(Point2D pt, float takingSeconds);
+public static void SplashKit.SpriteMoveTo(Sprite s, Point2D pt, float takingSeconds);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_move_to_taking_seconds(s, pt, taking_seconds):`} lang="python" />
+```python
+def sprite_move_to_taking_seconds(s, pt, taking_seconds):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteMoveTo(s: Sprite; const pt: Point2D; takingSeconds: Single)`} lang="pascal" />
+```pascal
+procedure SpriteMoveTo(s: Sprite; const pt: Point2D; takingSeconds: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -2659,17 +3234,25 @@ and can be used to interact with the sprite in various routines.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string sprite_name(sprite s)`} lang="cpp" />
+```cpp
+string sprite_name(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Sprite.Name { get }
-public static string SplashKit.SpriteName(Sprite s);`} lang="csharp" />
+```csharp
+public string Sprite.Name { get }
+public static string SplashKit.SpriteName(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_name(s):`} lang="python" />
+```python
+def sprite_name(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteName(s: Sprite): String`} lang="pascal" />
+```pascal
+function SpriteName(s: Sprite): String
+```
   </TabItem>
 </Tabs>
 
@@ -2693,17 +3276,25 @@ Returns the [`Sprite`](/components/sprites/#sprite) with the specified name.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sprite sprite_named(const string &name)`} lang="cpp" />
+```cpp
+sprite sprite_named(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Sprite Sprite.SpriteNamed(string name);
-public static Sprite SplashKit.SpriteNamed(string name);`} lang="csharp" />
+```csharp
+public static Sprite Sprite.SpriteNamed(string name);
+public static Sprite SplashKit.SpriteNamed(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_named(name):`} lang="python" />
+```python
+def sprite_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteNamed(const name: String): Sprite`} lang="pascal" />
+```pascal
+function SpriteNamed(const name: String): Sprite
+```
   </TabItem>
 </Tabs>
 
@@ -2727,17 +3318,25 @@ Returns true if the sprite is entirely off the current screen.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_offscreen(sprite s)`} lang="cpp" />
+```cpp
+bool sprite_offscreen(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Sprite.SpriteOffscreen();
-public static bool SplashKit.SpriteOffscreen(Sprite s);`} lang="csharp" />
+```csharp
+public bool Sprite.SpriteOffscreen();
+public static bool SplashKit.SpriteOffscreen(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_offscreen(s):`} lang="python" />
+```python
+def sprite_offscreen(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteOffscreen(s: Sprite): Boolean`} lang="pascal" />
+```pascal
+function SpriteOffscreen(s: Sprite): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -2748,8 +3347,8 @@ public static bool SplashKit.SpriteOffscreen(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite On Screen At** (s: sprite, pt: point_2d )](/components/sprites/#sprite-on-screen-at--1)
-- [**Sprite On Screen At** (s: sprite, x: double, y: double )](/components/sprites/#sprite-on-screen-at--2)
+- [**Sprite On Screen At** (s: sprite, pt: point_2d, )](/components/sprites/#sprite-on-screen-at--1)
+- [**Sprite On Screen At** (s: sprite, x: double, y: double, )](/components/sprites/#sprite-on-screen-at--2)
 
 :::
 
@@ -2772,17 +3371,25 @@ specified (`pt`), which is converted to a world location.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_on_screen_at(sprite s, const point_2d &pt)`} lang="cpp" />
+```cpp
+bool sprite_on_screen_at(sprite s, const point_2d &pt)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Sprite.SpriteOnScreenAt(Point2D pt);
-public static bool SplashKit.SpriteOnScreenAt(Sprite s, Point2D pt);`} lang="csharp" />
+```csharp
+public bool Sprite.SpriteOnScreenAt(Point2D pt);
+public static bool SplashKit.SpriteOnScreenAt(Sprite s, Point2D pt);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_on_screen_at_point(s, pt):`} lang="python" />
+```python
+def sprite_on_screen_at_point(s, pt):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteOnScreenAt(s: Sprite; const pt: Point2D): Boolean`} lang="pascal" />
+```pascal
+function SpriteOnScreenAt(s: Sprite; const pt: Point2D): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -2807,17 +3414,25 @@ specified.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sprite_on_screen_at(sprite s, double x, double y)`} lang="cpp" />
+```cpp
+bool sprite_on_screen_at(sprite s, double x, double y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Sprite.SpriteOnScreenAt(double x, double y);
-public static bool SplashKit.SpriteOnScreenAt(Sprite s, double x, double y);`} lang="csharp" />
+```csharp
+public bool Sprite.SpriteOnScreenAt(double x, double y);
+public static bool SplashKit.SpriteOnScreenAt(Sprite s, double x, double y);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_on_screen_at(s, x, y):`} lang="python" />
+```python
+def sprite_on_screen_at(s, x, y):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteOnScreenAt(s: Sprite; x: Double; y: Double): Boolean`} lang="pascal" />
+```pascal
+function SpriteOnScreenAt(s: Sprite; x: Double; y: Double): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -2841,17 +3456,25 @@ Returns the sprite's position.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`point_2d sprite_position(sprite s)`} lang="cpp" />
+```cpp
+point_2d sprite_position(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Point2D Sprite.Position { get }
-public static Point2D SplashKit.SpritePosition(Sprite s);`} lang="csharp" />
+```csharp
+public Point2D Sprite.Position { get }
+public static Point2D SplashKit.SpritePosition(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_position(s):`} lang="python" />
+```python
+def sprite_position(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpritePosition(s: Sprite): Point2D`} lang="pascal" />
+```pascal
+function SpritePosition(s: Sprite): Point2D
+```
   </TabItem>
 </Tabs>
 
@@ -2862,8 +3485,8 @@ public static Point2D SplashKit.SpritePosition(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Replay Animation** (s: sprite )](/components/sprites/#sprite-replay-animation--1)
-- [**Sprite Replay Animation** (s: sprite, with_sound: bool )](/components/sprites/#sprite-replay-animation--2)
+- [**Sprite Replay Animation** (s: sprite, )](/components/sprites/#sprite-replay-animation--1)
+- [**Sprite Replay Animation** (s: sprite, with_sound: bool, )](/components/sprites/#sprite-replay-animation--2)
 
 :::
 
@@ -2885,17 +3508,25 @@ first cell of the animation is associated with a sound effect.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_replay_animation(sprite s)`} lang="cpp" />
+```cpp
+void sprite_replay_animation(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteReplayAnimation();
-public static void SplashKit.SpriteReplayAnimation(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteReplayAnimation();
+public static void SplashKit.SpriteReplayAnimation(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_replay_animation(s):`} lang="python" />
+```python
+def sprite_replay_animation(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteReplayAnimation(s: Sprite)`} lang="pascal" />
+```pascal
+procedure SpriteReplayAnimation(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -2921,17 +3552,25 @@ effects when restarted. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_replay_animation(sprite s, bool with_sound)`} lang="cpp" />
+```cpp
+void sprite_replay_animation(sprite s, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteReplayAnimation(bool withSound);
-public static void SplashKit.SpriteReplayAnimation(Sprite s, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteReplayAnimation(bool withSound);
+public static void SplashKit.SpriteReplayAnimation(Sprite s, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_replay_animation_with_sound(s, with_sound):`} lang="python" />
+```python
+def sprite_replay_animation_with_sound(s, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteReplayAnimation(s: Sprite; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure SpriteReplayAnimation(s: Sprite; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -2957,17 +3596,25 @@ this method with bitmap based sprites where possible.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_rotation(sprite s)`} lang="cpp" />
+```cpp
+float sprite_rotation(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Rotation { get }
-public static float SplashKit.SpriteRotation(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Rotation { get }
+public static float SplashKit.SpriteRotation(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_rotation(s):`} lang="python" />
+```python
+def sprite_rotation(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteRotation(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteRotation(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -2993,17 +3640,25 @@ this method with bitmap based sprites where possible.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_scale(sprite s)`} lang="cpp" />
+```cpp
+float sprite_scale(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Scale { get }
-public static float SplashKit.SpriteScale(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Scale { get }
+public static float SplashKit.SpriteScale(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_scale(s):`} lang="python" />
+```python
+def sprite_scale(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteScale(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteScale(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -3028,17 +3683,25 @@ screen.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`rectangle sprite_screen_rectangle(sprite s)`} lang="cpp" />
+```cpp
+rectangle sprite_screen_rectangle(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Rectangle Sprite.ScreenRectangle { get }
-public static Rectangle SplashKit.SpriteScreenRectangle(Sprite s);`} lang="csharp" />
+```csharp
+public Rectangle Sprite.ScreenRectangle { get }
+public static Rectangle SplashKit.SpriteScreenRectangle(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_screen_rectangle(s):`} lang="python" />
+```python
+def sprite_screen_rectangle(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteScreenRectangle(s: Sprite): Rectangle`} lang="pascal" />
+```pascal
+function SpriteScreenRectangle(s: Sprite): Rectangle
+```
   </TabItem>
 </Tabs>
 
@@ -3063,17 +3726,25 @@ Sends the layer specified backward in the visible layer order.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_send_layer_backward(sprite s, int visible_layer)`} lang="cpp" />
+```cpp
+void sprite_send_layer_backward(sprite s, int visible_layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteSendLayerBackward(int visibleLayer);
-public static void SplashKit.SpriteSendLayerBackward(Sprite s, int visibleLayer);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteSendLayerBackward(int visibleLayer);
+public static void SplashKit.SpriteSendLayerBackward(Sprite s, int visibleLayer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_send_layer_backward(s, visible_layer):`} lang="python" />
+```python
+def sprite_send_layer_backward(s, visible_layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSendLayerBackward(s: Sprite; visibleLayer: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteSendLayerBackward(s: Sprite; visibleLayer: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -3098,17 +3769,25 @@ Sends the layer specified to the back in the visible layer order.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_send_layer_to_back(sprite s, int visible_layer)`} lang="cpp" />
+```cpp
+void sprite_send_layer_to_back(sprite s, int visible_layer)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteSendLayerToBack(int visibleLayer);
-public static void SplashKit.SpriteSendLayerToBack(Sprite s, int visibleLayer);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteSendLayerToBack(int visibleLayer);
+public static void SplashKit.SpriteSendLayerToBack(Sprite s, int visibleLayer);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_send_layer_to_back(s, visible_layer):`} lang="python" />
+```python
+def sprite_send_layer_to_back(s, visible_layer):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSendLayerToBack(s: Sprite; visibleLayer: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteSendLayerToBack(s: Sprite; visibleLayer: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -3135,17 +3814,25 @@ is drawn at 0,0.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_anchor_point(sprite s, const point_2d &pt)`} lang="cpp" />
+```cpp
+void sprite_set_anchor_point(sprite s, const point_2d &pt)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.AnchorPoint { set }
-public static void SplashKit.SpriteSetAnchorPoint(Sprite s, Point2D pt);`} lang="csharp" />
+```csharp
+public void Sprite.AnchorPoint { set }
+public static void SplashKit.SpriteSetAnchorPoint(Sprite s, Point2D pt);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_anchor_point(s, pt):`} lang="python" />
+```python
+def sprite_set_anchor_point(s, pt):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetAnchorPoint(s: Sprite; const pt: Point2D)`} lang="pascal" />
+```pascal
+procedure SpriteSetAnchorPoint(s: Sprite; const pt: Point2D)
+```
   </TabItem>
 </Tabs>
 
@@ -3172,17 +3859,25 @@ bitmap from the sprite's first layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_collision_bitmap(sprite s, bitmap bmp)`} lang="cpp" />
+```cpp
+void sprite_set_collision_bitmap(sprite s, bitmap bmp)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.CollisionBitmap { set }
-public static void SplashKit.SpriteSetCollisionBitmap(Sprite s, Bitmap bmp);`} lang="csharp" />
+```csharp
+public void Sprite.CollisionBitmap { set }
+public static void SplashKit.SpriteSetCollisionBitmap(Sprite s, Bitmap bmp);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_collision_bitmap(s, bmp):`} lang="python" />
+```python
+def sprite_set_collision_bitmap(s, bmp):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetCollisionBitmap(s: Sprite; bmp: Bitmap)`} lang="pascal" />
+```pascal
+procedure SpriteSetCollisionBitmap(s: Sprite; bmp: Bitmap)
+```
   </TabItem>
 </Tabs>
 
@@ -3208,17 +3903,25 @@ determining if the sprite has collided with other objects in the game.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_collision_kind(sprite s, collision_test_kind value)`} lang="cpp" />
+```cpp
+void sprite_set_collision_kind(sprite s, collision_test_kind value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.CollisionKind { set }
-public static void SplashKit.SpriteSetCollisionKind(Sprite s, CollisionTestKind value);`} lang="csharp" />
+```csharp
+public void Sprite.CollisionKind { set }
+public static void SplashKit.SpriteSetCollisionKind(Sprite s, CollisionTestKind value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_collision_kind(s, value):`} lang="python" />
+```python
+def sprite_set_collision_kind(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetCollisionKind(s: Sprite; value: CollisionTestKind)`} lang="pascal" />
+```pascal
+procedure SpriteSetCollisionKind(s: Sprite; value: CollisionTestKind)
+```
   </TabItem>
 </Tabs>
 
@@ -3243,17 +3946,25 @@ Sets the X value of the sprite's velocity.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_dx(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_dx(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Dx { set }
-public static void SplashKit.SpriteSetDx(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Dx { set }
+public static void SplashKit.SpriteSetDx(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_dx(s, value):`} lang="python" />
+```python
+def sprite_set_dx(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetDx(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetDx(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3278,17 +3989,25 @@ Sets the Y value of the sprite's velocity.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_dy(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_dy(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Dy { set }
-public static void SplashKit.SpriteSetDy(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Dy { set }
+public static void SplashKit.SpriteSetDy(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_dy(s, value):`} lang="python" />
+```python
+def sprite_set_dy(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetDy(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetDy(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3314,17 +4033,25 @@ same. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_heading(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_heading(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Heading { set }
-public static void SplashKit.SpriteSetHeading(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Heading { set }
+public static void SplashKit.SpriteSetHeading(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_heading(s, value):`} lang="python" />
+```python
+def sprite_set_heading(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetHeading(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetHeading(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3335,8 +4062,8 @@ public static void SplashKit.SpriteSetHeading(Sprite s, float value);`} lang="cs
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Set Layer Offset** (s: sprite, name: string, value: vector_2d )](/components/sprites/#sprite-set-layer-offset--1)
-- [**Sprite Set Layer Offset** (s: sprite, idx: int, value: vector_2d )](/components/sprites/#sprite-set-layer-offset--2)
+- [**Sprite Set Layer Offset** (s: sprite, name: string, value: vector_2d, )](/components/sprites/#sprite-set-layer-offset--1)
+- [**Sprite Set Layer Offset** (s: sprite, idx: int, value: vector_2d, )](/components/sprites/#sprite-set-layer-offset--2)
 
 :::
 
@@ -3360,17 +4087,25 @@ is drawn in the sprite, and moves the image relative to the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_layer_offset(sprite s, const string &name, const vector_2d &value)`} lang="cpp" />
+```cpp
+void sprite_set_layer_offset(sprite s, const string &name, const vector_2d &value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteSetLayerOffset(string name, Vector2D value);
-public static void SplashKit.SpriteSetLayerOffset(Sprite s, string name, Vector2D value);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteSetLayerOffset(string name, Vector2D value);
+public static void SplashKit.SpriteSetLayerOffset(Sprite s, string name, Vector2D value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_layer_offset_named(s, name, value):`} lang="python" />
+```python
+def sprite_set_layer_offset_named(s, name, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetLayerOffset(s: Sprite; const name: String; const value: Vector2D)`} lang="pascal" />
+```pascal
+procedure SpriteSetLayerOffset(s: Sprite; const name: String; const value: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -3394,17 +4129,25 @@ Sets the offset of the specified layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_layer_offset(sprite s, int idx, const vector_2d &value)`} lang="cpp" />
+```cpp
+void sprite_set_layer_offset(sprite s, int idx, const vector_2d &value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteSetLayerOffset(int idx, Vector2D value);
-public static void SplashKit.SpriteSetLayerOffset(Sprite s, int idx, Vector2D value);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteSetLayerOffset(int idx, Vector2D value);
+public static void SplashKit.SpriteSetLayerOffset(Sprite s, int idx, Vector2D value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_layer_offset_at_index(s, idx, value):`} lang="python" />
+```python
+def sprite_set_layer_offset_at_index(s, idx, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetLayerOffset(s: Sprite; idx: Integer; const value: Vector2D)`} lang="pascal" />
+```pascal
+procedure SpriteSetLayerOffset(s: Sprite; idx: Integer; const value: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -3429,17 +4172,25 @@ Allows you to change the mass of a sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_mass(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_mass(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Mass { set }
-public static void SplashKit.SpriteSetMass(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Mass { set }
+public static void SplashKit.SpriteSetMass(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_mass(s, value):`} lang="python" />
+```python
+def sprite_set_mass(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetMass(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetMass(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3468,17 +4219,25 @@ When set to false the location of the sprite is its top left corner.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_move_from_anchor_point(sprite s, bool value)`} lang="cpp" />
+```cpp
+void sprite_set_move_from_anchor_point(sprite s, bool value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.MoveFromAnchorPoint { set }
-public static void SplashKit.SpriteSetMoveFromAnchorPoint(Sprite s, bool value);`} lang="csharp" />
+```csharp
+public void Sprite.MoveFromAnchorPoint { set }
+public static void SplashKit.SpriteSetMoveFromAnchorPoint(Sprite s, bool value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_move_from_anchor_point(s, value):`} lang="python" />
+```python
+def sprite_set_move_from_anchor_point(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetMoveFromAnchorPoint(s: Sprite; value: Boolean)`} lang="pascal" />
+```pascal
+procedure SpriteSetMoveFromAnchorPoint(s: Sprite; value: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -3503,17 +4262,25 @@ Sets the sprite's position.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_position(sprite s, const point_2d &value)`} lang="cpp" />
+```cpp
+void sprite_set_position(sprite s, const point_2d &value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Position { set }
-public static void SplashKit.SpriteSetPosition(Sprite s, Point2D value);`} lang="csharp" />
+```csharp
+public void Sprite.Position { set }
+public static void SplashKit.SpriteSetPosition(Sprite s, Point2D value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_position(s, value):`} lang="python" />
+```python
+def sprite_set_position(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetPosition(s: Sprite; const value: Point2D)`} lang="pascal" />
+```pascal
+procedure SpriteSetPosition(s: Sprite; const value: Point2D)
+```
   </TabItem>
 </Tabs>
 
@@ -3538,17 +4305,25 @@ Allows you to change the rotation of a sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_rotation(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_rotation(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Rotation { set }
-public static void SplashKit.SpriteSetRotation(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Rotation { set }
+public static void SplashKit.SpriteSetRotation(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_rotation(s, value):`} lang="python" />
+```python
+def sprite_set_rotation(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetRotation(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetRotation(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3573,17 +4348,25 @@ Allows you to change the scale of a sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_scale(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_scale(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Scale { set }
-public static void SplashKit.SpriteSetScale(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Scale { set }
+public static void SplashKit.SpriteSetScale(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_scale(s, value):`} lang="python" />
+```python
+def sprite_set_scale(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetScale(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetScale(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3608,17 +4391,25 @@ Alters the speed of the sprite without effecting the direction.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_speed(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_speed(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Speed { set }
-public static void SplashKit.SpriteSetSpeed(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Speed { set }
+public static void SplashKit.SpriteSetSpeed(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_speed(s, value):`} lang="python" />
+```python
+def sprite_set_speed(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetSpeed(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetSpeed(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3644,17 +4435,25 @@ Assigns a value to the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_value(sprite s, const string &name, float val)`} lang="cpp" />
+```cpp
+void sprite_set_value(sprite s, const string &name, float val)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteSetValue(string name, float val);
-public static void SplashKit.SpriteSetValue(Sprite s, string name, float val);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteSetValue(string name, float val);
+public static void SplashKit.SpriteSetValue(Sprite s, string name, float val);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_value_named(s, name, val):`} lang="python" />
+```python
+def sprite_set_value_named(s, name, val):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetValue(s: Sprite; const name: String; val: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetValue(s: Sprite; const name: String; val: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3680,17 +4479,25 @@ Sets the current velocity of the sprite. When the sprite is updated
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_velocity(sprite s, const vector_2d &value)`} lang="cpp" />
+```cpp
+void sprite_set_velocity(sprite s, const vector_2d &value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Velocity { set }
-public static void SplashKit.SpriteSetVelocity(Sprite s, Vector2D value);`} lang="csharp" />
+```csharp
+public void Sprite.Velocity { set }
+public static void SplashKit.SpriteSetVelocity(Sprite s, Vector2D value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_velocity(s, value):`} lang="python" />
+```python
+def sprite_set_velocity(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetVelocity(s: Sprite; const value: Vector2D)`} lang="pascal" />
+```pascal
+procedure SpriteSetVelocity(s: Sprite; const value: Vector2D)
+```
   </TabItem>
 </Tabs>
 
@@ -3715,17 +4522,25 @@ Sets the X position of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_x(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_x(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.X { set }
-public static void SplashKit.SpriteSetX(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.X { set }
+public static void SplashKit.SpriteSetX(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_x(s, value):`} lang="python" />
+```python
+def sprite_set_x(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetX(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetX(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3750,17 +4565,25 @@ Sets the Y position of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_set_y(sprite s, float value)`} lang="cpp" />
+```cpp
+void sprite_set_y(sprite s, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.Y { set }
-public static void SplashKit.SpriteSetY(Sprite s, float value);`} lang="csharp" />
+```csharp
+public void Sprite.Y { set }
+public static void SplashKit.SpriteSetY(Sprite s, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_set_y(s, value):`} lang="python" />
+```python
+def sprite_set_y(s, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteSetY(s: Sprite; value: Single)`} lang="pascal" />
+```pascal
+procedure SpriteSetY(s: Sprite; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -3771,8 +4594,8 @@ public static void SplashKit.SpriteSetY(Sprite s, float value);`} lang="csharp" 
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Show Layer** (s: sprite, name: string )](/components/sprites/#sprite-show-layer--1)
-- [**Sprite Show Layer** (s: sprite, id: int )](/components/sprites/#sprite-show-layer--2)
+- [**Sprite Show Layer** (s: sprite, name: string, )](/components/sprites/#sprite-show-layer--1)
+- [**Sprite Show Layer** (s: sprite, id: int, )](/components/sprites/#sprite-show-layer--2)
 
 :::
 
@@ -3794,17 +4617,25 @@ Show the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_show_layer(sprite s, const string &name)`} lang="cpp" />
+```cpp
+int sprite_show_layer(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteShowLayer(string name);
-public static int SplashKit.SpriteShowLayer(Sprite s, string name);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteShowLayer(string name);
+public static int SplashKit.SpriteShowLayer(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_show_layer_named(s, name):`} lang="python" />
+```python
+def sprite_show_layer_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteShowLayer(s: Sprite; const name: String): Integer`} lang="pascal" />
+```pascal
+function SpriteShowLayer(s: Sprite; const name: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -3827,17 +4658,25 @@ Show the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_show_layer(sprite s, int id)`} lang="cpp" />
+```cpp
+int sprite_show_layer(sprite s, int id)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteShowLayer(int id);
-public static int SplashKit.SpriteShowLayer(Sprite s, int id);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteShowLayer(int id);
+public static int SplashKit.SpriteShowLayer(Sprite s, int id);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_show_layer(s, id):`} lang="python" />
+```python
+def sprite_show_layer(s, id):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteShowLayer(s: Sprite; id: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteShowLayer(s: Sprite; id: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -3861,17 +4700,25 @@ Returns the current speed (distance travelled per update) of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_speed(sprite s)`} lang="cpp" />
+```cpp
+float sprite_speed(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Speed { get }
-public static float SplashKit.SpriteSpeed(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Speed { get }
+public static float SplashKit.SpriteSpeed(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_speed(s):`} lang="python" />
+```python
+def sprite_speed(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteSpeed(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteSpeed(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -3882,10 +4729,10 @@ public static float SplashKit.SpriteSpeed(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Start Animation** (s: sprite, named: string )](/components/sprites/#sprite-start-animation--1)
-- [**Sprite Start Animation** (s: sprite, named: string, with_sound: bool )](/components/sprites/#sprite-start-animation--2)
-- [**Sprite Start Animation** (s: sprite, idx: int )](/components/sprites/#sprite-start-animation--3)
-- [**Sprite Start Animation** (s: sprite, idx: int, with_sound: bool )](/components/sprites/#sprite-start-animation--4)
+- [**Sprite Start Animation** (s: sprite, named: string, )](/components/sprites/#sprite-start-animation--1)
+- [**Sprite Start Animation** (s: sprite, named: string, with_sound: bool, )](/components/sprites/#sprite-start-animation--2)
+- [**Sprite Start Animation** (s: sprite, idx: int, )](/components/sprites/#sprite-start-animation--3)
+- [**Sprite Start Animation** (s: sprite, idx: int, with_sound: bool, )](/components/sprites/#sprite-start-animation--4)
 
 :::
 
@@ -3909,17 +4756,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_start_animation(sprite s, const string &named)`} lang="cpp" />
+```cpp
+void sprite_start_animation(sprite s, const string &named)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteStartAnimation(string named);
-public static void SplashKit.SpriteStartAnimation(Sprite s, string named);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteStartAnimation(string named);
+public static void SplashKit.SpriteStartAnimation(Sprite s, string named);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_start_animation_named(s, named):`} lang="python" />
+```python
+def sprite_start_animation_named(s, named):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteStartAnimation(s: Sprite; const named: String)`} lang="pascal" />
+```pascal
+procedure SpriteStartAnimation(s: Sprite; const named: String)
+```
   </TabItem>
 </Tabs>
 
@@ -3946,17 +4801,25 @@ effects when started. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_start_animation(sprite s, const string &named, bool with_sound)`} lang="cpp" />
+```cpp
+void sprite_start_animation(sprite s, const string &named, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteStartAnimation(string named, bool withSound);
-public static void SplashKit.SpriteStartAnimation(Sprite s, string named, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteStartAnimation(string named, bool withSound);
+public static void SplashKit.SpriteStartAnimation(Sprite s, string named, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_start_animation_named_with_sound(s, named, with_sound):`} lang="python" />
+```python
+def sprite_start_animation_named_with_sound(s, named, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteStartAnimation(s: Sprite; const named: String; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure SpriteStartAnimation(s: Sprite; const named: String; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -3981,17 +4844,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_start_animation(sprite s, int idx)`} lang="cpp" />
+```cpp
+void sprite_start_animation(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteStartAnimation(int idx);
-public static void SplashKit.SpriteStartAnimation(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteStartAnimation(int idx);
+public static void SplashKit.SpriteStartAnimation(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_start_animation(s, idx):`} lang="python" />
+```python
+def sprite_start_animation(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteStartAnimation(s: Sprite; idx: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteStartAnimation(s: Sprite; idx: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -4018,17 +4889,25 @@ effects when started. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_start_animation(sprite s, int idx, bool with_sound)`} lang="cpp" />
+```cpp
+void sprite_start_animation(sprite s, int idx, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteStartAnimation(int idx, bool withSound);
-public static void SplashKit.SpriteStartAnimation(Sprite s, int idx, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteStartAnimation(int idx, bool withSound);
+public static void SplashKit.SpriteStartAnimation(Sprite s, int idx, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_start_animation_with_sound(s, idx, with_sound):`} lang="python" />
+```python
+def sprite_start_animation_with_sound(s, idx, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteStartAnimation(s: Sprite; idx: Integer; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure SpriteStartAnimation(s: Sprite; idx: Integer; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -4054,17 +4933,25 @@ sprite calling the indicated method.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_stop_calling_on_event(sprite s, sprite_event_handler *handler)`} lang="cpp" />
+```cpp
+void sprite_stop_calling_on_event(sprite s, sprite_event_handler *handler)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteStopCallingOnEvent(SpriteEventHandler handler);
-public static void SplashKit.SpriteStopCallingOnEvent(Sprite s, SpriteEventHandler handler);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteStopCallingOnEvent(SpriteEventHandler handler);
+public static void SplashKit.SpriteStopCallingOnEvent(Sprite s, SpriteEventHandler handler);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_stop_calling_on_event(s, handler):`} lang="python" />
+```python
+def sprite_stop_calling_on_event(s, handler):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteStopCallingOnEvent(s: Sprite; handler: SpriteEventHandler)`} lang="pascal" />
+```pascal
+procedure SpriteStopCallingOnEvent(s: Sprite; handler: SpriteEventHandler)
+```
   </TabItem>
 </Tabs>
 
@@ -4075,8 +4962,8 @@ public static void SplashKit.SpriteStopCallingOnEvent(Sprite s, SpriteEventHandl
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Toggle Layer Visible** (s: sprite, name: string )](/components/sprites/#sprite-toggle-layer-visible--1)
-- [**Sprite Toggle Layer Visible** (s: sprite, id: int )](/components/sprites/#sprite-toggle-layer-visible--2)
+- [**Sprite Toggle Layer Visible** (s: sprite, name: string, )](/components/sprites/#sprite-toggle-layer-visible--1)
+- [**Sprite Toggle Layer Visible** (s: sprite, id: int, )](/components/sprites/#sprite-toggle-layer-visible--2)
 
 :::
 
@@ -4098,17 +4985,25 @@ Toggle the visibility of the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_toggle_layer_visible(sprite s, const string &name)`} lang="cpp" />
+```cpp
+void sprite_toggle_layer_visible(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteToggleLayerVisible(string name);
-public static void SplashKit.SpriteToggleLayerVisible(Sprite s, string name);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteToggleLayerVisible(string name);
+public static void SplashKit.SpriteToggleLayerVisible(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_toggle_layer_visible_named(s, name):`} lang="python" />
+```python
+def sprite_toggle_layer_visible_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteToggleLayerVisible(s: Sprite; const name: String)`} lang="pascal" />
+```pascal
+procedure SpriteToggleLayerVisible(s: Sprite; const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -4131,17 +5026,25 @@ Toggle the visibility of the specified layer of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void sprite_toggle_layer_visible(sprite s, int id)`} lang="cpp" />
+```cpp
+void sprite_toggle_layer_visible(sprite s, int id)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.SpriteToggleLayerVisible(int id);
-public static void SplashKit.SpriteToggleLayerVisible(Sprite s, int id);`} lang="csharp" />
+```csharp
+public void Sprite.SpriteToggleLayerVisible(int id);
+public static void SplashKit.SpriteToggleLayerVisible(Sprite s, int id);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_toggle_layer_visible(s, id):`} lang="python" />
+```python
+def sprite_toggle_layer_visible(s, id):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SpriteToggleLayerVisible(s: Sprite; id: Integer)`} lang="pascal" />
+```pascal
+procedure SpriteToggleLayerVisible(s: Sprite; id: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -4166,17 +5069,25 @@ Returns the indicated value of the sprite
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_value(sprite s, const string &name)`} lang="cpp" />
+```cpp
+float sprite_value(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.SpriteValue(string name);
-public static float SplashKit.SpriteValue(Sprite s, string name);`} lang="csharp" />
+```csharp
+public float Sprite.SpriteValue(string name);
+public static float SplashKit.SpriteValue(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_value(s, name):`} lang="python" />
+```python
+def sprite_value(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteValue(s: Sprite; const name: String): Single`} lang="pascal" />
+```pascal
+function SpriteValue(s: Sprite; const name: String): Single
+```
   </TabItem>
 </Tabs>
 
@@ -4200,17 +5111,25 @@ Returns the number of sprite's values.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_value_count(sprite s)`} lang="cpp" />
+```cpp
+int sprite_value_count(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.ValueCount { get }
-public static int SplashKit.SpriteValueCount(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.ValueCount { get }
+public static int SplashKit.SpriteValueCount(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_value_count(s):`} lang="python" />
+```python
+def sprite_value_count(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteValueCount(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteValueCount(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4235,17 +5154,25 @@ Returns the current velocity of the sprite. When the sprite is updated
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d sprite_velocity(sprite s)`} lang="cpp" />
+```cpp
+vector_2d sprite_velocity(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Vector2D Sprite.Velocity { get }
-public static Vector2D SplashKit.SpriteVelocity(Sprite s);`} lang="csharp" />
+```csharp
+public Vector2D Sprite.Velocity { get }
+public static Vector2D SplashKit.SpriteVelocity(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_velocity(s):`} lang="python" />
+```python
+def sprite_velocity(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVelocity(s: Sprite): Vector2D`} lang="pascal" />
+```pascal
+function SpriteVelocity(s: Sprite): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -4256,8 +5183,8 @@ public static Vector2D SplashKit.SpriteVelocity(Sprite s);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Sprite Visible Index Of Layer** (s: sprite, name: string )](/components/sprites/#sprite-visible-index-of-layer--1)
-- [**Sprite Visible Index Of Layer** (s: sprite, id: int )](/components/sprites/#sprite-visible-index-of-layer--2)
+- [**Sprite Visible Index Of Layer** (s: sprite, name: string, )](/components/sprites/#sprite-visible-index-of-layer--1)
+- [**Sprite Visible Index Of Layer** (s: sprite, id: int, )](/components/sprites/#sprite-visible-index-of-layer--2)
 
 :::
 
@@ -4279,17 +5206,25 @@ Returns the index (z-order) of the sprite's layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_visible_index_of_layer(sprite s, const string &name)`} lang="cpp" />
+```cpp
+int sprite_visible_index_of_layer(sprite s, const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteVisibleIndexOfLayer(string name);
-public static int SplashKit.SpriteVisibleIndexOfLayer(Sprite s, string name);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteVisibleIndexOfLayer(string name);
+public static int SplashKit.SpriteVisibleIndexOfLayer(Sprite s, string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_visible_index_of_layer_named(s, name):`} lang="python" />
+```python
+def sprite_visible_index_of_layer_named(s, name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVisibleIndexOfLayer(s: Sprite; const name: String): Integer`} lang="pascal" />
+```pascal
+function SpriteVisibleIndexOfLayer(s: Sprite; const name: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4312,17 +5247,25 @@ Returns the index (z-order) of the sprite's layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_visible_index_of_layer(sprite s, int id)`} lang="cpp" />
+```cpp
+int sprite_visible_index_of_layer(sprite s, int id)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteVisibleIndexOfLayer(int id);
-public static int SplashKit.SpriteVisibleIndexOfLayer(Sprite s, int id);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteVisibleIndexOfLayer(int id);
+public static int SplashKit.SpriteVisibleIndexOfLayer(Sprite s, int id);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_visible_index_of_layer(s, id):`} lang="python" />
+```python
+def sprite_visible_index_of_layer(s, id):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVisibleIndexOfLayer(s: Sprite; id: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteVisibleIndexOfLayer(s: Sprite; id: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4347,17 +5290,25 @@ Returns the index of the n'th (idx parameter) visible layer.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_visible_layer(sprite s, int idx)`} lang="cpp" />
+```cpp
+int sprite_visible_layer(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteVisibleLayer(int idx);
-public static int SplashKit.SpriteVisibleLayer(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteVisibleLayer(int idx);
+public static int SplashKit.SpriteVisibleLayer(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_visible_layer(s, idx):`} lang="python" />
+```python
+def sprite_visible_layer(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVisibleLayer(s: Sprite; idx: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteVisibleLayer(s: Sprite; idx: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4381,17 +5332,25 @@ Returns the number of layers that are currently visible for the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_visible_layer_count(sprite s)`} lang="cpp" />
+```cpp
+int sprite_visible_layer_count(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.VisibleLayerCount { get }
-public static int SplashKit.SpriteVisibleLayerCount(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.VisibleLayerCount { get }
+public static int SplashKit.SpriteVisibleLayerCount(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_visible_layer_count(s):`} lang="python" />
+```python
+def sprite_visible_layer_count(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVisibleLayerCount(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteVisibleLayerCount(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4418,17 +5377,25 @@ This returns -1 if there are no visible layers.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_visible_layer_id(sprite s, int idx)`} lang="cpp" />
+```cpp
+int sprite_visible_layer_id(sprite s, int idx)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.SpriteVisibleLayerId(int idx);
-public static int SplashKit.SpriteVisibleLayerId(Sprite s, int idx);`} lang="csharp" />
+```csharp
+public int Sprite.SpriteVisibleLayerId(int idx);
+public static int SplashKit.SpriteVisibleLayerId(Sprite s, int idx);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_visible_layer_id(s, idx):`} lang="python" />
+```python
+def sprite_visible_layer_id(s, idx):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteVisibleLayerId(s: Sprite; idx: Integer): Integer`} lang="pascal" />
+```pascal
+function SpriteVisibleLayerId(s: Sprite; idx: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4452,17 +5419,25 @@ The current Width of the sprite (aligned to the X axis).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int sprite_width(sprite s)`} lang="cpp" />
+```cpp
+int sprite_width(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Sprite.Width { get }
-public static int SplashKit.SpriteWidth(Sprite s);`} lang="csharp" />
+```csharp
+public int Sprite.Width { get }
+public static int SplashKit.SpriteWidth(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_width(s):`} lang="python" />
+```python
+def sprite_width(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteWidth(s: Sprite): Integer`} lang="pascal" />
+```pascal
+function SpriteWidth(s: Sprite): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -4486,17 +5461,25 @@ Returns the X position of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_x(sprite s)`} lang="cpp" />
+```cpp
+float sprite_x(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.X { get }
-public static float SplashKit.SpriteX(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.X { get }
+public static float SplashKit.SpriteX(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_x(s):`} lang="python" />
+```python
+def sprite_x(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteX(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteX(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -4520,17 +5503,25 @@ Returns the Y position of the sprite.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float sprite_y(sprite s)`} lang="cpp" />
+```cpp
+float sprite_y(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Sprite.Y { get }
-public static float SplashKit.SpriteY(Sprite s);`} lang="csharp" />
+```csharp
+public float Sprite.Y { get }
+public static float SplashKit.SpriteY(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sprite_y(s):`} lang="python" />
+```python
+def sprite_y(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SpriteY(s: Sprite): Single`} lang="pascal" />
+```pascal
+function SpriteY(s: Sprite): Single
+```
   </TabItem>
 </Tabs>
 
@@ -4554,17 +5545,25 @@ Removes an global event handler, stopping events calling the indicated void.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void stop_calling_on_sprite_event(sprite_event_handler *handler)`} lang="cpp" />
+```cpp
+void stop_calling_on_sprite_event(sprite_event_handler *handler)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.StopCallingOnSpriteEvent(SpriteEventHandler handler);
-public static void SplashKit.StopCallingOnSpriteEvent(SpriteEventHandler handler);`} lang="csharp" />
+```csharp
+public static void Sprite.StopCallingOnSpriteEvent(SpriteEventHandler handler);
+public static void SplashKit.StopCallingOnSpriteEvent(SpriteEventHandler handler);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def stop_calling_on_sprite_event(handler):`} lang="python" />
+```python
+def stop_calling_on_sprite_event(handler):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StopCallingOnSpriteEvent(handler: SpriteEventHandler)`} lang="pascal" />
+```pascal
+procedure StopCallingOnSpriteEvent(handler: SpriteEventHandler)
+```
   </TabItem>
 </Tabs>
 
@@ -4576,7 +5575,7 @@ public static void SplashKit.StopCallingOnSpriteEvent(SpriteEventHandler handler
 This function is overloaded. The following versions exist:
 
 - [**Update All Sprites** ()](/components/sprites/#update-all-sprites--1)
-- [**Update All Sprites** (pct: float )](/components/sprites/#update-all-sprites--2)
+- [**Update All Sprites** (pct: float, )](/components/sprites/#update-all-sprites--2)
 
 :::
 
@@ -4591,17 +5590,25 @@ Update all of the sprites in the current sprite pack.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_all_sprites()`} lang="cpp" />
+```cpp
+void update_all_sprites()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.UpdateAllSprites();
-public static void SplashKit.UpdateAllSprites();`} lang="csharp" />
+```csharp
+public static void Sprite.UpdateAllSprites();
+public static void SplashKit.UpdateAllSprites();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_all_sprites():`} lang="python" />
+```python
+def update_all_sprites():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateAllSprites()`} lang="pascal" />
+```pascal
+procedure UpdateAllSprites()
+```
   </TabItem>
 </Tabs>
 
@@ -4624,17 +5631,25 @@ percentage value to indicate the percentage to update.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_all_sprites(float pct)`} lang="cpp" />
+```cpp
+void update_all_sprites(float pct)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Sprite.UpdateAllSprites(float pct);
-public static void SplashKit.UpdateAllSprites(float pct);`} lang="csharp" />
+```csharp
+public static void Sprite.UpdateAllSprites(float pct);
+public static void SplashKit.UpdateAllSprites(float pct);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_all_sprites_percent(pct):`} lang="python" />
+```python
+def update_all_sprites_percent(pct):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateAllSprites(pct: Single)`} lang="pascal" />
+```pascal
+procedure UpdateAllSprites(pct: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -4645,10 +5660,10 @@ public static void SplashKit.UpdateAllSprites(float pct);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Update Sprite** (s: sprite )](/components/sprites/#update-sprite--1)
-- [**Update Sprite** (s: sprite, with_sound: bool )](/components/sprites/#update-sprite--2)
-- [**Update Sprite** (s: sprite, pct: float )](/components/sprites/#update-sprite--3)
-- [**Update Sprite** (s: sprite, pct: float, with_sound: bool )](/components/sprites/#update-sprite--4)
+- [**Update Sprite** (s: sprite, )](/components/sprites/#update-sprite--1)
+- [**Update Sprite** (s: sprite, with_sound: bool, )](/components/sprites/#update-sprite--2)
+- [**Update Sprite** (s: sprite, pct: float, )](/components/sprites/#update-sprite--3)
+- [**Update Sprite** (s: sprite, pct: float, with_sound: bool, )](/components/sprites/#update-sprite--4)
 
 :::
 
@@ -4671,17 +5686,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite(sprite s)`} lang="cpp" />
+```cpp
+void update_sprite(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSprite();
-public static void SplashKit.UpdateSprite(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSprite();
+public static void SplashKit.UpdateSprite(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite(s):`} lang="python" />
+```python
+def update_sprite(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSprite(s: Sprite)`} lang="pascal" />
+```pascal
+procedure UpdateSprite(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -4707,17 +5730,25 @@ effects when updated. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite(sprite s, bool with_sound)`} lang="cpp" />
+```cpp
+void update_sprite(sprite s, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSprite(bool withSound);
-public static void SplashKit.UpdateSprite(Sprite s, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSprite(bool withSound);
+public static void SplashKit.UpdateSprite(Sprite s, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_with_sound(s, with_sound):`} lang="python" />
+```python
+def update_sprite_with_sound(s, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSprite(s: Sprite; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure UpdateSprite(s: Sprite; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -4743,17 +5774,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite(sprite s, float pct)`} lang="cpp" />
+```cpp
+void update_sprite(sprite s, float pct)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSprite(float pct);
-public static void SplashKit.UpdateSprite(Sprite s, float pct);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSprite(float pct);
+public static void SplashKit.UpdateSprite(Sprite s, float pct);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_percent(s, pct):`} lang="python" />
+```python
+def update_sprite_percent(s, pct):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSprite(s: Sprite; pct: Single)`} lang="pascal" />
+```pascal
+procedure UpdateSprite(s: Sprite; pct: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -4781,17 +5820,25 @@ effects when updated. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite(sprite s, float pct, bool with_sound)`} lang="cpp" />
+```cpp
+void update_sprite(sprite s, float pct, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSprite(float pct, bool withSound);
-public static void SplashKit.UpdateSprite(Sprite s, float pct, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSprite(float pct, bool withSound);
+public static void SplashKit.UpdateSprite(Sprite s, float pct, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_percent_with_sound(s, pct, with_sound):`} lang="python" />
+```python
+def update_sprite_percent_with_sound(s, pct, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSprite(s: Sprite; pct: Single; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure UpdateSprite(s: Sprite; pct: Single; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -4802,10 +5849,10 @@ public static void SplashKit.UpdateSprite(Sprite s, float pct, bool withSound);`
 
 This function is overloaded. The following versions exist:
 
-- [**Update Sprite Animation** (s: sprite )](/components/sprites/#update-sprite-animation--1)
-- [**Update Sprite Animation** (s: sprite, with_sound: bool )](/components/sprites/#update-sprite-animation--2)
-- [**Update Sprite Animation** (s: sprite, pct: float )](/components/sprites/#update-sprite-animation--3)
-- [**Update Sprite Animation** (s: sprite, pct: float, with_sound: bool )](/components/sprites/#update-sprite-animation--4)
+- [**Update Sprite Animation** (s: sprite, )](/components/sprites/#update-sprite-animation--1)
+- [**Update Sprite Animation** (s: sprite, with_sound: bool, )](/components/sprites/#update-sprite-animation--2)
+- [**Update Sprite Animation** (s: sprite, pct: float, )](/components/sprites/#update-sprite-animation--3)
+- [**Update Sprite Animation** (s: sprite, pct: float, with_sound: bool, )](/components/sprites/#update-sprite-animation--4)
 
 :::
 
@@ -4828,17 +5875,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite_animation(sprite s)`} lang="cpp" />
+```cpp
+void update_sprite_animation(sprite s)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSpriteAnimation();
-public static void SplashKit.UpdateSpriteAnimation(Sprite s);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSpriteAnimation();
+public static void SplashKit.UpdateSpriteAnimation(Sprite s);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_animation(s):`} lang="python" />
+```python
+def update_sprite_animation(s):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSpriteAnimation(s: Sprite)`} lang="pascal" />
+```pascal
+procedure UpdateSpriteAnimation(s: Sprite)
+```
   </TabItem>
 </Tabs>
 
@@ -4864,17 +5919,25 @@ effects when updated. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite_animation(sprite s, bool with_sound)`} lang="cpp" />
+```cpp
+void update_sprite_animation(sprite s, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSpriteAnimation(bool withSound);
-public static void SplashKit.UpdateSpriteAnimation(Sprite s, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSpriteAnimation(bool withSound);
+public static void SplashKit.UpdateSpriteAnimation(Sprite s, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_animation_with_sound(s, with_sound):`} lang="python" />
+```python
+def update_sprite_animation_with_sound(s, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSpriteAnimation(s: Sprite; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure UpdateSpriteAnimation(s: Sprite; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -4900,17 +5963,25 @@ has a sound.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite_animation(sprite s, float pct)`} lang="cpp" />
+```cpp
+void update_sprite_animation(sprite s, float pct)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSpriteAnimation(float pct);
-public static void SplashKit.UpdateSpriteAnimation(Sprite s, float pct);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSpriteAnimation(float pct);
+public static void SplashKit.UpdateSpriteAnimation(Sprite s, float pct);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_animation_percent(s, pct):`} lang="python" />
+```python
+def update_sprite_animation_percent(s, pct):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSpriteAnimation(s: Sprite; pct: Single)`} lang="pascal" />
+```pascal
+procedure UpdateSpriteAnimation(s: Sprite; pct: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -4938,17 +6009,25 @@ effects when updated. |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void update_sprite_animation(sprite s, float pct, bool with_sound)`} lang="cpp" />
+```cpp
+void update_sprite_animation(sprite s, float pct, bool with_sound)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Sprite.UpdateSpriteAnimation(float pct, bool withSound);
-public static void SplashKit.UpdateSpriteAnimation(Sprite s, float pct, bool withSound);`} lang="csharp" />
+```csharp
+public void Sprite.UpdateSpriteAnimation(float pct, bool withSound);
+public static void SplashKit.UpdateSpriteAnimation(Sprite s, float pct, bool withSound);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def update_sprite_animation_percent_with_sound(s, pct, with_sound):`} lang="python" />
+```python
+def update_sprite_animation_percent_with_sound(s, pct, with_sound):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure UpdateSpriteAnimation(s: Sprite; pct: Single; withSound: Boolean)`} lang="pascal" />
+```pascal
+procedure UpdateSpriteAnimation(s: Sprite; pct: Single; withSound: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -4974,17 +6053,25 @@ the sprite `s` to the point `pt`.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d vector_from_center_sprite_to_point(sprite s, const point_2d &pt)`} lang="cpp" />
+```cpp
+vector_2d vector_from_center_sprite_to_point(sprite s, const point_2d &pt)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Vector2D Sprite.VectorFromCenterSpriteToPoint(Point2D pt);
-public static Vector2D SplashKit.VectorFromCenterSpriteToPoint(Sprite s, Point2D pt);`} lang="csharp" />
+```csharp
+public Vector2D Sprite.VectorFromCenterSpriteToPoint(Point2D pt);
+public static Vector2D SplashKit.VectorFromCenterSpriteToPoint(Sprite s, Point2D pt);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def vector_from_center_sprite_to_point_point(s, pt):`} lang="python" />
+```python
+def vector_from_center_sprite_to_point_point(s, pt):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function VectorFromCenterSpriteToPoint(s: Sprite; const pt: Point2D): Vector2D`} lang="pascal" />
+```pascal
+function VectorFromCenterSpriteToPoint(s: Sprite; const pt: Point2D): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -5010,21 +6097,30 @@ Returns a [`Vector 2D`](/components/types/#vector-2d) that is the difference in 
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d vector_from_to(sprite s1, sprite s2)`} lang="cpp" />
+```cpp
+vector_2d vector_from_to(sprite s1, sprite s2)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Vector2D Sprite.VectorFromTo(Sprite s2);
-public static Vector2D SplashKit.VectorFromTo(Sprite s1, Sprite s2);`} lang="csharp" />
+```csharp
+public Vector2D Sprite.VectorFromTo(Sprite s2);
+public static Vector2D SplashKit.VectorFromTo(Sprite s1, Sprite s2);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def vector_from_to(s1, s2):`} lang="python" />
+```python
+def vector_from_to(s1, s2):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function VectorFromTo(s1: Sprite; s2: Sprite): Vector2D`} lang="pascal" />
+```pascal
+function VectorFromTo(s1: Sprite; s2: Sprite): Vector2D
+```
   </TabItem>
 </Tabs>
 
 ---
+
 
 
 ## Types

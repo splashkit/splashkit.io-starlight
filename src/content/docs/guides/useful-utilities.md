@@ -4,21 +4,12 @@ title: Useful Utilities
 date: 2017-10-03 06:20 UTC
 author: Richard Denton
 tags: utilities
-summary: |
-  In this article, we discuss useful utilities that you can use to convert,
+description: In this article, we discuss useful utilities that you can use to convert,
   check and manipulate common data types in SplashKit programs.
-related_funcs:
-  - convert_to_integer
-  - convert_to_double
-  - is_integer
-  - is_number
-  - to_uppercase
-  - to_lowercase
-  - trim
 
 ---
 
-SplashKit's [utilities library](/api/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
+SplashKit's [Utilities library](/components/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
 
 These functions are useful in many areas of programming.
 
@@ -33,7 +24,7 @@ These functions are useful in many areas of programming.
 
 SplashKit provides two useful functions for handling the conversion of a ```std::string``` to either an ```int``` or a ```double```.
 
-```c++
+```cpp
 #include "splashkit.h"
 #include <string>
 

@@ -5,20 +5,9 @@ date: 2018-05-30 10:00 UTC
 author: Andrew Cain
 author_url:
 tags: starter
-summary: |
-  This article provide a quick overview of getting started with SplashKit. It includes how to 
+description: This article provide a quick overview of getting started with SplashKit. It includes how to 
   create a window and do some basic drawing in order to create a small animation. This is a 
   great place to start with SplashKit.
-related_funcs:
-  - open_window
-  - delay
-  - clear_screen
-  - fill_ellipse
-  - fill_rectangle
-  - fill_triangle
-  - refresh_screen
-  - draw_bitmap
-
 ---
 
 In this article you will see how to get started with SplashKit with some simple drawing operations. Once you have this working you will be able to start exploring the different features you can work with.

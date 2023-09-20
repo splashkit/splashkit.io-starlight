@@ -8,129 +8,145 @@ Window Manager in SplashKit can be used create, and manipulate graphics windows
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
----
+
+##
+## Types
 ## Clear Window [🔗](#clear-window)
 
+ 
 clears a window to the specified color given in `clr`
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | the `window` to clear |
-| clr | [Color](/Color) | the `color` to clear the window to. |
+| wind | window | the `window` to clear |
+| clr | [`Color`](/components/types/#color) | the [`Color`](/components/types/#color) to clear the window to. |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ClearWindow(wind: Window; clr: Color)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def clear_window(wind, clr):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void clear_window(window wind, color clr)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.ClearWindow(Color clr);
-public static void SplashKit.ClearWindow(Window wind, Color clr);`} lang="csharp" />
+```csharp
+public void Window.ClearWindow(Color clr);
+public static void SplashKit.ClearWindow(Window wind, Color clr);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void clear_window(window wind, color clr)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def clear_window(wind, clr):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure ClearWindow(wind: Window; clr: Color)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Close All Windows [🔗](#close-all-windows)
 
+ 
 Releases all of the windows which have been loaded.
 
 **Return Type**
 
-- `Void`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Void` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CloseAllWindows()`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def close_all_windows():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void close_all_windows()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.CloseAllWindows();
-public static void SplashKit.CloseAllWindows();`} lang="csharp" />
+```csharp
+public static void WindowManager.CloseAllWindows();
+public static void SplashKit.CloseAllWindows();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void close_all_windows()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def close_all_windows():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CloseAllWindows()
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Close Current Window [🔗](#close-current-window)
 
+ 
 Closes and frees the current window.
 
 **Return Type**
 
-- `Void`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Void` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CloseCurrentWindow()`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def close_current_window():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void close_current_window()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.CloseCurrentWindow();
-public static void SplashKit.CloseCurrentWindow();`} lang="csharp" />
+```csharp
+public static void WindowManager.CloseCurrentWindow();
+public static void SplashKit.CloseCurrentWindow();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void close_current_window()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def close_current_window():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CloseCurrentWindow()
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Close Window [🧬](#group-close-window)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Close Window** (name: `String`)](/components/windows/#close-window--1)
-
-- [**Close Window** (wind: `Window`)](/components/windows/#close-window--2)
+- [**Close Window** (name: string, )](/components/sprites/#close-window--1)
+- [**Close Window** (wind: window, )](/components/sprites/#close-window--2)
 
 :::
 
----
-### Close Window [🤖](#close-window--1)
-
+### Close Window [🤖](#close-window--1) 
 Closes and frees the graphics window identified by `name`.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -141,387 +157,434 @@ Closes and frees the graphics window identified by `name`.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CloseWindow(const name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def close_window_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void close_window(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.CloseWindow(string name);
-public static void SplashKit.CloseWindow(string name);`} lang="csharp" />
+```csharp
+public static void WindowManager.CloseWindow(string name);
+public static void SplashKit.CloseWindow(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void close_window(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def close_window_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CloseWindow(const name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Close Window [🤖](#close-window--2)
-
+### Close Window [🤖](#close-window--2) 
 Closes and frees the graphics window supplied in `wind`.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window to close |
+| wind | window | The window to close |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CloseWindow(wind: Window)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def close_window(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void close_window(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.CloseWindow();
-public static void SplashKit.CloseWindow(Window wind);`} lang="csharp" />
+```csharp
+public void Window.CloseWindow();
+public static void SplashKit.CloseWindow(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void close_window(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def close_window(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CloseWindow(wind: Window)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window [🔗](#current-window)
 
+ 
 Returns the window that you are currently interacting with. This will be
 the default window for drawing options, and events.
 
 **Return Type**
 
-- `window`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- undefined 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindow(): Window`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+window current_window()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Window WindowManager.CurrentWindow();
-public static Window SplashKit.CurrentWindow();`} lang="csharp" />
+```csharp
+public static Window WindowManager.CurrentWindow();
+public static Window SplashKit.CurrentWindow();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`window current_window()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindow(): Window
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Has Border [🔗](#current-window-has-border)
 
+ 
 Indicate if the current window has a border.
 
 **Return Type**
 
-- `Boolean`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Boolean` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowHasBorder(): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_has_border():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool current_window_has_border()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.CurrentWindowHasBorder();
-public static bool SplashKit.CurrentWindowHasBorder();`} lang="csharp" />
+```csharp
+public static bool WindowManager.CurrentWindowHasBorder();
+public static bool SplashKit.CurrentWindowHasBorder();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool current_window_has_border()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_has_border():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowHasBorder(): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Height [🔗](#current-window-height)
 
+ 
 Returns the height of the current window.
 
 **Return Type**
 
-- `Integer`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Integer` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowHeight(): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_height():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int current_window_height()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.CurrentWindowHeight();
-public static int SplashKit.CurrentWindowHeight();`} lang="csharp" />
+```csharp
+public static int WindowManager.CurrentWindowHeight();
+public static int SplashKit.CurrentWindowHeight();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int current_window_height()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_height():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowHeight(): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Is Fullscreen [🔗](#current-window-is-fullscreen)
 
+ 
 Is the current window currently fullscreen?
 
 **Return Type**
 
-- `Boolean`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Boolean` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowIsFullscreen(): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_is_fullscreen():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool current_window_is_fullscreen()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.CurrentWindowIsFullscreen();
-public static bool SplashKit.CurrentWindowIsFullscreen();`} lang="csharp" />
+```csharp
+public static bool WindowManager.CurrentWindowIsFullscreen();
+public static bool SplashKit.CurrentWindowIsFullscreen();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool current_window_is_fullscreen()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_is_fullscreen():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowIsFullscreen(): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Position [🔗](#current-window-position)
 
+ 
 The location of the current window.
 
 **Return Type**
 
-- `Point 2D`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowPosition(): Point2D`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_position():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+point_2d current_window_position()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Point2D WindowManager.CurrentWindowPosition();
-public static Point2D SplashKit.CurrentWindowPosition();`} lang="csharp" />
+```csharp
+public static Point2D WindowManager.CurrentWindowPosition();
+public static Point2D SplashKit.CurrentWindowPosition();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`point_2d current_window_position()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_position():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowPosition(): Point2D
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Toggle Border [🔗](#current-window-toggle-border)
 
+ 
 Toggle the current window border.
 
 **Return Type**
 
-- `Void`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Void` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CurrentWindowToggleBorder()`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_toggle_border():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void current_window_toggle_border()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.CurrentWindowToggleBorder();
-public static void SplashKit.CurrentWindowToggleBorder();`} lang="csharp" />
+```csharp
+public static void WindowManager.CurrentWindowToggleBorder();
+public static void SplashKit.CurrentWindowToggleBorder();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void current_window_toggle_border()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_toggle_border():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CurrentWindowToggleBorder()
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Toggle Fullscreen [🔗](#current-window-toggle-fullscreen)
 
+ 
 Toggle the fullscreen property of the current window
 
 **Return Type**
 
-- `Void`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Void` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure CurrentWindowToggleFullscreen()`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_toggle_fullscreen():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void current_window_toggle_fullscreen()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.CurrentWindowToggleFullscreen();
-public static void SplashKit.CurrentWindowToggleFullscreen();`} lang="csharp" />
+```csharp
+public static void WindowManager.CurrentWindowToggleFullscreen();
+public static void SplashKit.CurrentWindowToggleFullscreen();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void current_window_toggle_fullscreen()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_toggle_fullscreen():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure CurrentWindowToggleFullscreen()
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Current Window Width [🔗](#current-window-width)
 
+ 
 Returns the width of the current window.
 
 **Return Type**
 
-- `Integer`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Integer` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowWidth(): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_width():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int current_window_width()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.CurrentWindowWidth();
-public static int SplashKit.CurrentWindowWidth();`} lang="csharp" />
+```csharp
+public static int WindowManager.CurrentWindowWidth();
+public static int SplashKit.CurrentWindowWidth();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int current_window_width()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_width():
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowWidth(): Integer
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Current Window X [🔗](#current-window-x)
 
+ 
 The x location of the current window on the displays.
 
 **Return Type**
 
-- `Integer`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Integer` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowX(): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_x():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int current_window_x()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.CurrentWindowX();
-public static int SplashKit.CurrentWindowX();`} lang="csharp" />
+```csharp
+public static int WindowManager.CurrentWindowX();
+public static int SplashKit.CurrentWindowX();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int current_window_x()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_x():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowX(): Integer
+```
+  </TabItem>
+</Tabs>
 
 ---
 ## Current Window Y [🔗](#current-window-y)
 
+ 
 The y location of the current window on the displays.
 
 **Return Type**
 
-- `Integer`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Integer` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CurrentWindowY(): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def current_window_y():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int current_window_y()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.CurrentWindowY();
-public static int SplashKit.CurrentWindowY();`} lang="csharp" />
+```csharp
+public static int WindowManager.CurrentWindowY();
+public static int SplashKit.CurrentWindowY();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int current_window_y()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def current_window_y():
+```
   </TabItem>
-</Tabs> 
-
+  <TabItem label="Pascal">
+```pascal
+function CurrentWindowY(): Integer
+```
+  </TabItem>
+</Tabs>
 
 ---
 ## Has Window [🔗](#has-window)
 
+ 
 Determines if SplashKit has a window loaded with the supplied name.
 This checks against all windows loaded, those loaded without a name
 are assigned the filename as a default. If this returns `false`, you may
@@ -530,7 +593,7 @@ it the desired name.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
@@ -541,64 +604,80 @@ it the desired name.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function HasWindow(caption: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def has_window(caption):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool has_window(string caption)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.HasWindow(string caption);
-public static bool SplashKit.HasWindow(string caption);`} lang="csharp" />
+```csharp
+public static bool WindowManager.HasWindow(string caption);
+public static bool SplashKit.HasWindow(string caption);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool has_window(string caption)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def has_window(caption):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function HasWindow(caption: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Is Current Window [🔗](#is-current-window)
 
+ 
 Check if the requested window is the current window.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window to check |
+| wind | window | The window to check |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function IsCurrentWindow(wind: Window): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def is_current_window(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool is_current_window(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Window.IsCurrentWindow { get }
-public static bool SplashKit.IsCurrentWindow(Window wind);`} lang="csharp" />
+```csharp
+public bool Window.IsCurrentWindow { get }
+public static bool SplashKit.IsCurrentWindow(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool is_current_window(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def is_current_window(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function IsCurrentWindow(wind: Window): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
 ## Move Current Window To [🔗](#move-current-window-to)
 
+ 
 Move the current window to the new location on the displays.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -610,36 +689,47 @@ Move the current window to the new location on the displays.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure MoveCurrentWindowTo(x: Integer; y: Integer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def move_current_window_to(x, y):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void move_current_window_to(int x, int y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.MoveCurrentWindowTo(int x, int y);
-public static void SplashKit.MoveCurrentWindowTo(int x, int y);`} lang="csharp" />
+```csharp
+public static void WindowManager.MoveCurrentWindowTo(int x, int y);
+public static void SplashKit.MoveCurrentWindowTo(int x, int y);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void move_current_window_to(int x, int y)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def move_current_window_to(x, y):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure MoveCurrentWindowTo(x: Integer; y: Integer)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Move Window To [🧬](#group-move-window-to)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Move Window To** (name: `String`, x: `Integer`, y: `Integer`)](/components/windows/#move-window-to--1)
+- [**Move Window To** (name: string, x: int, y: int, )](/components/sprites/#move-window-to--1)
+- [**Move Window To** (wind: window, x: int, y: int, )](/components/sprites/#move-window-to--2)
 
-- [**Move Window To** (wind: `Window`, x: `Integer`, y: `Integer`)](/components/windows/#move-window-to--2)
 :::
-### Move Window To [🤖](#move-window-to--1)
 
+### Move Window To [🤖](#move-window-to--1) 
 Move the window to the new location on the displays.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -652,59 +742,75 @@ Move the window to the new location on the displays.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure MoveWindowTo(const name: String; x: Integer; y: Integer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def move_window_to_named(name, x, y):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void move_window_to(const string &name, int x, int y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.MoveWindowTo(string name, int x, int y);
-public static void SplashKit.MoveWindowTo(string name, int x, int y);`} lang="csharp" />
+```csharp
+public static void WindowManager.MoveWindowTo(string name, int x, int y);
+public static void SplashKit.MoveWindowTo(string name, int x, int y);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void move_window_to(const string &name, int x, int y)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def move_window_to_named(name, x, y):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure MoveWindowTo(const name: String; x: Integer; y: Integer)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Move Window To [🔗](#move-window-to--2)
-
+### Move Window To [🤖](#move-window-to--2) 
 Move the window to the new location on the displays.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | the window to move. |
+| wind | window | the window to move. |
 | x | `Integer` | The new x location |
 | y | `Integer` | The new y location |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure MoveWindowTo(wind: Window; x: Integer; y: Integer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def move_window_to(wind, x, y):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void move_window_to(window wind, int x, int y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.MoveWindowTo(int x, int y);
-public static void SplashKit.MoveWindowTo(Window wind, int x, int y);`} lang="csharp" />
+```csharp
+public void Window.MoveWindowTo(int x, int y);
+public static void SplashKit.MoveWindowTo(Window wind, int x, int y);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void move_window_to(window wind, int x, int y)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def move_window_to(wind, x, y):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure MoveWindowTo(wind: Window; x: Integer; y: Integer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Open Window [🔗](#open-window)
 
+ 
 Opens a new graphics window. The supplied `caption` is used to
 name and identify the window. The supplied `width` and `height` indicate
 the size of the window. The window can be retrieved by passing `caption`
@@ -712,7 +818,7 @@ to the `window_named` function.
 
 **Return Type**
 
-- `window`
+- undefined 
 
 **Parameters**
 
@@ -727,106 +833,130 @@ ensure that it is unique. |
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function OpenWindow(caption: String; width: Integer; height: Integer): Window`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def open_window(caption, width, height):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+window open_window(string caption, int width, int height)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Window SplashKit.OpenWindow(string caption, int width, int height);
-public Window(string caption, int width, int height);`} lang="csharp" />
+```csharp
+public static Window SplashKit.OpenWindow(string caption, int width, int height);
+public Window(string caption, int width, int height);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`window open_window(string caption, int width, int height)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def open_window(caption, width, height):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function OpenWindow(caption: String; width: Integer; height: Integer): Window
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Refresh Window [🧬](#group-refresh-window)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Refresh Window** (wind: `Window`)](/components/windows/#refresh-window--1)
-
-- [**Refresh Window** (wind: `Window`, target_fps: `Unsigned Integer`)](/components/windows/#refresh-window--2)
+- [**Refresh Window** (wind: window, )](/components/sprites/#refresh-window--1)
+- [**Refresh Window** (wind: window, target_fps: unsigned int, )](/components/sprites/#refresh-window--2)
 
 :::
 
-
-### Refresh Window [🤖](#refresh-window--1)
-
+### Refresh Window [🤖](#refresh-window--1) 
 Refreshes the window `wind`.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | the `window` to refresh. |
+| wind | window | the `window` to refresh. |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure RefreshWindow(wind: Window)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def refresh_window(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void refresh_window(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.RefreshWindow();
-public static void SplashKit.RefreshWindow(Window wind);`} lang="csharp" />
+```csharp
+public void Window.RefreshWindow();
+public static void SplashKit.RefreshWindow(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void refresh_window(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def refresh_window(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure RefreshWindow(wind: Window)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Refresh Window [🤖](#refresh-window--2)
-
+### Refresh Window [🤖](#refresh-window--2) 
 Refreshes the window `wind`.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | the `window` to refresh. |
-| target_fps | [unsigned int](/unsigned int) | the desired framerate |
+| wind | window | the `window` to refresh. |
+| target_fps | unsigned int | the desired framerate |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure RefreshWindow(wind: Window; targetFps: Cardinal)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def refresh_window_with_target_fps(wind, target_fps):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void refresh_window(window wind, unsigned int target_fps)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.RefreshWindow(uint targetFps);
-public static void SplashKit.RefreshWindow(Window wind, uint targetFps);`} lang="csharp" />
+```csharp
+public void Window.RefreshWindow(uint targetFps);
+public static void SplashKit.RefreshWindow(Window wind, uint targetFps);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void refresh_window(window wind, unsigned int target_fps)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def refresh_window_with_target_fps(wind, target_fps):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure RefreshWindow(wind: Window; targetFps: Cardinal)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Resize Current Window [🔗](#resize-current-window)
 
+ 
 Change the size of the current window.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -838,73 +968,91 @@ Change the size of the current window.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResizeCurrentWindow(width: Integer; height: Integer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def resize_current_window(width, height):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void resize_current_window(int width, int height)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.ResizeCurrentWindow(int width, int height);
-public static void SplashKit.ResizeCurrentWindow(int width, int height);`} lang="csharp" />
+```csharp
+public static void WindowManager.ResizeCurrentWindow(int width, int height);
+public static void SplashKit.ResizeCurrentWindow(int width, int height);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void resize_current_window(int width, int height)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def resize_current_window(width, height):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure ResizeCurrentWindow(width: Integer; height: Integer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Resize Window [🔗](#resize-window)
 
+ 
 Change the size of the window.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window to change. |
+| wnd | window | The window to change. |
 | width | `Integer` | Its new width |
 | height | `Integer` | Its new height |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResizeWindow(wnd: Window; width: Integer; height: Integer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def resize_window(wnd, width, height):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void resize_window(window wnd, int width, int height)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.ResizeWindow(int width, int height);
-public static void SplashKit.ResizeWindow(Window wnd, int width, int height);`} lang="csharp" />
+```csharp
+public void Window.ResizeWindow(int width, int height);
+public static void SplashKit.ResizeWindow(Window wnd, int width, int height);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void resize_window(window wnd, int width, int height)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def resize_window(wnd, width, height):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure ResizeWindow(wnd: Window; width: Integer; height: Integer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Set Current Window [🧬](#group-set-current-window)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Set Current Window** (name: `String`)](/components/windows/#set-current-window--1)
+- [**Set Current Window** (name: string, )](/components/sprites/#set-current-window--1)
+- [**Set Current Window** (wind: window, )](/components/sprites/#set-current-window--2)
 
-- [**Set Current Window** (wind: `Window`)](/components/windows/#set-current-window--2)
 :::
 
-### Set Current Window [🤖](#set-current-window--1)
-
+### Set Current Window [🤖](#set-current-window--1) 
 Set the current window to the window with the supplied caption.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -915,110 +1063,132 @@ Set the current window to the window with the supplied caption.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure SetCurrentWindow(const name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def set_current_window_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void set_current_window(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.SetCurrentWindow(string name);
-public static void SplashKit.SetCurrentWindow(string name);`} lang="csharp" />
+```csharp
+public static void WindowManager.SetCurrentWindow(string name);
+public static void SplashKit.SetCurrentWindow(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void set_current_window(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def set_current_window_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure SetCurrentWindow(const name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Set Current Window [🤖](#set-current-window--2)
-
+### Set Current Window [🤖](#set-current-window--2) 
 Change the current window. Use this so that you can draw to different
 windows by default.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The new current window |
+| wind | window | The new current window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure SetCurrentWindow(wind: Window)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def set_current_window(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void set_current_window(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.SetCurrentWindow();
-public static void SplashKit.SetCurrentWindow(Window wind);`} lang="csharp" />
+```csharp
+public void Window.SetCurrentWindow();
+public static void SplashKit.SetCurrentWindow(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void set_current_window(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def set_current_window(wind):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure SetCurrentWindow(wind: Window)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Caption [🔗](#window-caption)
 
+ 
 The caption of the window.
 
 **Return Type**
 
-- `String`
+- `String` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window |
+| wind | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowCaption(wind: Window): String`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_caption(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+string window_caption(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Window.Caption { get }
-public static string SplashKit.WindowCaption(Window wind);`} lang="csharp" />
+```csharp
+public string Window.Caption { get }
+public static string SplashKit.WindowCaption(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`string window_caption(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_caption(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowCaption(wind: Window): String
+```
+  </TabItem>
+</Tabs>
+
 ---
+## Window Close Requested [🧬](#group-window-close-requested)
 
-
-### Window Close Requested [🧬](#group-window-close-requested)
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Close Requested** (name: `String`)](/components/windows/#window-close-requested--1)
-
-- [**Window Close Requested** (wind: `Window`)](/components/windows/#window-close-requested--2)
+- [**Window Close Requested** (name: string, )](/components/sprites/#window-close-requested--1)
+- [**Window Close Requested** (wind: window, )](/components/sprites/#window-close-requested--2)
 
 :::
 
-
-### Window Close Requested [🤖](#window-close-requested--1)
-
+### Window Close Requested [🤖](#window-close-requested--1) 
 Checks all opened windows in the current program
 to determin if a window with the name `name` is
 currently open, and will close a window if one is found.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
@@ -1029,70 +1199,87 @@ currently open, and will close a window if one is found.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowCloseRequested(const name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_close_requested_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_close_requested(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.WindowCloseRequested(string name);
-public static bool SplashKit.WindowCloseRequested(string name);`} lang="csharp" />
+```csharp
+public static bool WindowManager.WindowCloseRequested(string name);
+public static bool SplashKit.WindowCloseRequested(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_close_requested(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_close_requested_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowCloseRequested(const name: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Close Requested [🤖](#window-close-requested--2)
-
+### Window Close Requested [🤖](#window-close-requested--2) 
 Closes the window given in `wind`
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | the `window` to be closed |
+| wind | window | the `window` to be closed |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowCloseRequested(wind: Window): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_close_requested(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_close_requested(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Window.CloseRequested { get }
-public static bool SplashKit.WindowCloseRequested(Window wind);`} lang="csharp" />
+```csharp
+public bool Window.CloseRequested { get }
+public static bool SplashKit.WindowCloseRequested(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_close_requested(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_close_requested(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowCloseRequested(wind: Window): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Has Border [🧬](#group-window-has-border)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Has Border** (name: `String`)](/components/windows/#window-has-border--1)
-
-- [**Window Has Border** (wnd: `Window`)](/components/windows/#window-has-border--2)
+- [**Window Has Border** (name: string, )](/components/sprites/#window-has-border--1)
+- [**Window Has Border** (wnd: window, )](/components/sprites/#window-has-border--2)
 
 :::
-### Window Has Border [🤖](#window-has-border--1)
 
+### Window Has Border [🤖](#window-has-border--1) 
 Indicate if the window has a border.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
@@ -1103,105 +1290,129 @@ Indicate if the window has a border.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowHasBorder(const name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_has_border_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_has_border(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.WindowHasBorder(string name);
-public static bool SplashKit.WindowHasBorder(string name);`} lang="csharp" />
+```csharp
+public static bool WindowManager.WindowHasBorder(string name);
+public static bool SplashKit.WindowHasBorder(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_has_border(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_has_border_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowHasBorder(const name: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Has Border [🔗](#window-has-border--2)
-
+### Window Has Border [🤖](#window-has-border--2) 
 Indicate if the window has a border.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window |
+| wnd | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowHasBorder(wnd: Window): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_has_border(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_has_border(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Window.HasBorder { get }
-public static bool SplashKit.WindowHasBorder(Window wnd);`} lang="csharp" />
+```csharp
+public bool Window.HasBorder { get }
+public static bool SplashKit.WindowHasBorder(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_has_border(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_has_border(wnd):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function WindowHasBorder(wnd: Window): Boolean
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Has Focus [🔗](#window-has-focus)
 
+ 
 Indicates if the window has focus.
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window |
+| wind | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowHasFocus(wind: Window): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_has_focus(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_has_focus(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Window.HasFocus { get }
-public static bool SplashKit.WindowHasFocus(Window wind);`} lang="csharp" />
+```csharp
+public bool Window.HasFocus { get }
+public static bool SplashKit.WindowHasFocus(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_has_focus(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_has_focus(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowHasFocus(wind: Window): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Height [🧬](#group-window-height)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Height** (name: `String`)](/components/windows/#window-height--1)
-
-- [**Window Height** (wind: `Window`)](/components/windows/#window-height--2)
+- [**Window Height** (name: string, )](/components/sprites/#window-height--1)
+- [**Window Height** (wind: window, )](/components/sprites/#window-height--2)
 
 :::
 
-
-## Window Height [🤖](#window-height--1)
-
+### Window Height [🤖](#window-height--1) 
 Returns the height of the window with the indicated name in pixels.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
@@ -1212,70 +1423,87 @@ Returns the height of the window with the indicated name in pixels.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowHeight(const name: String): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_height_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_height(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.WindowHeight(string name);
-public static int SplashKit.WindowHeight(string name);`} lang="csharp" />
+```csharp
+public static int WindowManager.WindowHeight(string name);
+public static int SplashKit.WindowHeight(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_height(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_height_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowHeight(const name: String): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Height [🤖](#window-height--2)
-
+### Window Height [🤖](#window-height--2) 
 Returns the height of the window in pixels.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window |
+| wind | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowHeight(wind: Window): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_height(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_height(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Window.Height { get }
-public static int SplashKit.WindowHeight(Window wind);`} lang="csharp" />
+```csharp
+public int Window.Height { get }
+public static int SplashKit.WindowHeight(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_height(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_height(wind):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowHeight(wind: Window): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Is Fullscreen [🧬](#group-window-is-fullscreen)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Is Fullscreen** (name: `String`)](/components/windows/#window-is-fullscreen--1)
-
-- [**Window Is Fullscreen** (wnd: `Window`)](/components/windows/#window-is-fullscreen--2)
+- [**Window Is Fullscreen** (name: string, )](/components/sprites/#window-is-fullscreen--1)
+- [**Window Is Fullscreen** (wnd: window, )](/components/sprites/#window-is-fullscreen--2)
 
 :::
-### Window Is Fullscreen [🤖](#window-is-fullscreen--1)
 
+### Window Is Fullscreen [🤖](#window-is-fullscreen--1) 
 Is the window currently fullscreen?
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
@@ -1286,106 +1514,130 @@ Is the window currently fullscreen?
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowIsFullscreen(const name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_is_fullscreen_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_is_fullscreen(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool WindowManager.WindowIsFullscreen(string name);
-public static bool SplashKit.WindowIsFullscreen(string name);`} lang="csharp" />
+```csharp
+public static bool WindowManager.WindowIsFullscreen(string name);
+public static bool SplashKit.WindowIsFullscreen(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_is_fullscreen(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_is_fullscreen_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowIsFullscreen(const name: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Is Fullscreen [🤖](#window-is-fullscreen--2)
-
+### Window Is Fullscreen [🤖](#window-is-fullscreen--2) 
 Is the window currently fullscreen?
 
 **Return Type**
 
-- `Boolean`
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window to check |
+| wnd | window | The window to check |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowIsFullscreen(wnd: Window): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_is_fullscreen(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool window_is_fullscreen(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Window.IsFullscreen { get }
-public static bool SplashKit.WindowIsFullscreen(Window wnd);`} lang="csharp" />
+```csharp
+public bool Window.IsFullscreen { get }
+public static bool SplashKit.WindowIsFullscreen(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool window_is_fullscreen(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_is_fullscreen(wnd):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function WindowIsFullscreen(wnd: Window): Boolean
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Named [🔗](#window-named)
 
+ 
 Returns an opened `window` with the given name `caption`, if a window with
 name `caption` is found.
 
 **Return Type**
 
-- `window`
+- undefined 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| caption | `String` | the `string` name of the window. |
+| caption | `String` | the `String` name of the window. |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowNamed(caption: String): Window`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_named(caption):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+window window_named(string caption)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Window WindowManager.WindowNamed(string caption);
-public static Window SplashKit.WindowNamed(string caption);`} lang="csharp" />
+```csharp
+public static Window WindowManager.WindowNamed(string caption);
+public static Window SplashKit.WindowNamed(string caption);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`window window_named(string caption)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_named(caption):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function WindowNamed(caption: String): Window
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Position [🧬](#group-window-position)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Position** (name: `String`)](/components/windows/#window-position--1)
-
-- [**Window Position** (wnd: `Window`)](/components/windows/#window-position--2)
+- [**Window Position** (name: string, )](/components/sprites/#window-position--1)
+- [**Window Position** (wnd: window, )](/components/sprites/#window-position--2)
 
 :::
 
-### Window Position [🤖](#window-position--1)
-
+### Window Position [🤖](#window-position--1) 
 The location of the window.
 
 **Return Type**
 
-- `Point 2D`
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Parameters**
 
@@ -1396,106 +1648,130 @@ The location of the window.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowPosition(const name: String): Point2D`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_position_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+point_2d window_position(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Point2D WindowManager.WindowPosition(string name);
-public static Point2D SplashKit.WindowPosition(string name);`} lang="csharp" />
+```csharp
+public static Point2D WindowManager.WindowPosition(string name);
+public static Point2D SplashKit.WindowPosition(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`point_2d window_position(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_position_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowPosition(const name: String): Point2D
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Position [🤖](#window-position--2)
-
+### Window Position [🤖](#window-position--2) 
 The location of the window.
 
 **Return Type**
 
-- `Point 2D`
+- [`Point 2D`](/components/types/#point-2d) 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window. |
+| wnd | window | The window. |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowPosition(wnd: Window): Point2D`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_position(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+point_2d window_position(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Point2D Window.Position { get }
-public static Point2D SplashKit.WindowPosition(Window wnd);`} lang="csharp" />
+```csharp
+public Point2D Window.Position { get }
+public static Point2D SplashKit.WindowPosition(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`point_2d window_position(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_position(wnd):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function WindowPosition(wnd: Window): Point2D
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Set Icon [🔗](#window-set-icon)
 
+ 
 Sets the icon of the current window.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window to change the icon of |
-| bmp | [Bitmap](/Bitmap) | The image with the details to show in the icon |
+| wind | window | The window to change the icon of |
+| bmp | [`Bitmap`](/components/types/#bitmap) | The image with the details to show in the icon |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure WindowSetIcon(wind: Window; bmp: Bitmap)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_set_icon(wind, bmp):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void window_set_icon(window wind, bitmap bmp)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.Icon { set }
-public static void SplashKit.WindowSetIcon(Window wind, Bitmap bmp);`} lang="csharp" />
+```csharp
+public void Window.Icon { set }
+public static void SplashKit.WindowSetIcon(Window wind, Bitmap bmp);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void window_set_icon(window wind, bitmap bmp)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_set_icon(wind, bmp):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure WindowSetIcon(wind: Window; bmp: Bitmap)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window Toggle Border [🧬](#group-window-toggle-border)
 
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Toggle Border** (name: `String`)](/components/windows/#window-toggle-border--1)
+- [**Window Toggle Border** (name: string, )](/components/sprites/#window-toggle-border--1)
+- [**Window Toggle Border** (wnd: window, )](/components/sprites/#window-toggle-border--2)
 
-- [**Window Toggle Border** (wnd: `Window`)](/components/windows/#window-toggle-border--2)
 :::
 
-### Window Toggle Border [🤖](#window-toggle-border--1)
-
+### Window Toggle Border [🤖](#window-toggle-border--1) 
 Toggle the window border.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -1506,70 +1782,87 @@ Toggle the window border.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure WindowToggleBorder(const name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_toggle_border_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void window_toggle_border(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.WindowToggleBorder(string name);
-public static void SplashKit.WindowToggleBorder(string name);`} lang="csharp" />
+```csharp
+public static void WindowManager.WindowToggleBorder(string name);
+public static void SplashKit.WindowToggleBorder(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void window_toggle_border(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_toggle_border_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure WindowToggleBorder(const name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Toggle Border [🤖](#window-toggle-border--2)
-
+### Window Toggle Border [🤖](#window-toggle-border--2) 
 Toggle the window border.
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window to change |
+| wnd | window | The window to change |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure WindowToggleBorder(wnd: Window)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_toggle_border(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void window_toggle_border(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.WindowToggleBorder();
-public static void SplashKit.WindowToggleBorder(Window wnd);`} lang="csharp" />
+```csharp
+public void Window.WindowToggleBorder();
+public static void SplashKit.WindowToggleBorder(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void window_toggle_border(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_toggle_border(wnd):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure WindowToggleBorder(wnd: Window)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Toggle Fullscreen [🧬](#group-window-toggle-fullscreen)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Toggle Fullscreen** (name: `String`)](/components/windows/#window-toggle-fullscreen--1)
-- [**Window Toggle Fullscreen** (wnd: `Window`)](/components/windows/#window-toggle-fullscreen--2)
+- [**Window Toggle Fullscreen** (name: string, )](/components/sprites/#window-toggle-fullscreen--1)
+- [**Window Toggle Fullscreen** (wnd: window, )](/components/sprites/#window-toggle-fullscreen--2)
+
 :::
 
-
-### Window Toggle Fullscreen [🤖](#window-toggle-fullscreen--1)
-
+### Window Toggle Fullscreen [🤖](#window-toggle-fullscreen--1) 
 Toggle the fullscreen property of the window
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
@@ -1580,70 +1873,87 @@ Toggle the fullscreen property of the window
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure WindowToggleFullscreen(const name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_toggle_fullscreen_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void window_toggle_fullscreen(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void WindowManager.WindowToggleFullscreen(string name);
-public static void SplashKit.WindowToggleFullscreen(string name);`} lang="csharp" />
+```csharp
+public static void WindowManager.WindowToggleFullscreen(string name);
+public static void SplashKit.WindowToggleFullscreen(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void window_toggle_fullscreen(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_toggle_fullscreen_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure WindowToggleFullscreen(const name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Toggle Fullscreen [🤖](#window-toggle-fullscreen--2)
-
+### Window Toggle Fullscreen [🤖](#window-toggle-fullscreen--2) 
 Toggle the fullscreen property of the window
 
 **Return Type**
 
-- `Void`
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window to change |
+| wnd | window | The window to change |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure WindowToggleFullscreen(wnd: Window)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_toggle_fullscreen(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void window_toggle_fullscreen(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Window.WindowToggleFullscreen();
-public static void SplashKit.WindowToggleFullscreen(Window wnd);`} lang="csharp" />
+```csharp
+public void Window.WindowToggleFullscreen();
+public static void SplashKit.WindowToggleFullscreen(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void window_toggle_fullscreen(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_toggle_fullscreen(wnd):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure WindowToggleFullscreen(wnd: Window)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Width [🧬](#group-window-width)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Width** (name: `String`)](/components/windows/#window-width--1)
-
-- [**Window Width** (wind: `Window`)](/components/windows/#window-width--2)
+- [**Window Width** (name: string, )](/components/sprites/#window-width--1)
+- [**Window Width** (wind: window, )](/components/sprites/#window-width--2)
 
 :::
-### Window Width [🤖](#window-width--1)
 
+### Window Width [🤖](#window-width--1) 
 Returns the width of the window with the indicated name in pixels.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
@@ -1654,102 +1964,124 @@ Returns the width of the window with the indicated name in pixels.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowWidth(const name: String): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_width_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_width(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.WindowWidth(string name);
-public static int SplashKit.WindowWidth(string name);`} lang="csharp" />
+```csharp
+public static int WindowManager.WindowWidth(string name);
+public static int SplashKit.WindowWidth(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_width(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_width_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowWidth(const name: String): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Width [🤖](#window-width--2)
-
+### Window Width [🤖](#window-width--2) 
 Returns the width of the window in pixels.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wind | [Window](/components/windows/#window) | The window |
+| wind | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowWidth(wind: Window): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_width(wind):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_width(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Window.Width { get }
-public static int SplashKit.WindowWidth(Window wind);`} lang="csharp" />
+```csharp
+public int Window.Width { get }
+public static int SplashKit.WindowWidth(Window wind);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_width(window wind)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_width(wind):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function WindowWidth(wind: Window): Integer
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Window With Focus [🔗](#window-with-focus)
 
+ 
 Returns the window that the user currently has selected. This may be
 different to the current window.
 
 **Return Type**
 
-- `window`
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- undefined 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowWithFocus(): Window`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_with_focus():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+window window_with_focus()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Window WindowManager.WindowWithFocus();
-public static Window SplashKit.WindowWithFocus();`} lang="csharp" />
+```csharp
+public static Window WindowManager.WindowWithFocus();
+public static Window SplashKit.WindowWithFocus();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`window window_with_focus()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_with_focus():
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowWithFocus(): Window
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window X [🧬](#group-window-x)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window X** (name: `String`)](/components/windows/#window-x--1)
+- [**Window X** (name: string, )](/components/sprites/#window-x--1)
+- [**Window X** (wnd: window, )](/components/sprites/#window-x--2)
 
-- [**Window X** (wnd: `Window`)](/components/windows/#window-x--2)
 :::
-### Window X [🤖](#window-x--1)
 
+### Window X [🤖](#window-x--1) 
 The x location of the window on the displays.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
@@ -1760,71 +2092,87 @@ The x location of the window on the displays.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowX(const name: String): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_x_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_x(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.WindowX(string name);
-public static int SplashKit.WindowX(string name);`} lang="csharp" />
+```csharp
+public static int WindowManager.WindowX(string name);
+public static int SplashKit.WindowX(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_x(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_x_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowX(const name: String): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window X [🤖](#window-x--2)
-
+### Window X [🤖](#window-x--2) 
 The x location of the window on the displays.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window |
+| wnd | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowX(wnd: Window): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_x(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_x(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Window.X { get }
-public static int SplashKit.WindowX(Window wnd);`} lang="csharp" />
+```csharp
+public int Window.X { get }
+public static int SplashKit.WindowX(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_x(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_x(wnd):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowX(wnd: Window): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Window Y [🧬](#group-window-y)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Window Y** (name: `String`)](/components/windows/#window-y--1)
-
-- [**Window Y** (wnd: `Window`)](/components/types/#window-y--2)
+- [**Window Y** (name: string, )](/components/sprites/#window-y--1)
+- [**Window Y** (wnd: window, )](/components/sprites/#window-y--2)
 
 :::
 
-### Window Y [🤖](#window-y--1)
-
+### Window Y [🤖](#window-y--1) 
 The y location of the window on the displays.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
@@ -1835,58 +2183,70 @@ The y location of the window on the displays.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowY(const name: String): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_y_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_y(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int WindowManager.WindowY(string name);
-public static int SplashKit.WindowY(string name);`} lang="csharp" />
+```csharp
+public static int WindowManager.WindowY(string name);
+public static int SplashKit.WindowY(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_y(const string &name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_y_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowY(const name: String): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Window Y [🤖](#window-y--2)
-
+### Window Y [🤖](#window-y--2) 
 The y location of the window on the displays.
 
 **Return Type**
 
-- `Integer`
+- `Integer` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| wnd | [Window](/components/windows/#window) | The window |
+| wnd | window | The window |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function WindowY(wnd: Window): Integer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def window_y(wnd):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+int window_y(window wnd)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Window.Y { get }
-public static int SplashKit.WindowY(Window wnd);`} lang="csharp" />
+```csharp
+public int Window.Y { get }
+public static int SplashKit.WindowY(Window wnd);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`int window_y(window wnd)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def window_y(wnd):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function WindowY(wnd: Window): Integer
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-
-##
-## Types
 
 ### Window [🧾](#window)
 The Window type is used to refer to a window that you have opened in SplashKit. You create new Windows using [Open Window](/components/windows/#open-window) and they can be closed using [Close Window](/components/windows/#close-window) .

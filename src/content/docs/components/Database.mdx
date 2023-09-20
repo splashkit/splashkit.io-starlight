@@ -8,11 +8,10 @@ SplashKit's database library allows you to easily create or load databases and t
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
-
 ## Database Named [🔗](#database-named)
 
  
@@ -32,17 +31,25 @@ Retrieves a [`Database`](/components/database/#database) that has been loaded in
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`database database_named(string name)`} lang="cpp" />
+```cpp
+database database_named(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Database Database.DatabaseNamed(string name);
-public static Database SplashKit.DatabaseNamed(string name);`} lang="csharp" />
+```csharp
+public static Database Database.DatabaseNamed(string name);
+public static Database SplashKit.DatabaseNamed(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def database_named(name):`} lang="python" />
+```python
+def database_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function DatabaseNamed(name: String): Database`} lang="pascal" />
+```pascal
+function DatabaseNamed(name: String): Database
+```
   </TabItem>
 </Tabs>
 
@@ -60,17 +67,25 @@ Releases all of the databases which have been loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_databases()`} lang="cpp" />
+```cpp
+void free_all_databases()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Database.FreeAllDatabases();
-public static void SplashKit.FreeAllDatabases();`} lang="csharp" />
+```csharp
+public static void Database.FreeAllDatabases();
+public static void SplashKit.FreeAllDatabases();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_databases():`} lang="python" />
+```python
+def free_all_databases():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllDatabases()`} lang="pascal" />
+```pascal
+procedure FreeAllDatabases()
+```
   </TabItem>
 </Tabs>
 
@@ -88,17 +103,25 @@ Frees all of the databases which have been loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_query_results()`} lang="cpp" />
+```cpp
+void free_all_query_results()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Database.FreeAllQueryResults();
-public static void SplashKit.FreeAllQueryResults();`} lang="csharp" />
+```csharp
+public static void Database.FreeAllQueryResults();
+public static void SplashKit.FreeAllQueryResults();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_query_results():`} lang="python" />
+```python
+def free_all_query_results():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllQueryResults()`} lang="pascal" />
+```pascal
+procedure FreeAllQueryResults()
+```
   </TabItem>
 </Tabs>
 
@@ -109,8 +132,8 @@ public static void SplashKit.FreeAllQueryResults();`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Free Database** (db_to_close: database )](/components/database/#free-database--1)
-- [**Free Database** (name_of_db_to_close: string )](/components/database/#free-database--2)
+- [**Free Database** (db_to_close: database, )](/components/sprites/#free-database--1)
+- [**Free Database** (name_of_db_to_close: string, )](/components/sprites/#free-database--2)
 
 :::
 
@@ -131,17 +154,25 @@ Frees the SplashKit resources associated with the database.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_database(database db_to_close)`} lang="cpp" />
+```cpp
+void free_database(database db_to_close)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Database.FreeDatabase();
-public static void SplashKit.FreeDatabase(Database dbToClose);`} lang="csharp" />
+```csharp
+public void Database.FreeDatabase();
+public static void SplashKit.FreeDatabase(Database dbToClose);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_database(db_to_close):`} lang="python" />
+```python
+def free_database(db_to_close):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeDatabase(dbToClose: Database)`} lang="pascal" />
+```pascal
+procedure FreeDatabase(dbToClose: Database)
+```
   </TabItem>
 </Tabs>
 
@@ -163,17 +194,25 @@ Frees the SplashKit resources associated with the database at a given name.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_database(string name_of_db_to_close)`} lang="cpp" />
+```cpp
+void free_database(string name_of_db_to_close)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Database.FreeDatabase(string nameOfDbToClose);
-public static void SplashKit.FreeDatabase(string nameOfDbToClose);`} lang="csharp" />
+```csharp
+public static void Database.FreeDatabase(string nameOfDbToClose);
+public static void SplashKit.FreeDatabase(string nameOfDbToClose);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_database_named(name_of_db_to_close):`} lang="python" />
+```python
+def free_database_named(name_of_db_to_close):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeDatabase(nameOfDbToClose: String)`} lang="pascal" />
+```pascal
+procedure FreeDatabase(nameOfDbToClose: String)
+```
   </TabItem>
 </Tabs>
 
@@ -197,17 +236,25 @@ Releases the SplashKit resources associated with the query.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_query_result(query_result query)`} lang="cpp" />
+```cpp
+void free_query_result(query_result query)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void QueryResult.FreeQueryResult();
-public static void SplashKit.FreeQueryResult(QueryResult query);`} lang="csharp" />
+```csharp
+public void QueryResult.FreeQueryResult();
+public static void SplashKit.FreeQueryResult(QueryResult query);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_query_result(query):`} lang="python" />
+```python
+def free_query_result(query):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeQueryResult(query: QueryResult)`} lang="pascal" />
+```pascal
+procedure FreeQueryResult(query: QueryResult)
+```
   </TabItem>
 </Tabs>
 
@@ -231,17 +278,25 @@ Gets the next row available on a given [`Query Result`](/components/database/#qu
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool get_next_row(query_result db_result)`} lang="cpp" />
+```cpp
+bool get_next_row(query_result db_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool QueryResult.GetNextRow();
-public static bool SplashKit.GetNextRow(QueryResult dbResult);`} lang="csharp" />
+```csharp
+public bool QueryResult.GetNextRow();
+public static bool SplashKit.GetNextRow(QueryResult dbResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def get_next_row(db_result):`} lang="python" />
+```python
+def get_next_row(db_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function GetNextRow(dbResult: QueryResult): Boolean`} lang="pascal" />
+```pascal
+function GetNextRow(dbResult: QueryResult): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -270,17 +325,25 @@ This will match the name you used when opening the database in open_database |
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_database(string name)`} lang="cpp" />
+```cpp
+bool has_database(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Database.HasDatabase(string name);
-public static bool SplashKit.HasDatabase(string name);`} lang="csharp" />
+```csharp
+public static bool Database.HasDatabase(string name);
+public static bool SplashKit.HasDatabase(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_database(name):`} lang="python" />
+```python
+def has_database(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasDatabase(name: String): Boolean`} lang="pascal" />
+```pascal
+function HasDatabase(name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -304,17 +367,25 @@ Checks if a given [`Query Result`](/components/database/#query-result) has a val
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_row(query_result db_result)`} lang="cpp" />
+```cpp
+bool has_row(query_result db_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool QueryResult.HasRow { get }
-public static bool SplashKit.HasRow(QueryResult dbResult);`} lang="csharp" />
+```csharp
+public bool QueryResult.HasRow { get }
+public static bool SplashKit.HasRow(QueryResult dbResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_row(db_result):`} lang="python" />
+```python
+def has_row(db_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasRow(dbResult: QueryResult): Boolean`} lang="pascal" />
+```pascal
+function HasRow(dbResult: QueryResult): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -345,17 +416,25 @@ will be created for you.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`database open_database(string name, string filename)`} lang="cpp" />
+```cpp
+database open_database(string name, string filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Database SplashKit.OpenDatabase(string name, string filename);
-public Database(string name, string filename);`} lang="csharp" />
+```csharp
+public static Database SplashKit.OpenDatabase(string name, string filename);
+public Database(string name, string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def open_database(name, filename):`} lang="python" />
+```python
+def open_database(name, filename):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function OpenDatabase(name: String; filename: String): Database`} lang="pascal" />
+```pascal
+function OpenDatabase(name: String; filename: String): Database
+```
   </TabItem>
 </Tabs>
 
@@ -380,17 +459,25 @@ Queries a given column in the current row of the [`Query Result`](/components/da
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool query_column_for_bool(query_result db_result, int col)`} lang="cpp" />
+```cpp
+bool query_column_for_bool(query_result db_result, int col)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool QueryResult.QueryColumnForBool(int col);
-public static bool SplashKit.QueryColumnForBool(QueryResult dbResult, int col);`} lang="csharp" />
+```csharp
+public bool QueryResult.QueryColumnForBool(int col);
+public static bool SplashKit.QueryColumnForBool(QueryResult dbResult, int col);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_column_for_bool(db_result, col):`} lang="python" />
+```python
+def query_column_for_bool(db_result, col):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QueryColumnForBool(dbResult: QueryResult; col: Integer): Boolean`} lang="pascal" />
+```pascal
+function QueryColumnForBool(dbResult: QueryResult; col: Integer): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -415,17 +502,25 @@ Queries a given column in the current row of the [`Query Result`](/components/da
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`double query_column_for_double(query_result db_result, int col)`} lang="cpp" />
+```cpp
+double query_column_for_double(query_result db_result, int col)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public double QueryResult.QueryColumnForDouble(int col);
-public static double SplashKit.QueryColumnForDouble(QueryResult dbResult, int col);`} lang="csharp" />
+```csharp
+public double QueryResult.QueryColumnForDouble(int col);
+public static double SplashKit.QueryColumnForDouble(QueryResult dbResult, int col);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_column_for_double(db_result, col):`} lang="python" />
+```python
+def query_column_for_double(db_result, col):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QueryColumnForDouble(dbResult: QueryResult; col: Integer): Double`} lang="pascal" />
+```pascal
+function QueryColumnForDouble(dbResult: QueryResult; col: Integer): Double
+```
   </TabItem>
 </Tabs>
 
@@ -450,17 +545,25 @@ Queries a given column in the current row of the [`Query Result`](/components/da
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int query_column_for_int(query_result db_result, int col)`} lang="cpp" />
+```cpp
+int query_column_for_int(query_result db_result, int col)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int QueryResult.QueryColumnForInt(int col);
-public static int SplashKit.QueryColumnForInt(QueryResult dbResult, int col);`} lang="csharp" />
+```csharp
+public int QueryResult.QueryColumnForInt(int col);
+public static int SplashKit.QueryColumnForInt(QueryResult dbResult, int col);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_column_for_int(db_result, col):`} lang="python" />
+```python
+def query_column_for_int(db_result, col):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QueryColumnForInt(dbResult: QueryResult; col: Integer): Integer`} lang="pascal" />
+```pascal
+function QueryColumnForInt(dbResult: QueryResult; col: Integer): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -485,17 +588,25 @@ Queries a given column in the current row of the [`Query Result`](/components/da
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string query_column_for_string(query_result db_result, int col)`} lang="cpp" />
+```cpp
+string query_column_for_string(query_result db_result, int col)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string QueryResult.QueryColumnForString(int col);
-public static string SplashKit.QueryColumnForString(QueryResult dbResult, int col);`} lang="csharp" />
+```csharp
+public string QueryResult.QueryColumnForString(int col);
+public static string SplashKit.QueryColumnForString(QueryResult dbResult, int col);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_column_for_string(db_result, col):`} lang="python" />
+```python
+def query_column_for_string(db_result, col):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QueryColumnForString(dbResult: QueryResult; col: Integer): String`} lang="pascal" />
+```pascal
+function QueryColumnForString(dbResult: QueryResult; col: Integer): String
+```
   </TabItem>
 </Tabs>
 
@@ -519,17 +630,25 @@ Checks if the most recent query at the given [`Query Result`](/components/databa
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool query_success(query_result db_result)`} lang="cpp" />
+```cpp
+bool query_success(query_result db_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool QueryResult.Successful { get }
-public static bool SplashKit.QuerySuccess(QueryResult dbResult);`} lang="csharp" />
+```csharp
+public bool QueryResult.Successful { get }
+public static bool SplashKit.QuerySuccess(QueryResult dbResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_success(db_result):`} lang="python" />
+```python
+def query_success(db_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QuerySuccess(dbResult: QueryResult): Boolean`} lang="pascal" />
+```pascal
+function QuerySuccess(dbResult: QueryResult): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -554,17 +673,25 @@ Queries a given column in the current row of the [`Query Result`](/components/da
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string query_type_of_col(query_result db_result, int col)`} lang="cpp" />
+```cpp
+string query_type_of_col(query_result db_result, int col)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string QueryResult.QueryTypeOfCol(int col);
-public static string SplashKit.QueryTypeOfCol(QueryResult dbResult, int col);`} lang="csharp" />
+```csharp
+public string QueryResult.QueryTypeOfCol(int col);
+public static string SplashKit.QueryTypeOfCol(QueryResult dbResult, int col);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def query_type_of_col(db_result, col):`} lang="python" />
+```python
+def query_type_of_col(db_result, col):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QueryTypeOfCol(dbResult: QueryResult; col: Integer): String`} lang="pascal" />
+```pascal
+function QueryTypeOfCol(dbResult: QueryResult; col: Integer): String
+```
   </TabItem>
 </Tabs>
 
@@ -588,17 +715,25 @@ Resets a query_result back to its initial state, ready to be re-executed.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void reset_query_result(query_result db_result)`} lang="cpp" />
+```cpp
+void reset_query_result(query_result db_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void QueryResult.ResetQueryResult();
-public static void SplashKit.ResetQueryResult(QueryResult dbResult);`} lang="csharp" />
+```csharp
+public void QueryResult.ResetQueryResult();
+public static void SplashKit.ResetQueryResult(QueryResult dbResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def reset_query_result(db_result):`} lang="python" />
+```python
+def reset_query_result(db_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ResetQueryResult(dbResult: QueryResult)`} lang="pascal" />
+```pascal
+procedure ResetQueryResult(dbResult: QueryResult)
+```
   </TabItem>
 </Tabs>
 
@@ -623,17 +758,25 @@ a changing query was performed on the given database.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int rows_changed(database db)`} lang="cpp" />
+```cpp
+int rows_changed(database db)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Database.RowsChanged();
-public static int SplashKit.RowsChanged(Database db);`} lang="csharp" />
+```csharp
+public int Database.RowsChanged();
+public static int SplashKit.RowsChanged(Database db);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def rows_changed(db):`} lang="python" />
+```python
+def rows_changed(db):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function RowsChanged(db: Database): Integer`} lang="pascal" />
+```pascal
+function RowsChanged(db: Database): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -644,8 +787,8 @@ public static int SplashKit.RowsChanged(Database db);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Run Sql** (db: database, sql: string )](/components/database/#run-sql--1)
-- [**Run Sql** (database_name: string, sql: string )](/components/database/#run-sql--2)
+- [**Run Sql** (db: database, sql: string, )](/components/sprites/#run-sql--1)
+- [**Run Sql** (database_name: string, sql: string, )](/components/sprites/#run-sql--2)
 
 :::
 
@@ -667,17 +810,25 @@ Returns the [`Query Result`](/components/database/#query-result) for the query p
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`query_result run_sql(database db, string sql)`} lang="cpp" />
+```cpp
+query_result run_sql(database db, string sql)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public QueryResult Database.RunSql(string sql);
-public static QueryResult SplashKit.RunSql(Database db, string sql);`} lang="csharp" />
+```csharp
+public QueryResult Database.RunSql(string sql);
+public static QueryResult SplashKit.RunSql(Database db, string sql);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def run_sql(db, sql):`} lang="python" />
+```python
+def run_sql(db, sql):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function RunSql(db: Database; sql: String): QueryResult`} lang="pascal" />
+```pascal
+function RunSql(db: Database; sql: String): QueryResult
+```
   </TabItem>
 </Tabs>
 
@@ -700,21 +851,30 @@ Returns the [`Query Result`](/components/database/#query-result) for the query p
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`query_result run_sql(string database_name, string sql)`} lang="cpp" />
+```cpp
+query_result run_sql(string database_name, string sql)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static QueryResult Database.RunSql(string databaseName, string sql);
-public static QueryResult SplashKit.RunSql(string databaseName, string sql);`} lang="csharp" />
+```csharp
+public static QueryResult Database.RunSql(string databaseName, string sql);
+public static QueryResult SplashKit.RunSql(string databaseName, string sql);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def run_sql_from_name(database_name, sql):`} lang="python" />
+```python
+def run_sql_from_name(database_name, sql):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function RunSql(databaseName: String; sql: String): QueryResult`} lang="pascal" />
+```pascal
+function RunSql(databaseName: String; sql: String): QueryResult
+```
   </TabItem>
 </Tabs>
 
 ---
+
 
 
 ## TYPES

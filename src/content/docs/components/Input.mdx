@@ -8,7 +8,7 @@ Input handles user interaction and events such as keypresses.
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
@@ -31,17 +31,25 @@ Side Effects
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void process_events()`} lang="cpp" />
+```cpp
+void process_events()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Input.ProcessEvents();
-public static void SplashKit.ProcessEvents();`} lang="csharp" />
+```csharp
+public static void Input.ProcessEvents();
+public static void SplashKit.ProcessEvents();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def process_events():`} lang="python" />
+```python
+def process_events():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ProcessEvents()`} lang="pascal" />
+```pascal
+procedure ProcessEvents()
+```
   </TabItem>
 </Tabs>
 
@@ -61,17 +69,25 @@ value is updated by the `process_events` routine. Also see
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool quit_requested()`} lang="cpp" />
+```cpp
+bool quit_requested()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Input.QuitRequested();
-public static bool SplashKit.QuitRequested();`} lang="csharp" />
+```csharp
+public static bool Input.QuitRequested();
+public static bool SplashKit.QuitRequested();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def quit_requested():`} lang="python" />
+```python
+def quit_requested():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function QuitRequested(): Boolean`} lang="pascal" />
+```pascal
+function QuitRequested(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -89,17 +105,25 @@ Cancels a quit request, ensuring the quit requested will return false.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void reset_quit()`} lang="cpp" />
+```cpp
+void reset_quit()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Input.ResetQuit();
-public static void SplashKit.ResetQuit();`} lang="csharp" />
+```csharp
+public static void Input.ResetQuit();
+public static void SplashKit.ResetQuit();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def reset_quit():`} lang="python" />
+```python
+def reset_quit():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ResetQuit()`} lang="pascal" />
+```pascal
+procedure ResetQuit()
+```
   </TabItem>
 </Tabs>
 
@@ -126,16 +150,24 @@ Draw the text that the user is currently enterring on the current window.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void draw_collected_text(color clr, font fnt, int font_size, const drawing_options &opts)`} lang="cpp" />
+```cpp
+void draw_collected_text(color clr, font fnt, int font_size, const drawing_options &opts)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.DrawCollectedText(Color clr, Font fnt, int fontSize, DrawingOptions opts);`} lang="csharp" />
+```csharp
+public static void SplashKit.DrawCollectedText(Color clr, Font fnt, int fontSize, DrawingOptions opts);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def draw_collected_text(clr, fnt, font_size, opts):`} lang="python" />
+```python
+def draw_collected_text(clr, fnt, font_size, opts):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DrawCollectedText(clr: Color; fnt: Font; fontSize: Integer; const opts: DrawingOptions)`} lang="pascal" />
+```pascal
+procedure DrawCollectedText(clr: Color; fnt: Font; fontSize: Integer; const opts: DrawingOptions)
+```
   </TabItem>
 </Tabs>
 
@@ -146,8 +178,8 @@ Draw the text that the user is currently enterring on the current window.
 
 This function is overloaded. The following versions exist:
 
-- [**End Reading Text** ()](/components/input/#end-reading-text--1)
-- [**End Reading Text** (wind: window )](/components/input/#end-reading-text--2)
+- [**End Reading Text** ()](/components/sprites/#end-reading-text--1)
+- [**End Reading Text** (wind: window, )](/components/sprites/#end-reading-text--2)
 
 :::
 
@@ -162,16 +194,24 @@ Ends reading text in for the current window.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void end_reading_text()`} lang="cpp" />
+```cpp
+void end_reading_text()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.EndReadingText();`} lang="csharp" />
+```csharp
+public static void SplashKit.EndReadingText();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def end_reading_text():`} lang="python" />
+```python
+def end_reading_text():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure EndReadingText()`} lang="pascal" />
+```pascal
+procedure EndReadingText()
+```
   </TabItem>
 </Tabs>
 
@@ -193,16 +233,24 @@ Ends reading text for the passed in window.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void end_reading_text(window wind)`} lang="cpp" />
+```cpp
+void end_reading_text(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.EndReadingText(Window wind);`} lang="csharp" />
+```csharp
+public static void SplashKit.EndReadingText(Window wind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def end_reading_text_in_window(wind):`} lang="python" />
+```python
+def end_reading_text_in_window(wind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure EndReadingText(wind: Window)`} lang="pascal" />
+```pascal
+procedure EndReadingText(wind: Window)
+```
   </TabItem>
 </Tabs>
 
@@ -213,8 +261,8 @@ Ends reading text for the passed in window.
 
 This function is overloaded. The following versions exist:
 
-- [**Reading Text** ()](/components/input/#reading-text--1)
-- [**Reading Text** (wind: window )](/components/input/#reading-text--2)
+- [**Reading Text** ()](/components/sprites/#reading-text--1)
+- [**Reading Text** (wind: window, )](/components/sprites/#reading-text--2)
 
 :::
 
@@ -229,16 +277,24 @@ Returns true when the current window is reading text.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool reading_text()`} lang="cpp" />
+```cpp
+bool reading_text()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.ReadingText();`} lang="csharp" />
+```csharp
+public static bool SplashKit.ReadingText();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def reading_text():`} lang="python" />
+```python
+def reading_text():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function ReadingText(): Boolean`} lang="pascal" />
+```pascal
+function ReadingText(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -260,16 +316,24 @@ Returns true when the window is reading text.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool reading_text(window wind)`} lang="cpp" />
+```cpp
+bool reading_text(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.ReadingText(Window wind);`} lang="csharp" />
+```csharp
+public static bool SplashKit.ReadingText(Window wind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def reading_text_in_window(wind):`} lang="python" />
+```python
+def reading_text_in_window(wind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function ReadingText(wind: Window): Boolean`} lang="pascal" />
+```pascal
+function ReadingText(wind: Window): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -280,10 +344,10 @@ Returns true when the window is reading text.
 
 This function is overloaded. The following versions exist:
 
-- [**Start Reading Text** (rect: rectangle )](/components/input/#start-reading-text--1)
-- [**Start Reading Text** (rect: rectangle, initial_text: string )](/components/input/#start-reading-text--2)
-- [**Start Reading Text** (wind: window, rect: rectangle )](/components/input/#start-reading-text--3)
-- [**Start Reading Text** (wind: window, rect: rectangle, initial_text: string )](/components/input/#start-reading-text--4)
+- [**Start Reading Text** (rect: rectangle, )](/components/sprites/#start-reading-text--1)
+- [**Start Reading Text** (rect: rectangle, initial_text: string, )](/components/sprites/#start-reading-text--2)
+- [**Start Reading Text** (wind: window, rect: rectangle, )](/components/sprites/#start-reading-text--3)
+- [**Start Reading Text** (wind: window, rect: rectangle, initial_text: string, )](/components/sprites/#start-reading-text--4)
 
 :::
 
@@ -305,16 +369,24 @@ supplied rectangle.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void start_reading_text(rectangle rect)`} lang="cpp" />
+```cpp
+void start_reading_text(rectangle rect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.StartReadingText(Rectangle rect);`} lang="csharp" />
+```csharp
+public static void SplashKit.StartReadingText(Rectangle rect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def start_reading_text(rect):`} lang="python" />
+```python
+def start_reading_text(rect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StartReadingText(rect: Rectangle)`} lang="pascal" />
+```pascal
+procedure StartReadingText(rect: Rectangle)
+```
   </TabItem>
 </Tabs>
 
@@ -338,16 +410,24 @@ supplied rectangle. The text will start with an initial value.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void start_reading_text(rectangle rect, string initial_text)`} lang="cpp" />
+```cpp
+void start_reading_text(rectangle rect, string initial_text)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.StartReadingText(Rectangle rect, string initialText);`} lang="csharp" />
+```csharp
+public static void SplashKit.StartReadingText(Rectangle rect, string initialText);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def start_reading_text_with_initial_text(rect, initial_text):`} lang="python" />
+```python
+def start_reading_text_with_initial_text(rect, initial_text):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StartReadingText(rect: Rectangle; initialText: String)`} lang="pascal" />
+```pascal
+procedure StartReadingText(rect: Rectangle; initialText: String)
+```
   </TabItem>
 </Tabs>
 
@@ -371,16 +451,24 @@ supplied rectangle.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void start_reading_text(window wind, rectangle rect)`} lang="cpp" />
+```cpp
+void start_reading_text(window wind, rectangle rect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.StartReadingText(Window wind, Rectangle rect);`} lang="csharp" />
+```csharp
+public static void SplashKit.StartReadingText(Window wind, Rectangle rect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def start_reading_text_in_window(wind, rect):`} lang="python" />
+```python
+def start_reading_text_in_window(wind, rect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StartReadingText(wind: Window; rect: Rectangle)`} lang="pascal" />
+```pascal
+procedure StartReadingText(wind: Window; rect: Rectangle)
+```
   </TabItem>
 </Tabs>
 
@@ -405,16 +493,24 @@ supplied rectangle. The text will start with an initial value.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void start_reading_text(window wind, rectangle rect, string initial_text)`} lang="cpp" />
+```cpp
+void start_reading_text(window wind, rectangle rect, string initial_text)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.StartReadingText(Window wind, Rectangle rect, string initialText);`} lang="csharp" />
+```csharp
+public static void SplashKit.StartReadingText(Window wind, Rectangle rect, string initialText);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def start_reading_text_in_window_with_initial_text(wind, rect, initial_text):`} lang="python" />
+```python
+def start_reading_text_in_window_with_initial_text(wind, rect, initial_text):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StartReadingText(wind: Window; rect: Rectangle; initialText: String)`} lang="pascal" />
+```pascal
+procedure StartReadingText(wind: Window; rect: Rectangle; initialText: String)
+```
   </TabItem>
 </Tabs>
 
@@ -425,8 +521,8 @@ supplied rectangle. The text will start with an initial value.
 
 This function is overloaded. The following versions exist:
 
-- [**Text Entry Cancelled** ()](/components/input/#text-entry-cancelled--1)
-- [**Text Entry Cancelled** (wind: window )](/components/input/#text-entry-cancelled--2)
+- [**Text Entry Cancelled** ()](/components/sprites/#text-entry-cancelled--1)
+- [**Text Entry Cancelled** (wind: window, )](/components/sprites/#text-entry-cancelled--2)
 
 :::
 
@@ -441,16 +537,24 @@ Did the user press escape and cancel the enterring of text?
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool text_entry_cancelled()`} lang="cpp" />
+```cpp
+bool text_entry_cancelled()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.TextEntryCancelled();`} lang="csharp" />
+```csharp
+public static bool SplashKit.TextEntryCancelled();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def text_entry_cancelled():`} lang="python" />
+```python
+def text_entry_cancelled():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TextEntryCancelled(): Boolean`} lang="pascal" />
+```pascal
+function TextEntryCancelled(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -472,16 +576,24 @@ Did the user press escape and cancel the enterring of text?
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool text_entry_cancelled(window wind)`} lang="cpp" />
+```cpp
+bool text_entry_cancelled(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.TextEntryCancelled(Window wind);`} lang="csharp" />
+```csharp
+public static bool SplashKit.TextEntryCancelled(Window wind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def text_entry_cancelled_in_window(wind):`} lang="python" />
+```python
+def text_entry_cancelled_in_window(wind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TextEntryCancelled(wind: Window): Boolean`} lang="pascal" />
+```pascal
+function TextEntryCancelled(wind: Window): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -492,8 +604,8 @@ Did the user press escape and cancel the enterring of text?
 
 This function is overloaded. The following versions exist:
 
-- [**Text Input** ()](/components/input/#text-input--1)
-- [**Text Input** (wind: window )](/components/input/#text-input--2)
+- [**Text Input** ()](/components/sprites/#text-input--1)
+- [**Text Input** (wind: window, )](/components/sprites/#text-input--2)
 
 :::
 
@@ -508,16 +620,24 @@ The text the user has currently enterred on the current window.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string text_input()`} lang="cpp" />
+```cpp
+string text_input()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string SplashKit.TextInput();`} lang="csharp" />
+```csharp
+public static string SplashKit.TextInput();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def text_input():`} lang="python" />
+```python
+def text_input():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TextInput(): String`} lang="pascal" />
+```pascal
+function TextInput(): String
+```
   </TabItem>
 </Tabs>
 
@@ -539,16 +659,24 @@ The text the user has currently enterred on the current window.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string text_input(window wind)`} lang="cpp" />
+```cpp
+string text_input(window wind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string SplashKit.TextInput(Window wind);`} lang="csharp" />
+```csharp
+public static string SplashKit.TextInput(Window wind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def text_input_in_window(wind):`} lang="python" />
+```python
+def text_input_in_window(wind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TextInput(wind: Window): String`} lang="pascal" />
+```pascal
+function TextInput(wind: Window): String
+```
   </TabItem>
 </Tabs>
 
@@ -567,16 +695,24 @@ showing. Use `ShowMouse` to make the mouse cursor visible again.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void hide_mouse()`} lang="cpp" />
+```cpp
+void hide_mouse()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.HideMouse();`} lang="csharp" />
+```csharp
+public static void SplashKit.HideMouse();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def hide_mouse():`} lang="python" />
+```python
+def hide_mouse():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure HideMouse()`} lang="pascal" />
+```pascal
+procedure HideMouse()
+```
   </TabItem>
 </Tabs>
 
@@ -601,16 +737,24 @@ Returns true if the specified button was clicked since the last time
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool mouse_clicked(mouse_button button)`} lang="cpp" />
+```cpp
+bool mouse_clicked(mouse_button button)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.MouseClicked(MouseButton button);`} lang="csharp" />
+```csharp
+public static bool SplashKit.MouseClicked(MouseButton button);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_clicked(button):`} lang="python" />
+```python
+def mouse_clicked(button):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseClicked(button: MouseButton): Boolean`} lang="pascal" />
+```pascal
+function MouseClicked(button: MouseButton): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -634,16 +778,24 @@ Returns `true` if the specified button is currently pressed down.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool mouse_down(mouse_button button)`} lang="cpp" />
+```cpp
+bool mouse_down(mouse_button button)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.MouseDown(MouseButton button);`} lang="csharp" />
+```csharp
+public static bool SplashKit.MouseDown(MouseButton button);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_down(button):`} lang="python" />
+```python
+def mouse_down(button):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseDown(button: MouseButton): Boolean`} lang="pascal" />
+```pascal
+function MouseDown(button: MouseButton): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -662,16 +814,24 @@ Returns the amount of accumulated mouse movement, since the last time
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d mouse_movement()`} lang="cpp" />
+```cpp
+vector_2d mouse_movement()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Vector2D SplashKit.MouseMovement();`} lang="csharp" />
+```csharp
+public static Vector2D SplashKit.MouseMovement();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_movement():`} lang="python" />
+```python
+def mouse_movement():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseMovement(): Vector2D`} lang="pascal" />
+```pascal
+function MouseMovement(): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -689,16 +849,24 @@ Returns the current window position of the mouse as a `Point2D`
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`point_2d mouse_position()`} lang="cpp" />
+```cpp
+point_2d mouse_position()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Point2D SplashKit.MousePosition();`} lang="csharp" />
+```csharp
+public static Point2D SplashKit.MousePosition();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_position():`} lang="python" />
+```python
+def mouse_position():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MousePosition(): Point2D`} lang="pascal" />
+```pascal
+function MousePosition(): Point2D
+```
   </TabItem>
 </Tabs>
 
@@ -716,16 +884,24 @@ Returns The current window position of the mouse as a `Vector`
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d mouse_position_vector()`} lang="cpp" />
+```cpp
+vector_2d mouse_position_vector()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Vector2D SplashKit.MousePositionVector();`} lang="csharp" />
+```csharp
+public static Vector2D SplashKit.MousePositionVector();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_position_vector():`} lang="python" />
+```python
+def mouse_position_vector():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MousePositionVector(): Vector2D`} lang="pascal" />
+```pascal
+function MousePositionVector(): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -743,16 +919,24 @@ Returns `true` if the mouse is currently visible, `false` if not.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool mouse_shown()`} lang="cpp" />
+```cpp
+bool mouse_shown()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.MouseShown();`} lang="csharp" />
+```csharp
+public static bool SplashKit.MouseShown();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_shown():`} lang="python" />
+```python
+def mouse_shown():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseShown(): Boolean`} lang="pascal" />
+```pascal
+function MouseShown(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -776,16 +960,24 @@ Returns `true` if the specified button is currently up.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool mouse_up(mouse_button button)`} lang="cpp" />
+```cpp
+bool mouse_up(mouse_button button)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.MouseUp(MouseButton button);`} lang="csharp" />
+```csharp
+public static bool SplashKit.MouseUp(MouseButton button);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_up(button):`} lang="python" />
+```python
+def mouse_up(button):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseUp(button: MouseButton): Boolean`} lang="pascal" />
+```pascal
+function MouseUp(button: MouseButton): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -807,16 +999,24 @@ Note that on MacOS the directions may be inverted by OS settings.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`vector_2d mouse_wheel_scroll()`} lang="cpp" />
+```cpp
+vector_2d mouse_wheel_scroll()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Vector2D SplashKit.MouseWheelScroll();`} lang="csharp" />
+```csharp
+public static Vector2D SplashKit.MouseWheelScroll();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_wheel_scroll():`} lang="python" />
+```python
+def mouse_wheel_scroll():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseWheelScroll(): Vector2D`} lang="pascal" />
+```pascal
+function MouseWheelScroll(): Vector2D
+```
   </TabItem>
 </Tabs>
 
@@ -834,16 +1034,24 @@ Returns the current x value of the mouse's position.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float mouse_x()`} lang="cpp" />
+```cpp
+float mouse_x()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static float SplashKit.MouseX();`} lang="csharp" />
+```csharp
+public static float SplashKit.MouseX();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_x():`} lang="python" />
+```python
+def mouse_x():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseX(): Single`} lang="pascal" />
+```pascal
+function MouseX(): Single
+```
   </TabItem>
 </Tabs>
 
@@ -861,16 +1069,24 @@ Returns the current y value of the mouse's position.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float mouse_y()`} lang="cpp" />
+```cpp
+float mouse_y()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static float SplashKit.MouseY();`} lang="csharp" />
+```csharp
+public static float SplashKit.MouseY();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def mouse_y():`} lang="python" />
+```python
+def mouse_y():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MouseY(): Single`} lang="pascal" />
+```pascal
+function MouseY(): Single
+```
   </TabItem>
 </Tabs>
 
@@ -881,8 +1097,8 @@ Returns the current y value of the mouse's position.
 
 This function is overloaded. The following versions exist:
 
-- [**Move Mouse** (x: double, y: double )](/components/input/#move-mouse--1)
-- [**Move Mouse** (point: point_2d )](/components/input/#move-mouse--2)
+- [**Move Mouse** (x: double, y: double, )](/components/sprites/#move-mouse--1)
+- [**Move Mouse** (point: point_2d, )](/components/sprites/#move-mouse--2)
 
 :::
 
@@ -904,16 +1120,24 @@ Moves the mouse cursor to the specified screen location.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_mouse(double x, double y)`} lang="cpp" />
+```cpp
+void move_mouse(double x, double y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.MoveMouse(double x, double y);`} lang="csharp" />
+```csharp
+public static void SplashKit.MoveMouse(double x, double y);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_mouse(x, y):`} lang="python" />
+```python
+def move_mouse(x, y):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveMouse(x: Double; y: Double)`} lang="pascal" />
+```pascal
+procedure MoveMouse(x: Double; y: Double)
+```
   </TabItem>
 </Tabs>
 
@@ -935,16 +1159,24 @@ Moves the mouse cursor to the specified screen location.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_mouse(point_2d point)`} lang="cpp" />
+```cpp
+void move_mouse(point_2d point)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.MoveMouse(Point2D point);`} lang="csharp" />
+```csharp
+public static void SplashKit.MoveMouse(Point2D point);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_mouse_to_point(point):`} lang="python" />
+```python
+def move_mouse_to_point(point):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveMouse(point: Point2D)`} lang="pascal" />
+```pascal
+procedure MoveMouse(point: Point2D)
+```
   </TabItem>
 </Tabs>
 
@@ -955,8 +1187,8 @@ Moves the mouse cursor to the specified screen location.
 
 This function is overloaded. The following versions exist:
 
-- [**Show Mouse** ()](/components/input/#show-mouse--1)
-- [**Show Mouse** (show: bool )](/components/input/#show-mouse--2)
+- [**Show Mouse** ()](/components/sprites/#show-mouse--1)
+- [**Show Mouse** (show: bool, )](/components/sprites/#show-mouse--2)
 
 :::
 
@@ -972,16 +1204,24 @@ by a `HideMouse` or `SetMouseVisible`(False) call.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void show_mouse()`} lang="cpp" />
+```cpp
+void show_mouse()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.ShowMouse();`} lang="csharp" />
+```csharp
+public static void SplashKit.ShowMouse();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def show_mouse():`} lang="python" />
+```python
+def show_mouse():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ShowMouse()`} lang="pascal" />
+```pascal
+procedure ShowMouse()
+```
   </TabItem>
 </Tabs>
 
@@ -1004,16 +1244,24 @@ in the window or not) based on the show parameter.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void show_mouse(bool show)`} lang="cpp" />
+```cpp
+void show_mouse(bool show)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.ShowMouse(bool show);`} lang="csharp" />
+```csharp
+public static void SplashKit.ShowMouse(bool show);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def show_mouse_with_boolean(show):`} lang="python" />
+```python
+def show_mouse_with_boolean(show):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ShowMouse(show: Boolean)`} lang="pascal" />
+```pascal
+procedure ShowMouse(show: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -1032,16 +1280,24 @@ Checks to see if any key has been pressed since the last time
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool any_key_pressed()`} lang="cpp" />
+```cpp
+bool any_key_pressed()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.AnyKeyPressed();`} lang="csharp" />
+```csharp
+public static bool SplashKit.AnyKeyPressed();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def any_key_pressed():`} lang="python" />
+```python
+def any_key_pressed():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function AnyKeyPressed(): Boolean`} lang="pascal" />
+```pascal
+function AnyKeyPressed(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1065,16 +1321,24 @@ Remove the registered callback from receiving events related to key down actions
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void deregister_callback_on_key_down(key_callback *callback)`} lang="cpp" />
+```cpp
+void deregister_callback_on_key_down(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.DeregisterCallbackOnKeyDown(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.DeregisterCallbackOnKeyDown(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def deregister_callback_on_key_down(callback):`} lang="python" />
+```python
+def deregister_callback_on_key_down(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DeregisterCallbackOnKeyDown(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure DeregisterCallbackOnKeyDown(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
@@ -1098,16 +1362,24 @@ Remove the registered callback from receiving events related to key typed action
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void deregister_callback_on_key_typed(key_callback *callback)`} lang="cpp" />
+```cpp
+void deregister_callback_on_key_typed(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.DeregisterCallbackOnKeyTyped(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.DeregisterCallbackOnKeyTyped(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def deregister_callback_on_key_typed(callback):`} lang="python" />
+```python
+def deregister_callback_on_key_typed(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DeregisterCallbackOnKeyTyped(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure DeregisterCallbackOnKeyTyped(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
@@ -1131,16 +1403,24 @@ Remove the registered callback from receiving events related to key up actions.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void deregister_callback_on_key_up(key_callback *callback)`} lang="cpp" />
+```cpp
+void deregister_callback_on_key_up(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.DeregisterCallbackOnKeyUp(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.DeregisterCallbackOnKeyUp(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def deregister_callback_on_key_up(callback):`} lang="python" />
+```python
+def deregister_callback_on_key_up(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DeregisterCallbackOnKeyUp(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure DeregisterCallbackOnKeyUp(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
@@ -1166,16 +1446,24 @@ to specify the key to be checked.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool key_down(key_code key)`} lang="cpp" />
+```cpp
+bool key_down(key_code key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.KeyDown(KeyCode key);`} lang="csharp" />
+```csharp
+public static bool SplashKit.KeyDown(KeyCode key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def key_down(key):`} lang="python" />
+```python
+def key_down(key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function KeyDown(key: KeyCode): Boolean`} lang="pascal" />
+```pascal
+function KeyDown(key: KeyCode): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1201,16 +1489,24 @@ to display more meaningful key names for configuring game controls, etc.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string key_name(key_code key)`} lang="cpp" />
+```cpp
+string key_name(key_code key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string SplashKit.KeyName(KeyCode key);`} lang="csharp" />
+```csharp
+public static string SplashKit.KeyName(KeyCode key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def key_name(key):`} lang="python" />
+```python
+def key_name(key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function KeyName(key: KeyCode): String`} lang="pascal" />
+```pascal
+function KeyName(key: KeyCode): String
+```
   </TabItem>
 </Tabs>
 
@@ -1237,16 +1533,24 @@ released again.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool key_released(key_code key)`} lang="cpp" />
+```cpp
+bool key_released(key_code key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.KeyReleased(KeyCode key);`} lang="csharp" />
+```csharp
+public static bool SplashKit.KeyReleased(KeyCode key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def key_released(key):`} lang="python" />
+```python
+def key_released(key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function KeyReleased(key: KeyCode): Boolean`} lang="pascal" />
+```pascal
+function KeyReleased(key: KeyCode): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1273,16 +1577,24 @@ pressed and will not return true again until the key is released and presssed do
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool key_typed(key_code key)`} lang="cpp" />
+```cpp
+bool key_typed(key_code key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.KeyTyped(KeyCode key);`} lang="csharp" />
+```csharp
+public static bool SplashKit.KeyTyped(KeyCode key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def key_typed(key):`} lang="python" />
+```python
+def key_typed(key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function KeyTyped(key: KeyCode): Boolean`} lang="pascal" />
+```pascal
+function KeyTyped(key: KeyCode): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1308,16 +1620,24 @@ to specify the key to be checked.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool key_up(key_code key)`} lang="cpp" />
+```cpp
+bool key_up(key_code key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool SplashKit.KeyUp(KeyCode key);`} lang="csharp" />
+```csharp
+public static bool SplashKit.KeyUp(KeyCode key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def key_up(key):`} lang="python" />
+```python
+def key_up(key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function KeyUp(key: KeyCode): Boolean`} lang="pascal" />
+```pascal
+function KeyUp(key: KeyCode): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1343,16 +1663,24 @@ the user presses down.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void register_callback_on_key_down(key_callback *callback)`} lang="cpp" />
+```cpp
+void register_callback_on_key_down(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.RegisterCallbackOnKeyDown(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.RegisterCallbackOnKeyDown(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def register_callback_on_key_down(callback):`} lang="python" />
+```python
+def register_callback_on_key_down(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure RegisterCallbackOnKeyDown(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure RegisterCallbackOnKeyDown(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
@@ -1378,16 +1706,24 @@ presses a key down.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void register_callback_on_key_typed(key_callback *callback)`} lang="cpp" />
+```cpp
+void register_callback_on_key_typed(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.RegisterCallbackOnKeyTyped(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.RegisterCallbackOnKeyTyped(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def register_callback_on_key_typed(callback):`} lang="python" />
+```python
+def register_callback_on_key_typed(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure RegisterCallbackOnKeyTyped(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure RegisterCallbackOnKeyTyped(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
@@ -1413,21 +1749,28 @@ the user releases.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void register_callback_on_key_up(key_callback *callback)`} lang="cpp" />
+```cpp
+void register_callback_on_key_up(key_callback *callback)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void SplashKit.RegisterCallbackOnKeyUp(KeyCallback callback);`} lang="csharp" />
+```csharp
+public static void SplashKit.RegisterCallbackOnKeyUp(KeyCallback callback);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def register_callback_on_key_up(callback):`} lang="python" />
+```python
+def register_callback_on_key_up(callback):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure RegisterCallbackOnKeyUp(callback: KeyCallback)`} lang="pascal" />
+```pascal
+procedure RegisterCallbackOnKeyUp(callback: KeyCallback)
+```
   </TabItem>
 </Tabs>
 
 ---
-
 
 
 ## Types

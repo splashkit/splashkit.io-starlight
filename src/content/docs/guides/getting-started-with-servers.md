@@ -4,16 +4,8 @@ date: 2018-07-14 08:09 UTC
 tags: networking
 author: Andrew Cain and Isaac Wallis
 author_url: http://github.com/franknsten
-summary: |
-  This guide is an intruduction to using web servers
-related_funcs:
-  - start_web_server
-  - has_incoming_web_requests
-  - next_web_request
-  - send_file_response
-  - send_html_file_response
-  - send_css_file_response
-  - send_javascript_file_response
+description: This guide is an intruduction to using web servers
+
 ---
 
 This article provides background information you will need to get started building your own web server using SplashKit. You will be introduced to starting a web server and serving a file to the user.

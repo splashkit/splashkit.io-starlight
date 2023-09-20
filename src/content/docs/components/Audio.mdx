@@ -9,7 +9,7 @@ SplashKit's audio library allows you to easily load and play music and sound eff
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## 
 ## Audio Guides
@@ -17,18 +17,16 @@ import { Code } from "astro/components";
 ## 
 ## Functions
 
-## 
-
 ## Fade Music In [🧬](#group-fade-music-in)
 
 :::note
 
 This function is overloaded. The following versions exist:
 
-- [**Fade Music In** (name: string, ms: int )](/components/audio/#fade-music-in--1)
-- [**Fade Music In** (name: string, times: int, ms: int )](/components/audio/#fade-music-in--2)
-- [**Fade Music In** (data: music, ms: int )](/components/audio/#fade-music-in--3)
-- [**Fade Music In** (data: music, times: int, ms: int )](/components/audio/#fade-music-in--4)
+- [**Fade Music In** (name: string, ms: int, )](/components/sprites/#fade-music-in--1)
+- [**Fade Music In** (name: string, times: int, ms: int, )](/components/sprites/#fade-music-in--2)
+- [**Fade Music In** (data: music, ms: int, )](/components/sprites/#fade-music-in--3)
+- [**Fade Music In** (data: music, times: int, ms: int, )](/components/sprites/#fade-music-in--4)
 
 :::
 
@@ -50,17 +48,25 @@ Fades music file matching the name to full volume over a specified number of mil
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_music_in(const string &name, int ms)`} lang="cpp" />
+```cpp
+void fade_music_in(const string &name, int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FadeMusicIn(string name, int ms);
-public static void SplashKit.FadeMusicIn(string name, int ms);`} lang="csharp" />
+```csharp
+public static void Audio.FadeMusicIn(string name, int ms);
+public static void SplashKit.FadeMusicIn(string name, int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_music_in_named(name, ms):`} lang="python" />
+```python
+def fade_music_in_named(name, ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeMusicIn(const name: String; ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeMusicIn(const name: String; ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -85,17 +91,25 @@ and loops a specified number of times
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_music_in(const string &name, int times, int ms)`} lang="cpp" />
+```cpp
+void fade_music_in(const string &name, int times, int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FadeMusicIn(string name, int times, int ms);
-public static void SplashKit.FadeMusicIn(string name, int times, int ms);`} lang="csharp" />
+```csharp
+public static void Audio.FadeMusicIn(string name, int times, int ms);
+public static void SplashKit.FadeMusicIn(string name, int times, int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_music_in_named_with_times(name, times, ms):`} lang="python" />
+```python
+def fade_music_in_named_with_times(name, times, ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeMusicIn(const name: String; times: Integer; ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeMusicIn(const name: String; times: Integer; ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -118,17 +132,25 @@ Fades music up to full volume over a specified number of milliseconds.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_music_in(music data, int ms)`} lang="cpp" />
+```cpp
+void fade_music_in(music data, int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.FadeMusicIn(int ms);
-public static void SplashKit.FadeMusicIn(Music data, int ms);`} lang="csharp" />
+```csharp
+public void Music.FadeMusicIn(int ms);
+public static void SplashKit.FadeMusicIn(Music data, int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_music_in(data, ms):`} lang="python" />
+```python
+def fade_music_in(data, ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeMusicIn(data: Music; ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeMusicIn(data: Music; ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -153,17 +175,25 @@ for a specified number of times.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_music_in(music data, int times, int ms)`} lang="cpp" />
+```cpp
+void fade_music_in(music data, int times, int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.FadeMusicIn(int times, int ms);
-public static void SplashKit.FadeMusicIn(Music data, int times, int ms);`} lang="csharp" />
+```csharp
+public void Music.FadeMusicIn(int times, int ms);
+public static void SplashKit.FadeMusicIn(Music data, int times, int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_music_in_with_times(data, times, ms):`} lang="python" />
+```python
+def fade_music_in_with_times(data, times, ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeMusicIn(data: Music; times: Integer; ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeMusicIn(data: Music; times: Integer; ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -187,17 +217,25 @@ Fades music outover a specified number of milliseconds
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_music_out(int ms)`} lang="cpp" />
+```cpp
+void fade_music_out(int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FadeMusicOut(int ms);
-public static void SplashKit.FadeMusicOut(int ms);`} lang="csharp" />
+```csharp
+public static void Audio.FadeMusicOut(int ms);
+public static void SplashKit.FadeMusicOut(int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_music_out(ms):`} lang="python" />
+```python
+def fade_music_out(ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeMusicOut(ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeMusicOut(ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -215,17 +253,25 @@ Releases all of the music files that have been loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_music()`} lang="cpp" />
+```cpp
+void free_all_music()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FreeAllMusic();
-public static void SplashKit.FreeAllMusic();`} lang="csharp" />
+```csharp
+public static void Audio.FreeAllMusic();
+public static void SplashKit.FreeAllMusic();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_music():`} lang="python" />
+```python
+def free_all_music():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllMusic()`} lang="pascal" />
+```pascal
+procedure FreeAllMusic()
+```
   </TabItem>
 </Tabs>
 
@@ -249,17 +295,25 @@ Releases the SplashKit resources associated with music.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_music(music effect)`} lang="cpp" />
+```cpp
+void free_music(music effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.FreeMusic();
-public static void SplashKit.FreeMusic(Music effect);`} lang="csharp" />
+```csharp
+public void Music.FreeMusic();
+public static void SplashKit.FreeMusic(Music effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_music(effect):`} lang="python" />
+```python
+def free_music(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeMusic(effect: Music)`} lang="pascal" />
+```pascal
+procedure FreeMusic(effect: Music)
+```
   </TabItem>
 </Tabs>
 
@@ -287,17 +341,25 @@ it the desired name.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_music(const string &name)`} lang="cpp" />
+```cpp
+bool has_music(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Audio.HasMusic(string name);
-public static bool SplashKit.HasMusic(string name);`} lang="csharp" />
+```csharp
+public static bool Audio.HasMusic(string name);
+public static bool SplashKit.HasMusic(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_music(name):`} lang="python" />
+```python
+def has_music(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasMusic(const name: String): Boolean`} lang="pascal" />
+```pascal
+function HasMusic(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -325,17 +387,25 @@ retrieved by passing this `name` to the `music_named` function.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`music load_music(const string &name, const string &filename)`} lang="cpp" />
+```cpp
+music load_music(const string &name, const string &filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Music SplashKit.LoadMusic(string name, string filename);
-public Music(string name, string filename);`} lang="csharp" />
+```csharp
+public static Music SplashKit.LoadMusic(string name, string filename);
+public Music(string name, string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def load_music(name, filename):`} lang="python" />
+```python
+def load_music(name, filename):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function LoadMusic(const name: String; const filename: String): Music`} lang="pascal" />
+```pascal
+function LoadMusic(const name: String; const filename: String): Music
+```
   </TabItem>
 </Tabs>
 
@@ -359,17 +429,25 @@ Returns the filename the of the music data
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string music_filename(music data)`} lang="cpp" />
+```cpp
+string music_filename(music data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Music.Filename { get }
-public static string SplashKit.MusicFilename(Music data);`} lang="csharp" />
+```csharp
+public string Music.Filename { get }
+public static string SplashKit.MusicFilename(Music data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def music_filename(data):`} lang="python" />
+```python
+def music_filename(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MusicFilename(data: Music): String`} lang="pascal" />
+```pascal
+function MusicFilename(data: Music): String
+```
   </TabItem>
 </Tabs>
 
@@ -393,17 +471,25 @@ Returns the name that SplashKit uses to refer to this music data
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string music_name(music data)`} lang="cpp" />
+```cpp
+string music_name(music data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Music.Name { get }
-public static string SplashKit.MusicName(Music data);`} lang="csharp" />
+```csharp
+public string Music.Name { get }
+public static string SplashKit.MusicName(Music data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def music_name(data):`} lang="python" />
+```python
+def music_name(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MusicName(data: Music): String`} lang="pascal" />
+```pascal
+function MusicName(data: Music): String
+```
   </TabItem>
 </Tabs>
 
@@ -427,17 +513,25 @@ Retrieves a [`Music`](/components/audio/#music) that has been loaded into Splash
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`music music_named(const string &name)`} lang="cpp" />
+```cpp
+music music_named(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Music Audio.MusicNamed(string name);
-public static Music SplashKit.MusicNamed(string name);`} lang="csharp" />
+```csharp
+public static Music Audio.MusicNamed(string name);
+public static Music SplashKit.MusicNamed(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def music_named(name):`} lang="python" />
+```python
+def music_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MusicNamed(const name: String): Music`} lang="pascal" />
+```pascal
+function MusicNamed(const name: String): Music
+```
   </TabItem>
 </Tabs>
 
@@ -455,17 +549,25 @@ Checks whether music is currently playing.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool music_playing()`} lang="cpp" />
+```cpp
+bool music_playing()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Audio.Playing { get }
-public static bool SplashKit.MusicPlaying();`} lang="csharp" />
+```csharp
+public static bool Audio.Playing { get }
+public static bool SplashKit.MusicPlaying();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def music_playing():`} lang="python" />
+```python
+def music_playing():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MusicPlaying(): Boolean`} lang="pascal" />
+```pascal
+function MusicPlaying(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -483,17 +585,25 @@ Returns the volume of the currently playing [`Music`](/components/audio/#music).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float music_volume()`} lang="cpp" />
+```cpp
+float music_volume()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static float Audio.Volume { get }
-public static float SplashKit.MusicVolume();`} lang="csharp" />
+```csharp
+public static float Audio.Volume { get }
+public static float SplashKit.MusicVolume();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def music_volume():`} lang="python" />
+```python
+def music_volume():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function MusicVolume(): Single`} lang="pascal" />
+```pascal
+function MusicVolume(): Single
+```
   </TabItem>
 </Tabs>
 
@@ -511,17 +621,25 @@ Pauses currently playing music - see resume_music to continue playing.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void pause_music()`} lang="cpp" />
+```cpp
+void pause_music()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PauseMusic();
-public static void SplashKit.PauseMusic();`} lang="csharp" />
+```csharp
+public static void Audio.PauseMusic();
+public static void SplashKit.PauseMusic();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def pause_music():`} lang="python" />
+```python
+def pause_music():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PauseMusic()`} lang="pascal" />
+```pascal
+procedure PauseMusic()
+```
   </TabItem>
 </Tabs>
 
@@ -532,11 +650,11 @@ public static void SplashKit.PauseMusic();`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Play Music** (name: string )](/components/audio/#play-music--1)
-- [**Play Music** (name: string, times: int )](/components/audio/#play-music--2)
-- [**Play Music** (data: music )](/components/audio/#play-music--3)
-- [**Play Music** (data: music, times: int )](/components/audio/#play-music--4)
-- [**Play Music** (data: music, times: int, volume: float )](/components/audio/#play-music--5)
+- [**Play Music** (name: string, )](/components/sprites/#play-music--1)
+- [**Play Music** (name: string, times: int, )](/components/sprites/#play-music--2)
+- [**Play Music** (data: music, )](/components/sprites/#play-music--3)
+- [**Play Music** (data: music, times: int, )](/components/sprites/#play-music--4)
+- [**Play Music** (data: music, times: int, volume: float, )](/components/sprites/#play-music--5)
 
 :::
 
@@ -557,17 +675,25 @@ Plays the music file that matches the name once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_music(const string &name)`} lang="cpp" />
+```cpp
+void play_music(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlayMusic(string name);
-public static void SplashKit.PlayMusic(string name);`} lang="csharp" />
+```csharp
+public static void Audio.PlayMusic(string name);
+public static void SplashKit.PlayMusic(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_music_named(name):`} lang="python" />
+```python
+def play_music_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlayMusic(const name: String)`} lang="pascal" />
+```pascal
+procedure PlayMusic(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -590,17 +716,25 @@ Plays the music file that matches the name a specified number of times at full v
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_music(const string &name, int times)`} lang="cpp" />
+```cpp
+void play_music(const string &name, int times)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlayMusic(string name, int times);
-public static void SplashKit.PlayMusic(string name, int times);`} lang="csharp" />
+```csharp
+public static void Audio.PlayMusic(string name, int times);
+public static void SplashKit.PlayMusic(string name, int times);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_music_named_with_times(name, times):`} lang="python" />
+```python
+def play_music_named_with_times(name, times):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlayMusic(const name: String; times: Integer)`} lang="pascal" />
+```pascal
+procedure PlayMusic(const name: String; times: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -622,17 +756,25 @@ Plays a music file once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_music(music data)`} lang="cpp" />
+```cpp
+void play_music(music data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.PlayMusic();
-public static void SplashKit.PlayMusic(Music data);`} lang="csharp" />
+```csharp
+public void Music.PlayMusic();
+public static void SplashKit.PlayMusic(Music data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_music(data):`} lang="python" />
+```python
+def play_music(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlayMusic(data: Music)`} lang="pascal" />
+```pascal
+procedure PlayMusic(data: Music)
+```
   </TabItem>
 </Tabs>
 
@@ -655,17 +797,25 @@ Plays a music file a specified number of times at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_music(music data, int times)`} lang="cpp" />
+```cpp
+void play_music(music data, int times)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.PlayMusic(int times);
-public static void SplashKit.PlayMusic(Music data, int times);`} lang="csharp" />
+```csharp
+public void Music.PlayMusic(int times);
+public static void SplashKit.PlayMusic(Music data, int times);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_music_with_times(data, times):`} lang="python" />
+```python
+def play_music_with_times(data, times):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlayMusic(data: Music; times: Integer)`} lang="pascal" />
+```pascal
+procedure PlayMusic(data: Music; times: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -690,17 +840,25 @@ Plays a music file for a specified number of times and playback volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_music(music data, int times, float volume)`} lang="cpp" />
+```cpp
+void play_music(music data, int times, float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Music.PlayMusic(int times, float volume);
-public static void SplashKit.PlayMusic(Music data, int times, float volume);`} lang="csharp" />
+```csharp
+public void Music.PlayMusic(int times, float volume);
+public static void SplashKit.PlayMusic(Music data, int times, float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_music_with_times_and_volume(data, times, volume):`} lang="python" />
+```python
+def play_music_with_times_and_volume(data, times, volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlayMusic(data: Music; times: Integer; volume: Single)`} lang="pascal" />
+```pascal
+procedure PlayMusic(data: Music; times: Integer; volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -718,17 +876,25 @@ Resumes currently paused music - see pause_music to pause playing music.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void resume_music()`} lang="cpp" />
+```cpp
+void resume_music()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.ResumeMusic();
-public static void SplashKit.ResumeMusic();`} lang="csharp" />
+```csharp
+public static void Audio.ResumeMusic();
+public static void SplashKit.ResumeMusic();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def resume_music():`} lang="python" />
+```python
+def resume_music():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ResumeMusic()`} lang="pascal" />
+```pascal
+procedure ResumeMusic()
+```
   </TabItem>
 </Tabs>
 
@@ -753,17 +919,25 @@ Sets the volume of the currently playing [`Music`](/components/audio/#music). Mu
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void set_music_volume(float volume)`} lang="cpp" />
+```cpp
+void set_music_volume(float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.Volume { set }
-public static void SplashKit.SetMusicVolume(float volume);`} lang="csharp" />
+```csharp
+public static void Audio.Volume { set }
+public static void SplashKit.SetMusicVolume(float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def set_music_volume(volume):`} lang="python" />
+```python
+def set_music_volume(volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SetMusicVolume(volume: Single)`} lang="pascal" />
+```pascal
+procedure SetMusicVolume(volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -781,17 +955,25 @@ Stops currently playing music.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void stop_music()`} lang="cpp" />
+```cpp
+void stop_music()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.StopMusic();
-public static void SplashKit.StopMusic();`} lang="csharp" />
+```csharp
+public static void Audio.StopMusic();
+public static void SplashKit.StopMusic();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def stop_music():`} lang="python" />
+```python
+def stop_music():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StopMusic()`} lang="pascal" />
+```pascal
+procedure StopMusic()
+```
   </TabItem>
 </Tabs>
 
@@ -815,17 +997,25 @@ Fades out all [`Sound Effect`](/components/audio/#sound-effect)s over the specif
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_all_sound_effects_out(int ms)`} lang="cpp" />
+```cpp
+void fade_all_sound_effects_out(int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FadeAllSoundEffectsOut(int ms);
-public static void SplashKit.FadeAllSoundEffectsOut(int ms);`} lang="csharp" />
+```csharp
+public static void Audio.FadeAllSoundEffectsOut(int ms);
+public static void SplashKit.FadeAllSoundEffectsOut(int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_all_sound_effects_out(ms):`} lang="python" />
+```python
+def fade_all_sound_effects_out(ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeAllSoundEffectsOut(ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeAllSoundEffectsOut(ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -850,17 +1040,25 @@ Fades out the [`Sound Effect`](/components/audio/#sound-effect) over the specifi
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void fade_sound_effect_out(sound_effect effect, int ms)`} lang="cpp" />
+```cpp
+void fade_sound_effect_out(sound_effect effect, int ms)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.FadeSoundEffectOut(int ms);
-public static void SplashKit.FadeSoundEffectOut(SoundEffect effect, int ms);`} lang="csharp" />
+```csharp
+public void SoundEffect.FadeSoundEffectOut(int ms);
+public static void SplashKit.FadeSoundEffectOut(SoundEffect effect, int ms);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def fade_sound_effect_out(effect, ms):`} lang="python" />
+```python
+def fade_sound_effect_out(effect, ms):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FadeSoundEffectOut(effect: SoundEffect; ms: Integer)`} lang="pascal" />
+```pascal
+procedure FadeSoundEffectOut(effect: SoundEffect; ms: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -878,17 +1076,25 @@ Releases all of the sound effects that have been loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_sound_effects()`} lang="cpp" />
+```cpp
+void free_all_sound_effects()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.FreeAllSoundEffects();
-public static void SplashKit.FreeAllSoundEffects();`} lang="csharp" />
+```csharp
+public static void Audio.FreeAllSoundEffects();
+public static void SplashKit.FreeAllSoundEffects();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_sound_effects():`} lang="python" />
+```python
+def free_all_sound_effects():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllSoundEffects()`} lang="pascal" />
+```pascal
+procedure FreeAllSoundEffects()
+```
   </TabItem>
 </Tabs>
 
@@ -912,17 +1118,25 @@ Releases the SplashKit resources associated with the sound effect.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_sound_effect(sound_effect effect)`} lang="cpp" />
+```cpp
+void free_sound_effect(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.FreeSoundEffect();
-public static void SplashKit.FreeSoundEffect(SoundEffect effect);`} lang="csharp" />
+```csharp
+public void SoundEffect.FreeSoundEffect();
+public static void SplashKit.FreeSoundEffect(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_sound_effect(effect):`} lang="python" />
+```python
+def free_sound_effect(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeSoundEffect(effect: SoundEffect)`} lang="pascal" />
+```pascal
+procedure FreeSoundEffect(effect: SoundEffect)
+```
   </TabItem>
 </Tabs>
 
@@ -950,17 +1164,25 @@ it the desired name.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool has_sound_effect(const string &name)`} lang="cpp" />
+```cpp
+bool has_sound_effect(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Audio.HasSoundEffect(string name);
-public static bool SplashKit.HasSoundEffect(string name);`} lang="csharp" />
+```csharp
+public static bool Audio.HasSoundEffect(string name);
+public static bool SplashKit.HasSoundEffect(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def has_sound_effect(name):`} lang="python" />
+```python
+def has_sound_effect(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function HasSoundEffect(const name: String): Boolean`} lang="pascal" />
+```pascal
+function HasSoundEffect(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -988,17 +1210,25 @@ the `sound_effect_named` function.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sound_effect load_sound_effect(const string &name, const string &filename)`} lang="cpp" />
+```cpp
+sound_effect load_sound_effect(const string &name, const string &filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static SoundEffect SplashKit.LoadSoundEffect(string name, string filename);
-public SoundEffect(string name, string filename);`} lang="csharp" />
+```csharp
+public static SoundEffect SplashKit.LoadSoundEffect(string name, string filename);
+public SoundEffect(string name, string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def load_sound_effect(name, filename):`} lang="python" />
+```python
+def load_sound_effect(name, filename):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function LoadSoundEffect(const name: String; const filename: String): SoundEffect`} lang="pascal" />
+```pascal
+function LoadSoundEffect(const name: String; const filename: String): SoundEffect
+```
   </TabItem>
 </Tabs>
 
@@ -1009,14 +1239,14 @@ public SoundEffect(string name, string filename);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Play Sound Effect** (name: string )](/components/audio/#play-sound-effect--1)
-- [**Play Sound Effect** (name: string, volume: float )](/components/audio/#play-sound-effect--2)
-- [**Play Sound Effect** (name: string, times: int )](/components/audio/#play-sound-effect--3)
-- [**Play Sound Effect** (name: string, times: int, volume: float )](/components/audio/#play-sound-effect--4)
-- [**Play Sound Effect** (effect: sound_effect )](/components/audio/#play-sound-effect--5)
-- [**Play Sound Effect** (effect: sound_effect, volume: float )](/components/audio/#play-sound-effect--6)
-- [**Play Sound Effect** (effect: sound_effect, times: int )](/components/audio/#play-sound-effect--7)
-- [**Play Sound Effect** (effect: sound_effect, times: int, volume: float )](/components/audio/#play-sound-effect--8)
+- [**Play Sound Effect** (name: string, )](/components/sprites/#play-sound-effect--1)
+- [**Play Sound Effect** (name: string, volume: float, )](/components/sprites/#play-sound-effect--2)
+- [**Play Sound Effect** (name: string, times: int, )](/components/sprites/#play-sound-effect--3)
+- [**Play Sound Effect** (name: string, times: int, volume: float, )](/components/sprites/#play-sound-effect--4)
+- [**Play Sound Effect** (effect: sound_effect, )](/components/sprites/#play-sound-effect--5)
+- [**Play Sound Effect** (effect: sound_effect, volume: float, )](/components/sprites/#play-sound-effect--6)
+- [**Play Sound Effect** (effect: sound_effect, times: int, )](/components/sprites/#play-sound-effect--7)
+- [**Play Sound Effect** (effect: sound_effect, times: int, volume: float, )](/components/sprites/#play-sound-effect--8)
 
 :::
 
@@ -1037,17 +1267,25 @@ Plays a sound effect once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(const string &name)`} lang="cpp" />
+```cpp
+void play_sound_effect(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlaySoundEffect(string name);
-public static void SplashKit.PlaySoundEffect(string name);`} lang="csharp" />
+```csharp
+public static void Audio.PlaySoundEffect(string name);
+public static void SplashKit.PlaySoundEffect(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_named(name):`} lang="python" />
+```python
+def play_sound_effect_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(const name: String)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1070,17 +1308,25 @@ Plays a sound effect once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(const string &name, float volume)`} lang="cpp" />
+```cpp
+void play_sound_effect(const string &name, float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlaySoundEffect(string name, float volume);
-public static void SplashKit.PlaySoundEffect(string name, float volume);`} lang="csharp" />
+```csharp
+public static void Audio.PlaySoundEffect(string name, float volume);
+public static void SplashKit.PlaySoundEffect(string name, float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_named_with_volume(name, volume):`} lang="python" />
+```python
+def play_sound_effect_named_with_volume(name, volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(const name: String; volume: Single)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(const name: String; volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1103,17 +1349,25 @@ Plays a sound effect for a specified number of times at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(const string &name, int times)`} lang="cpp" />
+```cpp
+void play_sound_effect(const string &name, int times)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlaySoundEffect(string name, int times);
-public static void SplashKit.PlaySoundEffect(string name, int times);`} lang="csharp" />
+```csharp
+public static void Audio.PlaySoundEffect(string name, int times);
+public static void SplashKit.PlaySoundEffect(string name, int times);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_named_with_times(name, times):`} lang="python" />
+```python
+def play_sound_effect_named_with_times(name, times):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(const name: String; times: Integer)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(const name: String; times: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -1138,17 +1392,25 @@ Plays a sound effect for a specified number of times and playback volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(const string &name, int times, float volume)`} lang="cpp" />
+```cpp
+void play_sound_effect(const string &name, int times, float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.PlaySoundEffect(string name, int times, float volume);
-public static void SplashKit.PlaySoundEffect(string name, int times, float volume);`} lang="csharp" />
+```csharp
+public static void Audio.PlaySoundEffect(string name, int times, float volume);
+public static void SplashKit.PlaySoundEffect(string name, int times, float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_named_with_times_and_volume(name, times, volume):`} lang="python" />
+```python
+def play_sound_effect_named_with_times_and_volume(name, times, volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(const name: String; times: Integer; volume: Single)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(const name: String; times: Integer; volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1170,17 +1432,25 @@ Plays a sound effect once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(sound_effect effect)`} lang="cpp" />
+```cpp
+void play_sound_effect(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.PlaySoundEffect();
-public static void SplashKit.PlaySoundEffect(SoundEffect effect);`} lang="csharp" />
+```csharp
+public void SoundEffect.PlaySoundEffect();
+public static void SplashKit.PlaySoundEffect(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect(effect):`} lang="python" />
+```python
+def play_sound_effect(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(effect: SoundEffect)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(effect: SoundEffect)
+```
   </TabItem>
 </Tabs>
 
@@ -1204,17 +1474,25 @@ Plays a sound effect once at playback volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(sound_effect effect, float volume)`} lang="cpp" />
+```cpp
+void play_sound_effect(sound_effect effect, float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.PlaySoundEffect(float volume);
-public static void SplashKit.PlaySoundEffect(SoundEffect effect, float volume);`} lang="csharp" />
+```csharp
+public void SoundEffect.PlaySoundEffect(float volume);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_with_volume(effect, volume):`} lang="python" />
+```python
+def play_sound_effect_with_volume(effect, volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(effect: SoundEffect; volume: Single)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(effect: SoundEffect; volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1237,17 +1515,25 @@ Plays a sound effect once at full volume.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(sound_effect effect, int times)`} lang="cpp" />
+```cpp
+void play_sound_effect(sound_effect effect, int times)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.PlaySoundEffect(int times);
-public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times);`} lang="csharp" />
+```csharp
+public void SoundEffect.PlaySoundEffect(int times);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_with_times(effect, times):`} lang="python" />
+```python
+def play_sound_effect_with_times(effect, times):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(effect: SoundEffect; times: Integer)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(effect: SoundEffect; times: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -1273,17 +1559,25 @@ of times the [`Sound Effect`](/components/audio/#sound-effect) is repeated and i
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void play_sound_effect(sound_effect effect, int times, float volume)`} lang="cpp" />
+```cpp
+void play_sound_effect(sound_effect effect, int times, float volume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.PlaySoundEffect(int times, float volume);
-public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times, float volume);`} lang="csharp" />
+```csharp
+public void SoundEffect.PlaySoundEffect(int times, float volume);
+public static void SplashKit.PlaySoundEffect(SoundEffect effect, int times, float volume);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def play_sound_effect_with_times_and_volume(effect, times, volume):`} lang="python" />
+```python
+def play_sound_effect_with_times_and_volume(effect, times, volume):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure PlaySoundEffect(effect: SoundEffect; times: Integer; volume: Single)`} lang="pascal" />
+```pascal
+procedure PlaySoundEffect(effect: SoundEffect; times: Integer; volume: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1307,17 +1601,25 @@ Returns the filename of the [`Sound Effect`](/components/audio/#sound-effect) th
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string sound_effect_filename(sound_effect effect)`} lang="cpp" />
+```cpp
+string sound_effect_filename(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string SoundEffect.Filename { get }
-public static string SplashKit.SoundEffectFilename(SoundEffect effect);`} lang="csharp" />
+```csharp
+public string SoundEffect.Filename { get }
+public static string SplashKit.SoundEffectFilename(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sound_effect_filename(effect):`} lang="python" />
+```python
+def sound_effect_filename(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SoundEffectFilename(effect: SoundEffect): String`} lang="pascal" />
+```pascal
+function SoundEffectFilename(effect: SoundEffect): String
+```
   </TabItem>
 </Tabs>
 
@@ -1341,17 +1643,25 @@ Returns the name of the [`Sound Effect`](/components/audio/#sound-effect) that h
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string sound_effect_name(sound_effect effect)`} lang="cpp" />
+```cpp
+string sound_effect_name(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string SoundEffect.Name { get }
-public static string SplashKit.SoundEffectName(SoundEffect effect);`} lang="csharp" />
+```csharp
+public string SoundEffect.Name { get }
+public static string SplashKit.SoundEffectName(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sound_effect_name(effect):`} lang="python" />
+```python
+def sound_effect_name(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SoundEffectName(effect: SoundEffect): String`} lang="pascal" />
+```pascal
+function SoundEffectName(effect: SoundEffect): String
+```
   </TabItem>
 </Tabs>
 
@@ -1378,17 +1688,25 @@ and returned.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`sound_effect sound_effect_named(const string &name)`} lang="cpp" />
+```cpp
+sound_effect sound_effect_named(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static SoundEffect Audio.SoundEffectNamed(string name);
-public static SoundEffect SplashKit.SoundEffectNamed(string name);`} lang="csharp" />
+```csharp
+public static SoundEffect Audio.SoundEffectNamed(string name);
+public static SoundEffect SplashKit.SoundEffectNamed(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sound_effect_named(name):`} lang="python" />
+```python
+def sound_effect_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SoundEffectNamed(const name: String): SoundEffect`} lang="pascal" />
+```pascal
+function SoundEffectNamed(const name: String): SoundEffect
+```
   </TabItem>
 </Tabs>
 
@@ -1399,8 +1717,8 @@ public static SoundEffect SplashKit.SoundEffectNamed(string name);`} lang="cshar
 
 This function is overloaded. The following versions exist:
 
-- [**Sound Effect Playing** (name: string )](/components/audio/#sound-effect-playing--1)
-- [**Sound Effect Playing** (effect: sound_effect )](/components/audio/#sound-effect-playing--2)
+- [**Sound Effect Playing** (name: string, )](/components/sprites/#sound-effect-playing--1)
+- [**Sound Effect Playing** (effect: sound_effect, )](/components/sprites/#sound-effect-playing--2)
 
 :::
 
@@ -1421,17 +1739,25 @@ Checks whether the [`Sound Effect`](/components/audio/#sound-effect) that matche
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sound_effect_playing(const string &name)`} lang="cpp" />
+```cpp
+bool sound_effect_playing(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Audio.SoundEffectPlaying(string name);
-public static bool SplashKit.SoundEffectPlaying(string name);`} lang="csharp" />
+```csharp
+public static bool Audio.SoundEffectPlaying(string name);
+public static bool SplashKit.SoundEffectPlaying(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sound_effect_playing_named(name):`} lang="python" />
+```python
+def sound_effect_playing_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SoundEffectPlaying(const name: String): Boolean`} lang="pascal" />
+```pascal
+function SoundEffectPlaying(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1453,17 +1779,25 @@ Checks whether the [`Sound Effect`](/components/audio/#sound-effect) is currentl
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool sound_effect_playing(sound_effect effect)`} lang="cpp" />
+```cpp
+bool sound_effect_playing(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool SoundEffect.IsPlaying { get }
-public static bool SplashKit.SoundEffectPlaying(SoundEffect effect);`} lang="csharp" />
+```csharp
+public bool SoundEffect.IsPlaying { get }
+public static bool SplashKit.SoundEffectPlaying(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def sound_effect_playing(effect):`} lang="python" />
+```python
+def sound_effect_playing(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function SoundEffectPlaying(effect: SoundEffect): Boolean`} lang="pascal" />
+```pascal
+function SoundEffectPlaying(effect: SoundEffect): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1474,8 +1808,8 @@ public static bool SplashKit.SoundEffectPlaying(SoundEffect effect);`} lang="csh
 
 This function is overloaded. The following versions exist:
 
-- [**Stop Sound Effect** (name: string )](/components/audio/#stop-sound-effect--1)
-- [**Stop Sound Effect** (effect: sound_effect )](/components/audio/#stop-sound-effect--2)
+- [**Stop Sound Effect** (name: string, )](/components/sprites/#stop-sound-effect--1)
+- [**Stop Sound Effect** (effect: sound_effect, )](/components/sprites/#stop-sound-effect--2)
 
 :::
 
@@ -1496,17 +1830,25 @@ Stops the [`Sound Effect`](/components/audio/#sound-effect) that matches the nam
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void stop_sound_effect(const string &name)`} lang="cpp" />
+```cpp
+void stop_sound_effect(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.StopSoundEffect(string name);
-public static void SplashKit.StopSoundEffect(string name);`} lang="csharp" />
+```csharp
+public static void Audio.StopSoundEffect(string name);
+public static void SplashKit.StopSoundEffect(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def stop_sound_effect_named(name):`} lang="python" />
+```python
+def stop_sound_effect_named(name):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StopSoundEffect(const name: String)`} lang="pascal" />
+```pascal
+procedure StopSoundEffect(const name: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1528,17 +1870,25 @@ Stops the [`Sound Effect`](/components/audio/#sound-effect) if it is currently p
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void stop_sound_effect(sound_effect effect)`} lang="cpp" />
+```cpp
+void stop_sound_effect(sound_effect effect)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void SoundEffect.StopSoundEffect();
-public static void SplashKit.StopSoundEffect(SoundEffect effect);`} lang="csharp" />
+```csharp
+public void SoundEffect.StopSoundEffect();
+public static void SplashKit.StopSoundEffect(SoundEffect effect);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def stop_sound_effect(effect):`} lang="python" />
+```python
+def stop_sound_effect(effect):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure StopSoundEffect(effect: SoundEffect)`} lang="pascal" />
+```pascal
+procedure StopSoundEffect(effect: SoundEffect)
+```
   </TabItem>
 </Tabs>
 
@@ -1559,17 +1909,25 @@ to enable audio.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool audio_ready()`} lang="cpp" />
+```cpp
+bool audio_ready()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Audio.IsReady { get }
-public static bool SplashKit.AudioReady();`} lang="csharp" />
+```csharp
+public static bool Audio.IsReady { get }
+public static bool SplashKit.AudioReady();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def audio_ready():`} lang="python" />
+```python
+def audio_ready():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function AudioReady(): Boolean`} lang="pascal" />
+```pascal
+function AudioReady(): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -1587,17 +1945,25 @@ Turns off audio, stopping all current sounds effects and music.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void close_audio()`} lang="cpp" />
+```cpp
+void close_audio()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.CloseAudio();
-public static void SplashKit.CloseAudio();`} lang="csharp" />
+```csharp
+public static void Audio.CloseAudio();
+public static void SplashKit.CloseAudio();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def close_audio():`} lang="python" />
+```python
+def close_audio():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure CloseAudio()`} lang="pascal" />
+```pascal
+procedure CloseAudio()
+```
   </TabItem>
 </Tabs>
 
@@ -1615,21 +1981,30 @@ Starts the SplashKit audio system working.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void open_audio()`} lang="cpp" />
+```cpp
+void open_audio()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Audio.OpenAudio();
-public static void SplashKit.OpenAudio();`} lang="csharp" />
+```csharp
+public static void Audio.OpenAudio();
+public static void SplashKit.OpenAudio();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def open_audio():`} lang="python" />
+```python
+def open_audio():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure OpenAudio()`} lang="pascal" />
+```pascal
+procedure OpenAudio()
+```
   </TabItem>
 </Tabs>
 
 ---
+
 
 ## 
 ## Types

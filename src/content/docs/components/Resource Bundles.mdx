@@ -8,7 +8,7 @@ Supports the loading and freeing of game resource bundles. Resource types includ
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
@@ -24,35 +24,29 @@ When you are finished with the resources in a bundle, you can free them all by c
 | Name | `String` | The name of the resource bundle to be freed. |
 
 **Signatures**
-
 <Tabs>
   <TabItem label="C++">
-    <Code
-      code="void free_resource_bundle(const string name)"
-      lang="cpp"
-    />
+```cpp
+void free_resource_bundle(const string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code
-      code="public static void ResourceBundle.FreeResourceBundle(string name);
-public static void SplashKit.FreeResourceBundle(string name);"
-      lang="csharp"
-    />
-  </TabItem>
-  <TabItem label="Pascal">
-    <Code
-      code="procedure FreeResourceBundle(name: String)"
-      lang="pascal"
-    />
+```csharp
+public static void ResourceBundle.FreeResourceBundle(string name);
+public static void SplashKit.FreeResourceBundle(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code
-      code="def free_resource_bundle(name):"
-      lang="python"
-    />
+```python
+def free_resource_bundle(name):
+```
+  </TabItem>
+  <TabItem label="Pascal">
+```pascal
+procedure FreeResourceBundle(name: String)
+```
   </TabItem>
 </Tabs>
-
 ---
 
 ## Has Resource Bundle [🔗](#has-resource-bundle)
@@ -62,8 +56,6 @@ Returns true when the named resource bundle has already been loaded.
 **Return Type**
 
 - `Boolean`
-
-
 
 True when the bundle is already loaded.
 
@@ -77,32 +69,27 @@ True when the bundle is already loaded.
 
 <Tabs>
   <TabItem label="C++">
-    <Code
-      code="bool has_resource_bundle(const string &name)"
-      lang="cpp"
-    />
+```cpp
+bool has_resource_bundle(const string &name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code
-      code="public static bool ResourceBundle.HasResourceBundle(string name);
-public static bool SplashKit.HasResourceBundle(string name);"
-      lang="csharp"
-    />
-  </TabItem>
-  <TabItem label="Pascal">
-    <Code
-      code="function HasResourceBundle(const name: String): Boolean"
-      lang="pascal"
-    />
+```csharp
+public static bool ResourceBundle.HasResourceBundle(string name);
+public static bool SplashKit.HasResourceBundle(string name);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code
-      code="def has_resource_bundle(name):"
-      lang="python"
-    />
+```python
+def has_resource_bundle(name):
+```
+  </TabItem>
+  <TabItem label="Pascal">
+```pascal
+function HasResourceBundle(const name: String): Boolean
+```
   </TabItem>
 </Tabs>
-
 ---
 ## Load Resource Bundle [🔗](#load-resource-bundle)
 Loads all of the resources in the resource bundle. The resource bundle is a text file that describes the resources you want to load. These rescources are then loaded when you call this procedure, and can all be released when you call `Release Resource Bundle`.
@@ -157,31 +144,28 @@ The following will setup the "Player" bitmap to have cells that are 75 pixels wi
 
 <Tabs>
   <TabItem label="C++">
-    <Code
-      code="void load_resource_bundle(const string &name, const string &filename)"
-      lang="cpp"
-    />
+```cpp
+void load_resource_bundle(const string &name, const string &filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code
-      code="public static void ResourceBundle.LoadResourceBundle(string name, string filename);
-public static void SplashKit.LoadResourceBundle(string name, string filename);"
-      lang="csharp"
-    />
-  </TabItem>
-  <TabItem label="Pascal">
-    <Code
-      code="procedure LoadResourceBundle(const name: String; const filename: String)"
-      lang="pascal"
-    />
+```csharp
+public static void ResourceBundle.LoadResourceBundle(string name, string filename);
+public static void SplashKit.LoadResourceBundle(string name, string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code
-      code="def load_resource_bundle(name, filename):"
-      lang="python"
-    />
+```python
+def load_resource_bundle(name, filename):
+```
+  </TabItem>
+  <TabItem label="Pascal">
+```pascal
+procedure LoadResourceBundle(const name: String; const filename: String)
+```
   </TabItem>
 </Tabs>
+
 
 ---
 

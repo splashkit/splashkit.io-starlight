@@ -5,24 +5,15 @@ date: 2017-10-03 06:21 UTC
 author: Richard Denton
 author_url:
 tags: json
-summary: |
-  JSON is a human-readable text format consisting of key/value pairs and arrays.
+description: JSON is a human-readable text format consisting of key/value pairs and arrays.
   SplashKit allows us to read through these files and create our own. This
   article explains the basics of doing so with SplashKit.
-related_funcs:
-  - create_json
-  - create_json
-  - create_json_from_string
-  - json_set_string
-  - json_set_number
-  - free_json
-
 ---
 
 JSON (JavaScript Object Notation) if a human-readable text format consisting
 of key-value (or attribute-value) pairs and arrays.
 
-SplashKit's [JSON library](/api/json) provides methods and procedures for working with
+SplashKit's [JSON library](/components/json) provides methods and procedures for working with
 JSON objects in C++.
 
 ## SplashKit JSON code usage example

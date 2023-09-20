@@ -8,13 +8,13 @@ SplashKit resource functions allow you to locate resources in a project's `Resou
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
-
 ## Deregister Free Notifier [🔗](#deregister-free-notifier)
 
+ 
 Remove the function from the list of functions receiving notification
 of resource freeing.
 
@@ -26,29 +26,38 @@ of resource freeing.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| handler | [Free Notifier](/components/resources/#free-notifier) | The function to remove |
+| handler | free_notifier | The function to remove |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void deregister_free_notifier(free_notifier *handler)`} lang="cpp" />
+```cpp
+void deregister_free_notifier(free_notifier *handler)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Resources.DeregisterFreeNotifier(FreeNotifier handler);
-public static void SplashKit.DeregisterFreeNotifier(FreeNotifier handler);`} lang="csharp" />
+```csharp
+public static void Resources.DeregisterFreeNotifier(FreeNotifier handler);
+public static void SplashKit.DeregisterFreeNotifier(FreeNotifier handler);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def deregister_free_notifier(handler):`} lang="python" />
+```python
+def deregister_free_notifier(handler):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure DeregisterFreeNotifier(handler: FreeNotifier)`} lang="pascal" />
+```pascal
+procedure DeregisterFreeNotifier(handler: FreeNotifier)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Path To Resource [🔗](#path-to-resource)
 
+ 
 Gets the path to a give file of a certain resource kind.
 
 **Return Type**
@@ -59,41 +68,48 @@ Gets the path to a give file of a certain resource kind.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| filename | [String](/String) | The name of the file of the resource kind. |
-| kind | [Resource Kind](/components/resources/#resource-kind) | The kind of resource you are loading. |
+| filename | `String` | The name of the file of the resource kind. |
+| kind | resource_kind | The kind of resource you are loading. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string path_to_resource(const string &filename, resource_kind kind)`} lang="cpp" />
+```cpp
+string path_to_resource(const string &filename, resource_kind kind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Resources.PathToResource(string filename, ResourceKind kind);
-public static string SplashKit.PathToResource(string filename, ResourceKind kind);`} lang="csharp" />
+```csharp
+public static string Resources.PathToResource(string filename, ResourceKind kind);
+public static string SplashKit.PathToResource(string filename, ResourceKind kind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def path_to_resource(filename, kind):`} lang="python" />
+```python
+def path_to_resource(filename, kind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function PathToResource(const filename: String; kind: ResourceKind): String`} lang="pascal" />
+```pascal
+function PathToResource(const filename: String; kind: ResourceKind): String
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Path To Resources [🧬](#group-path-to-resources)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Path To Resources**](/components/resources/#path-to-resources--1)
+- [**Path To Resources** ()](/components/sprites/#path-to-resources--1)
+- [**Path To Resources** (kind: resource_kind, )](/components/sprites/#path-to-resources--2)
 
-- [**Path To Resources** (kind: `Resource Kind`)](/components/resources/#path-to-resources--2)
 :::
----
 
-
-### Path To Resources [🤖](#path-to-resources--1)
-
+### Path To Resources [🤖](#path-to-resources--1) 
 Returns the path to the resources folder for the SplashKit program. This
 will be auto detected at startup, but can be changed using
 `set_resources_path`.
@@ -106,23 +122,30 @@ will be auto detected at startup, but can be changed using
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string path_to_resources()`} lang="cpp" />
+```cpp
+string path_to_resources()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Resources.PathToResources();
-public static string SplashKit.PathToResources();`} lang="csharp" />
+```csharp
+public static string Resources.PathToResources();
+public static string SplashKit.PathToResources();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def path_to_resources():`} lang="python" />
+```python
+def path_to_resources():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function PathToResources(): String`} lang="pascal" />
+```pascal
+function PathToResources(): String
+```
   </TabItem>
 </Tabs>
 
 ---
-### Path To Resources [🤖](#path-to-resources--2)
-
+### Path To Resources [🤖](#path-to-resources--2) 
 Returns the path to the folder containing a given resource kind. This is
 the path SplashkKit will search when you load a resource.
 
@@ -134,29 +157,38 @@ the path SplashkKit will search when you load a resource.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| kind | [Resource Kind](/components/resources/#resource-kind) | The type of resource you want the path for. |
+| kind | resource_kind | The type of resource you want the path for. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string path_to_resources(resource_kind kind)`} lang="cpp" />
+```cpp
+string path_to_resources(resource_kind kind)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Resources.PathToResources(ResourceKind kind);
-public static string SplashKit.PathToResources(ResourceKind kind);`} lang="csharp" />
+```csharp
+public static string Resources.PathToResources(ResourceKind kind);
+public static string SplashKit.PathToResources(ResourceKind kind);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def path_to_resources_for_kind(kind):`} lang="python" />
+```python
+def path_to_resources_for_kind(kind):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function PathToResources(kind: ResourceKind): String`} lang="pascal" />
+```pascal
+function PathToResources(kind: ResourceKind): String
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Register Free Notifier [🔗](#register-free-notifier)
 
+ 
 Register a function to be called when any resource is freed.
 
 **Return Type**
@@ -167,29 +199,38 @@ Register a function to be called when any resource is freed.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| fn | [Free Notifier](/components/resources/#free-notifier) | The function to be called when a resource is freed. |
+| fn | free_notifier | The function to be called when a resource is freed. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void register_free_notifier(free_notifier *fn)`} lang="cpp" />
+```cpp
+void register_free_notifier(free_notifier *fn)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Resources.RegisterFreeNotifier(FreeNotifier fn);
-public static void SplashKit.RegisterFreeNotifier(FreeNotifier fn);`} lang="csharp" />
+```csharp
+public static void Resources.RegisterFreeNotifier(FreeNotifier fn);
+public static void SplashKit.RegisterFreeNotifier(FreeNotifier fn);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def register_free_notifier(fn):`} lang="python" />
+```python
+def register_free_notifier(fn):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure RegisterFreeNotifier(fn: FreeNotifier)`} lang="pascal" />
+```pascal
+procedure RegisterFreeNotifier(fn: FreeNotifier)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Set Resources Path [🔗](#set-resources-path)
 
+ 
 Sets the path to the SplashKit resources folder. Resource paths are then
 located within this folder.
 
@@ -201,27 +242,36 @@ located within this folder.
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| path | [String](/String) | The file path to the SplashKit Resources folder. |
+| path | `String` | The file path to the SplashKit Resources folder. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void set_resources_path(const string &path)`} lang="cpp" />
+```cpp
+void set_resources_path(const string &path)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Resources.SetResourcesPath(string path);
-public static void SplashKit.SetResourcesPath(string path);`} lang="csharp" />
+```csharp
+public static void Resources.SetResourcesPath(string path);
+public static void SplashKit.SetResourcesPath(string path);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def set_resources_path(path):`} lang="python" />
+```python
+def set_resources_path(path):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SetResourcesPath(const path: String)`} lang="pascal" />
+```pascal
+procedure SetResourcesPath(const path: String)
+```
   </TabItem>
 </Tabs>
 
 ---
+
 
 ## Types
 ##

@@ -8,20 +8,20 @@ Timers in SplashKit can be used to track the passing of time.
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 
 ## Functions
 ##
-
 ## Create Timer [🔗](#create-timer)
 
+ 
 Create and return a new Timer. The timer will not be started, and will have
 an initial 'ticks' of 0.
 
 **Return Type**
 
-- timer
+- undefined 
 
 **Parameters**
 
@@ -32,100 +32,116 @@ an initial 'ticks' of 0.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function CreateTimer(name: String): Timer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def create_timer(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+timer create_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Timer SplashKit.CreateTimer(string name);
-public Timer(string name);`} lang="csharp" />
+```csharp
+public static Timer SplashKit.CreateTimer(string name);
+public Timer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`timer create_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def create_timer(name):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function CreateTimer(name: String): Timer
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Free All Timers [🔗](#free-all-timers)
 
+ 
 Free all of timers that have been created.
 
 **Return Type**
 
-- `Void`
-
-
-
-**Parameters**
-
-| Name   | Type                                               | Description                                                                        |
-| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+- `Void` 
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure FreeAllTimers()`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def free_all_timers():`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void free_all_timers()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.FreeAllTimers();
-public static void SplashKit.FreeAllTimers();`} lang="csharp" />
+```csharp
+public static void Timers.FreeAllTimers();
+public static void SplashKit.FreeAllTimers();
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void free_all_timers()`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def free_all_timers():
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure FreeAllTimers()
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Free Timer [🔗](#free-timer)
 
+ 
 Free the memory used to store this timer.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_free | [timer](/components/timers/#timer) | The time to be released. |
+| to_free | timer | The time to be released. |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure FreeTimer(toFree: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def free_timer(to_free):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void free_timer(timer to_free)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.FreeTimer();
-public static void SplashKit.FreeTimer(Timer toFree);`} lang="csharp" />
+```csharp
+public void Timer.FreeTimer();
+public static void SplashKit.FreeTimer(Timer toFree);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void free_timer(timer to_free)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def free_timer(to_free):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure FreeTimer(toFree: Timer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Has Timer [🔗](#has-timer)
 
+ 
 Checks if SplashKit has a timer with the indicated name.
 
 **Return Type**
 
-- `Boolean`
-
-
+- `Boolean` 
 
 **Parameters**
 
@@ -136,41 +152,48 @@ Checks if SplashKit has a timer with the indicated name.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function HasTimer(name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def has_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool has_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Timers.HasTimer(string name);
-public static bool SplashKit.HasTimer(string name);`} lang="csharp" />
+```csharp
+public static bool Timers.HasTimer(string name);
+public static bool SplashKit.HasTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool has_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def has_timer__named(name):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+function HasTimer(name: String): Boolean
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Pause Timer [🧬](#group-pause-timer)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Pause Timer** (name: `String`)](/components/types/#pause-timer--1)
+- [**Pause Timer** (name: string, )](/components/sprites/#pause-timer--1)
+- [**Pause Timer** (to_pause: timer, )](/components/sprites/#pause-timer--2)
 
-- [**Pause Timer** (to_pause: `Timer`)](/components/types/#pause-timer--2)
 :::
 
-### Pause Timer [🤖](#pause-timer--1)
-
+### Pause Timer [🤖](#pause-timer--1) 
 Pause the timer, getting ticks from a paused timer
 will continue to return the same time.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
@@ -181,77 +204,88 @@ will continue to return the same time.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure PauseTimer(name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def pause_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void pause_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.PauseTimer(string name);
-public static void SplashKit.PauseTimer(string name);`} lang="csharp" />
+```csharp
+public static void Timers.PauseTimer(string name);
+public static void SplashKit.PauseTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void pause_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def pause_timer__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure PauseTimer(name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Pause Timer [🤖](#pause-timer--2)
-
+### Pause Timer [🤖](#pause-timer--2) 
 Pause the timer, getting ticks from a paused timer
 will continue to return the same time.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_pause | [timer](/components/timers/#timer) | The timer |
+| to_pause | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure PauseTimer(toPause: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def pause_timer(to_pause):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void pause_timer(timer to_pause)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.PauseTimer();
-public static void SplashKit.PauseTimer(Timer toPause);`} lang="csharp" />
+```csharp
+public void Timer.PauseTimer();
+public static void SplashKit.PauseTimer(Timer toPause);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void pause_timer(timer to_pause)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def pause_timer(to_pause):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure PauseTimer(toPause: Timer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Reset Timer [🧬](#group-reset-timer)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Reset Timer** (name: `String`)](/components/types/#reset-timer--1)
+- [**Reset Timer** (name: string, )](/components/sprites/#reset-timer--1)
+- [**Reset Timer** (tmr: timer, )](/components/sprites/#reset-timer--2)
 
-- [**Reset Timer** (tmr: `Timer`)](/components/types/#reset-timer--2)
 :::
 
-
-### Reset Timer [🤖](#reset-timer--1)
-
+### Reset Timer [🤖](#reset-timer--1) 
 Resets the named timer
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
@@ -262,76 +296,87 @@ Resets the named timer
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResetTimer(name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def reset_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void reset_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.ResetTimer(string name);
-public static void SplashKit.ResetTimer(string name);`} lang="csharp" />
+```csharp
+public static void Timers.ResetTimer(string name);
+public static void SplashKit.ResetTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void reset_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def reset_timer__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure ResetTimer(name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Reset Timer [🤖](#reset-timer--2)
-
+### Reset Timer [🤖](#reset-timer--2) 
 Resets the time of a given timer
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| tmr | [timer](/components/timers/#timer) | The timer |
+| tmr | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResetTimer(tmr: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def reset_timer(tmr):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void reset_timer(timer tmr)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.ResetTimer();
-public static void SplashKit.ResetTimer(Timer tmr);`} lang="csharp" />
+```csharp
+public void Timer.ResetTimer();
+public static void SplashKit.ResetTimer(Timer tmr);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void reset_timer(timer tmr)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def reset_timer(tmr):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure ResetTimer(tmr: Timer)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Resume Timer [🧬](#group-resume-timer)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Resume Timer** (name: `String`)](/components/types/#resume-timer--1)
-
-- [**Resume Timer** (to_resume: `Timer`)](/components/types/#resume-timer--1)
+- [**Resume Timer** (name: string, )](/components/sprites/#resume-timer--1)
+- [**Resume Timer** (to_resume: timer, )](/components/sprites/#resume-timer--2)
 
 :::
 
-
-### Resume Timer [🤖](#resume-timer--1)
-
+### Resume Timer [🤖](#resume-timer--1) 
 Resumes the named timer.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
@@ -342,78 +387,89 @@ Resumes the named timer.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResumeTimer(name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def resume_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void resume_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.ResumeTimer(string name);
-public static void SplashKit.ResumeTimer(string name);`} lang="csharp" />
+```csharp
+public static void Timers.ResumeTimer(string name);
+public static void SplashKit.ResumeTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void resume_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def resume_timer__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure ResumeTimer(name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Resume Timer [🤖](#resume-timer--2)
-
+### Resume Timer [🤖](#resume-timer--2) 
 Resumes a paused timer.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_resume | [timer](/components/timers/#timer) | The timer |
+| to_resume | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure ResumeTimer(toResume: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def resume_timer(to_resume):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void resume_timer(timer to_resume)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.ResumeTimer();
-public static void SplashKit.ResumeTimer(Timer toResume);`} lang="csharp" />
+```csharp
+public void Timer.ResumeTimer();
+public static void SplashKit.ResumeTimer(Timer toResume);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void resume_timer(timer to_resume)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def resume_timer(to_resume):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure ResumeTimer(toResume: Timer)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Start Timer [🧬](#group-start-timer)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Start Timer** (name: `String`)](/components/types/#start-timer--1)
-
-- [**Start Timer** (to_start: `Timer`)](/components/types/#start-timer--2)
+- [**Start Timer** (name: string, )](/components/sprites/#start-timer--1)
+- [**Start Timer** (to_start: timer, )](/components/sprites/#start-timer--2)
 
 :::
 
-
-### Start Timer [🤖](#start-timer--1)
-
+### Start Timer [🤖](#start-timer--1) 
 Start a timer. The timer will then start recording the time that has passed.
 You can check how long has past since the timer was started using the
 `timer_ticks` function.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
@@ -424,79 +480,90 @@ You can check how long has past since the timer was started using the
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure StartTimer(name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def start_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void start_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.StartTimer(string name);
-public static void SplashKit.StartTimer(string name);`} lang="csharp" />
+```csharp
+public static void Timers.StartTimer(string name);
+public static void SplashKit.StartTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void start_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def start_timer__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure StartTimer(name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Start Timer [🤖](#start-timer--2)
-
+### Start Timer [🤖](#start-timer--2) 
 Start a timer. The timer will then start recording the time that has passed.
 You can check how long has past since the timer was started using the
 `timer_ticks` function.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_start | [timer](/components/timers/#timer) | The timer |
+| to_start | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure StartTimer(toStart: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def start_timer(to_start):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void start_timer(timer to_start)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.StartTimer();
-public static void SplashKit.StartTimer(Timer toStart);`} lang="csharp" />
+```csharp
+public void Timer.StartTimer();
+public static void SplashKit.StartTimer(Timer toStart);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void start_timer(timer to_start)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def start_timer(to_start):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure StartTimer(toStart: Timer)
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Stop Timer [🧬](#group-stop-timer)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Stop Timer** (name: `String`)](/components/types/#stop-timer--1)
+- [**Stop Timer** (name: string, )](/components/sprites/#stop-timer--1)
+- [**Stop Timer** (to_stop: timer, )](/components/sprites/#stop-timer--2)
 
-- [**Stop Timer** (to_stop: `Timer`)](/components/types/#stop-timer--2)
 :::
 
-
-
-### Stop Timer [🤖](#stop-timer--1)
-
+### Stop Timer [🤖](#stop-timer--1) 
 Stop the timer. The time is reset to 0 and you must
 recall start to begin the timer ticking again.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
@@ -507,65 +574,79 @@ recall start to begin the timer ticking again.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure StopTimer(name: String)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def stop_timer__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void stop_timer(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Timers.StopTimer(string name);
-public static void SplashKit.StopTimer(string name);`} lang="csharp" />
+```csharp
+public static void Timers.StopTimer(string name);
+public static void SplashKit.StopTimer(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void stop_timer(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def stop_timer__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+procedure StopTimer(name: String)
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Stop Timer [🤖](#stop-timer--2)
-
+### Stop Timer [🤖](#stop-timer--2) 
 Stop the timer. The time is reset to 0 and you must
 recall start to begin the timer ticking again.
 
 **Return Type**
 
-- `Void`
-
-
+- `Void` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_stop | [timer](/components/timers/#timer) | The timer |
+| to_stop | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`procedure StopTimer(toStop: Timer)`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def stop_timer(to_stop):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+void stop_timer(timer to_stop)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Timer.StopTimer();
-public static void SplashKit.StopTimer(Timer toStop);`} lang="csharp" />
+```csharp
+public void Timer.StopTimer();
+public static void SplashKit.StopTimer(Timer toStop);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`void stop_timer(timer to_stop)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def stop_timer(to_stop):
+```
   </TabItem>
-</Tabs> 
----
+  <TabItem label="Pascal">
+```pascal
+procedure StopTimer(toStop: Timer)
+```
+  </TabItem>
+</Tabs>
 
+---
 ## Timer Named [🔗](#timer-named)
 
+ 
 Get the timer created with the indicated name.
 
 **Return Type**
 
-- timer
+- undefined 
 
 **Parameters**
 
@@ -576,39 +657,47 @@ Get the timer created with the indicated name.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerNamed(name: String): Timer`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+timer timer_named(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Timer Timers.TimerNamed(string name);
-public static Timer SplashKit.TimerNamed(string name);`} lang="csharp" />
+```csharp
+public static Timer Timers.TimerNamed(string name);
+public static Timer SplashKit.TimerNamed(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`timer timer_named(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerNamed(name: String): Timer
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Timer Paused [🧬](#group-timer-paused)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Timer Paused** (name: `String`)](/components/types/#timer-paused--1)
+- [**Timer Paused** (name: string, )](/components/sprites/#timer-paused--1)
+- [**Timer Paused** (to_get: timer, )](/components/sprites/#timer-paused--2)
 
-- [**Timer Paused** (to_get: `Timer`)](/components/types/#timer-paused--2)
 :::
 
-### Timer Paused [🤖](#timer-paused--1)
-
+### Timer Paused [🤖](#timer-paused--1) 
 Indicates if the timer is paused.
 
 **Return Type**
 
-- `Boolean`
-
-
+- `Boolean` 
 
 **Parameters**
 
@@ -619,75 +708,87 @@ Indicates if the timer is paused.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerPaused(name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_paused__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool timer_paused(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Timers.TimerPaused(string name);
-public static bool SplashKit.TimerPaused(string name);`} lang="csharp" />
+```csharp
+public static bool Timers.TimerPaused(string name);
+public static bool SplashKit.TimerPaused(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool timer_paused(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_paused__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerPaused(name: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Timer Paused [🤖](#timer-paused--2)
-
+### Timer Paused [🤖](#timer-paused--2) 
 Indicates if the timer is paused.
 
 **Return Type**
 
-- `Boolean`
-
-
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_get | [timer](/components/timers/#timer) | The timer |
+| to_get | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerPaused(toGet: Timer): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_paused(to_get):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool timer_paused(timer to_get)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Timer.IsPaused { get }
-public static bool SplashKit.TimerPaused(Timer toGet);`} lang="csharp" />
+```csharp
+public bool Timer.IsPaused { get }
+public static bool SplashKit.TimerPaused(Timer toGet);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool timer_paused(timer to_get)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_paused(to_get):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerPaused(toGet: Timer): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Timer Started [🧬](#group-timer-started)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Timer Started** (name: `String`)](/components/types/#timer-started--1)
+- [**Timer Started** (name: string, )](/components/sprites/#timer-started--1)
+- [**Timer Started** (to_get: timer, )](/components/sprites/#timer-started--2)
 
-- [**Timer Started** (to_get: `Timer`)](/components/types/#timer-started--2)
 :::
 
-
-### Timer Started [🤖](#timer-started--1)
-
+### Timer Started [🤖](#timer-started--1) 
 Indicates if the timer is started.
 
 **Return Type**
 
-- `Boolean`
-
-
+- `Boolean` 
 
 **Parameters**
 
@@ -698,77 +799,89 @@ Indicates if the timer is started.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerStarted(name: String): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_started__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool timer_started(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Timers.TimerStarted(string name);
-public static bool SplashKit.TimerStarted(string name);`} lang="csharp" />
+```csharp
+public static bool Timers.TimerStarted(string name);
+public static bool SplashKit.TimerStarted(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool timer_started(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_started__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerStarted(name: String): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Timer Started [🤖](#timer-started--2)
-
+### Timer Started [🤖](#timer-started--2) 
 Indicates if the timer is started.
 
 **Return Type**
 
-- `Boolean`
-
-
+- `Boolean` 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_get | [timer](/components/timers/#timer) | The timer |
+| to_get | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerStarted(toGet: Timer): Boolean`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_started(to_get):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+bool timer_started(timer to_get)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Timer.IsStarted { get }
-public static bool SplashKit.TimerStarted(Timer toGet);`} lang="csharp" />
+```csharp
+public bool Timer.IsStarted { get }
+public static bool SplashKit.TimerStarted(Timer toGet);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`bool timer_started(timer to_get)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_started(to_get):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerStarted(toGet: Timer): Boolean
+```
+  </TabItem>
+</Tabs>
+
 ---
 ## Timer Ticks [🧬](#group-timer-ticks)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Timer Ticks** (name: `String`)](/components/types/#timer-ticks--1)
-
-- [**Timer Ticks** (to_get: `Timer`)](/components/types/#timer-ticks--2)
+- [**Timer Ticks** (name: string, )](/components/sprites/#timer-ticks--1)
+- [**Timer Ticks** (to_get: timer, )](/components/sprites/#timer-ticks--2)
 
 :::
 
-**Note:** This Markdown representation retains the original structure and content from the provided HTML code. The links have been updated to use "/components/types/" instead of "/api/types/". The code blocks are formatted using `<Code>` as requested.
-
-### Timer Ticks [🤖](#timer-ticks--1)
-
+### Timer Ticks [🤖](#timer-ticks--1) 
 Gets the number of ticks (milliseconds) that have passed since the timer
 was started/reset. When paused the timer's ticks will not advance until
 the timer is once again resumed.
 
 **Return Type**
 
-- `Unsigned Integer`
+- undefined 
 
 **Parameters**
 
@@ -779,56 +892,73 @@ the timer is once again resumed.
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerTicks(name: String): Cardinal`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_ticks__named(name):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+unsigned int timer_ticks(string name)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static uint Timers.TimerTicks(string name);
-public static uint SplashKit.TimerTicks(string name);`} lang="csharp" />
+```csharp
+public static uint Timers.TimerTicks(string name);
+public static uint SplashKit.TimerTicks(string name);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`Unsigned Integer timer_ticks(string name)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_ticks__named(name):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerTicks(name: String): Cardinal
+```
+  </TabItem>
+</Tabs>
+
 ---
-
-### Timer Ticks [🤖](#timer-ticks--2)
-
+### Timer Ticks [🤖](#timer-ticks--2) 
 Gets the number of ticks (milliseconds) that have passed since the timer
 was started/reset. When paused the timer's ticks will not advance until
 the timer is once again resumed.
 
 **Return Type**
 
-- `Unsigned Integer`
+- undefined 
 
 **Parameters**
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| to_get | [timer](/components/timers/#timer) | The timer |
+| to_get | timer | The timer |
 
 **Signatures**
 
 <Tabs>
-  <TabItem label="Pascal">
-    <Code code={`function TimerTicks(toGet: Timer): Cardinal`} lang="pascal" />
-  </TabItem>
-  <TabItem label="Python">
-    <Code code={`def timer_ticks(to_get):`} lang="python" />
+  <TabItem label="C++">
+```cpp
+unsigned int timer_ticks(timer to_get)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public uint Timer.Ticks { get }
-public static uint SplashKit.TimerTicks(Timer toGet);`} lang="csharp" />
+```csharp
+public uint Timer.Ticks { get }
+public static uint SplashKit.TimerTicks(Timer toGet);
+```
   </TabItem>
-  <TabItem label="C++">
-    <Code code={`Unsigned Integer timer_ticks(timer to_get)`} lang="cpp" />
+  <TabItem label="Python">
+```python
+def timer_ticks(to_get):
+```
   </TabItem>
-</Tabs> 
+  <TabItem label="Pascal">
+```pascal
+function TimerTicks(toGet: Timer): Cardinal
+```
+  </TabItem>
+</Tabs>
+
 ---
+
 
 
 

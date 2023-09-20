@@ -5,19 +5,7 @@ date: 2018-10-03 12:00 UTC
 author: Cyrill Illi
 author_url:
 tags: networking
-summary: |
-  In the world of web services and microservices many companies make their data availlable through a REST API.
-  In this document we want to use Splashkit to make a RESTful API call.
-related_funcs:
-  - http_get
-  - http_post
-  - http_response_to_string
-  - free_response
-  - json_from_string
-  - json_read_*
-  - create_json
-  - json_set_*
-  - json_to_string
+description: In the world of web services and microservices many companies make their data availlable through a REST APIIn this document we want to use Splashkit to make a RESTful API call.
 
 ---
 

@@ -4,11 +4,8 @@ title: Using Databases
 date: 2017-10-03 06:20 UTC
 author: Jake Renzella
 tags: databases
-summary: |
-  Databases are powerful tools for persisting, and querying data. In this
-  guide, we'll be looking at SplashKit's SQLite3 database, and how to use it.
-related_funcs:
-  -
+description: Databases are powerful tools for persisting, and querying data. In this guide, we'll be looking at SplashKit's SQLite3 database, and how to use it.
+
 
 ---
 

@@ -5,10 +5,7 @@ date: 2018-10-02 10:00 UTC
 author: Andrew Cain and others
 author_url:
 tags: starter
-summary: See how to read text from the user, both from command line and graphical applications.
-  
-related_funcs:
-  - read_line
+description: See how to read text from the user, both from command line and graphical applications.
 
 ---
 

@@ -3,17 +3,8 @@
 title: Using Animations
 date: 2018-05-29 10:00 UTC
 author: Andrew Cain
-author_url:
-tags: animations
-summary: |
-  Animations allow you to switch between different images to make a more visually dynamic entity 
-  on the screen. Splashkit allows you to create animations and use these together with sprite sheets
-  to create these animations.
-related_funcs:
-  - load_animation_script
-  - create_animation
-  - update_animation
-  - draw_bitmap
+description: Animations allow you to switch between different images to make a more visually dynamic entity 
+  on the screen. Splashkit allows you to create animations and use these together with sprite sheets to create these animations.
 
 ---
 
@@ -133,13 +124,13 @@ Once you have a sprite sheet and an animation script the code to get this workin
 1. Load the **image** and set its details.
     * You can do this with a bundle by specifying the image and its details on the one line
     * To load the image manually you need to:
-        1. Call [Load Bitmap](/api/graphics#load-bitmap) to load the sprite sheet
-        1. Call [Bitmap Set Cell Details](/api/graphics#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count)
-1. Load the **animation script** using [Load Animation Script](/api/animations#load-animation-script).
-1. Create an **animation** from the animation script using the identifier from the script - see [Create Animation](/api/animations#group-create-animation)
-1. Create a Drawing Option using [Option With Animation](/api/graphics#group-option-with-animation) which can be used to pass options to a draw bitmap call
-1. Draw the bitmap passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/api/graphics/#draw-bitmap-with-options) or [Draw Bitmap (using the image name)](/api/graphics/#draw-bitmap-named).
-1. Update the animation using [Update Animation](/api/animations#update-animation).
+        1. Call [Load Bitmap](/components/graphics#load-bitmap) to load the sprite sheet
+        1. Call [Bitmap Set Cell Details](/components/graphics#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count)
+1. Load the **animation script** using [Load Animation Script](/components/animations#load-animation-script).
+1. Create an **animation** from the animation script using the identifier from the script - see [Create Animation](/components/animations#group-create-animation)
+1. Create a Drawing Option using [Option With Animation](/components/graphics#group-option-with-animation) which can be used to pass options to a draw bitmap call
+1. Draw the bitmap passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/components/graphics/#draw-bitmap-with-options) or [Draw Bitmap (using the image name)](/components/graphics/#draw-bitmap-named).
+1. Update the animation using [Update Animation](/components/animations#update-animation).
 
 This is demonstrated in the following code examples.
 
@@ -150,7 +141,7 @@ To test the above code you can download these [resources](/resources/animation/b
 ## Other Options
 ### Switching Animations
 
-Once you have an Animation you can use the [Assign Animation](/api/animations#assign-animation) method to switch from one animation sequence to another in the same animation script, or to swap to alternate animation scripts.
+Once you have an Animation you can use the [Assign Animation](/components/animations#assign-animation) method to switch from one animation sequence to another in the same animation script, or to swap to alternate animation scripts.
 
 When calling assign animation, you indicate the animation to change and the new animation details, which include the animation identifier and optionally a new animation script. 
 
@@ -169,7 +160,7 @@ s: 0, 'FootStep', 'footsteps.wav'
 
 ### Including Movement
 
-SplashKit animations also includes options to add vectors to individual frames, which are automatically applied when these animations are used in conjuncture with Sprites. This will allow you to apply a velocity vector to sprites when they're updated. This vector is applied to the current position of the sprite, it is applied every [UpdateSprite](/api/sprites#update-sprite) call, and can be applied manually to an animation. Vectors can be applied to a set of frames using set notation ([low – high]).
+SplashKit animations also includes options to add vectors to individual frames, which are automatically applied when these animations are used in conjuncture with Sprites. This will allow you to apply a velocity vector to sprites when they're updated. This vector is applied to the current position of the sprite, it is applied every [UpdateSprite](/components/sprites#update-sprite) call, and can be applied manually to an animation. Vectors can be applied to a set of frames using set notation ([low – high]).
 
 In the animation script, a vector is indicated using a line starting with "**v:**". The following animation script snippet will move the sprite +5 pixels in the x axis and -3 pixels along the y axis for every Sprite Update while the animation is on the 0 frame.
 

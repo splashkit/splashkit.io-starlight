@@ -1,6 +1,206 @@
-h1 {
-    color: rgb(211, 197, 5);
+
+/* Dark mode colors. */
+:root {
+  --sl-color-accent-low: #131e4f;
+  --sl-color-accent: #3447ff;
+  --sl-color-accent-high: #b3c7ff;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eceef2;
+  --sl-color-gray-2: #c0c2c7;
+  --sl-color-gray-3: #888b96;
+  --sl-color-gray-4: #545861;
+  --sl-color-gray-5: #353841;
+  --sl-color-gray-6: #24272f;
+  --sl-color-black: #17181c;
 }
-h2 {
-    color: red;
+/* Dark -light toggles for code snippets */
+:root[data-theme="dark"] .ec-theme-github-dark{
+    visibility:visible;
+    
+}
+/* Dark -light toggles for code snippets */
+:root[data-theme="dark"] .ec-theme-github-light{
+    visibility: hidden;
+    display: none;
+}
+
+
+/* Light mode colors. */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #c7d6ff;
+  --sl-color-accent: #364bff;
+  --sl-color-accent-high: #182775;
+  --sl-color-white: #17181c;
+  --sl-color-gray-1: #24272f;
+  --sl-color-gray-2: #353841;
+  --sl-color-gray-3: #545861;
+  --sl-color-gray-4: #888b96;
+  --sl-color-gray-5: #c0c2c7;
+  --sl-color-gray-6: #eceef2;
+  --sl-color-gray-7: #f5f6f8;
+  --sl-color-black: #ffffff;
+  
+}
+/* Dark -light toggles for code snippets */
+:root[data-theme="light"] .ec-theme-github-dark{
+visibility: hidden;
+display: none;
+}
+/* Dark -light toggles for code snippets */
+:root[data-theme="light"] .ec-theme-github-light{
+    visibility: visible;
+ 
+    }
+/* Headings */
+#_top {
+  /* Your CSS styles for the <h1> element go here */
+
+  color: #f5a623; /* Example style */
+}
+
+
+
+/* .astro-ML6NTD6L h2{
+ Add effect for # headings 
+} */
+.astro-JBFSKTT5 img {
+  /* Image */
+
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+.astro-JBFSKTT5 img:hover {
+  /* Image */
+
+  transform: scale(1.1); /* Enlarge the image on hover */
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+[data-has-hero] .page {
+	background:
+		radial-gradient(var(--overlay-purple), var(--overlay-blurple), transparent 65%) no-repeat 40rem -15rem /
+			140rem 80rem;
+}
+[data-has-hero] header {
+	border-bottom: 1px solid transparent;
+	background-color: transparent;
+	-webkit-backdrop-filter: blur(16px);
+	backdrop-filter: blur(16px);
+}
+[data-has-hero] {
+    overflow-x: hidden;
+}
+
+[data-has-hero] .hero > div.sl-flex{
+    align-self: flex-start;
+}
+
+[data-has-hero] .sl-container {
+    margin: 0 auto;
+  
+}
+
+[data-has-hero] .hero .action {
+    border-radius: 24px;
+    transition: background-color ease-in-out 0.25s;
+}
+
+[data-has-hero] .hero .action.primary {
+    color: #fefefe;
+    font-weight: bold;
+}
+
+[data-has-hero] .hero .action.primary:hover {
+    background: var(--sl-color-text-accent-darker);
+}
+
+[data-has-hero] .hero .action.minimal {
+    border: solid 1px var(--sl-color-text-accent);
+    padding: 1rem 1.25rem;
+}
+
+[data-has-hero] .hero .action.minimal:hover {
+    background: var(--sl-color-text-accent);
+    color: #fefefe;
+}
+
+[data-has-hero] .hero .actions {
+    gap: 1.25rem;
+}
+
+[data-has-hero] .hero .hero-gradient-text {
+    background: radial-gradient(circle at top left, hsl(296, 100%, 50%) 0%, transparent 50%),
+                radial-gradient(circle at center, rgb(113, 147, 233) 0%, transparent 100%),
+                radial-gradient(circle at bottom right, rgb(0, 68, 255) 0%, transparent 50%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-has-hero] .card {
+    border-radius: 12px;
+    position: relative;
+    background: radial-gradient(300px circle at top left, rgba(85, 44, 190, 0.081) 20%, transparent 100%),
+                radial-gradient(300px circle at bottom right, rgba(44, 102, 190, 0.09) 20%, transparent 100%);
+}
+
+[data-has-hero] .card::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    transition: opacity 400ms ease 0s;
+    will-change: background, opacity;
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(62, 85, 167, 0.212),
+        transparent 40%
+    );
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+[data-has-hero] .card:hover::before {
+    opacity: 1;
+}
+
+[data-has-hero] .star-text {
+    margin-top: 8px !important;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: wider;
+}
+
+[data-has-hero] footer {
+    margin-top: 80px !important;
+}
+
+@media (max-width: 50em) {
+	[data-has-hero] .hero img {
+        display: none;
+    }
+
+    [data-has-hero] .header .right-group {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 1700px) {
+    [data-has-hero] .hero img {
+        position: absolute;
+        overflow: hidden;
+        top: 10vh;
+        right: -10vw;
+        width: 1000px;
+    }
+}
+
+@media (min-width: 2400px) {
+    [data-has-hero] .hero img {
+        position: absolute;
+        overflow: hidden;
+        top: 6vh;
+        right: 0vw;
+        width: 1200px;
+    }
 }

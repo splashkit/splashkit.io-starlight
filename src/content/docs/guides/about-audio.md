@@ -4,15 +4,7 @@ date: 2018-06-10 10:00 UTC
 author: Various
 author_url:
 tags: audio
-summary: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
-  
-related_funcs:
-  - load_sound_effect
-  - load_music
-  - play_sound_effect
-  - play_music
-  - sound_effect_named
-  - music_named
+description: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
 
 ---
 

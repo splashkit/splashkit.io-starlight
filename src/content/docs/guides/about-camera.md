@@ -5,34 +5,7 @@ date: 2018-08-16 10:00 UTC
 author: Andrew Cain and others
 author_url:
 tags: camera
-summary: See how the camera works, and how to draw to the different coordinate systems in your program.
-  
-related_funcs:
-  - camera_x
-  - camera_y
-  - option_to_screen
-  - option_to_world
-  - camera_set_x
-  - camera_set_y
-  - set_camera_position
-  - camera_position
-  - screen_center
-  - to_screen
-  - to_world
-  - to_screen_x
-  - to_screen_y
-  - to_screen
-  - screen_rectangle
-  - window_area
-  - to_world_x
-  - to_world_y
-  - rect_on_screen
-  - point_on_screen
-  - rect_in_window
-  - point_in_window
-  - move_camera_to
-  - move_camera_by
-  - center_camera_on
+description: See how the camera works, and how to draw to the different coordinate systems in your program.
 
 ---
 

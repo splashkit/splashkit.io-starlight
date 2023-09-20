@@ -1,16 +1,10 @@
 ---
-
 title: Loading Resources with Bundles
 date: 2018-06-05 10:00 UTC
 author: Andrew Cain
 author_url:
 tags: starter
-summary: |
-  Simplify the process of loading your program's resources using a resource bundle. This file lists the different resources you want loaded, which can then be loaded and freed as a group.
-related_funcs:
-  - load_resource_bundle
-  - free_resource_bundle
-
+description: Simplify the process of loading your program's resources using a resource bundle. This file lists the different resources you want loaded, which can then be loaded and freed as a group.
 ---
 
 
@@ -18,7 +12,7 @@ Games often require a large number of resources. With different levels, characte
 
 ### Bundle Contents
 
-Conceptually, a bundle is a collection of resources that can be loaded by SplashKit as a group. This is achieved by creating a bundle script that lists all of the resources that you want loaded, and then loading this bundle in your code by calling using the <%= link_to "Load Resource Bundle", "/api/resource-bundles/#load-resource-bundle" %>. You can then use the resources loaded, accessing them by name. Once you're done with a bundle you can release it from memory by calling <%= link_to "Free Resource Bundle", "/api/resource-bundles/#free-resource-bundle" %>. This releases all the resources loaded in the bundle from memory.
+Conceptually, a bundle is a collection of resources that can be loaded by SplashKit as a group. This is achieved by creating a bundle script that lists all of the resources that you want loaded, and then loading this bundle in your code by calling using the [Load Resource Bundle](/components/resource-bundles/#load-resource-bundle). You can then use the resources loaded, accessing them by name. Once you're done with a bundle you can release it from memory by calling [Free Resource Bundle](/components/resource-bundles/#free-resource-bundle). This releases all the resources loaded in the bundle from memory.
 
 The bundle scripts are located in the *Resources/bundles* folder. Each script is a text file that contains the details of the resources to load. Each line of the file describes a single resource, with comma separated fields. The first field contains the type of resource to load being one of the following:
 
@@ -36,7 +30,7 @@ Following the resource kind is the resources name and the associated filename fo
 
 Bitmap and font resources also require additional information.
 
-**BITMAP** can optionally be followed by bitmap cell details useful for animation (see <% link_to "Using Animations", "/articles/guides/tags/animations/animation/"%>). This is in the format: `BITMAP, name, filename, width, height, cellCols, cellRows, cellCount`. Once the bitmap is loaded the bundle will set the cell details from the information given.
+**BITMAP** can optionally be followed by bitmap cell details useful for animation  [Using Animations](/guides/animation/). This is in the format: `BITMAP, name, filename, width, height, cellCols, cellRows, cellCount`. Once the bitmap is loaded the bundle will set the cell details from the information given.
 
 **FONT** must be followed by the point size for the font. 
 

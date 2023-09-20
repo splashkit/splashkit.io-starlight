@@ -8,7 +8,7 @@ Splashkit's JSON library allows you to easily create or read JSON objects and ma
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components"; 
+ 
 
 ## Functions
 ##
@@ -18,8 +18,8 @@ import { Code } from "astro/components";
 
 This function is overloaded. The following versions exist:
 
-- [**Create Json** ()](/components/json/#create-json--1)
-- [**Create Json** (json_string: string )](/components/json/#create-json--2)
+- [**Create Json** ()](/components/sprites/#create-json--1)
+- [**Create Json** (json_string: string, )](/components/sprites/#create-json--2)
 
 :::
 
@@ -35,17 +35,25 @@ functions and procedures prefixed with `json_add_` and `json_read_`
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json create_json()`} lang="cpp" />
+```cpp
+json create_json()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Json SplashKit.CreateJson();
-public Json();`} lang="csharp" />
+```csharp
+public static Json SplashKit.CreateJson();
+public Json();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_json():`} lang="python" />
+```python
+def create_json():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateJson(): Json`} lang="pascal" />
+```pascal
+function CreateJson(): Json
+```
   </TabItem>
 </Tabs>
 
@@ -69,17 +77,25 @@ and procedures prefixed with `json_add_` and `json_read_`
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json create_json(string json_string)`} lang="cpp" />
+```cpp
+json create_json(string json_string)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Json SplashKit.CreateJson(string jsonString);
-public Json(string jsonString);`} lang="csharp" />
+```csharp
+public static Json SplashKit.CreateJson(string jsonString);
+public Json(string jsonString);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def create_json_from_string(json_string):`} lang="python" />
+```python
+def create_json_from_string(json_string):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function CreateJson(jsonString: String): Json`} lang="pascal" />
+```pascal
+function CreateJson(jsonString: String): Json
+```
   </TabItem>
 </Tabs>
 
@@ -97,17 +113,25 @@ Releases all of the [`JSON`](/components/json/#json) objects which have been loa
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_all_json()`} lang="cpp" />
+```cpp
+void free_all_json()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Json.FreeAllJson();
-public static void SplashKit.FreeAllJson();`} lang="csharp" />
+```csharp
+public static void Json.FreeAllJson();
+public static void SplashKit.FreeAllJson();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_all_json():`} lang="python" />
+```python
+def free_all_json():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeAllJson()`} lang="pascal" />
+```pascal
+procedure FreeAllJson()
+```
   </TabItem>
 </Tabs>
 
@@ -131,17 +155,25 @@ Frees the SplashKit resources associated with the [`JSON`](/components/json/#jso
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void free_json(json j)`} lang="cpp" />
+```cpp
+void free_json(json j)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.FreeJson();
-public static void SplashKit.FreeJson(Json j);`} lang="csharp" />
+```csharp
+public void Json.FreeJson();
+public static void SplashKit.FreeJson(Json j);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def free_json(j):`} lang="python" />
+```python
+def free_json(j):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure FreeJson(j: Json)`} lang="pascal" />
+```pascal
+procedure FreeJson(j: Json)
+```
   </TabItem>
 </Tabs>
 
@@ -165,17 +197,25 @@ Returns the count of keys in the top-level [`JSON`](/components/json/#json) obje
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int json_count_keys(json j)`} lang="cpp" />
+```cpp
+int json_count_keys(json j)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Json.JsonCountKeys();
-public static int SplashKit.JsonCountKeys(Json j);`} lang="csharp" />
+```csharp
+public int Json.JsonCountKeys();
+public static int SplashKit.JsonCountKeys(Json j);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_count_keys(j):`} lang="python" />
+```python
+def json_count_keys(j):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonCountKeys(j: Json): Integer`} lang="pascal" />
+```pascal
+function JsonCountKeys(j: Json): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -199,17 +239,25 @@ Converts a [`Color`](/components/types/#color) to a [`JSON`](/components/json/#j
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json json_from_color(color clr)`} lang="cpp" />
+```cpp
+json json_from_color(color clr)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Json Json.JsonFromColor(Color clr);
-public static Json SplashKit.JsonFromColor(Color clr);`} lang="csharp" />
+```csharp
+public static Json Json.JsonFromColor(Color clr);
+public static Json SplashKit.JsonFromColor(Color clr);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_from_color(clr):`} lang="python" />
+```python
+def json_from_color(clr):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonFromColor(clr: Color): Json`} lang="pascal" />
+```pascal
+function JsonFromColor(clr: Color): Json
+```
   </TabItem>
 </Tabs>
 
@@ -234,17 +282,25 @@ and loads the data into the returned [`JSON`](/components/json/#json) object.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json json_from_file(const string &filename)`} lang="cpp" />
+```cpp
+json json_from_file(const string &filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Json Json.JsonFromFile(string filename);
-public static Json SplashKit.JsonFromFile(string filename);`} lang="csharp" />
+```csharp
+public static Json Json.JsonFromFile(string filename);
+public static Json SplashKit.JsonFromFile(string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_from_file(filename):`} lang="python" />
+```python
+def json_from_file(filename):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonFromFile(const filename: String): Json`} lang="pascal" />
+```pascal
+function JsonFromFile(const filename: String): Json
+```
   </TabItem>
 </Tabs>
 
@@ -268,17 +324,25 @@ Reads a [`JSON`](/components/json/#json) object from a `String` in the JSON form
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json json_from_string(const string &j_string)`} lang="cpp" />
+```cpp
+json json_from_string(const string &j_string)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Json Json.JsonFromString(string jString);
-public static Json SplashKit.JsonFromString(string jString);`} lang="csharp" />
+```csharp
+public static Json Json.JsonFromString(string jString);
+public static Json SplashKit.JsonFromString(string jString);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_from_string(j_string):`} lang="python" />
+```python
+def json_from_string(j_string):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonFromString(const jString: String): Json`} lang="pascal" />
+```pascal
+function JsonFromString(const jString: String): Json
+```
   </TabItem>
 </Tabs>
 
@@ -303,17 +367,25 @@ Checks if the [`JSON`](/components/json/#json) object contains the given `String
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool json_has_key(json j, string key)`} lang="cpp" />
+```cpp
+bool json_has_key(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Json.JsonHasKey(string key);
-public static bool SplashKit.JsonHasKey(Json j, string key);`} lang="csharp" />
+```csharp
+public bool Json.JsonHasKey(string key);
+public static bool SplashKit.JsonHasKey(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_has_key(j, key):`} lang="python" />
+```python
+def json_has_key(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonHasKey(j: Json; key: String): Boolean`} lang="pascal" />
+```pascal
+function JsonHasKey(j: Json; key: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -324,10 +396,10 @@ public static bool SplashKit.JsonHasKey(Json j, string key);`} lang="csharp" />
 
 This function is overloaded. The following versions exist:
 
-- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--1)
-- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--2)
-- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--3)
-- [**Json Read Array** (j: json, key: string, out_result: vector )](/components/json/#json-read-array--4)
+- [**Json Read Array** (j: json, key: string, out_result: vector, )](/components/sprites/#json-read-array--1)
+- [**Json Read Array** (j: json, key: string, out_result: vector, )](/components/sprites/#json-read-array--2)
+- [**Json Read Array** (j: json, key: string, out_result: vector, )](/components/sprites/#json-read-array--3)
+- [**Json Read Array** (j: json, key: string, out_result: vector, )](/components/sprites/#json-read-array--4)
 
 :::
 
@@ -345,23 +417,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
 | key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
-| out_result | vector | The array which will be filled with the data stored for `String` key. |
+| out_result | `Vector` | The array which will be filled with the data stored for `String` key. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_read_array(json j, string key, vector<double> &out_result)`} lang="cpp" />
+```cpp
+void json_read_array(json j, string key, vector<double> &out_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonReadArray(string key, ref List<double> outResult);
-public static void SplashKit.JsonReadArray(Json j, string key, ref List<double> outResult);`} lang="csharp" />
+```csharp
+public void Json.JsonReadArray(string key, ref List<double> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<double> outResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_array_of_double(j, key, out_result):`} lang="python" />
+```python
+def json_read_array_of_double(j, key, out_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfDouble)`} lang="pascal" />
+```pascal
+procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfDouble)
+```
   </TabItem>
 </Tabs>
 
@@ -380,23 +460,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
 | key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
-| out_result | vector | The array which will be filled with the data stored for `String` key. |
+| out_result | `Vector` | The array which will be filled with the data stored for `String` key. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_read_array(json j, string key, vector<json> &out_result)`} lang="cpp" />
+```cpp
+void json_read_array(json j, string key, vector<json> &out_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonReadArray(string key, ref List<Json> outResult);
-public static void SplashKit.JsonReadArray(Json j, string key, ref List<Json> outResult);`} lang="csharp" />
+```csharp
+public void Json.JsonReadArray(string key, ref List<Json> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<Json> outResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_array_of_json(j, key, out_result):`} lang="python" />
+```python
+def json_read_array_of_json(j, key, out_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfJson)`} lang="pascal" />
+```pascal
+procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfJson)
+```
   </TabItem>
 </Tabs>
 
@@ -415,23 +503,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
 | key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
-| out_result | vector | The array which will be filled with the data stored for `String` key. |
+| out_result | `Vector` | The array which will be filled with the data stored for `String` key. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_read_array(json j, string key, vector<string> &out_result)`} lang="cpp" />
+```cpp
+void json_read_array(json j, string key, vector<string> &out_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonReadArray(string key, ref List<string> outResult);
-public static void SplashKit.JsonReadArray(Json j, string key, ref List<string> outResult);`} lang="csharp" />
+```csharp
+public void Json.JsonReadArray(string key, ref List<string> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<string> outResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_array_of_string(j, key, out_result):`} lang="python" />
+```python
+def json_read_array_of_string(j, key, out_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfString)`} lang="pascal" />
+```pascal
+procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfString)
+```
   </TabItem>
 </Tabs>
 
@@ -450,23 +546,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object from which data will be returned for the given key. |
 | key | `String` | The `String` key used to find data in the [`JSON`](/components/json/#json) object. |
-| out_result | vector | The array which will be filled with the data stored for `String` key. |
+| out_result | `Vector` | The array which will be filled with the data stored for `String` key. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_read_array(json j, string key, vector<bool> &out_result)`} lang="cpp" />
+```cpp
+void json_read_array(json j, string key, vector<bool> &out_result)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonReadArray(string key, ref List<bool> outResult);
-public static void SplashKit.JsonReadArray(Json j, string key, ref List<bool> outResult);`} lang="csharp" />
+```csharp
+public void Json.JsonReadArray(string key, ref List<bool> outResult);
+public static void SplashKit.JsonReadArray(Json j, string key, ref List<bool> outResult);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_array_of_bool(j, key, out_result):`} lang="python" />
+```python
+def json_read_array_of_bool(j, key, out_result):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfBoolean)`} lang="pascal" />
+```pascal
+procedure JsonReadArray(j: Json; key: String; var outResult: ArrayOfBoolean)
+```
   </TabItem>
 </Tabs>
 
@@ -491,17 +595,25 @@ Reads a `Boolean` value from the [`JSON`](/components/json/#json) object for the
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool json_read_bool(json j, string key)`} lang="cpp" />
+```cpp
+bool json_read_bool(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public bool Json.JsonReadBool(string key);
-public static bool SplashKit.JsonReadBool(Json j, string key);`} lang="csharp" />
+```csharp
+public bool Json.JsonReadBool(string key);
+public static bool SplashKit.JsonReadBool(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_bool(j, key):`} lang="python" />
+```python
+def json_read_bool(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadBool(j: Json; key: String): Boolean`} lang="pascal" />
+```pascal
+function JsonReadBool(j: Json; key: String): Boolean
+```
   </TabItem>
 </Tabs>
 
@@ -526,17 +638,25 @@ Reads a `Float` value from the [`JSON`](/components/json/#json) object for the g
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`float json_read_number(json j, string key)`} lang="cpp" />
+```cpp
+float json_read_number(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public float Json.JsonReadNumber(string key);
-public static float SplashKit.JsonReadNumber(Json j, string key);`} lang="csharp" />
+```csharp
+public float Json.JsonReadNumber(string key);
+public static float SplashKit.JsonReadNumber(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_number(j, key):`} lang="python" />
+```python
+def json_read_number(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadNumber(j: Json; key: String): Single`} lang="pascal" />
+```pascal
+function JsonReadNumber(j: Json; key: String): Single
+```
   </TabItem>
 </Tabs>
 
@@ -561,17 +681,25 @@ Reads a `Double` value from the [`JSON`](/components/json/#json) object for the 
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`double json_read_number_as_double(json j, string key)`} lang="cpp" />
+```cpp
+double json_read_number_as_double(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public double Json.JsonReadNumberAsDouble(string key);
-public static double SplashKit.JsonReadNumberAsDouble(Json j, string key);`} lang="csharp" />
+```csharp
+public double Json.JsonReadNumberAsDouble(string key);
+public static double SplashKit.JsonReadNumberAsDouble(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_number_as_double(j, key):`} lang="python" />
+```python
+def json_read_number_as_double(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadNumberAsDouble(j: Json; key: String): Double`} lang="pascal" />
+```pascal
+function JsonReadNumberAsDouble(j: Json; key: String): Double
+```
   </TabItem>
 </Tabs>
 
@@ -596,17 +724,25 @@ Reads a `integer` value from the [`JSON`](/components/json/#json) object for the
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int json_read_number_as_int(json j, string key)`} lang="cpp" />
+```cpp
+int json_read_number_as_int(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public int Json.JsonReadNumberAsInt(string key);
-public static int SplashKit.JsonReadNumberAsInt(Json j, string key);`} lang="csharp" />
+```csharp
+public int Json.JsonReadNumberAsInt(string key);
+public static int SplashKit.JsonReadNumberAsInt(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_number_as_int(j, key):`} lang="python" />
+```python
+def json_read_number_as_int(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadNumberAsInt(j: Json; key: String): Integer`} lang="pascal" />
+```pascal
+function JsonReadNumberAsInt(j: Json; key: String): Integer
+```
   </TabItem>
 </Tabs>
 
@@ -631,17 +767,25 @@ Reads a [`JSON`](/components/json/#json) object value from the [`JSON`](/compone
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`json json_read_object(json j, string key)`} lang="cpp" />
+```cpp
+json json_read_object(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public Json Json.JsonReadObject(string key);
-public static Json SplashKit.JsonReadObject(Json j, string key);`} lang="csharp" />
+```csharp
+public Json Json.JsonReadObject(string key);
+public static Json SplashKit.JsonReadObject(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_object(j, key):`} lang="python" />
+```python
+def json_read_object(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadObject(j: Json; key: String): Json`} lang="pascal" />
+```pascal
+function JsonReadObject(j: Json; key: String): Json
+```
   </TabItem>
 </Tabs>
 
@@ -666,17 +810,25 @@ Reads a `String` value from the [`JSON`](/components/json/#json) object for the 
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string json_read_string(json j, string key)`} lang="cpp" />
+```cpp
+string json_read_string(json j, string key)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public string Json.JsonReadString(string key);
-public static string SplashKit.JsonReadString(Json j, string key);`} lang="csharp" />
+```csharp
+public string Json.JsonReadString(string key);
+public static string SplashKit.JsonReadString(Json j, string key);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_read_string(j, key):`} lang="python" />
+```python
+def json_read_string(j, key):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonReadString(j: Json; key: String): String`} lang="pascal" />
+```pascal
+function JsonReadString(j: Json; key: String): String
+```
   </TabItem>
 </Tabs>
 
@@ -687,10 +839,10 @@ public static string SplashKit.JsonReadString(Json j, string key);`} lang="cshar
 
 This function is overloaded. The following versions exist:
 
-- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--1)
-- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--2)
-- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--3)
-- [**Json Set Array** (j: json, key: string, value: vector )](/components/json/#json-set-array--4)
+- [**Json Set Array** (j: json, key: string, value: vector, )](/components/sprites/#json-set-array--1)
+- [**Json Set Array** (j: json, key: string, value: vector, )](/components/sprites/#json-set-array--2)
+- [**Json Set Array** (j: json, key: string, value: vector, )](/components/sprites/#json-set-array--3)
+- [**Json Set Array** (j: json, key: string, value: vector, )](/components/sprites/#json-set-array--4)
 
 :::
 
@@ -708,23 +860,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
 | key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
-| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+| value | `Vector` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_array(json j, string key, vector<string> value)`} lang="cpp" />
+```cpp
+void json_set_array(json j, string key, vector<string> value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetArray(string key, List<string> value);
-public static void SplashKit.JsonSetArray(Json j, string key, List<string> value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetArray(string key, List<string> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<string> value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_array_of_string(j, key, value):`} lang="python" />
+```python
+def json_set_array_of_string(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfString)`} lang="pascal" />
+```pascal
+procedure JsonSetArray(j: Json; key: String; value: ArrayOfString)
+```
   </TabItem>
 </Tabs>
 
@@ -743,23 +903,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
 | key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
-| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+| value | `Vector` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_array(json j, string key, vector<double> value)`} lang="cpp" />
+```cpp
+void json_set_array(json j, string key, vector<double> value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetArray(string key, List<double> value);
-public static void SplashKit.JsonSetArray(Json j, string key, List<double> value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetArray(string key, List<double> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<double> value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_array_of_double(j, key, value):`} lang="python" />
+```python
+def json_set_array_of_double(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfDouble)`} lang="pascal" />
+```pascal
+procedure JsonSetArray(j: Json; key: String; value: ArrayOfDouble)
+```
   </TabItem>
 </Tabs>
 
@@ -778,23 +946,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
 | key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
-| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+| value | `Vector` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_array(json j, string key, vector<bool> value)`} lang="cpp" />
+```cpp
+void json_set_array(json j, string key, vector<bool> value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetArray(string key, List<bool> value);
-public static void SplashKit.JsonSetArray(Json j, string key, List<bool> value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetArray(string key, List<bool> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<bool> value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_array_of_bool(j, key, value):`} lang="python" />
+```python
+def json_set_array_of_bool(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfBoolean)`} lang="pascal" />
+```pascal
+procedure JsonSetArray(j: Json; key: String; value: ArrayOfBoolean)
+```
   </TabItem>
 </Tabs>
 
@@ -813,23 +989,31 @@ the given `String` key.
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | j | [`JSON`](/components/json/#json) | The [`JSON`](/components/json/#json) object where data will be inserted for the given key. |
 | key | `String` | The `String` key where data will be stored in the [`JSON`](/components/json/#json) object. |
-| value | vector | The value to be inserted into the [`JSON`](/components/json/#json) object. |
+| value | `Vector` | The value to be inserted into the [`JSON`](/components/json/#json) object. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_array(json j, string key, vector<json> value)`} lang="cpp" />
+```cpp
+void json_set_array(json j, string key, vector<json> value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetArray(string key, List<Json> value);
-public static void SplashKit.JsonSetArray(Json j, string key, List<Json> value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetArray(string key, List<Json> value);
+public static void SplashKit.JsonSetArray(Json j, string key, List<Json> value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_array_of_json(j, key, value):`} lang="python" />
+```python
+def json_set_array_of_json(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetArray(j: Json; key: String; value: ArrayOfJson)`} lang="pascal" />
+```pascal
+procedure JsonSetArray(j: Json; key: String; value: ArrayOfJson)
+```
   </TabItem>
 </Tabs>
 
@@ -855,17 +1039,25 @@ Adds a `Boolean` value to the [`JSON`](/components/json/#json) object for the gi
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_bool(json j, string key, bool value)`} lang="cpp" />
+```cpp
+void json_set_bool(json j, string key, bool value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetBool(string key, bool value);
-public static void SplashKit.JsonSetBool(Json j, string key, bool value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetBool(string key, bool value);
+public static void SplashKit.JsonSetBool(Json j, string key, bool value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_bool(j, key, value):`} lang="python" />
+```python
+def json_set_bool(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetBool(j: Json; key: String; value: Boolean)`} lang="pascal" />
+```pascal
+procedure JsonSetBool(j: Json; key: String; value: Boolean)
+```
   </TabItem>
 </Tabs>
 
@@ -876,9 +1068,9 @@ public static void SplashKit.JsonSetBool(Json j, string key, bool value);`} lang
 
 This function is overloaded. The following versions exist:
 
-- [**Json Set Number** (j: json, key: string, value: int )](/components/json/#json-set-number--1)
-- [**Json Set Number** (j: json, key: string, value: double )](/components/json/#json-set-number--2)
-- [**Json Set Number** (j: json, key: string, value: float )](/components/json/#json-set-number--3)
+- [**Json Set Number** (j: json, key: string, value: int, )](/components/sprites/#json-set-number--1)
+- [**Json Set Number** (j: json, key: string, value: double, )](/components/sprites/#json-set-number--2)
+- [**Json Set Number** (j: json, key: string, value: float, )](/components/sprites/#json-set-number--3)
 
 :::
 
@@ -901,17 +1093,25 @@ Adds an `Integer` value to the [`JSON`](/components/json/#json) object for the g
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_number(json j, string key, int value)`} lang="cpp" />
+```cpp
+void json_set_number(json j, string key, int value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetNumber(string key, int value);
-public static void SplashKit.JsonSetNumber(Json j, string key, int value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetNumber(string key, int value);
+public static void SplashKit.JsonSetNumber(Json j, string key, int value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_number_integer(j, key, value):`} lang="python" />
+```python
+def json_set_number_integer(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Integer)`} lang="pascal" />
+```pascal
+procedure JsonSetNumber(j: Json; key: String; value: Integer)
+```
   </TabItem>
 </Tabs>
 
@@ -935,17 +1135,25 @@ Adds a `Double` value to the [`JSON`](/components/json/#json) object for the giv
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_number(json j, string key, double value)`} lang="cpp" />
+```cpp
+void json_set_number(json j, string key, double value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetNumber(string key, double value);
-public static void SplashKit.JsonSetNumber(Json j, string key, double value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetNumber(string key, double value);
+public static void SplashKit.JsonSetNumber(Json j, string key, double value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_number_double(j, key, value):`} lang="python" />
+```python
+def json_set_number_double(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Double)`} lang="pascal" />
+```pascal
+procedure JsonSetNumber(j: Json; key: String; value: Double)
+```
   </TabItem>
 </Tabs>
 
@@ -969,17 +1177,25 @@ Adds a `Float` value to the [`JSON`](/components/json/#json) object for the give
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_number(json j, string key, float value)`} lang="cpp" />
+```cpp
+void json_set_number(json j, string key, float value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetNumber(string key, float value);
-public static void SplashKit.JsonSetNumber(Json j, string key, float value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetNumber(string key, float value);
+public static void SplashKit.JsonSetNumber(Json j, string key, float value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_number_float(j, key, value):`} lang="python" />
+```python
+def json_set_number_float(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetNumber(j: Json; key: String; value: Single)`} lang="pascal" />
+```pascal
+procedure JsonSetNumber(j: Json; key: String; value: Single)
+```
   </TabItem>
 </Tabs>
 
@@ -1005,17 +1221,25 @@ Adds a [`JSON`](/components/json/#json) object to the [`JSON`](/components/json/
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_object(json j, string key, json obj)`} lang="cpp" />
+```cpp
+void json_set_object(json j, string key, json obj)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetObject(string key, Json obj);
-public static void SplashKit.JsonSetObject(Json j, string key, Json obj);`} lang="csharp" />
+```csharp
+public void Json.JsonSetObject(string key, Json obj);
+public static void SplashKit.JsonSetObject(Json j, string key, Json obj);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_object(j, key, obj):`} lang="python" />
+```python
+def json_set_object(j, key, obj):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetObject(j: Json; key: String; obj: Json)`} lang="pascal" />
+```pascal
+procedure JsonSetObject(j: Json; key: String; obj: Json)
+```
   </TabItem>
 </Tabs>
 
@@ -1041,17 +1265,25 @@ Adds a `String` value to the [`JSON`](/components/json/#json) object for the giv
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_set_string(json j, string key, string value)`} lang="cpp" />
+```cpp
+void json_set_string(json j, string key, string value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public void Json.JsonSetString(string key, string value);
-public static void SplashKit.JsonSetString(Json j, string key, string value);`} lang="csharp" />
+```csharp
+public void Json.JsonSetString(string key, string value);
+public static void SplashKit.JsonSetString(Json j, string key, string value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_set_string(j, key, value):`} lang="python" />
+```python
+def json_set_string(j, key, value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonSetString(j: Json; key: String; value: String)`} lang="pascal" />
+```pascal
+procedure JsonSetString(j: Json; key: String; value: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1075,17 +1307,25 @@ Converts a [`JSON`](/components/json/#json) object to a [`Color`](/components/ty
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`color json_to_color(json j)`} lang="cpp" />
+```cpp
+color json_to_color(json j)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static Color Json.JsonToColor(Json j);
-public static Color SplashKit.JsonToColor(Json j);`} lang="csharp" />
+```csharp
+public static Color Json.JsonToColor(Json j);
+public static Color SplashKit.JsonToColor(Json j);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_to_color(j):`} lang="python" />
+```python
+def json_to_color(j):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonToColor(j: Json): Color`} lang="pascal" />
+```pascal
+function JsonToColor(j: Json): Color
+```
   </TabItem>
 </Tabs>
 
@@ -1110,17 +1350,25 @@ Writes the [`JSON`](/components/json/#json) object to a JSON string stored in `R
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void json_to_file(json j, const string &filename)`} lang="cpp" />
+```cpp
+void json_to_file(json j, const string &filename)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Json.JsonToFile(Json j, string filename);
-public static void SplashKit.JsonToFile(Json j, string filename);`} lang="csharp" />
+```csharp
+public static void Json.JsonToFile(Json j, string filename);
+public static void SplashKit.JsonToFile(Json j, string filename);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_to_file(j, filename):`} lang="python" />
+```python
+def json_to_file(j, filename):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure JsonToFile(j: Json; const filename: String)`} lang="pascal" />
+```pascal
+procedure JsonToFile(j: Json; const filename: String)
+```
   </TabItem>
 </Tabs>
 
@@ -1144,17 +1392,25 @@ Converts and returns the [`JSON`](/components/json/#json) object as a `String`.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string json_to_string(json j)`} lang="cpp" />
+```cpp
+string json_to_string(json j)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Json.JsonToString(Json j);
-public static string SplashKit.JsonToString(Json j);`} lang="csharp" />
+```csharp
+public static string Json.JsonToString(Json j);
+public static string SplashKit.JsonToString(Json j);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def json_to_string(j):`} lang="python" />
+```python
+def json_to_string(j):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function JsonToString(j: Json): String`} lang="pascal" />
+```pascal
+function JsonToString(j: Json): String
+```
   </TabItem>
 </Tabs>
 

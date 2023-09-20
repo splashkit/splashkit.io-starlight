@@ -8,15 +8,15 @@ SplashKit Terminal allows you to read and write values to the terminal in a cons
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-import { Code } from "astro/components";
+
 
 ## Functions
 ##
-
 ## Activate Advanced Terminal [🔗](#activate-advanced-terminal)
 
+ 
 Start using the advanced terminal. Once you call this you will need
-to make sure you call [`Refresh Terminal`](/components/terminal/#refresh-terminal) to show anything you have
+to make sure you call `refresh_terminal` to show anything you have
 written. This will allow use of colors, bold, positioning, and other
 advanced options.
 
@@ -28,23 +28,32 @@ advanced options.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void activate_advanced_terminal()`} lang="cpp" />
+```cpp
+void activate_advanced_terminal()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.ActivateAdvancedTerminal();
-public static void SplashKit.ActivateAdvancedTerminal();`} lang="csharp" />
+```csharp
+public static void Terminal.ActivateAdvancedTerminal();
+public static void SplashKit.ActivateAdvancedTerminal();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def activate_advanced_terminal():`} lang="python" />
+```python
+def activate_advanced_terminal():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ActivateAdvancedTerminal()`} lang="pascal" />
+```pascal
+procedure ActivateAdvancedTerminal()
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Advanced Terminal Active [🔗](#advanced-terminal-active)
 
+ 
 Is the terminal currently in advanced mode?
 
 **Return Type**
@@ -55,25 +64,34 @@ Is the terminal currently in advanced mode?
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`bool advanced_terminal_active()`} lang="cpp" />
+```cpp
+bool advanced_terminal_active()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static bool Terminal.AdvancedTerminalActive();
-public static bool SplashKit.AdvancedTerminalActive();`} lang="csharp" />
+```csharp
+public static bool Terminal.AdvancedTerminalActive();
+public static bool SplashKit.AdvancedTerminalActive();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def advanced_terminal_active():`} lang="python" />
+```python
+def advanced_terminal_active():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function AdvancedTerminalActive(): Boolean`} lang="pascal" />
+```pascal
+function AdvancedTerminalActive(): Boolean
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Clear Terminal [🔗](#clear-terminal)
 
+ 
 In advanced mode, this will clear the terminal to the background color
-you set in [`Set Terminal Color`](/components/terminal/#set-terminal-color).
+you set in `set_terminal_color`.
 
 **Return Type**
 
@@ -83,26 +101,35 @@ you set in [`Set Terminal Color`](/components/terminal/#set-terminal-color).
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void clear_terminal()`} lang="cpp" />
+```cpp
+void clear_terminal()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.ClearTerminal();
-public static void SplashKit.ClearTerminal();`} lang="csharp" />
+```csharp
+public static void Terminal.ClearTerminal();
+public static void SplashKit.ClearTerminal();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def clear_terminal():`} lang="python" />
+```python
+def clear_terminal():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure ClearTerminal()`} lang="pascal" />
+```pascal
+procedure ClearTerminal()
+```
   </TabItem>
 </Tabs>
 
 ---
 ## End Advanced Terminal [🔗](#end-advanced-terminal)
 
+ 
 Finish using advanced mode. The existing terminal display will be lost
 and the user will see what was in the terminal before you called
-[`Activate Advanced Terminal`](/components/terminal/#activate-advanced-terminal).
+`activate_advanced_terminal`.
 
 **Return Type**
 
@@ -112,26 +139,35 @@ and the user will see what was in the terminal before you called
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void end_advanced_terminal()`} lang="cpp" />
+```cpp
+void end_advanced_terminal()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.EndAdvancedTerminal();
-public static void SplashKit.EndAdvancedTerminal();`} lang="csharp" />
+```csharp
+public static void Terminal.EndAdvancedTerminal();
+public static void SplashKit.EndAdvancedTerminal();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def end_advanced_terminal():`} lang="python" />
+```python
+def end_advanced_terminal():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure EndAdvancedTerminal()`} lang="pascal" />
+```pascal
+procedure EndAdvancedTerminal()
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Move Cursor To [🔗](#move-cursor-to)
 
+ 
 In advanced mode, this will move the cursor to a given col, row of the
-terminal. You can check the terminal size using [`Terminal Width`](/components/terminal/#terminal-width) and
-[`Terminal Height`](/components/terminal/#terminal-height). If you try to move outside this bounds then then move
+terminal. You can check the terminal size using `terminal_width` and
+`terminal_height`. If you try to move outside this bounds then then move
 will not occur.
 
 **Return Type**
@@ -149,26 +185,35 @@ will not occur.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void move_cursor_to(int x, int y)`} lang="cpp" />
+```cpp
+void move_cursor_to(int x, int y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.MoveCursorTo(int x, int y);
-public static void SplashKit.MoveCursorTo(int x, int y);`} lang="csharp" />
+```csharp
+public static void Terminal.MoveCursorTo(int x, int y);
+public static void SplashKit.MoveCursorTo(int x, int y);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def move_cursor_to(x, y):`} lang="python" />
+```python
+def move_cursor_to(x, y):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure MoveCursorTo(x: Integer; y: Integer)`} lang="pascal" />
+```pascal
+procedure MoveCursorTo(x: Integer; y: Integer)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Read Char [🔗](#read-char)
 
+ 
 Get a single character input by the user. This works in both standard and
 advanced modes. In advanced mode, you can set if the character should
-also be echoed to the terminal using [`Set Terminal Echo Input`](/components/terminal/#set-terminal-echo-input).
+also be echoed to the terminal using `set_terminal_echo_input`.
 
 **Return Type**
 
@@ -178,23 +223,32 @@ also be echoed to the terminal using [`Set Terminal Echo Input`](/components/ter
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`char read_char()`} lang="cpp" />
+```cpp
+char read_char()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static char Terminal.ReadChar();
-public static char SplashKit.ReadChar();`} lang="csharp" />
+```csharp
+public static char Terminal.ReadChar();
+public static char SplashKit.ReadChar();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def read_char():`} lang="python" />
+```python
+def read_char():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function ReadChar(): Char`} lang="pascal" />
+```pascal
+function ReadChar(): Char
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Read Line [🔗](#read-line)
 
+ 
 Read a line of text from the terminal. The user will see the text as
 they type it.
 
@@ -206,23 +260,32 @@ they type it.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`string read_line()`} lang="cpp" />
+```cpp
+string read_line()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static string Terminal.ReadLine();
-public static string SplashKit.ReadLine();`} lang="csharp" />
+```csharp
+public static string Terminal.ReadLine();
+public static string SplashKit.ReadLine();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def read_line():`} lang="python" />
+```python
+def read_line():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function ReadLine(): String`} lang="pascal" />
+```pascal
+function ReadLine(): String
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Refresh Terminal [🔗](#refresh-terminal)
 
+ 
 In advanced mode, this will display what has been written to the
 terminal. You need to call this for anything to be shown in advanced
 mode.
@@ -235,23 +298,32 @@ mode.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void refresh_terminal()`} lang="cpp" />
+```cpp
+void refresh_terminal()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.RefreshTerminal();
-public static void SplashKit.RefreshTerminal();`} lang="csharp" />
+```csharp
+public static void Terminal.RefreshTerminal();
+public static void SplashKit.RefreshTerminal();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def refresh_terminal():`} lang="python" />
+```python
+def refresh_terminal():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure RefreshTerminal()`} lang="pascal" />
+```pascal
+procedure RefreshTerminal()
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Set Terminal Bold [🔗](#set-terminal-bold)
 
+ 
 In advanced mode, this allows you to set if the text should draw as bold.
 
 **Return Type**
@@ -268,23 +340,32 @@ In advanced mode, this allows you to set if the text should draw as bold.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void set_terminal_bold(bool value)`} lang="cpp" />
+```cpp
+void set_terminal_bold(bool value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.SetTerminalBold(bool value);
-public static void SplashKit.SetTerminalBold(bool value);`} lang="csharp" />
+```csharp
+public static void Terminal.SetTerminalBold(bool value);
+public static void SplashKit.SetTerminalBold(bool value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def set_terminal_bold(value):`} lang="python" />
+```python
+def set_terminal_bold(value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SetTerminalBold(value: Boolean)`} lang="pascal" />
+```pascal
+procedure SetTerminalBold(value: Boolean)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Set Terminal Colors [🔗](#set-terminal-colors)
 
+ 
 In advanced mode this allows you to set the color of the foreground and
 the background. The foreground is the color of the text.
 
@@ -293,38 +374,52 @@ Note that only the following colors are guaranteed to work on all
 Terminals (others may work):
 
 
-- [`Color Black`](/components/color/#color-black) 
+-  `color_black`
 
-- [`Color Dark Gray`](/components/color/#color-dark-gray) 
 
-- [`Color Gray`](/components/color/#color-gray) 
+-  `color_dark_gray`
 
-- [`Color White`](/components/color/#color-white) 
 
-- [`Color Red`](/components/color/#color-red) 
+-  `color_gray`
 
-- [`Color Dark Red`](/components/color/#color-dark-red) 
 
-- [`Color Green`](/components/color/#color-green) 
+-  `color_white`
 
-- [`Color Dark Green`](/components/color/#color-dark-green) 
 
-- [`Color Blue`](/components/color/#color-blue) 
+-  `color_red`
 
-- [`Color Dark Blue`](/components/color/#color-dark-blue) 
 
-- [`Color Cyan`](/components/color/#color-cyan) 
+-  `color_dark_red`
 
-- [`Color Dark Cyan`](/components/color/#color-dark-cyan) 
 
-- [`Color Light Yellow`](/components/color/#color-light-yellow) 
+-  `color_green`
 
-- [`Color Yellow`](/components/color/#color-yellow) 
 
-- [`Color Magenta`](/components/color/#color-magenta)
+-  `color_dark_green`
 
-- [`Color Dark Magenta`](/components/color/#color-dark-magenta) 
 
+-  `color_blue`
+
+
+-  `color_dark_blue`
+
+
+-  `color_cyan`
+
+
+-  `color_dark_cyan`
+
+
+-  `color_light_yellow`
+
+
+-  `color_yellow`
+
+
+-  `color_magenta`
+
+
+-  `color_dark_magenta`
 
 **Return Type**
 
@@ -334,31 +429,40 @@ Terminals (others may work):
 
 | Name   | Type                                               | Description                                                                        |
 | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| foreground | [Color](/components/types/#color) | The color of text that is drawn. |
-| background | [Color](/components/types/#color) | The color of the background behind drawn text. |
+| foreground | [`Color`](/components/types/#color) | The color of text that is drawn. |
+| background | [`Color`](/components/types/#color) | The color of the background behind drawn text. |
 
 **Signatures**
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void set_terminal_colors(color foreground, color background)`} lang="cpp" />
+```cpp
+void set_terminal_colors(color foreground, color background)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.SetTerminalColors(Color foreground, Color background);
-public static void SplashKit.SetTerminalColors(Color foreground, Color background);`} lang="csharp" />
+```csharp
+public static void Terminal.SetTerminalColors(Color foreground, Color background);
+public static void SplashKit.SetTerminalColors(Color foreground, Color background);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def set_terminal_colors(foreground, background):`} lang="python" />
+```python
+def set_terminal_colors(foreground, background):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SetTerminalColors(foreground: Color; background: Color)`} lang="pascal" />
+```pascal
+procedure SetTerminalColors(foreground: Color; background: Color)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Set Terminal Echo Input [🔗](#set-terminal-echo-input)
 
-In advanced mode, this allows you to stop text read with [`Read Character`](/components/terminal/#read-char)
+ 
+In advanced mode, this allows you to stop text read with `read_char`
 appearing on the terminal. You can use this for reading passwords, or to
 control what is written.
 
@@ -376,23 +480,32 @@ control what is written.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void set_terminal_echo_input(bool value)`} lang="cpp" />
+```cpp
+void set_terminal_echo_input(bool value)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.SetTerminalEchoInput(bool value);
-public static void SplashKit.SetTerminalEchoInput(bool value);`} lang="csharp" />
+```csharp
+public static void Terminal.SetTerminalEchoInput(bool value);
+public static void SplashKit.SetTerminalEchoInput(bool value);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def set_terminal_echo_input(value):`} lang="python" />
+```python
+def set_terminal_echo_input(value):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure SetTerminalEchoInput(value: Boolean)`} lang="pascal" />
+```pascal
+procedure SetTerminalEchoInput(value: Boolean)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Terminal Height [🔗](#terminal-height)
 
+ 
 In advanced mode, this gives you the number of rows in the terminal.
 
 **Return Type**
@@ -403,23 +516,32 @@ In advanced mode, this gives you the number of rows in the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int terminal_height()`} lang="cpp" />
+```cpp
+int terminal_height()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int Terminal.TerminalHeight();
-public static int SplashKit.TerminalHeight();`} lang="csharp" />
+```csharp
+public static int Terminal.TerminalHeight();
+public static int SplashKit.TerminalHeight();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def terminal_height():`} lang="python" />
+```python
+def terminal_height():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TerminalHeight(): Integer`} lang="pascal" />
+```pascal
+function TerminalHeight(): Integer
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Terminal Width [🔗](#terminal-width)
 
+ 
 In advanced mode, this gives you the number of columns in the terminal.
 
 **Return Type**
@@ -430,37 +552,42 @@ In advanced mode, this gives you the number of columns in the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`int terminal_width()`} lang="cpp" />
+```cpp
+int terminal_width()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static int Terminal.TerminalWidth();
-public static int SplashKit.TerminalWidth();`} lang="csharp" />
+```csharp
+public static int Terminal.TerminalWidth();
+public static int SplashKit.TerminalWidth();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def terminal_width():`} lang="python" />
+```python
+def terminal_width():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`function TerminalWidth(): Integer`} lang="pascal" />
+```pascal
+function TerminalWidth(): Integer
+```
   </TabItem>
 </Tabs>
 
 ---
-
 ## Write [🧬](#group-write)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Write** (data: `Double`)](/components/terminal/#write--1)
+- [**Write** (data: double, )](/components/sprites/#write--1)
+- [**Write** (data: int, )](/components/sprites/#write--2)
+- [**Write** (text: string, )](/components/sprites/#write--3)
 
-- [**Write** (data: `Integer`)](/components/terminal/#write--2)
-
-- [**Write** (text: `String`)](/components/terminal/#write--3)
 :::
----
 
-
-### Write [🤖](#write--1)
-
+### Write [🤖](#write--1) 
 Write the passed in data to the terminal.
 
 **Return Type**
@@ -477,23 +604,30 @@ Write the passed in data to the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write(double data)`} lang="cpp" />
+```cpp
+void write(double data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.Write(double data);
-public static void SplashKit.Write(double data);`} lang="csharp" />
+```csharp
+public static void Terminal.Write(double data);
+public static void SplashKit.Write(double data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_double(data):`} lang="python" />
+```python
+def write_double(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure Write(data: Double)`} lang="pascal" />
+```pascal
+procedure Write(data: Double)
+```
   </TabItem>
 </Tabs>
 
 ---
-### Write [🤖](#write--2)
-
+### Write [🤖](#write--2) 
 Write the passed in data to the terminal.
 
 **Return Type**
@@ -510,23 +644,30 @@ Write the passed in data to the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write(int data)`} lang="cpp" />
+```cpp
+void write(int data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.Write(int data);
-public static void SplashKit.Write(int data);`} lang="csharp" />
+```csharp
+public static void Terminal.Write(int data);
+public static void SplashKit.Write(int data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_int(data):`} lang="python" />
+```python
+def write_int(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure Write(data: Integer)`} lang="pascal" />
+```pascal
+procedure Write(data: Integer)
+```
   </TabItem>
 </Tabs>
 
 ---
-### Write [🤖](#write--3)
-
+### Write [🤖](#write--3) 
 Write the supplied text to the Terminal.
 
 **Return Type**
@@ -543,23 +684,32 @@ Write the supplied text to the Terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write(string text)`} lang="cpp" />
+```cpp
+void write(string text)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.Write(string text);
-public static void SplashKit.Write(string text);`} lang="csharp" />
+```csharp
+public static void Terminal.Write(string text);
+public static void SplashKit.Write(string text);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write(text):`} lang="python" />
+```python
+def write(text):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure Write(text: String)`} lang="pascal" />
+```pascal
+procedure Write(text: String)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Write At [🔗](#write-at)
 
+ 
 In advanced mode, this will write the supplied text at the indicated
 column and row.
 
@@ -579,38 +729,43 @@ column and row.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write_at(string text, int x, int y)`} lang="cpp" />
+```cpp
+void write_at(string text, int x, int y)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.WriteAt(string text, int x, int y);
-public static void SplashKit.WriteAt(string text, int x, int y);`} lang="csharp" />
+```csharp
+public static void Terminal.WriteAt(string text, int x, int y);
+public static void SplashKit.WriteAt(string text, int x, int y);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_at(text, x, y):`} lang="python" />
+```python
+def write_at(text, x, y):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure WriteAt(text: String; x: Integer; y: Integer)`} lang="pascal" />
+```pascal
+procedure WriteAt(text: String; x: Integer; y: Integer)
+```
   </TabItem>
 </Tabs>
 
 ---
 ## Write Line [🧬](#group-write-line)
+
 :::note
+
 This function is overloaded. The following versions exist:
 
-- [**Write Line**](/components/terminal/#write-line--1)
+- [**Write Line** ()](/components/sprites/#write-line--1)
+- [**Write Line** (data: double, )](/components/sprites/#write-line--2)
+- [**Write Line** (data: int, )](/components/sprites/#write-line--3)
+- [**Write Line** (line: string, )](/components/sprites/#write-line--4)
 
-- [**Write Line** (data: `Double`)](/components/terminal/#write-line-2)
-
-- [**Write Line** (data: `Integer`)](/components/terminal/#write-line--3)
-
-- [**Write Line** (line: `String`)](/components/terminal/#write--4)
 :::
----
 
-
-### Write Line [🤖](#write-line--1)
-
+### Write Line [🤖](#write-line--1) 
 Move to the next line/row of the terminal.
 
 **Return Type**
@@ -621,23 +776,30 @@ Move to the next line/row of the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write_line()`} lang="cpp" />
+```cpp
+void write_line()
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.WriteLine();
-public static void SplashKit.WriteLine();`} lang="csharp" />
+```csharp
+public static void Terminal.WriteLine();
+public static void SplashKit.WriteLine();
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_line_empty():`} lang="python" />
+```python
+def write_line_empty():
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure WriteLine()`} lang="pascal" />
+```pascal
+procedure WriteLine()
+```
   </TabItem>
 </Tabs>
 
 ---
-### Write Line [🤖](#write-line--2)
-
+### Write Line [🤖](#write-line--2) 
 Write the passed in data, then move to the next line/row of the terminal.
 
 **Return Type**
@@ -654,23 +816,30 @@ Write the passed in data, then move to the next line/row of the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write_line(double data)`} lang="cpp" />
+```cpp
+void write_line(double data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.WriteLine(double data);
-public static void SplashKit.WriteLine(double data);`} lang="csharp" />
+```csharp
+public static void Terminal.WriteLine(double data);
+public static void SplashKit.WriteLine(double data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_line_double(data):`} lang="python" />
+```python
+def write_line_double(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure WriteLine(data: Double)`} lang="pascal" />
+```pascal
+procedure WriteLine(data: Double)
+```
   </TabItem>
 </Tabs>
 
 ---
-### Write Line [🤖](#write-line--3)
-
+### Write Line [🤖](#write-line--3) 
 Write the passed in data, then move to the next line/row of the terminal.
 
 **Return Type**
@@ -687,23 +856,30 @@ Write the passed in data, then move to the next line/row of the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write_line(int data)`} lang="cpp" />
+```cpp
+void write_line(int data)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.WriteLine(int data);
-public static void SplashKit.WriteLine(int data);`} lang="csharp" />
+```csharp
+public static void Terminal.WriteLine(int data);
+public static void SplashKit.WriteLine(int data);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_line_int(data):`} lang="python" />
+```python
+def write_line_int(data):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure WriteLine(data: Integer)`} lang="pascal" />
+```pascal
+procedure WriteLine(data: Integer)
+```
   </TabItem>
 </Tabs>
 
 ---
-### Write Line [🔗](#write-line--4)
-
+### Write Line [🤖](#write-line--4) 
 Write the passed in text, then move to the next line/row of the terminal.
 
 **Return Type**
@@ -720,18 +896,27 @@ Write the passed in text, then move to the next line/row of the terminal.
 
 <Tabs>
   <TabItem label="C++">
-    <Code code={`void write_line(string line)`} lang="cpp" />
+```cpp
+void write_line(string line)
+```
   </TabItem>
   <TabItem label="C#">
-    <Code code={`public static void Terminal.WriteLine(string line);
-public static void SplashKit.WriteLine(string line);`} lang="csharp" />
+```csharp
+public static void Terminal.WriteLine(string line);
+public static void SplashKit.WriteLine(string line);
+```
   </TabItem>
   <TabItem label="Python">
-    <Code code={`def write_line(line):`} lang="python" />
+```python
+def write_line(line):
+```
   </TabItem>
   <TabItem label="Pascal">
-    <Code code={`procedure WriteLine(line: String)`} lang="pascal" />
+```pascal
+procedure WriteLine(line: String)
+```
   </TabItem>
 </Tabs>
 
 ---
+

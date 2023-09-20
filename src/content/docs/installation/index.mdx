@@ -1,9 +1,13 @@
 ---
 title: Guide
 description: A guide on installing Splashkit SDK
+
 ---
 
 import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+import { ScriptComp } from '../../../assets/ScriptComp'
+
 
 <CardGrid stagger>
   <Card title="Windows" icon="pencil">
@@ -44,3 +48,4 @@ import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
   </Card>
 </CardGrid>
 
+<ScriptComp client:only />
