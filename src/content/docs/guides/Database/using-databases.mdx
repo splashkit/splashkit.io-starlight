@@ -2,9 +2,12 @@
 
 title: Using Databases
 description: Databases are powerful tools for persisting, and querying data. In this guide, we'll be looking at SplashKit's SQLite3 database, and how to use it.
-
-
+sidebar:
+  order: 4
 ---
+*Written by Jake Renzella on Oct 3 2017*
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 Databases are powerful tools for persisting, and querying data. In this guide, we'll be looking at SplashKit's SQLite3 database, and how to use it.
 
@@ -68,7 +71,7 @@ free_all_query_results();
 free_database(my_db);
 ```
 
-### Notes
+:::note
 * If multiple rows of data are returned from a statement, use `get_next_row(result);` to move to the next row, and perform your `query_column_for_X` method again.
 
   The usual pattern is to have a while loop performing `get_next_row(result)` and accessing the data in the body.
@@ -82,6 +85,6 @@ free_database(my_db);
   and there are methods for all of these. See the API for more details.
 
 * If needed, you can ask SplashKit what type of data is stored at a column using `query_type_of_col(result, 0)`.
-We'll ask the database for you ;)
+We'll ask the database for you 
+:::
 
-Jake Renzella, 2016.

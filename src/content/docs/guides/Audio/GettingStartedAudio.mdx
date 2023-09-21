@@ -1,0 +1,217 @@
+---
+title: Get started with SplashKit Audio
+description: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+*Written by Various on Jun 10 2018*
+
+This article provides background information you will need to get started with audio in SplashKit. This will introduce you to the file formats supported, along with general information about loading and playing music and sound effects.
+
+
+
+Music and sound effects make a huge difference to game play experience. SplashKit makes it easy for you to have both music and sound effects in your games. 
+
+Before you get started with audio you will need to get some sound files that you want played in your game. The following table outlines the file formats that SplashKit supports. A tick in the sound effect column means that the format can be used for sound effects, similarly a tick in the music column means it can be used for music.
+
+## Supported Audio Formats
+
+The following table shows the supported audio formats for Sound Effect and Music:
+
+| Format | Sound Effect | Music |
+| ------ | ------------ | ----- |
+| WAV    | ✔            |       |
+| OGG    | ✔            | ✔     |
+| MP3    |              | ✔     |
+| MIDI   |              | ✔     |
+| FLAC   | ✔            | ✔     |
+| MOD    | ✔            | ✔     |
+
+---
+
+### Playing a Sound Effect
+
+To play a sound effect you fist must load the audio file into your program. Sounds are stored in the **Resources/sounds** folder, and can be loaded using [Load Sound Effect](/components/audio/#load-sound-effect). You only need to load the sound effect once, and you can then access it using the name you assigned to the sound effect and [Sound Effect Named](/components/audio/#sound-effect-named), or by using the name of the sound effect in other calls.
+
+Once it is loaded, you can use the name you can play the sound effect using [Play Sound Effect](/components/audio/#group-play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
+
+Sounds play until the file ends or until it is manually stopped in your code using [Stop Sound Effect](/components/audio/#group-stop-sound-effect) or [Stop Music](/components/audio/#stop-music). The sound effect or music will play in the background while your program's code continues to run.
+<img alt="Illustration of sound playing in the background" src="/images/articles/audio/about_audio_1.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+
+### Sound Effects vs Music?
+
+Sound effects should be used for short sounds you play in response to some action or event in your program. These will be loaded into memory before they are played.
+
+Music can be longer, and is usually played constantly while the program runs. Unlike sound effects, music is not loaded in its entirety before it starts playing. Instead the music data is read as it is played.
+
+### Mixing Sound Effects
+
+Multiple sounds can be played at one time using SplashKit, these sounds can be mixed using channels. Each channel can only play one sound effect at a time. So every call to [Play Sound Effect](/components/audio/#group-play-sound-effect) will use a channel that is not currently playing any sound. When there are no free channels SplashKit will stop a channel from playing it's current sound effect and play the new sound effect from the start.
+
+<img alt="Illustration of mixing sound effects" src="/images/articles/audio/about_audio_2.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+
+
+### Music
+
+Music is different from sound effects in that music has it's own reserved channel that only music can be played on. Music, like sound effects will continue to be played until either the music is finished or [Stop Music](/components/audio/#stop-music) is called.
+
+Since Music has one channel to itself, if you call [Play Music](/components/audio/#group-play-music) when Music is already playing the currently playing Music will be stopped and the new Music will start playing from the beginning.
+
+<img alt="Illustration of playing music" src="/images/articles/audio/about_audio_4.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+
+### Example Code
+
+The following program code demonstrates the use of these audio features.
+
+<Tabs>
+  <TabItem label="C++">
+```cpp
+#include "splashkit.h"
+
+int main() 
+{
+    sound_effect  snd_effect;
+
+    open_window("Sound Demo", 320, 240);
+
+    snd_effect = load_sound_effect("chipmunk", "chipmunk.ogg");
+
+    load_sound_effect("bells", "bells.ogg");
+    load_sound_effect("camera", "camera.ogg");
+    load_sound_effect("boing", "comedy_boing.ogg");
+    load_sound_effect("dinosaur", "dinosaur.ogg");
+    load_sound_effect("bark", "dog_bark.ogg");
+
+    do 
+    {
+        process_events();
+        if ( key_down(RIGHT_CTRL_KEY) || key_down(LEFT_CTRL_KEY) )
+        {
+            if ( key_typed(NUM_1_KEY))
+                snd_effect = sound_effect_named("chipmunk");
+            if ( key_typed(NUM_2_KEY))
+                snd_effect = sound_effect_named("bells");
+            if ( key_typed(NUM_3_KEY))
+                snd_effect = sound_effect_named("camera");
+            if ( key_typed(NUM_4_KEY))
+                snd_effect = sound_effect_named("boing");
+            if ( key_typed(NUM_5_KEY))
+                snd_effect = sound_effect_named("dinosaur");
+            if ( key_typed(NUM_6_KEY))
+                snd_effect = sound_effect_named("bark");
+        }
+        else
+        {
+            if ( key_typed(NUM_1_KEY))
+                play_sound_effect(snd_effect);
+            if ( key_typed(NUM_2_KEY))
+                play_sound_effect(snd_effect, 0.5f);
+            if ( key_typed(NUM_3_KEY))
+                play_sound_effect(snd_effect, 3, 0.25);
+            if ( key_typed(NUM_4_KEY))
+                play_sound_effect(snd_effect, -1, 0.1);
+            if ( key_typed(NUM_5_KEY))
+            {
+                if ( sound_effect_playing(snd_effect))
+                    stop_sound_effect(snd_effect);
+            }
+        }
+
+        clear_screen(COLOR_WHITE);
+
+        draw_text("Control Sound (Escape or q to quit)", COLOR_RED, "arial", 18, 15, 15);
+        draw_text("1: Play Sound At Full Volume", COLOR_BLUE, "arial", 14, 20, 50);
+        draw_text("2: Play Sound At 50% Volume", COLOR_BLUE, "arial", 14, 20, 80);
+        draw_text("3: Play Sound At 25% Volume 3 Times", COLOR_BLUE, "arial", 14, 20, 110);
+        draw_text("4: Play Sound Continuously at 10%", COLOR_BLUE, "arial", 14, 20, 140);
+        draw_text("5: Stop Playing Current Sound", COLOR_BLUE, "arial", 14, 20, 170);
+        draw_text("CTRL + (1-6) switch sound effects", COLOR_BLUE, "arial", 14, 20, 200);
+
+        refresh_screen(60);
+    } while ( ! (quit_requested() || key_typed(ESCAPE_KEY) || key_typed(Q_KEY)));
+
+    return 0;
+}
+
+```
+</TabItem>
+
+<TabItem label="C#">
+```csharp
+using SplashKitSDK;
+
+class Program
+{
+    public static void Main()
+    {
+        SoundEffect sndEffect;
+
+        SplashKit.OpenWindow("Sound Demo", 320, 240);
+
+        sndEffect = new SoundEffect("chipmunk", "chipmunk.ogg");
+        // or... 
+        // sndEffect = SplashKit.LoadSoundEffect("chipmunk", "chipmunk.ogg");
+
+        SplashKit.LoadSoundEffect("bells", "bells.ogg");
+        SplashKit.LoadSoundEffect("camera", "camera.ogg");
+        SplashKit.LoadSoundEffect("boing", "comedy_boing.ogg");
+        SplashKit.LoadSoundEffect("dinosaur", "dinosaur.ogg");
+        SplashKit.LoadSoundEffect("bark", "dog_bark.ogg");
+
+        do
+        {
+            SplashKit.ProcessEvents();
+            if (SplashKit.KeyDown(KeyCode.RightCtrlKey) || SplashKit.KeyDown(KeyCode.LeftCtrlKey))
+            {
+                if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                    sndEffect = SplashKit.SoundEffectNamed("chipmunk");
+                if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                    sndEffect = SplashKit.SoundEffectNamed("bells");
+                if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                    sndEffect = SplashKit.SoundEffectNamed("camera");
+                if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                    sndEffect = SplashKit.SoundEffectNamed("boing");
+                if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                    sndEffect = SplashKit.SoundEffectNamed("dinosaur");
+                if (SplashKit.KeyTyped(KeyCode.Num6Key))
+                    sndEffect = SplashKit.SoundEffectNamed("bark");
+            }
+            else
+            {
+                if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                    sndEffect.Play();
+                if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                    sndEffect.Play(0.5f);
+                if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                    sndEffect.Play(3, 0.25f);
+                if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                    sndEffect.Play(-1, 0.1f);
+                if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                {
+                    if (sndEffect.IsPlaying)
+                        sndEffect.Stop();
+                }
+            }
+
+            SplashKit.ClearScreen(Color.White);
+
+            SplashKit.DrawText("Control Sound (Escape or q to quit)", Color.Red, "arial", 18, 15, 15);
+            SplashKit.DrawText("1: Play Sound At Full Volume", Color.Blue, "arial", 14, 20, 50);
+            SplashKit.DrawText("2: Play Sound At 50% Volume", Color.Blue, "arial", 14, 20, 80);
+            SplashKit.DrawText("3: Play Sound At 25% Volume 3 Times", Color.Blue, "arial", 14, 20, 110);
+            SplashKit.DrawText("4: Play Sound Continuously at 10%", Color.Blue, "arial", 14, 20, 140);
+            SplashKit.DrawText("5: Stop Playing Current Sound", Color.Blue, "arial", 14, 20, 170);
+            SplashKit.DrawText("CTRL + (1-6) switch sound effects", Color.Blue, "arial", 14, 20, 200);
+
+            SplashKit.RefreshScreen(60);
+        } while (!(SplashKit.QuitRequested() || SplashKit.KeyTyped(KeyCode.EscapeKey) || SplashKit.KeyTyped(KeyCode.QKey)));
+    }
+}
+
+```
+</TabItem>
+</Tabs>
+

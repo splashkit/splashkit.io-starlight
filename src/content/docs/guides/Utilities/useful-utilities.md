@@ -4,7 +4,10 @@ title: Useful Utilities
 description: In this article, we discuss useful utilities that you can use to convert,
   check and manipulate common data types in SplashKit programs.
 
+sidebar:
+  order: 9
 ---
+*Written by Richard Denton on Oct 3 2017*
 
 SplashKit's [Utilities library](/components/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
 
@@ -52,7 +55,7 @@ int main()
 
 Consider you want to write a program that accepts two numbers as input from a user, multiplies them, and outputs the result. One way to accomplish this is to use SplashKit's ```convert_to_integer``` function.
 
-```c++
+```cpp
 #include "splashkit.h"
 #include <string>
 
@@ -89,7 +92,7 @@ int main()
 
 The same can be achieved for decimal numbers, simply by swapping ```convert_to_integer``` with ```convert_to_double```, and using the appropriate data types.
 
-```c++
+```cpp
 //...
 
 //Don't use integers, instead use doubles
@@ -110,7 +113,7 @@ Another helpful set of functions provided by SplashKit's utilities library is ``
 
 Consider the following.
 
-```c++
+```cpp
 #include "splashkit.h"
 #include <string>
 
@@ -160,7 +163,7 @@ Message 3 is not a number!
 
 SplashKit's ```is_integer``` and ```is_number``` functions can be used to validate user input, ensuring the user always enters a valid data type.
 
-```c++
+```cpp
 #include "splashkit.h"
 #include <string>
 
@@ -210,7 +213,7 @@ int main()
 
 In addition to the functionality provided by C++'s standard ```string``` library, SplashKit's utilities library provides some extra string manipulation functions that can assist you with manipulating ```std::string``` data.
 
-```c++
+```cpp
 #include "splashkit.h"
 #include <string>
 

@@ -1,0 +1,69 @@
+---
+title: Guide2
+description: A guide on installing Splashkit SDK
+
+---
+
+import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+import stuff from '../../../components/new.astro';
+
+export const components = { stuff };
+
+
+<CardGrid stagger>
+
+<LinkCard
+    title="Animations 📽️"
+    description="Examples & Guides"
+    href="/installation/windows/mingw/"
+/>
+<LinkCard
+title="Audio 🔉"
+description="Examples & Guides"
+href="/installation/windows/mingw/"
+/>
+<LinkCard
+title="Camera 📷"
+description="Examples & Guides"
+href="/installation/windows/mingw/"
+/>
+<LinkCard
+title="Database 📁"
+description="Examples & Guides"
+href="/installation/windows/mingw/"
+/>
+
+<LinkCard
+title="Inputs 🖱️"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+<LinkCard
+title="JSON 🗄️"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+<LinkCard
+title="Networking 🌐"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+<LinkCard
+title="Others 👾"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+<LinkCard
+title="Starter 🗽"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+<LinkCard
+title="Utilites ⚒️"
+description="Examples & Guides"
+href="/installation/macos/"
+/>
+</CardGrid>
+
+<ScriptComp client:only />

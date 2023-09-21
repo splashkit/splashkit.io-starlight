@@ -39,11 +39,11 @@ export default defineConfig({
 					// ],
 					autogenerate: { directory: 'components', collapsed: false, },
 				},
-				// {
-				// 	label: 'Guides',
-				// 	collapsed: true,
-				// 	autogenerate: { directory: 'guides', collapsed: true, },
-				// },
+				{
+					label: 'Guides',
+					collapsed: true,
+					autogenerate: { directory: 'guides', collapsed: true, },
+				},
 				{
 					label: 'Troubleshooting',
 					// items: [

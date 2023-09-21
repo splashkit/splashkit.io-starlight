@@ -3,8 +3,12 @@
 title: Using Animations
 description: Animations allow you to switch between different images to make a more visually dynamic entity 
   on the screen. Splashkit allows you to create animations and use these together with sprite sheets to create these animations.
-
+sidebar:
+  order: 1
 ---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
 
 Animations are a great way to help create more dynamic elements on the screen. These use a combination of a script and a sprite sheet (an image that is divided into separate _cells_ where each cell is the same size and part of the animation.
 
@@ -119,21 +123,158 @@ i:walk away,12
 
 Once you have a sprite sheet and an animation script the code to get this working is relatively straight forward. What you need to do is:
 
-1. Load the **image** and set its details.
-    * You can do this with a bundle by specifying the image and its details on the one line
-    * To load the image manually you need to:
-        1. Call [Load Bitmap](/components/graphics#load-bitmap) to load the sprite sheet
-        1. Call [Bitmap Set Cell Details](/components/graphics#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count)
-1. Load the **animation script** using [Load Animation Script](/components/animations#load-animation-script).
-1. Create an **animation** from the animation script using the identifier from the script - see [Create Animation](/components/animations#group-create-animation)
-1. Create a Drawing Option using [Option With Animation](/components/graphics#group-option-with-animation) which can be used to pass options to a draw bitmap call
-1. Draw the bitmap passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/components/graphics/#draw-bitmap-with-options) or [Draw Bitmap (using the image name)](/components/graphics/#draw-bitmap-named).
-1. Update the animation using [Update Animation](/components/animations#update-animation).
+
+1. Load the **image** and set its details:
+
+   - You can do this with a bundle by specifying the image and its details on one line.
+   - To load the image manually, you need to:
+     1. Call [Load Bitmap](/components/graphics#load-bitmap) to load the sprite sheet.
+     2. Call [Bitmap Set Cell Details](/components/graphics#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count).
+
+2. Load the **animation script** using [Load Animation Script](/components/animations#load-animation-script).
+
+3. Create an **animation** from the animation script using the identifier from the script. See [Create Animation](/components/animations#group-create-animation).
+
+4. Create a Drawing Option using [Option With Animation](/components/graphics#group-option-with-animation), which can be used to pass options to a draw bitmap call.
+
+5. Draw the bitmap, passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/components/graphics#draw-bitmap-with-options) or [Draw Bitmap (using the image name)](/components/graphics#draw-bitmap-named).
+
+6. Update the animation using [Update Animation](/components/animations#update-animation).
 
 This is demonstrated in the following code examples.
+<Tabs>
+  <TabItem label="C++">
+```cpp
+#include "splashkit.h"
 
-<%= snippet "animation_test", "articles/guides/animation/basic/" %>
+/// A Test application to demonstrate the use of Animations in SplashKit.
+int main()
+{
+    window w = open_window("Animation Test", 120, 120);
+    
+    // We could load all of the resources in a bundle
+    // load_resource_bundle("dance bundle", "dance_bundle.txt");
+    //
+    // Then access by name
+    // animation_script dance_script = animation_script_named("WalkingScript");
+    // bitmap frog = bitmap_named("FrogBmp");
 
+    // Loading them separately
+
+    // Load image and set its cell details
+    bitmap frog = load_bitmap("FrogBmp", "Frog.png");
+    bitmap_set_cell_details(frog, 73, 105, 4, 4, 16); // cell width, height, cols, rows, count
+
+    // Load the animation script
+    animation_script dance_script = load_animation_script("WalkingScript", "kermit.txt");
+
+    // Create the animation
+    animation test = create_animation(dance_script, "WalkFront");
+
+    // Create a drawing option
+    drawing_options opt;
+    opt = option_with_animation(test);
+
+    // Basic event loop
+    while( not quit_requested() )
+    {
+        // Draw the bitmap - using opt to link to animation
+        clear_screen(COLOR_WHITE);
+        draw_bitmap(frog, 20, 20, opt);
+        refresh_screen(60);
+
+        // Update the animation
+        update_animation(test);
+
+        process_events();
+
+        // Switch animations
+        if ( key_typed(UP_KEY))
+        {
+            assign_animation(test, "WalkBack");
+        }
+        else if ( key_typed(DOWN_KEY))
+        {
+            assign_animation(test, "WalkFront");
+        }
+        else if ( key_typed(D_KEY))
+        {
+            assign_animation(test, "Dance");
+        }
+    }
+}
+
+```
+</TabItem>
+  <TabItem label="C#">
+```csharp
+using System;
+using SplashKitSDK;
+
+public class Program
+{
+    /// <summary>
+    /// A Test application to demonstrate the use of Animations in SplashKit.
+    /// </summary>
+    public static void Main()
+    {
+        Window w = new Window("Animation Test", 120, 120);
+        
+        // We could load all of the resources in a bundle
+        // SplashKit.LoadResourceBundle("dance bundle", "dance_bundle.txt");
+        //
+        // Then access by name
+        // AnimationScript danceScript = SplashKit.AnimationScriptNamed("WalkingScript");
+        // Bitmap frog = SplashKit.BitmapNamed("FrogBmp");
+
+        // Loading them separately
+
+        // Load image and set its cell details
+        Bitmap frog = SplashKit.LoadBitmap("FrogBmp","Frog.png");
+        frog.SetCellDetails(73, 105, 4, 4, 16); // cell width, height, cols, rows, count
+
+        // Load the animation script
+        AnimationScript danceScript = SplashKit.LoadAnimationScript("WalkingScript", "kermit.txt");
+
+        // Create the animation
+        Animation test = danceScript.CreateAnimation("WalkFront");
+
+        // Create a drawing option
+        DrawingOptions opt;
+        opt = SplashKit.OptionWithAnimation(test);
+
+        // Basic event loop
+        while(! w.CloseRequested)
+        {
+            // Draw the bitmap - using opt to link to animation
+            w.Clear(Color.White);
+            w.DrawBitmap(frog, 20, 20, opt);
+            w.Refresh(60);
+
+            // Update the animation
+            test.Update();
+
+            SplashKit.ProcessEvents();
+
+            // Switch animations
+            if ( SplashKit.KeyTyped(KeyCode.UpKey))
+            {
+                test.Assign("WalkBack");
+            }
+            else if ( SplashKit.KeyTyped(KeyCode.DownKey))
+            {
+                test.Assign("WalkFront");
+            }
+            else if ( SplashKit.KeyTyped(KeyCode.DKey))
+            {
+                test.Assign("Dance");
+            }
+        }
+    }
+}
+```
+</TabItem>
+</Tabs>
 To test the above code you can download these [resources](/resources/animation/basics/BasicAnimationResources.zip). This includes sample animation scripts, images, and sounds.
 
 ## Other Options
@@ -158,7 +299,7 @@ s: 0, 'FootStep', 'footsteps.wav'
 
 ### Including Movement
 
-SplashKit animations also includes options to add vectors to individual frames, which are automatically applied when these animations are used in conjuncture with Sprites. This will allow you to apply a velocity vector to sprites when they're updated. This vector is applied to the current position of the sprite, it is applied every [UpdateSprite](/components/sprites#update-sprite) call, and can be applied manually to an animation. Vectors can be applied to a set of frames using set notation ([low – high]).
+SplashKit animations also includes options to add vectors to individual frames, which are automatically applied when these animations are used in conjuncture with Sprites. This will allow you to apply a velocity vector to sprites when they're updated. This vector is applied to the current position of the sprite, it is applied every [UpdateSprite](/components/sprites#update-sprite) call, and can be applied manually to an animation. Vectors can be applied to a set of frames using set notation ([low - high]).
 
 In the animation script, a vector is indicated using a line starting with "**v:**". The following animation script snippet will move the sprite +5 pixels in the x axis and -3 pixels along the y axis for every Sprite Update while the animation is on the 0 frame.
 

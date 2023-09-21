@@ -1,9 +1,11 @@
 ---
 title: Publishing in SplashKit - C# / C++
 description: Publish
+sidebar:
+  order: 10
 ---
 
-# Publishing in SplashKit - C# / C++
+
 
 ## Sharing created programs
 

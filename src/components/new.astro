@@ -1,0 +1,15 @@
+---
+// imports all files that end with `.md` in `./src/pages/post/`
+const posts = await Astro.glob('/src/content/docs/guides/**/*.{md,mdx}');
+
+---
+<!-- Renders an <article> for the first 5 blog posts -->
+<div>
+{posts.map((post) => (
+  <article>
+    <h2>{post.frontmatter.title}</h2>
+    <p>{post.frontmatter.description}</p>
+    <a href={post.url}>Read more</a>
+  </article>
+))}
+</div>
