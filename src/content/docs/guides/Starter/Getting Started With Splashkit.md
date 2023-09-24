@@ -1,6 +1,6 @@
 ---
 title: Getting Started With SplashKit - Windows C#/C++
-desciption: A started guide
+desciption: A starter guide
 ---
 # Getting Started With SplashKit - Windows C#/C++
 

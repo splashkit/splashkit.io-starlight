@@ -8,13 +8,13 @@ sidebar:
 
 ## Introduction to Mouse Button
 
-### What is `Mouse Button`?
+## What is `Mouse Button`?
 
 `Mouse Button` is an enumeration used by SplashKit to read inputs from the mouse to be handled on
 your program. If you want to have users control your program using the mouse, then you must
 understand `Mouse Button`!
 
-### List of `Mouse Button`
+## List of `Mouse Button`
 
 | Name            | Description             |
 | --------------- | ----------------------- |
@@ -31,7 +31,7 @@ Here are some functions that are used to handle mouse button inputs. These funct
 `Mouse Button` as parameter and checks if the specified button has been clicked, held down, or
 released.
 
-### Mouse Clicked
+## Mouse Clicked
 
 `Mouse Clicked` is a boolean function that checks if the specified `Mouse Button` has been clicked
 since the last time `Process Events` was called.
@@ -40,7 +40,7 @@ Syntax in C++:
 
 `bool mouse_clicked(mouse_button button)`
 
-### Mouse Down
+## Mouse Down
 
 `Mouse Down` checks if the specified button is being held down.
 
@@ -48,7 +48,7 @@ Syntax in C++:
 
 `bool mouse_down(mouse_button button)`
 
-### Mouse Up
+## Mouse Up
 
 Opposite from the previous function, `Mouse Up` checks if the specified button is being held up (not
 pressed).
@@ -57,7 +57,7 @@ Syntax in C++:
 
 `bool mouse_up(mouse_button button)`
 
-### Demonstration
+## Demonstration
 
 Here is an example of all the mouse input functions being used together.
 
@@ -100,7 +100,7 @@ will turn green.
 Another thing we can do with a mouse other than pressing its buttons is moving it around. So, we
 should also understand the functions to handle mouse movement to use it on our program.
 
-### Mouse Movement
+## Mouse Movement
 
 `Mouse Movement` is a function that returns the amount of accumulated mouse movement since the last
 time `Process Events` was called. It returns the value as a `Vector 2D` data type, which shows the
@@ -110,7 +110,7 @@ Syntax in C++:
 
 `vector_2d mouse_movement()`
 
-### Mouse Wheel Scroll
+## Mouse Wheel Scroll
 
 `Mouse Wheel Scroll` returns the distance and direction of the mouse scroll since the last time
 `Process Events` was called. Like the previous function, this function returns the `Vector 2D` data
@@ -120,7 +120,7 @@ Syntax in C++:
 
 `vector_2d mouse_wheel_scroll()`
 
-### Demonstration
+## Demonstration
 
 ```
 int main()
@@ -161,7 +161,7 @@ where the player clicked or respond to the player clicking where an item is loca
 getting the position, we can also move the mouse to a specified position using the `Move Mouse`
 function.
 
-### Mouse Position
+## Mouse Position
 
 `Mouse Position` returns the position of the mouse in the current window as a `Point2d` data type,
 which is its x and y coordinates.
@@ -170,7 +170,7 @@ Syntax in C++:
 
 `point_2d mouse_position()`
 
-### Mouse Position Vector
+## Mouse Position Vector
 
 `Mouse Position Vector` returns the position of the mouse relative to the window origin as a
 `Vector 2D`.
@@ -179,7 +179,7 @@ Syntax in C++:
 
 `vector_2d mouse_position_vector()`
 
-### Mouse X
+## Mouse X
 
 `Mouse X` returns a `float` of the distance of the mouse from the left edge of the window.
 
@@ -187,7 +187,7 @@ Syntax in C++:
 
 `float mouse_x()`
 
-### Mouse Y
+## Mouse Y
 
 `Mouse Y` returns a `float` of the distance of the mouse from the top edge of the window.
 
@@ -195,7 +195,7 @@ Syntax in C++:
 
 `float mouse_y()`
 
-### Move Mouse
+## Move Mouse
 
 `Move Mouse` moves the cursor to the specified location. This function has two versions, one with
 the x and y locations as parameters, and one with a `point2d` as its parameter.
@@ -206,7 +206,7 @@ Syntax in C++:
 
 `void move_mouse(point_2d point)`
 
-### Demonstration
+## Demonstration
 
 This example shows moving the mouse a few pixels from the current position.
 
@@ -243,7 +243,7 @@ int main()
 Finally, we can also alter the mouse visibility on SplashKit. The following functions handles the
 mouse visibility. These can be useful to create a more immersive environment for your game.
 
-### Hide Mouse
+## Hide Mouse
 
 `Hide Mouse` hides the mouse from the screen.
 
@@ -251,7 +251,7 @@ Syntax in C++:
 
 `void hide_mouse()`
 
-### Show Mouse
+## Show Mouse
 
 There are two versions of the `Show Mouse` function. The first version shows the mouse to the
 screen.
@@ -267,7 +267,7 @@ Syntax in C++:
 
 `void show_mouse(bool show)`
 
-### Mouse Shown
+## Mouse Shown
 
 `Mouse Shown` is a boolean function that checks if the mouse is currently visible or not.
 

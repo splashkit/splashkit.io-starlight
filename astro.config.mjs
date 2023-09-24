@@ -15,7 +15,7 @@ export default defineConfig({
 		  }),
 		starlight({
 			title: 'Splashkit',
-			customCss: ['/src/styles/tailwind.docs.css', '/src/styles/custom.css'],
+			customCss: ['/src/styles/tailwind.docs.css', '/src/styles/custom.css','/src/styles/background.css', '/src/styles/cards.css'],
 			social: {
 				github: 'https://github.com/splashkit',
 				twitter: 'http://twitter.com/splashkit',
@@ -32,11 +32,6 @@ export default defineConfig({
 				},
 				{
 					label: 'Components',
-					// items: [
-					// 	// Each item here is one entry in the navigation menu.
-					// 	{ label: 'Example Guide', link: '/guides/example/' },
-					// 	{ label: 'Aman', link: '/guides/abc/' },
-					// ],
 					autogenerate: { directory: 'components', collapsed: false, },
 				},
 				{

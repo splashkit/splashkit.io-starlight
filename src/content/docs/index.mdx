@@ -13,18 +13,20 @@ hero:
       link: /installation/
       icon: right-arrow
       variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Article & Guides
+      link: /guides/
       icon: external
 ---
 
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
-
+import { ScriptComp } from "../../assets/ScriptComp";
 
 
 ### To install SplashKit Beta, copy and paste the following into your terminal:
 <center>
+
+
 
 ##### Beta Release
 </center>
@@ -70,7 +72,7 @@ bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-sc
   </Card>
 </CardGrid>
 
-
+<ScriptComp client:only />
 <footer>
 <center>
 

@@ -11,7 +11,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 This article provides information on how to use the camera in SplashKit to create games that exist within a world that is larger than the size viewable on the window. In these contexts you can work with game coordinates and move the camera around to determine what the user can see.
 
-### Coordinates and the Camera
+## Coordinates and the Camera
 
 The camera provides an easy way to move around a game world. It is set to 0,0 by default, however the offset can be changed using the different camera procedures in order to explore a larger game world. When the camera position changes it moves the window to another part of the game world, as you can see in the image below.
 
@@ -31,7 +31,7 @@ With the camera you can create the effect of moving past stationary background o
 - [Center Camera On](/components/camera/#group-center-camera-on) - position the camera to focus on a sprite
 
 
-### Where is the mouse?
+## Where is the mouse?
 
 Once you use the camera, then you need to map any interactions with the screen from screen to world coordinates. For example, when you read mouse input the values are in 'screen coordinates'. In this system the coordinates always have 0,0 as the top left-hand corner, regardless of the camera position.
 
@@ -45,14 +45,14 @@ You can translate between these coordinate systems using the [To Screen](/compon
 - [To Screen Y](/components/camera/#to-screen-y) converts a game world y value to its location on the screen.
 
 
-### Drawing directly to the screen
+## Drawing directly to the screen
 
 Some game elements will need to remain in the same place, regardless of the camera position. To achieve this you need to use the [Option To Screen](/components/graphics/#group-option-to-screen). Drawing options allow you to customise each of the drawing instructions. Each drawing operation include a variation that accepts a Drawing Option value.
 
 - [Option To Screen](/components/graphics/#group-option-to-screen) ignore camera position when drawing
 - [Option To World](/components/graphics/#group-option-to-world) adjust all positions based on the camera position
 
-### Example Code
+## Example Code
 
 The following program code demonstrates the use of some of these camera operations.
 <Tabs>

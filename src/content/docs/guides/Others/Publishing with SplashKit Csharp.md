@@ -1,8 +1,7 @@
 ---
 title: Publishing in SplashKit - C# / C++
 description: Publish
-sidebar:
-  order: 10
+
 ---
 
 

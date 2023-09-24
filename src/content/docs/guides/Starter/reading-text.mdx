@@ -9,7 +9,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 This article shows you how to get started reading text from the user. This includes reading text from the command line but also how to read text from within a graphical application.
 
-### Reading Text from the Command Line
+## Reading Text from the Command Line
 
 Reading text input from the user is straightforward for command line applications. In this context, [Read Line](/components/terminal/#read-line) gives you the ability to read a line of text entered at the Terminal. This is a **blocking** function call, meaning it waits for the user to input the line before it returns. For command line applications, this is fine; you want it to wait for the input.
 
@@ -64,7 +64,7 @@ public class Program
 </TabItem>
 </Tabs>
 
-### Reading Text in Graphical Applications
+## Reading Text in Graphical Applications
 
 Reading input from users in graphical applications is more complex, as blocking operations will cause the entire graphical interface to freeze. With a graphical application you need to keep redrawing, processing events, updating elements, and refreshing the screen. If you stop doing this to wait for user input, then any dynamic visuals will stop!
 
