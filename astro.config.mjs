@@ -2,13 +2,13 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
 import expressiveCode from "astro-expressive-code";
-import netlify from "@astrojs/netlify/functions";
+// import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
   // site: '',
-  output: "server",
-  adapter: netlify(),
+//   output: "server",
+//   adapter: netlify(),
   integrations: [
     expressiveCode({
       theme: ["github-dark", "github-light"],
