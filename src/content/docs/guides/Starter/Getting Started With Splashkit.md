@@ -30,7 +30,7 @@ To make sure everything has worked, you can restart your terminal, run `skm` as 
 those letters, it acts as a call), and you should see the following message:
 
 ```
-Splashkit is installed successfully!
+SplashKit is installed successfully!
 Missing skm command. For help use 'skm help'
 ```
 

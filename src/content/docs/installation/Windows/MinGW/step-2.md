@@ -1,6 +1,6 @@
 ---
 title: Installing the SplashKit SDK
-description: A guide on installing Splashkit SDK through pacman.
+description: A guide on installing SplashKit SDK through pacman.
 ---
 Once you have MSYS2 installed, you can install the SplashKit library:
 
@@ -31,7 +31,7 @@ Once you have MSYS2 installed, you can install the SplashKit library:
     You should see the following messages:
 
     ```bash
-    Splashkit is installed successfully!
+    SplashKit is installed successfully!
     Missing skm command. For help use 'skm help'
     ```
 

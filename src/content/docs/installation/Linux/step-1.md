@@ -1,7 +1,7 @@
 ---
 title: Installing the SplashKit Manager
 ---
-The Splashkit Manager is essential for Linux users as it simplifies the installation and management of the Splashkit SDK, ensuring a seamless development experience.
+The SplashKit Manager is essential for Linux users as it simplifies the installation and management of the SplashKit SDK, ensuring a seamless development experience.
 ## Steps
 1. Open up a terminal.
 
@@ -32,7 +32,7 @@ The Splashkit Manager is essential for Linux users as it simplifies the installa
     You should see the following messages:
 
     ```bash
-    Splashkit is installed successfully!
+    SplashKit is installed successfully!
     Missing skm command. For help use 'skm help'
     ```
 

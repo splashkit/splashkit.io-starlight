@@ -7,15 +7,17 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "mdx": "node ./test/script.js"
   },
   "dependencies": {
     "@astrojs/netlify": "^3.0.1",
     "@astrojs/prism": "^3.0.0",
     "@astrojs/solid-js": "^3.0.1",
-    "@astrojs/starlight": "^0.10.1",
-    "astro": "^3.1.2",
-    "astro-expressive-code": "^0.26.0",
+    "@astrojs/starlight": "^0.10.4",
+    "astro": "^3.2.3",
+    "astro-expressive-code": "^0.26.1",
+    "fs": "^0.0.1-security",
     "sharp": "^0.32.6",
     "solid-js": "^1.7.12",
     "tailwindcss": "^3.3.3"

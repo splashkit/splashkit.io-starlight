@@ -17,7 +17,7 @@ export default defineConfig({
       },
     }),
     starlight({
-      title: "Splashkit",
+      title: "SplashKit",
       customCss: [
         "/src/styles/tailwind.docs.css",
         "/src/styles/custom.css",
@@ -28,7 +28,7 @@ export default defineConfig({
         github: "https://github.com/splashkit",
         twitter: "http://twitter.com/splashkit",
       },
-      favicon: "/public/images/favicon.svg",
+      favicon: "/images/favicon.svg",
       logo: {
         src: "./src/assets/favicon.svg",
       },

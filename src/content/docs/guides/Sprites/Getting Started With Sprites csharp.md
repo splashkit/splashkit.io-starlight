@@ -1,9 +1,9 @@
 ---
-title: Sprites in Splashkit - C#
+title: Sprites in SplashKit - C#
 description: Sprites tutorial by Bryan
 ---
 
-## What _is_ a Sprite in Splashkit?
+## What _is_ a Sprite in SplashKit?
 
 A Sprite is a Bitmap. This is a bad answer to give, because the next question is, _what is a
 bitmap?_ A bitmap is - in reductive terms, one of the methods of general image 'makeup' of all of
@@ -11,7 +11,7 @@ our digital images today, through which 'images' can be rendered. The other meth
 don't interact with those.
 
 In order to be able to draw an image to a screen, we first have to provide some information to
-Splashkit. We have to have Bitmap images to pass into our
+SplashKit. We have to have Bitmap images to pass into our
 [Create Sprite](/components/sprites/#create-sprite) function so that it can create a
 workable _Sprite_ file type for us. This looks something like this inside our Main() method:
 
@@ -57,7 +57,7 @@ Bitmap(string name, int width int height);
 
 After these steps, we now have an instantiated Bitmap and Sprite for us to play with.
 
-## Playing With Sprites in Splashkit
+## Playing With Sprites in SplashKit
 
 So we have a Sprite, `happySunSprite` (or whatever you have named yours.) Let's create a small scene
 to show it off. We'll start with creating a `Window` object for us to draw it onto. This can follow
@@ -68,7 +68,7 @@ Window SpriteWindow;
 spriteWindow = new Window("Learning Sprites!, 800, 800);
 ```
 
-As above, we create a new `Object` of type `Window` (this is important because Splashkit has
+As above, we create a new `Object` of type `Window` (this is important because SplashKit has
 specific implementation for multi-window and window-specific method handling), and then we assign
 that value with the window title of "Learning Sprites!", and give it x and y size integers, using
 [Open Window](/components/windows/#open-window).
@@ -141,7 +141,7 @@ namespace learningSprites
 }
 ```
 
-## Using Splashkit to move our Sprite around
+## Using SplashKit to move our Sprite around
 
 Now that we have a working `Sprite`, let's implement a simple `For` loop to showcase moving it from
 one side of the screen to the other. It's important to have some basis in your mind of how we might

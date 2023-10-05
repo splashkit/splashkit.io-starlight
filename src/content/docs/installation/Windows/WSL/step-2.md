@@ -1,6 +1,6 @@
 ---
-title: Installing Splashkit SDK on WSL
-description: A guide on installing Splashkit SDK on WSL.
+title: Installing SplashKit SDK on WSL
+description: A guide on installing SplashKit SDK on WSL.
 ---
 
 Once installed, launch the WSL distribution you installed. This will open a terminal window running a Linux environment.
@@ -22,7 +22,7 @@ Once installed, launch the WSL distribution you installed. This will open a term
     ```
     ![](https://i.imgur.com/ZKXjGyV.png)
 
-    ***OPTIONAL*** Install the required dependencies: Splashkit requires several dependencies to be installed. Run the following command in the WSL terminal to install them
+    ***OPTIONAL*** Install the required dependencies: SplashKit requires several dependencies to be installed. Run the following command in the WSL terminal to install them
     ```bash
     sudo apt install build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
     ```
@@ -57,7 +57,7 @@ Once installed, launch the WSL distribution you installed. This will open a term
     You should see the following messages:
 
     ```bash
-    Splashkit is installed successfully!
+    SplashKit is installed successfully!
     Missing skm command. For help use 'skm help'
     ```
 

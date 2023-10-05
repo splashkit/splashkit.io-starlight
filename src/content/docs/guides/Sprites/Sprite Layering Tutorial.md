@@ -7,14 +7,14 @@ In this tutorial, we are going to cover the concept of sprite layering. Before w
 Here's an example of layering looks like:
 [I Made the PERFECT 3D Pokémon Cards!!! by Jazza](https://www.youtube.com/watch?app=desktop&v=JCfpVvy5Rhs)
 
-## Functions Used (Link to Splashkit documentation)
+## Functions Used (Link to SplashKit documentation)
 
 1. [Create Sprite](/components/sprites/#create-sprite)
 2. [Sprite Add Layer](/components/sprites/#sprite-add-layer)
 3. [Sprite Hide Layer](/components/sprites/#sprite-hide-layer-named)
 4. [Sprite Show Layer](/components/sprites/#group-sprite-show-layer)
 
-## Apply the method to Splashkit sprite
+## Apply the method to SplashKit sprite
 To demonstrate this, we are going to create a simple move around program which uses 4 custom made sprite images. Those 4 images represent 4 sided face:
 ```
 LEFT
@@ -135,13 +135,13 @@ While this is one basic example of using layering, there are other functions tha
 
 The learning outcome that the reader can expect to have gained after completing this series of
 tutorials is to have gained an understanding of Sprite Layering, including a theoretical
-understanding of the concept including how Splashkit specifically interacts with layered sprites, as
+understanding of the concept including how SplashKit specifically interacts with layered sprites, as
 well as a practical showcase of the concept
 
 ## Conclusion
 
 The importance of this tutorial comes from the required ability to be able further interact with
-Sprites as apart of the Splashkit library. Easing workflows and system process management via Sprite
+Sprites as apart of the SplashKit library. Easing workflows and system process management via Sprite
 layering rather than raw Sprite manipulation and management allows for a greater understanding of
 the framework and concept as a whole and further entrenches students with the ability to use and
 understand Sprites.

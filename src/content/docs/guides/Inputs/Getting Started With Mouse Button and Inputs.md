@@ -1,6 +1,6 @@
 ---
 title: Getting Started With Mouse Button and Inputs
-description: As a Splashkit developer, I want to learn how to use `Key Code` in Splashkit so that I can identify which key triggers an event and handle it accordingly.
+description: As a SplashKit developer, I want to learn how to use `Key Code` in SplashKit so that I can identify which key triggers an event and handle it accordingly.
 sidebar:
   order: 5
 ---

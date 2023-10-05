@@ -1,14 +1,14 @@
-# Starlight Starter Kit: Basics
+# SplashKit SDK - Starlight Framework
 
-```
-npm create astro@latest -- --template starlight
-```
+## Introduction
+Welcome to the official documentation for the SplashKit SDK on the Starlight framework! This readme markdown script will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
+## Installation
+1. Clone/Fork this repository.
+1. Install the necessary dependencies. Make sure you have the following installed:
+    ```
+    npm install
+    ```
 ## 🚀 Project Structure
 
 Inside of your Astro + Starlight project, you'll see the following folders and files:
@@ -50,7 +50,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run mdx`             | Generate MDX file *(for functions)* from JSON data in `test` folder                   |
 
-## 👀 Want to learn more?
+## Contributing
+We welcome contributions from the community to enhance the SplashKit SDK on the Starlight framework. If you would like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file.
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).

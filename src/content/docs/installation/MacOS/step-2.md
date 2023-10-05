@@ -24,7 +24,7 @@ tags: installation,mac
     You should see the following messages:
 
     ```bash
-    Splashkit is installed successfully!
+    SplashKit is installed successfully!
     Missing skm command. For help use 'skm help'
     ```
 
