@@ -38,25 +38,25 @@ export default defineConfig({
 
           autogenerate: { directory: "installation", collapsed: true },
         },
-        {
-          label: "Components",
-          autogenerate: { directory: "components", collapsed: false },
-        },
-        {
-          label: "Guides",
-          collapsed: true,
-          autogenerate: { directory: "guides", collapsed: true },
-        },
-        {
+         {
           label: "Troubleshooting",
           // items: [
           // 	// Each item here is one entry in the navigation menu.
           // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
           // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
           // ],
-          collapsed: false,
+          collapsed: true,
           autogenerate: { directory: "troubleshoot", collapsed: true },
           badge: "New",
+        },
+          {
+          label: "Components",
+          autogenerate: { directory: "components", collapsed: true },
+        },
+        {
+          label: "Guides",
+          collapsed: true,
+          autogenerate: { directory: "guides", collapsed: true },
         },
       ],
     }),
