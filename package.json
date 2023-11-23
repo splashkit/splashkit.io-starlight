@@ -4,22 +4,22 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "npm run mdx && astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "mdx": "node ./test/script.js"
   },
   "dependencies": {
-    "@astrojs/netlify": "^3.0.1",
+    "@astrojs/netlify": "^3.0.4",
     "@astrojs/prism": "^3.0.0",
-    "@astrojs/solid-js": "^3.0.1",
-    "@astrojs/starlight": "^0.10.4",
-    "astro": "^3.2.3",
-    "astro-expressive-code": "^0.26.1",
+    "@astrojs/solid-js": "^3.0.2",
+    "@astrojs/starlight": "^0.13.0",
+    "astro": "^3.6.0",
+    "astro-expressive-code": "^0.29.1",
     "fs": "^0.0.1-security",
     "sharp": "^0.32.6",
-    "solid-js": "^1.7.12",
-    "tailwindcss": "^3.3.3"
+    "solid-js": "^1.8.6",
+    "tailwindcss": "^3.3.5"
   }
 }

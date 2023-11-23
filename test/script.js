@@ -54,7 +54,18 @@ const typeMappings = {
   sound_effect: "[`Sound Effect`](/components/audio/#sound-effect)"
   // Add more type mappings as needed
 };
+const guidesAvailable = {
+animations: true,
+audio: true,
+camera: true,
+database: true,
+inputs: true,
+json: true,
+networking: true,
+sprites: true,
+utilities: true
 
+};
 // Define language label mappings
 const languageLabelMappings = {
   pascal: "Pascal",
@@ -67,7 +78,7 @@ const languageLabelMappings = {
 
 // Define language order
 const languageOrder = ["cpp", "csharp", "python", "pascal"];
-
+var name = "";
 // Read the JSON file
 readFile("./test/api.json", "utf8", (err, data) => {
   if (err) {
@@ -78,106 +89,129 @@ readFile("./test/api.json", "utf8", (err, data) => {
   try {
     const jsonData = JSON.parse(data);
 
-// Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
-
-    let input = "audio" // Channge here
-
-
-    
-
-    const category = jsonData.audio; // Change the category here
-
-    const categoryFunctions = category.functions; 
-    let mdxContent = "";
-    mdxContent += "---\n";
-    mdxContent += `title: ${input.charAt(0).toUpperCase()+ input.slice(1)}\n`;
-    mdxContent += `description: ${category.brief}\n`;
-    mdxContent += "---\n";
-    mdxContent += `\nimport { Tabs, TabItem } from "@astrojs/starlight/components";\n`;
-    mdxContent += "## \n";
-    mdxContent += "## Functions\n";
-    mdxContent += "## \n";
-    const functionGroups = {}; // Store functions grouped by name
-    categoryFunctions.forEach((func) => {
-      const functionName = func.name;
-      if (!functionGroups[functionName]) {
-        functionGroups[functionName] = [];
-      }
-      functionGroups[functionName].push(func);
-    });
-
-    for (const functionName in functionGroups) {
-      const overloads = functionGroups[functionName];
-      const isOverloaded = overloads.length > 1;
-
-      if (isOverloaded) {
-        // Create a section for overloaded functions
-        
-        const formattedFunctionName = functionName
-          .split("_")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-          const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
-          
-        const formattedGroupLink = `group-${formattedLink}`;
-        mdxContent += `## ${formattedFunctionName} [🧬](#${formattedGroupLink})\n\n`;
-        mdxContent += ":::note\n\n";
-        mdxContent += "This function is overloaded. The following versions exist:\n\n";
-
-        overloads.forEach((func, index) => {
-          mdxContent += `- [**${formattedFunctionName}** (`;
-          for (const paramName in func.parameters) {
-            const param = func.parameters[paramName];
-            const paramType =  param.type;
-            if (index > 0) {
-              mdxContent += "";
-            }
-            mdxContent += `${paramName}: ${paramType}, `;
-          }
-          mdxContent += `)](/components/${input}/#${formattedLink.toLowerCase()}--${index + 1})\n`;
-        });
-
-        mdxContent += "\n:::\n\n";
-      }
-
-      overloads.forEach((func, index) => {
-        // Format the header based on whether it's overloaded or not
-        let functionName2 = functionName.split("_")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-        const formattedName3 = func.name
-        .split("_")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-
-        const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
+    // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
+    for (const categoryKey in jsonData) {
+      const category = jsonData[categoryKey];
+      let input = categoryKey;
+      const categoryFunctions = category.functions;
+      let mdxContent = "";
+      name = input.split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");; //name of the category
+   
+      mdxContent += "---\n";
+      mdxContent += `title: ${name}\n`;
+      if(category.brief != "") {mdxContent += `description: ${category.brief.replace(/\n/g, '')}\n`;}
+      else {mdxContent += `description: Some description....\n`;}
       
-        const formattedName = isOverloaded
-          ? `### ${functionName2} [🤖](#${formattedLink.toLowerCase()}--${index + 1})`
-          : `## ${functionName2} [🔗](#${formattedLink})\n\n`;
-        
+      mdxContent += "---\n\n";
+      if(category.brief != "") {
+      if(categoryFunctions.description != null) {
+        mdxContent += `:::tip[${category.brief}]\n`;
+        mdxContent += `${category.description}\n`
+        mdxContent += `:::\n`
+      }
+      else {
+        mdxContent += `:::tip[${name}]\n`;
+        mdxContent += `${category.brief}\n`
+        mdxContent += `:::\n`
+      }
+    }
+      mdxContent += `\nimport { Tabs, TabItem } from "@astrojs/starlight/components";\nimport { LinkCard, CardGrid } from "@astrojs/starlight/components";
+\n    `;
+if(guidesAvailable[categoryKey]) {
+      mdxContent += "\n## \n";
+      mdxContent += "## Animations Guides\n";
+      mdxContent += `<LinkCard
+          title="Using ${name}"
+          description="Examples & Guides"
+          href="/guides/${input}/"
+        />\n\n`;
+  }
+      mdxContent += "## \n";
+      mdxContent += "## Functions\n";
+      mdxContent += "## \n";
+      const functionGroups = {}; // Store functions grouped by name
+      categoryFunctions.forEach((func) => {
+        const functionName = func.name;
+        if (!functionGroups[functionName]) {
+          functionGroups[functionName] = [];
+        }
+        functionGroups[functionName].push(func);
+      });
 
-        // Replace type names in the description with formatted versions
-        let description = func.description || "";
-        for (const typeName in typeMappings) {
-          const typeMapping = typeMappings[typeName];
-          description = description.replace(
-            new RegExp(`\`\\b${typeName}\\b\``, "g"),
-            typeMapping
-          );
+      for (const functionName in functionGroups) {
+        const overloads = functionGroups[functionName];
+        const isOverloaded = overloads.length > 1;
+
+        if (isOverloaded) {
+          // Create a section for overloaded functions
+
+          const formattedFunctionName = functionName
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+          const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
+
+          const formattedGroupLink = `group-${formattedLink}`;
+          mdxContent += `## ${formattedFunctionName} [📁](#${formattedGroupLink})\n\n`;
+          mdxContent += ":::note\n\n";
+          mdxContent += "This function is overloaded. The following versions exist:\n\n";
+
+          overloads.forEach((func, index) => {
+            mdxContent += `- [**${formattedFunctionName}** (`;
+            for (const paramName in func.parameters) {
+              const param = func.parameters[paramName];
+              const paramType = param.type;
+              if (index > 0) {
+                mdxContent += "";
+              }
+              mdxContent += `${paramName}: ${paramType}, `;
+            }
+            mdxContent += `)](/components/${input}/#${formattedLink.toLowerCase()}--${index + 1})\n`;
+          });
+
+          mdxContent += "\n:::\n\n";
         }
 
-        mdxContent += `${formattedName} \n`;
-        mdxContent += description ? `${description}\n\n` : "";
-        mdxContent += "**Return Type**\n\n- " + typeMappings[func.return.type] + " \n\n";
+        overloads.forEach((func, index) => {
+          // Format the header based on whether it's overloaded or not
+          let functionName2 = functionName.split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+          const formattedName3 = func.name
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
 
-        // Add Parameters section only if there are parameters
-        if (Object.keys(func.parameters).length > 0) {
-          mdxContent += "**Parameters**\n\n";
-          mdxContent +=
-            "| Name   | Type                                               | Description                                                                        |\n";
-          mdxContent +=
-            "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
+          const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
+
+          const formattedName = isOverloaded
+            ? `### ${functionName2} [📄](#${formattedLink.toLowerCase()}--${index + 1})`
+            : `## ${functionName2} [🔗](#${formattedLink})\n\n`;
+
+
+          // Replace type names in the description with formatted versions
+          let description = func.description || "";
+          for (const typeName in typeMappings) {
+            const typeMapping = typeMappings[typeName];
+            description = description.replace(
+              new RegExp(`\`\\b${typeName}\\b\``, "g"),
+              typeMapping
+            );
+          }
+
+          mdxContent += `${formattedName} \n`;
+          mdxContent += description ? `${description}\n\n` : "";
+          mdxContent += "**Return Type**\n\n- " + typeMappings[func.return.type] + " \n\n";
+
+          // Add Parameters section only if there are parameters
+          if (Object.keys(func.parameters).length > 0) {
+            mdxContent += "**Parameters**\n\n";
+            mdxContent +=
+              "| Name   | Type                                               | Description                                                                        |\n";
+            mdxContent +=
+              "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
 
             for (const paramName in func.parameters) {
               const param = func.parameters[paramName];
@@ -185,49 +219,93 @@ readFile("./test/api.json", "utf8", (err, data) => {
               let description2 = param.description || "";
               for (const typeName in typeMappings) {
                 const typeMapping = typeMappings[typeName];
-                
+
                 description2 = description2.replace(
                   new RegExp(`\`\\b${typeName}\\b\``, "g"),
                   typeMapping
                 );
-                
+
               }
-            
+
               mdxContent += `| ${paramName} | ${paramType} | ${description2} |\n`;
             }
 
-          mdxContent += "\n";
+            mdxContent += "\n";
+          }
+
+          mdxContent += "**Signatures**\n\n";
+          mdxContent += "<Tabs>\n";
+
+          // Reorder Code tabs
+          languageOrder.forEach((lang) => {
+            if (func.signatures[lang]) {
+              const code = func.signatures[lang].join("\n");
+              const languageLabel = languageLabelMappings[lang] || lang;
+              mdxContent += `  <TabItem label="${languageLabel}">\n`;
+              mdxContent +=
+                "```" + lang + "\n" + code + '\n```\n';
+              mdxContent += "  </TabItem>\n";
+            }
+          });
+
+          mdxContent += "</Tabs>\n\n";
+          mdxContent += "---\n"; // Add --- after each function ends
+
+        });
+      }
+      if (category.typedefs.length > 0) {
+        // Add the Types section
+        mdxContent += "## Types\n\n";
+        category.typedefs.forEach((typedef) => {
+          const formattedName3 = typedef.name
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+
+          const formattedTypeName = formattedName3 || `\`${typedef.name}\``;
+          mdxContent += `### ${formattedTypeName} [🧾](#${typedef.name.toLowerCase()})\n\n`;
+
+          let description = typedef.description || "";
+          for (const typeName in typeMappings) {
+            const typeMapping = typeMappings[typeName];
+            description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+          }
+          const functionNames = category.functions.map((func) => func.name);
+          for (const names of functionNames) {
+            const normalName = names
+              .split("_")
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" ");
+            const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+            const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+            description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+          }
+
+
+          mdxContent += `${description}\n\n`;
+
+
+
+          mdxContent += `---\n`;
+        });
+      }
+
+
+      
+      // Write the MDX file
+      writeFile(`./src/content/docs/components/${name}.mdx`, mdxContent, (err) => {
+        if (err) {
+          console.error(`Error writing ${input} MDX file:`, err);
+       
+        } else {
+          console.log(input)
         }
 
-        mdxContent += "**Signatures**\n\n";
-        mdxContent += "<Tabs>\n";
-
-        // Reorder Code tabs
-        languageOrder.forEach((lang) => {
-          if (func.signatures[lang]) {
-            const code = func.signatures[lang].join("\n");
-            const languageLabel = languageLabelMappings[lang] || lang;
-            mdxContent += `  <TabItem label="${languageLabel}">\n`;
-            mdxContent +=
-              "```"+lang+"\n" + code + '\n```\n';
-            mdxContent += "  </TabItem>\n";
-          }
-        });
-
-        mdxContent += "</Tabs>\n\n";
-        mdxContent += "---\n"; // Add --- after each function ends
       });
     }
-
-    // Write the MDX file
-    writeFile(`./test/${input}.mdx`, mdxContent, (err) => {
-      if (err) {
-        console.error("Error writing MDX file:", err);
-      } else {
-        console.log("MDX file generated successfully.");
-      }
-    });
+    console.log("MDX files generated successfully: \n");
   } catch (error) {
     console.error("Error parsing JSON:", error);
   }
 });
+
