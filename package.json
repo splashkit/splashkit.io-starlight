@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run mdx && astro dev",
     "start": "npm run mdx && astro dev",
-    "build": "astro build",
+    "build": "npm run mdx && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "mdx": "node ./test/script.js"
