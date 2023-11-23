@@ -3,12 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npm run mdx && astro dev",
-    "start": "npm run mdx && astro dev",
-    "build": "npm run mdx && astro build",
+    "dev": "npm run generate- && astro dev",
+    "start": "npm run generate-mdx && astro dev",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "mdx": "node ./test/script.js"
+    "generate-mdx": "node ./test/script.js"
   },
   "dependencies": {
     "@astrojs/netlify": "^3.0.4",
