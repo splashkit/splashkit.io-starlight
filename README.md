@@ -50,7 +50,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run mdx`             | Generate MDX file *(for functions)* from JSON data in `test` folder                   |
+| `npm run generate-mdx`             | Generate MDX file *(for functions)* from JSON data in `test` folder                   |
 
 ## Contributing
 We welcome contributions from the community to enhance the SplashKit SDK on the Starlight framework. If you would like to contribute, please follow the guidelines outlined in the CONTRIBUTING.md file.
