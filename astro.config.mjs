@@ -6,7 +6,8 @@ import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  // site: '',
+  site: 'https://XQuestCode.github.io',
+  base: '/splashkit.io-starlight',
 //   output: "server",
 //   adapter: netlify(),
   integrations: [
