@@ -3,7 +3,8 @@ dist/
 # generated types
 .astro/
 .vscode/
-
+# incase we testedmdx script locally
+src/content/docs/components/
 # dependencies
 node_modules/
 
