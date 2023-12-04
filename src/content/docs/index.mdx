@@ -19,10 +19,10 @@ hero:
 ---
 
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
 import { ScriptComp } from "../../assets/ScriptComp";
 
-### To install SplashKit Beta, copy and paste the following into your terminal:
+### To install SplashKit, copy and paste the following into your terminal:
 
 
 ```bash
@@ -60,9 +60,9 @@ bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-sc
     the vast possibilities.
   </Card>
   <Card title="Continuous Updates and Support" icon="open-book">
-    SplashKit SDK is regularly updated with new features and improvements.
-    Benefit from ongoing support and stay up-to-date with the latest
-    advancements in game development.
+    
+    <LinkCard title="Troubleshooting" icon="pencil" description="FAQs on MacOS and Windows" href="/troubleshoot/" />
+
   </Card>
 </CardGrid>
 
@@ -70,7 +70,7 @@ bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-sc
 <footer>
 <center>
 
-  SplashKit is an open source project maintained by the core team with the help of
-  all our contributors. Except as otherwise noted, SplashKit is licensed under [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html#content).
+  SplashKit is an open source project maintained by the [core team](https://github.com/orgs/splashkit/people) with the help of
+  all [our contributors](https://github.com/orgs/splashkit/people). Except as otherwise noted, SplashKit is licensed under [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html#content).
 </center>
 </footer>

@@ -76,7 +76,7 @@ function Mappings(jsonData) {
     });
   }
 }
-fs.readFile("./test/api.json", "utf8", (err, data) => {
+fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
   if (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
     console.error("Error reading JSON file:", err);
