@@ -1,16 +1,14 @@
 const fs = require('fs').promises;
 const path = require('path');
 const yaml = require('js-yaml');
-const spinners = require('cli-spinners');
+
 const kleur = require('kleur');
 
 const rootPath = path.join(__dirname, '..', 'src', 'content', 'docs', 'guides');
 
 try {
   async function processFolder(folderPath, topLevelFolderName = '') {
-    const folders = folderPath.split(path.sep);
-      const lastTwoFolders = folders.slice(-2);
-    const spinner = createSpinner(`Processing ${lastTwoFolders.join(' -> ')}`);
+    
 
     try {
       const files = await fs.readdir(folderPath);
@@ -70,48 +68,17 @@ try {
       const folders = indexFilePath.split(path.sep);
       const lastTwoFolders = folders.slice(-2);
   
-      spinner.succeed(kleur.green(`Generated ${lastTwoFolders.join(' -> ')}`));
+      console.log(kleur.blue(`Guides -> `)+ kleur.green(`${lastTwoFolders.join(' ')}`));
     } catch (error) {
       const folders = folderPath.split(path.sep);
       const lastTwoFolders = folders.slice(-2);
   
      
-      spinner.fail(kleur.red(`Error processing ${lastTwoFolders.join(' -> ')}: ${error.message}`));
+      console.log(kleur.red(`Error processing ${lastTwoFolders.join(' -> ')}: ${error.message}`));
     }
   }
 
-  function createSpinner(text) {
-    const spinner = spinners.dots;
-  
-    process.stdout.write(`${text}... `);
-  
-    const interval = setInterval(() => {
-      if (process.stdout.clearLine) {
-        process.stdout.clearLine();
-        process.stdout.cursorTo(0);
-      }
-      process.stdout.write(kleur.cyan(spinner.frame()));
-    }, spinner.interval);
-  
-    return {
-      succeed: (message) => {
-        clearInterval(interval);
-        if (process.stdout.clearLine) {
-          process.stdout.clearLine();
-          process.stdout.cursorTo(0);
-        }
-        console.log(kleur.green(`${message} ✔`));
-      },
-      fail: (message) => {
-        clearInterval(interval);
-        if (process.stdout.clearLine) {
-          process.stdout.clearLine();
-          process.stdout.cursorTo(0);
-        }
-        console.log(kleur.red(`${message} ✘`));
-      },
-    };
-  }
+
   
 
   function extractFrontmatter(content, filePath) {

@@ -1,7 +1,6 @@
 // Script to generate .mdx file in a specific format to adapt to Starlight from JSON data.
 const fs = require("fs");
 const kleur = require("kleur");
-const spinners = require('cli-spinners');
 
 
 // Define type mappings
@@ -86,7 +85,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
   try {
     const jsonData = JSON.parse(data);
     Mappings(jsonData);
-    const spinner = createSpinner(`Generating MDX files for components`);
+    console.log(`Generating MDX files for components`);
     
   
 
@@ -391,11 +390,11 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
       // Write the MDX file
       fs.writeFile(`./src/content/docs/components/${name}.mdx`, mdxContent, (err) => {
         if (err) {
-          spinner.fail(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
+          console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
          
         } else {
           
-          spinner.succeed(kleur.yellow('Generated')+kleur.green(` -> ${input}`));
+          console.log(kleur.yellow('Components')+kleur.green(` -> ${input}`));
   
         }
 
@@ -403,39 +402,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
 
     }
     console.log(kleur.green("All component MDX files generated successfully.\n"));
-    function createSpinner(text) {
-      const spinner = spinners.dots;
-    
-      process.stdout.write(`${text}... `);
-    
-      const interval = setInterval(() => {
-        if (process.stdout.clearLine) {
-          process.stdout.clearLine();
-          process.stdout.cursorTo(0);
-        }
-        process.stdout.write(kleur.cyan(spinner.frame()));
-      }, spinner.interval);
-    
-      return {
-        succeed: (message) => {
-          clearInterval(interval);
-          if (process.stdout.clearLine) {
-            process.stdout.clearLine();
-            process.stdout.cursorTo(0);
-          }
-          console.log(kleur.green(`${message} ✔`));
-        },
-        fail: (message) => {
-          clearInterval(interval);
-          if (process.stdout.clearLine) {
-            process.stdout.clearLine();
-            process.stdout.cursorTo(0);
-          }
-          console.log(kleur.red(`${message} ✘`));
-        },
-      };
-    }
-    
+ 
     
   } catch (error) {
     console.error(kleur.red("Error parsing JSON:"), error);

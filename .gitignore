@@ -25,3 +25,35 @@ src/components/guides/index.mdx
 
 # macOS-specific files
 .DS_Store
+src/content/docs/components/Animations.mdx
+src/content/docs/components/Audio.mdx
+src/content/docs/components/Camera.mdx
+src/content/docs/components/Color.mdx
+src/content/docs/components/Database.mdx
+src/content/docs/components/Geometry.mdx
+src/content/docs/components/Graphics.mdx
+src/content/docs/components/Input.mdx
+src/content/docs/components/Json.mdx
+src/content/docs/components/Networking.mdx
+src/content/docs/components/Physics.mdx
+src/content/docs/components/Resource Bundles.mdx
+src/content/docs/components/Resources.mdx
+src/content/docs/components/Social.mdx
+src/content/docs/components/Sprites.mdx
+src/content/docs/components/Terminal.mdx
+src/content/docs/components/Timers.mdx
+src/content/docs/components/Types.mdx
+src/content/docs/components/Utilities.mdx
+src/content/docs/components/Windows.mdx
+src/content/docs/guides/Animations/index.mdx
+src/content/docs/guides/Audio/index.mdx
+src/content/docs/guides/Camera/index.mdx
+src/content/docs/guides/Database/index.mdx
+src/content/docs/guides/Inputs/index.mdx
+src/content/docs/guides/JSON/index.mdx
+src/content/docs/guides/Networking/index.mdx
+src/content/docs/guides/Others/Cmake/index.mdx
+src/content/docs/guides/Others/index.mdx
+src/content/docs/guides/Sprites/index.mdx
+src/content/docs/guides/Starter/index.mdx
+src/content/docs/guides/Utilities/index.mdx
