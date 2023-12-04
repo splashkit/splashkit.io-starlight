@@ -1,7 +1,14 @@
 ﻿---
 title: Including Library
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
+
+  
+## Introduction
+
+
 
 Now we covered the fundamental of coding in Cmake, in this tutorial we are learning core feature of Cmake, which is how to include a library in our project. Before demonstrating of how it works, first we need to make our own library. In this example we're going to build a custom, library to print string to our console.
 first we make a lib folder and create a header file call "print.h"

@@ -1,6 +1,8 @@
 ﻿---
 title: Add Custom Command
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
 
 In this tutorial, we are going to cover how to add custom command to our compiler. This is basically telling what the compiler should do like copy the file, change directory etc. In this example we merely going to learn how to move files in a directory:

@@ -1,7 +1,13 @@
 ﻿---
 title: Conditional Statement
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
+
+  
+## Introduction
+
 
 In this tutorial we are going to learn how to use the conditional statement in Cmake. This is just like any other language's if-else statement, let's look an an example:
 ```cpp

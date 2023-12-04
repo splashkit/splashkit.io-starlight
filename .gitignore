@@ -3,8 +3,7 @@ dist/
 # generated types
 .astro/
 .vscode/
-# incase we testedmdx script locally
-src/content/docs/components/
+
 # dependencies
 node_modules/
 
@@ -13,6 +12,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+#mdx output files
+src/components/components/*.mdx
+src/components/guides/**/index.mdx
+src/components/guides/index.mdx
 
 
 # environment variables
