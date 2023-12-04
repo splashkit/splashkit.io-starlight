@@ -408,28 +408,34 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
     
       process.stdout.write(`${text}... `);
     
-      const frames = spinner.frames.map(frame => kleur.cyan(frame));
       const interval = setInterval(() => {
-        const frame = frames.shift();
-        frames.push(frame);
-        process.stdout.write(frame);
+        if (process.stdout.clearLine) {
+          process.stdout.clearLine();
+          process.stdout.cursorTo(0);
+        }
+        process.stdout.write(kleur.cyan(spinner.frame()));
       }, spinner.interval);
     
       return {
         succeed: (message) => {
           clearInterval(interval);
-          process.stdout.clearLine();
-          process.stdout.cursorTo(0);
+          if (process.stdout.clearLine) {
+            process.stdout.clearLine();
+            process.stdout.cursorTo(0);
+          }
           console.log(kleur.green(`${message} ✔`));
         },
         fail: (message) => {
           clearInterval(interval);
-          process.stdout.clearLine();
-          process.stdout.cursorTo(0);
+          if (process.stdout.clearLine) {
+            process.stdout.clearLine();
+            process.stdout.cursorTo(0);
+          }
           console.log(kleur.red(`${message} ✘`));
         },
       };
     }
+    
     
   } catch (error) {
     console.error(kleur.red("Error parsing JSON:"), error);

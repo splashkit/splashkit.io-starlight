@@ -82,28 +82,37 @@ try {
 
   function createSpinner(text) {
     const spinner = spinners.dots;
-
+  
     process.stdout.write(`${text}... `);
-
+  
     const interval = setInterval(() => {
+      if (process.stdout.clearLine) {
+        process.stdout.clearLine();
+        process.stdout.cursorTo(0);
+      }
       process.stdout.write(kleur.cyan(spinner.frame()));
     }, spinner.interval);
-
+  
     return {
       succeed: (message) => {
         clearInterval(interval);
-        process.stdout.clearLine();
-        process.stdout.cursorTo(0);
+        if (process.stdout.clearLine) {
+          process.stdout.clearLine();
+          process.stdout.cursorTo(0);
+        }
         console.log(kleur.green(`${message} ✔`));
       },
       fail: (message) => {
         clearInterval(interval);
-        process.stdout.clearLine();
-        process.stdout.cursorTo(0);
+        if (process.stdout.clearLine) {
+          process.stdout.clearLine();
+          process.stdout.cursorTo(0);
+        }
         console.log(kleur.red(`${message} ✘`));
       },
     };
   }
+  
 
   function extractFrontmatter(content, filePath) {
     const frontmatterRegex = /^---\n([\s\S]+?)\n---/;
