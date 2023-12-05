@@ -4,15 +4,7 @@
     --overlay-blurple: hsla(var(--purple-hsl), 0.2);
   /* --sl-color-bg: #00edc5; */
 }
-/* Dark -light toggles for code snippets */
-:root[data-theme="dark"] .ec-theme-github-dark {
-  visibility: visible;
-}
-/* Dark -light toggles for code snippets */
-:root[data-theme="dark"] .ec-theme-github-light {
-  visibility: hidden;
-  display: none;
-}
+
 
 /* Light mode colors. */
 :root[data-theme="light"] {
@@ -20,15 +12,7 @@
     --sl-hue-accent: 350;
   /* --sl-color-bg: #20ef0d; */
 }
-/* Dark -light toggles for code snippets */
-:root[data-theme="light"] .ec-theme-github-dark {
-  visibility: hidden;
-  display: none;
-}
-/* Dark -light toggles for code snippets */
-:root[data-theme="light"] .ec-theme-github-light {
-  visibility: visible;
-}
+
 /* Headings */
 #_top {
   /* Your CSS styles for the <h1> element go here */
@@ -39,12 +23,16 @@
 /* .astro-ML6NTD6L h2{
  Add effect for # headings 
 } */
-.astro-JBFSKTT5 img {
+.astro-jbfsktt5 img {
   /* Image */
 
   transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
-.astro-JBFSKTT5 img:hover {
+.astro-jbfsktt5 img {
+  width: 250px;
+  height: 250px;
+}
+.astro-jbfsktt5 img:hover {
   /* Image */
 
   transform: scale(1.1); /* Enlarge the image on hover */
@@ -84,24 +72,14 @@ iframe[id="stackblitz-iframe"] {
   transition: background-color ease-in-out 0.25s;
 }
 
-[data-has-hero] .hero .action.primary {
-  color: #fefefe;
-  font-weight: bold;
-}
 
-[data-has-hero] .hero .action.primary:hover {
-  background: var(--sl-color-text-accent-darker);
-}
 
 [data-has-hero] .hero .action.minimal {
   border: solid 1px var(--sl-color-text-accent);
   padding: 1rem 1.25rem;
 }
 
-[data-has-hero] .hero .action.minimal:hover {
-  background: var(--sl-color-text-accent);
-  color: #fefefe;
-}
+
 
 [data-has-hero] .hero .actions {
   gap: 1.25rem;
