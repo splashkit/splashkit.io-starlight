@@ -123,7 +123,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
 \n    `;
       if (guidesAvailable[categoryKey]) {
         mdxContent += "\n## \n";
-        mdxContent += "## Animations Guides\n";
+        mdxContent += `## ${name} Guides\n`;
         mdxContent += `<LinkCard
           title="Using ${name}"
           description="Examples & Guides"
