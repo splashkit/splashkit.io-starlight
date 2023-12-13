@@ -1,12 +1,13 @@
 ---
 title: Building the SplashKit Core Library with CMake
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
 
   
 ## Introduction
 
-  
 
 In this tutorial we are going the cover how to build splashkit core library in our project using Cmake. SplashKit-core already had a pre-made `CmakeLists.txt` file in `splashkit-core\projects\cmake`. Feel free to explore and tinker the setting over there.
   

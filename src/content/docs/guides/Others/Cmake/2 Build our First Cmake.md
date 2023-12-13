@@ -1,7 +1,10 @@
 ﻿---
 title: Build your first Cmake
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
+
 
 # Title: Build your first Cmake
 - Create a simple "cpp" that prints Hello world:

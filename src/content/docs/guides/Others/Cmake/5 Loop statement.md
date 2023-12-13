@@ -1,7 +1,13 @@
 ﻿---
 title: Loop statement
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
+
+  
+## Introduction
+
 
 In this tutorial we are going to cover the different loop statement in Cmake. Unfortunately, Cmake only has 1 type of loop which is `foreach()` loop, but this is all we needed for this language.
 ```c

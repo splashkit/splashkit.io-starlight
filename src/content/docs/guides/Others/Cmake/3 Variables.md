@@ -1,6 +1,8 @@
 ﻿---
 title:  Variables
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
 In this tutorial we are going to cover how to declare variables in Cmake.
 Just like other programming, Cmake has variable for:

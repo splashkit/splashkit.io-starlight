@@ -1,7 +1,11 @@
 ﻿---
 title: Cross Platforming
 description: CMake
+author: Bryan Taing
+lastupdated: September 6 2023
 ---
+
+## Inroduction 
 
 In this tutorial, we are covering how to apply conditions depending on different operating system. It is relatively simple, all you need to do is using the conditional statement and check the special keyword built in Cmake:
 ```c
