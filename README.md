@@ -3,8 +3,8 @@
 ## Introduction
 Welcome to the official documentation for the SplashKit SDK on the Starlight framework! This readme markdown script will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
 ## Deployment Status
-- Production -   [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=master)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=master)
-- Development - [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=development)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=production)
+- [Production](https://master--splashkit.netlify.app/) -   [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=master)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=master)
+- [Development](https://development--splashkit.netlify.app/) - [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=development)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=production)
 
 ## Installation
 1. Clone/Fork this repository.

@@ -54,7 +54,7 @@ function Mappings(jsonData) {
       const name = typedef.name.split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-      
+
       typeMappings[typedef.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.structs.forEach((struct) => {
@@ -62,7 +62,7 @@ function Mappings(jsonData) {
       const name = struct.name.split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-      
+
       typeMappings[struct.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.enums.forEach((enumm) => {
@@ -70,7 +70,7 @@ function Mappings(jsonData) {
       const name = enumm.name.split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-      
+
       typeMappings[enumm.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
   }
@@ -86,8 +86,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
     const jsonData = JSON.parse(data);
     Mappings(jsonData);
     console.log(`Generating MDX files for components`);
-    
-  
+
+
 
 
     // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
@@ -214,7 +214,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
             description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
           }
           mdxContent += description ? `${description}\n\n` : "";
-          mdxContent += "**Return Type**\n\n- " + typeMappings[func.return.type] + " \n\n";
+
 
           // Add Parameters section only if there are parameters
           if (Object.keys(func.parameters).length > 0) {
@@ -252,6 +252,10 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
 
             mdxContent += "\n";
           }
+          if (func.return.type != 'void') {
+            mdxContent += "**Return Type**\t - " + typeMappings[func.return.type] + " \n\n";
+          }
+
 
           mdxContent += "**Signatures**\n\n";
           mdxContent += "<Tabs>\n";
@@ -286,124 +290,125 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
         mdxContent += "## Types\n\n";
 
         sortedTypes.forEach((type) => {
-          if(type.name != undefined) {
-          const formattedName = type.name
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-
-          const formattedTypeName = formattedName || `\`${type.name}\``;
-          mdxContent += `### ${formattedTypeName} [🧾](#${type.name.toLowerCase()})\n\n`;
-
-          let description = type.description || "";
-          for (const typeName in typeMappings) {
-            const typeMapping = typeMappings[typeName];
-            description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-          }
-
-          for (const names of functionNames) {
-            const normalName = names
+          if (type.name != undefined) {
+            const formattedName = type.name
               .split("_")
               .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
               .join(" ");
-            const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-            const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
-            description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-          }
 
+            const formattedTypeName = formattedName || `\`${type.name}\``;
+            mdxContent += `### ${formattedTypeName} [🧾](#${type.name.toLowerCase()})\n\n`;
 
-          mdxContent += `${description}\n\n`;
-          // If it's a struct, add a table for its fields
-          if (type.fields) {
-            mdxContent +=
-              "| Field  | Type                                               | Description                                                                        |\n";
-            mdxContent +=
-              "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
-
-            for (const fieldName in type.fields) {
-              const field = type.fields[fieldName];
-              const fieldType = typeMappings[field.type] || field.type;
-              let fieldDescription = field.description || "";
-
-              for (const typeName in typeMappings) {
-                const typeMapping = typeMappings[typeName];
-                fieldDescription = fieldDescription.replace(
-                  new RegExp(`\`\\b${typeName}\\b\``, "g"),
-                  typeMapping
-                );
-              }
-              for (const names of functionNames) {
-                const normalName = names
-                  .split("_")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ");
-                const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
-                description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-              }
-
-              mdxContent += `| ${fieldName} | ${fieldType} | ${fieldDescription.replace(/\n/g, '')} |\n`;
+            let description = type.description || "";
+            for (const typeName in typeMappings) {
+              const typeMapping = typeMappings[typeName];
+              description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
             }
 
-            mdxContent += "\n";
-          }
-
-          // If it's an enum, add a table for its constants
-          if (type.constants) {
-            mdxContent +=
-              "| Constant           | Value | Description                |\n";
-            mdxContent +=
-              "| ------------------- | ----- | -------------------------- |\n";
-
-            for (const constantName in type.constants) {
-              const constant = type.constants[constantName];
-              const constantValue = constant.number !== undefined ? constant.number : "";
-              const constantDescription = constant.description || "";
-
-              mdxContent += `| ${constantName} | ${constantValue} | ${constantDescription.replace(/\n/g, '')} |\n`;
+            for (const names of functionNames) {
+              const normalName = names
+                .split("_")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ");
+              const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+              const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+              description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 
-            mdxContent += "\n";
+
+            mdxContent += `${description}\n\n`;
+            // If it's a struct, add a table for its fields
+            if (type.fields) {
+              mdxContent +=
+                "| Field  | Type                                               | Description                                                                        |\n";
+              mdxContent +=
+                "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
+
+              for (const fieldName in type.fields) {
+                const field = type.fields[fieldName];
+                const fieldType = typeMappings[field.type] || field.type;
+                let fieldDescription = field.description || "";
+
+                for (const typeName in typeMappings) {
+                  const typeMapping = typeMappings[typeName];
+                  fieldDescription = fieldDescription.replace(
+                    new RegExp(`\`\\b${typeName}\\b\``, "g"),
+                    typeMapping
+                  );
+                }
+                for (const names of functionNames) {
+                  const normalName = names
+                    .split("_")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ");
+                  const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+                  const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+                  description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+                }
+
+                mdxContent += `| ${fieldName} | ${fieldType} | ${fieldDescription.replace(/\n/g, '')} |\n`;
+              }
+
+              mdxContent += "\n";
+            }
+
+            // If it's an enum, add a table for its constants
+            if (type.constants) {
+              mdxContent +=
+                "| Constant           | Value | Description                |\n";
+              mdxContent +=
+                "| ------------------- | ----- | -------------------------- |\n";
+
+              for (const constantName in type.constants) {
+                const constant = type.constants[constantName];
+                const constantValue = constant.number !== undefined ? constant.number : "";
+                const constantDescription = constant.description || "";
+
+                mdxContent += `| ${constantName} | ${constantValue} | ${constantDescription.replace(/\n/g, '')} |\n`;
+              }
+
+              mdxContent += "\n";
+            }
+            for (const typeName in typeMappings) {
+              const typeMapping = typeMappings[typeName];
+              description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+            }
+            for (const names of functionNames) {
+              const normalName = names
+                .split("_")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ");
+              const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+              const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+              description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+            }
+
+            mdxContent += `${description}\n\n`;
+            mdxContent += `---\n`;
           }
-          for (const typeName in typeMappings) {
-            const typeMapping = typeMappings[typeName];
-            description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-          }
-          for (const names of functionNames) {
-            const normalName = names
-              .split("_")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(" ");
-            const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-            const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
-            description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-          }
-          
-          mdxContent += `${description}\n\n`;
-          mdxContent += `---\n`;
-      }});
+        });
       }
-   
- 
+
+
 
 
       // Write the MDX file
       fs.writeFile(`./src/content/docs/components/${name}.mdx`, mdxContent, (err) => {
         if (err) {
           console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
-         
+
         } else {
-          
-          console.log(kleur.yellow('Components')+kleur.green(` -> ${input}`));
-  
+
+          console.log(kleur.yellow('Components') + kleur.green(` -> ${input}`));
+
         }
 
       });
 
     }
     console.log(kleur.green("All component MDX files generated successfully.\n"));
- 
-    
+
+
   } catch (error) {
     console.error(kleur.red("Error parsing JSON:"), error);
   }
