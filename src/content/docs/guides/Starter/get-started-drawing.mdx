@@ -14,7 +14,7 @@ In this article you will see how to get started with SplashKit with some simple 
 
 ## Step 1: Creating a Window
 
-In SplashKit you can open a Window to draw on and interact with. To open the window you need to call [open_window](/components/graphics/#open-window). This procedure requires you to pass it the window’s title, width and height. For example  `open_window("House Drawing", 800, 600);` will open a window that is 800 pixels wide and 600 pixels high with the title "House Drawing", as shown in the following image. Please note that the house and hill are drawn by additional code.
+In SplashKit you can open a Window to draw on and interact with. To open the window you need to call [open_window](/api/graphics/#open-window). This procedure requires you to pass it the window’s title, width and height. For example  `open_window("House Drawing", 800, 600);` will open a window that is 800 pixels wide and 600 pixels high with the title "House Drawing", as shown in the following image. Please note that the house and hill are drawn by additional code.
 
 <img alt="Window with dimensions illustrated" src="/images/articles/starter/drawing/NewWindow.png" style="width: 700px"></img>
 
@@ -140,7 +140,7 @@ For example: the magenta rectangle is drawn at 10, 1. This means its x value is 
 To draw a shape with SplashKit you need to call one of the shape drawing procedures. All of the shape drawing operations in SplashKit take a number of parameter values:
 
 * The **color** to draw the shape. 
-    SplashKit has a number of colors you can use. See the list of colors starting with (Alice Blue)[/components/color#color-alice-blue]. For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type `COLOR_` then hit ctrl+space. Though this only works if you opened the project folder.
+    SplashKit has a number of colors you can use. See the list of colors starting with (Alice Blue)[/api/color#color-alice-blue]. For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type `COLOR_` then hit ctrl+space. Though this only works if you opened the project folder.
 * An **x** value, representing the x position of the shape (column). 
     
     This is a number of pixels from the left edge of the screen. Larger values are further to the right.
@@ -151,16 +151,16 @@ To draw a shape with SplashKit you need to call one of the shape drawing procedu
 
 See the following for examples of what you can call:
 
-* [Clear Screen](/components/graphics#clear_screen)
-* [Draw Circle](/components/graphics#draw_circle)
-* [Fill Circle](/components/graphics#fill_circle)
-* [Draw Rectangle](/components/graphics#draw_rectangle)
-* [Fill Rectangle](/components/graphics#fill_rectangle)
-* [Draw Triangle](/components/graphics#draw_triangle)
-* [Fill Triangle](/components/graphics#fill_triangle)
-* [Draw Ellipse](/components/graphics#draw_ellipse)
-* [Fill Ellipse](/components/graphics#fill_ellipse)
-* [Draw Line](/components/graphics#draw_line)
+* [Clear Screen](/api/graphics#clear_screen)
+* [Draw Circle](/api/graphics#draw_circle)
+* [Fill Circle](/api/graphics#fill_circle)
+* [Draw Rectangle](/api/graphics#draw_rectangle)
+* [Fill Rectangle](/api/graphics#fill_rectangle)
+* [Draw Triangle](/api/graphics#draw_triangle)
+* [Fill Triangle](/api/graphics#fill_triangle)
+* [Draw Ellipse](/api/graphics#draw_ellipse)
+* [Fill Ellipse](/api/graphics#fill_ellipse)
+* [Draw Line](/api/graphics#draw_line)
 
 ## Autocomplete
 

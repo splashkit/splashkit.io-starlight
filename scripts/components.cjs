@@ -55,7 +55,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[typedef.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[typedef.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.structs.forEach((struct) => {
       // Add structs to typeMappings
@@ -63,7 +63,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[struct.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[struct.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.enums.forEach((enumm) => {
       // Add structs to typeMappings
@@ -71,7 +71,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[enumm.name] = `[\`${name}\`](/components/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[enumm.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
   }
 }
@@ -170,7 +170,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
               }
               mdxContent += `${paramName}: ${paramType}, `;
             }
-            mdxContent += `)](/components/${input}/#${formattedLink.toLowerCase()}--${index + 1})\n`;
+            mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}--${index + 1})\n`;
           });
 
           mdxContent += "\n:::\n\n";
@@ -210,7 +210,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
               .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
               .join(" ");
             const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-            const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+            const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
             description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
           }
           mdxContent += description ? `${description}\n\n` : "";
@@ -243,7 +243,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                   .join(" ");
                 const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+                const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
                 description2 = description2.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
               }
 
@@ -311,7 +311,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" ");
               const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+              const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 
@@ -342,7 +342,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ");
                   const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                  const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+                  const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
                   description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
                 }
 
@@ -379,7 +379,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" ");
               const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/components/${input}/${formattedLink})`
+              const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 
@@ -393,16 +393,13 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
 
 
       // Write the MDX file
-      fs.writeFile(`./src/content/docs/components/${name}.mdx`, mdxContent, (err) => {
+      fs.writeFile(`./src/content/docs/api/${name}.mdx`, mdxContent, (err) => {
         if (err) {
           console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
-
         } else {
 
           console.log(kleur.yellow('Components') + kleur.green(` -> ${input}`));
-
         }
-
       });
 
     }

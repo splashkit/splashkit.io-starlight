@@ -9,10 +9,10 @@ Here's an example of layering looks like:
 
 ## Functions Used (Link to SplashKit documentation)
 
-1. [Create Sprite](/components/sprites/#create-sprite)
-2. [Sprite Add Layer](/components/sprites/#sprite-add-layer)
-3. [Sprite Hide Layer](/components/sprites/#sprite-hide-layer-named)
-4. [Sprite Show Layer](/components/sprites/#group-sprite-show-layer)
+1. [Create Sprite](/api/sprites/#create-sprite)
+2. [Sprite Add Layer](/api/sprites/#sprite-add-layer)
+3. [Sprite Hide Layer](/api/sprites/#sprite-hide-layer-named)
+4. [Sprite Show Layer](/api/sprites/#group-sprite-show-layer)
 
 ## Apply the method to SplashKit sprite
 To demonstrate this, we are going to create a simple move around program which uses 4 custom made sprite images. Those 4 images represent 4 sided face:
@@ -128,8 +128,8 @@ That's all the code implementation, here's the result: [here](https://github.com
 
 ## Other functions 
 While this is one basic example of using layering, there are other functions that we haven't use but it's good to know them incase we ever needed them:
-1. [sprite_bring_layer_to_front(sprite s, int visible_layer)](/components/sprites/#sprite-bring-layer-to-front) : Brings the layer to the front of other layers
-2. [sprite_bring_layer_forward(sprite s, int visible_layer) ](/components/sprites/#sprite-bring-layer-forward) : Bring a layer 1 step forward of another layer.
+1. [sprite_bring_layer_to_front(sprite s, int visible_layer)](/api/sprites/#sprite-bring-layer-to-front) : Brings the layer to the front of other layers
+2. [sprite_bring_layer_forward(sprite s, int visible_layer) ](/api/sprites/#sprite-bring-layer-forward) : Bring a layer 1 step forward of another layer.
 
 ## Expected Learning Outcomes
 

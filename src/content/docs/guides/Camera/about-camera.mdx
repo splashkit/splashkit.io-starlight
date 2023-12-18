@@ -25,34 +25,34 @@ When you draw to the screen SplashKit adjusts the screen position based on the c
 
 With the camera you can create the effect of moving past stationary background objects by moving the player and the camera at the same time. As you move the camera, stationary objects drawn to the screen will appear in different locations on the Window.
 
-- [Set Camera X](/components/camera/#set-camera-x) - adjust the x value for the camera
-- [Set Camera Y](/components/camera/#set-camera-y) - adjust the y value for the camera
-- [Set Camera Position](/components/camera/#set-camera-position) - adjust the camera position
-- [Move Camera By](/components/camera/#group-move-camera-by) - move the camera a specified amount
-- [Move Camera To](/components/camera/#group-move-camera-to) - move the camera to a location
-- [Center Camera On](/components/camera/#group-center-camera-on) - position the camera to focus on a sprite
+- [Set Camera X](/api/camera/#set-camera-x) - adjust the x value for the camera
+- [Set Camera Y](/api/camera/#set-camera-y) - adjust the y value for the camera
+- [Set Camera Position](/api/camera/#set-camera-position) - adjust the camera position
+- [Move Camera By](/api/camera/#group-move-camera-by) - move the camera a specified amount
+- [Move Camera To](/api/camera/#group-move-camera-to) - move the camera to a location
+- [Center Camera On](/api/camera/#group-center-camera-on) - position the camera to focus on a sprite
 
 
 ## Where is the mouse?
 
 Once you use the camera, then you need to map any interactions with the screen from screen to world coordinates. For example, when you read mouse input the values are in 'screen coordinates'. In this system the coordinates always have 0,0 as the top left-hand corner, regardless of the camera position.
 
-You can translate between these coordinate systems using the [To Screen](/components/camera/#group-to-screen) and [To World](/components/camera/#to-world). 
+You can translate between these coordinate systems using the [To Screen](/api/camera/#group-to-screen) and [To World](/api/camera/#to-world). 
 
-- [To Screen](/components/camera/#group-to-screen) converts values from world coordinates to screen coordinates.
-- [To World](/components/camera/#to-world) converts a screen coordinate to a game world coordinate.
-- [To World X](/components/camera/#to-world-x) converts a screen x value to its location in the game world.
-- [To World Y](/components/camera/#to-world-y) converts a screen y value to its location in the game world.
-- [To Screen X](/components/camera/#to-screen-x) converts a game world x value to its location on the screen.
-- [To Screen Y](/components/camera/#to-screen-y) converts a game world y value to its location on the screen.
+- [To Screen](/api/camera/#group-to-screen) converts values from world coordinates to screen coordinates.
+- [To World](/api/camera/#to-world) converts a screen coordinate to a game world coordinate.
+- [To World X](/api/camera/#to-world-x) converts a screen x value to its location in the game world.
+- [To World Y](/api/camera/#to-world-y) converts a screen y value to its location in the game world.
+- [To Screen X](/api/camera/#to-screen-x) converts a game world x value to its location on the screen.
+- [To Screen Y](/api/camera/#to-screen-y) converts a game world y value to its location on the screen.
 
 
 ## Drawing directly to the screen
 
-Some game elements will need to remain in the same place, regardless of the camera position. To achieve this you need to use the [Option To Screen](/components/graphics/#group-option-to-screen). Drawing options allow you to customise each of the drawing instructions. Each drawing operation include a variation that accepts a Drawing Option value.
+Some game elements will need to remain in the same place, regardless of the camera position. To achieve this you need to use the [Option To Screen](/api/graphics/#group-option-to-screen). Drawing options allow you to customise each of the drawing instructions. Each drawing operation include a variation that accepts a Drawing Option value.
 
-- [Option To Screen](/components/graphics/#group-option-to-screen) ignore camera position when drawing
-- [Option To World](/components/graphics/#group-option-to-world) adjust all positions based on the camera position
+- [Option To Screen](/api/graphics/#group-option-to-screen) ignore camera position when drawing
+- [Option To World](/api/graphics/#group-option-to-world) adjust all positions based on the camera position
 
 ## Example Code
 

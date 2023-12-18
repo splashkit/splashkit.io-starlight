@@ -11,9 +11,9 @@ This article shows you how to get started reading text from the user. This inclu
 
 ## Reading Text from the Command Line
 
-Reading text input from the user is straightforward for command line applications. In this context, [Read Line](/components/terminal/#read-line) gives you the ability to read a line of text entered at the Terminal. This is a **blocking** function call, meaning it waits for the user to input the line before it returns. For command line applications, this is fine; you want it to wait for the input.
+Reading text input from the user is straightforward for command line applications. In this context, [Read Line](/api/terminal/#read-line) gives you the ability to read a line of text entered at the Terminal. This is a **blocking** function call, meaning it waits for the user to input the line before it returns. For command line applications, this is fine; you want it to wait for the input.
 
-The following code demonstrates the use of [Read Line](/components/terminal/#read-line) in order to read in and display the user's name.
+The following code demonstrates the use of [Read Line](/api/terminal/#read-line) in order to read in and display the user's name.
 
 <Tabs>
   <TabItem label="C++">
@@ -206,10 +206,10 @@ class Program
 
 In the above program we want to read in the user's name and store it in the `name` variable. To get started with this we need to open a window, and load a font to draw the text and input. There is also the standard event loop that is repeating the basic actions of checking user input and drawing the screen until the program is closed.
 
-The logic for reading input starts with the call to [Start Reading Text](/components/input/#group-start-reading-text). This tells SplashKit that you want it to collect text input by the user, and that you want it drawn into the passed-in [Rectangle](/components/types/#rectangle) (in this case `rect`). SplashKit is now listening for input from, and collecting this text for you when you call [Process Events](/components/input/#process-events).
+The logic for reading input starts with the call to [Start Reading Text](/api/input/#group-start-reading-text). This tells SplashKit that you want it to collect text input by the user, and that you want it drawn into the passed-in [Rectangle](/api/types/#rectangle) (in this case `rect`). SplashKit is now listening for input from, and collecting this text for you when you call [Process Events](/api/input/#process-events).
 
-SplashKit will continue reading text from the user until they hit the Escape or Enter key. You can check if text is still being read by calling the [Reading Text](/components/input/#group-reading-text) function. In this example, we use this to update the name. You can also end text input yourself using the [End Reading Text](/components/input/#group-end-reading-text) function.
+SplashKit will continue reading text from the user until they hit the Escape or Enter key. You can check if text is still being read by calling the [Reading Text](/api/input/#group-reading-text) function. In this example, we use this to update the name. You can also end text input yourself using the [End Reading Text](/api/input/#group-end-reading-text) function.
 
-When the SplashKit is no longer reading text, you can use [Text Entry Cancelled](/components/input/#group-text-entry-cancelled) to check if the user cancelled (by hitting Escape) the input. To read the actual value entered, you call [Text Input](/components/input/#group-text-input). This will return the value entered by the user. If they did cancel the input, then this will be an empty string.
+When the SplashKit is no longer reading text, you can use [Text Entry Cancelled](/api/input/#group-text-entry-cancelled) to check if the user cancelled (by hitting Escape) the input. To read the actual value entered, you call [Text Input](/api/input/#group-text-input). This will return the value entered by the user. If they did cancel the input, then this will be an empty string.
 
-The key with graphical input will be to keep updating the data associated with the graphical elements. This will keep the screen updating as you collect the input from the user. For this, you need to [Start Reading Text](/components/input/#group-start-reading-text), then at some point collect the [Text Input](/components/input/#group-text-input) and [End Reading Text](/components/input/#group-end-reading-text).
+The key with graphical input will be to keep updating the data associated with the graphical elements. This will keep the screen updating as you collect the input from the user. For this, you need to [Start Reading Text](/api/input/#group-start-reading-text), then at some point collect the [Text Input](/api/input/#group-text-input) and [End Reading Text](/api/input/#group-end-reading-text).

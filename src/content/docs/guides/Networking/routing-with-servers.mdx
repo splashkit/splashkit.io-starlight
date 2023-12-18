@@ -102,7 +102,7 @@ You should have an index.html file in ```Resources/server``` in your project fol
 * contact.html
 
 ## Checking Requests
-Checking to see if a request has been made for a certain path is really easy! SplashKit provides a [Is GET Request For](/components/networking/#is-get-request-for) function that lets you pass in a path, and it lets you know if the request is for that path. Alternately, you can also use [Request URI](/components/networking/#request-uri) or [Request URI Stubs](/components/networking/#request-uri-stubs) if you want to dynamically respond to the details in the request. [Is GET Request For](/components/networking/#is-get-request-for) returns a boolean, True or False, which we can use in an if statement to check each of the resources we want to serve.
+Checking to see if a request has been made for a certain path is really easy! SplashKit provides a [Is GET Request For](/api/networking/#is-get-request-for) function that lets you pass in a path, and it lets you know if the request is for that path. Alternately, you can also use [Request URI](/api/networking/#request-uri) or [Request URI Stubs](/api/networking/#request-uri-stubs) if you want to dynamically respond to the details in the request. [Is GET Request For](/api/networking/#is-get-request-for) returns a boolean, True or False, which we can use in an if statement to check each of the resources we want to serve.
 
 The following code shows the use of an if statement to serve some login text or the index page, depending on what the browser requested.
 

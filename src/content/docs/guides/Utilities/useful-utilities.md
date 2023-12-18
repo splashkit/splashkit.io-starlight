@@ -7,7 +7,7 @@ description: In this article, we discuss useful utilities that you can use to co
 ---
 *Written by Richard Denton on Oct 3 2017*
 
-SplashKit's [Utilities library](/components/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
+SplashKit's [Utilities library](/api/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
 
 These functions are useful in many areas of programming.
 

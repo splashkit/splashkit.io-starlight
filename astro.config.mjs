@@ -46,7 +46,7 @@ export default defineConfig({
         },
         {
           label: "Components",
-          autogenerate: { directory: "components", collapsed: false },
+          autogenerate: { directory: "api", collapsed: false },
         },
         {
           label: "Guides",

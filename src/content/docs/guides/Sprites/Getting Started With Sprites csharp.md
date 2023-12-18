@@ -12,7 +12,7 @@ don't interact with those.
 
 In order to be able to draw an image to a screen, we first have to provide some information to
 SplashKit. We have to have Bitmap images to pass into our
-[Create Sprite](/components/sprites/#create-sprite) function so that it can create a
+[Create Sprite](/api/sprites/#create-sprite) function so that it can create a
 workable _Sprite_ file type for us. This looks something like this inside our Main() method:
 
 ```csharp
@@ -22,7 +22,7 @@ Private Sprite happySunSprite;
 
 Line by line, this can be broken down as:
 
-1. Instantiate a new Object happySun, of Type [Bitmap](/components/types/#bitmap)
+1. Instantiate a new Object happySun, of Type [Bitmap](/api/types/#bitmap)
 
 ```csharp
 Bitmap HappySun;
@@ -47,8 +47,8 @@ Bitmap(string name, int width int height);
    ```
 
 1. Assign to `Object happySunSprite` the loaded `Bitmap happySun`, using one of the overloaded
-   [Create Sprite](/components/sprites/#create-sprite) methods, specifically
-   [the method where we provide a String and a Bitmap object](/components/sprites/#create-sprite-named)
+   [Create Sprite](/api/sprites/#create-sprite) methods, specifically
+   [the method where we provide a String and a Bitmap object](/api/sprites/#create-sprite-named)
 
 ```csharp
          HappySun = new Bitmap("Happy Sun", "sprite01.png");
@@ -71,12 +71,12 @@ spriteWindow = new Window("Learning Sprites!, 800, 800);
 As above, we create a new `Object` of type `Window` (this is important because SplashKit has
 specific implementation for multi-window and window-specific method handling), and then we assign
 that value with the window title of "Learning Sprites!", and give it x and y size integers, using
-[Open Window](/components/windows/#open-window).
+[Open Window](/api/windows/#open-window).
 
 If we were to run and compile our code now for reference, it should open up an 800x800 window, of
 title 'Learning Sprites!', but with nothing on the screen. In order to remedy this, we can make use
-of the [Move Sprite To](/components/sprites/#move-sprite-to) and
-[Draw Sprite](/components/sprites/#group-draw-sprite) methods as below:
+of the [Move Sprite To](/api/sprites/#move-sprite-to) and
+[Draw Sprite](/api/sprites/#group-draw-sprite) methods as below:
 
 ```csharp
 SplashKit.MoveSpriteTo(happySunSprite, 400, 400);
@@ -92,7 +92,7 @@ want a `Sprite` to be seen at Origin point first, to move them and then Draw the
 
 If you go ahead and compile and run the above command, you'll still see nothing in the window. This
 is because we still have to do a basic
-[Window Refresh](/components/windows/#refresh-window) to 'update' or 'paint' what
+[Window Refresh](/api/windows/#refresh-window) to 'update' or 'paint' what
 Sprites and where we have told SplashKit to put them. After you add these lines to our Main() :
 
 ```csharp
