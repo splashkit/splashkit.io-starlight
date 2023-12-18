@@ -7,8 +7,8 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://thoth-tech.github.io',
-  base: '/splashkit.io-starlight',  // if hosted without domain.
+//   site: 'https://thoth-tech.github.io',
+//   base: '/splashkit.io-starlight',  // if hosted without domain.
 //   output: "server",
 //   adapter: netlify(),
   integrations: [
