@@ -156,7 +156,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
           const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
 
           const formattedGroupLink = `group-${formattedLink}`;
-          mdxContent += `## ${formattedFunctionName} [📁](#${formattedGroupLink})\n\n`;
+          mdxContent += `### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
           mdxContent += ":::note\n\n";
           mdxContent += "This function is overloaded. The following versions exist:\n\n";
 
@@ -189,8 +189,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
           const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
 
           const formattedName = isOverloaded
-            ? `### ${functionName2} [📄](#${formattedLink.toLowerCase()}--${index + 1})`
-            : `## ${functionName2} [🔗](#${formattedLink})\n\n`;
+            ? `#### [${functionName2}](#${formattedLink.toLowerCase()}--${index + 1})`
+            : `### [${functionName2}](#${formattedLink})\n\n`;
 
 
           // Replace type names in the description with formatted versions
@@ -297,7 +297,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
               .join(" ");
 
             const formattedTypeName = formattedName || `\`${type.name}\``;
-            mdxContent += `### ${formattedTypeName} [🧾](#${type.name.toLowerCase()})\n\n`;
+            mdxContent += `### [${formattedTypeName}](#${type.name.toLowerCase()})\n\n`;
 
             let description = type.description || "";
             for (const typeName in typeMappings) {
@@ -398,7 +398,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", (err, data) => {
           console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
         } else {
 
-          console.log(kleur.yellow('Components') + kleur.green(` -> ${input}`));
+          console.log(kleur.yellow('API Documentation') + kleur.green(` -> ${input}`));
         }
       });
 
