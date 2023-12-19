@@ -15,6 +15,9 @@ export default defineConfig({
     
     starlight({
       title: "SplashKit",
+      components: {
+        Sidebar: './src/components/Sidebar.astro',
+      },
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
         // frames: {
@@ -45,25 +48,25 @@ export default defineConfig({
           autogenerate: { directory: "installation", collapsed: true },
         },
         {
-          label: "Components",
-          autogenerate: { directory: "api", collapsed: false },
-        },
-        {
-          label: "Guides",
-          collapsed: true,
-          autogenerate: { directory: "guides", collapsed: true },
-        },
-        {
           label: "Troubleshooting",
           // items: [
-          // 	// Each item here is one entry in the navigation menu.
-          // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
-          // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
-          // ],
-          collapsed: false,
-          autogenerate: { directory: "troubleshoot", collapsed: true },
-          badge: "New",
-        },
+            // 	// Each item here is one entry in the navigation menu.
+            // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
+            // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
+            // ],
+            collapsed: false,
+            autogenerate: { directory: "troubleshoot", collapsed: true },
+            badge: "New",
+          },
+          {
+            label: "API Documentation",
+            autogenerate: { directory: "api", collapsed: false },
+          },
+          {
+            label: "Tutorials and Guides",
+            collapsed: true,
+            autogenerate: { directory: "guides", collapsed: true },
+          },
       ],
     }),
     solidJs(),
