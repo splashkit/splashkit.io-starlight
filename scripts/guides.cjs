@@ -103,7 +103,7 @@ try {
     }
 
     return {};
-  }
+  } 
 
   function generateIndexMdxContent(linkCards) {
     return `---

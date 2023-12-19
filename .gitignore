@@ -14,7 +14,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 #mdx output files
-src/api/components/*.mdx
+src/api/api/*.mdx
 src/api/guides/**/index.mdx
 src/api/guides/index.mdx
 
