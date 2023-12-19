@@ -114,7 +114,7 @@ sidebar:
 
 import { LinkCard, CardGrid } from "@astrojs/starlight/components";
 
-<CardGrid stagger>
+<CardGrid>
   ${linkCards.join('\n  ')}
 </CardGrid>
 `;
