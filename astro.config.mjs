@@ -16,7 +16,8 @@ export default defineConfig({
     starlight({
       title: "SplashKit",
       components: {
-        Sidebar: './src/components/Sidebar.astro',
+        Sidebar: './src/components/Sidebar.astro'
+    
       },
       expressiveCode: {
         // theme: ["github-dark", "github-light"],

@@ -19,7 +19,10 @@ hero:
 ---
 
 
-import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+import Card from "../../components/Card.astro";
+
 import { ScriptComp } from "../../assets/ScriptComp";
 
 ### To install SplashKit, copy and paste the following into your terminal:
@@ -34,32 +37,32 @@ bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-sc
 ## Features
 
 <CardGrid>
-  <Card title="Easy Integration" icon="pencil">
+  <Card title="Easy Integration" icon="carbon:ibm-cloud-pak-integration">
     SplashKit SDK offers seamless integration with your existing development
     environment, making it easy to incorporate powerful graphics and game
     development capabilities into your projects.
   </Card>
-  <Card title="Cross-Platform Support:" icon="add-document">
+  <Card title="Cross-Platform Support:" icon="system-uicons:airplay">
     Develop games and applications that run on multiple platforms, including
     Windows, macOS, Linux, and a few more using a single codebase with SplashKit
-    SDK. Supports **C++, C# and pyhton** .
+    SDK. Supports **C++, C# and python** .
   </Card>
-  <Card title="Rich Graphics and Animation" icon="setting">
+  <Card title="Rich Graphics and Animation" icon="clarity:animation-solid">
     Create stunning visuals and captivating animations with SplashKit's
     comprehensive set of graphics and animation tools. Bring your ideas to life
     with ease.
   </Card>
-  <Card title="Game Development Made Simple" icon="open-book">
+  <Card title="Game Development Made Simple" icon="icon-park-outline:game-two">
     Whether you're a beginner or an experienced game developer, SplashKit SDK
     provides a user-friendly interface and a wide range of features to simplify
     the game development process.
   </Card>
-  <Card title="Extensive Documentation" icon="open-book">
+  <Card title="Extensive Documentation" icon="iconoir:google-docs">
     Access detailed documentation and tutorials to help you get started quickly
     and make the most out of SplashKit SDK. Learn at your own pace and explore
     the vast possibilities.
   </Card>
-  <Card title="Continuous Updates and Support" icon="open-book">
+  <Card title="Continuous Updates and Support" icon="grommet-icons:troubleshoot">
     
     <LinkCard title="Troubleshooting" icon="pencil" description="FAQs on MacOS and Windows" href="/troubleshoot/" />
 

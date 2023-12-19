@@ -5,13 +5,15 @@ sidebar:
   hidden: true
 ---
 
-import { Card, LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+import Card from "../../../components/Card.astro";
 
 import { ScriptComp } from '../../../assets/ScriptComp'
 
 
 <CardGrid>
-  <Card title="Windows" icon="pencil">
+  <Card title="Windows" icon="raphael:windows">
     SplashKit SDK offers seamless integration with your existing development
     environment, making it easy to incorporate powerful graphics and game
     development capabilities into your projects.
@@ -20,16 +22,16 @@ import { ScriptComp } from '../../../assets/ScriptComp'
     href="/installation/windows/mingw/"
 />
   </Card>
-  <Card title="MacOS" icon="add-document">
+  <Card title="MacOS" icon="ic:baseline-apple">
     Develop games and applications that run on multiple platforms, including
     Windows, macOS, Linux, and a few more using a single codebase with SplashKit
-    SDK. Supports **C++, C# and pyhton** .
+    SDK. Supports **C++, C# and python** .
       <LinkCard
     title="Installation Guide"
     href="/installation/macos/"
   />
   </Card>
-  <Card title="Linux" icon="setting">
+  <Card title="Linux" icon="logos:linux-tux">
     Create stunning visuals and captivating animations with SplashKit's
     comprehensive set of graphics and animation tools. Bring your ideas to life
     with ease.
@@ -38,7 +40,7 @@ import { ScriptComp } from '../../../assets/ScriptComp'
     href="/installation/linux/"
   />
   </Card>
-  <Card title="Virtual Machine" icon="open-book">
+  <Card title="Virtual Machine" icon="carbon:virtual-machine">
     Whether you're a beginner or an experienced game developer, SplashKit SDK
     provides a user-friendly interface and a wide range of features to simplify
     the game development process.
