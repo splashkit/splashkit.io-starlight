@@ -7,8 +7,8 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-//   site: 'https://thoth-tech.github.io',
-//   base: '/splashkit.io-starlight',  // if hosted without domain.
+  site: 'https://splashkit.io/',
+// base: '/splashkit.io-starlight',  // if hosted without domain.
 //   output: "server",
 //   adapter: netlify(),
   integrations: [
@@ -44,25 +44,25 @@ export default defineConfig({
 
           autogenerate: { directory: "installation", collapsed: true },
         },
-         {
+        {
+          label: "Components",
+          autogenerate: { directory: "api", collapsed: false },
+        },
+        {
+          label: "Guides",
+          collapsed: true,
+          autogenerate: { directory: "guides", collapsed: true },
+        },
+        {
           label: "Troubleshooting",
           // items: [
           // 	// Each item here is one entry in the navigation menu.
           // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
           // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
           // ],
-          collapsed: true,
+          collapsed: false,
           autogenerate: { directory: "troubleshoot", collapsed: true },
           badge: "New",
-        },
-          {
-          label: "Components",
-          autogenerate: { directory: "components", collapsed: true },
-        },
-        {
-          label: "Guides",
-          collapsed: true,
-          autogenerate: { directory: "guides", collapsed: true },
         },
       ],
     }),
