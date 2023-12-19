@@ -4,13 +4,7 @@ import type { Props } from "@astrojs/starlight/props";
 import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 
-import { Icon } from 'astro-icon'
-
 const { sidebar } = Astro.props;
-
-
-
-
 ---
 
 <SidebarSublist sublist={sidebar} />
@@ -24,13 +18,13 @@ const { sidebar } = Astro.props;
 		 This is intentionally inlined to avoid FOUSC 
 		 (Flash Of Un-Scrolled Content). */
 }
+
 <script is:inline>
 function capitalizeEachWord(str) {
     return str
         .split(" ")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-        
 }
 (() => {
     const sidebarContent =
@@ -50,84 +44,88 @@ function capitalizeEachWord(str) {
             }
             return [...detailsElements];
         }
-
-        // open ancestor details of the active item
-        const activeLink = sidebarContent.querySelector('a[aria-current="page"]');
-        const activeLinkDetailAncestors = findAllDetailsAncestors(
-            activeLink,
-            sidebarContent
-        );
-
-        activeLinkDetailAncestors.forEach((detail) => {
-            detail.setAttribute("open", "");
-        });
-
         const detailElements = [...sidebarContent.querySelectorAll("details")];
-        detailElements.forEach((element) => {
-            element.querySelectorAll("span").forEach((span) => {
-                if (span.classList.contains("large")) {
-                    console.log(span);
-                    span.innerText = capitalizeEachWord(span.innerText);
-                    console.log(span.outerHTML);
-                }
-            });
-        });
-
-        // Restore state from previous navigation
-        // (but keep the active item's ancestors open regardless)
-        const key = "sl-sidebar-state";
-        const savedStateJson = sessionStorage.getItem(key);
-
-        if (savedStateJson) {
-            let savedState;
-
-            try {
-                savedState = JSON.parse(savedStateJson);
-            } catch (e) {
-                console.error("Error parsing saved position:", e);
-            }
-
-            if (savedState) {
-                savedState.details.forEach((isOpen, i) => {
-                    if (isOpen) {
-                        detailElements[i]?.setAttribute("open", "");
-                    } else if (!activeLinkDetailAncestors.includes(detailElements[i])) {
-                        detailElements[i]?.removeAttribute("open");
+            detailElements.forEach((element) => {
+                element.querySelectorAll("span").forEach((span) => {
+                    if (span.classList.contains("large")) {
+                        span.innerText = capitalizeEachWord(span.innerText);
                     }
                 });
-
-                sidebarContent.scrollTop = savedState.scrollTop;
-            }
-        }
-
-        // Scroll the active list item into view if necessary
-        const activeLi = sidebarContent.querySelector(
-            'a[aria-current="page"]'
-        )?.parentElement;
-        if (activeLi) {
-            // intersection observer might be more performant?
-            const sidebarRect = sidebarContent.getBoundingClientRect();
-            const liRect = activeLi.getBoundingClientRect();
-            if (
-                liRect.top < sidebarRect.top ||
-                liRect.bottom > sidebarRect.bottom
-            ) {
-                activeLi.scrollIntoView({ behavior: "instant", block: "nearest" });
-            }
-        }
-
-        // Save user state before navigating
-        window.addEventListener("beforeunload", () => {
-            sessionStorage.setItem(
-                key,
-                JSON.stringify({
-                    details: detailElements.map((detail) =>
-                        detail.hasAttribute("open")
-                    ),
-                    scrollTop: sidebarContent.scrollTop,
-                })
+            });
+        // open ancestor details of the active item
+        const activeLink = sidebarContent.querySelector('a[aria-current="page"]');
+        if (activeLink) {
+            const activeLinkDetailAncestors = findAllDetailsAncestors(
+                activeLink,
+                sidebarContent
             );
-        });
+
+            activeLinkDetailAncestors.forEach((detail) => {
+                detail.setAttribute("open", "");
+            });
+
+         
+
+            // Restore state from previous navigation
+            // (but keep the active item's ancestors open regardless)
+            const key = "sl-sidebar-state";
+            const savedStateJson = sessionStorage.getItem(key);
+
+            if (savedStateJson) {
+                let savedState;
+
+                try {
+                    savedState = JSON.parse(savedStateJson);
+                } catch (e) {
+                    console.error("Error parsing saved position:", e);
+                }
+
+                if (savedState) {
+                    savedState.details.forEach((isOpen, i) => {
+                        if (isOpen) {
+                            detailElements[i]?.setAttribute("open", "");
+                        } else if (
+                            !activeLinkDetailAncestors.includes(detailElements[i])
+                        ) {
+                            detailElements[i]?.removeAttribute("open");
+                        }
+                    });
+
+                    sidebarContent.scrollTop = savedState.scrollTop;
+                }
+            }
+
+            // Scroll the active list item into view if necessary
+            const activeLi = sidebarContent.querySelector(
+                'a[aria-current="page"]'
+            )?.parentElement;
+            if (activeLi) {
+                // intersection observer might be more performant?
+                const sidebarRect = sidebarContent.getBoundingClientRect();
+                const liRect = activeLi.getBoundingClientRect();
+                if (
+                    liRect.top < sidebarRect.top ||
+                    liRect.bottom > sidebarRect.bottom
+                ) {
+                    activeLi.scrollIntoView({ behavior: "instant", block: "nearest" });
+                }
+            }
+
+            // Save user state before navigating
+            window.addEventListener("beforeunload", () => {
+                sessionStorage.setItem(
+                    key,
+                    JSON.stringify({
+                        details: detailElements.map((detail) =>
+                            detail.hasAttribute("open")
+                        ),
+                        scrollTop: sidebarContent.scrollTop,
+                    })
+                );
+            });
+        }
+    } else {
+        console.warn("No active link found.");
     }
 })();
 </script>
