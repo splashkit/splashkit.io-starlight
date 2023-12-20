@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-mdx": "node ./scripts/components.cjs && node ./scripts/guides.cjs",
+    "generate-mdx": "node ./scripts/components.cjs",
     "cleanup": "node ./scripts/cleanup.cjs"
   },
   "dependencies": {

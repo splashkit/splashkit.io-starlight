@@ -12,7 +12,6 @@ export default defineConfig({
 //   output: "server",
 //   adapter: netlify(),
   integrations: [
-    
     starlight({
       title: "SplashKit",
       components: {
@@ -45,7 +44,7 @@ export default defineConfig({
       sidebar: [
         {
           label: "Installation",
-
+          collapsed: true,
           autogenerate: { directory: "installation", collapsed: true },
         },
         {
@@ -55,12 +54,12 @@ export default defineConfig({
             // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
             // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
             // ],
-            collapsed: false,
+            collapsed: true,
             autogenerate: { directory: "troubleshoot", collapsed: true },
             badge: "New",
           },
           {
-            label: "API Documentation",
+            label: "Developer Documentation",
             autogenerate: { directory: "api", collapsed: false },
           },
           {
