@@ -14,9 +14,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 #mdx output files
-src/api/api/*.mdx
-src/api/guides/**/index.mdx
-src/api/guides/index.mdx
+
+
+
 
 
 # environment variables
@@ -34,6 +34,7 @@ src/content/docs/api/Geometry.mdx
 src/content/docs/api/Graphics.mdx
 src/content/docs/api/Input.mdx
 src/content/docs/api/Json.mdx
+src/content/docs/api/Logging.mdx
 src/content/docs/api/Networking.mdx
 src/content/docs/api/Physics.mdx
 src/content/docs/api/Resource Bundles.mdx
@@ -57,4 +58,3 @@ src/content/docs/guides/Others/index.mdx
 src/content/docs/guides/Sprites/index.mdx
 src/content/docs/guides/Starter/index.mdx
 src/content/docs/guides/Utilities/index.mdx
-src/content/docs/api/Logging.mdx
