@@ -1,6 +1,6 @@
 ---
 
-title: Installing Language-Specific Tools
+title: Language Tools
 description: Language tools for SKM
 
 ---

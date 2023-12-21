@@ -3,7 +3,9 @@
 title: Useful Utilities
 description: In this article, we discuss useful utilities that you can use to convert,
   check and manipulate common data types in SplashKit programs.
-
+category: Beginner
+author: Richard Denton
+lastupdated: Oct 3 2018
 ---
 *Written by Richard Denton on Oct 3 2017*
 

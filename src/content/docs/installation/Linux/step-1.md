@@ -1,5 +1,5 @@
 ---
-title: Installing the SplashKit Manager
+title: SplashKit Manager
 ---
 The SplashKit Manager is essential for Linux users as it simplifies the installation and management of the SplashKit SDK, ensuring a seamless development experience.
 ## Steps

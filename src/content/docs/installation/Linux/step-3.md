@@ -1,5 +1,5 @@
 ---
-title: Installing Visual Studio Code
+title: Visual Studio Code
 ---
 
 Once you have the [built splashkit](/installation/linux/step-3/) you

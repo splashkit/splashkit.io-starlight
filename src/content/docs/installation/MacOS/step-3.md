@@ -1,6 +1,6 @@
 ---
 
-title: Installing Visual Studio Code
+title: Visual Studio Code
 description: VSC on macOS
 ---
 Visual Studio Code is essential for macOS because it provides a powerful and versatile integrated development environment (IDE) that enables efficient coding, debugging, and collaboration on SplashKit SDK projects.

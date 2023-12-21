@@ -1,5 +1,5 @@
 ---
-title: Installing WSL
+title: WSL
 description: A guide on installing WSL
 ---
 

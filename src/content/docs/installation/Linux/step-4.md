@@ -1,5 +1,5 @@
 ---
-title: Installing Language-Specific Tools
+title: Language Tools
 ---
 
 SplashKit works with a number of programming languages.

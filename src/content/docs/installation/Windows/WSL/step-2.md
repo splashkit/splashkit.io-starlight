@@ -1,5 +1,5 @@
 ---
-title: Installing SplashKit SDK on WSL
+title: SplashKit SDK
 description: A guide on installing SplashKit SDK on WSL.
 ---
 

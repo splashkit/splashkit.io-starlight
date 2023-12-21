@@ -1,6 +1,10 @@
 ---
 title: Installing MSYS2
 description: A guide on installing MSYS2 on windows.
+sidebar:
+ 
+  attrs:
+    class: windows
 ---
 
 MSYS2 provide a unix terminal environment for Windows. We will need this to run the build commands to create our SplashKit programs.

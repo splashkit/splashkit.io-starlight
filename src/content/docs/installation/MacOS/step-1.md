@@ -1,5 +1,5 @@
 ---
-title: Installing Xcode Command Line Tools
+title: Xcode Command Line Tools
 ---
 
 The Command Line Tools provided by Xcode provide a large amount of developer

@@ -1,5 +1,5 @@
 ---
-title: Installing Language-Specific Tools
+title: Language Tools
 tags: installation,linux
 ---
 ## Steps:

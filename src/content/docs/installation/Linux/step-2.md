@@ -1,5 +1,5 @@
 ---
-title: Make the SplashKit Source
+title: SplashKit Source
 ---
 
 Once you have
