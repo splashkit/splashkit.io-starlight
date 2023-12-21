@@ -1,22 +1,24 @@
 // Author: Aditya Parmar (XQuestCode)
 // Contact: thanx.adi@gmail.com
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
 import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
 
+import react from "@astrojs/react";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://splashkit.io/',
-// base: '/splashkit.io-starlight',  // if hosted without domain.
-//   output: "server",
-//   adapter: netlify(),
+  // base: '/splashkit.io-starlight',  // if hosted without domain.
+  //   output: "server",
+  //   adapter: netlify(),
   integrations: [
     starlight({
       title: "SplashKit",
       components: {
         Sidebar: './src/components/Sidebar.astro'
-    
       },
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
@@ -27,15 +29,14 @@ export default defineConfig({
         useDarkModeMediaQuery: true,
       },
       customCss: [
-        "/src/styles/tailwind.docs.css",
+        
         "/src/styles/custom.css",
         "/src/styles/background.css",
         "/src/styles/cards.css",
       ],
       social: {
         github: "https://github.com/splashkit",
-        facebook: "http://facebook.com/splashkit",
-        twitter: "http://twitter.com/splashkit",
+        youtube: 'https://www.youtube.com/@splashkit7674'
       },
       favicon: "/images/favicon.svg",
       logo: {
@@ -46,32 +47,43 @@ export default defineConfig({
           label: "Installation",
           collapsed: true,
           autogenerate: { directory: "installation", collapsed: true },
+          // items: [
+          //   { label: "Linux", autogenerate: { directory: "linux", collapsed: true }, attrs: { class: 'linux' } },
+          //   { label: "MacOS", autogenerate: { directory: "macos", collapsed: true }, attrs: { class: 'macos' } },
+          //   { label: "Windows", autogenerate: { directory: "windows", collapsed: true }, attrs: { class: 'windows' } },
+          // ]
         },
         {
           label: "Troubleshooting",
           // items: [
-            // 	// Each item here is one entry in the navigation menu.
-            // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
-            // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
-            // ],
-            collapsed: true,
-            autogenerate: { directory: "troubleshoot", collapsed: true },
-            badge: "New",
-          },
-          {
-            label: "Developer Documentation",
-            autogenerate: { directory: "api", collapsed: false },
-          },
-          {
-            label: "Tutorials and Guides",
-            collapsed: true,
-            autogenerate: { directory: "guides", collapsed: true },
-          },
+          // 	// Each item here is one entry in the navigation menu.
+          // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
+          // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
+          // ],
+          collapsed: true,
+          autogenerate: { directory: "troubleshoot", collapsed: true },
+          badge: "New",
+
+        },
+        {
+          label: "Developer Documentation",
+          autogenerate: { directory: "api", collapsed: false },
+        },
+        {
+          label: "Tutorials and Guides",
+          collapsed: true,
+          autogenerate: { directory: "guides", collapsed: true },
+        },
       ],
+
     }),
-    solidJs(),
+
+    solidJs(), sitemap()
   ],
 
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
-  image: { service: { entrypoint: "astro/assets/services/sharp" } },
+  image: { service: squooshImageService() },
+  server: {
+    port: 4321
+  }
 });

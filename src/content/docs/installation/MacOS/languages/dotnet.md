@@ -4,6 +4,8 @@ title: Installing the .NET Core SDK on macOS
 description: .NET Core SDK on macOS
 sidebar:
   hidden: true
+  attrs:
+    class: apple
 ---
 Installing .NET on macOS is necessary because it provides a cross-platform development framework that allows developers to build and run applications on macOS using the .NET technology stack.
 

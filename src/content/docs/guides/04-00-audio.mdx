@@ -3,18 +3,17 @@ title: Get started with SplashKit Audio
 description: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
 author: Various
 lastupdated: Jun 10 2018
-
+category: Tutorials
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-*Written by Various on Jun 10 2018*
+**{frontmatter.description}**
+_Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
 This article provides background information you will need to get started with audio in SplashKit. This will introduce you to the file formats supported, along with general information about loading and playing music and sound effects.
 
-
-
-Music and sound effects make a huge difference to game play experience. SplashKit makes it easy for you to have both music and sound effects in your games. 
+Music and sound effects make a huge difference to game play experience. SplashKit makes it easy for you to have both music and sound effects in your games.
 
 Before you get started with audio you will need to get some sound files that you want played in your game. The following table outlines the file formats that SplashKit supports. A tick in the sound effect column means that the format can be used for sound effects, similarly a tick in the music column means it can be used for music.
 
@@ -40,7 +39,12 @@ To play a sound effect you fist must load the audio file into your program. Soun
 Once it is loaded, you can use the name you can play the sound effect using [Play Sound Effect](/api/audio/#group-play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
 
 Sounds play until the file ends or until it is manually stopped in your code using [Stop Sound Effect](/api/audio/#group-stop-sound-effect) or [Stop Music](/api/audio/#stop-music). The sound effect or music will play in the background while your program's code continues to run.
-<img alt="Illustration of sound playing in the background" src="/images/articles/audio/about_audio_1.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+
+<img
+  alt="Illustration of sound playing in the background"
+  src="/images/articles/audio/about_audio_1.png"
+  style="width: 600px; display:block; margin: 0 auto;"
+></img>
 
 ### Sound Effects vs Music?
 
@@ -52,8 +56,11 @@ Music can be longer, and is usually played constantly while the program runs. Un
 
 Multiple sounds can be played at one time using SplashKit, these sounds can be mixed using channels. Each channel can only play one sound effect at a time. So every call to [Play Sound Effect](/api/audio/#group-play-sound-effect) will use a channel that is not currently playing any sound. When there are no free channels SplashKit will stop a channel from playing it's current sound effect and play the new sound effect from the start.
 
-<img alt="Illustration of mixing sound effects" src="/images/articles/audio/about_audio_2.png" style="width: 600px; display:block; margin: 0 auto;"></img>
-
+<img
+  alt="Illustration of mixing sound effects"
+  src="/images/articles/audio/about_audio_2.png"
+  style="width: 600px; display:block; margin: 0 auto;"
+></img>
 
 ### Music
 
@@ -61,7 +68,11 @@ Music is different from sound effects in that music has it's own reserved channe
 
 Since Music has one channel to itself, if you call [Play Music](/api/audio/#group-play-music) when Music is already playing the currently playing Music will be stopped and the new Music will start playing from the beginning.
 
-<img alt="Illustration of playing music" src="/images/articles/audio/about_audio_4.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+<img
+  alt="Illustration of playing music"
+  src="/images/articles/audio/about_audio_4.png"
+  style="width: 600px; display:block; margin: 0 auto;"
+></img>
 
 ### Example Code
 
@@ -72,9 +83,9 @@ The following program code demonstrates the use of these audio features.
 ```cpp
 #include "splashkit.h"
 
-int main() 
+int main()
 {
-    sound_effect  snd_effect;
+sound_effect snd_effect;
 
     open_window("Sound Demo", 320, 240);
 
@@ -86,7 +97,7 @@ int main()
     load_sound_effect("dinosaur", "dinosaur.ogg");
     load_sound_effect("bark", "dog_bark.ogg");
 
-    do 
+    do
     {
         process_events();
         if ( key_down(RIGHT_CTRL_KEY) || key_down(LEFT_CTRL_KEY) )
@@ -135,9 +146,10 @@ int main()
     } while ( ! (quit_requested() || key_typed(ESCAPE_KEY) || key_typed(Q_KEY)));
 
     return 0;
+
 }
 
-```
+````
 </TabItem>
 
 <TabItem label="C#">
@@ -153,7 +165,7 @@ class Program
         SplashKit.OpenWindow("Sound Demo", 320, 240);
 
         sndEffect = new SoundEffect("chipmunk", "chipmunk.ogg");
-        // or... 
+        // or...
         // sndEffect = SplashKit.LoadSoundEffect("chipmunk", "chipmunk.ogg");
 
         SplashKit.LoadSoundEffect("bells", "bells.ogg");
@@ -212,7 +224,7 @@ class Program
     }
 }
 
-```
+````
+
 </TabItem>
 </Tabs>
-

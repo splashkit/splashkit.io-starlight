@@ -4,8 +4,6 @@ const kleur = require("kleur");
 
 
 const path = require('path');
-const yaml = require('js-yaml');
-const rootPath = path.join(__dirname, '..', 'src', 'content', 'docs', 'api');
 
 
 
@@ -47,73 +45,6 @@ const languageLabelMappings = {
 // Define language order
 const languageOrder = ["cpp", "csharp", "python", "pascal"];
 var name = "";
-
-
-
-// Function to process a single folder
-async function processFolder(folderPath) {
-  try {
-    const files = await fs.promises.readdir(folderPath);
-    const linkCards = [];
-
-
-    for (const file of files) {
-      const filePath = path.join(folderPath, file);
-      const extname = path.extname(filePath);
-
-      if (extname === '.md' || extname === '.mdx') {
-        if (file !== 'index.mdx') {
-
-
-
-          const fileName = file.replace(/\.mdx?$/, '').toLowerCase().replace(/ /g, '-');
-          linkCards.push(
-            `<LinkCard
-              title="${fileName.charAt(0).toUpperCase() + fileName.slice(1)}"
-              description="Functions & Structs Documentation"
-              href="/api/${fileName.toLowerCase()}/"
-            />`
-          );
-        }
-      }
-    }
-    const mdxContent = generateIndexMdxContent(linkCards);
-
-    // Write the MDX file
-    await fs.writeFile(`./src/content/docs/api/index.mdx`, mdxContent, (err) => {
-      if (err) {
-        console.log(kleur.red(`Error writing index MDX file: ${err.message}`));
-      } else {
-        console.log(kleur.blue(`Index MDX file`) + kleur.green(` -> `) + kleur.green(`./src/content/docs/api/index.mdx`));
-      }
-    });
-
-    console.log(kleur.blue(`API Documentation`) + kleur.green(` -> `) + kleur.green(`${folderPath}`));
-  } catch (error) {
-    console.log(kleur.red(`Error processing: ${error}`));
-  }
-}
-
-
-function generateIndexMdxContent(linkCards) {
-  return `---
-title: Index Routing Page
-sidebar:
-  hidden: true
----
-\n
-import { LinkCard, CardGrid } from "@astrojs/starlight/components";
-\n\n
-:::tip[Components]
-\n
-SplashKit provides a versatile set of categories, encompassing graphics, audio, input, and more, offering developers a comprehensive toolkit for game and multimedia development.
-\n:::\n\n
-
-<CardGrid>
-${linkCards.join('\n  ')}
-</CardGrid>
-`;
-}
 
 
 function Mappings(jsonData) {
@@ -476,12 +407,6 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
     }
     console.log(kleur.green("All component MDX files generated successfully.\n"));
-
-
-
-    await processFolder(rootPath);
-
-
   } catch (error) {
     console.error(kleur.red("Error parsing JSON:"), error);
   }

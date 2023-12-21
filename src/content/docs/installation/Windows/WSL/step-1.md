@@ -1,6 +1,10 @@
 ---
 title: WSL
 description: A guide on installing WSL
+sidebar:
+ 
+  attrs:
+    class: windows
 ---
 
 <h1> To install WSL instead of MSYS2, you can follow these steps: </h1>

@@ -1,6 +1,10 @@
 ---
 title: Language Tools
 tags: installation,linux
+sidebar:
+ 
+  attrs:
+    class: windows
 ---
 ## Steps:
 SplashKit works with a number of programming languages. Each of these has its own set of tools you will need to install.

@@ -1,19 +1,17 @@
 ---
 title: Getting Started With Servers
-description: This guide is an intruduction to using web servers
-order: 1
-category: Advanced
-sidebar:
-  order: 7
+description: This guide is an introduction to using web servers
+category: Guides
+author: Andrew Cain and Isaac Wallis
+lastupdated: Jul 14 2018
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-*Written by Andrew Cain and [Isaac Wallis](https://github.com/franknsten) on Jul 14 2018*
+**{frontmatter.description}**
+_Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
 This article provides background information you will need to get started building your own web server using SplashKit. You will be introduced to starting a web server and serving a file to the user.
-
-
 
 Web browsers and servers are programs that make it possible for you to access resources and applications on the internet. When you navigate to a web page, your web browser (Chrome, Edge, FireFox, Safari) uses the URL your specify to open a network connection to a computer running somewhere on the internet. The browser's network connection allows it to send data to the server (called a request) and to receive data back in response.
 
@@ -23,20 +21,19 @@ In this article you will see how to start listening for connections, how to send
 
 ## Step 1: Getting Started
 
-Before we start our server, lets create a file to be served. Create a new project folder (```mkdir testServer```) and move into it (```cd testServer```). We need to setup a resources folder where we can store files we want to "serve". You can do this by running ```skm resources``` at the Terminal. This will create the **Resources** folder, and all the subfolders in there. The folder we're interested in is **Resources/server** as this is where our server will look for files we want to present to the user.
+Before we start our server, lets create a file to be served. Create a new project folder (`mkdir testServer`) and move into it (`cd testServer`). We need to setup a resources folder where we can store files we want to "serve". You can do this by running `skm resources` at the Terminal. This will create the **Resources** folder, and all the subfolders in there. The folder we're interested in is **Resources/server** as this is where our server will look for files we want to present to the user.
 
 Create a file in this folder, and fill it out like a basic HTML document as such:
 
 ```html
 <html>
-<head>
+  <head>
     <title>Basic HTML Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <p>Hello World</p>
-</body>
+  </body>
 </html>
-
 ```
 
 Save it as "index.html" in **Resources/server** and we are ready to start!
@@ -47,7 +44,6 @@ To start listening for incoming connections, you need to call the [Start Web Ser
 
 We need to pair the [Start Web Server](/api/networking/#group-start-web-server) with a call to the [Stop Web Server](/api/networking/#stop-web-server) procedure. This will wrap up any requests that have come in and will stop listening for any new requests. So once you are finished with the web server, you can stop it so that it does not take up system resources that you do not need. The following code shows a small program that starts and stops a web server.
 
-
 <Tabs>
   <TabItem label="C++">
 ```cpp
@@ -55,8 +51,8 @@ We need to pair the [Start Web Server](/api/networking/#group-start-web-server) 
 
 int main()
 {
-    write_line("About to start the server...");
-    
+write_line("About to start the server...");
+
     // Start a web server - defaults to listening to port 8080
     web_server server = web_server();
 
@@ -72,12 +68,13 @@ int main()
     stop_web_server(server);
 
     return 0;
+
 }
 
-```
+````
 
 </TabItem>
-  <TabItem label="csharp">
+  <TabItem label="C#">
 ```csharp
 using System;
 using SplashKitSDK;
@@ -122,7 +119,8 @@ class Program
         }
     }
 }
-```
+````
+
 </TabItem>
 </Tabs>
 
@@ -132,7 +130,7 @@ class Program
 
 To send a response, you can use the [Send Response](/api/networking/#group-send-response) procedure. There are several different versions of this, but the easiest allows you to send a string back as a response to the request. In order to send a response, we must wait to get the next incoming request. This is done by calling the [Next Web Request](/api/networking/#next-web-request) function. When you call this, the computer will wait for a request to come in to the web server, and when it arrives, the details are packaged up for us to use and sent back as an [HTTP Request](/api/networking/#http-request). If you don't want to wait, you can check if there are requests before calling [Next Web Request](/api/networking/#next-web-request) by using the [Has Incoming Requests](/api/networking/#has-incoming-requests) function, which will return true if there is a request waiting.
 
-The following code shows an appropriate ```"Hello World"``` web server program.
+The following code shows an appropriate `"Hello World"` web server program.
 
 <Tabs>
   <TabItem label="C++">
@@ -141,7 +139,7 @@ The following code shows an appropriate ```"Hello World"``` web server program.
 
 int main()
 {
-    write_line("About to start the server...");
+write_line("About to start the server...");
 
     // Start a web server - defaults to listening to port 8080
     web_server server = start_web_server();
@@ -150,11 +148,12 @@ int main()
     stop_web_server(server);
 
     return 0;
+
 }
 
-```
+````
 </TabItem>
-  <TabItem label="csharp">
+  <TabItem label="C#">
 ```csharp
 using System;
 using SplashKitSDK; // Assuming SplashKit library bindings are available in this namespace
@@ -175,7 +174,8 @@ class Program
     }
 }
 
-```
+````
+
 </TabItem>
 </Tabs>
 
@@ -194,8 +194,8 @@ The follow code replaces the "Hello World" response with the details from the in
 
 int main()
 {
-    write_line("About to start the server...");
-    
+write_line("About to start the server...");
+
     // Start a web server - defaults to listening to port 8080
     web_server server = web_server();
 
@@ -211,11 +211,12 @@ int main()
     stop_web_server(server);
 
     return 0;
+
 }
 
-```
+````
 </TabItem>
-  <TabItem label="csharp">
+  <TabItem label="C#">
 ```csharp
 using SplashKitDotNet;
 
@@ -240,7 +241,7 @@ class Program
         SplashKit.StopWebServer(server);
     }
 }
-```
+````
 
 </TabItem>
 </Tabs>
@@ -248,4 +249,3 @@ class Program
 ## Next Step
 
 See how to respond to different requests in the [routing with servers](/guides/networking/routing-with-servers/) article.
-

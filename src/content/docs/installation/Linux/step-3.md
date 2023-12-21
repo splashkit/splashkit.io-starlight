@@ -1,5 +1,8 @@
 ---
 title: Visual Studio Code
+sidebar:
+  attrs:
+    class: linux
 ---
 
 Once you have the [built splashkit](/installation/linux/step-3/) you

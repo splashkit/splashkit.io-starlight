@@ -1,6 +1,10 @@
 ---
 title: SplashKit SDK
 description: A guide on installing SplashKit SDK on WSL.
+sidebar:
+ 
+  attrs:
+    class: windows
 ---
 
 Once installed, launch the WSL distribution you installed. This will open a terminal window running a Linux environment.

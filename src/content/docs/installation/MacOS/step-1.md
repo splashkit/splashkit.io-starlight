@@ -1,5 +1,8 @@
 ---
 title: Xcode Command Line Tools
+sidebar:
+  attrs:
+    class: apple
 ---
 
 The Command Line Tools provided by Xcode provide a large amount of developer

@@ -2,7 +2,9 @@
 
 title: Language Tools
 description: Language tools for SKM
-
+sidebar:
+  attrs:
+    class: apple
 ---
 
 SplashKit works with a number of programming languages.

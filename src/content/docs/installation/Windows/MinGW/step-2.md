@@ -1,6 +1,10 @@
 ---
 title: SplashKit SDK
 description: A guide on installing SplashKit SDK through pacman.
+sidebar:
+ 
+  attrs:
+    class: windows
 ---
 Once you have MSYS2 installed, you can install the SplashKit library:
 

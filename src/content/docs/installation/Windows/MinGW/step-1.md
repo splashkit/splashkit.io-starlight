@@ -2,7 +2,6 @@
 title: Installing MSYS2
 description: A guide on installing MSYS2 on windows.
 sidebar:
- 
   attrs:
     class: windows
 ---

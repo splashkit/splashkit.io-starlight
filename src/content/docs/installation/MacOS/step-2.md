@@ -2,7 +2,9 @@
 
 title: SplashKit SDK
 tags: installation,mac
-
+sidebar:
+  attrs:
+    class: apple
 ---
 
 1. Copy the following code and paste and run it within the Terminal.

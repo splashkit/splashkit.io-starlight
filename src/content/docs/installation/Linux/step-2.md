@@ -1,5 +1,8 @@
 ---
 title: SplashKit Source
+sidebar:
+  attrs:
+    class: linux
 ---
 
 Once you have

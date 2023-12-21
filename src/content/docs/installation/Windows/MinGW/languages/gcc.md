@@ -2,6 +2,8 @@
 title: Installing GCC on Windows
 sidebar:
   hidden: true
+  attrs:
+    class: windows
 ---
 GCC is essential for Windows users because it provides a powerful and reliable compiler for programming languages like C, C++, and more.
 ## Steps

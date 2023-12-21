@@ -1,13 +1,13 @@
 ---
-
-title: Using the SplashKit Camera
+title: SplashKit Camera
 description: See how the camera works, and how to draw to the different coordinate systems in your program.
 author: Andrew Cain
 lastupdated: Aug 16 2018
-category: Beginner
-
+category: Guides
 ---
-*Written by Andrew Cain and others on Aug 16 2018*
+
+**{frontmatter.description}**
+_Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
@@ -17,7 +17,11 @@ This article provides information on how to use the camera in SplashKit to creat
 
 The camera provides an easy way to move around a game world. It is set to 0,0 by default, however the offset can be changed using the different camera procedures in order to explore a larger game world. When the camera position changes it moves the window to another part of the game world, as you can see in the image below.
 
-<img alt="Illustration of the camera and game coordinates" src="/images/articles/camera/camera.png" style="width: 600px; display:block; margin: 0 auto;"></img>
+<img
+  alt="Illustration of the camera and game coordinates"
+  src="/images/articles/camera/camera.png"
+  style="width: 600px; display:block; margin: 0 auto;"
+></img>
 
 When drawing use 'game coordinates' for each of your entities, which describe where an entity is in relation to other entities in the game. Some of these may be on the screen or off the screen, but we can let SplashKit take care of that. In the above image the dancing frog is at 250,300 in the game world.
 
@@ -32,12 +36,11 @@ With the camera you can create the effect of moving past stationary background o
 - [Move Camera To](/api/camera/#group-move-camera-to) - move the camera to a location
 - [Center Camera On](/api/camera/#group-center-camera-on) - position the camera to focus on a sprite
 
-
 ## Where is the mouse?
 
 Once you use the camera, then you need to map any interactions with the screen from screen to world coordinates. For example, when you read mouse input the values are in 'screen coordinates'. In this system the coordinates always have 0,0 as the top left-hand corner, regardless of the camera position.
 
-You can translate between these coordinate systems using the [To Screen](/api/camera/#group-to-screen) and [To World](/api/camera/#to-world). 
+You can translate between these coordinate systems using the [To Screen](/api/camera/#group-to-screen) and [To World](/api/camera/#to-world).
 
 - [To Screen](/api/camera/#group-to-screen) converts values from world coordinates to screen coordinates.
 - [To World](/api/camera/#to-world) converts a screen coordinate to a game world coordinate.
@@ -45,7 +48,6 @@ You can translate between these coordinate systems using the [To Screen](/api/ca
 - [To World Y](/api/camera/#to-world-y) converts a screen y value to its location in the game world.
 - [To Screen X](/api/camera/#to-screen-x) converts a game world x value to its location on the screen.
 - [To Screen Y](/api/camera/#to-screen-y) converts a game world y value to its location on the screen.
-
 
 ## Drawing directly to the screen
 
@@ -57,6 +59,7 @@ Some game elements will need to remain in the same place, regardless of the came
 ## Example Code
 
 The following program code demonstrates the use of some of these camera operations.
+
 <Tabs>
   <TabItem label="C++">
 ```cpp
@@ -66,11 +69,11 @@ The following program code demonstrates the use of some of these camera operatio
 
 void update_camera_position(double player_x, double player_y)
 {
-    // Test edge of screen boundaries to adjust the camera
-    double left_edge = camera_x() + SCREEN_BORDER;
-    double right_edge = left_edge + screen_width() - 2 * SCREEN_BORDER;
-    double top_edge = camera_y() + SCREEN_BORDER;
-    double bottom_edge = top_edge + screen_height() - 2 * SCREEN_BORDER;
+// Test edge of screen boundaries to adjust the camera
+double left_edge = camera_x() + SCREEN_BORDER;
+double right_edge = left_edge + screen_width() - 2 _ SCREEN_BORDER;
+double top_edge = camera_y() + SCREEN_BORDER;
+double bottom_edge = top_edge + screen_height() - 2 _ SCREEN_BORDER;
 
     // Test if the player is outside the area and move the camera
     // the player will appear to stay still and everything else
@@ -95,49 +98,53 @@ void update_camera_position(double player_x, double player_y)
     {
         move_camera_by(player_x - right_edge, 0);
     }
+
 }
 
-/**
- * Entry point.
- * 
- * Manages the initialisation of data, the event loop, and quitting.
- */
-int main()
-{
-    open_window("Camera Test", 800, 800);
+/\*\*
 
-    double player_x = 400, player_y = 400;
+- Entry point.
+-
+- Manages the initialisation of data, the event loop, and quitting.
+  \*/
+  int main()
+  {
+  open_window("Camera Test", 800, 800);
 
-    while ( not quit_requested() )
-    {
-        // Handle input to adjust player movement
-        process_events();
-        
-        if (key_down(LEFT_KEY)) player_x -= 3;
-        if (key_down(RIGHT_KEY)) player_x += 3;
-        if (key_down(DOWN_KEY)) player_y += 3;
-        if (key_down(UP_KEY)) player_y -= 3;
+      double player_x = 400, player_y = 400;
 
-        update_camera_position(player_x, player_y);
+      while ( not quit_requested() )
+      {
+          // Handle input to adjust player movement
+          process_events();
 
-        // Redraw everything
-        clear_screen(COLOR_BLACK);
+          if (key_down(LEFT_KEY)) player_x -= 3;
+          if (key_down(RIGHT_KEY)) player_x += 3;
+          if (key_down(DOWN_KEY)) player_y += 3;
+          if (key_down(UP_KEY)) player_y -= 3;
 
-        // Draw to the screen
-        draw_text("HUD - top left", COLOR_WHITE, 0, 0, option_to_screen());
+          update_camera_position(player_x, player_y);
 
-        // as well as the player who can move
-        fill_circle(COLOR_YELLOW, player_x, player_y, 20);
+          // Redraw everything
+          clear_screen(COLOR_BLACK);
 
-        // including something stationary - it doesn't move
-        fill_rectangle(COLOR_WHITE, 400, 200, 10, 10);
+          // Draw to the screen
+          draw_text("HUD - top left", COLOR_WHITE, 0, 0, option_to_screen());
 
-        refresh_screen(60);
-    }
+          // as well as the player who can move
+          fill_circle(COLOR_YELLOW, player_x, player_y, 20);
 
-    return 0;
-}
-```
+          // including something stationary - it doesn't move
+          fill_rectangle(COLOR_WHITE, 400, 200, 10, 10);
+
+          refresh_screen(60);
+      }
+
+      return 0;
+
+  }
+
+````
 </TabItem>
   <TabItem label="C#">
 ```csharp
@@ -191,7 +198,7 @@ public class Program
         {
             // Handle input to adjust player movement
             SplashKit.ProcessEvents();
-            
+
             if (SplashKit.KeyDown(KeyCode.LeftKey))   playerX -= 3;
             if (SplashKit.KeyDown(KeyCode.RightKey))  playerX += 3;
             if (SplashKit.KeyDown(KeyCode.DownKey))   playerY += 3;
@@ -216,6 +223,7 @@ public class Program
         }
     }
 }
-```
+````
+
 </TabItem>
 </Tabs>

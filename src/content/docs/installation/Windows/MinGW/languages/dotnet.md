@@ -2,6 +2,9 @@
 title: Installing the .NET Core SDK on Windows
 sidebar:
   hidden: true
+  attrs:
+    class: windows
+
 ---
 Installing .NET on Windows is necessary because it provides the runtime environment and libraries required to run applications developed using the .NET framework. 
 To get programming with C#, you can install the Dotnet Core tools.

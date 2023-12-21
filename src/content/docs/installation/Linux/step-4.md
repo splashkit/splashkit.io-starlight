@@ -1,5 +1,8 @@
 ---
 title: Language Tools
+sidebar:
+  attrs:
+    class: linux
 ---
 
 SplashKit works with a number of programming languages.
