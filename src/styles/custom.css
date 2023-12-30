@@ -247,3 +247,80 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
+/* XQuest changes */
+article.card {
+  border-radius: 0.5rem;
+  box-shadow: var(--sl-shadow-md);
+  border: 1px solid var(--sl-color-gray-5);
+}
+
+.legal {
+  margin-top: 4rem !important;
+  font-size: 12px;
+}
+
+.footer {
+  font-size: 14px;
+}
+
+a.decent {
+  color: var(--sl-color-white) !important;
+  text-decoration: none !important;
+}
+
+a.decent:hover {
+  color: var(--sl-color-accent) !important;
+}
+
+[data-has-hero] .page {
+  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
+    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
+    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
+}
+
+[data-has-hero] header {
+  border-bottom: 1px solid transparent;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+/** Better table styling */
+.sl-markdown-content table {
+  border-radius: 0.5rem;
+  box-shadow: var(--sl-shadow-md);
+  border: 1px solid var(--sl-color-gray-6);
+  width: max-content;
+  max-width: 100%;
+}
+
+.sl-markdown-content table td:first-child,
+.sl-markdown-content table th:first-child {
+  border-left: none;
+}
+
+.sl-markdown-content table td:last-child,
+.sl-markdown-content table th:last-child {
+  border-right: none;
+}
+
+.sl-markdown-content table tr:first-child th {
+  border-top: none;
+}
+
+.sl-markdown-content table tr:last-child td {
+  border-bottom: none;
+}
+.starlight-aside,
+.card {
+  border-radius: 0.5rem;
+}
+
+code {
+  border-radius: 0.25rem;
+}
+.expressive-code {
+  border-radius: 0.6rem;
+  box-shadow: var(--sl-shadow-md);
+
+}
