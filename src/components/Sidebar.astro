@@ -20,12 +20,7 @@ const { sidebar } = Astro.props;
 }
 
 <script is:inline>
-function capitalizeEachWord(str) {
-    return str
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-}
+
 (() => {
     const sidebarContent =
         document.getElementById("starlight__sidebar")?.firstElementChild;
@@ -45,13 +40,7 @@ function capitalizeEachWord(str) {
             return [...detailsElements];
         }
         const detailElements = [...sidebarContent.querySelectorAll("details")];
-            detailElements.forEach((element) => {
-                element.querySelectorAll("span").forEach((span) => {
-                    if (span.classList.contains("large")) {
-                        span.innerText = capitalizeEachWord(span.innerText);
-                    }
-                });
-            });
+      
         // open ancestor details of the active item
         const activeLink = sidebarContent.querySelector('a[aria-current="page"]');
         if (activeLink) {
