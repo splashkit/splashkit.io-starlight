@@ -1,12 +1,8 @@
 // Script to generate .mdx file in a specific format to adapt to Starlight from JSON data.
+// Author: @XQuestCode
 const fs = require("fs");
 const kleur = require("kleur");
-
-
 const path = require('path');
-
-
-
 // Define type mappings
 const typeMappings = {
   int: "`Integer`",
@@ -265,13 +261,18 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
           // Reorder Code tabs
           languageOrder.forEach((lang) => {
-            if (func.signatures[lang]) {
-              const code = func.signatures[lang].join("\n");
+            if (func.signatures[lang].length > 0 && func.signatures[lang] != undefined) {
+              try{
+                
+              const code = (Array.isArray(func.signatures[lang]))? func.signatures[lang].join("\n") : func.signatures[lang];
               const languageLabel = languageLabelMappings[lang] || lang;
               mdxContent += `  <TabItem label="${languageLabel}">\n`;
               mdxContent +=
                 "```" + lang + "\n" + code + '\n```\n';
               mdxContent += "  </TabItem>\n";
+              } catch(e) {
+                console.log(e+ " " + lang + " "+ func.name)
+              }
             }
           });
 
@@ -411,4 +412,3 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
     console.error(kleur.red("Error parsing JSON:"), error);
   }
 });
-
