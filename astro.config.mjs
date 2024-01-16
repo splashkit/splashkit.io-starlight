@@ -21,7 +21,7 @@ export default defineConfig({
         Sidebar: './src/components/Sidebar.astro'
       },
       editLink: {
-        baseUrl: 'https://github.com/splashkit/splashkit.io-starlight/edit/master/docs/',
+        baseUrl: 'https://github.com/splashkit/splashkit.io-starlight/edit/master/',
       },
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
