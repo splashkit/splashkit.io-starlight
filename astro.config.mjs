@@ -4,7 +4,6 @@ import { defineConfig, squooshImageService } from "astro/config";
 import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
 
-import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -20,6 +19,9 @@ export default defineConfig({
       description: 'SplashKit is a cross-platform game engine for C, C++ and Objective-C. It provides a simple API for 2D game development.',
       components: {
         Sidebar: './src/components/Sidebar.astro'
+      },
+      editLink: {
+        baseUrl: 'https://github.com/splashkit/splashkit.io-starlight/edit/master/docs/',
       },
       expressiveCode: {
         // theme: ["github-dark", "github-light"],

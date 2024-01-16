@@ -13,7 +13,6 @@
   "dependencies": {
     "@astrojs/netlify": "^4.0.2",
     "@astrojs/prism": "^3.0.0",
-    "@astrojs/react": "^3.0.9",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/solid-js": "^3.0.3",
     "@astrojs/starlight": "^0.15.1",
