@@ -320,9 +320,20 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             }
 
 
-            mdxContent += `${description}\n\n`;
+            // mdxContent += `${description}\n\n`;
             // If it's a struct, add a table for its fields
             if (type.fields) {
+              for (const names of functionNames) {
+                const normalName = names
+                  .split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ");
+                const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+                const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+                description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+              }
+              mdxContent += `${description}\n\n`;
+
               mdxContent +=
                 "| Field  | Type                                               | Description                                                                        |\n";
               mdxContent +=
@@ -340,16 +351,6 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                     typeMapping
                   );
                 }
-                for (const names of functionNames) {
-                  const normalName = names
-                    .split("_")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ");
-                  const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                  const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
-                  description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-                }
-
                 mdxContent += `| ${fieldName} | ${fieldType} | ${fieldDescription.replace(/\n/g, '')} |\n`;
               }
 
@@ -358,6 +359,11 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
             // If it's an enum, add a table for its constants
             if (type.constants) {
+              for (const typeName in typeMappings) {
+                const typeMapping = typeMappings[typeName];
+                description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+              }
+              mdxContent += `${description}\n\n`;
               mdxContent +=
                 "| Constant           | Value | Description                |\n";
               mdxContent +=
@@ -372,11 +378,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
               }
 
               mdxContent += "\n";
-            }
-            for (const typeName in typeMappings) {
-              const typeMapping = typeMappings[typeName];
-              description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-            }
+            
+            
             for (const names of functionNames) {
               const normalName = names
                 .split("_")
@@ -387,7 +390,12 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 
+          }
+          else {
             mdxContent += `${description}\n\n`;
+          }
+
+            // mdxContent += `${description}\n\n`;
             mdxContent += `---\n`;
           }
         });
