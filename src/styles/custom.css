@@ -6,39 +6,22 @@
 :root {
     --purple-hsl: 255, 60%, 60%;
     --overlay-blurple: hsla(var(--purple-hsl), 0.2);
-  /* --sl-color-bg: #00edc5; */
 }
-
 
 /* Light mode colors. */
 :root[data-theme="light"] {
     --purple-hsl: 255, 85%, 65%;
     --sl-hue-accent: 350;
-  /* --sl-color-bg: #20ef0d; */
+    --sl-color-accent: #3D50f5;
 }
 
-/* Headings */
-#_top {
-  /* Your CSS styles for the <h1> element go here */
-
-  color: #f5a623; /* Example style */
+.hero img {
+  transition: transform 0.3s ease;
+  width: 90%;
+  height: 90%;
 }
 
-/* .astro-ML6NTD6L h2{
- Add effect for # headings 
-} */
-.astro-jbfsktt5 img {
-  /* Image */
-
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
-}
-.astro-jbfsktt5 img {
-  width: 250px;
-  height: 250px;
-}
-.astro-jbfsktt5 img:hover {
-  /* Image */
-
+.hero img:hover {
   transform: scale(1.1); /* Enlarge the image on hover */
   transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
@@ -76,14 +59,10 @@ iframe[id="stackblitz-iframe"] {
   transition: background-color ease-in-out 0.25s;
 }
 
-
-
 [data-has-hero] .hero .action.minimal {
   border: solid 1px var(--sl-color-text-accent);
   padding: 1rem 1.25rem;
 }
-
-
 
 [data-has-hero] .hero .actions {
   gap: 1.25rem;
@@ -150,35 +129,6 @@ iframe[id="stackblitz-iframe"] {
   margin-top: 80px !important;
 }
 
-@media (max-width: 50em) {
-  [data-has-hero] .hero img {
-    display: none;
-  }
-
-  [data-has-hero] .header .right-group {
-    display: flex !important;
-  }
-}
-
-@media (min-width: 1700px) {
-  [data-has-hero] .hero img {
-    position: absolute;
-    overflow: hidden;
-    top: 10vh;
-    right: -10vw;
-    width: 1000px;
-  }
-}
-
-@media (min-width: 2400px) {
-  [data-has-hero] .hero img {
-    position: absolute;
-    overflow: hidden;
-    top: 6vh;
-    right: 0vw;
-    width: 1200px;
-  }
-}
 /* after */
 @font-face {
   font-family: "FontAwesomeBrands";
@@ -242,11 +192,7 @@ a.linux:after {
   border: 1px solid white;
   padding: 0px 5px 0px 5px;
 }
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 /* XQuest changes */
 article.card {
   border-radius: 0.5rem;
@@ -322,5 +268,4 @@ code {
 .expressive-code {
   border-radius: 0.6rem;
   box-shadow: var(--sl-shadow-md);
-
 }
