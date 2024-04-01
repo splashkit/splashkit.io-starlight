@@ -45,6 +45,7 @@ src/content/docs/api/Timers.mdx
 src/content/docs/api/Types.mdx
 src/content/docs/api/Utilities.mdx
 src/content/docs/api/Windows.mdx
+src/content/docs/api/Raspberry.mdx
 src/content/docs/guides/Animations/index.mdx
 src/content/docs/guides/Audio/index.mdx
 src/content/docs/guides/Camera/index.mdx
