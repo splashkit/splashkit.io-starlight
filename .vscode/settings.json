@@ -1,0 +1,6 @@
+{
+  "ltex.java.path": "/usr/local/java",
+  "files.associations": {
+    "*.mdx": "markdown"
+  }
+}
