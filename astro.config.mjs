@@ -5,6 +5,7 @@ import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
 
 import react from "@astrojs/react";
+// Load environment variables from .env file
 
 import sitemap from "@astrojs/sitemap";
 import starlightLinksValidator from 'starlight-links-validator';
@@ -22,7 +23,12 @@ export default defineConfig({
       components: {
         Sidebar: './src/components/Sidebar.astro'
       },
-      plugins: [starlightLinksValidator()],
+      
+      plugins: process.env.CHECK_LINKS
+				? [
+						starlightLinksValidator(),
+				  ]
+				: [],
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
         // frames: {
