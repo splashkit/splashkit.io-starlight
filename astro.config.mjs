@@ -7,6 +7,7 @@ import solidJs from "@astrojs/solid-js";
 import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
+import starlightLinksValidator from 'starlight-links-validator';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
       components: {
         Sidebar: './src/components/Sidebar.astro'
       },
+      plugins: [starlightLinksValidator()],
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
         // frames: {
