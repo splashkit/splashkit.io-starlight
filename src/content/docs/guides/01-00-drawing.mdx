@@ -24,7 +24,7 @@ In SplashKit you can open a Window to draw on and interact with. To open the win
 ></img>
 
 1. Lets get this started by opening a new Window, and using SplashKit to delay us for a few seconds. Give the following code a try:
-
+   
 <Tabs>
    <TabItem label="C++">
 
@@ -57,8 +57,8 @@ new Window("Window Title... to change", 800, 600);
     }
 
 }
-```
 
+```
 </TabItem>
 </Tabs>
 
@@ -76,6 +76,7 @@ new Window("Window Title... to change", 800, 600);
 1. Change the window title to "Shapes by " and your name. For example, `"Shapes by Andrew"`.
 
     Switch back to the terminal to compile and run your program.
+
 
 ## Step 2: Drawing to a Window
 
@@ -122,6 +123,7 @@ shapesWindow = new Window("Shapes by ...", 800, 600);
     }
 
 }
+
 ```
 
 </TabItem>
@@ -155,7 +157,7 @@ For example: the magenta rectangle is drawn at 10, 1. This means its x value is 
 To draw a shape with SplashKit you need to call one of the shape drawing procedures. All of the shape drawing operations in SplashKit take a number of parameter values:
 
 * The **color** to draw the shape.
-    SplashKit has a number of colors you can use. See the list of colors starting with [Alice Blue](/api/color#color-alice-blue). For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type `COLOR_` then hit ctrl+space. Though this only works if you opened the project folder.
+    SplashKit has a number of colors you can use. See the list of colors starting with (Alice Blue)[/api/color#color-alice-blue]. For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type `COLOR_` then hit ctrl+space. Though this only works if you opened the project folder.
 * An **x** value, representing the x position of the shape (column).
 
     This is a number of pixels from the left edge of the screen. Larger values are further to the right.
@@ -185,6 +187,7 @@ You should be able to get Visual Studio Code to show you to list of parameters. 
 
 ## Double Buffering
 
-To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in **sequence**).  However, we don't want each element to appear individually, we just want the whole picture to appear at once, so in this case the whole house should show all at once. SplashKit uses a technique called **Double Buffering** to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user.  With SplashKit, the shapes are all shown together when you call the `refresh_screen` procedure. This is illustrated below.
+To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in **sequence**).  However, we dont want each element to appear individually, we just want the whole picture to appear at once, so in this case the whole house should show all at once. SplashKit uses a technique called **Double Buffering** to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user.  With SplashKit, the shapes are all shown together when you call the `refresh_screen` procedure. This is illustrated below.
 
 <img alt="Illustration of double buffering, and the need to refresh screen" src="/images/articles/starter/drawing/RefreshScreen.png" style="width: 700px"></img>
+

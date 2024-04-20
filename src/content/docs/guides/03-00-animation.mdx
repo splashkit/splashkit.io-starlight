@@ -55,7 +55,7 @@ Frames are coded within the animation script file using a line that starts with 
 
 The following code is the start of an animation script file.
 
-```text
+```
 SplashKit Animation
 
 //Frames are declared with an f: and contain
@@ -89,7 +89,7 @@ f: [8, 9, 10, 11], [8, 9, 10, 11], 5,
 
 When designing your animation an easy place to start is with a frame per cell in your animation. You can then put in a set duration, and link the frames together. For example, with the Frog sprite sheet you could use the following as a start. This includes frames in four groups, one for each of the different animations within the sheet (as indicated by the comments). Notice that each of these is a loop, so the "toward the user" sequence plays cells 0, 1, 2, 3 and then back to 0.
 
-```text
+```
 SplashKit Animation
 
 // Toward user
@@ -108,7 +108,7 @@ The next key element of the Animation is a starting point. This is a named frame
 
 Using the frog animation we have the 4 separate animations, which can then be coded as 4 identifiers for _walk forward_ starting at frame 0 (the loop 0, 1, 2, 3, 0, ...), _walk left_ starting at frame 4, _walk right_ starting at frame 8, and _walk away_ starting at frame 12.
 
-```text
+```
 SplashKit Animation
 
 // -- Frames --
@@ -153,7 +153,6 @@ This is demonstrated in the following code examples.
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -215,11 +214,9 @@ window w = open_window("Animation Test", 120, 120);
 
 }
 
-```
-
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitSDK;
@@ -285,7 +282,7 @@ public class Program
         }
     }
 }
-```
+````
 
 </TabItem>
 </Tabs>
@@ -305,7 +302,7 @@ Animations can include points where sounds should be played as well. When sound 
 
 Sounds are coded with lines starting with "**s:**". An example of this is written below, it plays footsteps.wav whenever the frame with the identifier 0 is played.
 
-```text
+```
 //s: Identifier, SoundName, Filename
 s: 0, 'FootStep', 'footsteps.wav'
 ```
@@ -322,7 +319,7 @@ SplashKit animations also includes options to add vectors to individual frames, 
 
 In the animation script, a vector is indicated using a line starting with "**v:**". The following animation script snippet will move the sprite +5 pixels in the x axis and -3 pixels along the y axis for every Sprite Update while the animation is on the 0 frame.
 
-```text
+```
 //v: identifier, change in x velocity, change in y velocity
 v: 0, 5, -3
 ```

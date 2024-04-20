@@ -17,11 +17,11 @@ Web browsers and servers are programs that make it possible for you to access re
 
 For the computer you connected with to know what to do there must be a program that is listening for these requests and performing some actions in response. In this case that program is what we generally call a "web server". It has an open port (somewhere for others to connect to) and listens on that port for incoming connections. When the connection arrives, it can read the request, perform some actions, and respond.
 
-In this article you will see how to start listening for connections, how to send a file in response, and how to stop listening for new connections. This is then built upon in the [routing with servers](/guides/networking/routing-with-servers/) article, which shows you how to customise your response based upon what the caller requested.
+In this article you will see how to start listening for connections, how to send a file in response, and how to stop listening for new connections. This is then build upon in the [routing with servers](/guides/networking/routing-with-servers/) article, which shows you how to customise your response based upon what the caller requested.
 
 ## Step 1: Getting Started
 
-Before we start our server, let's create a file to be served. Create a new project folder (`mkdir testServer`) and move into it (`cd testServer`). We need to set up a resources folder where we can store files we want to "serve". You can do this by running `skm resources` at the Terminal. This will create the **Resources** folder, and all the subfolders in there. The folder we're interested in is **Resources/server** as this is where our server will look for files we want to present to the user.
+Before we start our server, lets create a file to be served. Create a new project folder (`mkdir testServer`) and move into it (`cd testServer`). We need to setup a resources folder where we can store files we want to "serve". You can do this by running `skm resources` at the Terminal. This will create the **Resources** folder, and all the subfolders in there. The folder we're interested in is **Resources/server** as this is where our server will look for files we want to present to the user.
 
 Create a file in this folder, and fill it out like a basic HTML document as such:
 
@@ -46,7 +46,6 @@ We need to pair the [Start Web Server](/api/networking/#group-start-web-server) 
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -72,11 +71,10 @@ write_line("About to start the server...");
 
 }
 
-```
+````
 
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitSDK;
@@ -136,7 +134,6 @@ The following code shows an appropriate `"Hello World"` web server program.
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -151,12 +148,12 @@ write_line("About to start the server...");
     stop_web_server(server);
 
     return 0;
-}
-```
 
+}
+
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitSDK; // Assuming SplashKit library bindings are available in this namespace
@@ -176,7 +173,8 @@ class Program
         Environment.Exit(0);
     }
 }
-```
+
+````
 
 </TabItem>
 </Tabs>
@@ -191,7 +189,6 @@ The follow code replaces the "Hello World" response with the details from the in
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -216,11 +213,10 @@ write_line("About to start the server...");
     return 0;
 
 }
-```
 
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using SplashKitDotNet;
 
@@ -245,7 +241,7 @@ class Program
         SplashKit.StopWebServer(server);
     }
 }
-```
+````
 
 </TabItem>
 </Tabs>

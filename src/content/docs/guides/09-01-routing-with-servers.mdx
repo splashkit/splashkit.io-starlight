@@ -13,8 +13,7 @@ _Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
 This article extends the skills gained from [getting started with servers](/guides/networking/getting-started-with-servers/) specifically around serving different files for different paths
 
-## Routing
-
+##Routing
 Routing is an important part of the web server's job. This is how you get different pages depending on your requests for login, home, or about, pages on a site. Basically, a URL is structured **[serverName]:[port]/[route]**, for example **localhost:8080/login**
 
 ## Recap of servers
@@ -23,7 +22,6 @@ Start with this code, which we built in the introduction guide
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -48,11 +46,10 @@ write_line("About to start the server...");
     return 0;
 
 }
-```
 
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitDotNet;
@@ -92,7 +89,8 @@ class Program
         }
     }
 }
-```
+
+````
 
 </TabItem>
 </Tabs>
@@ -113,13 +111,12 @@ You should have an index.html file in `Resources/server` in your project folder,
 
 ## Checking Requests
 
-Checking to see if a request has been made for a certain path is really easy! SplashKit provides an [Is GET Request For](/api/networking/#is-get-request-for) function that lets you pass in a path, and it lets you know if the request is for that path. Alternately, you can also use [Request URI](/api/networking/#request-uri) or [Request URI Stubs](/api/networking/#request-uri-stubs) if you want to dynamically respond to the details in the request. [Is GET Request For](/api/networking/#is-get-request-for) returns a boolean, True or False, which we can use in an if statement to check each of the resources we want to serve.
+Checking to see if a request has been made for a certain path is really easy! SplashKit provides a [Is GET Request For](/api/networking/#is-get-request-for) function that lets you pass in a path, and it lets you know if the request is for that path. Alternately, you can also use [Request URI](/api/networking/#request-uri) or [Request URI Stubs](/api/networking/#request-uri-stubs) if you want to dynamically respond to the details in the request. [Is GET Request For](/api/networking/#is-get-request-for) returns a boolean, True or False, which we can use in an if statement to check each of the resources we want to serve.
 
 The following code shows the use of an if statement to serve some login text or the index page, depending on what the browser requested.
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 
@@ -156,11 +153,10 @@ write_line("About to start the server...");
     return 0;
 
 }
-```
 
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitSDK;
@@ -198,7 +194,8 @@ class Program
         SplashKit.StopWebServer(server);
     }
 }
-```
+
+````
 
 </TabItem>
 </Tabs>
@@ -213,11 +210,10 @@ You'll usually want your server to handle lots of requests, not just one then qu
 
 You can then add a special route that will stop the server.
 
-The following code illustrates the use of the concepts covered so far. You can now make multiple requests in your browser, and you can navigate to [http://localhost:8080/quit] to get the web server to stop.
+The following code illustrates the use of the concepts covered so far. You can now make multiple requests in your browser, and you can navidate to [http://localhost:8080/quit] to get the web server to stop.
 
 <Tabs>
   <TabItem label="C++">
-
 ```cpp
 #include "splashkit.h"
 int main()
@@ -277,11 +273,10 @@ int main()
     return 0;
 
 }
-```
 
+````
 </TabItem>
   <TabItem label="C#">
-
 ```csharp
 using System;
 using SplashKitSDK;
@@ -378,7 +373,7 @@ class Program
         server.Stop();
     }
 }
-```
+````
 
 </TabItem>
 </Tabs>
@@ -408,15 +403,15 @@ The html for your web page would be:
 
 You can add links to your `index.html` to link to the other pages we have created. The general syntax for links is
 
-```html
+```
 <a href="pathToLinkTo">Text to be clicked</a>
 ```
 
 For example, a link to the login page would look like
 
-```html
+```
 <p>
-    <a href="login">Login Page</a> <br />
+	<a href="login">Login Page</a> <br />
 </p>
 ```
 

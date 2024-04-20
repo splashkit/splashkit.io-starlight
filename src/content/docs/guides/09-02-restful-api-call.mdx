@@ -9,13 +9,14 @@ lastupdated: Oct 3 2018
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 **{frontmatter.description}**
+
 _Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
-In the world of web services and microservices many companies make their data available through a REST API, like twitter, google, weather channels, stock market movement etc. This allows 3rd party software to utilize this data within their own application with a simple API call. In this document we want to use the Networking and JSON [SplashKit Library](https://www.splashkit.io) functions to make a RESTful API call.
+In the world of web services and microservices many companies make their data availlable through a REST API, like twitter, google, weather channels, stock market movement etc. This allows 3rd party software to utilize this data within their own application with a simple API call. In this document we want to use the Networking and JSON [SplashKit Library](https://www.splashkit.io) functions to make a RESTful API call.
 
 REST is an acronym for REpresentational State Transfer which means a client’s API call will be answered with a representation of the requested resources state. For example if I were to request data for a particular stock market company I might get the name of the company, the abbreviation on the market, the share value, and whether it has gone up or down since the last refresh. This data represents the state of the resource.
 
-In order to make an HTTP REST call two parameters must be passed along, one the resource that is requested which is embedded in the URL, and two, the operation you want to perform like [GET](#get), [POST](#post), PUT, DELETE. The SplashKit network library supports the first two.
+In order to make a HTTP REST call two parameters must be passed along, one the resource that is requested which is embedded in the URL, and two, the operation you want to perform like [GET](#get), [POST](#post), PUT, DELETE. The SplashKit network library supports the first two.
 
 A REST request data transfer can be in a JSON format, but other formats such as XML or HTTP are possible and often multiple formats are supported by a RESTful API server. In this document we are using the JSON format to represent both the data we send and receive. Which format we wish to use for the transfer is defined in the header of the HTTP request see [example 3](#post).
 
@@ -61,6 +62,7 @@ string response;
     return 0;
 
 }
+
 ```
 
   </TabItem>
@@ -113,6 +115,7 @@ class Program
         }
     }
 }
+
 ```
 
   </TabItem>
@@ -333,7 +336,7 @@ response = requests.post(url, json=body)
 if response.status_code == 201:
 for key, value in response.json().items():
 print("{0} => {1}".format(key, value))
-```
 
+```
 </TabItem>
 </Tabs>
