@@ -2,3 +2,5 @@ SplashKit
 organises
 heatsink
 IntelliSense
+Visualisation
+customise
