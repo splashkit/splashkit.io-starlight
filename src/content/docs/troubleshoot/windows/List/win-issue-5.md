@@ -9,7 +9,7 @@ description: A reference page in my new Starlight docs site.
 
 ## Solution :
 You might need to add the dotnet folder path to your “Path” environment variable.
-Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](./update-system-path.md).
+Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](update-system-path).
 
 Then come back here for the Next Step.
 **Next Step:** In the “Edit environment variable” window, click "New" (Red box), then add the
