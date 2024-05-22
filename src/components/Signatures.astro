@@ -1,0 +1,82 @@
+---
+import { Code, Tabs, TabItem } from "@astrojs/starlight/components";
+
+interface Props {
+  name: string;
+}
+
+import jsonData from "../../scripts/api.json";
+
+const { name } = Astro.props;
+
+function getSignatures(jsonData: any, name: string) {
+  for (const categoryKey in jsonData) {
+    const category = jsonData[categoryKey];
+    
+    const categoryFunctions = category.functions;
+    const uniqueName = name.toLowerCase().replaceAll("-", "_");
+   
+    for (const functionKey in categoryFunctions) {
+      const func = categoryFunctions[functionKey];
+      if (func.unique_global_name === uniqueName) {
+        //if function signature has multiple lines as follwing:
+        //"csharp": [
+        // "public static bool Timers.HasTimer(string name);",
+        //     "public static bool SplashKit.HasTimer(string name);"
+        //   ],
+        // add them all together, not just for csharp, but for all languages
+        for (const key in func.signatures) {
+          if (func.signatures[key].length > 1) {
+            let signatures = "";
+            for (const line in func.signatures[key]) {
+              signatures += func.signatures[key][line] + "\n";
+            }
+            func.signatures[key] = signatures;
+          }
+        }
+    
+
+        return func.signatures;
+      }
+    }
+  }
+  return null;
+}
+
+const signatures = getSignatures(jsonData, name);
+---
+
+{
+  signatures && (
+    <div class="splashkit-signatures">
+      <strong class="splashkit-signature">Signatures</strong>
+      
+
+      <Tabs>
+        <TabItem label="C++">
+          
+            {signatures.cpp && <Code code={signatures.cpp.toString()} lang="cpp" />}
+          
+        </TabItem>
+        <TabItem label="C#">
+          
+            {signatures.csharp && <Code code={signatures.csharp.toString()} lang="csharp" />}
+            
+        </TabItem>
+
+        <TabItem label="Python">
+            {signatures.python && <Code code={signatures.python.toString()} lang="python" />}
+        </TabItem>
+        <TabItem label="Pascal">
+         
+            {signatures.pascal && <Code code={signatures.pascal.toString()} lang="pascal" />}
+        
+        </TabItem>
+      </Tabs>
+    </div>
+  )
+//   no signature found
+    || <div class="splashkit-signatures">
+        <strong class="splashkit-signature">No Signatures Found for {name}</strong>
+    </div>
+}

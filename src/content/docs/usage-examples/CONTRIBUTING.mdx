@@ -1,0 +1,85 @@
+---
+title: Contributing to Usage Examples
+sidebar:
+  hidden: true
+---
+
+To contribute a function usage example, you need to create the following files:
+
+- **Text file** (.txt) containing a title and short description of the example.
+- **Image file** (.png) (or **Gif file** (.gif) if the example code is interactive) showing the expected output of the example.
+- **Code file** with the example code. This must be a complete code example, not just a snippet of code.
+
+## File Naming
+
+To allow the files to be used to automatically generate the usage example MDX page, you need to follow a specific format when naming your files.
+
+Here is an example of files for two code examples added into the `write_line` folder that are demonstrating the use of `void write_line(string line);
+
+```text
+write_line-1-hello-world.cpp
+write_line-1-hello-world.cs
+write_line-1-hello-world.png
+write_line-1-hello-world.txt
+write_line-2-ascii-art-charlie-the-unicorn.cpp
+write_line-2-ascii-art-charlie-the-unicorn.cs
+write_line-2-ascii-art-charlie-the-unicorn.png
+write_line-2-ascii-art-charlie-the-unicorn.txt
+```
+
+Breaking down the first line from above:
+
+```text
+write_line-1-hello-world.cpp
+    ^      ^      ^       ^
+    |      |      |       |
+    |      |      |       -----: file type: .cpp
+    |      |      |
+    |      |      -------------: example name: hello-world
+    |      |                     (hyphenated: use dash `-` between each word,
+    |      |                     no spaces in filenames)
+    |      |
+    |      --------------------: number id of example: -1-
+    |                            (used to create the order of examples)
+    |
+    ---------------------------: folder name: write_line
+                                 (created using the "unique_global_name" key
+                                 from SplashKit's "api.json" file)
+```
+
+## File Contents
+
+### Text file
+
+The text file needs to include:
+
+- Name of the example program, using a level 3 markdown heading, `###`.
+- Short description of what the example code is demonstrating, with a hyperlink to the function's API Documentation details.
+
+Here is an example of the contents of the `write_line-2-ascii-art-charlie-the-unicorn.txt` file:
+
+```text
+### ASCII Art - Charlie the Unicorn
+
+The following code is an example of using [Write Line](/api/terminal#write-line-5) to create ASCII art of "Charlie the Unicorn" in the terminal.
+```
+
+### Image of Gif file
+
+Add a screenshot of the output of the example program.
+
+If the example program includes user input or any movement, please create a Gif showing the program running.
+
+Remove identifying details from the image/gif where possible.
+
+### Code file(s)
+
+Please follow the guidelines below:
+
+- All of the example code needs to be in a single file.
+- One file per language, with a **minimum of C++ and C# code files** added.
+- Example code should be able to be run by copying the code into an empty code file.
+
+## Write Line Examples
+
+For more info, you can look at the completed **Write Line** examples: [Link to README in "write_line" folder](/src/assets/usage-examples-code/terminal/write_line/README.md)

@@ -1,4 +1,0 @@
-SplashKit
-organises
-heatsink
-IntelliSense

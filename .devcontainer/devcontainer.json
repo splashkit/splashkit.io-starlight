@@ -13,9 +13,9 @@
 				"DavidAnson.vscode-markdownlint",
 				"astro-build.astro-vscode",
 				"ms-vsliveshare.vsliveshare",
-				"tomoki1207.pdf",
-				"eamodio.gitlens",
-				"valentjn.vscode-ltex"
+				// "tomoki1207.pdf",
+				"eamodio.gitlens"
+				// "valentjn.vscode-ltex"
 			]
 		}
 	}
