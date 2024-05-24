@@ -84,6 +84,31 @@ public class Program
 ```
 
 </TabItem>
+  <TabItem label="Python">
+
+```python
+
+from splashkit import *
+
+## Convert the string "2017" to an integer 2017
+
+some_string = "2017"
+some_number = convert_to_integer(some_string)
+
+write_line("The value of some_number is now:")
+write_line_int(some_number)
+
+## Convert the string "3.14159265358979" to a double ~3.141593
+
+pi_string = "3.14159265358979"
+pi = convert_to_double(pi_string)
+
+write_line("The value of pi is now:")
+write_line_double(pi)
+
+```
+
+</TabItem>
 </Tabs>
 
 ### Usage scenario: converting user input to an integer
@@ -145,7 +170,6 @@ inum_2 = convert_to_double(snum_2);
 ```
 
 </TabItem>
-
   <TabItem label="C#">
 
 ```csharp
@@ -199,6 +223,44 @@ inum_2 = SplashKit.ConvertToDouble(snum_2);
 ```
 
 </TabItem>
+  <TabItem label="Python">
+
+```python
+from splashkit import *
+
+# Read user input
+write("Enter first number: ")
+snum_1 = read_line()
+write("Enter second number: ")
+snum_2 = read_line()
+
+
+# Convert user inputs to integers
+inum_1 = convert_to_integer(snum_1)
+inum_2 = convert_to_integer(snum_2)
+
+# Compute the result
+result = inum_1 * inum_2
+
+# Output the result
+write(snum_1 + " multiplied by " + snum_2 + " equals ")
+write_line_int(result)
+```
+
+The same can be achieved for decimal numbers, simply by swapping `ConvertToInteger`with `ConvertToDouble`, and using the appropriate data types.
+
+```python
+#...
+
+# Don't uses integers, instead use doubles
+inum_1 = convert_to_double(snum_1)
+inum_2 = convert_to_double(snum_2)
+
+#...
+
+```
+
+</TabItem>
 </Tabs>
 
 ## Checking if a string is a number
@@ -208,7 +270,7 @@ Another helpful set of functions provided by SplashKit's utilities library is [I
 Consider the following.
 
 <Tabs>
-<TabItem label="C++">
+  <TabItem label="C++">
 
 ```cpp
 #include "splashkit.h"
@@ -277,6 +339,36 @@ public class Program
             SplashKit.WriteLine("Message 3 is not a number!");
     }
 }
+
+```
+
+</TabItem>
+  <TabItem label="Python">
+
+```python
+from splashkit import *
+
+message_1 = "9781273"
+message_2 = "23129739.13"
+message_3 = "Hello world."
+
+if is_integer(message_1):
+    write_line("Message 1 contains an integer!")
+
+if is_number(message_1):
+    write_line("Message 1 contains a number!")
+
+if not is_integer(message_2):
+    write_line("Message 2 is not an integer!")
+
+if is_number(message_2):
+    write_line("Message 2 contains a number!")
+
+if not is_integer(message_3):
+    write_line("Message 3 is not an integer!")
+
+if not is_number(message_3):
+    write_line("Message 3 is not a number!")
 
 ```
 
@@ -393,6 +485,41 @@ public class Program
 ```
 
 </TabItem>
+  <TabItem label="Python">
+
+```python
+from splashkit import *
+
+"""
+Reads input from a user, only allowing whole numbers.
+@prompt string     - The string to display to the user.
+@return int
+"""
+def read_integer(prompt):
+
+    # Continue requesting user input until a valid whole number is entered.
+    while True:
+        # Prompt the user with the message
+        write(prompt)
+        # Read the user input as a string.
+        buffer = read_line()
+        # If the user input is a valid whole number, leave the loop.
+        if is_integer(buffer):
+            break
+        # If the user input was not a valid whole number, ask them to enter a whole number.
+        write_line("Please enter a valid whole number.")
+    # Convert the user input to an integer before returning it.
+    return convert_to_integer(buffer)
+
+
+
+height = read_integer("Enter your height in centimetres: ")
+write("You are ")
+write_int(height)
+write_line("CM tall!")
+```
+
+</TabItem>
 </Tabs>
 
 ## Manipulating strings
@@ -457,6 +584,30 @@ public class Program
         SplashKit.WriteLine("After: " + location);
     }
 }
+```
+
+</TabItem>
+  <TabItem label="Python">
+
+```python
+from splashkit import *
+
+name = "Richard"
+location = "        Burwood"
+
+# Convert "Richard" to "RICHARD"
+name = to_uppercase(name)
+write_line(name)
+
+# Convert "RICHARD" to "richard"
+name = to_lowercase(name)
+write_line(name)
+
+# Remove all of the empty spaces at the start of "      Burwood".
+write_line("Before: " + location)
+location = trim(location)
+write_line("After: " + location)
+
 ```
 
 </TabItem>

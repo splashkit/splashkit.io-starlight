@@ -80,6 +80,7 @@ The following program code demonstrates the use of these audio features.
 
 <Tabs>
   <TabItem label="C++">
+
 ```cpp
 #include "splashkit.h"
 
@@ -149,10 +150,11 @@ sound_effect snd_effect;
 
 }
 
-````
-</TabItem>
+```
 
-<TabItem label="C#">
+</TabItem>
+    <TabItem label="C#">
+
 ```csharp
 using SplashKitSDK;
 
@@ -224,7 +226,65 @@ class Program
     }
 }
 
-````
+```
+
+</TabItem>
+    <TabItem label="Python">
+
+```python
+from splashkit import *
+
+open_window("Sound, Demo", 320, 240)
+
+snd_effect = load_sound_effect("chipmunk", "chipmunk.ogg")
+
+load_sound_effect("bells", "bells.ogg")
+load_sound_effect("camera", "camera.ogg")
+load_sound_effect("boing", "comedy_boing.ogg")
+load_sound_effect("dinosaur", "dinosaur.ogg")
+load_sound_effect("bark", "dog_bark.ogg")
+
+while not (quit_requested() or key_typed(KeyCode.escape_key or key_typed(KeyCode.q_key))):
+    process_events()
+    
+    if key_down(KeyCode.right_ctrl_key) or key_down(KeyCode.left_ctrl_key):
+        if key_typed(KeyCode.num_1_key):
+            snd_effect = sound_effect_named("chipmunk")
+        if key_typed(KeyCode.num_2_key):
+            snd_effect = sound_effect_named("bells")
+        if key_typed(KeyCode.num_3_key):
+            snd_effect = sound_effect_named("camera")
+        if key_typed(KeyCode.num_4_key):
+            snd_effect = sound_effect_named("boing")
+        if key_typed(KeyCode.num_5_key):
+            snd_effect = sound_effect_named("dinosaur")
+        if key_typed(KeyCode.num_6_key):
+            snd_effect = sound_effect_named("bark")
+    else:
+        if key_typed(KeyCode.num_1_key):
+            play_sound_effect(snd_effect)
+        if key_typed(KeyCode.num_2_key):
+            play_sound_effect_with_volume(snd_effect, 0.5)
+        if key_typed(KeyCode.num_3_key):
+            play_sound_effect_with_times_and_volume(snd_effect, 3, 0.25)
+        if key_typed(KeyCode.num_4_key):
+            play_sound_effect_with_times_and_volume(snd_effect, -1, 0.1)
+        if key_typed(KeyCode.num_5_key):
+            if sound_effect_playing(snd_effect):
+                stop_sound_effect(snd_effect)
+
+    clear_screen(color_white())
+
+    draw_text_font_as_string("Control Sound (Escape or q to quit)", color_red(), "arial.ttf", 18, 15, 15)
+    draw_text_font_as_string("1: Play Sound At Full Volume", color_blue(), "arial.ttf", 14, 20, 50)
+    draw_text_font_as_string("2: Play Sound At 50% Volume", color_blue(), "arial.ttf", 14, 20, 80)
+    draw_text_font_as_string("3: Play Sound At 25% Volume 3 Times", color_blue(), "arial.ttf", 14, 20, 110)
+    draw_text_font_as_string("4: Play Sound Continuously at 10%", color_blue(), "arial.ttf", 14, 20, 140)
+    draw_text_font_as_string("5: Stop Playing Current Sound", color_blue(), "arial.ttf", 14, 20, 170)
+    draw_text_font_as_string("CTRL + (1-6) switch sound effects", color_blue(), "arial.ttf", 14, 20, 200)
+
+    refresh_screen_with_target_fps(60)
+```
 
 </TabItem>
 </Tabs>

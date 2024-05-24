@@ -9,7 +9,6 @@ lastupdated: Oct 3 2018
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 **{frontmatter.description}**
-
 _Written by {frontmatter.author} on {frontmatter.lastupdated}_
 
 In the world of web services and microservices many companies make their data availlable through a REST API, like twitter, google, weather channels, stock market movement etc. This allows 3rd party software to utilize this data within their own application with a simple API call. In this document we want to use the Networking and JSON [SplashKit Library](https://www.splashkit.io) functions to make a RESTful API call.
@@ -338,5 +337,6 @@ for key, value in response.json().items():
 print("{0} => {1}".format(key, value))
 
 ```
+
 </TabItem>
 </Tabs>
