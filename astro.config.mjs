@@ -3,6 +3,7 @@
 import { defineConfig, squooshImageService } from "astro/config";
 import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
+import starlightLinksValidator from "starlight-links-validator";
 
 import react from "@astrojs/react";
 // Load environment variables from .env file
