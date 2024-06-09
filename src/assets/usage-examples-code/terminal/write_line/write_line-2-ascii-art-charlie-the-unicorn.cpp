@@ -1,7 +1,3 @@
-/**
- * Usage Example: Printing ASCII art of "Charlie the Unicorn" to the terminal
- **/
-
 #include "splashkit.h"
 
 int main()

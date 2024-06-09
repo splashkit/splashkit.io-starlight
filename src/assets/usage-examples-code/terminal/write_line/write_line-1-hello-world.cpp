@@ -1,7 +1,3 @@
-/**
- * Usage Example: Printing a string to the terminal.
- **/
-
 #include "splashkit.h"
 
 int main()

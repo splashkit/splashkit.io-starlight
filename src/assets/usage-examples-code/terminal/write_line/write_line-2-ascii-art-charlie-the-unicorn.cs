@@ -1,9 +1,4 @@
-﻿/**
- * Usage Example: Printing ASCII art of "Charlie the Unicorn" to the terminal.
- * Note: The terminal needs to be at least 200 pixels wide for the picture to display correctly.
- **/
-
-using static SplashKitSDK.SplashKit;
+﻿using static SplashKitSDK.SplashKit;
 
 WriteLine("");
 WriteLine("CHARRRLLIIEEEE! WE'RE GOING TO CANDY MOUNTAIN CHARLIE!");

@@ -1,8 +1,4 @@
-﻿/**
- * Usage Example: Printing a string to the terminal.
- **/
-
-using static SplashKitSDK.SplashKit;
+﻿using static SplashKitSDK.SplashKit;
 
 // Example 1: Print explicit string
 WriteLine("Hello World");
