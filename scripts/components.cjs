@@ -17,17 +17,17 @@ const typeMappings = {
 };
 
 const guidesAvailable = {
-  animations: true,
-  audio: true,
-  camera: true,
-  database: true,
-  inputs: true,
-  json: true,
-  networking: true,
-  sprites: true,
-  utilities: true
-
+  animations: false,
+  audio: false,
+  camera: false,
+  database: false,
+  inputs: false,
+  json: false,
+  networking: false,
+  sprites: false,
+  utilities: false
 };
+
 // Define language label mappings
 const languageLabelMappings = {
   pascal: "Pascal",
@@ -169,7 +169,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
               }
               mdxContent += `${paramName}: ${paramType}, `;
             }
-            mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}--${index + 1})\n`;
+            mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
           });
 
           mdxContent += "\n:::\n\n";
@@ -188,7 +188,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
 
           const formattedName = isOverloaded
-            ? `#### [${functionName2}](#${formattedLink.toLowerCase()}--${index + 1})`
+            ? `#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
             : `### [${functionName2}](#${formattedLink})\n\n`;
 
 
@@ -263,13 +263,13 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           languageOrder.forEach((lang) => {
             if (func.signatures[lang].length > 0 && func.signatures[lang] != undefined) {
               try{
-                
+
               const code = (Array.isArray(func.signatures[lang]))? func.signatures[lang].join("\n") : func.signatures[lang];
-              const languageLabel = languageLabelMappings[lang] || lang;
-              mdxContent += `  <TabItem label="${languageLabel}">\n`;
-              mdxContent +=
-                "```" + lang + "\n" + code + '\n```\n';
-              mdxContent += "  </TabItem>\n";
+                const languageLabel = languageLabelMappings[lang] || lang;
+                mdxContent += `  <TabItem label="${languageLabel}">\n`;
+                mdxContent +=
+                  "```" + lang + "\n" + code + '\n```\n';
+                mdxContent += "  </TabItem>\n";
               } catch(e) {
                 console.log(e+ " " + lang + " "+ func.name)
               }
