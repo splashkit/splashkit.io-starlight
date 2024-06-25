@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run generate-mdx && astro dev",
     "start": "npm run generate-mdx && astro dev",
-    "build": "astro build",
+    "build": "npm run generate-mdx && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate-mdx": "node ./scripts/components.cjs",

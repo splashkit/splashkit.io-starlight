@@ -118,8 +118,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           mdxContent += `:::\n`
         }
       }
-      mdxContent += `\nimport { Tabs, TabItem } from "@astrojs/starlight/components";\nimport { LinkCard, CardGrid } from "@astrojs/starlight/components";
-\n    `;
+      mdxContent += `\nimport { Tabs, TabItem } from "@astrojs/starlight/components";\nimport { LinkCard, CardGrid } from "@astrojs/starlight/components";\n`;
       if (guidesAvailable[categoryKey]) {
         mdxContent += "\n## \n";
         mdxContent += `## ${name} Guides\n`;
@@ -129,9 +128,9 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           href="/guides/${input}/"
         />\n\n`;
       }
-      mdxContent += "## \n";
+      mdxContent += "\n";
       mdxContent += "## Functions\n";
-      mdxContent += "## \n";
+      // mdxContent += "\n";
       const functionGroups = {}; // Store functions grouped by name
       categoryFunctions.forEach((func) => {
         const functionName = func.name;
@@ -154,8 +153,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             .join(" ");
           const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
 
-          const formattedGroupLink = `group-${formattedLink}`;
-          mdxContent += `### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
+          const formattedGroupLink = `${formattedLink}`;
+          mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
           mdxContent += ":::note\n\n";
           mdxContent += "This function is overloaded. The following versions exist:\n\n";
 
@@ -172,7 +171,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
           });
 
-          mdxContent += "\n:::\n\n";
+          mdxContent += "\n:::\n";
         }
 
         overloads.forEach((func, index) => {
@@ -188,8 +187,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
 
           const formattedName = isOverloaded
-            ? `#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
-            : `### [${functionName2}](#${formattedLink})\n\n`;
+            ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})\n`
+            : `\n### [${functionName2}](#${formattedLink})\n`;
 
 
           // Replace type names in the description with formatted versions
@@ -202,22 +201,23 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             );
           }
 
-          mdxContent += `${formattedName} \n`;
+          mdxContent += `${formattedName}\n`;
           for (const names of functionNames) {
             const normalName = names
               .split("_")
               .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
               .join(" ");
             const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-            const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+            const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
             description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+            description = description.replaceAll("\n", " ");
           }
           mdxContent += description ? `${description}\n\n` : "";
 
 
           // Add Parameters section only if there are parameters
           if (Object.keys(func.parameters).length > 0) {
-            mdxContent += "**Parameters**\n\n";
+            mdxContent += "**Parameters:**\n\n";
             mdxContent +=
               "| Name   | Type                                               | Description                                                                        |\n";
             mdxContent +=
@@ -242,8 +242,9 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                   .join(" ");
                 const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+                const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
                 description2 = description2.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+                description2 = description2.replaceAll("\n", " ");
               }
 
               mdxContent += `| ${paramName} | ${paramType} | ${description2} |\n`;
@@ -252,32 +253,32 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             mdxContent += "\n";
           }
           if (func.return.type != 'void') {
-            mdxContent += "**Return Type**\t - " + typeMappings[func.return.type] + " \n\n";
+            mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
           }
 
 
-          mdxContent += "**Signatures**\n\n";
+          mdxContent += "**Signatures:**\n\n";
           mdxContent += "<Tabs>\n";
 
           // Reorder Code tabs
           languageOrder.forEach((lang) => {
             if (func.signatures[lang].length > 0 && func.signatures[lang] != undefined) {
-              try{
+              try {
 
-              const code = (Array.isArray(func.signatures[lang]))? func.signatures[lang].join("\n") : func.signatures[lang];
+                const code = (Array.isArray(func.signatures[lang])) ? func.signatures[lang].join("\n") : func.signatures[lang];
                 const languageLabel = languageLabelMappings[lang] || lang;
                 mdxContent += `  <TabItem label="${languageLabel}">\n`;
                 mdxContent +=
-                  "```" + lang + "\n" + code + '\n```\n';
+                  "\n```" + lang + "\n" + code + '\n```\n\n';
                 mdxContent += "  </TabItem>\n";
-              } catch(e) {
-                console.log(e+ " " + lang + " "+ func.name)
+              } catch (e) {
+                console.log(e + " " + lang + " " + func.name)
               }
             }
           });
 
-          mdxContent += "</Tabs>\n\n";
-          mdxContent += "---\n"; // Add --- after each function ends
+          mdxContent += "</Tabs>\n";
+          mdxContent += "\n---\n"; // Add --- after each function ends
 
         });
       }
@@ -291,7 +292,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
       if (sortedTypes.length > 0) {
         // Add the Types section
-        mdxContent += "## Types\n\n";
+        mdxContent += "\n## Types\n";
 
         sortedTypes.forEach((type) => {
           if (type.name != undefined) {
@@ -301,7 +302,9 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
               .join(" ");
 
             const formattedTypeName = formattedName || `\`${type.name}\``;
-            mdxContent += `### [${formattedTypeName}](#${type.name.toLowerCase()})\n\n`;
+            let formattedLinkName = type.name.toLowerCase();
+            formattedLinkName = formattedLinkName.replaceAll("_", "-");
+            mdxContent += `\n### [${formattedTypeName}](#${formattedLinkName})\n\n`;
 
             let description = type.description || "";
             for (const typeName in typeMappings) {
@@ -315,12 +318,12 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" ");
               const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+              const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 
 
-            mdxContent += `${description}\n\n`;
+            // mdxContent += `${description}\n\n`;
             // If it's a struct, add a table for its fields
             if (type.fields) {
               mdxContent +=
@@ -346,7 +349,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ");
                   const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                  const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+                  const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
                   description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
                 }
 
@@ -383,10 +386,10 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" ");
               const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/api/${input}/${formattedLink})`
+              const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
-
+            description = description.replaceAll("\n\n\n", "\n\n");
             mdxContent += `${description}\n\n`;
             mdxContent += `---\n`;
           }

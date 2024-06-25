@@ -40,7 +40,7 @@ With the camera you can create the effect of moving past stationary background o
 
 Once you use the camera, then you need to map any interactions with the screen from screen to world coordinates. For example, when you read mouse input the values are in 'screen coordinates'. In this system the coordinates always have 0,0 as the top left-hand corner, regardless of the camera position.
 
-You can translate between these coordinate systems using the [To Screen](/api/camera/#group-to-screen) and [To World](/api/camera/#to-world).
+You can translate between these coordinate systems using the [To Screen](/api/camera/#to-screen) and [To World](/api/camera/#to-world).
 
 - [To Screen](/api/camera/#to-screen) converts values from world coordinates to screen coordinates.
 - [To World](/api/camera/#to-world) converts a screen coordinate to a game world coordinate.
@@ -51,7 +51,7 @@ You can translate between these coordinate systems using the [To Screen](/api/ca
 
 ## Drawing directly to the screen
 
-Some game elements will need to remain in the same place, regardless of the camera position. To achieve this you need to use the [Option To Screen](/api/graphics/#group-option-to-screen). Drawing options allow you to customise each of the drawing instructions. Each drawing operation include a variation that accepts a Drawing Option value.
+Some game elements will need to remain in the same place, regardless of the camera position. To achieve this you need to use the [Option To Screen](/api/graphics/#option-to-screen). Drawing options allow you to customise each of the drawing instructions. Each drawing operation include a variation that accepts a Drawing Option value.
 
 - [Option To Screen](/api/graphics/#option-to-screen) ignore camera position when drawing
 - [Option To World](/api/graphics/#option-to-world) adjust all positions based on the camera position

@@ -58990,7 +58990,7 @@
         "unique_global_name": "matrix_multiply_point",
         "unique_method_name": null,
         "suffix_name": null,
-        "description": "Multiplies the `point_2d` parameter `v with the `matrix_2d` `m and\nreturns the result as a `point_2d`. Use this to transform the vector with\nthe matrix (to apply scaling, rotation or translation effects).",
+        "description": "Multiplies the `point_2d` parameter `v` with the `matrix_2d` `m` and\nreturns the result as a `point_2d`. Use this to transform the vector with\nthe matrix (to apply scaling, rotation or translation effects).",
         "brief": null,
         "return": {
           "type": "point_2d",

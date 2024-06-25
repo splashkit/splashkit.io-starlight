@@ -36,9 +36,9 @@ The following table shows the supported audio formats for Sound Effect and Music
 
 To play a sound effect you fist must load the audio file into your program. Sounds are stored in the **Resources/sounds** folder, and can be loaded using [Load Sound Effect](/api/audio/#load-sound-effect). You only need to load the sound effect once, and you can then access it using the name you assigned to the sound effect and [Sound Effect Named](/api/audio/#sound-effect-named), or by using the name of the sound effect in other calls.
 
-Once it is loaded, you can use the name you can play the sound effect using [Play Sound Effect](/api/audio/#group-play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
+Once it is loaded, you can use the name you can play the sound effect using [Play Sound Effect](/api/audio/#play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
 
-Sounds play until the file ends or until it is manually stopped in your code using [Stop Sound Effect](/api/audio/#group-stop-sound-effect) or [Stop Music](/api/audio/#stop-music). The sound effect or music will play in the background while your program's code continues to run.
+Sounds play until the file ends or until it is manually stopped in your code using [Stop Sound Effect](/api/audio/#stop-sound-effect) or [Stop Music](/api/audio/#stop-music). The sound effect or music will play in the background while your program's code continues to run.
 
 <img
   alt="Illustration of sound playing in the background"
@@ -54,7 +54,7 @@ Music can be longer, and is usually played constantly while the program runs. Un
 
 ### Mixing Sound Effects
 
-Multiple sounds can be played at one time using SplashKit, these sounds can be mixed using channels. Each channel can only play one sound effect at a time. So every call to [Play Sound Effect](/api/audio/#group-play-sound-effect) will use a channel that is not currently playing any sound. When there are no free channels SplashKit will stop a channel from playing it's current sound effect and play the new sound effect from the start.
+Multiple sounds can be played at one time using SplashKit, these sounds can be mixed using channels. Each channel can only play one sound effect at a time. So every call to [Play Sound Effect](/api/audio/#play-sound-effect) will use a channel that is not currently playing any sound. When there are no free channels SplashKit will stop a channel from playing it's current sound effect and play the new sound effect from the start.
 
 <img
   alt="Illustration of mixing sound effects"
@@ -66,7 +66,7 @@ Multiple sounds can be played at one time using SplashKit, these sounds can be m
 
 Music is different from sound effects in that music has it's own reserved channel that only music can be played on. Music, like sound effects will continue to be played until either the music is finished or [Stop Music](/api/audio/#stop-music) is called.
 
-Since Music has one channel to itself, if you call [Play Music](/api/audio/#group-play-music) when Music is already playing the currently playing Music will be stopped and the new Music will start playing from the beginning.
+Since Music has one channel to itself, if you call [Play Music](/api/audio/#play-music) when Music is already playing the currently playing Music will be stopped and the new Music will start playing from the beginning.
 
 <img
   alt="Illustration of playing music"
