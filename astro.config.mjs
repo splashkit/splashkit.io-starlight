@@ -1,11 +1,8 @@
-// Author: Aditya Parmar (XQuestCode)
-// Contact: thanx.adi@gmail.com
 import { defineConfig, squooshImageService } from "astro/config";
 import starlight from "@astrojs/starlight";
 import solidJs from "@astrojs/solid-js";
-
 import react from "@astrojs/react";
-
+import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
@@ -21,6 +18,12 @@ export default defineConfig({
       components: {
         Sidebar: './src/components/Sidebar.astro'
       },
+
+      plugins: [
+        starlightLinksValidator({
+          errorOnRelativeLinks: true,
+        }),
+      ],
       expressiveCode: {
         // theme: ["github-dark", "github-light"],
         // frames: {
@@ -30,7 +33,7 @@ export default defineConfig({
         useDarkModeMediaQuery: true,
       },
       customCss: [
-        
+
         "/src/styles/custom.css",
         "/src/styles/background.css",
         "/src/styles/cards.css",

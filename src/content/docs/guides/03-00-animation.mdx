@@ -55,7 +55,7 @@ Frames are coded within the animation script file using a line that starts with 
 
 The following code is the start of an animation script file.
 
-```
+```text
 SplashKit Animation
 
 //Frames are declared with an f: and contain
@@ -89,7 +89,7 @@ f: [8, 9, 10, 11], [8, 9, 10, 11], 5,
 
 When designing your animation an easy place to start is with a frame per cell in your animation. You can then put in a set duration, and link the frames together. For example, with the Frog sprite sheet you could use the following as a start. This includes frames in four groups, one for each of the different animations within the sheet (as indicated by the comments). Notice that each of these is a loop, so the "toward the user" sequence plays cells 0, 1, 2, 3 and then back to 0.
 
-```
+```text
 SplashKit Animation
 
 // Toward user
@@ -108,7 +108,7 @@ The next key element of the Animation is a starting point. This is a named frame
 
 Using the frog animation we have the 4 separate animations, which can then be coded as 4 identifiers for _walk forward_ starting at frame 0 (the loop 0, 1, 2, 3, 0, ...), _walk left_ starting at frame 4, _walk right_ starting at frame 8, and _walk away_ starting at frame 12.
 
-```
+```text
 SplashKit Animation
 
 // -- Frames --
@@ -136,27 +136,28 @@ Once you have a sprite sheet and an animation script the code to get this workin
 
    - You can do this with a bundle by specifying the image and its details on one line.
    - To load the image manually, you need to:
-     1. Call [Load Bitmap](/api/graphics#load-bitmap) to load the sprite sheet.
-     2. Call [Bitmap Set Cell Details](/api/graphics#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count).
+     1. Call [Load Bitmap](/api/graphics/#load-bitmap) to load the sprite sheet.
+     2. Call [Bitmap Set Cell Details](/api/graphics/#bitmap-set-cell-details) to set the cell details (which includes width, height, columns, rows, count).
 
-2. Load the **animation script** using [Load Animation Script](/api/animations#load-animation-script).
+2. Load the **animation script** using [Load Animation Script](/api/animations/#load-animation-script).
 
-3. Create an **animation** from the animation script using the identifier from the script. See [Create Animation](/api/animations#group-create-animation).
+3. Create an **animation** from the animation script using the identifier from the script. See [Create Animation](/api/animations/#create-animation).
 
-4. Create a Drawing Option using [Option With Animation](/api/graphics#group-option-with-animation), which can be used to pass options to a draw bitmap call.
+4. Create a Drawing Option using [Option With Animation](/api/graphics/#option-with-animation), which can be used to pass options to a draw bitmap call.
 
-5. Draw the bitmap, passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/api/graphics#draw-bitmap-with-options) or [Draw Bitmap (using the image name)](/api/graphics#draw-bitmap-named).
+5. Draw the bitmap, passing in the image, the location to draw it, and the drawing options. See [Draw Bitmap (using an Image)](/api/graphics/#draw-bitmap-2) or [Draw Bitmap (using the image name)](/api/graphics/#draw-bitmap-4).
 
-6. Update the animation using [Update Animation](/api/animations#update-animation).
+6. Update the animation using [Update Animation](/api/animations/#update-animation).
 
 This is demonstrated in the following code examples.
 
 <Tabs>
   <TabItem label="C++">
+
 ```cpp
 #include "splashkit.h"
 
-/// A Test application to demonstrate the use of Animations in SplashKit.
+// A Test application to demonstrate the use of Animations in SplashKit.
 int main()
 {
 window w = open_window("Animation Test", 120, 120);
@@ -214,9 +215,11 @@ window w = open_window("Animation Test", 120, 120);
 
 }
 
-````
+```
+
 </TabItem>
   <TabItem label="C#">
+
 ```csharp
 using System;
 using SplashKitSDK;
@@ -282,7 +285,7 @@ public class Program
         }
     }
 }
-````
+```
 
 </TabItem>
 </Tabs>
@@ -292,7 +295,7 @@ To test the above code you can download these [resources](/resources/animation/b
 
 ### Switching Animations
 
-Once you have an Animation you can use the [Assign Animation](/api/animations#assign-animation) method to switch from one animation sequence to another in the same animation script, or to swap to alternate animation scripts.
+Once you have an Animation you can use the [Assign Animation](/api/animations/#assign-animation) method to switch from one animation sequence to another in the same animation script, or to swap to alternate animation scripts.
 
 When calling assign animation, you indicate the animation to change and the new animation details, which include the animation identifier and optionally a new animation script.
 
@@ -302,7 +305,7 @@ Animations can include points where sounds should be played as well. When sound 
 
 Sounds are coded with lines starting with "**s:**". An example of this is written below, it plays footsteps.wav whenever the frame with the identifier 0 is played.
 
-```
+```text
 //s: Identifier, SoundName, Filename
 s: 0, 'FootStep', 'footsteps.wav'
 ```
@@ -319,7 +322,7 @@ SplashKit animations also includes options to add vectors to individual frames, 
 
 In the animation script, a vector is indicated using a line starting with "**v:**". The following animation script snippet will move the sprite +5 pixels in the x axis and -3 pixels along the y axis for every Sprite Update while the animation is on the 0 frame.
 
-```
+```text
 //v: identifier, change in x velocity, change in y velocity
 v: 0, 5, -3
 ```
