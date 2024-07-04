@@ -40366,6 +40366,45 @@
         }
       },
       {
+        "signature": "font get_system_font();",
+        "name": "get_system_font",
+        "method_name": null,
+        "unique_global_name": "get_system_font",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Searches for and (if found) returns a default system font. Otherwise defaults to the in-built font.",
+        "brief": "Searches for and (if found) returns a default system font. Otherwise defaults to the in-built font.",
+        "return": {
+          "type": "font",
+          "description": "Returns the `font` found, or the in-built font if not",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+        },
+        "attributes": {
+          "group": "graphics",
+          "static": "text"
+        },
+        "signatures": {
+          "python": [
+            "def get_system_font():"
+          ],
+          "pascal": [
+            "function GetSystemFont(): Font"
+          ],
+          "csharp": [
+            "public static Font Text.GetSystemFont();",
+            "public static Font SplashKit.GetSystemFont();"
+          ],
+          "cpp": [
+            "font get_system_font()"
+          ]
+        }
+      },
+      {
         "signature": "bool has_font(font fnt);",
         "name": "has_font",
         "method_name": null,
@@ -58990,7 +59029,7 @@
         "unique_global_name": "matrix_multiply_point",
         "unique_method_name": null,
         "suffix_name": null,
-        "description": "Multiplies the `point_2d` parameter `v` with the `matrix_2d` `m` and\nreturns the result as a `point_2d`. Use this to transform the vector with\nthe matrix (to apply scaling, rotation or translation effects).",
+        "description": "Multiplies the `point_2d` parameter `v with the `matrix_2d` `m and\nreturns the result as a `point_2d`. Use this to transform the vector with\nthe matrix (to apply scaling, rotation or translation effects).",
         "brief": null,
         "return": {
           "type": "point_2d",
@@ -81396,6 +81435,41 @@
           "HTTP_STATUS_SERVICE_UNAVAILABLE": {
             "description": "The server is currently unavailable.",
             "number": 503
+          }
+        },
+        "attributes": {
+          "group": "types"
+        }
+      },
+      {
+        "signature": "enum interface_style {FLAT_DARK_STYLE = 0,SHADED_DARK_STYLE = 1,FLAT_LIGHT_STYLE = 2,SHADED_LIGHT_STYLE = 3,BUBBLE = 4,BUBBLE_MULTICOLORED = 5};",
+        "name": "interface_style",
+        "description": "Use these interface styles as a way to quickly\ncustomize your interface.",
+        "brief": null,
+        "constants": {
+          "FLAT_DARK_STYLE": {
+            "description": "A flat, dark-mode interface.",
+            "number": 0
+          },
+          "SHADED_DARK_STYLE": {
+            "description": "A dark-mode interface with shadows and depth.",
+            "number": 1
+          },
+          "FLAT_LIGHT_STYLE": {
+            "description": "A flat, light-mode interface.",
+            "number": 2
+          },
+          "SHADED_LIGHT_STYLE": {
+            "description": "A light-mode interface with shadows and depth.",
+            "number": 3
+          },
+          "BUBBLE": {
+            "description": "A light-mode interface with a semi-transparent bubbly look.",
+            "number": 4
+          },
+          "BUBBLE_MULTICOLORED": {
+            "description": "A light-mode interface with a semi-transparent bubbly look - gives a multi-coloured result when provided a color.",
+            "number": 5
           }
         },
         "attributes": {
