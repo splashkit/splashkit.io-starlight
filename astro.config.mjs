@@ -88,7 +88,7 @@ export default defineConfig({
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry", collapsed: false } },
             { label: "Resource Bundles", autogenerate: { directory: "guides/resource_bundles", collapsed: false } },
             { label: "Sprites", autogenerate: { directory: "guides/sprites", collapsed: false } },
-            { label: "Utilities", autogenerate: { directory: "guides/ultilities", collapsed: false } },
+            { label: "Utilities", autogenerate: { directory: "guides/utilities", collapsed: false } },
           ]
           // autogenerate: { directory: "guides", collapsed: true },
         },
