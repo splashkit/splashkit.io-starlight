@@ -76,7 +76,25 @@ export default defineConfig({
         {
           label: "Tutorials and Guides",
           collapsed: true,
-          autogenerate: { directory: "guides", collapsed: true },
+          items: [
+            { label: "Using SplashKit", autogenerate: { directory: "guides/0-using-splashkit", collapsed: false } },
+            { label: "Animations", autogenerate: { directory: "guides/animations", collapsed: false } },
+            { label: "Audio", autogenerate: { directory: "guides/audio", collapsed: false } },
+            { label: "Camera", autogenerate: { directory: "guides/camera", collapsed: false } },
+            { label: "Graphics", autogenerate: { directory: "guides/graphics", collapsed: false } },
+            { label: "Input", autogenerate: { directory: "guides/input", collapsed: false } },
+            { label: "Json", autogenerate: { directory: "guides/json", collapsed: false } },
+            { label: "Networking", autogenerate: { directory: "guides/networking", collapsed: false } },
+            { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry", collapsed: false } },
+            { label: "Resource Bundles", autogenerate: { directory: "guides/resource_bundles", collapsed: false } },
+            { label: "Sprites", autogenerate: { directory: "guides/sprites", collapsed: false } },
+            { label: "Utilities", autogenerate: { directory: "guides/ultilities", collapsed: false } },
+          ]
+          // autogenerate: { directory: "guides", collapsed: true },
+        },
+        {
+          label: "Arcade Hackathon Project",
+          autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
         },
       ],
 
