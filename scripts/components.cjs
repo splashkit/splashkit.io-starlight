@@ -258,7 +258,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
 
           mdxContent += "**Signatures:**\n\n";
-          mdxContent += "<Tabs>\n";
+          mdxContent += "<Tabs syncKey=\"code-language\">\n";
 
           // Reorder Code tabs
           languageOrder.forEach((lang) => {

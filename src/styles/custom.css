@@ -4,15 +4,15 @@
 
 /* Dark mode colors. */
 :root {
-    --purple-hsl: 255, 60%, 60%;
-    --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --purple-hsl: 255, 60%, 60%;
+  --overlay-blurple: hsla(var(--purple-hsl), 0.2);
 }
 
 /* Light mode colors. */
 :root[data-theme="light"] {
-    --purple-hsl: 255, 85%, 65%;
-    --sl-hue-accent: 350;
-    --sl-color-accent: #3D50f5;
+  --purple-hsl: 255, 85%, 65%;
+  --sl-hue-accent: 350;
+  --sl-color-accent: #3D50f5;
 }
 
 .hero img {
@@ -27,11 +27,11 @@
 }
 
 [data-has-hero] .page {
-    background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-      radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-      radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
-  }
-  
+  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
+    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
+    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
+}
+
 [data-has-hero] header {
   border-bottom: 1px solid transparent;
   background-color: transparent;
@@ -82,6 +82,12 @@ iframe[id="stackblitz-iframe"] {
   -webkit-text-fill-color: transparent;
 }
 
+/* centre all images/gifs in guides */
+img {
+  display: block;
+  margin: auto;
+}
+
 [data-has-hero] .card {
   border-radius: 12px;
   position: relative;
@@ -106,7 +112,7 @@ iframe[id="stackblitz-iframe"] {
   will-change: background, opacity;
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(62, 85, 167, 0.212),
+      rgba(62, 85, 167, 0.212),
     transparent 40%
   );
   opacity: 0;
