@@ -1,8 +1,7 @@
 ---
-
-title: Language Tools
-description: Language tools for SKM
+title: Install Language Specific Tools
 sidebar:
+  label: 4. Language Tools
   attrs:
     class: apple
 ---

@@ -1,6 +1,7 @@
 ---
-title: Xcode Command Line Tools
+title: Install Xcode Command Line Tools
 sidebar:
+  label: 1. Command Line Tools
   attrs:
     class: apple
 ---
@@ -8,24 +9,28 @@ sidebar:
 The Command Line Tools provided by Xcode provide a large amount of developer
 tools required to compile and develop applications.
 
-To do this, open up the _Terminal_ application by:
+## Steps
 
-1. opening _Finder_ (the first app in the Dock),
-1. clicking _Applications_ in the sidebar,
-1. opening the _Utilities_ folder,
-1. double-clicking the _Terminal_ app.
+1. Open the _Terminal_ application.
 
-If you cannot find _Applications_ in your sidebar or can't find _Utilities_,
-you can also jump straight to the _Utilities_ folder by opening Finder and
-using the <kbd>⌘+Shift+U</kbd> shortcut.
+    :::tip[How do I find the Terminal on my Mac?]
 
-Now type into the Terminal the following command, and hit return on your keyboard
-to execute it.
+    1. Press _**Command**_ (⌘) + _**Space bar**_ to open the Spotlight Search.  
+    2. Start typing "Terminal".  
+    3. Click the **Terminal** app.
 
-```bash
-xcode-select --install
-```
+    :::
 
-![Installing Command Line Tools](/gifs/macos/installing-cmd-line-tools.gif)
+2. Copy the command below and paste it into your terminal and press enter.
 
+    ```shell
+    xcode-select --install
+    ```
 
+    ![Gif showing Spotlight Search to open Terminal and pasting Xcode install command](/gifs/macos/terminal-xcode-install.gif)
+
+    **Note:** After running the command above, if you get something like this:
+
+    ![A Terminal window showing message that 'Command Line Tools' are already installed](./images/xcode-install.png)
+
+    That means you've already installed Xcode, and are ready to move to the next step!
