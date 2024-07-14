@@ -3,12 +3,13 @@
   "type": "module",
   "version": "0.9",
   "scripts": {
-    "dev": "npm run generate-mdx && astro dev",
-    "start": "npm run generate-mdx && astro dev",
-    "build": "npm run generate-mdx && astro build",
+    "dev": "npm run generate-mdx && npm run generate-usage-examples-pages && astro dev",
+    "start": "npm run generate-mdx && npm run generate-usage-examples-pages && astro dev",
+    "build": "npm run generate-mdx && npm run generate-usage-examples-pages && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate-mdx": "node ./scripts/components.cjs",
+    "generate-usage-examples-pages": "node ./scripts/usage-example-page-generation.cjs",
     "check-links": "SET CHECK_LINKS=true && npm run build && SET CHECK_LINKS=false"
   },
   "dependencies": {
