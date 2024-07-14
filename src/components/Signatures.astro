@@ -52,7 +52,7 @@ const signatures = getSignatures(jsonData, name);
       <strong class="splashkit-signature">Signatures</strong>
       
 
-      <Tabs>
+      <Tabs syncKey="code-language">
         <TabItem label="C++">
           
             {signatures.cpp && <Code code={signatures.cpp.toString()} lang="cpp" />}
