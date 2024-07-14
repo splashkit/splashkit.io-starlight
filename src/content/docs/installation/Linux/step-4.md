@@ -1,6 +1,7 @@
 ---
-title: Language Tools
+title: Install Language Specific Tools
 sidebar:
+  label: 4. Language Tools
   attrs:
     class: linux
 ---

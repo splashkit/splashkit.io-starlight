@@ -1,6 +1,7 @@
 ---
-title: Visual Studio Code
+title: Install Visual Studio Code
 sidebar:
+  label: 3. Visual Studio Code
   attrs:
     class: linux
 ---
@@ -8,7 +9,8 @@ sidebar:
 Once you have the [built splashkit](/installation/linux/step-3/) you
 can download and install Visual Studio Code to use as a source code editor.
 
-## Steps:
+## Steps
+
 1. Download [Visual Studio Code](https://code.visualstudio.com/)
 
     ![Downloading Visual Studio Code for Ubuntu](/gifs/linux/download-vsc.gif)
@@ -22,17 +24,15 @@ can download and install Visual Studio Code to use as a source code editor.
     In the terminal window, change directory using the ```cd``` command to the
     directory where Visual Studio Code downloaded
 
-    ```
+    ```shell
     cd ~/Downloads
     ```
 
     Then, install the .deb package by copying and pasting the code below into
     your terminal and pressing enter.
 
-    ```
+    ```shell
     sudo dpkg -i code_1.*.deb
     ```
 
     ![Installing Visual Studio Code on Ubuntu](/gifs/linux/install-vsc.gif)
-
-
