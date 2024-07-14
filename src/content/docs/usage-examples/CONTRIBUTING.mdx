@@ -10,11 +10,26 @@ To contribute a function usage example, you need to create the following files:
 - **Image file** (.png) (or **Gif file** (.gif) if the example code is interactive) showing the expected output of the example.
 - **Code file** with the example code. This must be a complete code example, not just a snippet of code.
 
+## File Locations
+
+Place the following files into the folder with the **unique global name** located in `/src/assets/usage-examples-code/<category folder of the function>`:
+
+- The `.txt` text file.
+- The `.cpp` and `.cs` code files.
+
+eg. For the `write_line` examples mentioned below, these would be located in `/src/assets/usage-examples-code/terminal/write_line/`.
+
+---
+
+For the `.png` image, or `.gif` gif files, you will need to place these in the *category folder* inside `/public/usage-examples-images-gifs/`.
+
+eg. For the `write_line` examples mentioned below, these would be located in `/public/usage-examples-images-gifs/terminal/`.
+
 ## File Naming
 
 To allow the files to be used to automatically generate the usage example MDX page, you need to follow a specific format when naming your files.
 
-Here is an example of files for two code examples added into the `write_line` folder that are demonstrating the use of `void write_line(string line);
+Here is an example of files for a code example added for the `write_line` function that are demonstrating the use of `void write_line(string line);`:
 
 ```plaintext
 write_line-1-hello-world.cpp
