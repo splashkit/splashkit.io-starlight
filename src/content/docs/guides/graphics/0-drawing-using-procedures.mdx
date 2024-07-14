@@ -105,6 +105,8 @@ Adjust the code so that it now draws the house shown above.
   <TabItem label="C++">
 
 ```cpp
+#include "splashkit.h"
+
 int main()
 {
     open_window("Shapes by ...", 800, 600);
@@ -128,13 +130,12 @@ using static SplashKitSDK.SplashKit;
 
 OpenWindow("Shapes by ...", 800, 600);
 
-ClearScreen(Color.White);
-FillEllipse(Color.BrightGreen, 0, 400, 800, 400);
-FillRectangle(Color.Gray, 300, 300, 200, 200);
-FillTriangle(Color.Red, 250, 300, 400, 150, 550, 300);
+ClearScreen(ColorWhite());
+FillEllipse(ColorBrightGreen(), 0, 400, 800, 400);
+FillRectangle(ColorGray(), 300, 300, 200, 200);
+FillTriangle(ColorRed(), 250, 300, 400, 150, 550, 300);
 RefreshScreen();
-
-SplashKit.Delay(5000);
+Delay(5000);
 
 CloseAllWindows();
 ```
@@ -152,7 +153,6 @@ fill_ellipse(color_bright_green(), 0, 400, 800, 400)
 fill_rectangle(color_gray(), 300, 300, 200, 200)
 fill_triangle(color_red(), 250, 300, 400, 150, 550, 300)
 refresh_screen()
-
 delay(5000)
 
 close_all_windows()
