@@ -6,30 +6,17 @@ sidebar:
     class: windows
 
 ---
-Installing .NET on Windows is necessary because it provides the runtime environment and libraries required to run applications developed using the .NET framework.
-To get programming with C#, you can install the Dotnet Core tools.
+
+For coding in C#, you will need to install the `.NET` SDK which will allow you to use the *dotnet* terminal command to create, build, and run your C# project code.
 
 ## Steps
 
-1. Open an MSYS2 terminal
-1. Run the following command:
+1. Download the latest version of the .NET SDK for Windows from the official .NET website: [dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
+
+2. Run the downloaded installer and follow on-screen instructions.
+
+3. Restart your terminal, and run the following command to check it is installed:
 
     ```shell
-    pacman -S mingw-w64-{x86_64,i686}-gcc mingw-w64-{i686,x86_64}-gdb
+    dotnet --version
     ```
-
-    ![install-gpp-msys](/gifs/windows/install-gpp-msys.gif)
-
-1. Go to the [dotnet core](https://www.microsoft.com/net/core) page.
-
-    Select `windows`, `command line/other` then download the `.net core sdk`.
-
-    ![8](/gifs/windows/8.gif)
-
-1. Run the installer and continue through the install wizard with default values.
-
-    ![9](/gifs/windows/9.gif)
-
-1. Install the C# extension in Visual Studio Code.
-
-    The C# extension will give you a great code formatter, Intellisense and OmniSharp. Open the extensions panel in the left of Visual Studio Code, and search for the extension `C#`, install the one by Microsoft.

@@ -18,7 +18,7 @@ Visual Studio Code, also commonly known as *VS Code* or just *Code*, is a powerf
 
 3. In Visual Studio Code you should install the following extensions:
 
-  For C#:
+    For C#:
 
     - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
     - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
@@ -32,7 +32,7 @@ Visual Studio Code, also commonly known as *VS Code* or just *Code*, is a powerf
     code --install-extension ms-dotnettools.vscodeintellicode-csharp
     ```
 
-  For C++:
+    For C++:
 
     - [C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 

@@ -36,3 +36,29 @@ can download and install Visual Studio Code to use as a source code editor.
     ```
 
     ![Installing Visual Studio Code on Ubuntu](/gifs/linux/install-vsc.gif)
+
+4. In Visual Studio Code you should install the following extensions:
+
+    For C#:
+
+    - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+    - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+    - [Intellicode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
+
+    You can do this from the command line by executing:
+
+    ```shell
+    code --install-extension ms-dotnettools.csharp
+    code --install-extension ms-dotnettools.csdevkit
+    code --install-extension ms-dotnettools.vscodeintellicode-csharp
+    ```
+
+    For C++:
+
+    - [C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+
+    You can do this from the command line by executing:
+
+    ```shell
+    code --install-extension ms-vscode.cpptools-extension-pack
+    ```
