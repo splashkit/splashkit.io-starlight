@@ -15,18 +15,8 @@ For coding in C#, you will need to install the `.NET` SDK which will allow you t
 
 2. Run the downloaded installer and follow on-screen instructions.
 
-3. In Visual Studio Code you should install the following extensions:
-
-    - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-    - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
-    - [Intellicode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
-    - [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
-    - [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-
-    You can do this from the command line by executing:
+3. Restart your terminal, and run the following command to check it is installed:
 
     ```shell
-    code --install-extension ms-dotnettools.csharp
-    code --install-extension ms-dotnettools.csdevkit
-    code --install-extension ms-dotnettools.vscodeintellicode-csharp
+    dotnet --version
     ```
