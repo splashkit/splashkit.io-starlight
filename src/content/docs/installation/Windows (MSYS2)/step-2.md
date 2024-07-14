@@ -1,22 +1,16 @@
 ---
-title: SplashKit SDK
-description: A guide on installing SplashKit SDK through pacman.
+title: Install SplashKit
 sidebar:
- 
+  label: 2. SplashKit
   attrs:
     class: windows
 ---
+
 Once you have MSYS2 installed, you can install the SplashKit library:
 
 ## Steps
 
-1. Start by installing the **git** client. This will be used to download and update SplashKit. Run the following at the Terminal:
-
-    ```shell
-    pacman -S git --noconfirm --disable-download-timeout
-    ```
-
-1. In your MSYS2 Terminal, paste and run the following line
+1. In your MSYS2 Terminal, copy/paste and run the following line
 
     ```shell
     bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
@@ -24,9 +18,9 @@ Once you have MSYS2 installed, you can install the SplashKit library:
 
     This can also be found on the [SplashKit](http://www.splashkit.io) home page.
 
-    ![6](/gifs/windows/6.gif)
+    <!-- TODO: Add gif -->
 
-1. Restart the terminal and execute `skm` to test it was successfully installed.
+2. Restart the terminal and execute `skm` to test it was successfully installed.
 
     ```shell
     skm
@@ -40,3 +34,9 @@ Once you have MSYS2 installed, you can install the SplashKit library:
     ```
 
     SplashKit supports a number of languages. Run `skm help` at the terminal to see the different commands you can run.
+
+3. Run the following command to install splashkit globally:
+
+    ```shell
+    skm global install
+    ```
