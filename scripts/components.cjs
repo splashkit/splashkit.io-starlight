@@ -160,13 +160,24 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
           overloads.forEach((func, index) => {
             mdxContent += `- [**${formattedFunctionName}** (`;
+
+            var paramCount = Object.keys(func.parameters).length;
+            var paramNumber = 1;
+
             for (const paramName in func.parameters) {
               const param = func.parameters[paramName];
               const paramType = param.type;
               if (index > 0) {
                 mdxContent += "";
               }
-              mdxContent += `${paramName}: ${paramType}, `;
+
+              // mdxContent += `${paramName}: ${paramType}, `;
+
+              mdxContent += `${paramName}: ${paramType}`;
+              if (paramNumber < paramCount) {
+                mdxContent += ", "
+              }
+              paramNumber++;
             }
             mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
           });
