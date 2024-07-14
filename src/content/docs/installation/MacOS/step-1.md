@@ -31,6 +31,6 @@ tools required to compile and develop applications.
 
     **Note:** After running the command above, if you get something like this:
 
-    ![A Terminal window showing message that 'Command Line Tools' are already installed](./images/xcode-install.png)
+    ![A Terminal window showing message that 'Command Line Tools' are already installed](/images/installation/macos/xcode-install.png)
 
     That means you've already installed Xcode, and are ready to move to the next step!
