@@ -4,16 +4,17 @@ description: A reference page in my new Starlight docs site.
 ---
 <h1> Issue : Windows </h1>
 
-## `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program:
+## `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program
 
-![](https://i.imgur.com/uEz1nxT.png)
-## Solutions: 
+![-](https://i.imgur.com/uEz1nxT.png)
+
+## Solutions
 
 1. **Solution 1:**
 
     Disable any antivirus software on your computer.
 1. **Solution 2:**
-    
+
     Make sure your project isn't called "SplashKit".
 1. **Solution 3:**
 
@@ -27,7 +28,7 @@ terminal) and create the project files in its own directory/folder.
 
     **Next Step:** In the “Edit environment variable” window, you should have these two paths
     shown in the image below (Green Box) – on the next page
-    ![](https://i.imgur.com/lTzyRSo.png)
+    ![-](https://i.imgur.com/lTzyRSo.png)
     If you are missing one of the paths in the Green box, click "New" (Red box), then add the
     path you are missing. It will be similar to what is shown in the Green box - just using your
     own username.
@@ -43,12 +44,12 @@ terminal) and create the project files in its own directory/folder.
 your username.)*
 
     The contents of the folder should look something like this:
-    ![](https://i.imgur.com/XRha19P.png)
+    ![-](https://i.imgur.com/XRha19P.png)
     Copy all of these into the build output of your SplashKit project.
-    This will usually be: 
-    
+    This will usually be:
+
     `<Project folder name>\bin\Debug\net7.0`
-    
+
     *eg, if the folder name is MyProject, and you are using .NET 7.0, it would be:*
 
     `MyProject\bin\Debug\net7.0`

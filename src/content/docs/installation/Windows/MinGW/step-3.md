@@ -10,12 +10,13 @@ Installing Visual Studio Code on Windows is essential for developers as it provi
 
 **SplashKit works with Visual Studio Code, a light weight, cross platform, customisable code editor.
 **
-## Steps:
+
+## Steps
+
 1. Download [Visual Studio Code](https://code.visualstudio.com)
 
-    ![](/gifs/windows/10.gif)
+    ![10](/gifs/windows/10.gif)
 
 1. Run the installer.
 
-    ![](/gifs/windows/11.gif)
-
+    ![11](/gifs/windows/11.gif)

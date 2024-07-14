@@ -7,13 +7,13 @@ sidebar:
 ---
 
 MSYS2 provide a unix terminal environment for Windows. We will need this to run the build commands to create our SplashKit programs.
-## Steps:
+
+## Steps
+
 1. Download the correct version of [MSYS](http://www.msys2.org) (32bit or 64bit depending on your computer).
 
-    ![](/gifs/windows/1.gif)
+    ![1](/gifs/windows/1.gif)
 
 1. Run the installer and follow the installation wizard, with default values. (Do not install in a location with spaces in the path!)
 
-    ![](/gifs/windows/2.gif)
-
-
+    ![2](/gifs/windows/2.gif)

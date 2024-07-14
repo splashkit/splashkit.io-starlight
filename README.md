@@ -21,7 +21,7 @@ If needed:
 
 - Install the necessary dependencies. Make sure you have the following installed:
 
-    ```bash
+    ```shell
     npm install
     ```
 

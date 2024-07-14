@@ -9,15 +9,16 @@ sidebar:
 
 <h1> To install WSL instead of MSYS2, you can follow these steps: </h1>
 
-## Steps: 
+## Steps
+
 1. Open the Microsoft Store on your Windows computer.
 
-    
-2. Search for "WSL" or "Windows Subsystem for Linux" in the search bar.)
-    ![](https://i.imgur.com/6jYdhsO.png)
+2. Search for "WSL" or "Windows Subsystem for Linux" in the search bar.
+    ![WSL](https://i.imgur.com/6jYdhsO.png)
                     OR
     Enter the following command in your terminal.
-    ```bash
+
+    ```shell
     wsl --install
     ```
 
@@ -25,5 +26,3 @@ sidebar:
 4. Click on the "`Install`" button to start the installation process.
 5. Follow the installation wizard and wait for the installation to complete.
 6. Once the installation is finished, you can launch WSL from the Start menu or by typing "`wsl`" in the command prompt.
-
-

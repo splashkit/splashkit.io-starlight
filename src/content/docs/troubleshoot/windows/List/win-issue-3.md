@@ -6,7 +6,7 @@ description: A reference page in my new Starlight docs site.
 
 ## `-bash: skm: command not found`
 
-![](https://i.imgur.com/PMDiueq.png?1)
+![-](https://i.imgur.com/PMDiueq.png?1)
 
 ## Solution
 
@@ -18,7 +18,7 @@ Disable any antivirus software on your computer.
 **Next Step:**
 In the “Edit environment variable” window, you should have these two paths shown in the image below (Green Box):
 
-![](https://i.imgur.com/H9sF33y.png)
+![-](https://i.imgur.com/H9sF33y.png)
 
 If you are missing one of the paths in the Green box, click "New" (Red box), then add the
 path you are missing.

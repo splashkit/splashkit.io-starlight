@@ -4,15 +4,18 @@ description: A reference page in my new Starlight docs site.
 ---
 <h1> Issue : MacOS </h1>
 
-## “`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`” command not working:
+## “`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`” command not working
 
-![](https://i.imgur.com/MJgfrXW.png)
+![-](https://i.imgur.com/MJgfrXW.png)
 
-## Solution:  
+## Solution  
+
 Run the following command, and then enter your password:
-```bash 
+
+```shell
 sudo ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
 ```
+
 *The `sudo` command temporarily gives you system (root) privileges.*
 
 **Note:** If you get a “`zsh: permission denied: dotnet`” error at any point, open Finder and

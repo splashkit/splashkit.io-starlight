@@ -9,7 +9,8 @@ Follow these steps to contribute to the SplashKit website repository:
 2. **Clone Your Fork:**
    - Open your terminal or Git client.
    - Clone your forked repository to your local machine using the following command:
-     ```bash
+
+     ```shell
      git clone https://github.com/YOUR_USERNAME/splashkit.git
      ```
 
@@ -19,14 +20,16 @@ Follow these steps to contribute to the SplashKit website repository:
 
 4. **Commit Your Changes:**
    - After making changes, commit them with meaningful commit messages.
-     ```bash
+
+     ```shell
      git add .
      git commit -m "Your descriptive commit message"
      ```
 
 5. **Push Changes to Your Fork:**
    - Push your changes to your forked repository on GitHub.
-     ```bash
+
+     ```shell
      git push origin master
      ```
 
@@ -51,31 +54,32 @@ Follow these steps to contribute to the SplashKit website repository:
 
 By following these steps, you contribute effectively to the SplashKit website. Remember to adhere to the project's guidelines and maintain a collaborative and respectful environment.
 
-# Website Guide
+## Website Guide
+
+<!-- TODO: Update the information below -->
 
 This guide provides information on the structure and organization of the SplashKit website using the Starlight framework. Follow these instructions to navigate through the project and make necessary updates.
 
-## Installation and Commands
+### Installation and Commands
 
 For basic installation and commands, please refer to the [`Readme.md`](/README.md) file in the project's root directory.
 
-## Image Resources
+### Image Resources
 
 All image resources are located under the `public` root directory.
 
-## Documentation Pages
+### Documentation Pages
 
 Documentation pages are stored under `root/src/content/docs/`. To find information on specific SplashKit components such as Animations, Sounds, etc., refer to the respective sections within the `components` directory.
 
 Each working directory can contain an `index.mdx` file. This file serves as the page that will be accessed when only the section is fetched. For instance, under the `installation` directory, the `index.mdx` page will be accessed when `https://some-host/installation/` is fetched.
 
-## CSS Files
+### CSS Files
 
 CSS files can be found under `src/styles/`. If you create a new directory or use new style files, update the `astro.config.mjs` file in the root directory to read the files.
 
-## Test Directory
+### Test Directory
 
 Inside the `test` directory, you will find a NodeJS script that generates MDX pages required for component generation. Refer to the comments inside the script for detailed instructions on usage and customization.
 
 Make sure to follow these guidelines to maintain a well-organized and functional SplashKit website powered by the Starlight framework.
-

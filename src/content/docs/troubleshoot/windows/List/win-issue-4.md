@@ -4,9 +4,9 @@ description: A reference page in my new Starlight docs site.
 ---
 <h1>  Issue : Windows </h1>
 
-## `Unable to find the .NET SDK:`:
+## `Unable to find the .NET SDK:`
 
-![](https://i.imgur.com/sjzZGQa.png)
+![-](https://i.imgur.com/sjzZGQa.png)
 
 **Solution :**
 You might need to add the dotnet folder path to your “Path” environment variable.
@@ -17,6 +17,6 @@ Then come back here for the Next Step.
 
 **Next Step:** In the “Edit environment variable” window, click "New" (Red box), then add the
 path shown in the Green box:
-![](https://i.imgur.com/T6wIBWt.png)
+![-](https://i.imgur.com/T6wIBWt.png)
 
 Once it is added, click “OK” on all the windows, open a **new** MINGW64 terminal and try running the program again.
