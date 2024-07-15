@@ -4,10 +4,23 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Build splashkit.io Website",
+      "type": "shell",
+      "command": "npm install && npm run build",
+      "group": "build",
+      "presentation": {
+        "group": "buildGroup",
+        "reveal": "always",
+        "panel": "new",
+        "echo": false
+      }
+    },
+    {
       "label": "Serve splashkit.io Website",
       "type": "shell",
-      "command": "npm install && ./node_modules/.bin/astro dev",
+      "command": "npm install && npx http-server ./dist -p 3000",
       "group": "build",
+      "dependsOn": "Build splashkit.io Website",
       "presentation": {
         "group": "buildGroup",
         "reveal": "always",
@@ -16,7 +29,7 @@
       },
       "runOptions": {
         "runOn": "folderOpen" // This starts both tasks when the container is started
-      },
+      }
     }
   ]
 }
