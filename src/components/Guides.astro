@@ -9,25 +9,25 @@ interface Frontmatter {
   category?: string;
 }
 
-let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*.mdx");
+let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
 posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
 let guides = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "guides"
+  (post) => post.frontmatter.category?.toLowerCase() == "guides",
 );
 // sort guides on the basis of simplifyed File Path
 guides = guides.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || "")
-  )
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
 );
 let tutorials = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "tutorials"
+  (post) => post.frontmatter.category?.toLowerCase() == "tutorials",
 );
 tutorials = tutorials.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || "")
-  )
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
 );
 
 function simplifyFilePath(filePath: string) {
