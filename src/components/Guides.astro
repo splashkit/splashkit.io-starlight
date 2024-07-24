@@ -37,11 +37,14 @@ function simplifyFilePath(filePath: string) {
   // Split the path into parts using '/'
   const pathParts = filePath.split("/");
 
+  const fileFolder = pathParts[pathParts.length - 2];
+
   // Get the last part of the path (file or directory name)
   const lastPart = pathParts[pathParts.length - 1];
 
   // Remove file extension (assuming it's after the last dot in the last part)
-  const simplifiedName = lastPart.split(".").slice(0, -1).join(".");
+  const simplifiedName =
+    fileFolder + "/" + lastPart.split(".").slice(0, -1).join(".");
 
   return simplifiedName.toLowerCase(); // Convert to lowercase for consistency
 }
