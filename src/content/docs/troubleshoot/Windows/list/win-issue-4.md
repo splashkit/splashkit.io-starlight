@@ -1,7 +1,12 @@
 ---
 title: Unable find .NET SDK
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 4. .NET SDK not found
+  attrs:
+    class: windows
 ---
+
 <h1>  Issue : Windows </h1>
 
 ## `Unable to find the .NET SDK:`

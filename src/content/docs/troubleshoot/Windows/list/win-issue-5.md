@@ -1,7 +1,12 @@
 ---
 title: dotnet command not found
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 5. Dotnet not found
+  attrs:
+    class: windows
 ---
+
 <h1> Issue : Windows </h1>
 
 ## “`dotnet: command not found`”

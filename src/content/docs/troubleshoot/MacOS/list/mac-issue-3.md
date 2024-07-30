@@ -1,10 +1,15 @@
 ---
 title: ln -s /usr/local.... command not working
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 3. Local bin Error
+  attrs:
+    class: apple
 ---
+
 <h1> Issue : MacOS </h1>
 
-## “`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`” command not working
+### `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` command not working
 
 ![-](https://i.imgur.com/MJgfrXW.png)
 

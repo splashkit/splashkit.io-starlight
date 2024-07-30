@@ -1,7 +1,12 @@
 ---
 title: Missing an assembly reference?
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 6. Assembly reference
+  attrs:
+    class: windows
 ---
+
 <h1> Issue : Windows </h1>
 
 ## Error that mentions “(`are you missing an assembly reference?`)”

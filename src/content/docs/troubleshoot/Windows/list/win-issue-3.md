@@ -1,7 +1,12 @@
 ---
 title: skm command not found
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 3. skm not found
+  attrs:
+    class: windows
 ---
+
 <h1>Issue : Windows </h1>
 
 ## `-bash: skm: command not found`

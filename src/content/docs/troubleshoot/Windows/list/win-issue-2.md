@@ -1,7 +1,12 @@
 ---
 title: System.DllNotFoundException
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 2. DllNotFoundException
+  attrs:
+    class: windows
 ---
+
 <h1> Issue : Windows </h1>
 
 ## `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program

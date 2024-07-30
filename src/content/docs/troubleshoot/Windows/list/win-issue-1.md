@@ -1,6 +1,10 @@
 ---
 title: bash <(curl.. does nothing
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 1. Bash curl not working
+  attrs:
+    class: windows
 ---
 
 <h1> Issue : Windows </h1>
