@@ -96,10 +96,10 @@ export default defineConfig({
           label: "Usage Examples",
           autogenerate: { directory: "usage-examples", collapsed: true },
         },
-        // {
-        //   label: "Arcade Hackathon Project",
-        //   autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
-        // },
+        {
+          label: "Arcade Hackathon Project",
+          autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
+        },
       ],
 
     }),
@@ -110,6 +110,7 @@ export default defineConfig({
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   image: { service: squooshImageService() },
   server: {
+    host: true,
     port: 4321
   }
 });
