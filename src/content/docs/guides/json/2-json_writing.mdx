@@ -31,6 +31,17 @@ In SplashKit, you can programmatically create JSON objects and arrays, which the
   ```
 
   </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  var newGameData = Json.Create();
+  newGameData.SetString("gameTitle", "My New Game");
+  newGameData.SetBool("fullScreenMode", false);
+  newGameData.SetNumber("numPlayers", 1);
+  ```
+
+  </TabItem>
 </Tabs>
 
 First we create the new JSON object using [Create Json](/api/json/#create-json), then we add basic data to **gameTitle**, **fullScreenMode**, and **numPlayers** using [Json Set String](/api/json/#json-set-string), [Json Set Bool](/api/json/#json-set-bool) and [Json Set Number](/api/json#json-set-number).
@@ -46,6 +57,21 @@ First we create the new JSON object using [Create Json](/api/json/#create-json),
   levels_array.push_back("level3");
 
   json_set_array(new_game_data, "levels", levels_array);
+  ```
+
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  var levelsArray = new List<string>
+  {
+      "level1",
+      "level2",
+      "level3"
+  };
+
+  newGameData.SetArray("levels", levelsArray);
   ```
 
   </TabItem>
@@ -66,6 +92,19 @@ Next we add the levels array to the JSON object. We create a vector to store the
   ```
 
   </TabItem>
+
+  <TabItem label="C#">
+  
+  ```csharp
+  var screenSizeData = Json.Create();
+
+  screenSizeData.SetNumber("width", 800);
+  screenSizeData.SetNumber("height", 600);
+
+  newGameData.SetObject("screenSize", screenSizeData);
+  ```
+
+  </TabItem>
 </Tabs>
 
 Then we tackle the nested JSON object, the screen size object. We use [Create Json](/api/json/#create-json) to create a new object for this data, and then we add the width and the height to the object using [Json Set Number](/api/json/#json-set-number). Now that we have this JSON object filled with the data we want, we add it to the `new_game_data` object with [Json Set Object](/api/json/#json-set-object).
@@ -79,6 +118,14 @@ Now that we have the `new_game_data` object that stores the same values as the J
 
   ```cpp
   json_to_file(new_game_data, "new_game_data.json");
+  ```
+  
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  newGameData.ToFile("new_game_data.json");
   ```
   
   </TabItem>
@@ -118,6 +165,48 @@ By combining all these examples we can create the full program shown below.
       json_to_file(new_game_data, "new_game_data.json");
 
       free_all_json();
+  }
+  ```
+
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  #include "splashkit.h"
+
+  using SplashKitSDK;
+
+  public class Program
+  {
+      public static void Main()
+      {
+          var newGameData = Json.Create();
+
+          newGameData.SetString("gameTitle", "My New Game");
+          newGameData.SetBool("fullScreenMode", false);
+          newGameData.SetNumber("numPlayers", 1);
+
+          var screenSizeData = Json.Create();
+
+          screenSizeData.SetNumber("width", 800);
+          screenSizeData.SetNumber("height", 600);
+
+          newGameData.SetObject("screenSize", screenSizeData);
+
+          var levelsArray = new List<string>
+          {
+              "level1",
+              "level2",
+              "level3"
+          };
+
+          newGameData.SetArray("levels", levelsArray);
+
+          newGameData.ToFile("new_game_data.json");
+
+          Json.FreeAll();
+      }
   }
   ```
 
@@ -165,6 +254,22 @@ You can also load an existing JSON file, modify its contents, and save the chang
   ```
   
   </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  var playerData = Json.Create();
+  playerData.SetString("name", "Hero");
+
+  var statsData = Json.Create();
+  statsData.SetNumber("health", 100);
+  statsData.SetNumber("mana", 50);
+  statsData.SetNumber("strength", 75);
+
+  playerData.SetObject("stats", statsData);
+  ```
+  
+  </TabItem>
 </Tabs>
 
 First we create the player JSON object to store the data for an entire character, then we create an individual object to hold the stats for the character. After this we add the stats object and nest it in the `player_data` object we created earlier.
@@ -177,6 +282,17 @@ First we create the player JSON object to store the data for an entire character
   json_set_object(existing_data, "character", player_data);
 
   json_to_file(existing_data, "modified_game_data.json");
+  ```
+
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  var existingData = Json.FromFile("new_game_data.json");
+  existingData.SetObject("character", playerData);
+
+  existingData.ToFile("modified_game_data.json");
   ```
 
   </TabItem>
@@ -223,6 +339,21 @@ Now we have a character object stored with this JSON file. We also now have mult
   json stats = json_read_object(character, "stats");
   // Retrieve the value of health from the stats JSON object
   int hp = json_read_number_as_int(stats, "health");
+  ```
+  
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  // Load our JSON
+  var modifiedGameData = Json.FromFile("modified_game_data.json");
+  // Retrieve Character JSON object from the file.
+  var character = modifiedGameData.ReadObject("character");
+  // Retrieve the Stats JSON object from the Character JSON
+  var stats = character.ReadObject("stats");
+  // Retrieve the value of health from the stats JSON object
+  int hp = stats.ReadNumberAsInt("health");
   ```
   
   </TabItem>

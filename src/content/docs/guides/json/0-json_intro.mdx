@@ -72,7 +72,30 @@ This command creates sub-folders for each type of resource. One of these is name
   ```
 
   </TabItem>
+  
+  <TabItem label="C#">
+
+  ```csharp
+  using System;
+  using SplashKitSDK;
+
+  public class Program
+  {
+      public static void Main()
+      {
+          Json gameData = SplashKit.JsonFromFile("game_data.json");
+          string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+
+          Console.WriteLine("Game Title: " + gameTitle);
+
+          SplashKit.FreeJson(gameData);
+      }
+  }
+  ```
+
+  </TabItem>
 </Tabs>
+
 
 In this code example, we're first using [Json From File](/api/json/#json-from-file) to load a JSON object with the details from the `game_data.json` file.
 Then we are getting the value of the key that matches `gameTitle` using [Json Read String](/api/json/#json-read-string). We write this to the console and free the JSON object using [Free Json](/api/json/#free-json) as we exit. By freeing the JSON object we are deallocating any memory that has been assigned to it, preventing any memory-related errors such as a `Segmentation Fault`. We can build this program with the following command.
@@ -85,7 +108,20 @@ Then we are getting the value of the key that matches `gameTitle` using [Json Re
   ```
 
   </TabItem>
-</Tabs>
+
+  <TabItem label="C#">
+
+  ```shell
+  csc Program.cs -reference:SplashKitSDK.dll -out:json_program.exe
+  ```
+
+  </TabItem>
+
+  </Tabs>
+
+ 
+
+
 
 And run it with:
 
@@ -97,6 +133,15 @@ And run it with:
   ```
   
   </TabItem>
+
+  <TabItem label="C#">
+
+  ```shell
+  ./json_program.exe
+  ```
+  
+  </TabItem>
+  
 </Tabs>
 
 When we run this program it should output the following to the console:
@@ -133,6 +178,35 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
       free_json(game_data);
       
       return 0;
+  }
+  ```
+
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  using System;
+  using SplashKitSDK;
+
+  public class Program
+  {
+      public static void Main()
+      {
+         Json gameData = SplashKit.JsonFromFile("game_data.json");
+
+         if(SplashKit.JsonHasKey(gameData, "gameTitle"))
+          {
+              string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+              Console.WriteLine("Game Title: " + gameTitle);
+          }
+          else
+          {
+              Console.WriteLine("Key \"gameTitle\" not found.");
+          }
+
+          SplashKit.FreeJson(gameData);
+      }
   }
   ```
 
