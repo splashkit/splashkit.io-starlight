@@ -16,7 +16,7 @@ sidebar:
 ## Solution
 
 You might need to add the dotnet folder path to your “Path” environment variable.
-Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/update-system-path).
+Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7).
 
 Then come back here for the Next Step.
 **Next Step:** In the “Edit environment variable” window, click "New" (Red box), then add the
