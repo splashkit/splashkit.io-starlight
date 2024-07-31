@@ -263,7 +263,10 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
             mdxContent += "\n";
           }
-          if (func.return.type != 'void') {
+          if (func.return.type == 'unsigned int') {
+            mdxContent += "**Return Type:** Unsigned Integer\n\n";
+          }
+          else if (func.return.type != 'void') {
             mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
           }
 
