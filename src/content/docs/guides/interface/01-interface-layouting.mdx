@@ -24,64 +24,65 @@ Here's just a basic example from the previous tutorial that we can get started f
 Remember that SplashKit uses an immediate mode GUI paradigm. This means we need to place _all_ of our interface code _inside_ the main `while` loop, between [Process Events](/api/input/#process-events) and [Draw Interface](/api/interface/#draw-interface)!
 :::
 <Tabs>
-    <TabItem label="C++">
+  <TabItem label="C++">
 
-```cpp
-#include "splashkit.h"
+  ```cpp
+  #include "splashkit.h"
 
-int main()
-{
-    // open a window
-    open_window("My Interface!", 800, 600);
+  int main()
+  {
+      // open a window
+      open_window("My Interface!", 800, 600);
 
-    // main loop
-    while (!quit_requested())
-    {
-        // get user events
-        process_events();
+      // main loop
+      while (!quit_requested())
+      {
+          // get user events
+          process_events();
 
-        // clear screen
-        clear_screen(COLOR_WHITE);
+          // clear screen
+          clear_screen(COLOR_WHITE);
 
-        // ...we'll put out interface code here...!
+          // ...we'll put out interface code here...!
 
-        // finally draw interface, then refresh screen
-        draw_interface();
+          // finally draw interface, then refresh screen
+          draw_interface();
 
-        refresh_screen();
-    }
+          refresh_screen();
+      }
 
-    // program ends, and the window closes
-    return 0;
-}
-```
+      // program ends, and the window closes
+      return 0;
+  }
+  ```
 
-    </TabItem>
+  </TabItem>
 </Tabs>
 
 Let's add a panel now! Adding a panel takes two lines of code:
-    1. First we begin the panel with [Start Panel](/api/interface/#start-panel), which takes a name for the panel, and a rectangle for its _initial_ position.
-       For example `start_panel("My panel", rectangle_from(50,50,200,100))` creates a panel with the title "My panel", that appears close to the top-left corner (50,50), and a width and height of 200 by 100.
 
-       After this we can place all the UI elements that should go on the panel, just like we were!
-    2. Then once we're done, we need to end the panel with [End Panel](/api/interface/#end-panel), where we just give it the same name (so for example `end_panel("My panel")`).
+1. First we begin the panel with [Start Panel](/api/interface/#start-panel), which takes a name for the panel, and a rectangle for its _initial_ position.
+    For example `start_panel("My panel", rectangle_from(50,50,200,100))` creates a panel with the title "My panel", that appears close to the top-left corner (50,50), and a width and height of 200 by 100.
+
+    After this we can place all the UI elements that should go on the panel, just like we were!
+2. Then once we're done, we need to end the panel with [End Panel](/api/interface/#end-panel), where we just give it the same name (so for example `end_panel("My panel")`).
 
 One **really important** thing to note here is that [Start Panel](/api/interface/#start-panel) _returns_ whether the panel is visible or not, so we need to make sure to check this as well, and only create elements and end the panel `if` the panel is open, like so:
 <Tabs>
-    <TabItem label="C++">
+  <TabItem label="C++">
 
-```cpp
-// start the panel and check if it's open/visible
-if (start_panel("My panel", rectangle_from(50,50,200,100)))
-{
-    // ...here we'll create all the UI elements, inside the braces { ... }
+  ```cpp
+  // start the panel and check if it's open/visible
+  if (start_panel("My panel", rectangle_from(50,50,200,100)))
+  {
+      // ...here we'll create all the UI elements, inside the braces { ... }
 
-    // end the panel
-    end_panel("My panel");
-}
-```
+      // end the panel
+      end_panel("My panel");
+  }
+  ```
 
-    </TabItem>
+  </TabItem>
 </Tabs>
 
 Just testing the code above will give us this! We can already drag around and resize the panel, so let's start adding elements!
@@ -92,10 +93,10 @@ Just testing the code above will give us this! We can already drag around and re
 Most of the layout elements, like [Panel](/api/interface/#start-panel), [Popup](/api/interface/#start-popup), and [Treenode](/api/interface/#start-treenode) work the same way.
 
 1. We _start_ them, and possibly check if they're open or closed. We also give them a _name_.
-   (e.g `if (start_panel("myPanel", ...))`, `if (start_treenode("myTreenode", ...))`)
+    (e.g `if (start_panel("myPanel", ...))`, `if (start_treenode("myTreenode", ...))`)
 2. We add our elements
 3. Finally we _end_ them, using the same name.
-   (e.g `end_panel("myPanel")`, `end_treenode("myTreenode")`)
+    (e.g `end_panel("myPanel")`, `end_treenode("myTreenode")`)
 
 :::
 
@@ -113,55 +114,55 @@ Similarly, we can add a [Text Box](/api/interface/#text-box) by declaring a `str
 
 Here's the full code recreating what we had last tutorial, while creating a panel and adding the elements inside it.
 <Tabs>
-    <TabItem label="C++">
+  <TabItem label="C++">
 
-```cpp ins={20-22, 31-33} {8-9, 23-30}
-#include "splashkit.h"
+  ```cpp ins={20-22, 31-33} {8-9, 23-30}
+  #include "splashkit.h"
 
-int main()
-{
-    // open a window
-    open_window("My Interface!", 800, 600);
+  int main()
+  {
+      // open a window
+      open_window("My Interface!", 800, 600);
 
-    // setup a variable to store the user's string - same as last tutorial
-    string user_message = "Default message";
+      // setup a variable to store the user's string - same as last tutorial
+      string user_message = "Default message";
 
-    // main loop
-    while (!quit_requested())
-    {
-        // get user events
-        process_events();
+      // main loop
+      while (!quit_requested())
+      {
+          // get user events
+          process_events();
 
-        // clear screen
-        clear_screen(COLOR_WHITE);
+          // clear screen
+          clear_screen(COLOR_WHITE);
 
-        // here we start the panel
-        if (start_panel("My panel", rectangle_from(50,50,200,100)))
-        {
-            // create the elements, just like last tutorial!
-            if (button("Write To Terminal!"))
-            {
-                write_line(user_message);
-            }
+          // here we start the panel
+          if (start_panel("My panel", rectangle_from(50,50,200,100)))
+          {
+              // create the elements, just like last tutorial!
+              if (button("Write To Terminal!"))
+              {
+                  write_line(user_message);
+              }
 
-            user_message = text_box(user_message);
+              user_message = text_box(user_message);
 
-            // end the panel
-            end_panel("My panel");
-        }
+              // end the panel
+              end_panel("My panel");
+          }
 
-        // finally draw interface, then refresh screen
-        draw_interface();
+          // finally draw interface, then refresh screen
+          draw_interface();
 
-        refresh_screen();
-    }
+          refresh_screen();
+      }
 
-    // program ends, and the window closes
-    return 0;
-}
-```
+      // program ends, and the window closes
+      return 0;
+  }
+  ```
 
-    </TabItem>
+  </TabItem>
 </Tabs>
 
 :::tip[Elements inside panels]
@@ -174,17 +175,21 @@ Another useful thing you can do now is add _labels_ to your elements. You can do
 
 :::note[SplashKit Interfaces]
 Here's a quick rundown of common element functions:
-| Without Label | With Label|
-|---------------|-----------|
-|boolean button(text) | boolean button("Label:", text)|
-|boolean checkbox(text, state) | boolean checkbox("Label:", text, state)|
+
+| Without Label                 | With Label                              |
+|-------------------------------|-----------------------------------------|
+|boolean button(text)           | boolean button("Label:", text)          |
+|boolean checkbox(text, state)  | boolean checkbox("Label:", text, state) |
 |number slider(value, min, max) | number slider("Label:", value, min, max)|
-|string text_box(text) | string text_box("Label:", text)|
+|string text_box(text)          | string text_box("Label:", text)         |
+
 -------------------------------------------
+
 See the [API](/api/interface/) for more functions!
 :::
 
 ## Part 3: Layout elements (Reference)
+
 Now that we can create panels and place UI elements on those panels, let's see how we can use extra elements to help lay them out!
 
 This section will focus on mainly demonstrating each concept.
@@ -193,44 +198,48 @@ Make sure to try each of these snippets out - you can just copy paste them into 
 Some of the easiest ways to group our elements together, is to place them under headers and inside 'insets'.
 
 ### Headers
+
 Headers are really easy to add - we can use the [Header](/api/interface/#header) function, which takes a name for the heading, and returns if the header is open (like the panels!):
 
 <Tabs>
-    <TabItem label="C++">
-```cpp
-if (header("Edit Message!"))
-{
-    user_message = text_box(user_message);
-}
+  <TabItem label="C++">
+
+  ```cpp
+  if (header("Edit Message!"))
+  {
+      user_message = text_box(user_message);
+  }
 ```
 
-![A panel with a hidden section - clicking a dropdown that says 'Edit Message!' shows the textbox from before.](/gifs/guides/interface/panel_w_header.gif)
-
-
-    </TabItem>
+  </TabItem>
 </Tabs>
+
+![A panel with a hidden section - clicking a dropdown that says 'Edit Message!' shows the textbox from before.](/gifs/guides/interface/panel_w_header.gif)
 
 Note: `header`s do _not_ need to be began/ended, so they're nice and easy to use!
 
 ### Insets
+
 Insets let you group a bunch of elements inside a fixed-size region! They can be created using [Start Inset](/api/interface/#start-inset), which takes a name, and a height. After creating your elements, you can then call [End Inset](/api/interface/#end-inset) with the same name to finish it.
 
 Here's a code example - an inset is started, and six buttons are created inside it. Finally, the inset is ended.
-<Tabs>
-    <TabItem label="C++">
-```cpp
-paragraph("This text is outside the inset area!");
-start_inset("Inset area", 60);
-    if (button("Button 1!")) write_line("Button 1 clicked!");
-    if (button("Button 2!")) write_line("Button 2 clicked!");
-    if (button("Button 3!")) write_line("Button 3 clicked!");
-    if (button("Button 4!")) write_line("Button 4 clicked!");
-    if (button("Button 5!")) write_line("Button 5 clicked!");
-    if (button("Button 6!")) write_line("Button 6 clicked!");
-end_inset("Inset area");
-```
 
-    </TabItem>
+<Tabs>
+  <TabItem label="C++">
+
+  ```cpp
+  paragraph("This text is outside the inset area!");
+  start_inset("Inset area", 60);
+      if (button("Button 1!")) write_line("Button 1 clicked!");
+      if (button("Button 2!")) write_line("Button 2 clicked!");
+      if (button("Button 3!")) write_line("Button 3 clicked!");
+      if (button("Button 4!")) write_line("Button 4 clicked!");
+      if (button("Button 5!")) write_line("Button 5 clicked!");
+      if (button("Button 6!")) write_line("Button 6 clicked!");
+  end_inset("Inset area");
+  ```
+
+  </TabItem>
 </Tabs>
 
 ![A panel with an inset region that is at a fixed position - it has its own scrollbar.](/gifs/guides/interface/panel_w_inset.gif)
@@ -238,40 +247,44 @@ end_inset("Inset area");
 Another powerful feature of `insets`, is that you can use them as a container directly on the main window too!
 
 ### Tree nodes
+
 Tree nodes allow you to organize your elements as a tree - like a file system! You can collapse and expand the nodes individually, so this is a great way to organize data.
 
 Here's a code example - various _nested_ tree nodes are started and ended with, buttons placed in between - this creates a hierarchy.
 <Tabs>
-    <TabItem label="C++">
-```cpp
-if (start_treenode("Some buttons!")){
-    if (button("Button 1!")) write_line("Button 1 clicked!");
-    if (button("Button 2!")) write_line("Button 2 clicked!");
-    if (button("Button 3!")) write_line("Button 3 clicked!");
-    end_treenode("Some buttons!");
-}
+  <TabItem label="C++">
 
-if (start_treenode("Some more buttons!")){
-    if (button("Button 4!")) write_line("Button 4 clicked!");
-    if (button("Button 5!")) write_line("Button 5 clicked!");
+  ```cpp
+  if (start_treenode("Some buttons!")){
+      if (button("Button 1!")) write_line("Button 1 clicked!");
+      if (button("Button 2!")) write_line("Button 2 clicked!");
+      if (button("Button 3!")) write_line("Button 3 clicked!");
+      end_treenode("Some buttons!");
+  }
 
-    if (start_treenode("Buttons in buttons!!")){
-        if (button("Button 6!")) write_line("Button 6 clicked!");
+  if (start_treenode("Some more buttons!")){
+      if (button("Button 4!")) write_line("Button 4 clicked!");
+      if (button("Button 5!")) write_line("Button 5 clicked!");
 
-        end_treenode("Buttons in buttons!!");
-    }
+      if (start_treenode("Buttons in buttons!!")){
+          if (button("Button 6!")) write_line("Button 6 clicked!");
 
-    end_treenode("Some more buttons!");
-}
-```
+          end_treenode("Buttons in buttons!!");
+      }
 
-    </TabItem>
+      end_treenode("Some more buttons!");
+  }
+  ```
+
+  </TabItem>
 </Tabs>
 
 ![A panel with tree nodes, that can be expanded/contracted.](/gifs/guides/interface/panel_w_treenodes.gif)
 
 ## Part 4: Advanced layouts (Reference)
+
 ### Rows/Columns
+
 The elements placed in panels are automatically placed in _rows_ - by default one element per row. We can create columns ourselves,
 allowing us to group our elements together on single rows!
 
@@ -295,10 +308,12 @@ Finally, to return to the default layout, just call [Reset Layout](/api/interfac
 
 :::tip[Custom layouts]
 When creating custom layouts, you'll usually want to:
+
 1. Call [Start Custom Layout](/api/interface/#start-custom-layout) to clear the default layout.
 2. Setup the layout using various functions, like `split_into_columns(count)`.
 3. Add your elements.
 4. Reset the layout to default with [Reset Layout](/api/interface/#reset-layout).
+
 :::
 
 You can also adjust the height of a row, using [Set Layout Height](/api/interface/#set-layout-height).
@@ -306,27 +321,31 @@ You can also adjust the height of a row, using [Set Layout Height](/api/interfac
 Here's an example, where we create six buttons - three on each row, with the top row being taller.
 
 <Tabs>
-    <TabItem label="C++">
-```cpp
-start_custom_layout();
-split_into_columns(3);
-    set_layout_height(64);
-    if (button("Button 1!")) write_line("Button 1 clicked!");
-    if (button("Button 2!")) write_line("Button 2 clicked!");
-    if (button("Button 3!")) write_line("Button 3 clicked!");
+  <TabItem label="C++">
 
-    set_layout_height(0); // 0 resets to default
-    if (button("Button 4!")) write_line("Button 4 clicked!");
-    if (button("Button 5!")) write_line("Button 5 clicked!");
-    if (button("Button 6!")) write_line("Button 6 clicked!");
-reset_layout();
-```
-    </TabItem>
+  ```cpp
+  start_custom_layout();
+  split_into_columns(3);
+      set_layout_height(64);
+      if (button("Button 1!")) write_line("Button 1 clicked!");
+      if (button("Button 2!")) write_line("Button 2 clicked!");
+      if (button("Button 3!")) write_line("Button 3 clicked!");
+
+      set_layout_height(0); // 0 resets to default
+      if (button("Button 4!")) write_line("Button 4 clicked!");
+      if (button("Button 5!")) write_line("Button 5 clicked!");
+      if (button("Button 6!")) write_line("Button 6 clicked!");
+  reset_layout();
+
+  ```
+
+  </TabItem>
 </Tabs>
 
 ![A panel with 6 buttons. Each set of three are on a single row, and the top row is taller than the bottom.](/gifs/guides/interface/panel_w_sixbuttonstallshort.gif)
 
 ### Entering Columns
+
 A really powerful feature of columns, is that we can _enter_ a column, and add elements to it directly without automatically moving to the next one. This allows us to create much more complex layouts.
 
 To enter a column, simple use [Enter Column](/api/interface/#enter-column) - now elements will be placed _inside_ the current column.
@@ -336,31 +355,32 @@ Once you're done, you can leave it with [Leave Column](/api/interface/#leave-col
 Here's an example:
 
 <Tabs>
-    <TabItem label="C++">
-```cpp
-start_custom_layout();
-split_into_columns(2);
-    enter_column();
-        set_layout_height(64);
-        if (button("Button 1!")) write_line("Button 1 clicked!");
-        if (button("Button 2!")) write_line("Button 2 clicked!");
-    leave_column();
-    enter_column();
-        set_layout_height(0); // 0 resets to default
-        if (button("Button 4!")) write_line("Button 4 clicked!");
-        if (button("Button 5!")) write_line("Button 5 clicked!");
-        if (button("Button 6!")) write_line("Button 6 clicked!");
-    leave_column();
-reset_layout();
-```
+  <TabItem label="C++">
+
+  ```cpp
+  start_custom_layout();
+  split_into_columns(2);
+      enter_column();
+          set_layout_height(64);
+          if (button("Button 1!")) write_line("Button 1 clicked!");
+          if (button("Button 2!")) write_line("Button 2 clicked!");
+      leave_column();
+      enter_column();
+          set_layout_height(0); // 0 resets to default
+          if (button("Button 4!")) write_line("Button 4 clicked!");
+          if (button("Button 5!")) write_line("Button 5 clicked!");
+          if (button("Button 6!")) write_line("Button 6 clicked!");
+      leave_column();
+  reset_layout();
+  ```
+
+  </TabItem>
+</Tabs>
 
 ![A panel with 5 buttons, split into two columns. The first two are stacked on the left, and are tall. The last three are stacked on the right.](/gifs/guides/interface/panel_w_sixbuttonscolumns.gif)
 
 Take note how Button 1 and Button 2 are placed in the same _column_, rather than row now.
 This is really powerful - you can now split the column again, adjust heights, and so on, to lay things out exactly how you want.
-
-    </TabItem>
-</Tabs>
 
 ## Wrap up
 
