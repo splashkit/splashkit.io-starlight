@@ -1,7 +1,12 @@
 ---
 title: System.DllNotFoundException
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 2. DllNotFoundException
+  attrs:
+    class: windows
 ---
+
 <h1> Issue : Windows </h1>
 
 ## `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program
@@ -22,7 +27,7 @@ description: A reference page in my new Starlight docs site.
 terminal) and create the project files in its own directory/folder.
 1. **Solution 4:**
     Add the folder containing splashkit.dll file to your path environment variable manually.
-    Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/update-system-path).
+    Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7).
 
     Then come back here for the Next Step.
 

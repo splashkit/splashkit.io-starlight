@@ -1,10 +1,15 @@
 ---
 title: install dotnet-sdk command not working
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 2. Brew cask install
+  attrs:
+    class: apple
 ---
+
 <h1> Issue : MacOS </h1>
 
-## “`brew cask install dotnet-sdk`” command not working (or any issues installing Homebrew)
+### `brew cask install dotnet-sdk` command not working (or any issues installing Homebrew)
 
 <br>
 

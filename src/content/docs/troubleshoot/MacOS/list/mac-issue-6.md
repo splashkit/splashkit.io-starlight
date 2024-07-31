@@ -1,10 +1,15 @@
 ---
 title: Missing an assembly reference?
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 6. Assembly reference
+  attrs:
+    class: apple
 ---
+
 <h1> Issue : MacOS </h1>
 
-## Error that mentions “(`are you missing an assembly reference?`)”
+### Error that mentions (`are you missing an assembly reference?`)
 
 ![-](https://i.imgur.com/IE0qHXu.png)
 

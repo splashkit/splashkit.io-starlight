@@ -1,10 +1,15 @@
 ---
 title: bash <(curl... does nothing
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 1. Bash curl not working
+  attrs:
+    class: apple
 ---
+
 <h1> Issue : MacOS </h1>
 
-## "`bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)`" does nothing
+### `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` does nothing
 
 ![skm install](https://i.imgur.com/BD8jqnT.png)
 

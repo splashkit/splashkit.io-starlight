@@ -1,6 +1,10 @@
 ---
 title: system “Path” variable
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 7. Update Path Variable
+  attrs:
+    class: windows
 ---
 
 ## Update your system “Path” variable

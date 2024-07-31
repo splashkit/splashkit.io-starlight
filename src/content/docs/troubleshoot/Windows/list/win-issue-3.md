@@ -1,7 +1,12 @@
 ---
 title: skm command not found
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 3. skm not found
+  attrs:
+    class: windows
 ---
+
 <h1>Issue : Windows </h1>
 
 ## `-bash: skm: command not found`
@@ -10,7 +15,7 @@ description: A reference page in my new Starlight docs site.
 
 ## Solution
 
-Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/update-system-path)
+Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7)
 
 Then come back here for the Next Step.
 Disable any antivirus software on your computer.

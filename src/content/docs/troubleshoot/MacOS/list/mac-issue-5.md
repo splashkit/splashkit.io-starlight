@@ -1,10 +1,15 @@
 ---
 title: zsh command not found skm
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 5. zsh not found
+  attrs:
+    class: apple
 ---
+
 <h1> Issue : MacOS </h1>
 
-## “`zsh: command not found: skm`”
+### `zsh: command not found: skm`
 
 ![-](https://i.imgur.com/Qv8RaHc.png)
 

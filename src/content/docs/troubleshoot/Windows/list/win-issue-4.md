@@ -1,7 +1,12 @@
 ---
 title: Unable find .NET SDK
 description: A reference page in my new Starlight docs site.
+sidebar:
+  label: 4. .NET SDK not found
+  attrs:
+    class: windows
 ---
+
 <h1>  Issue : Windows </h1>
 
 ## `Unable to find the .NET SDK:`
@@ -11,7 +16,7 @@ description: A reference page in my new Starlight docs site.
 **Solution :**
 You might need to add the dotnet folder path to your “Path” environment variable.
 
-Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/update-system-path)
+Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7)
 
 Then come back here for the Next Step.
 
