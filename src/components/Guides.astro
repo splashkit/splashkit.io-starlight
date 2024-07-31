@@ -37,6 +37,7 @@ function simplifyFilePath(filePath: string) {
   // Split the path into parts using '/'
   const pathParts = filePath.split("/");
 
+  // Get the file folder for the middle part of the path (folder/directory name)
   const fileFolder = pathParts[pathParts.length - 2];
 
   // Get the last part of the path (file or directory name)
