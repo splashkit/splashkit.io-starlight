@@ -10,7 +10,9 @@ sidebar:
 
 ### Stack Overflow Exception when trying to open GUI application in WSL
 
-![skm install](/images/installation/wsl/stack-overflow-error-wsl.png)
+![Image showing stack overflow issue when debugging](/images/installation/wsl/stack-overflow-error-wsl-terminal.png)
+
+![Image showing stack overflow issue when debugging](/images/installation/wsl/stack-overflow-error-wsl-debug.png)
 
 ## Solutions
 
