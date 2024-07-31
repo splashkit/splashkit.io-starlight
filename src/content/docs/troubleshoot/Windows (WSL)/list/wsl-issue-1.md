@@ -27,3 +27,5 @@ To run Linux GUI Apps in WSL, you need to install the correct vGPU driver for yo
   - [Intel Graphics Driver](https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html)
   - [AMD Graphics Driver](https://www.amd.com/en/support/download/drivers.html)
   - [NVIDIA Graphics Driver](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+
+For more information, you can read Microsoft's [Run Linux GUI apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps) article.
