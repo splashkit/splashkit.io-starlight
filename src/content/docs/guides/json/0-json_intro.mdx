@@ -79,18 +79,12 @@ This command creates sub-folders for each type of resource. One of these is name
   using System;
   using SplashKitSDK;
 
-  public class Program
-  {
-      public static void Main()
-      {
-          Json gameData = SplashKit.JsonFromFile("game_data.json");
-          string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+  Json gameData = SplashKit.JsonFromFile("game_data.json");
+  string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
 
-          Console.WriteLine("Game Title: " + gameTitle);
+  Console.WriteLine("Game Title: " + gameTitle);
 
-          SplashKit.FreeJson(gameData);
-      }
-  }
+  SplashKit.FreeJson(gameData);
   ```
 
   </TabItem>
@@ -189,25 +183,19 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
   using System;
   using SplashKitSDK;
 
-  public class Program
+  Json gameData = SplashKit.JsonFromFile("game_data.json");
+
+  if (SplashKit.JsonHasKey(gameData, "gameTitle"))
   {
-      public static void Main()
-      {
-         Json gameData = SplashKit.JsonFromFile("game_data.json");
-
-         if(SplashKit.JsonHasKey(gameData, "gameTitle"))
-          {
-              string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
-              Console.WriteLine("Game Title: " + gameTitle);
-          }
-          else
-          {
-              Console.WriteLine("Key \"gameTitle\" not found.");
-          }
-
-          SplashKit.FreeJson(gameData);
-      }
+      string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+      Console.WriteLine("Game Title: " + gameTitle);
   }
+  else
+  {
+      Console.WriteLine("Key \"gameTitle\" not found.");
+  }
+
+  SplashKit.FreeJson(gameData);
   ```
 
   </TabItem>
