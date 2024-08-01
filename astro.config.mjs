@@ -83,6 +83,7 @@ export default defineConfig({
             { label: "Camera", autogenerate: { directory: "guides/camera", collapsed: false } },
             { label: "Graphics", autogenerate: { directory: "guides/graphics", collapsed: false } },
             { label: "Input", autogenerate: { directory: "guides/input", collapsed: false } },
+            { label: "Interface", autogenerate: { directory: "guides/interface", collapsed: false } },
             { label: "Json", autogenerate: { directory: "guides/json", collapsed: false } },
             { label: "Networking", autogenerate: { directory: "guides/networking", collapsed: false } },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry", collapsed: false } },
