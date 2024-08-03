@@ -87,16 +87,21 @@ Below is an example of this:
   <TabItem label="C#">
 
   ```csharp
-  List<string> levels = new List<string>();
 
-  SplashKit.JsonReadArray(game_data, "levels", levels);
+  var gameData = SplashKit.LoadJson("game_data.json");
 
-  int num_levels = levels.Count;
+  var levels = new List<string>();
 
-  for(int i = 0; i < num_levels; i++)
+  SplashKit.JsonReadArray(gameData, "levels", levels);
+
+  int numLevels = levels.Count;
+
+  for (int i = 0; i < numLevels; i++)
   {
-      Console.WriteLine("Got level: " + levels[i]);
+     SplashKit.WriteLine("Got level: " + levels[i]);
   }
+
+  SplashKit.FreeJson(gameData);
   ```
 
   </TabItem>

@@ -76,13 +76,14 @@ This command creates sub-folders for each type of resource. One of these is name
   <TabItem label="C#">
 
   ```csharp
-  using System;
   using SplashKitSDK;
+  using static SplashKitSDK.SplashKit;
 
-  Json gameData = SplashKit.JsonFromFile("game_data.json");
-  string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+  var gameData = SplashKit.LoadJson("game_data.json");
+  string gameTitle = gameData.GetString("gameTitle");
 
-  Console.WriteLine("Game Title: " + gameTitle);
+  SplashKit.Write("Game Title: ");
+  SplashKit.WriteLine(gameTitle);
 
   SplashKit.FreeJson(gameData);
   ```
@@ -106,7 +107,7 @@ Then we are getting the value of the key that matches `gameTitle` using [Json Re
   <TabItem label="C#">
 
   ```shell
-  csc Program.cs -reference:SplashKitSDK.dll -out:json_program.exe
+  dotnet build
   ```
 
   </TabItem>
@@ -131,7 +132,7 @@ And run it with:
   <TabItem label="C#">
 
   ```shell
-  ./json_program.exe
+  dotnet run
   ```
   
   </TabItem>
@@ -180,22 +181,22 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
   <TabItem label="C#">
 
   ```csharp
-  using System;
   using SplashKitSDK;
+  using static SplashKitSDK.SplashKit;
 
-  Json gameData = SplashKit.JsonFromFile("game_data.json");
+  Json gameData = JsonFromFile("Resources/json/game_data.json");
 
-  if (SplashKit.JsonHasKey(gameData, "gameTitle"))
+  if (JsonHasKey(gameData, "gameTitle"))
   {
-      string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
-      Console.WriteLine("Game Title: " + gameTitle);
+      string gameTitle = JsonReadString(gameData, "gameTitle");
+      WriteLine("Game Title: " + gameTitle);
   }
   else
   {
-      Console.WriteLine("Key \"gameTitle\" not found.");
+      WriteLine("Key \"gameTitle\" not found.");
   }
 
-  SplashKit.FreeJson(gameData);
+  FreeJson(gameData);
   ```
 
   </TabItem>
