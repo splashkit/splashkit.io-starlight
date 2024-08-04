@@ -77,13 +77,12 @@ This command creates sub-folders for each type of resource. One of these is name
 
   ```csharp
   using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
 
-  var gameData = SplashKit.LoadJson("game_data.json");
-  string gameTitle = gameData.GetString("gameTitle");
+  Json gameData = SplashKit.JsonFromFile("game_data.json");
 
-  SplashKit.Write("Game Title: ");
-  SplashKit.WriteLine(gameTitle);
+  string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+
+  SplashKit.WriteLine("Game Title: " + gameTitle);
 
   SplashKit.FreeJson(gameData);
   ```
@@ -182,21 +181,20 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
 
   ```csharp
   using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
 
-  Json gameData = JsonFromFile("Resources/json/game_data.json");
+  Json gameData = SplashKit.JsonFromFile("game_data.json");
 
-  if (JsonHasKey(gameData, "gameTitle"))
+  if (SplashKit.JsonHasKey(gameData, "gameTitle"))
   {
-      string gameTitle = JsonReadString(gameData, "gameTitle");
-      WriteLine("Game Title: " + gameTitle);
+      string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+      SplashKit.WriteLine("Game Title: " + gameTitle);
   }
   else
   {
-      WriteLine("Key \"gameTitle\" not found.");
+      SplashKit.WriteLine("Key \"gameTitle\" not found.");
   }
 
-  FreeJson(gameData);
+  SplashKit.FreeJson(gameData);
   ```
 
   </TabItem>

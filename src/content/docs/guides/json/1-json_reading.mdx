@@ -51,9 +51,9 @@ To access values in JSON objects like strings, numbers, or booleans, you can use
   <TabItem label="C#">
 
   ```csharp
-  string title = SplashKit.JsonReadString(game_data, "gameTitle");
-  int numPlayers = SplashKit.JsonReadNumberAsInt(game_data, "numPlayers");
-  bool isFullScreen = SplashKit.JsonReadBool(game_data, "fullScreenMode");
+  string title = SplashKit.JsonReadString(gameData, "gameTitle");
+  int numPlayers = SplashKit.JsonReadNumberAsInt(gameData, "numPlayers");
+  bool isFullScreen = SplashKit.JsonReadBool(gameData, "fullScreenMode");
   ```
 
   </TabItem>
@@ -88,17 +88,20 @@ Below is an example of this:
 
   ```csharp
 
-  var gameData = SplashKit.LoadJson("game_data.json");
+  using SplashKitSDK;
+  using System.Collections.Generic;
 
-  var levels = new List<string>();
+  Json gameData = SplashKit.JsonFromFile("game_data.json");
 
-  SplashKit.JsonReadArray(gameData, "levels", levels);
+  List<string> levels = new List<string>();
+
+  SplashKit.JsonReadArray(gameData, "levels", ref levels);
 
   int numLevels = levels.Count;
 
   for (int i = 0; i < numLevels; i++)
   {
-     SplashKit.WriteLine("Got level: " + levels[i]);
+      SplashKit.WriteLine($"Got level: {levels[i]}");
   }
 
   SplashKit.FreeJson(gameData);

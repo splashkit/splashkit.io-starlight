@@ -35,10 +35,10 @@ In SplashKit, you can programmatically create JSON objects and arrays, which the
   <TabItem label="C#">
 
   ```csharp
-  var newGameData = Json.Create();
-  newGameData.SetString("gameTitle", "My New Game");
-  newGameData.SetBool("fullScreenMode", false);
-  newGameData.SetNumber("numPlayers", 1);
+  Json newGameData = SplashKit.CreateJson();
+  SplashKit.JsonSetString(newGameData, "gameTitle", "My New Game");
+  SplashKit.JsonSetBool(newGameData, "fullScreenMode", false);
+  SplashKit.JsonSetNumber(newGameData, "numPlayers", 1);
   ```
 
   </TabItem>
@@ -64,14 +64,15 @@ First we create the new JSON object using [Create Json](/api/json/#create-json),
   <TabItem label="C#">
 
   ```csharp
-  var levelsArray = new List<string>
+  List<string> levelsArray = new List<string>
+
   {
       "level1",
       "level2",
       "level3"
   };
 
-  newGameData.SetArray("levels", levelsArray);
+  SplashKit.JsonSetArray(newGameData, "levels", levelsArray);
   ```
 
   </TabItem>
@@ -96,12 +97,11 @@ Next we add the levels array to the JSON object. We create a vector to store the
   <TabItem label="C#">
   
   ```csharp
-  var screenSizeData = Json.Create();
+  Json screenSizeData = SplashKit.CreateJson();
+  SplashKit.JsonSetNumber(screenSizeData, "width", 800);
+  SplashKit.JsonSetNumber(screenSizeData, "height", 600);
 
-  screenSizeData.SetNumber("width", 800);
-  screenSizeData.SetNumber("height", 600);
-
-  newGameData.SetObject("screenSize", screenSizeData);
+  SplashKit.JsonSetObject(newGameData, "screenSize", screenSizeData);
   ```
 
   </TabItem>
@@ -125,7 +125,7 @@ Now that we have the `new_game_data` object that stores the same values as the J
   <TabItem label="C#">
 
   ```csharp
-  newGameData.ToFile("new_game_data.json");
+  SplashKit.JsonToFile(newGameData, "new_game_data.json");
 
   ```
   
@@ -175,24 +175,33 @@ By combining all these examples we can create the full program shown below.
 
   ```csharp
   using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+  using System.Collections.Generic;
 
-  var newGameData = Json.Create();
+  Json newGameData = SplashKit.CreateJson();
 
-  newGameData.SetString("gameTitle", "My New Game");
-  newGameData.SetBool("fullScreenMode", false);
-  newGameData.SetNumber("numPlayers", 1);
+  SplashKit.JsonSetString(newGameData, "gameTitle", "My New Game");
+  SplashKit.JsonSetBool(newGameData, "fullScreenMode", false);
+  SplashKit.JsonSetNumber(newGameData, "numPlayers", 1);
 
-  var screenSizeData = Json.Create();
-  screenSizeData.SetNumber("width", 800);
-  screenSizeData.SetNumber("height", 600);
+  Json screenSizeData = SplashKit.CreateJson();
+  SplashKit.JsonSetNumber(screenSizeData, "width", 800);
+  SplashKit.JsonSetNumber(screenSizeData, "height", 600);
 
-  newGameData.SetObject("screenSize", screenSizeData);
+  SplashKit.JsonSetObject(newGameData, "screenSize", screenSizeData);
 
-  var levelsArray = new List<string> { "level1", "level2", "level3" };
-  newGameData.SetArray("levels", levelsArray);
+  List<string> levelsArray = new List<string>
+  {
+      "level1",
+      "level2",
+      "level3"
+  };
 
-  newGameData.ToFile("new_game_data.json");
+  SplashKit.JsonSetArray(newGameData, "levels", levelsArray);
+
+  SplashKit.JsonToFile(newGameData, "new_game_data.json");
+
+  SplashKit.FreeJson(newGameData);
+  SplashKit.FreeJson(screenSizeData);
   ```
 
   </TabItem>
@@ -243,15 +252,15 @@ You can also load an existing JSON file, modify its contents, and save the chang
   <TabItem label="C#">
 
   ```csharp
-  var playerData = Json.Create();
-  playerData.SetString("name", "Hero");
+  Json playerData = SplashKit.CreateJson();
+  SplashKit.JsonSetString(playerData, "name", "Hero");
 
-  var statsData = Json.Create();
-  statsData.SetNumber("health", 100);
-  statsData.SetNumber("mana", 50);
-  statsData.SetNumber("strength", 75);
+  Json statsData = SplashKit.CreateJson();
+  SplashKit.JsonSetNumber(statsData, "health", 100);
+  SplashKit.JsonSetNumber(statsData, "mana", 50);
+  SplashKit.JsonSetNumber(statsData, "strength", 75);
 
-  playerData.SetObject("stats", statsData);
+  SplashKit.JsonSetObject(playerData, "stats", statsData);
   ```
   
   </TabItem>
@@ -274,10 +283,9 @@ First we create the player JSON object to store the data for an entire character
   <TabItem label="C#">
 
   ```csharp
-  var existingData = Json.FromFile("new_game_data.json");
-  existingData.SetObject("character", playerData);
-
-  existingData.ToFile("modified_game_data.json");
+  Json existingData = SplashKit.JsonFromFile("new_game_data.json");
+  SplashKit.JsonSetObject(existingData, "character", playerData);
+  SplashKit.JsonToFile(existingData, "modified_game_data.json");
   ```
 
   </TabItem>
@@ -332,13 +340,13 @@ Now we have a character object stored with this JSON file. We also now have mult
 
   ```csharp
   // Load our JSON
-  var modifiedGameData = Json.FromFile("modified_game_data.json");
+  Json modifiedGameData = SplashKit.JsonFromFile("modified_game_data.json");
   // Retrieve Character JSON object from the file.
-  var character = modifiedGameData.ReadObject("character");
+  Json modifiedGameData = SplashKit.JsonFromFile("modified_game_data.json");
   // Retrieve the Stats JSON object from the Character JSON
-  var stats = character.ReadObject("stats");
+  Json stats = SplashKit.JsonReadObject(character, "stats");
   // Retrieve the value of health from the stats JSON object
-  int hp = stats.ReadNumberAsInt("health");
+  int hp = SplashKit.JsonReadNumberAsInt(stats, "health");
   ```
   
   </TabItem>
