@@ -103,8 +103,6 @@ Below is an example of this:
   {
       SplashKit.WriteLine($"Got level: {levels[i]}");
   }
-
-  SplashKit.FreeJson(gameData);
   ```
 
   </TabItem>
@@ -136,7 +134,7 @@ SplashKit's JSON functionality allows you to extract various types of data, incl
   <TabItem label="C#">
 
   ```csharp
-  Json gameScreenSize = SplashKit.JsonReadObject(game_data, "screenSize");
+  Json gameScreenSize = SplashKit.JsonReadObject(gamedata, "screenSize");
   int width = SplashKit.JsonReadNumberAsInt(gameScreenSize, "width");
   int height = SplashKit.JsonReadNumberAsInt(gameScreenSize, "height");
   ```
