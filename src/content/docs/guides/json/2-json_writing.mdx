@@ -97,7 +97,7 @@ Next we add the levels array to the JSON object. We create a vector to store the
   <TabItem label="C#">
   
   ```csharp
-  Json screenSizeData = SplashKit.CreateJson();
+  Json screenSizeData = CreateJson();
   JsonSetNumber(screenSizeData, "width", 800);
   JsonSetNumber(screenSizeData, "height", 600);
 
@@ -253,7 +253,7 @@ You can also load an existing JSON file, modify its contents, and save the chang
   <TabItem label="C#">
 
   ```csharp
-  Json playerData = SplashKit.CreateJson();
+  Json playerData = CreateJson();
   JsonSetString(playerData, "name", "Hero");
 
   Json statsData = CreateJson();
