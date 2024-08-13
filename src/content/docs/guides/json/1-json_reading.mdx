@@ -51,9 +51,9 @@ To access values in JSON objects like strings, numbers, or booleans, you can use
   <TabItem label="C#">
 
   ```csharp
-  string title = SplashKit.JsonReadString(gameData, "gameTitle");
-  int numPlayers = SplashKit.JsonReadNumberAsInt(gameData, "numPlayers");
-  bool isFullScreen = SplashKit.JsonReadBool(gameData, "fullScreenMode");
+  string title = JsonReadString(gameData, "gameTitle");
+  int numPlayers = JsonReadNumberAsInt(gameData, "numPlayers");
+  bool isFullScreen = JsonReadBool(gameData, "fullScreenMode");
   ```
 
   </TabItem>
@@ -89,19 +89,20 @@ Below is an example of this:
   ```csharp
 
   using SplashKitSDK;
+  using static SplashKitSDK.SplashKit;
   using System.Collections.Generic;
 
-  Json gameData = SplashKit.JsonFromFile("game_data.json");
+  Json gameData = JsonFromFile("game_data.json");
 
   List<string> levels = new List<string>();
 
-  SplashKit.JsonReadArray(gameData, "levels", ref levels);
+  JsonReadArray(gameData, "levels", ref levels);
 
   int numLevels = levels.Count;
 
   for (int i = 0; i < numLevels; i++)
   {
-      SplashKit.WriteLine($"Got level: {levels[i]}");
+      WriteLine($"Got level: {levels[i]}");
   }
   ```
 
@@ -134,9 +135,9 @@ SplashKit's JSON functionality allows you to extract various types of data, incl
   <TabItem label="C#">
 
   ```csharp
-  Json gameScreenSize = SplashKit.JsonReadObject(gamedata, "screenSize");
-  int width = SplashKit.JsonReadNumberAsInt(gameScreenSize, "width");
-  int height = SplashKit.JsonReadNumberAsInt(gameScreenSize, "height");
+  Json gameScreenSize = JsonReadObject(gamedata, "screenSize");
+  int width = JsonReadNumberAsInt(gameScreenSize, "width");
+  int height = JsonReadNumberAsInt(gameScreenSize, "height");
   ```
 
   </TabItem>
