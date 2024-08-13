@@ -36,7 +36,7 @@ The following code examples make use of the [JSONPlaceholder](https://jsonplaceh
 In this first example we make use of a simple GET operation to retrieve a single resource from an REST API server. The URL tells us which resource to request, in this case it's the 1st post. The response is converted to a string and the the HTTP response must be set free. The string now contains the JSON response, but to call the key value pairs in the string it must be converted to a JSON object.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -62,7 +62,7 @@ In this first example we make use of a simple GET operation to retrieve a single
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Example 2: GET Resources
@@ -70,7 +70,7 @@ In this first example we make use of a simple GET operation to retrieve a single
 Once more we use the GET operator, but this time we request all the post. The response string now contains 100 posts. In order to convert them we would need to split the string into a vector and convert each response to a JSON object. This is not done in the example since the SplashKit has no split function instead we output the string.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -92,7 +92,7 @@ Once more we use the GET operator, but this time we request all the post. The re
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Example 3: POST Resource
@@ -100,7 +100,7 @@ Once more we use the GET operator, but this time we request all the post. The re
 In this example we create a resource on the remote server by using the POST operation. This request requires the header definition specified the content type and the charset. This header must be within a vector as specified in the SplashKit documentation. The data is formed as a JSON object that is converted to a string for the purpose of the HTTP request. Note that the body only contains three parameters as the id is generated on the server.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -136,5 +136,5 @@ In this example we create a resource on the remote server by using the POST oper
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
