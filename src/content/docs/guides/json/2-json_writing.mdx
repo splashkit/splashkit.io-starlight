@@ -21,7 +21,7 @@ _Last updated: {frontmatter.lastupdated}_
 In SplashKit, you can programmatically create JSON objects and arrays, which then can be populated with data. Lets see how we can create the example JSON file from previous tutorials with this method.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   json new_game_data = create_json();
@@ -30,13 +30,13 @@ In SplashKit, you can programmatically create JSON objects and arrays, which the
   json_set_number(new_game_data, "numPlayers", 1);
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 First we create the new JSON object using [Create Json](/api/json/#create-json), then we add basic data to **gameTitle**, **fullScreenMode**, and **numPlayers** using [Json Set String](/api/json/#json-set-string), [Json Set Bool](/api/json/#json-set-bool) and [Json Set Number](/api/json#json-set-number).
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   vector<string> levels_array;
@@ -48,13 +48,13 @@ First we create the new JSON object using [Create Json](/api/json/#create-json),
   json_set_array(new_game_data, "levels", levels_array);
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Next we add the levels array to the JSON object. We create a vector to store the strings, and push back each string that we want. Finally we use [Json Set Array](/api/json/#json-set-array) to store this data in JSON format.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
   
   ```cpp
   json screen_size_data = create_json();
@@ -65,7 +65,7 @@ Next we add the levels array to the JSON object. We create a vector to store the
   json_set_object(new_game_data, "screenSize", screen_size_data);
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Then we tackle the nested JSON object, the screen size object. We use [Create Json](/api/json/#create-json) to create a new object for this data, and then we add the width and the height to the object using [Json Set Number](/api/json/#json-set-number). Now that we have this JSON object filled with the data we want, we add it to the `new_game_data` object with [Json Set Object](/api/json/#json-set-object).
@@ -75,19 +75,19 @@ Then we tackle the nested JSON object, the screen size object. We use [Create Js
 Now that we have the `new_game_data` object that stores the same values as the JSON file used previously. Now, we can save this using [Json To File](/api/json/#json-to-file) like in the code below.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   json_to_file(new_game_data, "new_game_data.json");
   ```
   
-  </TabItem>
+</TabItem>
 </Tabs>
 
 By combining all these examples we can create the full program shown below.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -121,7 +121,7 @@ By combining all these examples we can create the full program shown below.
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Running this program results in a file named `new_game_data.json` being written to the `Resources/json/` folder. Open this up and you'll see something very similar or identical to the example JSON file we've been using previously. It should look something like this:
@@ -150,7 +150,7 @@ Some of the keys can be in different positions, but this does not affect how we 
 You can also load an existing JSON file, modify its contents, and save the changes back to the file. To demonstrate this, lets add the details of a player character to our game data.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   json player_data = create_json();
@@ -164,13 +164,13 @@ You can also load an existing JSON file, modify its contents, and save the chang
   json_set_object(player_data, "stats", stats_data);
   ```
   
-  </TabItem>
+</TabItem>
 </Tabs>
 
 First we create the player JSON object to store the data for an entire character, then we create an individual object to hold the stats for the character. After this we add the stats object and nest it in the `player_data` object we created earlier.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   json existing_data = json_from_file("new_game_data.json")
@@ -179,7 +179,7 @@ First we create the player JSON object to store the data for an entire character
   json_to_file(existing_data, "modified_game_data.json");
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Next we load the game data we saved previously, add our `player_data` object to the existing data and save it. If we add this code to our previous program and run it a file is created in the `Resources/json/` folder named `modified_game_data.json`. Open it, and you should see something like the following:
@@ -212,7 +212,7 @@ Next we load the game data we saved previously, add our `player_data` object to 
 Now we have a character object stored with this JSON file. We also now have multiple levels of nesting. When this is the case and we want to access the innermost key we must get these JSON objects. So, to access the health stat we can use the following code:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   // Load our JSON
@@ -225,7 +225,7 @@ Now we have a character object stored with this JSON file. We also now have mult
   int hp = json_read_number_as_int(stats, "health");
   ```
   
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ### Conclusion

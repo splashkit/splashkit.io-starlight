@@ -25,7 +25,7 @@ Routing is an important part of the web server's job. This is how you get differ
 Start with this code, which we built in the introduction guide
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -53,8 +53,8 @@ Start with this code, which we built in the introduction guide
 
   ```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
   ```csharp
   using SplashKitSDK;
@@ -78,8 +78,8 @@ Start with this code, which we built in the introduction guide
   SplashKit.ReadLine(); // Pause to keep the console window open
   ```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
 
   ```python
   from splashkit import *
@@ -103,7 +103,7 @@ Start with this code, which we built in the introduction guide
   read_line() # Pause to keep the console window open
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 This has the following information we need:
@@ -127,7 +127,7 @@ Checking to see if a request has been made for a certain path is really easy! Sp
 The following code shows the use of an if statement to serve some login text or the index page, depending on what the browser requested.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -166,8 +166,8 @@ The following code shows the use of an if statement to serve some login text or 
   }
   ```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
   ```csharp
   using SplashKitSDK;
@@ -207,8 +207,8 @@ The following code shows the use of an if statement to serve some login text or 
   }
   ```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
 
   ```python
   from splashkit import *
@@ -238,7 +238,7 @@ The following code shows the use of an if statement to serve some login text or 
   stop_web_server(server)
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Handling Multiple Requests
@@ -254,7 +254,7 @@ You can then add a special route that will stop the server.
 The following code illustrates the use of the concepts covered so far. You can now make multiple requests in your browser, and you can navidate to [http://localhost:8080/quit](http://localhost:8080/quit) to get the web server to stop.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -317,8 +317,8 @@ The following code illustrates the use of the concepts covered so far. You can n
   }
   ```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
   ```csharp
   using SplashKitSDK;
@@ -376,8 +376,8 @@ The following code illustrates the use of the concepts covered so far. You can n
   SplashKit.StopWebServer(server);
   ```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
 
   ```python
   from splashkit import *
@@ -427,7 +427,7 @@ The following code illustrates the use of the concepts covered so far. You can n
   stop_web_server(server)
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 The html for your web page would be:

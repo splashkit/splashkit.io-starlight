@@ -52,7 +52,7 @@ skm resources
 This command creates sub-folders for each type of resource. One of these is named `json` and that is where we place our JSON files. To begin lets take the example JSON file above and place it into the `json` folder with the name `game_data.json`. To access the values in this file we can now do the following:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -71,32 +71,32 @@ This command creates sub-folders for each type of resource. One of these is name
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 In this code example, we're first using [Json From File](/api/json/#json-from-file) to load a JSON object with the details from the `game_data.json` file.
 Then we are getting the value of the key that matches `gameTitle` using [Json Read String](/api/json/#json-read-string). We write this to the console and free the JSON object using [Free Json](/api/json/#free-json) as we exit. By freeing the JSON object we are deallocating any memory that has been assigned to it, preventing any memory-related errors such as a `Segmentation Fault`. We can build this program with the following command.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```shell
   g++ program.cpp -l SplashKit -o json_program
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 And run it with:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```shell
   ./json_program
   ```
   
-  </TabItem>
+</TabItem>
 </Tabs>
 
 When we run this program it should output the following to the console:
@@ -110,7 +110,7 @@ Game Title: My New Game
 But what if we didn't have a `gameTitle` key in our JSON? Well, error messages will be produced indicating that this key is `null`. To prevent this, we can use the [Json Has Key](/api/json/#json-has-key) function to check if the key is present and then do actions based on whether it has been found or not. We could then turn the previous example into the following code:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -136,7 +136,7 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 We have now loaded up our JSON file and retrieved the value stored with the `gameTitle` key. In the next tutorial we explore further how we can retrieve values stored in a JSON object.

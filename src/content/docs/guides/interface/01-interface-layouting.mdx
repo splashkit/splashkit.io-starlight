@@ -24,7 +24,7 @@ Here's just a basic example from the previous tutorial that we can get started f
 Remember that SplashKit uses an immediate mode GUI paradigm. This means we need to place _all_ of our interface code _inside_ the main `while` loop, between [Process Events](/api/input/#process-events) and [Draw Interface](/api/interface/#draw-interface)!
 :::
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -56,7 +56,7 @@ Remember that SplashKit uses an immediate mode GUI paradigm. This means we need 
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Let's add a panel now! Adding a panel takes two lines of code:
@@ -69,7 +69,7 @@ Let's add a panel now! Adding a panel takes two lines of code:
 
 One **really important** thing to note here is that [Start Panel](/api/interface/#start-panel) _returns_ whether the panel is visible or not, so we need to make sure to check this as well, and only create elements and end the panel `if` the panel is open, like so:
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   // start the panel and check if it's open/visible
@@ -82,7 +82,7 @@ One **really important** thing to note here is that [Start Panel](/api/interface
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Just testing the code above will give us this! We can already drag around and resize the panel, so let's start adding elements!
@@ -114,7 +114,7 @@ Similarly, we can add a [Text Box](/api/interface/#text-box) by declaring a `str
 
 Here's the full code recreating what we had last tutorial, while creating a panel and adding the elements inside it.
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp ins={20-22, 31-33} {8-9, 23-30}
   #include "splashkit.h"
@@ -162,7 +162,7 @@ Here's the full code recreating what we had last tutorial, while creating a pane
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 :::tip[Elements inside panels]
@@ -202,7 +202,7 @@ Some of the easiest ways to group our elements together, is to place them under 
 Headers are really easy to add - we can use the [Header](/api/interface/#header) function, which takes a name for the heading, and returns if the header is open (like the panels!):
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   if (header("Edit Message!"))
@@ -211,7 +211,7 @@ Headers are really easy to add - we can use the [Header](/api/interface/#header)
   }
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ![A panel with a hidden section - clicking a dropdown that says 'Edit Message!' shows the textbox from before.](/gifs/guides/interface/panel_w_header.gif)
@@ -225,7 +225,7 @@ Insets let you group a bunch of elements inside a fixed-size region! They can be
 Here's a code example - an inset is started, and six buttons are created inside it. Finally, the inset is ended.
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   paragraph("This text is outside the inset area!");
@@ -239,7 +239,7 @@ Here's a code example - an inset is started, and six buttons are created inside 
   end_inset("Inset area");
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ![A panel with an inset region that is at a fixed position - it has its own scrollbar.](/gifs/guides/interface/panel_w_inset.gif)
@@ -252,7 +252,7 @@ Tree nodes allow you to organize your elements as a tree - like a file system! Y
 
 Here's a code example - various _nested_ tree nodes are started and ended with, buttons placed in between - this creates a hierarchy.
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   if (start_treenode("Some buttons!")){
@@ -276,7 +276,7 @@ Here's a code example - various _nested_ tree nodes are started and ended with, 
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ![A panel with tree nodes, that can be expanded/contracted.](/gifs/guides/interface/panel_w_treenodes.gif)
@@ -321,7 +321,7 @@ You can also adjust the height of a row, using [Set Layout Height](/api/interfac
 Here's an example, where we create six buttons - three on each row, with the top row being taller.
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   start_custom_layout();
@@ -339,7 +339,7 @@ Here's an example, where we create six buttons - three on each row, with the top
 
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ![A panel with 6 buttons. Each set of three are on a single row, and the top row is taller than the bottom.](/gifs/guides/interface/panel_w_sixbuttonstallshort.gif)
@@ -355,7 +355,7 @@ Once you're done, you can leave it with [Leave Column](/api/interface/#leave-col
 Here's an example:
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   start_custom_layout();
@@ -374,7 +374,7 @@ Here's an example:
   reset_layout();
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ![A panel with 5 buttons, split into two columns. The first two are stacked on the left, and are tall. The last three are stacked on the right.](/gifs/guides/interface/panel_w_sixbuttonscolumns.gif)

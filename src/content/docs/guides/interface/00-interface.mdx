@@ -25,7 +25,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
 
     Make sure to have a look at the code, and see where we'll put our interface code!
     <Tabs>
-      <TabItem label="C++">
+    <TabItem label="C++">
 
       ```cpp
       #include "splashkit.h"
@@ -47,7 +47,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
       }
       ```
 
-      </TabItem>
+    </TabItem>
     </Tabs>
 
 2. Now let's show a button! This can be done with the [Button](/api/interface/#button) function, which takes some text to show on the button, and also a position and size so it knows where to show up.
@@ -58,7 +58,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
 
     Making those changes, we get the following inside `main`:
     <Tabs>
-      <TabItem label="C++">
+    <TabItem label="C++">
 
     ```cpp ins={5-9}
         // open a window and clear it to white
@@ -76,7 +76,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
         delay(5000);
     ```
 
-      </TabItem>
+    </TabItem>
     </Tabs>
 
     Which if you run, will show you this!
@@ -101,7 +101,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
 
     Putting this all together, we get this inside `main`:
     <Tabs>
-      <TabItem label="C++">
+    <TabItem label="C++">
 
       ```cpp ins={4-6, 15}
           // open a window
@@ -124,7 +124,7 @@ Let's see how we can create a simple button. We'll start in an empty project, an
           return 0;
       ```
 
-      </TabItem>
+    </TabItem>
     </Tabs>
 
     And we can now click the button!
@@ -161,7 +161,7 @@ Let's try it out:
 We should also give the button some more descriptive text inside it, like "Write To Terminal!"
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp ins="Write To Terminal!" ins="if (" ins=/24\\)\\)(\\))/ ins={2-4}
           if (button("Write To Terminal!", rectangle_from(300, 260, 200, 24)))
@@ -170,7 +170,7 @@ We should also give the button some more descriptive text inside it, like "Write
           }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Note how rather than _creating_ the button, and then checking if it's been clicked seperately, we've used a _single_ call to [Button](/api/interface/#button), that both shows the button _and_ returns whether its been clicked.
@@ -184,7 +184,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
 
 1. First let's start by adding a variable to store the user's text in - make sure to do this _outside_ the main loop, or else the user's text will be forgotten each iteration!
     <Tabs>
-      <TabItem label="C++">
+    <TabItem label="C++">
 
       ```cpp ins={3}
           open_window("My Interface!", 800, 600);
@@ -196,7 +196,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
               process_events();
       ```
 
-      </TabItem>
+    </TabItem>
     </Tabs>
 
 2. Now let's add the text box. We can use the [Text Box](/api/interface/#text-box) function, which takes a string - the current text, and a position - where to draw it.
@@ -209,7 +209,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
 
     Remember - this all needs to go inside the main `while` loop. Otherwise the text box will only exist for a split second before vanishing - we need to keep it alive!
     <Tabs>
-      <TabItem label="C++">
+    <TabItem label="C++">
 
       ```cpp ins={1} ins="write_line(user_message);"
               user_message = text_box(user_message, rectangle_from(300, 220, 200, 24));
@@ -220,7 +220,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
               }
       ```
 
-      </TabItem>
+    </TabItem>
     </Tabs>
 
     See how `user_message` gets passed _in_ to the [Text Box](/api/interface/#text-box), and then that value flows back out as the return, and gets assigned back to `user_message`. This is how all the other element functions, like [Slider](/api/interface/#slider), and [Number Box](/api/interface/#number-box) work too!
@@ -240,7 +240,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
 
 Here's the complete code up until this point:
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -281,7 +281,7 @@ Here's the complete code up until this point:
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Practice Activity
@@ -295,7 +295,7 @@ Let's try adding one more element - this time we can try adding a slider! For fu
 <details>
 <summary>Here is _one_ way to do write this, but don't peek until you've tried it yourself!</summary>
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp ins={3} ins={22} ins=/(width), 2/  ins="400 - width/2"
       // define variables
@@ -328,7 +328,7 @@ Let's try adding one more element - this time we can try adding a slider! For fu
       }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 </details>
 
@@ -341,7 +341,7 @@ Hopefully now you understand how easy it is to make a dynamic interface in Splas
 ![A button, text box, and slider. Adjusting the value of the slider changes the width of the other controls.](/gifs/guides/interface/slider.gif)
 
 <Tabs>
-  <TabItem label="C++">
+<TabItem label="C++">
 
   ```cpp
   #include "splashkit.h"
@@ -385,5 +385,5 @@ Hopefully now you understand how easy it is to make a dynamic interface in Splas
   }
   ```
 
-  </TabItem>
+</TabItem>
 </Tabs>

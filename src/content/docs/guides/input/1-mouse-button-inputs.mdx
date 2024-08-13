@@ -23,7 +23,7 @@ Here are some functions that are used to handle mouse button inputs. These funct
 [Mouse Button](/api/input/#mouse-button) is an enumeration used by SplashKit to read inputs from the mouse. Understanding how to handle mouse buttons is crucial for developers who want users to control their programs using the mouse.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
   | Description             | Enum Value in Code         |
   | ----------------------- | ---------------------------|
@@ -34,8 +34,8 @@ Here are some functions that are used to handle mouse button inputs. These funct
   | The x1 mouse button     | MOUSE_X1_BUTTON            |
   | The x2 mouse button     | MOUSE_X2_BUTTON            |
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
   | Description             | Enum Value in Code         |
   | ----------------------- | ---------------------------|
@@ -46,8 +46,8 @@ Here are some functions that are used to handle mouse button inputs. These funct
   | The x1 mouse button     | MouseButton.MouseX1Button  |
   | The x2 mouse button     | MouseButton.MouseX2Button  |
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
 
   | Description             | Enum Value in Code         |
   | ----------------------- | ---------------------------|
@@ -58,7 +58,7 @@ Here are some functions that are used to handle mouse button inputs. These funct
   | The x1 mouse button     | MouseButton.mouse_x1_button  |
   | The x2 mouse button     | MouseButton.mouse_x2_button  |
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ### Mouse Clicked
@@ -68,74 +68,75 @@ Here are some functions that are used to handle mouse button inputs. These funct
 Here is a simple example using the left and right mouse buttons:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      open_window("Mouse Inputs", 800, 600);
+int main()
+{
+    open_window("Mouse Inputs", 800, 600);
 
-      while (!window_close_requested("Mouse Inputs"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Inputs"))
+    {
+        // process user input events
+        process_events();
 
-          // change screen colour to red if left mouse button is clicked
-          if (mouse_clicked(LEFT_BUTTON))
-          {
-              clear_screen(COLOR_RED);
-          }
-          // change screen colour to yellow if right mouse button is clicked
-          else if (mouse_clicked(RIGHT_BUTTON))
-          {
-              clear_screen(COLOR_YELLOW);
-          }
+        // change screen colour to red if left mouse button is clicked
+        if (mouse_clicked(LEFT_BUTTON))
+        {
+            clear_screen(COLOR_RED);
+        }
+        // change screen colour to yellow if right mouse button is clicked
+        else if (mouse_clicked(RIGHT_BUTTON))
+        {
+            clear_screen(COLOR_YELLOW);
+        }
 
-          refresh_screen(60);
-      }
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+OpenWindow("Mouse Inputs", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Inputs"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Inputs"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // change screen colour to red if left mouse button is clicked
-      if (SplashKit.MouseClicked(MouseButton.LeftButton))
-      {
-          SplashKit.ClearScreen(SplashKit.ColorRed());
-      }
-      // change screen colour to yellow if right mouse button is clicked
-      else if (SplashKit.MouseClicked(MouseButton.RightButton))
-      {
-          SplashKit.ClearScreen(SplashKit.ColorYellow());
-      }
+    // change screen colour to red if left mouse button is clicked
+    if (MouseClicked(MouseButton.LeftButton))
+    {
+        ClearScreen(ColorRed());
+    }
+    // change screen colour to yellow if right mouse button is clicked
+    else if (MouseClicked(MouseButton.RightButton))
+    {
+        ClearScreen(ColorYellow());
+    }
 
-      SplashKit.RefreshScreen(60);
-  }
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
+```python
 from splashkit import *
 COLOR_RED = color_red()
 COLOR_YELLOW = color_yellow()
@@ -171,8 +172,9 @@ def main():
 
 if __name__ == "__main__":
     main()
-    ```
-    </TabItem>
+```
+  
+</TabItem>
 </Tabs>
 
 ### Mouse Down
@@ -182,84 +184,85 @@ if __name__ == "__main__":
 Here is a simple example using the left and right mouse buttons:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      open_window("Mouse Inputs", 800, 600);
+int main()
+{
+    open_window("Mouse Inputs", 800, 600);
 
-      while (!window_close_requested("Mouse Inputs"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Inputs"))
+    {
+        // process user input events
+        process_events();
 
-          // change screen colour to red if left mouse button is held down
-          if (mouse_down(LEFT_BUTTON))
-          {
-              clear_screen(COLOR_RED);
-          }
-          // change screen colour to yellow if right mouse button is held down
-          else if (mouse_down(RIGHT_BUTTON))
-          {
-              clear_screen(COLOR_YELLOW);
-          }
-          // change screen colour to white if no mouse button held down
-          else
-          {
-              clear_screen(COLOR_WHITE);
-          }
-          refresh_screen(60);
-      }
+        // change screen colour to red if left mouse button is held down
+        if (mouse_down(LEFT_BUTTON))
+        {
+            clear_screen(COLOR_RED);
+        }
+        // change screen colour to yellow if right mouse button is held down
+        else if (mouse_down(RIGHT_BUTTON))
+        {
+            clear_screen(COLOR_YELLOW);
+        }
+        // change screen colour to white if no mouse button held down
+        else
+        {
+            clear_screen(COLOR_WHITE);
+        }
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+OpenWindow("Mouse Inputs", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Inputs"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Inputs"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // change screen colour to red if left mouse button is held down
-      if (SplashKit.MouseDown(MouseButton.LeftButton))
-      {
-          SplashKit.ClearScreen(SplashKit.ColorRed());
-      }
-      // change screen colour to yellow if right mouse button is held down
-      else if (SplashKit.MouseDown(MouseButton.RightButton))
-      {
-          SplashKit.ClearScreen(SplashKit.ColorYellow());
-      }
-      // change screen colour to white if no mouse button held down
-      else
-      {
-          SplashKit.ClearScreen(SplashKit.ColorWhite());
-      }
+    // change screen colour to red if left mouse button is held down
+    if (MouseDown(MouseButton.LeftButton))
+    {
+        ClearScreen(ColorRed());
+    }
+    // change screen colour to yellow if right mouse button is held down
+    else if (MouseDown(MouseButton.RightButton))
+    {
+        ClearScreen(ColorYellow());
+    }
+    // change screen colour to white if no mouse button held down
+    else
+    {
+        ClearScreen(ColorWhite());
+    }
 
-      SplashKit.RefreshScreen(60);
-  }
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 
 COLOR_RED = color_red()
@@ -301,7 +304,7 @@ if __name__ == "__main__":
 ```
 
 </TabItem>
-    </Tabs>
+</Tabs>
 
 ### Mouse Up
 
@@ -310,71 +313,72 @@ Opposite to the previous function, [Mouse Up](/api/input/#mouse-up) checks if th
 Here is a simple example using the left mouse button:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      open_window("Mouse Inputs", 800, 600);
+int main()
+{
+    open_window("Mouse Inputs", 800, 600);
 
-      while (!window_close_requested("Mouse Inputs"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Inputs"))
+    {
+        // process user input events
+        process_events();
 
-          // change screen colour to red if left mouse button is not pressed
-          if (mouse_up(LEFT_BUTTON))
-          {
-              clear_screen(COLOR_RED);
-          }
-          // change screen colour to white if left button is pressed
-          else
-          {
-              clear_screen(COLOR_WHITE);
-          }
+        // change screen colour to red if left mouse button is not pressed
+        if (mouse_up(LEFT_BUTTON))
+        {
+            clear_screen(COLOR_RED);
+        }
+        // change screen colour to white if left button is pressed
+        else
+        {
+            clear_screen(COLOR_WHITE);
+        }
 
-          refresh_screen(60);
-      }
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+OpenWindow("Mouse Inputs", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Inputs"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Inputs"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // change screen colour to red if left mouse button is not pressed
-      if (SplashKit.MouseUp(MouseButton.LeftButton))
-      {
-          SplashKit.ClearScreen(SplashKit.ColorRed());
-      }
-      // change screen colour to white if left button is pressed
-      else
-      {
-          SplashKit.ClearScreen(SplashKit.ColorWhite());
-      }
+    // change screen colour to red if left mouse button is not pressed
+    if (MouseUp(MouseButton.LeftButton))
+    {
+        ClearScreen(ColorRed());
+    }
+    // change screen colour to white if left button is pressed
+    else
+    {
+        ClearScreen(ColorWhite());
+    }
 
-      SplashKit.RefreshScreen(60);
-  }
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
+</TabItem>
 <TabItem label="Python">
 
 ```python
@@ -423,105 +427,106 @@ Another thing we can do with mouse input, other than checking button presses, is
 Here is an example using the left mouse button combined with horizontal movement to change the hue of the screen colour, and the right mouse button combined with vertical movement to change the saturation of the screen colour:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // colour variables
-      double hue = 0.8;
-      double saturation = 0.8;
-      double brightness = 0.8;
+int main()
+{
+    // colour variables
+    double hue = 0.8;
+    double saturation = 0.8;
+    double brightness = 0.8;
 
-      // mouse movement variable
-      vector_2d movement;
+    // mouse movement variable
+    vector_2d movement;
 
-      open_window("Mouse Movement", 800, 600);
+    open_window("Mouse Movement", 800, 600);
 
-      while (!window_close_requested("Mouse Movement"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Movement"))
+    {
+        // process user input events
+        process_events();
 
-          // store the mouse movement direction and distance to the movement variable
-          movement = mouse_movement();
+        // store the mouse movement direction and distance to the movement variable
+        movement = mouse_movement();
 
-          // change screen colour 'hue' if left mouse button is held down
-          if (mouse_down(LEFT_BUTTON))
-          {
-              // change hue of screen colour based on horizontal mouse movement
-              hue += movement.x / screen_width();
-          }
-          // change screen colour 'saturation' if right mouse button is held down
-          if (mouse_down(RIGHT_BUTTON))
-          {
-              // change saturation of screen colour based on vertical mouse movement
-              saturation += movement.y / screen_height();
-          }
+        // change screen colour 'hue' if left mouse button is held down
+        if (mouse_down(LEFT_BUTTON))
+        {
+            // change hue of screen colour based on horizontal mouse movement
+            hue += movement.x / screen_width();
+        }
+        // change screen colour 'saturation' if right mouse button is held down
+        if (mouse_down(RIGHT_BUTTON))
+        {
+            // change saturation of screen colour based on vertical mouse movement
+            saturation += movement.y / screen_height();
+        }
 
-          // display current screen colour
-          clear_screen(hsb_color(hue, saturation, brightness));
-          refresh_screen(60);
-      }
+        // display current screen colour
+        clear_screen(hsb_color(hue, saturation, brightness));
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  // colour variables
-  double hue = 0.8;
-  double saturation = 0.8;
-  double brightness = 0.8;
+// colour variables
+double hue = 0.8;
+double saturation = 0.8;
+double brightness = 0.8;
 
-  // mouse movement variable
-  Vector2D movement;
+// mouse movement variable
+Vector2D movement;
 
-  SplashKit.OpenWindow("Mouse Movement", 800, 600);
+OpenWindow("Mouse Movement", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Movement"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Movement"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // store the mouse movement direction and distance to the movement variable
-      movement = SplashKit.MouseMovement();
+    // store the mouse movement direction and distance to the movement variable
+    movement = MouseMovement();
 
-      // change screen colour 'hue' if left mouse button is held down
-      if (SplashKit.MouseDown(MouseButton.LeftButton))
-      {
-          // change hue of screen colour based on horizontal mouse movement
-          hue += movement.X / SplashKit.ScreenWidth();
-      }
-      // change screen colour 'saturation' if right mouse button is held down
-      if (SplashKit.MouseDown(MouseButton.RightButton))
-      {
-          // change saturation of screen colour based on vertical mouse movement
-          saturation += movement.Y / SplashKit.ScreenHeight();
-      }
+    // change screen colour 'hue' if left mouse button is held down
+    if (MouseDown(MouseButton.LeftButton))
+    {
+        // change hue of screen colour based on horizontal mouse movement
+        hue += movement.X / ScreenWidth();
+    }
+    // change screen colour 'saturation' if right mouse button is held down
+    if (MouseDown(MouseButton.RightButton))
+    {
+        // change saturation of screen colour based on vertical mouse movement
+        saturation += movement.Y / ScreenHeight();
+    }
 
-      // display current screen colour
-      SplashKit.ClearScreen(SplashKit.HSBColor(hue, saturation, brightness));
-      SplashKit.RefreshScreen(60);
-  }
+    // display current screen colour
+    ClearScreen(HSBColor(hue, saturation, brightness));
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
    
@@ -574,85 +579,86 @@ if __name__ == "__main__":
 Here is an example using vertical scrolling to change the hue of the screen colour:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // color variables
-      double hue = 0.6;
-      double saturation = 0.6;
-      double brightness = 0.6;
+int main()
+{
+    // color variables
+    double hue = 0.6;
+    double saturation = 0.6;
+    double brightness = 0.6;
 
-      // mouse scroll variable
-      vector_2d scroll;
+    // mouse scroll variable
+    vector_2d scroll;
 
-      open_window("Mouse Scrolling", 800, 600);
+    open_window("Mouse Scrolling", 800, 600);
 
-      while (!window_close_requested("Mouse Scrolling"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Scrolling"))
+    {
+        // process user input events
+        process_events();
 
-          // store the mouse wheel scroll direction and distance to the scroll variable
-          scroll = mouse_wheel_scroll();
+        // store the mouse wheel scroll direction and distance to the scroll variable
+        scroll = mouse_wheel_scroll();
 
-          // change hue of screen colour based on vertical mouse scrolling (two fingers if using trackpad)
-          hue += scroll.y / 100;
+        // change hue of screen colour based on vertical mouse scrolling (two fingers if using trackpad)
+        hue += scroll.y / 100;
 
-          // display current screen colour
-          clear_screen(hsb_color(hue, saturation, brightness));
-          refresh_screen(60);
-      }
+        // display current screen colour
+        clear_screen(hsb_color(hue, saturation, brightness));
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  // color variables
-  double hue = 0.6;
-  double saturation = 0.6;
-  double brightness = 0.6;
+// color variables
+double hue = 0.6;
+double saturation = 0.6;
+double brightness = 0.6;
 
-  // mouse scroll variable
-  Vector2D scroll;
+// mouse scroll variable
+Vector2D scroll;
 
-  SplashKit.OpenWindow("Mouse Scrolling", 800, 600);
+OpenWindow("Mouse Scrolling", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Scrolling"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Scrolling"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // store the mouse wheel scroll direction and distance to the scroll variable
-      scroll = SplashKit.MouseWheelScroll();
+    // store the mouse wheel scroll direction and distance to the scroll variable
+    scroll = MouseWheelScroll();
 
-      // change hue of screen colour based on vertical mouse scrolling (two fingers if using trackpad)
-      hue += scroll.Y / 100;
+    // change hue of screen colour based on vertical mouse scrolling (two fingers if using trackpad)
+    hue += scroll.Y / 100;
 
-      // display current screen colour
-      SplashKit.ClearScreen(SplashKit.HSBColor(hue, saturation, brightness));
-      SplashKit.RefreshScreen(60);
-  }
+    // display current screen colour
+    ClearScreen(HSBColor(hue, saturation, brightness));
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     
@@ -685,7 +691,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-    ```
+```
+
 </TabItem>
 </Tabs>
 
@@ -701,59 +708,60 @@ use the mouse's location in the window, which can be used in your program to mak
 Here is a simple example that draws a circle at the mouse position:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      open_window("Mouse Location", 800, 600);
+int main()
+{
+    open_window("Mouse Location", 800, 600);
 
-      while (!window_close_requested("Mouse Location"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Location"))
+    {
+        // process user input events
+        process_events();
 
-          // draw blue circle at mouse position
-          clear_screen(COLOR_WHITE);
-          fill_circle(COLOR_LIGHT_BLUE, circle_at(mouse_position(), 20));
-          refresh_screen(60);
-      }
+        // draw blue circle at mouse position
+        clear_screen(COLOR_WHITE);
+        fill_circle(COLOR_LIGHT_BLUE, circle_at(mouse_position(), 20));
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  SplashKit.OpenWindow("Mouse Location", 800, 600);
+OpenWindow("Mouse Location", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Location"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Location"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // draw blue circle at mouse position
-      SplashKit.ClearScreen(SplashKit.ColorWhite());
-      SplashKit.FillCircle(SplashKit.ColorLightBlue(), SplashKit.CircleAt(SplashKit.MousePosition(), 20));
-      SplashKit.RefreshScreen(60);
-  }
+    // draw blue circle at mouse position
+    ClearScreen(ColorWhite());
+    FillCircle(ColorLightBlue(), CircleAt(MousePosition(), 20));
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     
@@ -780,7 +788,7 @@ def main():
 
 if __name__ == "__main__":
     main()
- ```
+```
 
 </TabItem>
 </Tabs>
@@ -792,59 +800,60 @@ if __name__ == "__main__":
 Here is a simple example that displays the mouse position vector as a line:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      open_window("Mouse Location", 800, 600);
+int main()
+{
+    open_window("Mouse Location", 800, 600);
 
-      while (!window_close_requested("Mouse Location"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Location"))
+    {
+        // process user input events
+        process_events();
 
-          // draw line from mouse position vector
-          clear_screen(COLOR_WHITE);
-          draw_line(COLOR_BLUE, line_from(mouse_position_vector()));
-          refresh_screen(60);
-      }
+        // draw line from mouse position vector
+        clear_screen(COLOR_WHITE);
+        draw_line(COLOR_BLUE, line_from(mouse_position_vector()));
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  SplashKit.OpenWindow("Mouse Location", 800, 600);
+OpenWindow("Mouse Location", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Location"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Location"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // draw line from mouse position vector
-      SplashKit.ClearScreen(SplashKit.ColorWhite());
-      SplashKit.DrawLine(SplashKit.ColorBlue(), SplashKit.LineFrom(SplashKit.MousePositionVector()));
-      SplashKit.RefreshScreen(60);
-  }
+    // draw line from mouse position vector
+    ClearScreen(ColorWhite());
+    DrawLine(ColorBlue(), LineFrom(MousePositionVector()));
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     
@@ -883,80 +892,79 @@ if __name__ == "__main__":
 Here is an example using the left mouse button to drag a "curtain" across the screen from the left side, based on the mouse's x coordinate:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      float x = 0;
+int main()
+{
+    float x = 0;
 
-      open_window("Mouse Location", 800, 600);
+    open_window("Mouse Location", 800, 600);
 
-      while (!window_close_requested("Mouse Location"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Location"))
+    {
+        // process user input events
+        process_events();
 
-          if (mouse_down(LEFT_BUTTON))
-          {
-              x = mouse_x();
-          }
+        if (mouse_down(LEFT_BUTTON))
+        {
+            x = mouse_x();
+        }
 
-          clear_screen(COLOR_WHITE);
-          fill_circle(COLOR_BLUE, 400, 300, 100);
-          // draw purple "curtain" from left side of screen to x coordinate of mouse
-          fill_rectangle(COLOR_PURPLE, 0, 0, x, screen_height());
-          refresh_screen(60);
-      }
+        clear_screen(COLOR_WHITE);
+        fill_circle(COLOR_BLUE, 400, 300, 100);
+        // draw purple "curtain" from left side of screen to x coordinate of mouse
+        fill_rectangle(COLOR_PURPLE, 0, 0, x, screen_height());
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
 
-  float x = 0;
+float x = 0;
 
-  SplashKit.OpenWindow("Mouse Location", 800, 600);
+OpenWindow("Mouse Location", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Location"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Location"))
+{
+    // process user input events
+    ProcessEvents();
 
-      if (SplashKit.MouseDown(MouseButton.LeftButton))
-      {
-          x = SplashKit.MouseX();
-      }
+    if (MouseDown(MouseButton.LeftButton))
+    {
+        x = MouseX();
+    }
 
-      SplashKit.ClearScreen(SplashKit.ColorWhite());
-      SplashKit.FillCircle(SplashKit.ColorBlue(), 400, 300, 100);
-      // draw purple "curtain" from left side of screen to x coordinate of mouse
-      SplashKit.FillRectangle(SplashKit.ColorPurple(), 0, 0, x, SplashKit.ScreenHeight());
-      SplashKit.RefreshScreen(60);
-  }
+    ClearScreen(ColorWhite());
+    FillCircle(ColorBlue(), 400, 300, 100);
+    // draw purple "curtain" from left side of screen to x coordinate of mouse
+    FillRectangle(ColorPurple(), 0, 0, x, ScreenHeight());
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     x = 0
 
-    
     window = open_window("Mouse Location", 800, 600)
 
     while not window_close_requested(window):
@@ -996,79 +1004,79 @@ if __name__ == "__main__":
 Here is an example using the left mouse button to drag a "curtain/blind" down the screen from the top, based on the mouse's y coordinate:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      float y = 0;
+int main()
+{
+    float y = 0;
 
-      open_window("Mouse Location", 800, 600);
+    open_window("Mouse Location", 800, 600);
 
-      while (!window_close_requested("Mouse Location"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Location"))
+    {
+        // process user input events
+        process_events();
 
-          if (mouse_down(LEFT_BUTTON))
-          {
-              y = mouse_y();
-          }
+        if (mouse_down(LEFT_BUTTON))
+        {
+            y = mouse_y();
+        }
 
-          clear_screen(COLOR_WHITE);
-          fill_circle(COLOR_BLUE, 400, 300, 100);
-          // draw purple "curtain" from top of screen to y coordinate of mouse
-          fill_rectangle(COLOR_PURPLE, 0, 0, screen_width(), y);
-          refresh_screen(60);
-      }
+        clear_screen(COLOR_WHITE);
+        fill_circle(COLOR_BLUE, 400, 300, 100);
+        // draw purple "curtain" from top of screen to y coordinate of mouse
+        fill_rectangle(COLOR_PURPLE, 0, 0, screen_width(), y);
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  float y = 0;
+float y = 0;
 
-  SplashKit.OpenWindow("Mouse Location", 800, 600);
+OpenWindow("Mouse Location", 800, 600);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Location"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Location"))
+{
+    // process user input events
+    ProcessEvents();
 
-      if (SplashKit.MouseDown(MouseButton.LeftButton))
-      {
-          y = SplashKit.MouseY();
-      }
+    if (MouseDown(MouseButton.LeftButton))
+    {
+        y = MouseY();
+    }
 
-      SplashKit.ClearScreen(SplashKit.ColorWhite());
-      SplashKit.FillCircle(SplashKit.ColorBlue(), 400, 300, 100);
-      // draw purple "curtain" from top of screen to y coordinate of mouse
-      SplashKit.FillRectangle(SplashKit.ColorPurple(), 0, 0, SplashKit.ScreenWidth(), y);
-      SplashKit.RefreshScreen(60);
-  }
+    ClearScreen(ColorWhite());
+    FillCircle(ColorBlue(), 400, 300, 100);
+    // draw purple "curtain" from top of screen to y coordinate of mouse
+    FillRectangle(ColorPurple(), 0, 0, ScreenWidth(), y);
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     y = 0
-
    
     window = open_window("Mouse Location", 800, 600)
 
@@ -1087,11 +1095,9 @@ def main():
         
         # Draw a purple "curtain" from the top of the screen to the y-coordinate of the mouse
         fill_rectangle(color_purple(), 0, 0, window_width(window), y)
-        
-        
+
         refresh_window(window)
 
-    
     close_window(window)
 
 if __name__ == "__main__":
@@ -1099,7 +1105,7 @@ if __name__ == "__main__":
 ```
 
 </TabItem>
-    </Tabs>
+</Tabs>
 
 ## Mouse Visibility
 
@@ -1113,101 +1119,101 @@ mouse visibility. These can be useful to create a more immersive environment for
 Here is a simple example where the mouse "disappears in a black hole":
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // create cirle variable for "black hole"
-      circle blackHole;
+int main()
+{
+    // create cirle variable for "black hole"
+    circle blackHole;
 
-      open_window("Mouse Visibility", 800, 600);
+    open_window("Mouse Visibility", 800, 600);
 
-      // create black hole in centre of screen
-      blackHole = circle_at(screen_center(), 50);
+    // create black hole in centre of screen
+    blackHole = circle_at(screen_center(), 50);
 
-      while (!window_close_requested("Mouse Visibility"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Visibility"))
+    {
+        // process user input events
+        process_events();
 
-          // mouse disappears in black hole
-          if (point_in_circle(mouse_position(), blackHole))
-          {
-              hide_mouse();
-          }
-          // mouse reappears once out of black hole
-          else
-          {
-              show_mouse();
-          }
+        // mouse disappears in black hole
+        if (point_in_circle(mouse_position(), blackHole))
+        {
+            hide_mouse();
+        }
+        // mouse reappears once out of black hole
+        else
+        {
+            show_mouse();
+        }
 
-          // display "black hole" on screen
-          clear_screen(COLOR_WHITE);
-          fill_circle(COLOR_BLACK, blackHole);
-          refresh_screen(60);
-      }
+        // display "black hole" on screen
+        clear_screen(COLOR_WHITE);
+        fill_circle(COLOR_BLACK, blackHole);
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  // create cirle variable for "black hole"
-  Circle blackHole;
+// create cirle variable for "black hole"
+Circle blackHole;
 
-  SplashKit.OpenWindow("Mouse Visibility", 800, 600);
+OpenWindow("Mouse Visibility", 800, 600);
 
-  // create black hole in centre of screen
-  blackHole = SplashKit.CircleAt(SplashKit.ScreenCenter(), 50);
+// create black hole in centre of screen
+blackHole = CircleAt(ScreenCenter(), 50);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Visibility"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Visibility"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // mouse disappears in black hole
-      if (SplashKit.PointInCircle(SplashKit.MousePosition(), blackHole))
-      {
-          SplashKit.HideMouse();
-      }
-      // mouse reappears once out of black hole
-      else
-      {
-          SplashKit.ShowMouse();
-      }
+    // mouse disappears in black hole
+    if (PointInCircle(MousePosition(), blackHole))
+    {
+        HideMouse();
+    }
+    // mouse reappears once out of black hole
+    else
+    {
+        ShowMouse();
+    }
 
-      // display "black hole" on screen
-      SplashKit.ClearScreen(SplashKit.ColorWhite());
-      SplashKit.FillCircle(SplashKit.ColorBlack(), blackHole);
-      SplashKit.RefreshScreen(60);
-  }
+    // display "black hole" on screen
+    ClearScreen(ColorWhite());
+    FillCircle(ColorBlack(), blackHole);
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
    
     black_hole_radius = 50
     window_width, window_height = 800, 600
     window = open_window("Mouse Visibility", window_width, window_height)
-    
-    
+
     black_hole_center = point_at(window_width / 2, window_height / 2)
 
     while not window_close_requested(window):
@@ -1233,11 +1239,9 @@ def main():
         
         # Draw the black hole as a circle
         fill_circle(color_black(), black_hole_center.x, black_hole_center.y, black_hole_radius)
-        
-        
+
         refresh_window(window)
 
-   
     close_all_windows()
 
 if __name__ == "__main__":
@@ -1254,88 +1258,87 @@ There are two versions of the [Show Mouse](/api/input/#show-mouse-2) function. T
 Here is a simple example where the mouse is only visible in the "spot light":
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // create cirle variable for emulating a "stage spot light"
-      circle spotLight;
+int main()
+{
+    // create cirle variable for emulating a "stage spot light"
+    circle spotLight;
 
-      open_window("Mouse Visibility", 800, 600);
+    open_window("Mouse Visibility", 800, 600);
 
-      // create a "spot light" circle in centre of screen
-      spotLight = circle_at(screen_center(), 100);
+    // create a "spot light" circle in centre of screen
+    spotLight = circle_at(screen_center(), 100);
 
-      while (!window_close_requested("Mouse Visibility"))
-      {
-          // process user input events
-          process_events();
+    while (!window_close_requested("Mouse Visibility"))
+    {
+        // process user input events
+        process_events();
 
-          // mouse disappears when not in the "spot light"
-          show_mouse(point_in_circle(mouse_position(), spotLight));
+        // mouse disappears when not in the "spot light"
+        show_mouse(point_in_circle(mouse_position(), spotLight));
 
-          // display "spot light" on screen
-          clear_screen(COLOR_BLACK);
-          fill_circle(COLOR_ALICE_BLUE, spotLight);
-          refresh_screen(60);
-      }
+        // display "spot light" on screen
+        clear_screen(COLOR_BLACK);
+        fill_circle(COLOR_ALICE_BLUE, spotLight);
+        refresh_screen(60);
+    }
 
-      close_all_windows();
+    close_all_windows();
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  // create cirle variable for emulating a "stage spot light"
-  Circle spotLight;
+// create cirle variable for emulating a "stage spot light"
+Circle spotLight;
 
-  SplashKit.OpenWindow("Mouse Visibility", 800, 600);
+OpenWindow("Mouse Visibility", 800, 600);
 
-  // create a "spot light" circle in centre of screen
-  spotLight = SplashKit.CircleAt(SplashKit.ScreenCenter(), 100);
+// create a "spot light" circle in centre of screen
+spotLight = CircleAt(ScreenCenter(), 100);
 
-  while (!SplashKit.WindowCloseRequested("Mouse Visibility"))
-  {
-      // process user input events
-      SplashKit.ProcessEvents();
+while (!WindowCloseRequested("Mouse Visibility"))
+{
+    // process user input events
+    ProcessEvents();
 
-      // mouse disappears when not in the "spot light"
-      SplashKit.ShowMouse(SplashKit.PointInCircle(SplashKit.MousePosition(), spotLight));
+    // mouse disappears when not in the "spot light"
+    ShowMouse(PointInCircle(MousePosition(), spotLight));
 
-      // display "spot light" on screen
-      SplashKit.ClearScreen(SplashKit.ColorBlack());
-      SplashKit.FillCircle(SplashKit.ColorWhite(), spotLight);
-      SplashKit.RefreshScreen(60);
-  }
+    // display "spot light" on screen
+    ClearScreen(ColorBlack());
+    FillCircle(ColorWhite(), spotLight);
+    RefreshScreen(60);
+}
 
-  SplashKit.CloseAllWindows();
-  ```
+CloseAllWindows();
+```
 
-  </TabItem>
-  <TabItem label="Python">
+</TabItem>
+<TabItem label="Python">
   
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 def main():
     
     spotlight_radius = 100
     window_width, window_height = 800, 600
     window = open_window("Mouse Visibility in Spotlight", window_width, window_height)
-    
-    
+
     spotlight_center = point_at(window_width / 2, window_height / 2)
 
-   
     mouse_visible = True
 
     while not window_close_requested(window):
@@ -1365,11 +1368,9 @@ def main():
         
         # Draw the spotlight as a circle
         fill_circle(color_white(), spotlight_center.x, spotlight_center.y, spotlight_radius)
-        
-        
+
         refresh_window(window)
 
-   
     close_all_windows()
 
 if __name__ == "__main__":
