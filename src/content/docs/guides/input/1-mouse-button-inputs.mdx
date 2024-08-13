@@ -133,6 +133,46 @@ Here is a simple example using the left and right mouse buttons:
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+from splashkit import *
+COLOR_RED = color_red()
+COLOR_YELLOW = color_yellow()
+COLOR_WHITE = color_white()  
+
+def main():
+    
+    win = open_window("Mouse Inputs", 800, 600)
+    
+    current_color = COLOR_WHITE  
+
+    # Main loop
+    while not window_close_requested(win):
+        # Process user input events
+        process_events()
+
+        # Check mouse click status and change screen color
+        if mouse_clicked(MouseButton.left_button):
+            
+            current_color = COLOR_RED  # Change color to red
+        elif mouse_clicked(MouseButton.right_button):
+            
+            current_color = COLOR_YELLOW  # Change color to yellow
+
+        # Clear screen with the current color
+        clear_screen(current_color)
+        
+        
+        refresh_window(win)
+    
+    
+    close_window(win)
+
+if __name__ == "__main__":
+    main()
+    ```
+    </TabItem>
 </Tabs>
 
 ### Mouse Down
@@ -216,7 +256,52 @@ Here is a simple example using the left and right mouse buttons:
   ```
 
   </TabItem>
-</Tabs>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+
+COLOR_RED = color_red()
+COLOR_YELLOW = color_yellow()
+COLOR_WHITE = color_white()
+
+def main():
+   
+    window = open_window("Mouse Inputs", 800, 600)
+    
+    current_color = COLOR_WHITE  
+
+    
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Check mouse button status and change screen color
+        if mouse_down(MouseButton.left_button):
+            
+            current_color = COLOR_RED  # Change color to red
+        elif mouse_down(MouseButton.right_button):
+            
+            current_color = COLOR_YELLOW  # Change color to yellow
+        else:
+            current_color = COLOR_WHITE  # Default color if no mouse button is held down
+
+        
+        clear_screen(current_color)
+        
+        
+        refresh_window(window)
+    
+    # Close the window
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
+    </Tabs>
 
 ### Mouse Up
 
@@ -290,6 +375,41 @@ Here is a simple example using the left mouse button:
   ```
 
   </TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+
+COLOR_RED = color_red()
+COLOR_WHITE = color_white()
+
+def main():
+    
+    window = open_window("Mouse Inputs", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Change screen color to red if the left mouse button is not pressed
+        if not mouse_down(MouseButton.left_button):
+            clear_screen(COLOR_RED)
+        # Change screen color to white if the left button is pressed
+        else:
+            clear_screen(COLOR_WHITE)
+
+        
+        refresh_window(window)
+
+   
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
 
 ## Mouse Movement Functionality
@@ -398,6 +518,53 @@ Here is an example using the left mouse button combined with horizontal movement
   ```
 
   </TabItem>
+  <TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+def main():
+   
+    hue = 0.8
+    saturation = 0.8
+    brightness = 0.8
+
+    
+    window = open_window("Mouse Movement", 800, 600)
+
+    while not window_close_requested(window):
+        
+        process_events()
+
+        # Get the mouse movement
+        movement = mouse_movement()
+
+        # Update hue and saturation based on mouse movement
+        if mouse_down(MouseButton.left_button):
+            # Adjust hue based on horizontal mouse movement
+            hue = (hue + movement.x / window_width(window)) % 1.0
+        
+        if mouse_down(MouseButton.right_button):
+            # Adjust saturation based on vertical mouse movement
+            saturation = min(max(saturation + movement.y / window_height(window), 0.0), 1.0)
+
+        # Create the color using HSB values
+        color = hsb_color(hue, saturation, brightness)
+
+        # Clear the screen with the new color
+        clear_screen(color)
+        
+        
+        refresh_window(window)
+
+    
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
 
 ### Mouse Wheel Scroll
@@ -482,6 +649,44 @@ Here is an example using vertical scrolling to change the hue of the screen colo
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    
+    hue = 0.6
+    saturation = 0.6
+    brightness = 0.6
+
+    
+    window = open_window("Mouse Scrolling", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Store the mouse wheel scroll direction and distance to the scroll variable
+        scroll = mouse_wheel_scroll()
+
+        # Change hue of screen color based on vertical mouse scrolling
+        hue += scroll.y / 100.0
+
+        # Ensure hue is within the valid range [0.0, 1.0]
+        hue = min(max(hue, 0.0), 1.0)
+
+        # Display current screen color
+        clear_screen(hsb_color(hue, saturation, brightness))
+        refresh_window(window)
+
+   
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+    ```
+</TabItem>
 </Tabs>
 
 ## Mouse Location Functionality
@@ -545,6 +750,39 @@ Here is a simple example that draws a circle at the mouse position:
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    
+    window = open_window("Mouse Location", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Clear the screen with white color
+        clear_screen(color_white())
+        
+        # Get the current mouse position
+        mouse_pos = mouse_position()
+
+        # Draw a blue circle at the current mouse position
+        fill_circle(color_light_blue(), mouse_pos.x, mouse_pos.y, 20)
+        
+        
+        refresh_window(window)
+
+    
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+ ```
+
+</TabItem>
 </Tabs>
 
 ### Mouse Position Vector
@@ -603,6 +841,39 @@ Here is a simple example that displays the mouse position vector as a line:
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    
+    window = open_window("Mouse Location", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Clear the screen with white color
+        clear_screen(color_white())
+
+        # Get the current mouse position
+        mouse_pos = mouse_position_vector()
+
+        # Draw a line from the top-left corner to the current mouse position
+        draw_line(color_blue(), 0, 0, mouse_pos.x, mouse_pos.y)
+        
+        
+        refresh_window(window)
+
+    
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
 
 ### Mouse X
@@ -677,6 +948,45 @@ Here is an example using the left mouse button to drag a "curtain" across the sc
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    x = 0
+
+    
+    window = open_window("Mouse Location", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        # Update x-coordinate if the left mouse button is down
+        if mouse_down(MouseButton.left_button):
+            x = mouse_x()
+
+        # Clear the screen with white color
+        clear_screen(color_white())
+        
+        # Draw a blue circle at the center of the screen
+        fill_circle(color_blue(), 400, 300, 100)
+        
+        # Draw a purple "curtain" from the left side of the screen to the x-coordinate of the mouse
+        fill_rectangle(color_purple(), 0, 0, x, window_height(window))
+        
+        
+        refresh_window(window)
+
+    
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
 
 ### Mouse Y
@@ -751,7 +1061,45 @@ Here is an example using the left mouse button to drag a "curtain/blind" down th
   ```
 
   </TabItem>
-</Tabs>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    y = 0
+
+   
+    window = open_window("Mouse Location", 800, 600)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+
+        if mouse_down(MouseButton.left_button):
+            y = mouse_y()
+
+        # Clear the screen with white color
+        clear_screen(color_white())
+        
+        # Draw a blue circle at the center of the screen
+        fill_circle(color_blue(), 400, 300, 100)
+        
+        # Draw a purple "curtain" from the top of the screen to the y-coordinate of the mouse
+        fill_rectangle(color_purple(), 0, 0, window_width(window), y)
+        
+        
+        refresh_window(window)
+
+    
+    close_window(window)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
+    </Tabs>
 
 ## Mouse Visibility
 
@@ -848,6 +1196,55 @@ Here is a simple example where the mouse "disappears in a black hole":
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+   
+    black_hole_radius = 50
+    window_width, window_height = 800, 600
+    window = open_window("Mouse Visibility", window_width, window_height)
+    
+    
+    black_hole_center = point_at(window_width / 2, window_height / 2)
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+        
+        # Get the current mouse position
+        mouse_pos = mouse_position()
+        
+        # Calculate distance from the mouse to the black hole center
+        dx = mouse_pos.x - black_hole_center.x
+        dy = mouse_pos.y - black_hole_center.y
+        distance = (dx ** 2 + dy ** 2) ** 0.5
+        
+        # Hide or show the mouse based on distance
+        if distance <= black_hole_radius:
+            hide_mouse()
+        else:
+            show_mouse()
+        
+        # Clear the screen with white color
+        clear_screen(color_white())
+        
+        # Draw the black hole as a circle
+        fill_circle(color_black(), black_hole_center.x, black_hole_center.y, black_hole_radius)
+        
+        
+        refresh_window(window)
+
+   
+    close_all_windows()
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
 
 ### Show Mouse
@@ -924,4 +1321,60 @@ Here is a simple example where the mouse is only visible in the "spot light":
   ```
 
   </TabItem>
+  <TabItem label="Python">
+  
+  ```python
+  from splashkit import *
+
+def main():
+    
+    spotlight_radius = 100
+    window_width, window_height = 800, 600
+    window = open_window("Mouse Visibility in Spotlight", window_width, window_height)
+    
+    
+    spotlight_center = point_at(window_width / 2, window_height / 2)
+
+   
+    mouse_visible = True
+
+    while not window_close_requested(window):
+        # Process user input events
+        process_events()
+        
+        # Get the current mouse position
+        mouse_pos = mouse_position()
+        
+        # Calculate distance from the mouse to the spotlight center
+        dx = mouse_pos.x - spotlight_center.x
+        dy = mouse_pos.y - spotlight_center.y
+        distance = (dx ** 2 + dy ** 2) ** 0.5
+        
+        # Determine whether to show or hide the mouse
+        if distance <= spotlight_radius:
+            if not mouse_visible:
+                show_mouse()  # Show the mouse
+                mouse_visible = True
+        else:
+            if mouse_visible:
+                hide_mouse()  # Hide the mouse
+                mouse_visible = False
+        
+        # Clear the screen with black color
+        clear_screen(color_black())
+        
+        # Draw the spotlight as a circle
+        fill_circle(color_white(), spotlight_center.x, spotlight_center.y, spotlight_radius)
+        
+        
+        refresh_window(window)
+
+   
+    close_all_windows()
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
 </Tabs>
