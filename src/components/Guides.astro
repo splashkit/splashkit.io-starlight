@@ -9,7 +9,7 @@ interface Frontmatter {
   category?: string;
 }
 
-let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*.mdx");
+let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
 posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
 let guides = posts.filter(
