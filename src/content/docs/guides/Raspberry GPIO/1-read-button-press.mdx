@@ -32,7 +32,7 @@ In this guide, we explore how to use the GPIO pins on a Raspberry Pi to read but
 
 ### Breadboard
 
-Breadboards are invaluable for testing and building circuits without the need for soldering. Arranged in rows and columns of holes, each row internally connected. See [Blink LED Tutorial](/guides/raspberry/0-blink-led/#components) for more details.
+Breadboards are invaluable for testing and building circuits without the need for soldering. Arranged in rows and columns of holes, each row internally connected. See [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led/#components) for more details.
 
 ### Push Button
 
@@ -40,7 +40,7 @@ A push button allows electricity to flow between its two contacts by physically 
 
 ### Jumper Wires
 
-Jumper wires connect our components on the breadboard to the Raspberry Pi and each other. We use M/F jumper wires for this setup. See [Blink LED Tutorial](/guides/raspberry/0-blink-led/#components) for more details.
+Jumper wires connect our components on the breadboard to the Raspberry Pi and each other. We use M/F jumper wires for this setup. See [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led/#components) for more details.
 
 ## The Circuit
 
@@ -55,7 +55,7 @@ The physical circuit is show in the below image, where we can see the physical i
 ## The Code
 
 :::caution[Before running the code.]
-This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry/0-blink-led/#starting-the-daemon)
+This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
 <Tabs syncKey="code-language">
@@ -224,7 +224,7 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-    Just like in the [first tutorial](/guides/raspberry/0-blink-led), we create a timer that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
+    Just like in the [first tutorial](/guides/raspberry-gpio/0-blink-led), we create a timer that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
 
 4.
     <Tabs syncKey="code-language">
@@ -288,7 +288,7 @@ Lets break down this code and analyse it in sections.
 
     </TabItem>
     </Tabs>
-    Just like in the [first tutorial](/guides/raspberry/0-blink-led) and most projects involving GPIO pins, we must ensure that the hardware and resources we've used are cleaned properly, and we do this by stopping and freeing our timers and calling [Raspi Cleanup](/api/raspberry/#raspi-cleanup).
+    Just like in the [first tutorial](/guides/raspberry-gpio/0-blink-led) and most projects involving GPIO pins, we must ensure that the hardware and resources we've used are cleaned properly, and we do this by stopping and freeing our timers and calling [Raspi Cleanup](/api/raspberry/#raspi-cleanup).
 
 ### Build and run the code
 
