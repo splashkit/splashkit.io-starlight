@@ -40,23 +40,23 @@ To access values in JSON objects like strings, numbers, or booleans, you can use
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  string title = json_read_string(game_data, "gameTitle");
-  int numPlayers = json_read_number_as_int(game_data, "numPlayers");
-  bool isFullScreen = json_read_bool(game_data, "fullScreenMode");
-  ```
+```cpp
+string title = json_read_string(game_data, "gameTitle");
+int numPlayers = json_read_number_as_int(game_data, "numPlayers");
+bool isFullScreen = json_read_bool(game_data, "fullScreenMode");
+```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem label="C#">
+<TabItem label="C#">
 
-  ```csharp
-  string title = JsonReadString(gameData, "gameTitle");
-  int numPlayers = JsonReadNumberAsInt(gameData, "numPlayers");
-  bool isFullScreen = JsonReadBool(gameData, "fullScreenMode");
-  ```
+```csharp
+string title = JsonReadString(gameData, "gameTitle");
+int numPlayers = JsonReadNumberAsInt(gameData, "numPlayers");
+bool isFullScreen = JsonReadBool(gameData, "fullScreenMode");
+```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ### Working with JSON Arrays
@@ -68,45 +68,45 @@ Below is an example of this:
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  vector<string> levels;
+```cpp
+vector<string> levels;
 
-  json_read_array(game_data, "levels", levels);
+json_read_array(game_data, "levels", levels);
 
-  int num_levels = levels.size();
+int num_levels = levels.size();
 
-  for(int i = 0; i < num_levels; i++)
-  {
-      write("Got level: ");
-      write_line(levels[i]);
-  }
-  ```
+for(int i = 0; i < num_levels; i++)
+{
+    write("Got level: ");
+    write_line(levels[i]);
+}
+```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem label="C#">
+<TabItem label="C#">
 
-  ```csharp
+```csharp
 
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
-  using System.Collections.Generic;
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+using System.Collections.Generic;
 
-  Json gameData = JsonFromFile("game_data.json");
+Json gameData = JsonFromFile("game_data.json");
 
-  List<string> levels = new List<string>();
+List<string> levels = new List<string>();
 
-  JsonReadArray(gameData, "levels", ref levels);
+JsonReadArray(gameData, "levels", ref levels);
 
-  int numLevels = levels.Count;
+int numLevels = levels.Count;
 
-  for (int i = 0; i < numLevels; i++)
-  {
-      WriteLine($"Got level: {levels[i]}");
-  }
-  ```
+for (int i = 0; i < numLevels; i++)
+{
+    WriteLine($"Got level: {levels[i]}");
+}
+```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 Running this prints the following to the terminal:
@@ -124,23 +124,23 @@ SplashKit's JSON functionality allows you to extract various types of data, incl
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  json game_screen_size = json_read_object(game_data, "screenSize");
-  int width = json_read_number_as_int(game_screen_size, "width");
-  int height = json_read_number_as_int(game_screen_size, "height");
-  ```
+```cpp
+json game_screen_size = json_read_object(game_data, "screenSize");
+int width = json_read_number_as_int(game_screen_size, "width");
+int height = json_read_number_as_int(game_screen_size, "height");
+```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem label="C#">
+<TabItem label="C#">
 
-  ```csharp
-  Json gameScreenSize = JsonReadObject(gamedata, "screenSize");
-  int width = JsonReadNumberAsInt(gameScreenSize, "width");
-  int height = JsonReadNumberAsInt(gameScreenSize, "height");
-  ```
+```csharp
+Json gameScreenSize = JsonReadObject(gamedata, "screenSize");
+int width = JsonReadNumberAsInt(gameScreenSize, "width");
+int height = JsonReadNumberAsInt(gameScreenSize, "height");
+```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 In this example, [Json Read Object](/api/json/#json-read-object) is used to extract the nested JSON object, and then the values are read from this nested object. These variables can then be used to define the window size for this game.
