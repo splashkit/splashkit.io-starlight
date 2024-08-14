@@ -71,8 +71,26 @@ This command creates sub-folders for each type of resource. One of these is name
   }
   ```
 
-</TabItem>
+  </TabItem>
+  
+  <TabItem label="C#">
+
+  ```csharp
+  using SplashKitSDK;
+  using static SplashKitSDK.SplashKit;
+
+  Json gameData = JsonFromFile("game_data.json");
+
+  string gameTitle = JsonReadString(gameData, "gameTitle");
+
+  WriteLine("Game Title: " + gameTitle);
+
+  FreeJson(gameData);
+  ```
+
+  </TabItem>
 </Tabs>
+
 
 In this code example, we're first using [Json From File](/api/json/#json-from-file) to load a JSON object with the details from the `game_data.json` file.
 Then we are getting the value of the key that matches `gameTitle` using [Json Read String](/api/json/#json-read-string). We write this to the console and free the JSON object using [Free Json](/api/json/#free-json) as we exit. By freeing the JSON object we are deallocating any memory that has been assigned to it, preventing any memory-related errors such as a `Segmentation Fault`. We can build this program with the following command.
@@ -84,8 +102,21 @@ Then we are getting the value of the key that matches `gameTitle` using [Json Re
   g++ program.cpp -l SplashKit -o json_program
   ```
 
-</TabItem>
-</Tabs>
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```shell
+  dotnet build
+  ```
+
+  </TabItem>
+
+  </Tabs>
+
+ 
+
+
 
 And run it with:
 
@@ -96,7 +127,16 @@ And run it with:
   ./json_program
   ```
   
-</TabItem>
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```shell
+  dotnet run
+  ```
+  
+  </TabItem>
+  
 </Tabs>
 
 When we run this program it should output the following to the console:
@@ -136,7 +176,30 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
   }
   ```
 
-</TabItem>
+  </TabItem>
+
+  <TabItem label="C#">
+
+  ```csharp
+  using SplashKitSDK;
+  using static SplashKitSDK.SplashKit;
+
+  Json gameData =JsonFromFile("game_data.json");
+
+  if (JsonHasKey(gameData, "gameTitle"))
+  {
+      string gameTitle = JsonReadString(gameData, "gameTitle");
+      WriteLine("Game Title: " + gameTitle);
+  }
+  else
+  {
+     WriteLine("Key \"gameTitle\" not found.");
+  }
+
+   FreeJson(gameData);
+  ```
+
+  </TabItem>
 </Tabs>
 
 We have now loaded up our JSON file and retrieved the value stored with the `gameTitle` key. In the next tutorial we explore further how we can retrieve values stored in a JSON object.
