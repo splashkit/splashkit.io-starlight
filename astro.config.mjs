@@ -113,6 +113,6 @@ export default defineConfig({
   image: { service: squooshImageService() },
   server: {
     host: true,
-    port: 4321
+    port: 4322
   }
 });
