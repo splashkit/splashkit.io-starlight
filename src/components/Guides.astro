@@ -12,19 +12,100 @@ interface Frontmatter {
 let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
 posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
-let guides = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "guides",
+let using_splashkit = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "using_splashkit",
 );
-// sort guides on the basis of simplifyed File Path
-guides = guides.sort((a, b) =>
+using_splashkit = using_splashkit.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
     simplifyFilePath(b.url?.toString() || ""),
   ),
 );
-let tutorials = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "tutorials",
+
+let animations = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "animations",
 );
-tutorials = tutorials.sort((a, b) =>
+animations = animations.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let audio = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "audio",
+);
+audio = audio.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let camera = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "camera",
+);
+camera = camera.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let graphics = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "graphics",
+);
+graphics = graphics.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let input = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "input",
+);
+input = input.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let json = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "json",
+);
+json = json.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let networking = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "networking",
+);
+networking = networking.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let raspberry = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "raspberry",
+);
+raspberry = raspberry.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let resource_bundles = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "resource_bundles",
+);
+resource_bundles = resource_bundles.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
+let utilities = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "utilities",
+);
+utilities = utilities.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
     simplifyFilePath(b.url?.toString() || ""),
   ),
@@ -51,10 +132,10 @@ function simplifyFilePath(filePath: string) {
 }
 ---
 
-<h2>Tutorials</h2>
+<h2>Using SplashKit</h2>
 <CardGrid stagger>
   {
-    tutorials.map((post) => (
+    using_splashkit.map((post) => (
       <LinkCard
         title={post.frontmatter.title}
         description={`Written by ${post.frontmatter.author || "Various"}${
@@ -67,10 +148,164 @@ function simplifyFilePath(filePath: string) {
     ))
   }
 </CardGrid>
-<h2>Guides</h2>
+
+<h2>Animations</h2>
 <CardGrid stagger>
   {
-    guides.map((post) => (
+    animations.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Audio</h2>
+<CardGrid stagger>
+  {
+    audio.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Camera</h2>
+<CardGrid stagger>
+  {
+    camera.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Graphics</h2>
+<CardGrid stagger>
+  {
+    graphics.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Input</h2>
+<CardGrid stagger>
+  {
+    input.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>JSON</h2>
+<CardGrid stagger>
+  {
+    json.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Networking</h2>
+<CardGrid stagger>
+  {
+    networking.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Raspberry</h2>
+<CardGrid stagger>
+  {
+    raspberry.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Resource Bundles</h2>
+<CardGrid stagger>
+  {
+    resource_bundles.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Utilities</h2>
+<CardGrid stagger>
+  {
+    utilities.map((post) => (
       <LinkCard
         title={post.frontmatter.title}
         description={`Written by ${post.frontmatter.author || "Various"}${
