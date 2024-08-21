@@ -1,0 +1,283 @@
+---
+title: Getting Started With Servers
+description: This guide is an introduction to using web servers
+category: Guides
+author: Andrew Cain and Isaac Wallis
+lastupdated: Jul 14 2018
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+This article provides background information you will need to get started building your own web server using SplashKit. You will be introduced to starting a web server and serving a file to the user.
+
+Web browsers and servers are programs that make it possible for you to access resources and applications on the internet. When you navigate to a web page, your web browser (Chrome, Edge, FireFox, Safari) uses the URL your specify to open a network connection to a computer running somewhere on the internet. The browser's network connection allows it to send data to the server (called a request) and to receive data back in response.
+
+For the computer you connected with to know what to do there must be a program that is listening for these requests and performing some actions in response. In this case that program is what we generally call a "web server". It has an open port (somewhere for others to connect to) and listens on that port for incoming connections. When the connection arrives, it can read the request, perform some actions, and respond.
+
+In this article you will see how to start listening for connections, how to send a file in response, and how to stop listening for new connections. This is then build upon in the [Routing With Servers](/guides/networking/1-routing-with-servers) article, which shows you how to customise your response based upon what the caller requested.
+
+## Step 1: Getting Started
+
+Before we start our server, lets create a file to be served. Create a new project folder (`mkdir testServer`) and move into it (`cd testServer`). We need to setup a resources folder where we can store files we want to "serve". You can do this by running `skm resources` at the Terminal. This will create the **Resources** folder, and all the subfolders in there. The folder we're interested in is **Resources/server** as this is where our server will look for files we want to present to the user.
+
+Create a file in this folder, and fill it out like a basic HTML document as such:
+
+```html
+<html>
+  <head>
+    <title>Basic HTML Page</title>
+  </head>
+  <body>
+    <p>Hello World</p>
+  </body>
+</html>
+```
+
+Save it as "index.html" in **Resources/server** and we are ready to start!
+
+## Step 2: Starting The Server
+
+To start listening for incoming connections, you need to call the [Start Web Server](/api/networking/#start-web-server) procedure. You can pass a **port** value (integer) to this to indicate which port to listen for connections. Each computer can support multiple concurrent connections, so each needs a unique address, so there can only be one program using a given port at one time. To help make this easier to navigate, there are standards for which port to use, and in general, web servers listen on port 80 for insecure (http) traffic, and port 443 for secure (https) traffic, while secure shell (ssh; remote terminal access) is port 22, for example. For local web servers, it’s standard to use port 8080.
+
+We need to pair the [Start Web Server](/api/networking/#start-web-server) with a call to the [Stop Web Server](/api/networking/#stop-web-server) procedure. This will wrap up any requests that have come in and will stop listening for any new requests. So once you are finished with the web server, you can stop it so that it does not take up system resources that you do not need. The following code shows a small program that starts and stops a web server.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      write_line("About to start the server...");
+
+      // Start a web server - defaults to listening to port 8080
+      web_server server = start_web_server();
+
+      // For now we are done... so lets shutdown...
+      stop_web_server(server);
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using SplashKitSDK;
+
+  Console.WriteLine("About to start the server...");
+
+  // Start a web server - defaults to listening to port 8080
+  WebServer server = SplashKit.StartWebServer();
+
+  // For now, we are done... so let's shutdown...
+  SplashKit.StopWebServer(server);
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  write_line("About to start the server...")
+
+  # Start a web server - defaults to listening to port 8080
+  server = start_web_server()
+
+  # For now we are done... so lets shutdown...
+  stop_web_server(server)
+  ```
+
+</TabItem>
+</Tabs>
+
+## Step 3: Responding to a request
+
+[Start Web Server](/api/networking/#start-web-server) will get the computer to listen for incoming connections on port 8080. So now we need to tell it what to do when a request comes in. Each request needs to have a response, and the client's web browser will be waiting for this.
+
+To send a response, you can use the [Send Response](/api/networking/#send-response) procedure. There are several different versions of this, but the easiest allows you to send a string back as a response to the request. In order to send a response, we must wait to get the next incoming request. This is done by calling the [Next Web Request](/api/networking/#next-web-request) function. When you call this, the computer will wait for a request to come in to the web server, and when it arrives, the details are packaged up for us to use and sent back as an [HTTP Request](/api/networking/#http-request). If you don't want to wait, you can check if there are requests before calling [Next Web Request](/api/networking/#next-web-request) by using the [Has Incoming Requests](/api/networking/#has-incoming-requests) function, which will return true if there is a request waiting.
+
+The following code shows an appropriate `"Hello World"` web server program.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      write_line("About to start the server...");
+
+      // Start a web server - defaults to listening to port 8080
+      web_server server = web_server();
+
+      write_line("Waiting for a request - navigate to http://localhost:8080");
+
+      // Wait and get the first request that comes in
+      http_request request = next_web_request(server);
+
+      // Send back the index.html file
+      send_html_file_response(request, "index.html");
+
+      // For now we are done... so lets shutdown...
+      stop_web_server(server);
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using SplashKitSDK;
+
+  SplashKit.WriteLine("About to start the server...");
+
+  // Start a web server - defaults to listening to port 8080
+  WebServer server = SplashKit.StartWebServer();
+
+  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+  // Wait and get the first request that comes in
+  HttpRequest request = SplashKit.NextWebRequest(server);
+
+  // Send back the index.html file
+  SplashKit.SendResponse(request, "Hello World");
+
+  // For now, we are done, so let's shutdown
+  SplashKit.StopWebServer(server);
+
+  SplashKit.ReadLine(); // Pause to keep the console window open
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  write_line("About to start the server...")
+
+  # Start a web server - defaults to listening to port 8080
+  server = start_web_server_with_default_port()
+
+  write_line("Waiting for a request - navigate to http://localhost:8080")
+
+  # Wait and get the first request that comes in
+  request = next_web_request(server)
+
+  # Send back the index.html file
+  send_response(request, "Hello World")
+
+  # For now, we are done, so let's shutdown
+  stop_web_server(server)
+
+  read_line() # Pause to keep the console window open
+  ```
+
+</TabItem>
+</Tabs>
+
+Compile and run your program. Notice that when you run the program nothing seems to happen... The program is waiting for a request! To create a request navigate to [http://localhost:8080](http://localhost:8080) see you should see the response. When you switch back your program will have ended. Trying to make another request will no longer work, as there isn't any program listening for requests on port 8080.
+
+## Step 4: Responding with the contents of a file
+
+Often you will want to be able to respond with the contents of a file. To help make this easy, SplashKit provides a [Send File Response](/api/networking/#send-file-response) procedure along with [Send HTML File Response](/api/networking/#send-html-file-response), [Send CSS File Response](/api/networking/#send-css-file-response), [Send JavaScript File Response](/api/networking/#send-javascript-file-response) to simplify responding with common web file types. When you respond with a file, SplashKit will search the program’s Resources folder for the file you specify, and will then send the details from that file across the network as your response to the incoming request.
+
+The follow code replaces the "Hello World" response with the details from the index.html file we created.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      write_line("About to start the server...");
+
+      // Start a web server - defaults to listening to port 8080
+      web_server server = web_server();
+
+      write_line("Waiting for a request - navigate to http://localhost:8080");
+
+      // Wait and get the first request that comes in
+      http_request request = next_web_request(server);
+
+      // Send back the index.html file
+      send_html_file_response(request, "index.html");
+
+      // For now we are done... so lets shutdown...
+      stop_web_server(server);
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using SplashKitSDK;
+
+  SplashKit.WriteLine("About to start the server...");
+
+  // Start a web server - defaults to listening to port 8080
+  WebServer server = SplashKit.StartWebServer();
+
+  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+  // Wait and get the first request that comes in
+  HttpRequest request = SplashKit.NextWebRequest(server);
+
+  // Send back the index.html file
+  SplashKit.SendHtmlFileResponse(request, "index.html");
+
+  // For now, we are done, so let's shutdown
+  SplashKit.StopWebServer(server);
+
+  SplashKit.ReadLine(); // Pause to keep the console window open
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  write_line("About to start the server...")
+
+  # Start a web server - defaults to listening to port 8080
+  server = start_web_server_with_default_port()
+
+  write_line("Waiting for a request - navigate to http://localhost:8080")
+
+  # Wait and get the first request that comes in
+  request = next_web_request(server)
+
+  # Send back the index.html file
+  send_html_file_response(request, "index.html")
+
+  # For now, we are done, so let's shutdown
+  stop_web_server(server)
+
+  read_line() # Pause to keep the console window open
+  ```
+
+</TabItem>
+</Tabs>
+
+## Next Step
+
+See how to respond to different requests in the [routing with servers](/guides/networking/1-routing-with-servers) article.
