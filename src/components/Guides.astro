@@ -66,6 +66,15 @@ input = input.sort((a, b) =>
   ),
 );
 
+let interface_guide = posts.filter(
+  (post) => post.frontmatter.category?.toLowerCase() == "interface",
+);
+interface_guide = interface_guide.sort((a, b) =>
+  simplifyFilePath(a.url?.toString() || "").localeCompare(
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
+);
+
 let json = posts.filter(
   (post) => post.frontmatter.category?.toLowerCase() == "json",
 );
@@ -221,6 +230,23 @@ function simplifyFilePath(filePath: string) {
 <CardGrid stagger>
   {
     input.map((post) => (
+      <LinkCard
+        title={post.frontmatter.title}
+        description={`Written by ${post.frontmatter.author || "Various"}${
+          post.frontmatter.lastupdated
+            ? ` on ${post.frontmatter.lastupdated}`
+            : ""
+        }`}
+        href={simplifyFilePath(post.url?.toString() || "")}
+      />
+    ))
+  }
+</CardGrid>
+
+<h2>Interface</h2>
+<CardGrid stagger>
+  {
+    interface_guide.map((post) => (
       <LinkCard
         title={post.frontmatter.title}
         description={`Written by ${post.frontmatter.author || "Various"}${
