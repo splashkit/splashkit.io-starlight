@@ -1,0 +1,84 @@
+---
+title: Using SplashKit (Overview)
+sidebar:
+  order: 1
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+---
+
+Here is a basic overview of how to compile and run SplashKit programs in C++, C# and python.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+  To compile C++ SplashKit code, you will use the following command (assuming the code file is named `program.cpp`):
+
+  ```shell
+  g++ program.cpp -l SplashKit -o test_program
+  ```
+
+  Then you can run the program with:
+
+  ```shell
+  ./test_program
+  ```
+
+</TabItem>
+<TabItem label="C#">
+  To run C# SplashKit code with dotnet, you will need to first run the command below:
+
+  ```shell
+  dotnet add package SplashKit
+  ```
+
+  This will add the SplashKit NuGet package, to link the SplashKit SDK to your project.
+
+  Then you can run the program using:
+
+  ```shell
+  dotnet run
+  ```
+
+</TabItem>
+<TabItem label="Python">
+  To run SplashKit python code, you will use the following command (assuming the code file is named `program.py`):
+
+  ```shell
+  skm python3 program.py
+  ```
+
+</TabItem>
+</Tabs>
+
+{/* Commented out till these guides have been updated.
+
+## Detailed OS-specific Guides
+
+And here are some more detailed guides specific to each OS listed below:
+
+<CardGrid>
+  <LinkCard
+    title="macOS"
+    description="Detailed guide on using SplashKit on macOS."
+    href="/guides/0-using-splashkit/1-splashkit-on-macos"
+  />
+  <LinkCard
+    title="macOS"
+    description="Detailed guide on using SplashKit on Windows (with MSYS2)."
+    href="/guides/0-using-splashkit/2-splashkit-with-msys2-on-windows"
+  />
+  <LinkCard
+    title="macOS"
+    description="Detailed guide on using SplashKit on Windows (with WSL)."
+    href="/guides/0-using-splashkit/3-splashkit-with-wsl-on-windows"
+  />
+  <LinkCard
+    title="Linux"
+    description="Detailed guide on using SplashKit on Linux."
+    href="/guides/0-using-splashkit/4-splashkit-on-linux"
+  />
+</CardGrid>
+
+*/}

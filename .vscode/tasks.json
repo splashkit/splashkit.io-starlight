@@ -18,7 +18,7 @@
     {
       "label": "Serve splashkit.io Website",
       "type": "shell",
-      "command": "npm install && npx http-server ./dist -p 3000",
+      "command": "npm start",
       "group": "build",
       "dependsOn": "Build splashkit.io Website",
       "presentation": {
