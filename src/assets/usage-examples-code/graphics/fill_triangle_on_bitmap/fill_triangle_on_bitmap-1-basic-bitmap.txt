@@ -1,0 +1,3 @@
+### Fill Triangle on Bitmap
+
+The following code shows an example of using the [Fill Triangle On Bitmap](/api/graphics#fill-triangle-on-bitmap-3) function to draw a red triangle pointing to a fish in a loaded underwater scene bitmap, labeling it as "Colourful Fish."
