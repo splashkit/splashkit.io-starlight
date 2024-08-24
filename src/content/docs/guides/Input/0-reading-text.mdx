@@ -25,61 +25,95 @@ The following code demonstrates the use of [Read Line](/api/terminal/#read-line)
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      string name; // declare a variable to store the name
-      string quest; // and another to store a quest
+int main()
+{
+    string name;  // declare a variable to store the name
+    string quest; // and another to store a quest
 
-      write("What is your name: ");   // prompt the user for input
-      name = read_line();             // read user input
+    write("What is your name: "); // prompt the user for input
+    name = read_line();           // read user input
 
-      // read in another value
-      write(name + " what is your quest?");
-      quest = read_line();
+    // read in another value
+    write("And what is your quest? ");
+    quest = read_line();
 
-      write_line(quest); // output quest to the terminal
+    write_line(name + "'s quest is: " + quest); // output quest to the terminal
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  string name;    // declare a variable to store the name
-  string quest;   // and another to store a quest
+```csharp
+using static SplashKitSDK.SplashKit;
 
-  Write("What is your name: ");  // prompt the user for input
-  name = ReadLine();             // read user input
+string name;    // declare a variable to store the name
+string quest;   // and another to store a quest
 
-  // Read in another value
-  Write(name + " what is your quest?");
-  quest = ReadLine();
+Write("What is your name: ");  // prompt the user for input
+name = ReadLine();             // read user input
 
-  WriteLine(quest); // output quest to the terminal
-  ```
+// Read in another value
+Write("And what is your quest? ");
+quest = ReadLine();
+
+WriteLine(name + "'s quest is: " + quest); // output quest to the terminal
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace ReadingText
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            string name;    // declare a variable to store the name
+            string quest;   // and another to store a quest
+
+            SplashKit.Write("What is your name: ");  // prompt the user for input
+            name = SplashKit.ReadLine();             // read user input
+
+            // Read in another value
+            SplashKit.Write("And what is your quest? ");
+            quest = SplashKit.ReadLine();
+
+            SplashKit.WriteLine(name + "'s quest is: " + quest); // output quest to the terminal
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
-      
-  write("What is your name: ") # prompt the user for input
-  name = read_line() # read user input and store in a variable
+```python
+from splashkit import *
+    
+write("What is your name: ") # prompt the user for input
+name = read_line() # read user input and store in a variable
 
-  # Read in another value
-  write(name + " what is your quest?")
-  quest = read_line()
+# Read in another value
+write("And what is your quest? ")
+quest = read_line()
 
-  write_line(quest)
-  ```
+write_line(name + "'s quest is: " + quest)
+```
 
 </TabItem>
 </Tabs>
@@ -93,190 +127,305 @@ Let's see how to read input from the user using some example code. We can then t
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // Lets read into this string...
-      string name = "unknown";
+int main()
+{
+    // Lets read into this string...
+    string name = "unknown";
 
-      // Open a window to show the user...
-      open_window("Reading Input.", 800, 600);
+    // Open a window to show the user...
+    open_window("Reading Input.", 800, 600);
 
-      // Load a font for text rendering
-      load_font("input", "arial.ttf");
+    // Load a font for text rendering
+    load_font("input", "arial.ttf");
 
-      // Define area where text should appear
-      rectangle rect = rectangle_from(230.0, 50.0, 200.0, 30.0);
+    // Define area where text should appear
+    rectangle rect = rectangle_from(230.0, 50.0, 200.0, 30.0);
 
-      // Start reading text in this area
-      // This could be in the loop, if we had a button or something to click to trigger this
-      start_reading_text(rect);
+    // Start reading text in this area
+    start_reading_text(rect);
 
-      // Here is our game loop
-      do
-      {
-          // Listen for input... this will update the text read
-          process_events();
+    // Here is our game loop
+    do
+    {
+        // Listen for input... this will update the text read
+        process_events();
 
-          // Looks like we finished reading text...
-          if (not reading_text())
-          {
-              // Was input cancelled?
-              if (text_entry_cancelled())
-              {
-                  name = "unknown";
-              }
-              else
-              {
-                  // Get the name from the text input
-                  name = text_input();
-              }
-          }
+        // Click anywhere on the screen to trigger the text input
+        if (mouse_clicked(LEFT_BUTTON))
+        {
+            // Start reading text in the rectagle area
+            start_reading_text(rect);
+        }
 
-          // Draw the screen...
-          clear_screen(COLOR_WHITE);
+        // Looks like we finished reading text...
+        if (not reading_text())
+        {
+            // Was input cancelled?
+            if (text_entry_cancelled())
+            {
+                name = "unknown";
+            }
+            else
+            {
+                // Get the name from the text input
+                name = text_input();
+            }
+        }
 
-          draw_rectangle(COLOR_BLACK, rect);
+        // Draw the screen...
+        clear_screen(COLOR_WHITE);
 
-          // If we are reading text... then show what it is
-          if (reading_text())
-          {
-              draw_collected_text(COLOR_BLACK, font_named("input"), 18, option_defaults());
-          }
+        draw_rectangle(COLOR_BLACK, rect);
 
-          // Draw what we have in the name
-          draw_text(name, COLOR_BLACK, font_named("input"), 18, 10, 10);
+        // If we are reading text... then show what it is
+        if (reading_text())
+        {
+            draw_collected_text(COLOR_BLACK, font_named("input"), 18, option_defaults());
+        }
 
-          // Show it..
-          refresh_screen(60);
-      } while (!quit_requested());
+        // Draw text instructions
+        draw_text("Click anywhere to start reading text", COLOR_RED, font_named("input"), 18, 200, 100);
 
-      close_all_windows();
-      return 0;
-  }
-  ```
+        // Draw what we have in the name
+        draw_text(name, COLOR_BLACK, font_named("input"), 18, 10, 10);
+
+        // Show it..
+        refresh_screen(60);
+    } while (!quit_requested());
+
+    close_all_windows();
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  // Let's read into this string...
-  string name = "unknown";
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  // Open a window to show the user...
-  OpenWindow("Reading Input.", 800, 600);
+// Let's read into this string...
+string name = "unknown";
 
-  // Load a font for text rendering
-  LoadFont("input", "arial.ttf");
+// Open a window to show the user...
+OpenWindow("Reading Input.", 800, 600);
 
-  // Define the area where text should appear
-  Rectangle rect = RectangleFrom(230.0, 50.0, 200.0, 30.0);
+// Load a font for text rendering
+LoadFont("input", "arial.ttf");
 
-  // Start reading text in this area
-  // This could be in the loop, if we had a button or something to click to trigger this
-  StartReadingText(rect);
+// Define the area where text should appear
+Rectangle rect = RectangleFrom(230.0, 50.0, 200.0, 30.0);
 
-  // Here is our game loop
-  do
-  {
-      // Listen for input... this will update the text read
-      ProcessEvents();
+// Start reading text in this area
+StartReadingText(rect);
 
-      // Looks like we finished reading text...
-      if (!ReadingText())
-      {
-          // Was input canceled?
-          if (TextEntryCancelled())
-          {
-              name = "unknown";
-          }
-          else
-          {
-              // Get the name from the text input
-              name = TextInput();
-          }
-      }
+// Here is our game loop
+do
+{
+    // Listen for input... this will update the text read
+    ProcessEvents();
 
-      // Draw the screen...
-      ClearScreen(ColorWhite());
-      DrawRectangle(ColorBlack(), rect);
+    // Click anywhere on the screen to trigger the text input
+    if (MouseClicked(MouseButton.LeftButton))
+    {
+        // Start reading text in the rectagle area
+        StartReadingText(rect);
+    }
 
-      // If we are reading text... then show what it is
-      if (ReadingText())
-      {
-          DrawCollectedText(ColorBlack(), FontNamed("input"), 18, OptionDefaults());
-      }
+    // Looks like we finished reading text...
+    if (!ReadingText())
+    {
+        // Was input canceled?
+        if (TextEntryCancelled())
+        {
+            name = "unknown";
+        }
+        else
+        {
+            // Get the name from the text input
+            name = TextInput();
+        }
+    }
 
-      // Draw what we have in the name
-      DrawText(name, ColorBlack(), FontNamed("input"), 18, 10, 10);
+    // Draw the screen...
+    ClearScreen(ColorWhite());
+    DrawRectangle(ColorBlack(), rect);
 
-      // Show it...
-      RefreshScreen(60);
-  } while (!QuitRequested());
+    // If we are reading text... then show what it is
+    if (ReadingText())
+    {
+        DrawCollectedText(ColorBlack(), FontNamed("input"), 18, OptionDefaults());
+    }
 
-  CloseAllWindows();  
-  ```
+    // Draw text instructions
+    DrawText("Click anywhere to start reading text", Color.Red, SplashKit.FontNamed("input"), 18, 200, 100);
+
+    // Draw what we have in the name
+    DrawText(name, ColorBlack(), FontNamed("input"), 18, 10, 10);
+
+    // Show it...
+    RefreshScreen(60);
+} while (!QuitRequested());
+
+CloseAllWindows(); 
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace ReadingInput
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Let's read into this string...
+            string name = "unknown";
+
+            // Open a window to show the user...
+            Window window = new Window("Reading Input.", 800, 600);
+
+            // Load a font for text rendering
+            Font font = new Font("input", "arial.ttf");
+
+            // Define the area where text should appear
+            Rectangle rect = SplashKit.RectangleFrom(230.0, 50.0, 200.0, 30.0);
+
+            // Start reading text in the rectagle area
+            SplashKit.StartReadingText(rect);
+
+            // Here is our game loop
+            do
+            {
+                // Listen for input... this will update the text read
+                SplashKit.ProcessEvents();
+
+                // Click anywhere on the screen to trigger the text input
+                if (SplashKit.MouseClicked(MouseButton.LeftButton))
+                {
+                    // Start reading text in the rectagle area
+                    SplashKit.StartReadingText(rect);
+                }
+
+                // Looks like we finished reading text...
+                if (!SplashKit.ReadingText())
+                {
+                    // Was input canceled?
+                    if (SplashKit.TextEntryCancelled())
+                    {
+                        name = "unknown";
+                    }
+                    else
+                    {
+                        // Get the name from the text input
+                        name = SplashKit.TextInput();
+                    }
+                }
+
+                // Draw the screen...
+                window.Clear(Color.White);
+                window.DrawRectangle(Color.Black, rect);
+
+                // If we are reading text... then show what it is
+                if (SplashKit.ReadingText())
+                {
+                    SplashKit.DrawCollectedText(Color.Black, font, 18, SplashKit.OptionDefaults());
+                }
+
+                // Draw text instructions
+                window.DrawText("Click anywhere to start reading text", Color.Red, font, 18, 200, 100);
+
+                // Draw what we have in the name
+                window.DrawText(name, Color.Black, font, 18, 10, 10);
+
+                // Show it...
+                window.Refresh(60);
+            } while (!window.CloseRequested);
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  # Lets read into this string...
-  name = "unknown"
+# Lets read into this string...
+name = "unknown"
 
-  # Open a window to show the user...
-  open_window("Reading Input.", 800, 600)
+# Open a window to show the user...
+open_window("Reading Input.", 800, 600)
 
-  # Load a font for text rendering
-  load_font("input", "arial.ttf")
+# Load a font for text rendering
+load_font("input", "arial.ttf")
 
-  # Define area where text should appear
-  rect = rectangle_from(230.0, 50.0, 200.0, 30.0)
+# Define area where text should appear
+rect = rectangle_from(230.0, 50.0, 200.0, 30.0)
 
-  # Start reading text in this area
-  # This could be in the loop, if we had a button or something to click to trigger this
-  start_reading_text(rect)
+# Start reading text in this area
+# This could be in the loop, if we had a button or something to click to trigger this
+start_reading_text(rect)
 
-  # Here is our game loop
+# Here is our game loop
 
-  while not quit_requested():
-      
-      # Listen for input... thiss will update the text read
-      process_events()
-      
-      # Looks like we finished reading text...
-      if not reading_text():
-          # Was input cancelled
-          if text_entry_cancelled():
-              name = "unknown"
-          else:
-              # Get the name from the text input
-              name = text_input()
-              
-      # Draw the screen...
-      clear_screen(color_white())
-      
-      draw_rectangle_record(color_black(), rect)
-      
-      # If we are reading text... then show what it is
-      if reading_text():
-          draw_collected_text(color_black(), font_named("input"), 18, option_defaults())
-      
-      # Draw what we have in the name
-      draw_text(name, color_black(), font_named("input"), 18, 10, 10)
-      
-      # Show it...
-      refresh_screen_with_target_fps(60)
+while not quit_requested():
+    
+    # Listen for input... thiss will update the text read
+    process_events()
+    
+    # Click anywhere on the screen to trigger the text input
+    if (mouse_clicked(MouseButton.left_button)):
 
-  close_all_windows()
-  ```
+        # Start reading text in the rectagle area
+        start_reading_text(rect)
+
+
+    # Looks like we finished reading text...
+    if not reading_text():
+        # Was input cancelled
+        if text_entry_cancelled():
+            name = "unknown"
+        else:
+            # Get the name from the text input
+            name = text_input()
+            
+    # Draw the screen...
+    clear_screen(color_white())
+    
+    draw_rectangle_record(color_black(), rect)
+    
+    # If we are reading text... then show what it is
+    if reading_text():
+        draw_collected_text(color_black(), font_named("input"), 18, option_defaults())
+    
+    # Draw text instructions
+    draw_text("Click anywhere to start reading text", color_red(), font_named("input"), 18, 200, 100)
+
+    # Draw what we have in the name
+    draw_text(name, color_black(), font_named("input"), 18, 10, 10)
+    
+    # Show it...
+    refresh_screen_with_target_fps(60)
+
+close_all_windows()
+```
 
 </TabItem>
 </Tabs>
