@@ -1,35 +1,84 @@
- .card {
-  border-radius: 12px;
-  position: relative;
-  background: radial-gradient(
-      300px circle at top left,
-      rgba(85, 44, 190, 0.081) 20%,
-      transparent 100%
-    ),
-    radial-gradient(
-      300px circle at bottom right,
-      rgba(44, 102, 190, 0.09) 20%,
-      transparent 100%
-    );
+:root {
+  --sl-card-background-light: #fafafa;
+  --sl-card-background-dark: #333333;
+  --sl-hover-text-light: #ffffff;
+  --sl-hover-text-dark: #000000;
+  --sl-logo-orange: #f7941d;
+  /* Approximate orange from the logo */
+  --sl-logo-blue: #126ca8;
+  /* Approximate blue from the text */
+  --gradient-light: rgba(232, 232, 234, 0.212);
+  --gradient-dark: rgba(23, 10, 10, 0.25);
+}
+/* Defined new variables for card background and hover text colors, ensuring a consistent color scheme across different themes. */
+
+:root[data-theme="light"] .card {
+  background: var(--sl-card-background-light);
+  color: var(--sl-hover-text-dark);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  width: 95%;
 }
 
- .card::before {
+/* Updated card styling for the light theme, including smooth transitions for background and text colors. */
+
+:root[data-theme="light"] .card:hover {
+  background-color: var(--sl-logo-orange);
+  /* Updated to logo orange */
+  color: var(--sl-hover-text-light);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--sl-logo-blue);
+  /* Border color added for hover */
+}
+
+/* Applied a hover effect that changes background color, text color, and slightly scales the card up for a dynamic feel in the light theme. */
+
+:root[data-theme="dark"] .card {
+  background: var(--sl-card-background-dark);
+  color: var(--sl-hover-text-light);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  width: 90%;
+}
+
+/* Customized the card appearance for dark theme, maintaining consistency with light theme adjustments. */
+
+:root[data-theme="dark"] .card:hover {
+  background-color: var(--sl-logo-blue);
+  /* Updated to logo blue */
+  color: var(--sl-hover-text-dark);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--sl-logo-blue);
+  /* Border color added for hover */
+}
+
+/* Enhanced dark theme cards with a similar hover effect as in the light theme, promoting uniformity. */
+
+.card::before {
   content: "";
   position: absolute;
   inset: 0px;
   border-radius: inherit;
   transition: opacity 400ms ease 0s;
   will-change: background, opacity;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(62, 85, 167, 0.212),
-    transparent 40%
-  );
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+      var(--gradient-light),
+      transparent 40%);
   opacity: 0;
+  /* Default to 0 to make it visible only on hover */
   z-index: 2;
   pointer-events: none;
+}
+
+
+:root[data-theme="dark"] .card::before {
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+      var(--gradient-dark),
+      transparent 40%);
 }
 
 .card:hover::before {
   opacity: 1;
 }
+
+/* I have added a border to my card which matches with the blue color in the SplashKit's logo, and made a light gradient to follow the cursor in light mode and vice versa*/

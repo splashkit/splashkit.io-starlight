@@ -4,38 +4,17 @@
 
 /* Dark mode colors. */
 :root {
+  --splashkit-blue: #00A9E0;
+  --splashkit-blue: #00A9E0;
   --purple-hsl: 255, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
   /* --table-head-color: rgb(35, 38, 47); */
 }
 
 /* Light mode colors. */
-:root[data-theme="light"] {
-  --purple-hsl: 255, 85%, 65%;
-  --sl-hue-accent: 350;
+:root[data-theme='light'] {
+/*   --sl-color-accent: #00A9E0; */
   --sl-color-accent: #3D50f5;
-
-  /* Potential colours to use when the site can toggle the theme in the future */
-  /* --table-head-color: rgb(244, 245, 247); */
-  /* --table-head-color: hsla(187, 99%, 38%, 0.35); light splashkit blue*/
-  /* --table-head-color: rgb(245, 166, 35);   splashkit orange */
-  /*--table-head-color: rgb(1, 172, 194);     splashkit blue*/
-  /* --table-head-color: rgb(201, 231, 240);	  light blue */
-  /*--table-head-color: rgb(255, 167, 126);   light orange*/
-  /*--table-head-color: rgb(245, 139, 90);	  dark orange*/
-}
-
-.hero img {
-  transition: transform 0.3s ease;
-  width: 90%;
-  height: 90%;
-}
-
-.hero img:hover {
-  transform: scale(1.1);
-  /* Enlarge the image on hover */
-  transition: transform 0.3s ease;
-  /* Add a smooth transition effect */
 }
 
 [data-has-hero] .page {
@@ -69,8 +48,61 @@ iframe[id="stackblitz-iframe"] {
 }
 
 [data-has-hero] .hero .action {
+  border: 1px solid var(--splashkit-blue);
+  transition: background-color ease-in-out 0.25s, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+/*   background-color: white;
+  color: black; */
+  cursor: pointer;
+}
+
+[data-has-hero] .hero .action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(60deg, #FF8300, #00A9E0);
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   border-radius: 24px;
-  transition: background-color ease-in-out 0.25s;
+  z-index: -1;
+}
+
+[data-has-hero] .hero .action:hover::before {
+  opacity: 1;
+  animation: moveGradient 3s linear infinite;
+}
+
+[data-has-hero] .hero .action:hover {
+  color: white;
+  background-color: transparent;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+  z-index: -1;
+}
+
+[data-has-hero] .hero .action:hover::before {
+  opacity: 1;
+  animation: moveGradient 3s linear infinite;
+}
+
+[data-has-hero] .hero .action:hover {
+  color: white;
+  background-color: transparent;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 [data-has-hero] .hero .action.minimal {
@@ -94,40 +126,10 @@ iframe[id="stackblitz-iframe"] {
   -webkit-text-fill-color: transparent;
 }
 
-/* centre all images/gifs in guides */
+/* centre all images/gifs */
 img {
   display: block;
   margin: auto;
-}
-
-[data-has-hero] .card {
-  border-radius: 12px;
-  position: relative;
-  background: radial-gradient(300px circle at top left,
-      rgba(85, 44, 190, 0.081) 20%,
-      transparent 100%),
-    radial-gradient(300px circle at bottom right,
-      rgba(44, 102, 190, 0.09) 20%,
-      transparent 100%);
-}
-
-[data-has-hero] .card::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  border-radius: inherit;
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(62, 85, 167, 0.212),
-      transparent 40%);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-[data-has-hero] .card:hover::before {
-  opacity: 1;
 }
 
 [data-has-hero] .star-text {
@@ -141,7 +143,6 @@ img {
   margin-top: 80px !important;
 }
 
-/* after */
 @font-face {
   font-family: "FontAwesomeBrands";
   src: url("/src/fonts/fa-brands-400.woff2") format("woff2");
@@ -150,57 +151,35 @@ img {
   font-display: swap;
 }
 
+/* Additional styles for the site and icons */
+
+/* Additional styles for the site and icons */
 .home-card {
   border-radius: 20%;
   border: 1px dotted black;
 }
 
-html[data-theme="dark"] a.multitool:after {
-  border: 1px solid black;
-}
+html[data-theme="dark"] a.multitool:after,
+html[data-theme="dark"] a.apple:after,
+html[data-theme="dark"] a.windows:after,
 
-a.pi:after {
-  font-family: "FontAwesomeBrands";
-  content: "\f7bb";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.apple:after {
-  border: 1px solid black;
-}
-
-a.apple:after {
-  font-family: "FontAwesomeBrands";
-  content: "\f179";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.windows:after {
-  border: 1px solid black;
-}
-
-a.windows:after {
-  font-family: "FontAwesomeBrands";
-  content: "\f17a";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
+html[data-theme="dark"] a.multitool:after,
+html[data-theme="dark"] a.apple:after,
+html[data-theme="dark"] a.windows:after,
 html[data-theme="dark"] a.linux:after {
   border: 1px solid black;
 }
 
+a.pi:after,
+a.apple:after,
+a.windows:after,
+a.pi:after,
+a.apple:after,
+a.windows:after,
 a.linux:after {
   font-family: "FontAwesomeBrands";
-  content: "\f17c";
+  content: "\f7bb"; /* example, adjust the content value for each specific icon */
+  content: "\f7bb"; /* example, adjust the content value for each specific icon */
   float: right;
   border-radius: 5px;
   border: 1px solid white;
@@ -230,19 +209,6 @@ a.decent {
 
 a.decent:hover {
   color: var(--sl-color-accent) !important;
-}
-
-[data-has-hero] .page {
-  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
-}
-
-[data-has-hero] header {
-  border-bottom: 1px solid transparent;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
 }
 
 /** Better table styling */
@@ -308,3 +274,19 @@ code {
   border: 1px solid lightgray;
   margin-left: 20px;
 }
+
+/* Applied a blue drop-shadow effect to hero images, enhancing their visibility and focus. */
+.hero img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  width: 90%;
+  height: 90%;
+  filter: drop-shadow(0 0 1rem var(--splashkit-blue));
+}
+
+/* Blue shadow background upon hover for the splashkit logo */
+.hero img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 2rem var(--splashkit-blue));
+}
+/* Enhanced the hover effect on hero images by increasing the shadow size and applying a slight scale-up animation. */
