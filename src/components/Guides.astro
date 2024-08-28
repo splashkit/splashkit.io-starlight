@@ -76,7 +76,7 @@ function simplifyFilePath(filePath: string): string {
     return (
       <>
         <h2>{formattedGroupName}</h2>
-        <CardGrid stagger>
+        <CardGrid>
           {filteredPosts.map((post) => (
             <LinkCard
               title={post.frontmatter.title}
