@@ -1,0 +1,558 @@
+---
+title: Useful Utilities
+description: In this article, we discuss useful utilities that you can use to convert, check and manipulate common data types in SplashKit programs.
+category: Guides
+author: Richard Denton
+lastupdated: July 2024
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+SplashKit's [Utilities library](/api/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
+
+These functions are useful in many areas of programming.
+
+- [Converting a string to a number](#converting-a-string-to-a-number)
+  - [Usage scenario: converting user input to an integer](#usage-scenario-converting-user-input-to-an-integer)
+- [Checking if a string is a number](#checking-if-a-string-is-a-number)
+  - [Usage scenario: accept user input as a number](#usage-scenario-accept-user-input-as-a-number)
+- [Manipulating strings](#manipulating-strings)
+
+## Converting a string to a number
+
+SplashKit provides two useful functions for handling the conversion of a `string` to either an `int` or a `double`.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      // Convert the string "2017" to an integer 2017
+      string some_string = "2017";
+      int some_number = convert_to_integer(some_string);
+
+      write("The value of some_number is: ");
+      write_line(some_number);
+
+      // Convert the string "3.14159265358979" to a double ~3.141593
+      string pi_string = "3.14159265358979";
+      double pi = convert_to_double(pi_string);
+
+      write("The value of pi is: ");
+      write_line(pi);
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using static SplashKitSDK.SplashKit;
+
+  //Convert the string "2017" to an integer 2017
+  string some_string = "2017";
+  int some_number = ConvertToInteger(some_string);
+
+  Write("The value of some_number is: ");
+  WriteLine(some_number);
+
+  //Convert the string "3.14159265358979" to a double ~3.141593
+  string pi_string = "3.14159265358979";
+  double pi = ConvertToDouble(pi_string);
+
+  Write("The value of pi is: ");
+  WriteLine(pi);
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  ## Convert the string "2017" to an integer 2017
+  some_string = "2017"
+  some_number = convert_to_integer(some_string)
+
+  write("The value of some_number is: ")
+  write_line_int(some_number)
+
+  ## Convert the string "3.14159265358979" to a double ~3.141593
+  pi_string = "3.14159265358979"
+  pi = convert_to_double(pi_string)
+
+  write("The value of pi is: ")
+  write_line_double(pi)
+
+  ```
+
+</TabItem>
+</Tabs>
+
+### Usage scenario: converting user input to an integer
+
+Consider you want to write a program that accepts two numbers as input from a user, multiplies them, and outputs the result. One way to accomplish this is to use SplashKit's [Convert To Integer](/api/utilities/#convert-to-integer) function.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      // User input will initially be stored in these two strings.
+      string snum_1, snum_2;
+
+      // And then it will be converted and stored in these integers.
+      int inum_1, inum_2, result;
+
+      // Read user input
+      write("Enter first number: ");
+      snum_1 = read_line();
+      write("Enter second number: ");
+      snum_2 = read_line();
+
+      // Convert user input to integers
+      inum_1 = convert_to_integer(snum_1);
+      inum_2 = convert_to_integer(snum_2);
+
+      // Compute the result
+      result = inum_1 * inum_2;
+
+      // Output the results
+      write(snum_1 + " multiplied by " + snum_2 + " equals ");
+      write_line(result);
+
+      return 0;
+  }
+  ```
+
+  The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+
+  ```cpp
+  //...
+
+  //Don't use integers, instead use doubles
+  double inum_1, inum_2, result;
+
+  //...
+
+  inum_1 = convert_to_double(snum_1);
+  inum_2 = convert_to_double(snum_2);
+
+  //...
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using static SplashKitSDK.SplashKit;
+
+  //User input will initially be stored in these two strings.
+  string snum_1, snum_2;
+
+  // And then it will be converted and stored in these integers.
+  int inum_1, inum_2, result;
+
+  //Read user input
+  Write("Enter first number: ");
+  snum_1 = ReadLine();
+  Write("Enter second number: ");
+  snum_2 = ReadLine();
+
+  //Convert user input to integers
+  inum_1 = ConvertToInteger(snum_1);
+  inum_2 = ConvertToInteger(snum_2);
+
+  //Compute the result
+  result = inum_1 * inum_2;
+
+  //Output the results
+  Write(snum_1 + " multiplied by " + snum_2 + " equals ");
+  WriteLine(result);
+  ```
+
+  The same can be achieved for decimal numbers, simply by swapping `ConvertToInteger`with `ConvertToDouble`, and using the appropriate data types.
+
+  ```csharp
+  //...
+
+  // Don't use integers, instead use doubles
+  double inum_1, inum_2, result;
+
+  //...
+
+  inum_1 = SplashKit.ConvertToDouble(snum_1);
+  inum_2 = SplashKit.ConvertToDouble(snum_2);
+
+  //...
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  # Read user input
+  write("Enter first number: ")
+  snum_1 = read_line()
+  write("Enter second number: ")
+  snum_2 = read_line()
+
+
+  # Convert user inputs to integers
+  inum_1 = convert_to_integer(snum_1)
+  inum_2 = convert_to_integer(snum_2)
+
+  # Compute the result
+  result = inum_1 * inum_2
+
+  # Output the result
+  write(snum_1 + " multiplied by " + snum_2 + " equals ")
+  write_line_int(result)
+  ```
+
+  The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+
+  ```python
+  #...
+
+  # Don't uses integers, instead use doubles
+  inum_1 = convert_to_double(snum_1)
+  inum_2 = convert_to_double(snum_2)
+
+  #...
+  ```
+
+</TabItem>
+</Tabs>
+
+## Checking if a string is a number
+
+Another helpful set of functions provided by SplashKit's utilities library is [Is Integer](/api/utilities/#is-integer) and [Is Number](/api/utilities/#is-number).
+
+Consider the following.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      string message_1 = "9781273";
+      string message_2 = "23129739.13";
+      string message_3 = "Hello world.";
+
+      if (is_integer(message_1))
+          write_line("Message 1 contains an integer!");
+
+      if (is_number(message_1))
+          write_line("Message 1 contains a number!");
+
+      if (not is_integer(message_2))
+          write_line("Message 2 is not an integer!");
+
+      if (is_number(message_2))
+          write_line("Message 2 contains a number!");
+
+      if (not is_integer(message_3))
+          write_line("Message 3 is not an integer!");
+
+      if (not is_number(message_3))
+          write_line("Message 3 is not a number!");
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using static SplashKitSDK.SplashKit;
+
+  string message_1 = "9781273";
+  string message_2 = "23129739.13";
+  string message_3 = "Hello world.";
+
+  if (IsInteger(message_1))
+      WriteLine("Message 1 contains an integer!");
+
+  if (IsNumber(message_1))
+      WriteLine("Message 1 contains a number!");
+
+  if (!IsInteger(message_2))
+      WriteLine("Message 2 is not an integer!");
+
+  if (IsNumber(message_2))
+      WriteLine("Message 2 contains a number!");
+
+  if (!IsInteger(message_3))
+      WriteLine("Message 3 is not an integer!");
+
+  if (!IsNumber(message_3))
+      WriteLine("Message 3 is not a number!");
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  message_1 = "9781273"
+  message_2 = "23129739.13"
+  message_3 = "Hello world."
+
+  if is_integer(message_1):
+      write_line("Message 1 contains an integer!")
+
+  if is_number(message_1):
+      write_line("Message 1 contains a number!")
+
+  if not is_integer(message_2):
+      write_line("Message 2 is not an integer!")
+
+  if is_number(message_2):
+      write_line("Message 2 contains a number!")
+
+  if not is_integer(message_3):
+      write_line("Message 3 is not an integer!")
+
+  if not is_number(message_3):
+      write_line("Message 3 is not a number!")
+
+  ```
+
+</TabItem>
+</Tabs>
+
+The terminal output should be:
+
+```plaintext
+Message 1 contains an integer!
+Message 1 contains a number!
+Message 2 is not an integer!
+Message 2 contains a number!
+Message 3 is not an integer!
+Message 3 is not a number!
+```
+
+### Usage scenario: accept user input as a number
+
+SplashKit's [Is Integer](/api/utilities/#is-integer) and [Is Number](/api/utilities/#is-number) functions can be used to validate user input, ensuring the user always enters a valid data type.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+  #include <string>
+
+  using namespace std;
+
+  /**
+  * Reads input from a user, only allowing whole numbers.
+  * @prompt string     - The string to display to the user.
+  * @return int
+  */
+  int read_integer(string prompt)
+  {
+    string buffer;
+
+    //Continue requesting user input until a valid whole number is entered.
+    while (1)
+    {
+      //Prompt the user with the message
+      write(prompt);
+      //Read the user input as a string.
+      buffer = read_line();
+      //If the user input is a valid whole number, leave the loop.
+      if ( is_integer(buffer) )
+        break;
+      //If the user input was not a valid whole number, ask them to enter a whole number.
+      write_line("Please enter a valid whole number.");
+    }
+    //Convert the user input to an integer before returning it.
+    return convert_to_integer(buffer);
+  }
+
+  int main()
+  {
+    int height;
+
+    height = read_integer("Enter your height in centimetres: ");
+    write("You are ");
+    write(height);
+    write_line("CM tall!");
+
+    return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using static SplashKitSDK.SplashKit;
+
+  static int ReadInteger(string prompt)
+  {
+      // Prompt the user with the message
+      Write(prompt);
+
+      // Read the user input as a string.
+      string line = ReadLine();
+
+      // Loop while the user's input is NOT a valid whole number.
+      while (!IsInteger(line))
+      {
+          // If the user input was not a valid whole number, ask them to enter a whole number.
+          WriteLine("Please enter a whole number.");
+          Write(prompt);
+          line = ReadLine();
+      }
+      // Convert the user input to an integer before returning it.
+      return ConvertToInteger(line);
+  }
+
+  // Start of "main" code
+  int height;
+
+  height = ReadInteger("Enter your height in centimetres: ");
+  Write("You are ");
+  Write(height);
+  WriteLine("cm tall!");
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  def read_integer(prompt):
+      # Prompt the user with the message
+      write(prompt)
+
+      # Read the user input as a string.
+      line = read_line()
+
+      # Loop while the user's input is NOT a valid whole number.
+      while not is_integer(line):
+
+          # If the user input was not a valid whole number, ask them to enter a whole number.
+          write_line("Please enter a valid whole number.")
+          write(prompt)
+          line = read_line()
+
+      # Convert the user input to an integer before returning it.
+      return convert_to_integer(buffer)
+
+  // Start of "main" code
+  height = read_integer("Enter your height in centimetres: ")
+
+  write("You are ")
+  write_int(height)
+  write_line("cm tall!")
+  ```
+
+</TabItem>
+</Tabs>
+
+## Manipulating strings
+
+In addition to the functionality provided by each language's standard library (The `string` library in C++, and the `System` library in C#), SplashKit's utilities library provides some extra string manipulation functions that can assist you with manipulating `string` data.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  #include "splashkit.h"
+
+  int main()
+  {
+      string name = "Richard";
+      string location = "        Burwood";
+
+      // Convert "Richard" to "RICHARD"
+      name = to_uppercase(name);
+      write_line(name);
+
+      // Convert "RICHARD" to "richard"
+      name = to_lowercase(name);
+      write_line(name);
+
+      // Remove all of the empty spaces at the start of "       Burwood".
+      write_line("Before: " + location);
+      location = trim(location);
+      write_line("After: " + location);
+
+      return 0;
+  }
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  using static SplashKitSDK.SplashKit;
+
+  string name = "Richard";
+  string location = "        Burwood";
+
+  //Convert "Richard" to "RICHARD"
+  name = ToUppercase(name);
+  WriteLine(name);
+
+  //Convert "RICHARD" to "richard"
+  name = ToLowercase(name);
+  WriteLine(name);
+
+  //Remove all of the empty spaces at the start of "       Burwood".
+  WriteLine("Before: " + location);
+  location = Trim(location);
+  WriteLine("After: " + location);
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  from splashkit import *
+
+  name = "Richard"
+  location = "        Burwood"
+
+  # Convert "Richard" to "RICHARD"
+  name = to_uppercase(name)
+  write_line(name)
+
+  # Convert "RICHARD" to "richard"
+  name = to_lowercase(name)
+  write_line(name)
+
+  # Remove all of the empty spaces at the start of "      Burwood".
+  write_line("Before: " + location)
+  location = trim(location)
+  write_line("After: " + location)
+  ```
+
+</TabItem>
+</Tabs>

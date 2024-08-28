@@ -9,25 +9,25 @@ interface Frontmatter {
   category?: string;
 }
 
-let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*.mdx");
+let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
 posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
 let guides = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "guides"
+  (post) => post.frontmatter.category?.toLowerCase() == "guides",
 );
 // sort guides on the basis of simplifyed File Path
 guides = guides.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || "")
-  )
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
 );
 let tutorials = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "tutorials"
+  (post) => post.frontmatter.category?.toLowerCase() == "tutorials",
 );
 tutorials = tutorials.sort((a, b) =>
   simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || "")
-  )
+    simplifyFilePath(b.url?.toString() || ""),
+  ),
 );
 
 function simplifyFilePath(filePath: string) {
@@ -37,11 +37,11 @@ function simplifyFilePath(filePath: string) {
   // Split the path into parts using '/'
   const pathParts = filePath.split("/");
 
-  // Get the last part of the path (file or directory name)
-  const lastPart = pathParts[pathParts.length - 1];
+  // Get the last part of the path (including directory name)
+  const folderPath = pathParts[4] + "/" + pathParts[pathParts.length - 1];
 
   // Remove file extension (assuming it's after the last dot in the last part)
-  const simplifiedName = lastPart.split(".").slice(0, -1).join(".");
+  const simplifiedName = folderPath.split(".").slice(0, -1).join(".");
 
   return simplifiedName.toLowerCase(); // Convert to lowercase for consistency
 }
