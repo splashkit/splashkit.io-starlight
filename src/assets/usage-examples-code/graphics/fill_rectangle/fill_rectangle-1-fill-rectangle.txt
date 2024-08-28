@@ -1,0 +1,3 @@
+### Fill Rectangle
+
+The following code shows examples of using [Fill Rectangle](/api/graphics#fill-Rectangle) to show how to draw a blue rectangle.
