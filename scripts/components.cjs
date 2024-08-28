@@ -1,5 +1,5 @@
 // Script to generate .mdx file in a specific format to adapt to Starlight from JSON data.
-// Author: @XQuestCode
+// Author: @XQuestCode and @omckeon
 const fs = require("fs");
 const kleur = require("kleur");
 const path = require('path');
@@ -74,6 +74,22 @@ function Mappings(jsonData) {
   }
 }
 
+function getColorData() {
+  var data = fs.readFileSync(`${__dirname}/colors.json`);
+  return JSON.parse(data);
+}
+
+function getColorRGBValues(colorName, jsonData) {
+  const simplifiedName = colorName.replace("color_", "");
+
+  const colorData = jsonData[simplifiedName];
+  let rgbValues = '( 0, 0, 0)';
+  if (colorData != undefined) {
+    rgbValues = colorData.rgb;
+  }
+  return rgbValues;
+}
+
 fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
   if (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
@@ -86,7 +102,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
     Mappings(jsonData);
     console.log(`Generating MDX files for components`);
 
-
+    const jsonColors = getColorData();
 
 
     // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
@@ -198,8 +214,8 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
 
           const formattedName = isOverloaded
-            ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})\n`
-            : `\n### [${functionName2}](#${formattedLink})\n`;
+            ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
+            : `\n### [${functionName2}](#${formattedLink})`;
 
 
           // Replace type names in the description with formatted versions
@@ -212,7 +228,16 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             );
           }
 
-          mdxContent += `${formattedName}\n`;
+          mdxContent += `${formattedName}`;
+
+          // Color boxes
+          if (functionName.startsWith("color_") && !functionName.endsWith("to_string")) {
+            const rgbValues = getColorRGBValues(functionName, jsonColors);
+            mdxContent += ` <div class='color-box' style="background:rgba${rgbValues}"></div>`
+          }
+
+          mdxContent += "\n\n";
+
           for (const names of functionNames) {
             const normalName = names
               .split("_")
@@ -224,7 +249,6 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             description = description.replaceAll("\n", " ");
           }
           mdxContent += description ? `${description}\n\n` : "";
-
 
           // Add Parameters section only if there are parameters
           if (Object.keys(func.parameters).length > 0) {
