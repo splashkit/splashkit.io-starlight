@@ -2,6 +2,7 @@ using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
 OpenWindow("Underwater Adventure", 1000, 500);
+
 ClearScreen();
 Bitmap underwaterScene = new Bitmap("underwater_scene", "underwater_scene.png");
 DrawBitmap(underwaterScene, 0, 0);
