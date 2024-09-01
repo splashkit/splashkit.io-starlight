@@ -1,0 +1,3 @@
+### Circle Color
+
+The following code shows examples of using [Fill Circle](/api/graphics#clear-screen) to show how to change the background color.
