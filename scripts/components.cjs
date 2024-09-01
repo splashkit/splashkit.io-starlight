@@ -74,22 +74,6 @@ function Mappings(jsonData) {
   }
 }
 
-function getColorData() {
-  var data = fs.readFileSync(`${__dirname}/colors.json`);
-  return JSON.parse(data);
-}
-
-function getColorRGBValues(colorName, jsonData) {
-  const simplifiedName = colorName.replace("color_", "");
-
-  const colorData = jsonData[simplifiedName];
-  let rgbValues = '( 0, 0, 0)';
-  if (colorData != undefined) {
-    rgbValues = colorData.rgb;
-  }
-  return rgbValues;
-}
-
 fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
   if (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
@@ -240,13 +224,6 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             description = description.replaceAll("\n", " ");
           }
           mdxContent += description ? `${description}\n\n` : "";
-
-
-          // Color boxes
-          if (functionName.startsWith("color_")) {
-            const rgbValues = getColorRGBValues(functionName, jsonColors);
-            mdxContent += `<div style={{ width: '50px', height: '50px', backgroundColor: 'rgba${rgbValues}', marginTop: '10px' }}></div>\n\n`
-          }
 
           // Add Parameters section only if there are parameters
           if (Object.keys(func.parameters).length > 0) {
