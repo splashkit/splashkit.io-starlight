@@ -1,0 +1,3 @@
+### Ellipese Color
+
+The following code shows examples of using [Fill Ellipse](/api/graphics#clear-screen) to show how to change the background color.
