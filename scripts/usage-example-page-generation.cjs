@@ -52,15 +52,16 @@ function getAllFiles(dir, allFilesList = []) {
     if (fs.statSync(name).isDirectory()) { // check if subdirectory is present
       getAllFiles(name, allFilesList);     // do recursive execution for subdirectory
     } else {
-      // console.log(file);
       allFilesList.push(file);           // push filename into the array
-      // allFilesList.push(name);           // push filename into the array
     }
   })
   return allFilesList;
 }
 
-function isOverloaded(jsonData, functionNameToCheck) {
+function getFunctionLink(jsonData, groupNameToCheck, uniqueNameToCheck) {
+  var isOverloaded;
+  var functionIndex = -1;
+  var functionLink = "";
   for (const categoryKey in jsonData) {
     const category = jsonData[categoryKey];
     const categoryFunctions = category.functions;
@@ -74,17 +75,27 @@ function isOverloaded(jsonData, functionNameToCheck) {
     });
 
     for (const functionName in functionGroups) {
-      // check matching function name
-      if (functionName == functionNameToCheck) {
+      if (functionName == groupNameToCheck) {
         const overloads = functionGroups[functionName];
-        const isOverloaded = overloads.length > 1;
+        isOverloaded = overloads.length > 1;
 
-        return isOverloaded;
+        if (isOverloaded) {
+          overloads.forEach((func, index) => {
+            functionIndex = index + 1;
+            if (uniqueNameToCheck == func.unique_global_name) {
+              functionLink = functionName + "-" + (index + 1);
+            }
+          });
+        }
+        else {
+          functionLink = functionName;
+        }
       }
     }
-    return null;
   }
+  return functionLink;
 }
+
 console.log(`Generating MDX files for usage-examples`);
 let apiJsonData = getJsonData();
 let categories = getApiCategories(apiJsonData);
@@ -111,11 +122,10 @@ categories.forEach((categoryKey) => {
     mdxContent += ":::note\n";
     mdxContent += `This page contains code examples of the [${categoryTitle}](/api/${categoryURL}) functions.\n`
     mdxContent += ":::\n\n";
-    // mdxContent += "---\n\n";
 
     mdxContent += `import { Tabs, TabItem } from "@astrojs/starlight/components";\n`
     mdxContent += `import { Code } from '@astrojs/starlight/components';\n`;
-    mdxContent += `import Signatures from "/src/components/Signatures.astro";\n\n`;
+    mdxContent += `import Signatures from "/src/components/Signatures.astro";\n`;
 
     // get function overload info
     let functionGroups = getFunctionGroups(categoryKey, apiJsonData);
@@ -123,33 +133,21 @@ categories.forEach((categoryKey) => {
     // get function info
     let functions = getUniqueFunctionNames(categoryKey, apiJsonData);
     let functionIndex = 0;
-    let groupIndex = 0;
-    let currentGroup = functionGroups[functionIndex];
     var groupName = "";
     functions.forEach((functionKey) => {
       const functionExampleFiles = txtFiles.filter(file => file.startsWith(functionKey + '-'));
       groupName = functionGroups[functionIndex];
-      if (currentGroup != groupName) {
-        currentGroup = groupName;
-        groupIndex = 0;
-      }
-      groupIndex++;
 
       if (functionExampleFiles.length > 0) {
 
         // Create function heading
-        let functionTitle = functionKey.split("_")
+        let functionTitle = groupName.split("_")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" ");
-        let functionURL = functionKey.replaceAll("_", "-");
 
         // Create Function Example heading with link
-        if (isOverloaded(apiJsonData, functionKey)) {
-          mdxContent += `## [${functionTitle}](/api/${categoryURL}/#${groupName.replaceAll("_", "-")}-${groupIndex}) Examples*\n\n`;
-        }
-        else {
-          mdxContent += `## [${functionTitle}](/api/${categoryURL}/#${groupName.replaceAll("_", "-")}) Examples*\n\n`;
-        }
+        const functionURL = getFunctionLink(apiJsonData, groupName, functionKey);
+        mdxContent += `\n## [${functionTitle}](/api/${categoryURL}/#${functionURL.replaceAll("_", "-")}) Examples*\n\n`;
 
         // Function signature heading (possible need to update)
         const signature = apiJsonData[categoryKey].functions.map((func) => func.signature)[functionIndex].replaceAll(";", "");
