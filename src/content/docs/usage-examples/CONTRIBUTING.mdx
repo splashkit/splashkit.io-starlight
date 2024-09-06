@@ -9,6 +9,7 @@ To contribute a function usage example, you need to create the following files:
 - **Text file** (.txt) containing a title and short description of the example.
 - **Image file** (.png) (or **Gif file** (.gif) if the example code is interactive) showing the expected output of the example.
 - **Code file** with the example code. This must be a complete code example, not just a snippet of code.
+- (Optional) **Zip file** containing the "Resources" folder created with the `skm resources` command, with any resources needed for your example code to run. (More info about adding this at the end.)
 
 ## File Locations
 
@@ -98,3 +99,43 @@ Please follow the guidelines below:
 ## Write Line Examples
 
 For more info, you can look at the completed **Write Line** examples in the folder: /src/assets/usage-examples-code/terminal/write_line/
+
+## Adding Zip File Resources
+
+If you have created an example with specific image/sound/etc files, you will need to create and add a zip file containing this folder.
+
+### Zip file contents
+
+Make sure that you have run the `skm resources` command, and put your resource files inside the relevant folder (eg. images).
+
+Then compress/zip the "Resources" folder and give it a relevant name for when users download this file. (This should not follow the same naming conventions as the other files so that it has a nicer name for users.)
+
+### Zip file location
+
+When ready, place the zip file in the *category folder* inside `/public/resources/usage-examples/`.
+
+eg. For the `draw_bitmap_named` example that has been created, the zip file is located in `/public/resources/usage-examples/graphics/`.
+
+### Linking to the Resources
+
+In the text `.txt` file for your example, add a "note" callout at the end that links to the zip file using the following template:
+
+```plaintext
+:::note
+To test this example code you can download these [**Resources**](/resources/usage-examples/<category>/<your-zip-file-name>.zip).
+:::
+```
+
+Then update the link in the template above to add the `<category>` and `<your-zip-file-name>`.
+
+eg. For the `draw_bitmap_named` example that has been created, the text file contents would look like this:
+
+```plaintext
+### Basic Bitmap Drawing
+
+The following code shows an example of using [Draw Bitmap](/api/graphics/#draw-bitmap-3) to display a Bitmap image of the SplashKit logo in a graphics Window.
+
+:::note
+To test this example code you can download these [**Resources**](/resources/usage-examples/graphics/DrawBitmap_BasicBitmapDrawingResources.zip).
+:::
+```
