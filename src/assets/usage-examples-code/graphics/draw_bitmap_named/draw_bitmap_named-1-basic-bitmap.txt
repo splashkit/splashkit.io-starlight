@@ -1,0 +1,7 @@
+### Basic Bitmap Drawing
+
+The following code shows an example of using [Draw Bitmap](/api/graphics/#draw-bitmap-3) to display a Bitmap image of the SplashKit logo in a graphics Window.
+
+:::note
+To test this example code you can download these [**Resources**](/resources/usage-examples/graphics/DrawBitmap_BasicBitmapDrawingResources.zip).
+:::
