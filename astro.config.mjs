@@ -77,19 +77,20 @@ export default defineConfig({
           label: "Tutorials and Guides",
           collapsed: true,
           items: [
-            { label: "Using SplashKit", autogenerate: { directory: "guides/0-using-splashkit", collapsed: false } },
-            { label: "Animations", autogenerate: { directory: "guides/animations", collapsed: false } },
-            { label: "Audio", autogenerate: { directory: "guides/audio", collapsed: false } },
-            { label: "Camera", autogenerate: { directory: "guides/camera", collapsed: false } },
-            { label: "Graphics", autogenerate: { directory: "guides/graphics", collapsed: false } },
-            { label: "Input", autogenerate: { directory: "guides/input", collapsed: false } },
-            { label: "Interface", autogenerate: { directory: "guides/interface", collapsed: false } },
-            { label: "Json", autogenerate: { directory: "guides/json", collapsed: false } },
-            { label: "Networking", autogenerate: { directory: "guides/networking", collapsed: false } },
-            { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry", collapsed: false } },
-            { label: "Resource Bundles", autogenerate: { directory: "guides/resource_bundles", collapsed: false } },
-            { label: "Sprites", autogenerate: { directory: "guides/sprites", collapsed: false } },
-            { label: "Utilities", autogenerate: { directory: "guides/utilities", collapsed: false } },
+            { label: "Overview", link: "guides/" },
+            { label: "Using SplashKit", autogenerate: { directory: "guides/Using-SplashKit", collapsed: false } },
+            { label: "Animations", autogenerate: { directory: "guides/Animations", collapsed: false } },
+            { label: "Audio", autogenerate: { directory: "guides/Audio", collapsed: false } },
+            { label: "Camera", autogenerate: { directory: "guides/Camera", collapsed: false } },
+            { label: "Graphics", autogenerate: { directory: "guides/Graphics", collapsed: false } },
+            { label: "Input", autogenerate: { directory: "guides/Input", collapsed: false } },
+            { label: "Interface", autogenerate: { directory: "guides/Interface", collapsed: false } },
+            { label: "Json", autogenerate: { directory: "guides/JSON", collapsed: false } },
+            { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
+            { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
+            { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
+            { label: "Sprites", autogenerate: { directory: "guides/Sprites", collapsed: false } },
+            { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
           ]
           // autogenerate: { directory: "guides", collapsed: true },
         },
@@ -112,6 +113,6 @@ export default defineConfig({
   image: { service: squooshImageService() },
   server: {
     host: true,
-    port: 4321
+    port: 4322
   }
 });

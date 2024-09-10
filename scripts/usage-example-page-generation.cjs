@@ -52,12 +52,48 @@ function getAllFiles(dir, allFilesList = []) {
     if (fs.statSync(name).isDirectory()) { // check if subdirectory is present
       getAllFiles(name, allFilesList);     // do recursive execution for subdirectory
     } else {
-      // console.log(file);
       allFilesList.push(file);           // push filename into the array
-      // allFilesList.push(name);           // push filename into the array
     }
   })
   return allFilesList;
+}
+
+function getFunctionLink(jsonData, groupNameToCheck, uniqueNameToCheck) {
+  var isOverloaded;
+  var functionIndex = -1;
+  var functionLink = "";
+  for (const categoryKey in jsonData) {
+    const category = jsonData[categoryKey];
+    const categoryFunctions = category.functions;
+    const functionGroups = {}; // Store functions grouped by name
+    categoryFunctions.forEach((func) => {
+      const functionName = func.name;
+      if (!functionGroups[functionName]) {
+        functionGroups[functionName] = [];
+      }
+      functionGroups[functionName].push(func);
+    });
+
+    for (const functionName in functionGroups) {
+      if (functionName == groupNameToCheck) {
+        const overloads = functionGroups[functionName];
+        isOverloaded = overloads.length > 1;
+
+        if (isOverloaded) {
+          overloads.forEach((func, index) => {
+            functionIndex = index + 1;
+            if (uniqueNameToCheck == func.unique_global_name) {
+              functionLink = functionName + "-" + (index + 1);
+            }
+          });
+        }
+        else {
+          functionLink = functionName;
+        }
+      }
+    }
+  }
+  return functionLink;
 }
 
 console.log(`Generating MDX files for usage-examples`);
@@ -86,11 +122,10 @@ categories.forEach((categoryKey) => {
     mdxContent += ":::note\n";
     mdxContent += `This page contains code examples of the [${categoryTitle}](/api/${categoryURL}) functions.\n`
     mdxContent += ":::\n\n";
-    // mdxContent += "---\n\n";
 
     mdxContent += `import { Tabs, TabItem } from "@astrojs/starlight/components";\n`
     mdxContent += `import { Code } from '@astrojs/starlight/components';\n`;
-    mdxContent += `import Signatures from "/src/components/Signatures.astro";\n\n`;
+    mdxContent += `import Signatures from "/src/components/Signatures.astro";\n`;
 
     // get function overload info
     let functionGroups = getFunctionGroups(categoryKey, apiJsonData);
@@ -98,27 +133,21 @@ categories.forEach((categoryKey) => {
     // get function info
     let functions = getUniqueFunctionNames(categoryKey, apiJsonData);
     let functionIndex = 0;
-    let groupIndex = 0;
-    let currentGroup = functionGroups[functionIndex];
     var groupName = "";
     functions.forEach((functionKey) => {
       const functionExampleFiles = txtFiles.filter(file => file.startsWith(functionKey + '-'));
       groupName = functionGroups[functionIndex];
-      if (currentGroup != groupName) {
-        currentGroup = groupName;
-        groupIndex = 0;
-      }
-      groupIndex++;
 
       if (functionExampleFiles.length > 0) {
 
         // Create function heading
-        let functionTitle = functionKey.split("_")
+        let functionTitle = groupName.split("_")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" ");
-        let functionURL = functionKey.replaceAll("_", "-");
-        mdxContent += `## [${functionTitle}](/api/${categoryURL}/#${groupName.replaceAll("_", "-")}-${groupIndex}) Examples*\n\n`;
-        // mdxContent += `## [${functionTitle}](/api/${categoryURL}/#${groupName})\n\n`;
+
+        // Create Function Example heading with link
+        const functionURL = getFunctionLink(apiJsonData, groupName, functionKey);
+        mdxContent += `\n## [${functionTitle}](/api/${categoryURL}/#${functionURL.replaceAll("_", "-")}) Examples*\n\n`;
 
         // Function signature heading (possible need to update)
         const signature = apiJsonData[categoryKey].functions.map((func) => func.signature)[functionIndex].replaceAll(";", "");
@@ -130,14 +159,14 @@ categories.forEach((categoryKey) => {
 
         functionExampleFiles.forEach((exampleTxtKey) => {
           let exampleKey = exampleTxtKey.replaceAll(".txt", "");
-          
+
           // Description
           let txtFilePath = './src/assets/usage-examples-code/' + categoryKey + "/" + functionKey + "/" + exampleTxtKey;
           let exampleTxt = fs.readFileSync(txtFilePath);
           mdxContent += "\n";
           mdxContent += exampleTxt.toString();
           mdxContent += "\n\n";
-          
+
           // import code
           let codePath = './src/assets/usage-examples-code/' + categoryKey + "/" + functionKey;
           const codeFiles = getAllFiles(codePath);
@@ -157,11 +186,11 @@ categories.forEach((categoryKey) => {
           // Add python and pascal
 
           mdxContent += "\n";
-          
+
           // Code tabs
           mdxContent += "<Tabs syncKey=\"code-language\">\n";
           languageOrder.forEach((lang) => {
-            
+
             if (cppFiles.length > 0) {
               const languageLabel = languageLabelMappings[lang] || lang;
               mdxContent += `  <TabItem label="${languageLabel}">\n`;
@@ -171,28 +200,26 @@ categories.forEach((categoryKey) => {
             }
           });
           mdxContent += "</Tabs>\n\n";
-          
+
           // Image or gif output
           mdxContent += "**Output**:\n\n";
-          
+
           const outputFiles = getAllFiles('./public/usage-examples-images-gifs/' + categoryKey);
           const imageFiles = outputFiles.filter(file => file.endsWith(exampleKey + '.png'));
           let outputFilePath;
           if (imageFiles.length > 0) {
             outputFilePath = '/usage-examples-images-gifs/' + categoryKey + "/" + exampleTxtKey.replaceAll(".txt", ".png");
           }
-          else
-          {
+          else {
             const gifFiles = outputFiles.filter(file => file.endsWith('.gif'));
             if (gifFiles.length > 0) {
               outputFilePath = '/usage-examples-images-gifs/' + categoryKey + "/" + exampleTxtKey.replaceAll(".txt", ".gif");
             }
-            else
-            {
+            else {
               console.log("No image or gif files found for " + exampleKey + "usage example");
             }
           }
-          
+
           mdxContent += `![${exampleKey} example](${outputFilePath})\n`
           mdxContent += "\n---\n";
         });
@@ -206,7 +233,7 @@ categories.forEach((categoryKey) => {
         console.log(kleur.red(`Error writing ${categoryKey} MDX file: ${err.message}`));
       } else {
         console.log(kleur.yellow('Usage Examples') + kleur.green(` -> ${categoryKey}`));
-        
+
       }
     });
   }

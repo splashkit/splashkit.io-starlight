@@ -96,7 +96,7 @@ const { sidebar } = Astro.props;
                     liRect.top < sidebarRect.top ||
                     liRect.bottom > sidebarRect.bottom
                 ) {
-                    activeLi.scrollIntoView({ behavior: "instant", block: "nearest" });
+                    activeLi.scrollIntoView({ behavior: "instant", block: "center" });
                 }
             }
 
