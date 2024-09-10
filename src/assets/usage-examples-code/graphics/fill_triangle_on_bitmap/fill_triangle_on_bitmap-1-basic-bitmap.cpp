@@ -3,28 +3,38 @@
 int main()
 {
     // Open a window
-    open_window("Underwater Adventure", 1000, 500);
+    open_window("Happy Hat", 618, 618);
 
-    // Load the bitmap
-    bitmap underwater_scene = load_bitmap("underwater_scene", "underwater_scene.png");
+    // Load the bitmaps for sad and smiling emojis (https://openmoji.org/library/#group=smileys-emotion)
+    bitmap sad_emoji = load_bitmap("sad_emoji", "sad_emoji.png");
+    bitmap smiling_emoji = load_bitmap("smiling_emoji", "smiling_emoji.png");
 
-    // Fill the triangle on the bitmap
-    double x1 = 285, y1 = 250;
-    double x2 = 310, y2 = 240;
-    double x3 = 310, y3 = 260;
-    color triangle_color = COLOR_RED;
-
-    fill_triangle_on_bitmap(underwater_scene, triangle_color, x1, y1, x2, y2, x3, y3);
-
-    // Draw the bitmap and other graphics
-    draw_bitmap(underwater_scene, 0, 0);
-    draw_text("Colourful Fish", COLOR_RED, "arial", 123, 240, 200);
-    draw_line(COLOR_RED, 280, 220, 305, 255);
-
-    // Refresh the screen and wait
+    // Draw the sad emoji and add a hat
+    clear_screen(COLOR_BLACK);
+    draw_bitmap(sad_emoji, 0, 0);
     refresh_screen();
-    delay(5000);
+    delay(1000);
 
+    // Draw a triangle hat on the smiling emoji
+    fill_triangle_on_bitmap(smiling_emoji, COLOR_RED, 100, 200, 309, 20, 520, 200);
+
+    // Clear screen and switch to the smiling emoji
+    clear_screen(COLOR_BLACK);
+    draw_bitmap(smiling_emoji, 0, 0);
+    refresh_screen();
+    delay(1000);
+
+    // Spin the smiling emoji with the hat
+    for (int i = 0; i < 360; i++)
+    {
+        clear_screen(COLOR_BLACK);
+        draw_bitmap(smiling_emoji, 0, 0, option_rotate_bmp(i));
+        refresh_screen();
+        delay(10);
+    }
+
+    // Free the bitmap resource
+    free_all_bitmaps();
     // Close all windows
     close_all_windows();
 

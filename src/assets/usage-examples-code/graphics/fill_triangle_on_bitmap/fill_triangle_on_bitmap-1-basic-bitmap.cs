@@ -1,26 +1,39 @@
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
-OpenWindow("Underwater Adventure", 1000, 500);
+// Open a window
+OpenWindow("Happy Hat", 618, 618);
 
-// Load the bitmap
-Bitmap underwaterScene = LoadBitmap("underwater_scene", "underwater_scene.png");
+// Load the bitmaps for sad and smiling emojis
+Bitmap sadEmoji = LoadBitmap("sad_emoji", "sad_emoji.png");
+Bitmap smilingEmoji = LoadBitmap("smiling_emoji", "smiling_emoji.png");
 
-// Fill the triangle on the bitmap
-double x1 = 285, y1 = 250;
-double x2 = 310, y2 = 240;
-double x3 = 310, y3 = 260;
-
-FillTriangleOnBitmap(underwaterScene, ColorRed(), x1, y1, x2, y2, x3, y3);
-
-// Draw the bitmap and other graphics
-DrawBitmap(underwaterScene, 0, 0);
-DrawText("Colourful Fish", ColorRed(), "arial", 123, 240, 200);
-DrawLine(ColorRed(), 280, 220, 305, 255);
-
-// Refresh the screen and wait
+// Draw the sad emoji and add a hat
+ClearScreen(ColorBlack());
+DrawBitmap(sadEmoji, 0, 0);
 RefreshScreen();
-Delay(5000);
+Delay(1000);
 
+// Draw a triangle hat on the smiling emoji
+FillTriangleOnBitmap(smilingEmoji, ColorRed(), 100, 200, 309, 20, 520, 200);
+
+// Clear screen and switch to the smiling emoji
+ClearScreen(ColorBlack());
+DrawBitmap(smilingEmoji, 0, 0);
+RefreshScreen();
+Delay(1000);
+
+// Spin the smiling emoji with the hat
+for (int i = 0; i < 360; i++)
+{
+    ClearScreen(ColorBlack());
+    DrawBitmap(smilingEmoji, 0, 0, OptionRotateBmp(i));
+    RefreshScreen();
+    Delay(10);
+}
+
+// Free the bitmap resource
+FreeAllBitmaps();
 // Close all windows
 CloseAllWindows();
+ 
