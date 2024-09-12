@@ -3,7 +3,7 @@ using static SplashKitSDK.SplashKit;
 OpenWindow("Fill Ellipse", 800, 600);
 ClearScreen();
 
-FillEllipse(ColorBlue(), 200, 200, 100, 200);
+FillEllipse(ColorBlue(), 200, 200, 400, 200);
 RefreshScreen(60);
 Delay(4000);
 
