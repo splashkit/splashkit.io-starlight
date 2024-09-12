@@ -86,7 +86,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
     Mappings(jsonData);
     console.log(`Generating MDX files for components`);
 
-    const jsonColors = getColorData();
+
 
 
     // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
@@ -224,6 +224,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             description = description.replaceAll("\n", " ");
           }
           mdxContent += description ? `${description}\n\n` : "";
+
 
           // Add Parameters section only if there are parameters
           if (Object.keys(func.parameters).length > 0) {
