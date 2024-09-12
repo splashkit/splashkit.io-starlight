@@ -1,5 +1,5 @@
 # example netlify.toml
 [build]
-  command = "npm run generate-mdx && npm run build"
+  command = "npm run generate-mdx && npm run generate-usage-examples-pages && npm run build"
   functions = "netlify/functions"
   publish = "dist"
