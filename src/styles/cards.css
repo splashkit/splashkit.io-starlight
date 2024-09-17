@@ -1,57 +1,48 @@
-/* Defined new variables for card background and hover text colors, ensuring a consistent color scheme across different themes. */
+/* Variables for card background and hover text colors from splashkit logo. */
 :root {
   --sl-card-background-light: #fafafa;
   --sl-card-background-dark: #333333;
   --sl-hover-text-light: #ffffff;
   --sl-hover-text-dark: #000000;
-  /* Approximate orange from the logo */
   --sl-logo-orange: #F5A623;
-  --sl-logo-orange-dark: #ae7314;
-  /* Approximate blue from the text */
-  --sl-logo-blue: #4CA9BE;
-  --sl-logo-dark-blue: #3F51B5;
-  --gradient-light: rgba(232, 232, 234, 0.212);
-  --gradient-dark: rgba(23, 10, 10, 0.25);
+  --sl-logo-orange-dark: #b87501;
+  --sl-logo-blue: #05acc1;
+  --sl-logo-dark-blue: #3E50B1;
+  --gradient-light: rgba(232, 232, 234, 0.18);
+  --gradient-dark: rgba(23, 10, 10, 0.18);
 }
 
-/* Updated card styling for the light theme, including smooth transitions for background and text colors. */
-:root[data-theme="light"] .card {
+/* Card styling for the light and dark themes, including smooth transitions for background and text colors. */
+[data-theme="light"] .card {
   background: var(--sl-card-background-light);
   color: var(--sl-hover-text-dark);
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   width: 95%;
 }
-
-/* Applied a hover effect that changes background color, text color, and slightly scales the card up for a dynamic feel in the light theme. */
-:root[data-theme="light"] .card:hover {
-  background-color: var(--sl-logo-orange);
-  /* Updated to logo orange */
-  color: var(--sl-hover-text-light);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--sl-logo-blue);
-  /* Border color added for hover */
-}
-
-/* Customized the card appearance for dark theme, maintaining consistency with light theme adjustments. */
-:root[data-theme="dark"] .card {
+[data-theme="dark"] .card {
   background: var(--sl-card-background-dark);
   color: var(--sl-hover-text-light);
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   width: 90%;
 }
 
-/* Enhanced dark theme cards with a similar hover effect as in the light theme, promoting uniformity. */
-:root[data-theme="dark"] .card:hover {
-  background-color: var(--sl-logo-dark-blue);
-  /* Updated to logo blue */
+/* Card hover effect in the light and dark themes. */
+[data-theme="light"] .card:hover {
+  background-color: var(--sl-logo-orange);
   color: var(--sl-hover-text-dark);
   transform: scale(1.05);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--sl-logo-dark-blue);
-  /* Border color added for hover */
+  border: 1px solid var(--sl-logo-blue);
+}
+[data-theme="dark"] .card:hover {
+  background-color: var(--sl-logo-dark-blue);
+  color: var(--sl-hover-text-light);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--sl-logo-blue);
 }
 
+/* Radial gradient following mouse */
 .card::before {
   content: "";
   position: absolute;
@@ -62,49 +53,77 @@
   background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
       var(--gradient-light),
       transparent 40%);
-  opacity: 0;
   /* Default to 0 to make it visible only on hover */
+  opacity: 0;
   z-index: 2;
   pointer-events: none;
 }
-
-:root[data-theme="dark"] .card::before {
+[data-theme="dark"] .card::before {
   background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
       var(--gradient-dark),
       transparent 40%);
 }
-
 .card:hover::before {
   opacity: 1;
 }
 
-/* Link card styling */
-:root[data-theme="light"] .sl-link-card:hover {
-  background-color: var(--sl-logo-orange);
-  
-  .description {
-    color: var(--sl-hover-text-light);
-  }
+
+/* Link card border */
+[data-theme="light"] .sl-link-card {
+  border: 1px solid var(--sl-logo-blue);
+}
+[data-theme="dark"] .sl-link-card {
+  border: 1px solid var(--sl-logo-orange);
 }
 
-:root[data-theme="dark"] .sl-link-card:hover {
-  background-color: var(--sl-logo-dark-blue);
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+/* Link card hover effects */
+[data-theme="light"] .sl-link-card:hover {
+  background-color: var(--sl-logo-orange);
   .description {
     color: var(--sl-hover-text-dark);
   }
 }
-
-/* Link card inside card */
-:root[data-theme="light"] .card:hover .sl-link-card:hover {
-  background-color: var(--sl-logo-blue);
+[data-theme="dark"] .sl-link-card:hover {
+  background-color: var(--sl-logo-dark-blue);
+  border: 1px solid var(--sl-logo-blue);
   .description {
     color: var(--sl-hover-text-light);
   }
 }
-:root[data-theme="dark"] .card:hover .sl-link-card:hover {
-  background-color: var(--sl-logo-orange-dark);
+
+/* Link card when card hovered over */
+[data-theme="light"] .card:hover .sl-link-card {
+  border: 1px solid var(--sl-logo-dark-blue);
   .description {
+    color: var(--sl-hover-text-dark);
+  }
+}
+[data-theme="dark"] .card:hover .sl-link-card {
+  .description {
+    color: var(--sl-hover-text-dark);
+  }
+  .astro-mf7fz2mj {
+    color: var(--sl-hover-text-light);
+  }
+}
+
+/* Link card hover effects inside card*/
+[data-theme="light"] .card .sl-link-card:hover {
+  background-color: var(--sl-logo-dark-blue);
+  border: 1px solid var(--sl-logo-blue);
+  .description {
+    color: var(--sl-hover-text-light);
+  }
+  .astro-mf7fz2mj {
+    color: var(--sl-hover-text-light);
+  }
+}
+[data-theme="dark"] .card .sl-link-card:hover {
+  background-color: var(--sl-logo-orange);
+  .description {
+    color: var(--sl-hover-text-dark);
+  }
+  .astro-mf7fz2mj {
     color: var(--sl-hover-text-dark);
   }
 }
