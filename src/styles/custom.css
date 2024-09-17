@@ -6,6 +6,7 @@
 :root {
   --purple-hsl: 255, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  /* --table-head-color: rgb(35, 38, 47); */
 }
 
 /* Light mode colors. */
@@ -13,6 +14,15 @@
   --purple-hsl: 255, 85%, 65%;
   --sl-hue-accent: 350;
   --sl-color-accent: #3D50f5;
+
+  /* Potential colours to use when the site can toggle the theme in the future */
+  /* --table-head-color: rgb(244, 245, 247); */
+  /* --table-head-color: hsla(187, 99%, 38%, 0.35); light splashkit blue*/
+  /* --table-head-color: rgb(245, 166, 35);   splashkit orange */
+  /*--table-head-color: rgb(1, 172, 194);     splashkit blue*/
+  /* --table-head-color: rgb(201, 231, 240);	  light blue */
+  /*--table-head-color: rgb(255, 167, 126);   light orange*/
+  /*--table-head-color: rgb(245, 139, 90);	  dark orange*/
 }
 
 .hero img {
@@ -22,8 +32,10 @@
 }
 
 .hero img:hover {
-  transform: scale(1.1); /* Enlarge the image on hover */
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
+  transform: scale(1.1);
+  /* Enlarge the image on hover */
+  transition: transform 0.3s ease;
+  /* Add a smooth transition effect */
 }
 
 [data-has-hero] .page {
@@ -38,7 +50,8 @@
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
-[data-has-hero] .hero > img {
+
+[data-has-hero] .hero>img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
 }
 
@@ -46,7 +59,8 @@ iframe[id="stackblitz-iframe"] {
   width: 100%;
   min-height: 600px;
 }
-[data-has-hero] .hero > div.sl-flex {
+
+[data-has-hero] .hero>div.sl-flex {
   align-self: flex-start;
 }
 
@@ -69,11 +83,9 @@ iframe[id="stackblitz-iframe"] {
 }
 
 [data-has-hero] .hero .hero-gradient-text {
-  background: radial-gradient(
-      circle at top left,
+  background: radial-gradient(circle at top left,
       hsl(296, 100%, 50%) 0%,
-      transparent 50%
-    ),
+      transparent 50%),
     radial-gradient(circle at center, rgb(113, 147, 233) 0%, transparent 100%),
     radial-gradient(circle at bottom right, rgb(0, 68, 255) 0%, transparent 50%);
   color: transparent;
@@ -91,16 +103,12 @@ img {
 [data-has-hero] .card {
   border-radius: 12px;
   position: relative;
-  background: radial-gradient(
-      300px circle at top left,
+  background: radial-gradient(300px circle at top left,
       rgba(85, 44, 190, 0.081) 20%,
-      transparent 100%
-    ),
-    radial-gradient(
-      300px circle at bottom right,
+      transparent 100%),
+    radial-gradient(300px circle at bottom right,
       rgba(44, 102, 190, 0.09) 20%,
-      transparent 100%
-    );
+      transparent 100%);
 }
 
 [data-has-hero] .card::before {
@@ -110,11 +118,9 @@ img {
   border-radius: inherit;
   transition: opacity 400ms ease 0s;
   will-change: background, opacity;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
       rgba(62, 85, 167, 0.212),
-    transparent 40%
-  );
+      transparent 40%);
   opacity: 0;
   z-index: 2;
   pointer-events: none;
@@ -143,10 +149,12 @@ img {
   font-style: normal;
   font-display: swap;
 }
+
 .home-card {
   border-radius: 20%;
   border: 1px dotted black;
 }
+
 html[data-theme="dark"] a.multitool:after {
   border: 1px solid black;
 }
@@ -241,28 +249,43 @@ a.decent:hover {
 .sl-markdown-content table {
   border-radius: 0.5rem;
   box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-5);
   width: max-content;
   max-width: 100%;
+  text-align: left;
+}
+
+.sl-markdown-content table th {
+  border-right: 1px solid var(--sl-color-gray-5);
+}
+
+.sl-markdown-content table td {
+  border-right: 1px solid var(--sl-color-gray-5);
 }
 
 .sl-markdown-content table td:first-child,
 .sl-markdown-content table th:first-child {
   border-left: none;
+  padding-left: 15px;
 }
 
 .sl-markdown-content table td:last-child,
 .sl-markdown-content table th:last-child {
   border-right: none;
+  padding-right: 15px;
 }
 
 .sl-markdown-content table tr:first-child th {
   border-top: none;
+  text-align: left;
+  background-color: var(--sl-color-gray-6);
+  /* color: white; */
 }
 
 .sl-markdown-content table tr:last-child td {
   border-bottom: none;
 }
+
 .starlight-aside,
 .card {
   border-radius: 0.5rem;
@@ -271,6 +294,7 @@ a.decent:hover {
 code {
   border-radius: 0.25rem;
 }
+
 .expressive-code {
   border-radius: 0.6rem;
   box-shadow: var(--sl-shadow-md);
