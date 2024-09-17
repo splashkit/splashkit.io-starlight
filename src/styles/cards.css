@@ -79,6 +79,7 @@
 /* Link card hover effects */
 [data-theme="light"] .sl-link-card:hover {
   background-color: var(--sl-logo-orange);
+  border: 1px solid var(--sl-logo-blue);
   .description {
     color: var(--sl-hover-text-dark);
   }
