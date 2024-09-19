@@ -80,7 +80,7 @@
 [data-theme="light"] .sl-link-card {
   background: var(--sl-card-background-light);
   border: 1px solid var(--sl-logo-blue);
-  box-shadow: 0px 0px 10px var(--sl-logo-blue);
+  box-shadow: 0px 0px 5px var(--sl-logo-blue);
   margin: 5px;
 
   .description {
@@ -91,7 +91,7 @@
 [data-theme="dark"] .sl-link-card {
   background: var(--sl-card-background-dark);
   border: 1px solid var(--sl-logo-orange);
-  box-shadow: 0px 0px 10px var(--sl-logo-orange);
+  box-shadow: 0px 0px 5px var(--sl-logo-orange);
   margin: 5px;
 
   .description {
@@ -103,7 +103,7 @@
 [data-theme="light"] .sl-link-card:hover {
   background: var(--sl-card-background-light);
   border: 1px solid var(--sl-logo-orange);
-  box-shadow: 0px 0px 20px var(--sl-logo-orange);
+  box-shadow: 0px 0px 15px var(--sl-logo-orange);
 
   .description {
     color: var(--sl-hover-text-dark);
@@ -113,7 +113,7 @@
 [data-theme="dark"] .sl-link-card:hover {
   background: var(--sl-card-background-dark);
   border: 1px solid var(--sl-logo-blue);
-  box-shadow: 0px 0px 20px var(--sl-logo-blue);
+  box-shadow: 0px 0px 15px var(--sl-logo-blue);
 
   .description {
     color: var(--sl-hover-text-light);
