@@ -1,31 +1,28 @@
 /* Added a light theme gradient background with an animation for smooth transitions between colors. */
-:root[data-theme="light"] body {
+/* :root[data-theme="light"] body {
     width: 100%;
     height: 100%;
     background-color: #fff4e6;
-    /* background: linear-gradient(270deg, #fff9f4, #f5feff);
+    background: linear-gradient(270deg, #fff9f4, #f5feff);
     background-size: 800% 800%;
-    animation: gradient 10s ease infinite; */
+    animation: gradient 10s ease infinite;
     height: 100vh;
-}
- 
-:root[data-theme="dark"] body {
+} */
+
+/* Created a dark theme gradient background, with subtle transitions to enhance visual appeal. */
+/* :root[data-theme="dark"] body {
     width: 100%;
     height: 100%;
-<<<<<<< HEAD
     background: linear-gradient(270deg, #29211b, #161d21);
     background-size: 800% 800%;
     animation: gradient 10s ease infinite;
-=======
     background-color: #2c2118;
-    /* background: linear-gradient(270deg, #2c2118, #222e31); */
-    /* background-size: 800% 800%; */
-    /* animation: gradient 10s ease infinite; */
->>>>>>> 1c10996 (Minor changes in styling)
+    background: linear-gradient(270deg, #2c2118, #222e31); 
+    background-size: 800% 800%;
+    animation: gradient 10s ease infinite;
     height: 100vh;
-}
-/* Created a dark theme gradient background, with subtle transitions to enhance visual appeal. */
- 
+} */
+
 /* @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -38,5 +35,4 @@
     100% {
         background-position: 0% 50%;
     }
-}
-  */
+} */
