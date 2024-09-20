@@ -13,7 +13,7 @@
 
 /* Light mode colors. */
 :root[data-theme='light'] {
-/*   --sl-color-accent: #00A9E0; */
+  /*   --sl-color-accent: #00A9E0; */
   --sl-color-accent: #3D50f5;
 }
 
@@ -52,7 +52,7 @@ iframe[id="stackblitz-iframe"] {
   transition: background-color ease-in-out 0.25s, color 0.3s ease;
   position: relative;
   overflow: hidden;
-/*   background-color: white;
+  /*   background-color: white;
   color: black; */
   cursor: pointer;
 }
@@ -83,26 +83,17 @@ iframe[id="stackblitz-iframe"] {
 }
 
 @keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-  z-index: -1;
-}
+  0% {
+    background-position: 0% 50%;
+  }
 
-[data-has-hero] .hero .action:hover::before {
-  opacity: 1;
-  animation: moveGradient 3s linear infinite;
-}
+  50% {
+    background-position: 100% 50%;
+  }
 
-[data-has-hero] .hero .action:hover {
-  color: white;
-  background-color: transparent;
-}
-
-@keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 [data-has-hero] .hero .action.minimal {
@@ -151,39 +142,62 @@ img {
   font-display: swap;
 }
 
-/* Additional styles for the site and icons */
-
-/* Additional styles for the site and icons */
 .home-card {
   border-radius: 20%;
   border: 1px dotted black;
 }
 
-html[data-theme="dark"] a.multitool:after,
-html[data-theme="dark"] a.apple:after,
-html[data-theme="dark"] a.windows:after,
-
-html[data-theme="dark"] a.multitool:after,
-html[data-theme="dark"] a.apple:after,
-html[data-theme="dark"] a.windows:after,
-html[data-theme="dark"] a.linux:after {
-  border: 1px solid black;
-}
-
-a.pi:after,
-a.apple:after,
-a.windows:after,
-a.pi:after,
-a.apple:after,
-a.windows:after,
-a.linux:after {
+a.pi:after {
   font-family: "FontAwesomeBrands";
-  content: "\f7bb"; /* example, adjust the content value for each specific icon */
-  content: "\f7bb"; /* example, adjust the content value for each specific icon */
+  content: "\f7bb";
   float: right;
   border-radius: 5px;
   border: 1px solid white;
   padding: 0px 5px 0px 5px;
+}
+
+a.apple:after {
+  font-family: "FontAwesomeBrands";
+  content: "\f179";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
+}
+
+a.windows:after {
+  font-family: "FontAwesomeBrands";
+  content: "\f17a";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
+
+}
+
+a.windows-wsl:after {
+  font-family: "FontAwesomeBrands";
+  content: "\f17a  \f17c";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
+}
+
+a.linux:after {
+  font-family: "FontAwesomeBrands";
+  content: "\f17c";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
+}
+
+html[data-theme="dark"] a.apple:after,
+html[data-theme="dark"] a.windows:after,
+html[data-theme="dark"] a.windows-wsl:after,
+html[data-theme="dark"] a.linux:after {
+  border: 1px solid black;
 }
 
 /* XQuest changes */
@@ -289,4 +303,3 @@ code {
   transition: transform 0.3s ease;
   filter: drop-shadow(0 0 2rem var(--splashkit-blue));
 }
-/* Enhanced the hover effect on hero images by increasing the shadow size and applying a slight scale-up animation. */

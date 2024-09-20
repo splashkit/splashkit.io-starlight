@@ -2,8 +2,8 @@
 title: Install Visual Studio Code
 sidebar:
   label: 3. Visual Studio Code
-  attrs:
-    class: apple
+  # attrs:
+  #   class: apple
 ---
 
 Visual Studio Code, also commonly known as *VS Code* or just *Code*, is a powerful and versatile code editor that enables efficient coding, debugging, and collaboration for your SplashKit projects!
