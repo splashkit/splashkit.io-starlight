@@ -1,9 +1,9 @@
 using static SplashKitSDK.SplashKit;
 
-OpenWindow("Fill Circle", 800, 600);
+OpenWindow("Fill Ellipse", 800, 600);
 ClearScreen();
 
-FillCircle(ColorBlue(), 300, 300, 200);
+FillEllipse(ColorBlue(), 200, 200, 100, 200);
 RefreshScreen(60);
 Delay(4000);
 

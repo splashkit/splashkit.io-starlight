@@ -2,9 +2,8 @@
 
 int main()
 {
-    open_window("Fill Circle", 800, 600);
-    clear_screen();
-    fill_circle(COLOR_BLUE, 300, 300, 200);
+    open_window("Back Ground", 800, 600);
+    clear_screen(COLOR_BLUE);
     refresh_screen(60);
     delay(4000);
 
