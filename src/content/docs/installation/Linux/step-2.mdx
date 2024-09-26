@@ -1,0 +1,112 @@
+---
+title: Install SplashKit
+sidebar:
+  label: 2. SplashKit
+  attrs:
+    class: linux
+---
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+Once you have installed the [Command Line Tools](/installation/linux/step-1/) you can install SplashKit and build the SplashKit library from its source.
+
+## Steps
+
+1. Open up a terminal.
+
+    ![Opening a terminal](/gifs/linux/open-terminal.gif)
+
+2. Install the SplashKit Manager by copy/pasting the command below into your terminal and press enter.
+
+    ```shell
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+3. Restart the terminal and execute `skm` to test it was successfully installed.
+
+    ```shell
+    skm
+    ```
+
+    You should see the following messages:
+
+    ```shell
+    SplashKit is installed successfully!
+    Missing skm command. For help use 'skm help'
+    ```
+
+4. Run the following command to install the necessary dependencies and compile splashkit.
+
+    ```shell
+    skm linux install
+    ```
+
+    If you encounter a dependency issue, you can install the dependencies manually using the following commands:
+
+    <Tabs syncKey="linux-distro">
+    <TabItem label="Ubuntu/Debian">
+    ```bash
+    sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
+    ```
+    </TabItem>
+    <TabItem label="Arch (pacman)">
+    ```bash
+    sudo pacman -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+    </TabItem>
+    <TabItem label="Arch (yay)">
+    ```bash
+    yay -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+    </TabItem>
+    <TabItem label="Fedora">
+    ```bash
+    sudo dnf install cmake libpng SDL2 SDL2_ttf SDL2_image SDL2_net SDL2_mixer SDL2_gfx clang freetype ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+    </TabItem>
+    <TabItem label="Alpine">
+    ```bash
+    sudo apk add cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+    </TabItem>
+    </Tabs>
+
+5. Update your `bash` or `zsh` profile to add the splashkit library to your path.
+
+    <Tabs syncKey="bash-zsh">
+    <TabItem label="bash">
+    Open your ~/.bashrc profile:
+    ```bash
+    nano ~/.bashrc
+    ```
+    Then add the following two lines near the end of the file:
+    ```bash
+    export PATH="$PATH:$HOME/.splashkit:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.splashkit/lib/linux:$LD_LIBRARY_PATH"
+    ```
+    Then run the following command to update your profile:
+    ```bash
+    source ~/.bashrc
+    ```
+    </TabItem>
+    <TabItem label="zsh">
+    Open your `.zshrc` file:
+    ```bash
+    nano ~/.zshrc
+    ```
+    Then add the following two lines near the end of the file:
+    ```bash
+    export PATH="$PATH:$HOME/.splashkit:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.splashkit/lib/linux:$LD_LIBRARY_PATH"
+    ```
+    Then run the following command to update your profile:
+    ```bash
+    source ~/.zshrc
+    ```
+    </TabItem>
+    </Tabs> 
+
+6. Run the following command to install splashkit globally.
+
+    ```shell
+    skm global install
+    ```
