@@ -8,7 +8,7 @@ sidebar:
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-Once you have the [built splashkit](/installation/linux/step-3/) you can download and install Visual Studio Code to use as a source code editor.
+Once you have finished the [install splashkit](/installation/linux/step-2/) step, you can download and install Visual Studio Code to use as a source code editor.
 
 ## Steps for Ubuntu/Debian and Fedora
 
@@ -63,42 +63,56 @@ yay -S code
 
 ## Installing Extensions
 
-1. In Visual Studio Code you should install the following extensions:
+In Visual Studio Code you should install the following extensions:
 
-    These commands remain the same over all distributions.
+### For C#
 
-    ### For C#
+#### Via the Extensions Website for C#
 
-    You can go to the following links and install the extensions:
+You can go to the following links and install the extensions:
 
-    - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-    - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
-    - [Intellicode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
+- [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+- [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+- [Intellicode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
 
-    You can also do this from the command line by executing:
+#### Via the Command Line for C#
 
-    ```shell
-    code --install-extension ms-dotnettools.csharp
-    code --install-extension ms-dotnettools.csdevkit
-    code --install-extension ms-dotnettools.vscodeintellicode-csharp
-    ```
+You can also do this from the command line by executing each of these commands:
 
-    Or you can install them within Visual Studio Code by searching for them in the Extensions tab:
+Note, the commands remain the same over all distributions.
 
-    ![Adding in VScode](/images/installation/linux/Csharp-in-vscode.png)
+```shell
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension ms-dotnettools.vscodeintellicode-csharp
+```
 
-    ### For C++
+#### Within Visual Studio Code for C#
 
-    You can go to the following links and install the extension:
+Or you can install them within Visual Studio Code by searching for them in the Extensions tab:
 
-    - [C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+![Adding in VScode](/images/installation/linux/Csharp-in-vscode.png)
 
-    You can do this from the command line by executing:
+### For C++
 
-    ```shell
-    code --install-extension ms-vscode.cpptools-extension-pack
-    ```
+#### Via the Extensions Website for C++
 
-    Or you can install them within Visual Studio Code by searching for them in the Extensions tab:
+You can go to the following links and install the extension:
 
-    ![Adding in VScode](/images/installation/linux/cplus-in-vscode.png)
+- [C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+
+#### Via the Command Line for C++
+
+You can also do this from the command line by executing each of these commands:
+
+Note, the commands remain the same over all distributions.
+
+```shell
+code --install-extension ms-vscode.cpptools-extension-pack
+```
+
+#### Within Visual Studio Code for C++
+
+Or you can install them within Visual Studio Code by searching for them in the Extensions tab:
+
+![Adding in VScode](/images/installation/linux/cplus-in-vscode.png)
