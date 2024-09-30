@@ -2,7 +2,7 @@
 title: Get Started with SplashKit Audio
 description: Adding sound effects and music can really help bring an application to life. In this article see how to get started with Audio in SplashKit.
 author: Various Authors
-lastupdated: July 2024
+lastupdated: september 2024
 category: Guides
 ---
 
@@ -186,6 +186,8 @@ int main()
 
 </TabItem>
 <TabItem label="C#">
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
 ```csharp
 using SplashKitSDK;
@@ -289,6 +291,140 @@ do
 CloseAllWindows();
 ```
 
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace SoundDemoOOP
+{
+    public class SoundPlayer
+    {
+        private SoundEffect _sndEffect;
+        private Window _window;
+
+        public SoundPlayer()
+        {
+            _window = new Window("Sound Demo", 640, 320);
+            LoadSounds();
+        }
+
+        public void LoadSounds()
+        {
+            _sndEffect = SplashKit.LoadSoundEffect("chipmunk", "chipmunk.ogg");
+            SplashKit.LoadSoundEffect("bells", "bells.ogg");
+            SplashKit.LoadSoundEffect("camera", "camera.ogg");
+            SplashKit.LoadSoundEffect("boing", "comedy_boing.ogg");
+            SplashKit.LoadSoundEffect("dinosaur", "dinosaur.ogg");
+            SplashKit.LoadSoundEffect("bark", "dog_bark.ogg");
+        }
+
+        public void HandleInput()
+        {
+            SplashKit.ProcessEvents();
+
+            if (SplashKit.KeyDown(KeyCode.RightCtrlKey) || SplashKit.KeyDown(KeyCode.LeftCtrlKey))
+            {
+                if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("chipmunk");
+                if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("bells");
+                if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("camera");
+                if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("boing");
+                if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("dinosaur");
+                if (SplashKit.KeyTyped(KeyCode.Num6Key))
+                    _sndEffect = SplashKit.SoundEffectNamed("bark");
+            }
+            else
+            {
+                if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                    _sndEffect.Play();
+                if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                    _sndEffect.Play(0.5f);
+                if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                    _sndEffect.Play(3, 0.25f);
+                if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                    _sndEffect.Play(-1, 0.1f);
+                if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                {
+                    if (_sndEffect.IsPlaying)
+                        _sndEffect.Stop();
+                }
+            }
+        }
+
+        public void DrawInterface()
+        {
+            // Clear the screen with SplashKit Orange background
+            SplashKit.ClearScreen(SplashKit.RGBColor(245, 166, 35));
+
+            // Draw heading
+            SplashKit.SetFontStyle("arial", FontStyle.BoldFont);
+            SplashKit.DrawText("Keyboard Controls", Color.Black, "arial", 20, (_window.Width - SplashKit.TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
+            SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
+
+            // Draw left box with SplashKit Cyan/Teal border
+            SplashKit.FillRectangle(SplashKit.RGBColor(5, 172, 193), 10, 45, _window.Width / 2 + 10, _window.Height - 85);
+            SplashKit.FillRectangle(Color.PapayaWhip, 20, 55, _window.Width / 2 - 10, _window.Height - 105);
+            SplashKit.DrawLine(Color.LightGray, 30, 105, _window.Width / 2, 105);
+
+            // Playing sound effect controls text
+            SplashKit.DrawText("Playing Sound Controls", Color.Red, "arial", 18, 80, 70);
+            SplashKit.DrawText("[1]    Play Sound At Full Volume", Color.Blue, "arial", 14, 30, 120);
+            SplashKit.DrawText("[2]    Play Sound At 50% Volume", Color.Blue, "arial", 14, 30, 150);
+            SplashKit.DrawText("[3]    Play Sound 3 Times At 25% Volume", Color.Blue, "arial", 14, 30, 180);
+            SplashKit.DrawText("[4]    Play Sound Continuously at 10% Volume", Color.Blue, "arial", 14, 30, 210);
+            SplashKit.DrawText("[5]    Stop Playing Current Sound", Color.Blue, "arial", 14, 30, 240);
+
+            // Exit text
+            SplashKit.SetFontStyle("arial", FontStyle.ItalicFont);
+            SplashKit.DrawText("Press [Escape] or [Q] to quit", Color.Black, "arial", 16, 65, 290);
+            SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
+
+            // Draw right box with SplashKit Cyan/Teal border
+            SplashKit.FillRectangle(SplashKit.RGBColor(5, 172, 193), _window.Width / 2 + 30, 45, _window.Width / 2 - 40, _window.Height - 55);
+            SplashKit.FillRectangle(Color.PapayaWhip, _window.Width / 2 + 40, 55, _window.Width / 2 - 60, _window.Height - 75);
+            SplashKit.DrawLine(Color.LightGray, _window.Width / 2 + 50, 105, _window.Width - 30, 105);
+
+            // Switching to sound effect controls text
+            SplashKit.DrawText("Switching Sound Controls", Color.OrangeRed, "arial", 18, _window.Width / 2 + 65, 70);
+            SplashKit.DrawText("[CTRL + 1]    Chipmunk Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 120);
+            SplashKit.DrawText("[CTRL + 2]    Bells Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 150);
+            SplashKit.DrawText("[CTRL + 3]    Camera Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 180);
+            SplashKit.DrawText("[CTRL + 4]    Boing Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 210);
+            SplashKit.DrawText("[CTRL + 5]    Dinosaur Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 240);
+            SplashKit.DrawText("[CTRL + 6]    Bark Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 270);
+        }
+
+        public void Run()
+        {
+            do
+            {
+                HandleInput();
+                DrawInterface();
+                SplashKit.RefreshScreen(60);
+            } while (!(SplashKit.QuitRequested() || SplashKit.KeyTyped(KeyCode.EscapeKey) || SplashKit.KeyTyped(KeyCode.QKey)));
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            SoundPlayer player = new SoundPlayer();
+            player.Run();
+        }
+    }
+}
+```
+</TabItem>
+</Tabs>
 </TabItem>
 <TabItem label="Python">
 
