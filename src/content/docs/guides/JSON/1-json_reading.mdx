@@ -2,8 +2,8 @@
 title: Reading JSON Data in SplashKit
 description: After understanding the basics of JSON in SplashKit, this part of the tutorial focuses on how to read and parse JSON data. Reading JSON data is essential for game development tasks such as loading game settings, level configurations, or player data.
 category: Guides
-author: Jonathan Tynan
-lastupdated: May 11 2024
+author: Jonathan Tynan and Yuyang Yang
+lastupdated: Sep 14 2024
 sidebar:
   label: "Reading JSON Data"
 ---
@@ -18,7 +18,7 @@ _Last updated: {frontmatter.lastupdated}_
 
 ## Reading JSON Objects
 
-In the previous tutorial we loaded the following [JSON](/api/json/) file and read the game title from it. Lets extend this a little, and dive a further into extracting values from this structure.
+In the previous tutorial we loaded the following JSON file and read the game title from it. Lets extend this a little, and dive a further into extracting values from this structure.
 
 ```json
 {
@@ -50,6 +50,9 @@ bool isFullScreen = json_read_bool(game_data, "fullScreenMode");
 
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 string title = JsonReadString(gameData, "gameTitle");
 int numPlayers = JsonReadNumberAsInt(gameData, "numPlayers");
@@ -57,11 +60,23 @@ bool isFullScreen = JsonReadBool(gameData, "fullScreenMode");
 ```
 
 </TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+string title = SplashKit.JsonReadString(gameData, "gameTitle");
+int numPlayers = SplashKit.JsonReadNumberAsInt(gameData, "numPlayers");
+bool isFullScreen = SplashKit.JsonReadBool(gameData, "fullScreenMode");
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 </Tabs>
 
 ### Working with JSON Arrays
 
-If the data is an array, like the value stored for the `levels` key, we can obtain the data through [Json Read Array](/api/json/#json-read-array) and store it into a dynamic string array variable (such as `vector<string>`in C++, or `List<string>` in C#). Then we can loop through the entries in the array, and do some actions with the stored data.
+If the data is an array, like the value stored for the `levels` key, we can obtain the data through [Json Read Array](/api/json/#json-read-array) and store it into a dynamic string array variable (such as `vector<string>` in C++, or `List<string>` in C#). Then we can loop through the entries in the array, and do some actions with the stored data.
 
 Below is an example of this:
 
@@ -86,6 +101,9 @@ for(int i = 0; i < num_levels; i++)
 
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 
 using SplashKitSDK;
@@ -105,6 +123,44 @@ for (int i = 0; i < numLevels; i++)
     WriteLine($"Got level: {levels[i]}");
 }
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+
+using SplashKitSDK;
+using System.Collections.Generic;
+
+namespace ReadingJsonData
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            string filePath = "game_data.json";
+
+            Json gameData = SplashKit.JsonFromFile(filePath);
+
+            List<string> levels = new List<string>();
+
+            SplashKit.JsonReadArray(gameData, "levels", ref levels);
+
+            int numLevels = levels.Count;
+ 
+            for (int i = 0; i < numLevels; i++)
+            {
+                SplashKit.WriteLine($"Got level: {levels[i]}");
+            }
+
+            SplashKit.FreeJson(gameData);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
@@ -134,11 +190,26 @@ int height = json_read_number_as_int(game_screen_size, "height");
 
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 Json gameScreenSize = JsonReadObject(gamedata, "screenSize");
 int width = JsonReadNumberAsInt(gameScreenSize, "width");
 int height = JsonReadNumberAsInt(gameScreenSize, "height");
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+Json gameScreenSize = SplashKit.JsonReadObject(gamedata, "screenSize");
+int width = SplashKit.JsonReadNumberAsInt(gameScreenSize, "width");
+int height = SplashKit.JsonReadNumberAsInt(gameScreenSize, "height");
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
