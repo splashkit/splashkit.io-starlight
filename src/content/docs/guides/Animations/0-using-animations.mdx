@@ -231,6 +231,9 @@ This includes sample animation scripts, images, and sounds.
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
   ```csharp
   using SplashKitSDK;
   using static SplashKitSDK.SplashKit;
@@ -298,6 +301,91 @@ This includes sample animation scripts, images, and sounds.
 
   CloseAllWindows();
   ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsingAnimations
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = new Window("Animation Test", 120, 120);
+
+            // // We could load all of the resources in a bundle
+            // LoadResourceBundle("dance bundle", "dance_bundle.txt");
+
+            // // Then access by name
+            // AnimationScript danceScript = AnimationScriptNamed("WalkingScript");
+            // Bitmap frog = BitmapNamed("FrogBmp");
+
+            // Loading them separately
+
+            // Load image and set its cell details
+
+            Bitmap frog = new Bitmap("FrogBmp", "frog.png");
+            frog.SetCellDetails(73, 105, 4, 4, 16);   // cell width, height, cols, rows, count
+
+            // Load the animation script
+
+            AnimationScript danceScript = new AnimationScript("WalkingScript", "kermit.txt");
+
+            // Create the animation
+            Animation frogAnimation = danceScript.CreateAnimation("WalkFront");
+
+            // Create a drawing option
+            DrawingOptions opt = SplashKit.OptionWithAnimation(frogAnimation);
+
+
+            // Basic event loop
+            while (!window.CloseRequested)
+            {
+                SplashKit.ProcessEvents();
+
+                // Draw the bitmap - using opt to link to animation
+                window.Clear(Color.White);
+                frog.Draw(20, 20, opt);
+                window.DrawText(frogAnimation.Name, Color.Black, 0, 0);
+                window.Refresh(60);
+
+                // Update the animation
+                frogAnimation.Update();
+
+                // Switch animations
+                if (SplashKit.KeyTyped(KeyCode.UpKey))
+                {
+                    frogAnimation.Assign("WalkBack");
+                }
+                else if (SplashKit.KeyTyped(KeyCode.DownKey))
+                {
+                    frogAnimation.Assign("WalkFront");
+                }
+                else if (SplashKit.KeyTyped(KeyCode.LeftKey))
+                {
+                    frogAnimation.Assign("WalkLeft");
+                }
+                else if (SplashKit.KeyTyped(KeyCode.RightKey))
+                {
+                    frogAnimation.Assign("WalkRight");
+                }
+                else if (SplashKit.KeyTyped(KeyCode.DKey))
+                {
+                    frogAnimation.Assign("Dance");
+                }
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
@@ -410,6 +498,9 @@ Here is a another example, where the **Left Shift Key** can be **held down** to 
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
   ```csharp
   using SplashKitSDK;
   using static SplashKitSDK.SplashKit;
@@ -496,6 +587,108 @@ Here is a another example, where the **Left Shift Key** can be **held down** to 
 
   CloseAllWindows();
   ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsingAnimations
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = new Window("Animation Test", 120, 120);
+
+            // We could load all of the resources in a bundle
+            SplashKit.LoadResourceBundle("dance bundle", "dance_bundle.txt");
+
+            // Then access by name
+            AnimationScript danceScript = SplashKit.AnimationScriptNamed("WalkingScript");
+            Bitmap frog = SplashKit.BitmapNamed("FrogBmp");
+
+            // Create the animation
+            Animation frogAnimation = danceScript.CreateAnimation("WalkFront");
+
+            // Create a drawing option
+            DrawingOptions opt = SplashKit.OptionWithAnimation(frogAnimation);
+
+
+            // Basic event loop
+            while (!window.CloseRequested)
+            {
+                SplashKit.ProcessEvents();
+
+                // Draw the bitmap - using opt to link to animation
+                window.Clear(Color.White);
+                frog.Draw(20, 20, opt);
+                window.DrawText(frogAnimation.Name, Color.Black, 0, 0);
+                window.Refresh(60);
+
+                // Update the animation
+                frogAnimation.Update();
+
+                // Switch animations
+                if (SplashKit.KeyTyped(KeyCode.UpKey))
+                {
+                    if (SplashKit.KeyDown(KeyCode.LeftShiftKey))
+                    {
+                        frogAnimation.Assign("MoonWalkBack");
+                    }
+                    else
+                    {
+                        frogAnimation.Assign("WalkBack");
+                    }
+                }
+                else if (SplashKit.KeyTyped(KeyCode.DownKey))
+                {
+                    if (SplashKit.KeyDown(KeyCode.LeftShiftKey))
+                    {
+                        frogAnimation.Assign("MoonWalkFront");
+                    }
+                    else
+                    {
+                        frogAnimation.Assign("WalkFront");
+                    }
+                }
+                else if (SplashKit.KeyTyped(KeyCode.LeftKey))
+                {
+                    if (SplashKit.KeyDown(KeyCode.LeftShiftKey))
+                    {
+                        frogAnimation.Assign("MoonWalkLeft");
+                    }
+                    else
+                    {
+                        frogAnimation.Assign("WalkLeft");
+                    }
+                }
+                else if (SplashKit.KeyTyped(KeyCode.RightKey))
+                {
+                    if (SplashKit.KeyDown(KeyCode.LeftShiftKey))
+                    {
+                        frogAnimation.Assign("MoonWalkRight");
+                    }
+                    else
+                    {
+                        frogAnimation.Assign("WalkRight");
+                    }
+                }
+                else if (SplashKit.KeyTyped(KeyCode.DKey))
+                {
+                    frogAnimation.Assign("Dance");
+                }
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
