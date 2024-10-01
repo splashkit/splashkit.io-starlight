@@ -2,8 +2,8 @@
 title: Introduction to JSON in SplashKit
 description: JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and for machines to parse and generate.
 category: Guides
-author: Jonathan Tynan
-lastupdated: May 11 2024
+author: Jonathan Tynan and Yuyang Yang
+lastupdated: Sep 10 2024
 sidebar:
   label: "Introduction to JSON"
 ---
@@ -54,41 +54,66 @@ This command creates sub-folders for each type of resource. One of these is name
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
-  int main()
-  {
-      json game_data;
-      game_data = json_from_file("game_data.json");
-      string game_title = json_read_string(game_data, "gameTitle");
+```cpp
+#include "splashkit.h"
+int main()
+{
+    json game_data = json_from_file("game_data.json");
+    string game_title = json_read_string(game_data, "gameTitle");
 
-      write("Game Title: ");
-      write_line(game_title);
+    write_line("Game Title: " + game_title);
 
-      free_json(game_data);
+    free_json(game_data);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  Json gameData = JsonFromFile("game_data.json");
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  string gameTitle = JsonReadString(gameData, "gameTitle");
+Json gameData = JsonFromFile("game_data.json");
+string gameTitle = JsonReadString(gameData, "gameTitle");
 
-  WriteLine("Game Title: " + gameTitle);
+WriteLine("Game Title: " + gameTitle);
 
-  FreeJson(gameData);
-  ```
+FreeJson(gameData);
+```
 
-  </TabItem>
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace GameDataManagement
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Json gameData = SplashKit.JsonFromFile(game_data.json);
+            string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+
+            SplashKit.WriteLine("Game Title: " + gameTitle);
+
+            SplashKit.FreeJson(gameData);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 </Tabs>
 
 In this code example, we're first using [Json From File](/api/json/#json-from-file) to load a JSON object with the details from the `game_data.json` file.
@@ -121,7 +146,6 @@ And run it with:
 ```
 
 </TabItem>
-
 <TabItem label="C#">
 
 ```shell
@@ -129,7 +153,6 @@ dotnet run
 ```
 
 </TabItem>
-  
 </Tabs>
 
 When we run this program it should output the following to the console:
@@ -149,8 +172,7 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
 #include "splashkit.h"
 int main()
 {
-    json game_data;
-    game_data = json_from_file("game_data.json");
+    json game_data = json_from_file("game_data.json");
 
     if(json_has_key(game_data, "gameTitle"))
     {
@@ -170,14 +192,16 @@ int main()
 ```
 
 </TabItem>
-
 <TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
-Json gameData =JsonFromFile("game_data.json");
+Json gameData = JsonFromFile("game_data.json");
 
 if (JsonHasKey(gameData, "gameTitle"))
 {
@@ -189,8 +213,41 @@ else
     WriteLine("Key \"gameTitle\" not found.");
 }
 
-  FreeJson(gameData);
+FreeJson(gameData);
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace GameDataManagement
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Json gameData = SplashKit.JsonFromFile("game_data.json");
+
+            if (SplashKit.JsonHasKey(gameData, "gameTitle"))
+            {
+                string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+                SplashKit.WriteLine("Game Title: " + gameTitle);
+            }
+            else
+            {
+                SplashKit.WriteLine("Key \"gameTitle\" not found.");
+            }
+
+            SplashKit.FreeJson(gameData);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
