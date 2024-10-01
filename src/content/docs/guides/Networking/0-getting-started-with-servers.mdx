@@ -3,7 +3,7 @@ title: Getting Started With Servers
 description: This guide is an introduction to using web servers
 category: Guides
 author: Andrew Cain and Isaac Wallis
-lastupdated: Jul 14 2018
+lastupdated: Aug 10 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -91,7 +91,7 @@ We need to pair the [Start Web Server](/api/networking/#start-web-server) with a
   write_line("About to start the server...")
 
   # Start a web server - defaults to listening to port 8080
-  server = start_web_server()
+  server = start_web_server_with_default_port()
 
   # For now we are done... so lets shutdown...
   stop_web_server(server)
@@ -119,7 +119,7 @@ The following code shows an appropriate `"Hello World"` web server program.
       write_line("About to start the server...");
 
       // Start a web server - defaults to listening to port 8080
-      web_server server = web_server();
+      web_server server = start_web_server();
 
       write_line("Waiting for a request - navigate to http://localhost:8080");
 
@@ -208,7 +208,7 @@ The follow code replaces the "Hello World" response with the details from the in
       write_line("About to start the server...");
 
       // Start a web server - defaults to listening to port 8080
-      web_server server = web_server();
+      web_server server = start_web_server();
 
       write_line("Waiting for a request - navigate to http://localhost:8080");
 
