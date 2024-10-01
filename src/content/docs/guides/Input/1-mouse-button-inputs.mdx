@@ -3,7 +3,7 @@ title: Using Mouse Inputs
 description: Introductory Mouse Input functionality guide
 category: Guides
 author: Various Authors
-lastupdated: July 2024
+lastupdated: September 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -105,6 +105,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -134,10 +137,52 @@ CloseAllWindows();
 ```
 
 </TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseInputs
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.MouseClicked(MouseButton.LeftButton))
+                {
+                    SplashKit.ClearScreen(Color.Red);
+                }
+                else if (SplashKit.MouseClicked(MouseButton.RightButton))
+                {
+                    SplashKit.ClearScreen(Color.Yellow);
+                }
+
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 <TabItem label="Python">
-  
+
 ```python
+
 from splashkit import *
+
 COLOR_RED = color_red()
 COLOR_YELLOW = color_yellow()
 COLOR_WHITE = color_white()  
@@ -225,6 +270,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -257,6 +305,50 @@ while (!WindowCloseRequested("Mouse Inputs"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseInputs
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.MouseDown(MouseButton.LeftButton))
+                {
+                    SplashKit.ClearScreen(Color.Red);
+                }
+                else if (SplashKit.MouseDown(MouseButton.RightButton))
+                {
+                    SplashKit.ClearScreen(Color.Yellow);
+                }
+                else
+                {
+                    SplashKit.ClearScreen(Color.White);
+                }
+
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -350,6 +442,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -377,6 +472,46 @@ while (!WindowCloseRequested("Mouse Inputs"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseInputs
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Inputs", 800, 600);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.MouseUp(MouseButton.LeftButton))
+                {
+                    SplashKit.ClearScreen(Color.Red);
+                }
+                else
+                {
+                    SplashKit.ClearScreen(Color.White);
+                }
+
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -479,6 +614,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -521,6 +659,54 @@ while (!WindowCloseRequested("Mouse Movement"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseMovement
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Movement", 800, 600);
+            double hue = 0.8;
+            double saturation = 0.8;
+            double brightness = 0.8;
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                Vector2D movement = SplashKit.MouseMovement();
+
+                if (SplashKit.MouseDown(MouseButton.LeftButton))
+                {
+                    hue += movement.X / SplashKit.ScreenWidth();
+                }
+
+                if (SplashKit.MouseDown(MouseButton.RightButton))
+                {
+                    saturation += movement.Y / SplashKit.ScreenHeight();
+                }
+
+                SplashKit.ClearScreen(SplashKit.HSBColor(hue, saturation, brightness));
+
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -621,6 +807,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -653,6 +842,45 @@ while (!WindowCloseRequested("Mouse Scrolling"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseScrolling
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Scrolling", 800, 600);
+            double hue = 0.6;
+            double saturation = 0.6;
+            double brightness = 0.6;
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                Vector2D scroll = SplashKit.MouseWheelScroll();
+
+                hue += scroll.Y / 100.0;
+
+                SplashKit.ClearScreen(SplashKit.HSBColor(hue, saturation, brightness));
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -737,6 +965,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -756,6 +987,42 @@ while (!WindowCloseRequested("Mouse Location"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseLocation
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Location", 800, 600);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                SplashKit.ClearScreen(Color.White);
+
+                Point2D mousePosition = SplashKit.MousePosition();
+                SplashKit.FillCircle(Color.LightBlue, mousePosition.X, mousePosition.Y, 20);
+
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -829,6 +1096,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -848,6 +1118,39 @@ while (!WindowCloseRequested("Mouse Location"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseLocation
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Location", 800, 600);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                SplashKit.ClearScreen(Color.White);
+                SplashKit.DrawLine(Color.Blue, SplashKit.LineFrom(SplashKit.MousePositionVector()));
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -929,8 +1232,12 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
 float x = 0;
 
@@ -955,6 +1262,46 @@ while (!WindowCloseRequested("Mouse Location"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseLocation
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Location", 800, 600);
+            float x = 0;
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.MouseDown(MouseButton.LeftButton))
+                {
+                    x = SplashKit.MouseX();
+                }
+
+                SplashKit.ClearScreen(Color.White);
+                SplashKit.FillCircle(Color.Blue, 400, 300, 100);
+                SplashKit.FillRectangle(Color.Purple, 0, 0, x, SplashKit.ScreenHeight());
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -1041,6 +1388,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -1068,6 +1418,46 @@ while (!WindowCloseRequested("Mouse Location"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseLocation
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Location", 800, 600);
+            float y = 0;
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.MouseDown(MouseButton.LeftButton))
+                {
+                    y = SplashKit.MouseY();
+                }
+
+                SplashKit.ClearScreen(Color.White);
+                SplashKit.FillCircle(Color.Blue, 400, 300, 100);
+                SplashKit.FillRectangle(Color.Purple, 0, 0, SplashKit.ScreenWidth(), y);
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -1165,6 +1555,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -1201,6 +1594,49 @@ while (!WindowCloseRequested("Mouse Visibility"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseVisibility
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Visibility", 800, 600);
+            Circle blackHole = SplashKit.CircleAt(SplashKit.ScreenCenter(), 50);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.PointInCircle(SplashKit.MousePosition(), blackHole))
+                {
+                    SplashKit.HideMouse();
+                }
+                else
+                {
+                    SplashKit.ShowMouse();
+                }
+
+                SplashKit.ClearScreen(Color.White);
+                SplashKit.FillCircle(Color.Black, blackHole);
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -1296,6 +1732,9 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
@@ -1324,6 +1763,43 @@ while (!WindowCloseRequested("Mouse Visibility"))
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace MouseVisibility
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = SplashKit.OpenWindow("Mouse Visibility", 800, 600);
+            Circle spotLight = SplashKit.CircleAt(SplashKit.ScreenCenter(), 100);
+
+            while (!SplashKit.WindowCloseRequested(window))
+            {
+                SplashKit.ProcessEvents();
+
+                bool isMouseInSpotLight = SplashKit.PointInCircle(SplashKit.MousePosition(), spotLight);
+                SplashKit.ShowMouse(isMouseInSpotLight);
+
+                SplashKit.ClearScreen(Color.Black);
+                SplashKit.FillCircle(Color.White, spotLight);
+                SplashKit.RefreshScreen(60);
+            }
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
