@@ -82,6 +82,51 @@ This includes sample sounds, and a font ("arial").
 ```cpp
 #include "splashkit.h"
 
+void draw_instructions()
+{
+    // SplashKit Orange background
+    clear_screen(rgb_color(245, 166, 35));
+
+    // Draw heading
+    set_font_style("arial", BOLD_FONT);
+    draw_text("Keyboard Controls", COLOR_BLACK, "arial", 20, (screen_width() - text_width("Keyboard Controls", "arial", 20)) / 2, 10);
+    set_font_style("arial", NORMAL_FONT);
+
+    // Draw left box with SplashKit Cyan/Teal bo
+    fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85);
+    fill_rectangle(COLOR_PAPAYA_WHIP, 20, 55, screen_width() / 2 - 10, screen_height() - 105);
+    draw_line(COLOR_LIGHT_GRAY, 30, 105, screen_width() / 2, 105);
+
+    // Playing sound effect controls text
+    draw_text("Playing Sound Controls", COLOR_BLACK, "arial", 18, 80, 70);
+    draw_text("[1]    Play Sound At Full Volume", COLOR_BLACK, "arial", 14, 30, 120);
+    draw_text("[2]    Play Sound At 50% Volume", COLOR_BLACK, "arial", 14, 30, 150);
+    draw_text("[3]    Play Sound 3 Times At 25% Volume", COLOR_BLACK, "arial", 14, 30, 180);
+    draw_text("[4]    Play Sound Continuously at 10% Volume", COLOR_BLACK, "arial", 14, 30, 210);
+    draw_text("[5]    Stop Playing Current Sound", COLOR_BLACK, "arial", 14, 30, 240);
+
+    // Exit text
+    set_font_style("arial", ITALIC_FONT);
+    draw_text("Press [Escape] or [Q] to quit", COLOR_BLACK, "arial", 16, 65, 290);
+    set_font_style("arial", NORMAL_FONT);
+
+    // Draw left box with SplashKit Cyan/Teal bo
+    fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55);
+    fill_rectangle(COLOR_PAPAYA_WHIP, screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75);
+    draw_line(COLOR_LIGHT_GRAY, screen_width() / 2 + 50, 105, screen_width() - 30, 105);
+
+    // Switching to sound effect controls text
+    draw_text("Switching Sound Controls", COLOR_BLACK, "arial", 18, screen_width() / 2 + 65, 70);
+    draw_text("[CTRL + 1]    Chipmunk Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 120);
+    draw_text("[CTRL + 2]    Bells Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 150);
+    draw_text("[CTRL + 3]    Camera Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 180);
+    draw_text("[CTRL + 4]    Boing Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 210);
+    draw_text("[CTRL + 5]    Dinasaur Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 240);
+    draw_text("[CTRL + 6]    Bark Sound", COLOR_BLACK, "arial", 14, screen_width() / 2 + 50, 270);
+
+    refresh_screen(60);
+}
+
 int main()
 {
     sound_effect snd_effect;
@@ -135,48 +180,8 @@ int main()
         }
 
         // Drawing Keyboard Controls information in window (focus on sound effect code above)
+        draw_instructions();
 
-        // SplashKit Orange background
-        clear_screen(rgb_color(245, 166, 35));
-
-        // Draw heading
-        set_font_style("arial", BOLD_FONT);
-        draw_text("Keyboard Controls", COLOR_BLACK, "arial", 20, (screen_width() - text_width("Keyboard Controls", "arial", 20)) / 2, 10);
-        set_font_style("arial", NORMAL_FONT);
-
-        // Draw left box with SplashKit Cyan/Teal bo
-        fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85);
-        fill_rectangle(COLOR_PAPAYA_WHIP, 20, 55, screen_width() / 2 - 10, screen_height() - 105);
-        draw_line(COLOR_LIGHT_GRAY, 30, 105, screen_width() / 2, 105);
-
-        // Playing sound effect controls text
-        draw_text("Playing Sound Controls", COLOR_RED, "arial", 18, 80, 70);
-        draw_text("[1]    Play Sound At Full Volume", COLOR_BLUE, "arial", 14, 30, 120);
-        draw_text("[2]    Play Sound At 50% Volume", COLOR_BLUE, "arial", 14, 30, 150);
-        draw_text("[3]    Play Sound 3 Times At 25% Volume", COLOR_BLUE, "arial", 14, 30, 180);
-        draw_text("[4]    Play Sound Continuously at 10% Volume", COLOR_BLUE, "arial", 14, 30, 210);
-        draw_text("[5]    Stop Playing Current Sound", COLOR_BLUE, "arial", 14, 30, 240);
-
-        // Exit text
-        set_font_style("arial", ITALIC_FONT);
-        draw_text("Press [Escape] or [Q] to quit", COLOR_BLACK, "arial", 16, 65, 290);
-        set_font_style("arial", NORMAL_FONT);
-
-        // Draw left box with SplashKit Cyan/Teal bo
-        fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55);
-        fill_rectangle(COLOR_PAPAYA_WHIP, screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75);
-        draw_line(COLOR_LIGHT_GRAY, screen_width() / 2 + 50, 105, screen_width() - 30, 105);
-
-        // Switching to sound effect controls text
-        draw_text("Switching Sound Controls", COLOR_ORANGE_RED, "arial", 18, screen_width() / 2 + 65, 70);
-        draw_text("[CTRL + 1]    Chipmunk Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 120);
-        draw_text("[CTRL + 2]    Bells Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 150);
-        draw_text("[CTRL + 3]    Camera Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 180);
-        draw_text("[CTRL + 4]    Boing Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 210);
-        draw_text("[CTRL + 5]    Dinasaur Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 240);
-        draw_text("[CTRL + 6]    Bark Sound", COLOR_DARK_GREEN, "arial", 14, screen_width() / 2 + 50, 270);
-
-        refresh_screen(60);
     } while (!(quit_requested() || key_typed(ESCAPE_KEY) || key_typed(Q_KEY)));
 
     close_all_windows();
@@ -186,12 +191,58 @@ int main()
 
 </TabItem>
 <TabItem label="C#">
+
 <Tabs syncKey="csharp-style">
 <TabItem label="Top-level Statements">
 
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
+
+static void DrawInstructions()
+{
+    // SplashKit Orange background
+    ClearScreen(RGBColor(245, 166, 35));
+
+    // Draw heading
+    SetFontStyle("arial", FontStyle.BoldFont);
+    DrawText("Keyboard Controls", ColorBlack(), "arial", 20, (ScreenWidth() - TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
+    SetFontStyle("arial", FontStyle.NormalFont);
+
+    // Draw left box with SplashKit Cyan/Teal bo
+    FillRectangle(RGBColor(5, 172, 193), 10, 45, ScreenWidth() / 2 + 10, ScreenHeight() - 85);
+    FillRectangle(ColorPapayaWhip(), 20, 55, ScreenWidth() / 2 - 10, ScreenHeight() - 105);
+    DrawLine(ColorLightGray(), 30, 105, ScreenWidth() / 2, 105);
+
+    // Playing sound effect controls text
+    DrawText("Playing Sound Controls", ColorBlack(), "arial", 18, 80, 70);
+    DrawText("[1]    Play Sound At Full Volume", ColorBlack(), "arial", 14, 30, 120);
+    DrawText("[2]    Play Sound At 50% Volume", ColorBlack(), "arial", 14, 30, 150);
+    DrawText("[3]    Play Sound 3 Times At 25% Volume", ColorBlack(), "arial", 14, 30, 180);
+    DrawText("[4]    Play Sound Continuously at 10% Volume", ColorBlack(), "arial", 14, 30, 210);
+    DrawText("[5]    Stop Playing Current Sound", ColorBlack(), "arial", 14, 30, 240);
+
+    // Exit text
+    SetFontStyle("arial", FontStyle.ItalicFont);
+    DrawText("Press [Escape] or [Q] to quit", ColorBlack(), "arial", 16, 65, 290);
+    SetFontStyle("arial", FontStyle.NormalFont);
+
+    // Draw left box with SplashKit Cyan/Teal bo
+    FillRectangle(RGBColor(5, 172, 193), ScreenWidth() / 2 + 30, 45, ScreenWidth() / 2 - 40, ScreenHeight() - 55);
+    FillRectangle(ColorPapayaWhip(), ScreenWidth() / 2 + 40, 55, ScreenWidth() / 2 - 60, ScreenHeight() - 75);
+    DrawLine(ColorLightGray(), ScreenWidth() / 2 + 50, 105, ScreenWidth() - 30, 105);
+
+    // Switching to sound effect controls text
+    DrawText("Switching Sound Controls", ColorBlack(), "arial", 18, ScreenWidth() / 2 + 65, 70);
+    DrawText("[CTRL + 1]    Chipmunk Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 120);
+    DrawText("[CTRL + 2]    Bells Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 150);
+    DrawText("[CTRL + 3]    Camera Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 180);
+    DrawText("[CTRL + 4]    Boing Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 210);
+    DrawText("[CTRL + 5]    Dinasaur Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 240);
+    DrawText("[CTRL + 6]    Bark Sound", ColorBlack(), "arial", 14, ScreenWidth() / 2 + 50, 270);
+
+    RefreshScreen(60);
+}
 
 SoundEffect sndEffect;
 
@@ -244,48 +295,8 @@ do
     }
 
     // Drawing Keyboard Controls information in window (focus on sound effect code above)
+    DrawInstructions();
 
-    // SplashKit Orange background
-    ClearScreen(RGBColor(245, 166, 35));
-
-    // Draw heading
-    SetFontStyle("arial", FontStyle.BoldFont);
-    DrawText("Keyboard Controls", Color.Black, "arial", 20, (ScreenWidth() - TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
-    SetFontStyle("arial", FontStyle.NormalFont);
-
-    // Draw left box with SplashKit Cyan/Teal bo
-    FillRectangle(RGBColor(5, 172, 193), 10, 45, ScreenWidth() / 2 + 10, ScreenHeight() - 85);
-    FillRectangle(Color.PapayaWhip, 20, 55, ScreenWidth() / 2 - 10, ScreenHeight() - 105);
-    DrawLine(Color.LightGray, 30, 105, ScreenWidth() / 2, 105);
-
-    // Playing sound effect controls text
-    DrawText("Playing Sound Controls", Color.Red, "arial", 18, 80, 70);
-    DrawText("[1]    Play Sound At Full Volume", Color.Blue, "arial", 14, 30, 120);
-    DrawText("[2]    Play Sound At 50% Volume", Color.Blue, "arial", 14, 30, 150);
-    DrawText("[3]    Play Sound 3 Times At 25% Volume", Color.Blue, "arial", 14, 30, 180);
-    DrawText("[4]    Play Sound Continuously at 10% Volume", Color.Blue, "arial", 14, 30, 210);
-    DrawText("[5]    Stop Playing Current Sound", Color.Blue, "arial", 14, 30, 240);
-
-    // Exit text
-    SetFontStyle("arial", FontStyle.ItalicFont);
-    DrawText("Press [Escape] or [Q] to quit", Color.Black, "arial", 16, 65, 290);
-    SetFontStyle("arial", FontStyle.NormalFont);
-
-    // Draw left box with SplashKit Cyan/Teal bo
-    FillRectangle(RGBColor(5, 172, 193), ScreenWidth() / 2 + 30, 45, ScreenWidth() / 2 - 40, ScreenHeight() - 55);
-    FillRectangle(Color.PapayaWhip, ScreenWidth() / 2 + 40, 55, ScreenWidth() / 2 - 60, ScreenHeight() - 75);
-    DrawLine(Color.LightGray, ScreenWidth() / 2 + 50, 105, ScreenWidth() - 30, 105);
-
-    // Switching to sound effect controls text
-    DrawText("Switching Sound Controls", Color.OrangeRed, "arial", 18, ScreenWidth() / 2 + 65, 70);
-    DrawText("[CTRL + 1]    Chipmunk Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 120);
-    DrawText("[CTRL + 2]    Bells Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 150);
-    DrawText("[CTRL + 3]    Camera Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 180);
-    DrawText("[CTRL + 4]    Boing Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 210);
-    DrawText("[CTRL + 5]    Dinasaur Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 240);
-    DrawText("[CTRL + 6]    Bark Sound", Color.DarkGreen, "arial", 14, ScreenWidth() / 2 + 50, 270);
-
-    RefreshScreen(60);
 } while (!(QuitRequested() || KeyTyped(KeyCode.EscapeKey) || KeyTyped(KeyCode.QKey)));
 
 CloseAllWindows();
@@ -297,140 +308,171 @@ CloseAllWindows();
 ```csharp
 using SplashKitSDK;
 
-namespace SoundDemoOOP
+namespace SoundPlayer
 {
-    public class SoundPlayer
+    public class Program
     {
-        private SoundEffect _sndEffect;
-        private Window _window;
-
-        public SoundPlayer()
+        public static void DrawInstructions()
         {
-            _window = new Window("Sound Demo", 640, 320);
-            LoadSounds();
-        }
-
-        public void LoadSounds()
-        {
-            _sndEffect = SplashKit.LoadSoundEffect("chipmunk", "chipmunk.ogg");
-            SplashKit.LoadSoundEffect("bells", "bells.ogg");
-            SplashKit.LoadSoundEffect("camera", "camera.ogg");
-            SplashKit.LoadSoundEffect("boing", "comedy_boing.ogg");
-            SplashKit.LoadSoundEffect("dinosaur", "dinosaur.ogg");
-            SplashKit.LoadSoundEffect("bark", "dog_bark.ogg");
-        }
-
-        public void HandleInput()
-        {
-            SplashKit.ProcessEvents();
-
-            if (SplashKit.KeyDown(KeyCode.RightCtrlKey) || SplashKit.KeyDown(KeyCode.LeftCtrlKey))
-            {
-                if (SplashKit.KeyTyped(KeyCode.Num1Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("chipmunk");
-                if (SplashKit.KeyTyped(KeyCode.Num2Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("bells");
-                if (SplashKit.KeyTyped(KeyCode.Num3Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("camera");
-                if (SplashKit.KeyTyped(KeyCode.Num4Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("boing");
-                if (SplashKit.KeyTyped(KeyCode.Num5Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("dinosaur");
-                if (SplashKit.KeyTyped(KeyCode.Num6Key))
-                    _sndEffect = SplashKit.SoundEffectNamed("bark");
-            }
-            else
-            {
-                if (SplashKit.KeyTyped(KeyCode.Num1Key))
-                    _sndEffect.Play();
-                if (SplashKit.KeyTyped(KeyCode.Num2Key))
-                    _sndEffect.Play(0.5f);
-                if (SplashKit.KeyTyped(KeyCode.Num3Key))
-                    _sndEffect.Play(3, 0.25f);
-                if (SplashKit.KeyTyped(KeyCode.Num4Key))
-                    _sndEffect.Play(-1, 0.1f);
-                if (SplashKit.KeyTyped(KeyCode.Num5Key))
-                {
-                    if (_sndEffect.IsPlaying)
-                        _sndEffect.Stop();
-                }
-            }
-        }
-
-        public void DrawInterface()
-        {
-            // Clear the screen with SplashKit Orange background
-            SplashKit.ClearScreen(SplashKit.RGBColor(245, 166, 35));
+            // SplashKit Orange background
+            SplashKit.ClearScreen(Color.RGBColor(245, 166, 35));
 
             // Draw heading
             SplashKit.SetFontStyle("arial", FontStyle.BoldFont);
-            SplashKit.DrawText("Keyboard Controls", Color.Black, "arial", 20, (_window.Width - SplashKit.TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
+            SplashKit.DrawText("Keyboard Controls", Color.Black, "arial", 20, (SplashKit.ScreenWidth() - SplashKit.TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
             SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
 
-            // Draw left box with SplashKit Cyan/Teal border
-            SplashKit.FillRectangle(SplashKit.RGBColor(5, 172, 193), 10, 45, _window.Width / 2 + 10, _window.Height - 85);
-            SplashKit.FillRectangle(Color.PapayaWhip, 20, 55, _window.Width / 2 - 10, _window.Height - 105);
-            SplashKit.DrawLine(Color.LightGray, 30, 105, _window.Width / 2, 105);
+            // Draw left box with SplashKit Cyan/Teal bo
+            SplashKit.FillRectangle(Color.RGBColor(5, 172, 193), 10, 45, SplashKit.ScreenWidth() / 2 + 10, SplashKit.ScreenHeight() - 85);
+            SplashKit.FillRectangle(Color.PapayaWhip, 20, 55, SplashKit.ScreenWidth() / 2 - 10, SplashKit.ScreenHeight() - 105);
+            SplashKit.DrawLine(Color.LightGray, 30, 105, SplashKit.ScreenWidth() / 2, 105);
 
             // Playing sound effect controls text
-            SplashKit.DrawText("Playing Sound Controls", Color.Red, "arial", 18, 80, 70);
-            SplashKit.DrawText("[1]    Play Sound At Full Volume", Color.Blue, "arial", 14, 30, 120);
-            SplashKit.DrawText("[2]    Play Sound At 50% Volume", Color.Blue, "arial", 14, 30, 150);
-            SplashKit.DrawText("[3]    Play Sound 3 Times At 25% Volume", Color.Blue, "arial", 14, 30, 180);
-            SplashKit.DrawText("[4]    Play Sound Continuously at 10% Volume", Color.Blue, "arial", 14, 30, 210);
-            SplashKit.DrawText("[5]    Stop Playing Current Sound", Color.Blue, "arial", 14, 30, 240);
+            SplashKit.DrawText("Playing Sound Controls", Color.Black, "arial", 18, 80, 70);
+            SplashKit.DrawText("[1]    Play Sound At Full Volume", Color.Black, "arial", 14, 30, 120);
+            SplashKit.DrawText("[2]    Play Sound At 50% Volume", Color.Black, "arial", 14, 30, 150);
+            SplashKit.DrawText("[3]    Play Sound 3 Times At 25% Volume", Color.Black, "arial", 14, 30, 180);
+            SplashKit.DrawText("[4]    Play Sound Continuously at 10% Volume", Color.Black, "arial", 14, 30, 210);
+            SplashKit.DrawText("[5]    Stop Playing Current Sound", Color.Black, "arial", 14, 30, 240);
 
             // Exit text
             SplashKit.SetFontStyle("arial", FontStyle.ItalicFont);
             SplashKit.DrawText("Press [Escape] or [Q] to quit", Color.Black, "arial", 16, 65, 290);
             SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
 
-            // Draw right box with SplashKit Cyan/Teal border
-            SplashKit.FillRectangle(SplashKit.RGBColor(5, 172, 193), _window.Width / 2 + 30, 45, _window.Width / 2 - 40, _window.Height - 55);
-            SplashKit.FillRectangle(Color.PapayaWhip, _window.Width / 2 + 40, 55, _window.Width / 2 - 60, _window.Height - 75);
-            SplashKit.DrawLine(Color.LightGray, _window.Width / 2 + 50, 105, _window.Width - 30, 105);
+            // Draw left box with SplashKit Cyan/Teal bo
+            SplashKit.FillRectangle(Color.RGBColor(5, 172, 193), SplashKit.ScreenWidth() / 2 + 30, 45, SplashKit.ScreenWidth() / 2 - 40, SplashKit.ScreenHeight() - 55);
+            SplashKit.FillRectangle(Color.PapayaWhip, SplashKit.ScreenWidth() / 2 + 40, 55, SplashKit.ScreenWidth() / 2 - 60, SplashKit.ScreenHeight() - 75);
+            SplashKit.DrawLine(Color.LightGray, SplashKit.ScreenWidth() / 2 + 50, 105, SplashKit.ScreenWidth() - 30, 105);
 
             // Switching to sound effect controls text
-            SplashKit.DrawText("Switching Sound Controls", Color.OrangeRed, "arial", 18, _window.Width / 2 + 65, 70);
-            SplashKit.DrawText("[CTRL + 1]    Chipmunk Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 120);
-            SplashKit.DrawText("[CTRL + 2]    Bells Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 150);
-            SplashKit.DrawText("[CTRL + 3]    Camera Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 180);
-            SplashKit.DrawText("[CTRL + 4]    Boing Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 210);
-            SplashKit.DrawText("[CTRL + 5]    Dinosaur Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 240);
-            SplashKit.DrawText("[CTRL + 6]    Bark Sound", Color.DarkGreen, "arial", 14, _window.Width / 2 + 50, 270);
+            SplashKit.DrawText("Switching Sound Controls", Color.Black, "arial", 18, SplashKit.ScreenWidth() / 2 + 65, 70);
+            SplashKit.DrawText("[CTRL + 1]    Chipmunk Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 120);
+            SplashKit.DrawText("[CTRL + 2]    Bells Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 150);
+            SplashKit.DrawText("[CTRL + 3]    Camera Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 180);
+            SplashKit.DrawText("[CTRL + 4]    Boing Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 210);
+            SplashKit.DrawText("[CTRL + 5]    Dinasaur Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 240);
+            SplashKit.DrawText("[CTRL + 6]    Bark Sound", Color.Black, "arial", 14, SplashKit.ScreenWidth() / 2 + 50, 270);
+
+            SplashKit.RefreshScreen(60);
         }
 
-        public void Run()
+        public static void Main()
         {
+            SoundEffect sndEffect;
+
+            Window window = new Window("Sound Demo", 640, 320);
+
+            sndEffect = SplashKit.LoadSoundEffect("chipmunk", "chipmunk.ogg");
+
+            SplashKit.LoadSoundEffect("bells", "bells.ogg");
+            SplashKit.LoadSoundEffect("camera", "camera.ogg");
+            SplashKit.LoadSoundEffect("boing", "comedy_boing.ogg");
+            SplashKit.LoadSoundEffect("dinosaur", "dinosaur.ogg");
+            SplashKit.LoadSoundEffect("bark", "dog_bark.ogg");
+
+            SplashKit.LoadFont("arial", "arial.ttf");
+
             do
             {
-                HandleInput();
-                DrawInterface();
-                SplashKit.RefreshScreen(60);
-            } while (!(SplashKit.QuitRequested() || SplashKit.KeyTyped(KeyCode.EscapeKey) || SplashKit.KeyTyped(KeyCode.QKey)));
+                SplashKit.ProcessEvents();
+
+                if (SplashKit.KeyDown(KeyCode.RightCtrlKey) || SplashKit.KeyDown(KeyCode.LeftCtrlKey))
+                {
+                    if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                        sndEffect = SplashKit.SoundEffectNamed("chipmunk");
+                    if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                        sndEffect = SplashKit.SoundEffectNamed("bells");
+                    if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                        sndEffect = SplashKit.SoundEffectNamed("camera");
+                    if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                        sndEffect = SplashKit.SoundEffectNamed("boing");
+                    if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                        sndEffect = SplashKit.SoundEffectNamed("dinosaur");
+                    if (SplashKit.KeyTyped(KeyCode.Num6Key))
+                        sndEffect = SplashKit.SoundEffectNamed("bark");
+                }
+                else
+                {
+                    if (SplashKit.KeyTyped(KeyCode.Num1Key))
+                        sndEffect.Play();
+                    if (SplashKit.KeyTyped(KeyCode.Num2Key))
+                        sndEffect.Play(0.5f);
+                    if (SplashKit.KeyTyped(KeyCode.Num3Key))
+                        sndEffect.Play(3, 0.25f);
+                    if (SplashKit.KeyTyped(KeyCode.Num4Key))
+                        sndEffect.Play(-1, 0.1f);
+                    if (SplashKit.KeyTyped(KeyCode.Num5Key))
+                    {
+                        if (sndEffect.IsPlaying)
+                            sndEffect.Stop();
+                    }
+                }
+
+                // Drawing Keyboard Controls information in window (focus on sound effect code above)
+                DrawInstructions();
+
+            } while (!(window.CloseRequested || SplashKit.KeyTyped(KeyCode.EscapeKey) || SplashKit.KeyTyped(KeyCode.QKey)));
 
             SplashKit.CloseAllWindows();
         }
     }
-
-    public class Program
-    {
-        public static void Main()
-        {
-            SoundPlayer player = new SoundPlayer();
-            player.Run();
-        }
-    }
 }
 ```
+
 </TabItem>
 </Tabs>
+
 </TabItem>
 <TabItem label="Python">
 
 ```python
 from splashkit import *
 
+def draw_instructions():
+    # SplashKit Orange background
+    clear_screen(rgb_color(245, 166, 35))
+
+    # Draw heading
+    set_font_style_name_as_string("arial", FontStyle.bold_font)
+    draw_text_font_as_string("Keyboard Controls", color_black(), "arial", 20, (screen_width() - text_width_font_named("Keyboard Controls", "arial", 20)) / 2, 10)
+    set_font_style_name_as_string("arial", FontStyle.normal_font)
+
+    # Draw left box with SplashKit Cyan/Teal bo
+    fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85)
+    fill_rectangle(color_papaya_whip(), 20, 55, screen_width() / 2 - 10, screen_height() - 105)
+    draw_line(color_light_gray(), 30, 105, screen_width() / 2, 105)
+
+    # Playing sound effect controls text
+    draw_text_font_as_string("Playing Sound Controls", color_black(), "arial", 18, 80, 70)
+    draw_text_font_as_string("[1]    Play Sound At Full Volume", color_black(), "arial", 14, 30, 120)
+    draw_text_font_as_string("[2]    Play Sound At 50% Volume", color_black(), "arial", 14, 30, 150)
+    draw_text_font_as_string("[3]    Play Sound 3 Times At 25% Volume", color_black(), "arial", 14, 30, 180)
+    draw_text_font_as_string("[4]    Play Sound Continuously at 10% Volume", color_black(), "arial", 14, 30, 210)
+    draw_text_font_as_string("[5]    Stop Playing Current Sound", color_black(), "arial", 14, 30, 240)
+
+    # Exit text
+    set_font_style_name_as_string("arial", FontStyle.italic_font)
+    draw_text_font_as_string("Press [Escape] or [Q] to quit", color_black(), "arial", 16, 65, 290)
+    set_font_style_name_as_string("arial", FontStyle.normal_font)
+
+    # Draw left box with SplashKit Cyan/Teal bo
+    fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55)
+    fill_rectangle(color_papaya_whip(), screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75)
+    draw_line(color_light_gray(), screen_width() / 2 + 50, 105, screen_width() - 30, 105)
+
+    # Switching to sound effect controls text
+    draw_text_font_as_string("Switching Sound Controls", color_black(), "arial", 18, screen_width() / 2 + 65, 70)
+    draw_text_font_as_string("[CTRL + 1]    Chipmunk Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 120)
+    draw_text_font_as_string("[CTRL + 2]    Bells Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 150)
+    draw_text_font_as_string("[CTRL + 3]    Camera Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 180)
+    draw_text_font_as_string("[CTRL + 4]    Boing Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 210)
+    draw_text_font_as_string("[CTRL + 5]    Dinasaur Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 240)
+    draw_text_font_as_string("[CTRL + 6]    Bark Sound", color_black(), "arial", 14, screen_width() / 2 + 50, 270)
+
+    refresh_screen_with_target_fps(60)
+
+# Start of "main" code
 open_window("Sound, Demo", 640, 320)
 
 snd_effect = load_sound_effect("chipmunk", "chipmunk.ogg")
@@ -472,50 +514,8 @@ while not (quit_requested() or key_typed(KeyCode.escape_key or key_typed(KeyCode
             if sound_effect_playing(snd_effect):
                 stop_sound_effect(snd_effect)
 
-
     # Drawing Keyboard Controls information in window (focus on sound effect code above)
-
-    # SplashKit Orange background
-    clear_screen(rgb_color(245, 166, 35))
-
-    # Draw heading
-    set_font_style_name_as_string("arial", FontStyle.bold_font)
-    draw_text_font_as_string("Keyboard Controls", color_black(), "arial", 20, (screen_width() - text_width_font_named("Keyboard Controls", "arial", 20)) / 2, 10)
-    set_font_style_name_as_string("arial", FontStyle.normal_font)
-
-    # Draw left box with SplashKit Cyan/Teal bo
-    fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85)
-    fill_rectangle(color_papaya_whip(), 20, 55, screen_width() / 2 - 10, screen_height() - 105)
-    draw_line(color_light_gray(), 30, 105, screen_width() / 2, 105)
-
-    # Playing sound effect controls text
-    draw_text_font_as_string("Playing Sound Controls", color_red(), "arial", 18, 80, 70)
-    draw_text_font_as_string("[1]    Play Sound At Full Volume", color_blue(), "arial", 14, 30, 120)
-    draw_text_font_as_string("[2]    Play Sound At 50% Volume", color_blue(), "arial", 14, 30, 150)
-    draw_text_font_as_string("[3]    Play Sound 3 Times At 25% Volume", color_blue(), "arial", 14, 30, 180)
-    draw_text_font_as_string("[4]    Play Sound Continuously at 10% Volume", color_blue(), "arial", 14, 30, 210)
-    draw_text_font_as_string("[5]    Stop Playing Current Sound", color_blue(), "arial", 14, 30, 240)
-
-    # Exit text
-    set_font_style_name_as_string("arial", FontStyle.italic_font)
-    draw_text_font_as_string("Press [Escape] or [Q] to quit", color_black(), "arial", 16, 65, 290)
-    set_font_style_name_as_string("arial", FontStyle.normal_font)
-
-    # Draw left box with SplashKit Cyan/Teal bo
-    fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55)
-    fill_rectangle(color_papaya_whip(), screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75)
-    draw_line(color_light_gray(), screen_width() / 2 + 50, 105, screen_width() - 30, 105)
-
-    # Switching to sound effect controls text
-    draw_text_font_as_string("Switching Sound Controls", color_orange_red(), "arial", 18, screen_width() / 2 + 65, 70)
-    draw_text_font_as_string("[CTRL + 1]    Chipmunk Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 120)
-    draw_text_font_as_string("[CTRL + 2]    Bells Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 150)
-    draw_text_font_as_string("[CTRL + 3]    Camera Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 180)
-    draw_text_font_as_string("[CTRL + 4]    Boing Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 210)
-    draw_text_font_as_string("[CTRL + 5]    Dinasaur Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 240)
-    draw_text_font_as_string("[CTRL + 6]    Bark Sound", color_dark_green(), "arial", 14, screen_width() / 2 + 50, 270)
-
-    refresh_screen_with_target_fps(60)
+    draw_instructions()
 
 close_all_windows()
 ```
