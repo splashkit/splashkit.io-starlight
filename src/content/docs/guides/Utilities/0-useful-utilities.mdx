@@ -3,7 +3,7 @@ title: Useful Utilities
 description: In this article, we discuss useful utilities that you can use to convert, check and manipulate common data types in SplashKit programs.
 category: Guides
 author: Richard Denton
-lastupdated: July 2024
+lastupdated: 09 September 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -14,7 +14,7 @@ _Last updated: {frontmatter.lastupdated}_
 
 ---
 
-SplashKit's [Utilities library](/api/utilities) provides a range of useful functions that can assist you with converting, checking and manipulating common data types in your SplashKit program.
+SplashKit's [Utilities library](/api/utilities) provides a range of useful functions that can assist you with converting, checking, and manipulating common data types in your SplashKit program.
 
 These functions are useful in many areas of programming.
 
@@ -31,71 +31,106 @@ SplashKit provides two useful functions for handling the conversion of a `string
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // Convert the string "2017" to an integer 2017
-      string some_string = "2017";
-      int some_number = convert_to_integer(some_string);
+int main()
+{
+    // Convert the string "2017" to an integer 2017
+    string some_string = "2017";
+    int some_number = convert_to_integer(some_string);
 
-      write("The value of some_number is: ");
-      write_line(some_number);
+    write("The value of some_number is: ");
+    write_line(some_number);
 
-      // Convert the string "3.14159265358979" to a double ~3.141593
-      string pi_string = "3.14159265358979";
-      double pi = convert_to_double(pi_string);
+    // Convert the string "3.14159265358979" to a double ~3.141593
+    string pi_string = "3.14159265358979";
+    double pi = convert_to_double(pi_string);
 
-      write("The value of pi is: ");
-      write_line(pi);
+    write("The value of pi is: ");
+    write_line(pi);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  //Convert the string "2017" to an integer 2017
-  string some_string = "2017";
-  int some_number = ConvertToInteger(some_string);
+```csharp
+using static SplashKitSDK.SplashKit;
 
-  Write("The value of some_number is: ");
-  WriteLine(some_number);
+//Convert the string "2017" to an integer 2017
+string some_string = "2017";
+int some_number = ConvertToInteger(some_string);
 
-  //Convert the string "3.14159265358979" to a double ~3.141593
-  string pi_string = "3.14159265358979";
-  double pi = ConvertToDouble(pi_string);
+Write("The value of some_number is: ");
+WriteLine(some_number);
 
-  Write("The value of pi is: ");
-  WriteLine(pi);
-  ```
+//Convert the string "3.14159265358979" to a double ~3.141593
+string pi_string = "3.14159265358979";
+double pi = ConvertToDouble(pi_string);
+
+Write("The value of pi is: ");
+WriteLine(pi);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsefulUtilities
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            //Convert the string "2017" to an integer 2017
+            string some_string = "2017";
+            int some_number = SplashKit.ConvertToInteger(some_string);
+
+            SplashKit.Write("The value of some_number is: ");
+            SplashKit.WriteLine(some_number);
+
+            //Convert the string "3.14159265358979" to a double ~3.141593
+            string pi_string = "3.14159265358979";
+            double pi = SplashKit.ConvertToDouble(pi_string);
+
+            SplashKit.Write("The value of pi is: ");
+            SplashKit.WriteLine(pi);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  ## Convert the string "2017" to an integer 2017
-  some_string = "2017"
-  some_number = convert_to_integer(some_string)
+## Convert the string "2017" to an integer 2017
+some_string = "2017"
+some_number = convert_to_integer(some_string)
 
-  write("The value of some_number is: ")
-  write_line_int(some_number)
+write("The value of some_number is: ")
+write_line_int(some_number)
 
-  ## Convert the string "3.14159265358979" to a double ~3.141593
-  pi_string = "3.14159265358979"
-  pi = convert_to_double(pi_string)
+## Convert the string "3.14159265358979" to a double ~3.141593
+pi_string = "3.14159265358979"
+pi = convert_to_double(pi_string)
 
-  write("The value of pi is: ")
-  write_line_double(pi)
-
-  ```
+write("The value of pi is: ")
+write_line_double(pi)
+```
 
 </TabItem>
 </Tabs>
@@ -107,136 +142,197 @@ Consider you want to write a program that accepts two numbers as input from a us
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      // User input will initially be stored in these two strings.
-      string snum_1, snum_2;
+int main()
+{
+    // User input will initially be stored in these two strings.
+    string snum_1, snum_2;
 
-      // And then it will be converted and stored in these integers.
-      int inum_1, inum_2, result;
+    // And then it will be converted and stored in these integers.
+    int inum_1, inum_2, result;
 
-      // Read user input
-      write("Enter first number: ");
-      snum_1 = read_line();
-      write("Enter second number: ");
-      snum_2 = read_line();
+    // Read user input
+    write("Enter first number: ");
+    snum_1 = read_line();
+    write("Enter second number: ");
+    snum_2 = read_line();
 
-      // Convert user input to integers
-      inum_1 = convert_to_integer(snum_1);
-      inum_2 = convert_to_integer(snum_2);
+    // Convert user input to integers
+    inum_1 = convert_to_integer(snum_1);
+    inum_2 = convert_to_integer(snum_2);
 
-      // Compute the result
-      result = inum_1 * inum_2;
+    // Compute the result
+    result = inum_1 * inum_2;
 
-      // Output the results
-      write(snum_1 + " multiplied by " + snum_2 + " equals ");
-      write_line(result);
+    // Output the results
+    write(snum_1 + " multiplied by " + snum_2 + " equals ");
+    write_line(result);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
 
-  ```cpp
-  //...
+```cpp
+//...
 
-  //Don't use integers, instead use doubles
-  double inum_1, inum_2, result;
+//Don't use integers, instead use doubles
+double inum_1, inum_2, result;
 
-  //...
+//...
 
-  inum_1 = convert_to_double(snum_1);
-  inum_2 = convert_to_double(snum_2);
+inum_1 = convert_to_double(snum_1);
+inum_2 = convert_to_double(snum_2);
 
-  //...
-  ```
+//...
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  //User input will initially be stored in these two strings.
-  string snum_1, snum_2;
+```csharp
+using static SplashKitSDK.SplashKit;
 
-  // And then it will be converted and stored in these integers.
-  int inum_1, inum_2, result;
+//User input will initially be stored in these two strings.
+string snum_1, snum_2;
 
-  //Read user input
-  Write("Enter first number: ");
-  snum_1 = ReadLine();
-  Write("Enter second number: ");
-  snum_2 = ReadLine();
+// And then it will be converted and stored in these integers.
+int inum_1, inum_2, result;
 
-  //Convert user input to integers
-  inum_1 = ConvertToInteger(snum_1);
-  inum_2 = ConvertToInteger(snum_2);
+//Read user input
+Write("Enter first number: ");
+snum_1 = ReadLine();
+Write("Enter second number: ");
+snum_2 = ReadLine();
 
-  //Compute the result
-  result = inum_1 * inum_2;
+//Convert user input to integers
+inum_1 = ConvertToInteger(snum_1);
+inum_2 = ConvertToInteger(snum_2);
 
-  //Output the results
-  Write(snum_1 + " multiplied by " + snum_2 + " equals ");
-  WriteLine(result);
-  ```
+//Compute the result
+result = inum_1 * inum_2;
 
-  The same can be achieved for decimal numbers, simply by swapping `ConvertToInteger`with `ConvertToDouble`, and using the appropriate data types.
+//Output the results
+Write(snum_1 + " multiplied by " + snum_2 + " equals ");
+WriteLine(result);
+```
 
-  ```csharp
-  //...
+The same can be achieved for decimal numbers, simply by swapping `ConvertToInteger`with `ConvertToDouble`, and using the appropriate data types.
 
-  // Don't use integers, instead use doubles
-  double inum_1, inum_2, result;
+```csharp
+//...
 
-  //...
+// Don't use integers, instead use doubles
+double inum_1, inum_2, result;
 
-  inum_1 = SplashKit.ConvertToDouble(snum_1);
-  inum_2 = SplashKit.ConvertToDouble(snum_2);
+//...
 
-  //...
-  ```
+inum_1 = ConvertToDouble(snum_1);
+inum_2 = ConvertToDouble(snum_2);
+
+//...
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsefulUtilities
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            //User input will initially be stored in these two strings.
+            string snum_1, snum_2;
+
+            // And then it will be converted and stored in these integers.
+            int inum_1, inum_2, result;
+
+            //Read user input
+            SplashKit.Write("Enter first number: ");
+            snum_1 = SplashKit.ReadLine();
+            SplashKit.Write("Enter second number: ");
+            snum_2 = SplashKit.ReadLine();
+
+            //Convert user input to integers
+            inum_1 = SplashKit.ConvertToInteger(snum_1);
+            inum_2 = SplashKit.ConvertToInteger(snum_2);
+
+            //Compute the result
+            result = inum_1 * inum_2;
+
+            //Output the results
+            SplashKit.Write(snum_1 + " multiplied by " + snum_2 + " equals ");
+            SplashKit.WriteLine(result);
+        }
+    }
+}
+```
+
+The same can be achieved for decimal numbers, simply by swapping `SplashKit.ConvertToInteger`with `SplashKit.ConvertToDouble`, and using the appropriate data types.
+
+```csharp
+//...
+
+// Don't use integers, instead use doubles
+double inum_1, inum_2, result;
+
+//...
+
+inum_1 = SplashKit.ConvertToDouble(snum_1);
+inum_2 = SplashKit.ConvertToDouble(snum_2);
+
+//...
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  # Read user input
-  write("Enter first number: ")
-  snum_1 = read_line()
-  write("Enter second number: ")
-  snum_2 = read_line()
+# Read user input
+write("Enter first number: ")
+snum_1 = read_line()
+write("Enter second number: ")
+snum_2 = read_line()
 
 
-  # Convert user inputs to integers
-  inum_1 = convert_to_integer(snum_1)
-  inum_2 = convert_to_integer(snum_2)
+# Convert user inputs to integers
+inum_1 = convert_to_integer(snum_1)
+inum_2 = convert_to_integer(snum_2)
 
-  # Compute the result
-  result = inum_1 * inum_2
+# Compute the result
+result = inum_1 * inum_2
 
-  # Output the result
-  write(snum_1 + " multiplied by " + snum_2 + " equals ")
-  write_line_int(result)
-  ```
+# Output the result
+write(snum_1 + " multiplied by " + snum_2 + " equals ")
+write_line_int(result)
+```
 
-  The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
 
-  ```python
-  #...
+```python
+#...
 
-  # Don't uses integers, instead use doubles
-  inum_1 = convert_to_double(snum_1)
-  inum_2 = convert_to_double(snum_2)
+# Don't uses integers, instead use doubles
+inum_1 = convert_to_double(snum_1)
+inum_2 = convert_to_double(snum_2)
 
-  #...
-  ```
+#...
+```
 
 </TabItem>
 </Tabs>
@@ -250,95 +346,139 @@ Consider the following.
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      string message_1 = "9781273";
-      string message_2 = "23129739.13";
-      string message_3 = "Hello world.";
+int main()
+{
+    string message_1 = "9781273";
+    string message_2 = "23129739.13";
+    string message_3 = "Hello world.";
 
-      if (is_integer(message_1))
-          write_line("Message 1 contains an integer!");
+    if (is_integer(message_1))
+        write_line("Message 1 contains an integer!");
 
-      if (is_number(message_1))
-          write_line("Message 1 contains a number!");
+    if (is_number(message_1))
+        write_line("Message 1 contains a number!");
 
-      if (not is_integer(message_2))
-          write_line("Message 2 is not an integer!");
+    if (not is_integer(message_2))
+        write_line("Message 2 is not an integer!");
 
-      if (is_number(message_2))
-          write_line("Message 2 contains a number!");
+    if (is_number(message_2))
+        write_line("Message 2 contains a number!");
 
-      if (not is_integer(message_3))
-          write_line("Message 3 is not an integer!");
+    if (not is_integer(message_3))
+        write_line("Message 3 is not an integer!");
 
-      if (not is_number(message_3))
-          write_line("Message 3 is not a number!");
+    if (not is_number(message_3))
+        write_line("Message 3 is not a number!");
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  string message_1 = "9781273";
-  string message_2 = "23129739.13";
-  string message_3 = "Hello world.";
+```csharp
+using static SplashKitSDK.SplashKit;
 
-  if (IsInteger(message_1))
-      WriteLine("Message 1 contains an integer!");
+string message_1 = "9781273";
+string message_2 = "23129739.13";
+string message_3 = "Hello world.";
 
-  if (IsNumber(message_1))
-      WriteLine("Message 1 contains a number!");
+if (IsInteger(message_1))
+    WriteLine("Message 1 contains an integer!");
 
-  if (!IsInteger(message_2))
-      WriteLine("Message 2 is not an integer!");
+if (IsNumber(message_1))
+    WriteLine("Message 1 contains a number!");
 
-  if (IsNumber(message_2))
-      WriteLine("Message 2 contains a number!");
+if (!IsInteger(message_2))
+    WriteLine("Message 2 is not an integer!");
 
-  if (!IsInteger(message_3))
-      WriteLine("Message 3 is not an integer!");
+if (IsNumber(message_2))
+    WriteLine("Message 2 contains a number!");
 
-  if (!IsNumber(message_3))
-      WriteLine("Message 3 is not a number!");
-  ```
+if (!IsInteger(message_3))
+    WriteLine("Message 3 is not an integer!");
+
+if (!IsNumber(message_3))
+    WriteLine("Message 3 is not a number!");
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsefulUtilities
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            string message_1 = "9781273";
+            string message_2 = "23129739.13";
+            string message_3 = "Hello world.";
+
+            if (SplashKit.IsInteger(message_1))
+                SplashKit.WriteLine("Message 1 contains an integer!");
+
+            if (SplashKit.IsNumber(message_1))
+                SplashKit.WriteLine("Message 1 contains a number!");
+
+            if (!SplashKit.IsInteger(message_2))
+                SplashKit.WriteLine("Message 2 is not an integer!");
+
+            if (SplashKit.IsNumber(message_2))
+                SplashKit.WriteLine("Message 2 contains a number!");
+
+            if (!SplashKit.IsInteger(message_3))
+                SplashKit.WriteLine("Message 3 is not an integer!");
+
+            if (!SplashKit.IsNumber(message_3))
+                SplashKit.WriteLine("Message 3 is not a number!");
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  message_1 = "9781273"
-  message_2 = "23129739.13"
-  message_3 = "Hello world."
+message_1 = "9781273"
+message_2 = "23129739.13"
+message_3 = "Hello world."
 
-  if is_integer(message_1):
-      write_line("Message 1 contains an integer!")
+if is_integer(message_1):
+    write_line("Message 1 contains an integer!")
 
-  if is_number(message_1):
-      write_line("Message 1 contains a number!")
+if is_number(message_1):
+    write_line("Message 1 contains a number!")
 
-  if not is_integer(message_2):
-      write_line("Message 2 is not an integer!")
+if not is_integer(message_2):
+    write_line("Message 2 is not an integer!")
 
-  if is_number(message_2):
-      write_line("Message 2 contains a number!")
+if is_number(message_2):
+    write_line("Message 2 contains a number!")
 
-  if not is_integer(message_3):
-      write_line("Message 3 is not an integer!")
+if not is_integer(message_3):
+    write_line("Message 3 is not an integer!")
 
-  if not is_number(message_3):
-      write_line("Message 3 is not a number!")
+if not is_number(message_3):
+    write_line("Message 3 is not a number!")
 
-  ```
+```
 
 </TabItem>
 </Tabs>
@@ -361,40 +501,41 @@ SplashKit's [Is Integer](/api/utilities/#is-integer) and [Is Number](/api/utilit
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
-  #include <string>
+```cpp
+#include "splashkit.h"
+#include <string>
 
-  using namespace std;
+using namespace std;
 
-  /**
-  * Reads input from a user, only allowing whole numbers.
-  * @prompt string     - The string to display to the user.
-  * @return int
-  */
-  int read_integer(string prompt)
-  {
-    string buffer;
+/**
+ * Reads input from a user, only allowing whole numbers.
+ * @prompt string     - The string to display to the user.
+ * @return int
+ */
+int read_integer(string prompt)
+{
 
-    //Continue requesting user input until a valid whole number is entered.
-    while (1)
+    // Prompt the user with the message
+    write(prompt);
+
+    // Read the user input as a string.
+    string line = read_line();
+
+    // Check if user input is a valid whole number, loop until it is.
+    while (!is_integer(line))
     {
-      //Prompt the user with the message
-      write(prompt);
-      //Read the user input as a string.
-      buffer = read_line();
-      //If the user input is a valid whole number, leave the loop.
-      if ( is_integer(buffer) )
-        break;
-      //If the user input was not a valid whole number, ask them to enter a whole number.
-      write_line("Please enter a valid whole number.");
-    }
-    //Convert the user input to an integer before returning it.
-    return convert_to_integer(buffer);
-  }
+        write_line("Please enter a whole number.");
 
-  int main()
-  {
+        write(prompt);
+        line = read_line();
+    }
+
+    // Convert the user input to an integer before returning it.
+    return convert_to_integer(line);
+}
+
+int main()
+{
     int height;
 
     height = read_integer("Enter your height in centimetres: ");
@@ -403,75 +544,124 @@ SplashKit's [Is Integer](/api/utilities/#is-integer) and [Is Number](/api/utilit
     write_line("CM tall!");
 
     return 0;
-  }
+}
   ```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  static int ReadInteger(string prompt)
-  {
-      // Prompt the user with the message
-      Write(prompt);
+```csharp
+using static SplashKitSDK.SplashKit;
 
-      // Read the user input as a string.
-      string line = ReadLine();
+static int ReadInteger(string prompt)
+{
+    // Prompt the user with the message
+    Write(prompt);
 
-      // Loop while the user's input is NOT a valid whole number.
-      while (!IsInteger(line))
-      {
-          // If the user input was not a valid whole number, ask them to enter a whole number.
-          WriteLine("Please enter a whole number.");
-          Write(prompt);
-          line = ReadLine();
-      }
-      // Convert the user input to an integer before returning it.
-      return ConvertToInteger(line);
-  }
+    // Read the user input as a string.
+    string line = ReadLine();
 
-  // Start of "main" code
-  int height;
+    // Loop while the user's input is NOT a valid whole number.
+    while (!IsInteger(line))
+    {
+        // If the user input was not a valid whole number, ask them to enter a whole number.
+        WriteLine("Please enter a whole number.");
+        Write(prompt);
+        line = ReadLine();
+    }
+    // Convert the user input to an integer before returning it.
+    return ConvertToInteger(line);
+}
 
-  height = ReadInteger("Enter your height in centimetres: ");
-  Write("You are ");
-  Write(height);
-  WriteLine("cm tall!");
-  ```
+// Start of "main" code
+int height;
+
+height = ReadInteger("Enter your height in centimetres: ");
+Write("You are ");
+Write(height);
+WriteLine("cm tall!");
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsefulUtilities
+{
+    public class Program
+    {
+        public static int ReadInteger(string prompt)
+        {
+            // Prompt the user with the message
+            SplashKit.Write(prompt);
+
+            // Read the user input as a string.
+            string line = SplashKit.ReadLine();
+
+            // Loop while the user's input is NOT a valid whole number.
+            while (!SplashKit.IsInteger(line))
+            {
+                // If the user input was not a valid whole number, ask them to enter a whole number.
+                SplashKit.WriteLine("Please enter a whole number.");
+                SplashKit.Write(prompt);
+                line = SplashKit.ReadLine();
+            }
+            // Convert the user input to an integer before returning it.
+            return SplashKit.ConvertToInteger(line);
+        }
+
+        public static void Main()
+        {
+            int height;
+
+            height = ReadInteger("Enter your height in centimetres: ");
+            SplashKit.Write("You are ");
+            SplashKit.Write(height);
+            SplashKit.WriteLine("cm tall!");
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  def read_integer(prompt):
-      # Prompt the user with the message
-      write(prompt)
+def read_integer(prompt):
+    # Prompt the user with the message
+    write(prompt)
 
-      # Read the user input as a string.
-      line = read_line()
+    # Read the user input as a string.
+    line = read_line()
 
-      # Loop while the user's input is NOT a valid whole number.
-      while not is_integer(line):
+    # Loop while the user's input is NOT a valid whole number.
+    while not is_integer(line):
 
-          # If the user input was not a valid whole number, ask them to enter a whole number.
-          write_line("Please enter a valid whole number.")
-          write(prompt)
-          line = read_line()
+        # If the user input was not a valid whole number, ask them to enter a whole number.
+        write_line("Please enter a valid whole number.")
+        write(prompt)
+        line = read_line()
 
-      # Convert the user input to an integer before returning it.
-      return convert_to_integer(buffer)
+    # Convert the user input to an integer before returning it.
+    return convert_to_integer(line)
 
-  // Start of "main" code
-  height = read_integer("Enter your height in centimetres: ")
+# Start of "main" code
+height = read_integer("Enter your height in centimetres: ")
 
-  write("You are ")
-  write_int(height)
-  write_line("cm tall!")
-  ```
+write("You are ")
+write_int(height)
+write_line("cm tall!")
+```
 
 </TabItem>
 </Tabs>
@@ -483,76 +673,114 @@ In addition to the functionality provided by each language's standard library (T
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      string name = "Richard";
-      string location = "        Burwood";
+int main()
+{
+    string name = "Richard";
+    string location = "        Burwood";
 
-      // Convert "Richard" to "RICHARD"
-      name = to_uppercase(name);
-      write_line(name);
+    // Convert "Richard" to "RICHARD"
+    name = to_uppercase(name);
+    write_line(name);
 
-      // Convert "RICHARD" to "richard"
-      name = to_lowercase(name);
-      write_line(name);
+    // Convert "RICHARD" to "richard"
+    name = to_lowercase(name);
+    write_line(name);
 
-      // Remove all of the empty spaces at the start of "       Burwood".
-      write_line("Before: " + location);
-      location = trim(location);
-      write_line("After: " + location);
+    // Remove all of the empty spaces at the start of "       Burwood".
+    write_line("Before: " + location);
+    location = trim(location);
+    write_line("After: " + location);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  string name = "Richard";
-  string location = "        Burwood";
+```csharp
+using static SplashKitSDK.SplashKit;
 
-  //Convert "Richard" to "RICHARD"
-  name = ToUppercase(name);
-  WriteLine(name);
+string name = "Richard";
+string location = "        Burwood";
 
-  //Convert "RICHARD" to "richard"
-  name = ToLowercase(name);
-  WriteLine(name);
+//Convert "Richard" to "RICHARD"
+name = ToUppercase(name);
+WriteLine(name);
 
-  //Remove all of the empty spaces at the start of "       Burwood".
-  WriteLine("Before: " + location);
-  location = Trim(location);
-  WriteLine("After: " + location);
-  ```
+//Convert "RICHARD" to "richard"
+name = ToLowercase(name);
+WriteLine(name);
+
+//Remove all of the empty spaces at the start of "       Burwood".
+WriteLine("Before: " + location);
+location = Trim(location);
+WriteLine("After: " + location);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace UsefulUtilities
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            string name = "Richard";
+            string location = "        Burwood";
+
+            //Convert "Richard" to "RICHARD"
+            name = SplashKit.ToUppercase(name);
+            SplashKit.WriteLine(name);
+
+            //Convert "RICHARD" to "richard"
+            name = SplashKit.ToLowercase(name);
+            SplashKit.WriteLine(name);
+
+            //Remove all of the empty spaces at the start of "       Burwood".
+            SplashKit.WriteLine("Before: " + location);
+            location = SplashKit.Trim(location);
+            SplashKit.WriteLine("After: " + location);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  name = "Richard"
-  location = "        Burwood"
+name = "Richard"
+location = "        Burwood"
 
-  # Convert "Richard" to "RICHARD"
-  name = to_uppercase(name)
-  write_line(name)
+# Convert "Richard" to "RICHARD"
+name = to_uppercase(name)
+write_line(name)
 
-  # Convert "RICHARD" to "richard"
-  name = to_lowercase(name)
-  write_line(name)
+# Convert "RICHARD" to "richard"
+name = to_lowercase(name)
+write_line(name)
 
-  # Remove all of the empty spaces at the start of "      Burwood".
-  write_line("Before: " + location)
-  location = trim(location)
-  write_line("After: " + location)
-  ```
+# Remove all of the empty spaces at the start of "      Burwood".
+write_line("Before: " + location)
+location = trim(location)
+write_line("After: " + location)
+```
 
 </TabItem>
 </Tabs>
