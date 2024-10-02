@@ -3,7 +3,7 @@ title: How to make a RESTful API call using SplashKit
 description: In the world of web services and microservices, many companies make their data available through a REST API in this document we want to use SplashKit to make a RESTful API call.
 category: Guides
 author: Cyrill Illi and Brianna Laird
-lastupdated: Aug 10 2024
+lastupdated: October 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -65,22 +65,58 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
+using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
 // Get a single JSON web resource
-HttpResponse getData = SplashKit.HttpGet("https://jsonplaceholder.typicode.com/posts/1", 443);
-string response = SplashKit.HttpResponseToString(getData);
-SplashKit.FreeResponse(getData);
+HttpResponse getData = HttpGet("https://jsonplaceholder.typicode.com/posts/1", 443);
+string response = HttpResponseToString(getData);
+FreeResponse(getData);
 
 // Output the response
-Json jsonResponse = SplashKit.JsonFromString(response);
-SplashKit.WriteLine("UserID => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "userId"));
-SplashKit.WriteLine("ID     => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "id"));
-SplashKit.WriteLine("Title  => " + SplashKit.JsonReadString(jsonResponse, "title"));
-SplashKit.WriteLine("Body   => " + SplashKit.JsonReadString(jsonResponse, "body"));
-SplashKit.WriteLine("================");
+Json jsonResponse = JsonFromString(response);
+WriteLine("UserID => " + JsonReadNumberAsInt(jsonResponse, "userId"));
+WriteLine("ID     => " + JsonReadNumberAsInt(jsonResponse, "id"));
+WriteLine("Title  => " + JsonReadString(jsonResponse, "title"));
+WriteLine("Body   => " + JsonReadString(jsonResponse, "body"));
+WriteLine("================");
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RESTfulAPIApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Get a single JSON web resource
+            HttpResponse getData = SplashKit.HttpGet("https://jsonplaceholder.typicode.com/posts/1", 443);
+            string response = SplashKit.HttpResponseToString(getData);
+            SplashKit.FreeResponse(getData);
+
+            // Output the response
+            Json jsonResponse = SplashKit.JsonFromString(response);
+            SplashKit.WriteLine("UserID => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "userId"));
+            SplashKit.WriteLine("ID     => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "id"));
+            SplashKit.WriteLine("Title  => " + SplashKit.JsonReadString(jsonResponse, "title"));
+            SplashKit.WriteLine("Body   => " + SplashKit.JsonReadString(jsonResponse, "body"));
+            SplashKit.WriteLine("================");
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -109,7 +145,7 @@ write_line("================")
 
 After running this example, you'll get an output like this to the terminal:
 
-```bash
+```shell
 UserID => 1
 ID     => 1
 Title  => sunt aut facere repellat provident occaecati excepturi optio reprehenderit
@@ -149,19 +185,50 @@ int main()
 
 </TabItem>
 <TabItem label="C#">
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
+
+// Get a list of a JSON web resource
+HttpResponse getData = HttpGet("https://jsonplaceholder.typicode.com/posts/", 443);
+string response = HttpResponseToString(getData);
+FreeResponse(getData);
+
+// To access each JSON key value pair the string should be split to an vector<json>
+// objects for simplicity sake we output just the string here.
+WriteLine(response);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
 
 ```csharp
 using SplashKitSDK;
 
-// Get a list of a JSON web resource
-HttpResponse getData = SplashKit.HttpGet("https://jsonplaceholder.typicode.com/posts/", 443);
-string response = SplashKit.HttpResponseToString(getData);
-SplashKit.FreeResponse(getData);
+namespace RESTfulAPIApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Get a list of a JSON web resource
+            HttpResponse getData = SplashKit.HttpGet("https://jsonplaceholder.typicode.com/posts/", 443);
+            string response = SplashKit.HttpResponseToString(getData);
+            SplashKit.FreeResponse(getData);
 
-// To access each JSON key value pair the string should be split to an vector<json>
-// objects for simplicity sake we output just the string here.
-SplashKit.WriteLine(response);
+            // To access each JSON key value pair the string should be split to an vector<json>
+            // objects for simplicity sake we output just the string here.
+            SplashKit.WriteLine(response);
+        }
+    }
+}
 ```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -185,7 +252,7 @@ write_line(response)
 
 After running this example, you'll get an output like this to the terminal:
 
-```bash
+```shell
 [
   {
     "userId": 1,
@@ -248,16 +315,19 @@ int main()
 
 </TabItem>
 <TabItem label="C#">
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
 ```csharp
+using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
 // Create a JSON Web resource
 // Create the JSON body for the http post call
-Json body = SplashKit.CreateJson();
-SplashKit.JsonSetString(body, "title", "foo");
-SplashKit.JsonSetString(body, "body", "test entry");
-SplashKit.JsonSetNumber(body, "userId", 1);
+Json body = CreateJson();
+JsonSetString(body, "title", "foo");
+JsonSetString(body, "body", "test entry");
+JsonSetNumber(body, "userId", 1);
 
 // Create the headers for the HTTP POST call
 List<string> headers = new List<string>
@@ -266,19 +336,65 @@ List<string> headers = new List<string>
 };
 
 // Send the request
-HttpResponse getData = SplashKit.HttpPost("https://jsonplaceholder.typicode.com/posts", 443, SplashKit.JsonToString(body), headers);
-string response = SplashKit.HttpResponseToString(getData);
-SplashKit.FreeResponse(getData);
+HttpResponse getData = HttpPost("https://jsonplaceholder.typicode.com/posts", 443, JsonToString(body), headers);
+string response = HttpResponseToString(getData);
+FreeResponse(getData);
 
 // Output the response
-Json jsonResponse = SplashKit.JsonFromString(response);
-SplashKit.WriteLine("Following resource has been created");
-SplashKit.WriteLine("UserID => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "userId"));
-SplashKit.WriteLine("ID     => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "id"));
-SplashKit.WriteLine("Title  => " + SplashKit.JsonReadString(jsonResponse, "title"));
-SplashKit.WriteLine("Body   => " + SplashKit.JsonReadString(jsonResponse, "body"));
-SplashKit.WriteLine("================");
+Json jsonResponse = JsonFromString(response);
+WriteLine("Following resource has been created");
+WriteLine("UserID => " + JsonReadNumberAsInt(jsonResponse, "userId"));
+WriteLine("ID     => " + JsonReadNumberAsInt(jsonResponse, "id"));
+WriteLine("Title  => " + JsonReadString(jsonResponse, "title"));
+WriteLine("Body   => " + JsonReadString(jsonResponse, "body"));
+WriteLine("================");
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RESTfulAPIApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Create a JSON Web resource
+            // Create the JSON body for the http post call
+            Json body = SplashKit.CreateJson();
+            SplashKit.JsonSetString(body, "title", "foo");
+            SplashKit.JsonSetString(body, "body", "test entry");
+            SplashKit.JsonSetNumber(body, "userId", 1);
+
+            // Create the headers for the HTTP POST call
+            List<string> headers = new List<string>
+            {
+            "Content-type: application/json; charset=UTF-8"
+            };
+
+            // Send the request
+            HttpResponse getData = SplashKit.HttpPost("https://jsonplaceholder.typicode.com/posts", 443, SplashKit.JsonToString(body), headers);
+            string response = SplashKit.HttpResponseToString(getData);
+            SplashKit.FreeResponse(getData);
+
+            // Output the response
+            Json jsonResponse = SplashKit.JsonFromString(response);
+            SplashKit.WriteLine("Following resource has been created");
+            SplashKit.WriteLine("UserID => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "userId"));
+            SplashKit.WriteLine("ID     => " + SplashKit.JsonReadNumberAsInt(jsonResponse, "id"));
+            SplashKit.WriteLine("Title  => " + SplashKit.JsonReadString(jsonResponse, "title"));
+            SplashKit.WriteLine("Body   => " + SplashKit.JsonReadString(jsonResponse, "body"));
+            SplashKit.WriteLine("================");
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -316,7 +432,7 @@ write_line("================")
 
 After running this example, you'll get an output like this to the terminal:
 
-```bash
+```shell
 Following resource has been created
 UserID => 1
 ID     => 101

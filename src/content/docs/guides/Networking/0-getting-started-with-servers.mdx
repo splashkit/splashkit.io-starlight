@@ -74,16 +74,17 @@ int main()
 <TabItem label="Top-level Statements">
 
 ```csharp
+using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
 Console.WriteLine("About to start the server...");
 
 // Start a web server - defaults to listening to port 8080
-WebServer server = SplashKit.StartWebServer();
+WebServer server = StartWebServer();
 
 // For now, we are done... so let's shutdown...
-SplashKit.StopWebServer(server);
-  ```
+StopWebServer(server);
+```
 
 </TabItem>
 <TabItem label="Object-Oriented">
@@ -173,25 +174,24 @@ int main()
 <TabItem label="Top-level Statements">
 
 ```csharp
+using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
-SplashKit.WriteLine("About to start the server...");
+WriteLine("About to start the server...");
 
 // Start a web server - defaults to listening to port 8080
-WebServer server = SplashKit.StartWebServer();
+WebServer server = StartWebServer();
 
-SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
 // Wait and get the first request that comes in
-HttpRequest request = SplashKit.NextWebRequest(server);
+HttpRequest request = NextWebRequest(server);
 
 // Send back the index.html file
-SplashKit.SendResponse(request, "Hello World");
+SendResponse(request, "Hello World");
 
 // For now, we are done, so let's shutdown
-SplashKit.StopWebServer(server);
-
-SplashKit.ReadLine(); // Pause to keep the console window open
+StopWebServer(server);
 ```
 
 </TabItem>
@@ -222,8 +222,6 @@ namespace WebServerApp
 
             // For now, we are done, so let's shutdown
             SplashKit.StopWebServer(server);
-
-            SplashKit.ReadLine(); // Pause to keep the console window open
         }
     }
 }
@@ -253,8 +251,6 @@ send_response(request, "Hello World")
 
 # For now, we are done, so let's shutdown
 stop_web_server(server)
-
-read_line() # Pause to keep the console window open
 ```
 
 </TabItem>
@@ -303,32 +299,30 @@ int main()
 <TabItem label="Top-level Statements">
 
 ```csharp
+using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
-SplashKit.WriteLine("About to start the server...");
+WriteLine("About to start the server...");
 
 // Start a web server - defaults to listening to port 8080
-WebServer server = SplashKit.StartWebServer();
+WebServer server = StartWebServer();
 
-SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
 // Wait and get the first request that comes in
-HttpRequest request = SplashKit.NextWebRequest(server);
+HttpRequest request = NextWebRequest(server);
 
 // Send back the index.html file
-SplashKit.SendHtmlFileResponse(request, "index.html");
+SendHtmlFileResponse(request, "index.html");
 
 // For now, we are done, so let's shutdown
-SplashKit.StopWebServer(server);
-
-SplashKit.ReadLine(); // Pause to keep the console window open
+StopWebServer(server);
 ```
 
 </TabItem>
 <TabItem label="Object-Oriented">
 
 ```csharp
-
 using SplashKitSDK;
 
 namespace WebServerApp
@@ -352,8 +346,6 @@ namespace WebServerApp
 
             // For now, we are done, so let's shutdown
             SplashKit.StopWebServer(server);
-
-            SplashKit.ReadLine(); // Pause to keep the console window open
         }
     }
 }
@@ -383,8 +375,6 @@ send_html_file_response(request, "index.html")
 
 # For now, we are done, so let's shutdown
 stop_web_server(server)
-
-read_line() # Pause to keep the console window open
 ```
 
 </TabItem>
