@@ -25,7 +25,7 @@ In SplashKit you can open a Window to draw on and interact with. To open the win
 Lets get this started by opening a new Window, and using SplashKit to delay us for a few seconds. Give the following code a try:
 
 <Tabs syncKey="code-language">
- <TabItem label="C++">
+<TabItem label="C++">
 
 ```cpp
 #include "splashkit.h"
@@ -42,13 +42,39 @@ int main()
 </TabItem>
 <TabItem label="C#">
 
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
 ```csharp
 using static SplashKitSDK.SplashKit;
 
-OpenWindow("Window Title... to change", 800, 600);
+OpenWindow("Window Title... to change ", 800, 600);
 Delay(5000);
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace DrawingUsingProcedures
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = new Window("Shapes by ...", 800, 600);
+            SplashKit.Delay(5000);
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -69,24 +95,24 @@ Compile and run the program from the terminal.
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```shell
-  clang++ program.cpp -l SplashKit -o ShapeDrawing
-  ./ShapeDrawing
-  ```
+```shell
+clang++ program.cpp -l SplashKit -o ShapeDrawing
+./ShapeDrawing
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```shell
-  dotnet run
-  ```
+```shell
+dotnet run
+```
 
 </TabItem>
 <TabItem label="Python">
 
-  ```shell
-  skm python3 program.cpp
-  ```
+```shell
+skm python3 program.cpp
+```
 
 </TabItem>
 </Tabs>
@@ -116,14 +142,20 @@ int main()
     fill_rectangle(COLOR_GRAY, 300, 300, 200, 200);
     fill_triangle(COLOR_RED, 250, 300, 400, 150, 550, 300);
     refresh_screen();
+
     delay(5000);
+
     close_all_windows();
+
     return 0;
 }
 ```
 
 </TabItem>
 <TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
 ```csharp
 using static SplashKitSDK.SplashKit;
@@ -135,10 +167,42 @@ FillEllipse(ColorBrightGreen(), 0, 400, 800, 400);
 FillRectangle(ColorGray(), 300, 300, 200, 200);
 FillTriangle(ColorRed(), 250, 300, 400, 150, 550, 300);
 RefreshScreen();
+
 Delay(5000);
 
 CloseAllWindows();
 ```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace DrawingUsingProcedures
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Window window = new Window("Shapes by ...", 800, 600);
+
+            window.Clear(Color.White);
+            window.FillEllipse(Color.BrightGreen, 0, 400, 800, 400);
+            window.FillRectangle(Color.Gray, 300, 300, 200, 200);
+            window.FillTriangle(Color.Red, 250, 300, 400, 150, 550, 300);
+            window.Refresh();
+
+            SplashKit.Delay(5000);
+
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
@@ -153,6 +217,7 @@ fill_ellipse(color_bright_green(), 0, 400, 800, 400)
 fill_rectangle(color_gray(), 300, 300, 200, 200)
 fill_triangle(color_red(), 250, 300, 400, 150, 550, 300)
 refresh_screen()
+
 delay(5000)
 
 close_all_windows()
@@ -161,29 +226,29 @@ close_all_windows()
 </TabItem>
 </Tabs>
 
-Build and run the program.
+Compile and run the program again:
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```shell
-  clang++ program.cpp -l SplashKit -o ShapeDrawing
-  ./ShapeDrawing
-  ```
+```shell
+clang++ program.cpp -l SplashKit -o ShapeDrawing
+./ShapeDrawing
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```shell
-  dotnet run
-  ```
+```shell
+dotnet run
+```
 
 </TabItem>
 <TabItem label="Python">
 
-  ```shell
-  skm python3 program.cpp
-  ```
+```shell
+skm python3 program.cpp
+```
 
 </TabItem>
 </Tabs>
