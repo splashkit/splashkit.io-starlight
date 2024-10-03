@@ -24,6 +24,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
 src/content/docs/api/Animations.mdx
 src/content/docs/api/Audio.mdx
 src/content/docs/api/Camera.mdx
@@ -38,7 +39,7 @@ src/content/docs/api/Logging.mdx
 src/content/docs/api/Networking.mdx
 src/content/docs/api/Physics.mdx
 src/content/docs/api/Raspberry.mdx
-src/content/docs/api/Resource Bundles.mdx
+src/content/docs/api/Resource-Bundles.mdx
 src/content/docs/api/Resources.mdx
 src/content/docs/api/Social.mdx
 src/content/docs/api/Sprites.mdx
@@ -61,7 +62,7 @@ src/content/docs/usage-examples/Logging.mdx
 src/content/docs/usage-examples/Networking.mdx
 src/content/docs/usage-examples/Physics.mdx
 src/content/docs/usage-examples/Raspberry.mdx
-src/content/docs/usage-examples/Resource Bundles.mdx
+src/content/docs/usage-examples/Resource-Bundles.mdx
 src/content/docs/usage-examples/Resources.mdx
 src/content/docs/usage-examples/Social.mdx
 src/content/docs/usage-examples/Sprites.mdx

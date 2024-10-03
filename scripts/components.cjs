@@ -440,10 +440,11 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
       }
 
 
-
+      // Replace spaces with hyphens in the name
+      const formattedName = name.replace(/\s+/g, '-');
 
       // Write the MDX file
-      fs.writeFileSync(`./src/content/docs/api/${name}.mdx`, mdxContent, (err) => {
+      fs.writeFile(`./src/content/docs/api/${formattedName}.mdx`, mdxContent, (err) => {
         if (err) {
           console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
         } else {

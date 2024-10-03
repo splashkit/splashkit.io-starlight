@@ -28,7 +28,7 @@ MSYS2 provide a unix terminal environment for Windows. We will need this to run 
     - Open MINGW64 terminal.
     - Right-click on the blue MSYS2 App icon in the taskbar.
     - Select "Pin to taskbar".
-
+    ![Image showing MSYS2 MINGW64 App pinning to taskbar](/public/images/installation/windows/mingw64-pin-to-taskbar.png)
     :::
 
 ## Install Command Line Tools
