@@ -1,0 +1,3 @@
+### Simple Decimal to Hexadecimal Converter
+
+The following code shows examples of using [dec to hex](/api/networking/#dec-to-hex) to convert a decimal value to a hex value.
