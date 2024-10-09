@@ -2,8 +2,8 @@
 title: Introduction to JSON in SplashKit
 description: JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and for machines to parse and generate.
 category: Guides
-author: Jonathan Tynan and Yuyang Yang
-lastupdated: Sep 10 2024
+author: Jonathan Tynan
+lastupdated: September 2024
 sidebar:
   label: "Introduction to JSON"
 ---
@@ -99,7 +99,7 @@ namespace GameDataManagement
     {
         public static void Main()
         {
-            Json gameData = SplashKit.JsonFromFile(game_data.json);
+            Json gameData = SplashKit.JsonFromFile("game_data.json");
             string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
 
             SplashKit.WriteLine("Game Title: " + gameTitle);
@@ -112,6 +112,27 @@ namespace GameDataManagement
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+def main():
+    game_data = json_from_file("game_data.json")
+    game_title = json_read_string(game_data, "gameTitle")
+
+    if not game_title:
+        write_line("Error retrieving gameTitle.")
+    else:
+        write_line(f"Game Title: {game_title}")
+
+    free_json(game_data)
+
+if __name__ == "__main__":
+    main()
+```
 
 </TabItem>
 </Tabs>
@@ -150,6 +171,13 @@ And run it with:
 
 ```shell
 dotnet run
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```shell
+skm python3 program.py
 ```
 
 </TabItem>
@@ -248,6 +276,27 @@ namespace GameDataManagement
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+def main():
+    game_data = json_from_file("game_data.json")
+
+    if json_has_key(game_data, "gameTitle"):
+        game_title = json_read_string(game_data, "gameTitle")
+        write_line(f"Game Title: {game_title}")
+    else:
+        write_line('Key "gameTitle" not found.')
+
+    free_json(game_data)
+
+if __name__ == "__main__":
+    main()
+```
 
 </TabItem>
 </Tabs>
