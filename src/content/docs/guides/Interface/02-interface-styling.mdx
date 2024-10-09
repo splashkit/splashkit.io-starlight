@@ -3,7 +3,7 @@ title: Styling User Interfaces
 description: This article will explain how we can style our SplashKit interfaces to match our projects.
 category: Tutorials
 author: Sean Boettger
-lastupdated: May 17 2024
+lastupdated: October 2024
 ---
 
 **{frontmatter.description}**
@@ -19,37 +19,114 @@ In this article we'll see how we can customize the _style_ of our interfaces, to
 
 SplashKit comes with a few preset styles that make it easy to start customizing the interface. To use them, just call [Set Interface Style](/api/interface/#set-interface-style) with the style you want - any elements created after this will use the new style! Here's an example:
 
-<Tabs>
+<Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp ins={8}
-  # include "splashkit.h"
+```cpp ins={8}
+# include "splashkit.h"
 
-  int main()
-  {
-      // open a window
-      open_window("My Interface!", 800, 600);
+int main()
+{
+    // open a window
+    open_window("My Interface!", 800, 600);
 
-      set_interface_style(SHADED_LIGHT_STYLE);
+    // set the interface style
+    set_interface_style(SHADED_LIGHT_STYLE);
 
-      while (!quit_requested())
-      {
-          process_events();
+    while (!quit_requested())
+    {
+        process_events();
 
-          clear_screen(COLOR_WHITE);
+        clear_screen(COLOR_WHITE);
 
-          button("My Button!", rectangle_from(300, 260, 200, 24));
+        button("My Button!", rectangle_from(300, 260, 200, 24));
 
-          draw_interface();
+        draw_interface();
 
-          refresh_screen();
-      }
+        refresh_screen();
+    }
 
-      // program ends, and the window closes
-      return 0;
-  }
+    // close all open windows
+    close_all_windows();
+    
+    return 0;
+}
 
-  ```
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+// open a window
+OpenWindow("My Interface!", 800, 600);
+
+// set the interface style
+SetInterfaceStyle(InterfaceStyle.ShadedLightStyle);
+
+while (!QuitRequested())
+{
+    ProcessEvents();
+
+    ClearScreen(ColorWhite());
+
+    Button("My Button!", RectangleFrom(300, 260, 200, 24));
+
+    DrawInterface();
+
+    RefreshScreen();
+}
+
+// close all open windows
+CloseAllWindows();
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace InterfaceStyling
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // open a window
+            Window window = new Window("My Interface!", 800, 600);
+
+            // set the interface style
+            SplashKit.SetInterfaceStyle(InterfaceStyle.ShadedLightStyle);
+
+            while (!window.CloseRequested)
+            {
+                SplashKit.ProcessEvents();
+
+                window.Clear(Color.White);
+
+                SplashKit.Button("My Button!", SplashKit.RectangleFrom(300, 260, 200, 24));
+
+                SplashKit.DrawInterface();
+
+                window.Refresh();
+            }
+
+            // close all open windows
+            SplashKit.CloseAllWindows();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
@@ -162,14 +239,38 @@ By default, the interface will try and use a font available in your system. You 
 - [Set Interface Font](/api/interface/#set-interface-font), lets you change the current font, loaded with [Load Font](/api/graphics/#load-font)
 - [Set Interface Font Size](/api/interface/#set-interface-font-size), lets you change the current font size
 
-<Tabs>
+<Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-      font myFont = load_font("Custom Font", "arial.ttf");
-      set_interface_font(myFont);
-      set_interface_font_size(12);
-  ```
+```cpp
+font myFont = load_font("Custom Font", "arial.ttf");
+set_interface_font(myFont);
+set_interface_font_size(12);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+Font myFont = LoadFont("Custom Font", "arial.ttf");
+SetInterfaceFont(myFont);
+SetInterfaceFontSize(12);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+Font myFont = SplashKit.LoadFont("Custom Font", "arial.ttf");
+SplashKit.SetInterfaceFont(myFont);
+SplashKit.SetInterfaceFontSize(12);
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
