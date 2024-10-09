@@ -1,0 +1,7 @@
+### Freeing a Sprite
+
+The following code is an example of using [Free Sprite](https://splashkit.io/api/sprites/#free-sprite) to free a sprite when the `UP` key is typed and after the window is closed.
+
+:::note
+To test this example code you can download these [**Resources**](/resources/usage-examples/sprites/freeSprite_BasicSpriteResources.zip).
+:::
