@@ -1,7 +1,7 @@
 ---
 title: SplashKit Camera
 description: See how the camera works, and how to draw to the different coordinate systems in your program.
-author: Andrew Cain and Mounika Angadipeta
+author: Andrew Cain
 lastupdated: September 2024
 category: Guides
 ---
@@ -18,15 +18,15 @@ This article provides information on how to use the camera in SplashKit to creat
 
 ## Coordinates and the Camera
 
-The camera provides an easy way to move around a game world. It is set to 0,0 by default, however the offset can be changed using the different camera procedures in order to explore a larger game world. When the camera position changes it moves the window to another part of the game world, as you can see in the image below.
+The camera provides an easy way to move around a game world. The camera is set to 0,0 by default, however the offset can be changed using the different camera procedures in order to explore a larger game world. When you change the camera position, it shifts the view of the game window to a different part of the game world, as you can see in the image below.
 
 ![Illustration of the camera and game coordinates](./images/camera.png)
 
-When drawing use 'game coordinates' for each of your entities, which describe where an entity is in relation to other entities in the game. Some of these may be on the screen or off the screen, but we can let SplashKit take care of that. In the above image the dancing frog is at 250,300 in the game world.
+When drawing, use 'game coordinates' for each entity, which represent the entity's position relative to other entities in the game world. These coordinates help in positioning entities correctly in the larger game world context. Some of these may be on the screen or off the screen, but we can let SplashKit take care of that. In the above image the dancing frog is at 250,300 in the game world.
 
-When you draw to the screen SplashKit adjusts the screen position based on the current camera offset. So the dancing frog in the above image is at 200,200 on the screen as the camera is at 50,100. The camera defines the coordinate of the top left of the window.
+When drawing to the screen, SplashKit adjusts the rendering position based on the current camera offset. This means the game world coordinates are translated into screen coordinates considering the camera’s position. So the dancing frog in the above image is at 200,200 on the screen as the camera is at 50,100. The camera defines the coordinate of the top left of the window.
 
-With the camera you can create the effect of moving past stationary background objects by moving the player and the camera at the same time. As you move the camera, stationary objects drawn to the screen will appear in different locations on the Window.
+By moving both the player and the camera simultaneously, you can create the effect of moving past stationary background objects. This creates the illusion of movement through a larger world, while the background objects remain in their relative positions.As you move the camera, stationary objects drawn to the screen will appear in different locations on the Window.
 
 - [Set Camera X](/api/camera/#set-camera-x) - adjust the x value for the camera
 - [Set Camera Y](/api/camera/#set-camera-y) - adjust the y value for the camera
@@ -153,7 +153,6 @@ int main()
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
-
 
 static void UpdateCameraPosition(double playerX, double playerY)
 {
@@ -379,10 +378,10 @@ while not quit_requested():
     # Redraw everything
     clear_screen(color_black())
 
-    # Draw to the screen
-    fill_rectangle(color_white(), 0, 0, screen_width(), 50, option_to_screen())
-    draw_text_no_font_no_size_with_options("HUD", color_white(), 10, 10, option_to_screen())
-    draw_text_no_font_no_size_with_options(f"Camera Position: {point_to_string(camera_position())}", color_white(), 10, 30, option_to_screen())
+      # Draw to the screen
+      fill_rectangle(color_dim_gray(), 0, 0, screen_width(), 50,option_to_screen())
+      draw_text_no_font_no_size_with_options("HUD", color_white(), 10, 10, option_to_screen())
+      draw_text_no_font_no_size_with_options(f"Camera Position: {point_to_string(camera_position())}", color_white(), 10, 30, option_to_screen())
 
     # as well as the player who can move
     fill_circle(color_yellow(), player_x, player_y, 20)
