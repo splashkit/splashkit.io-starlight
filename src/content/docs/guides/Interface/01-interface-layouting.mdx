@@ -3,7 +3,7 @@ title: Layouts in User Interfaces
 description: This article will help you understand how to customize the layouts of your interfaces in SplashKit.
 category: Tutorials
 author: Sean Boettger
-lastupdated: May 5 2024
+lastupdated: September 20 2024
 ---
 
 **{frontmatter.description}**
@@ -133,6 +133,34 @@ namespace InterfaceLayouts
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# main loop
+while (not quit_requested()):
+    # get user events
+    process_events()
+
+    # clear screen
+    clear_screen_to_white()
+
+    # ...we'll put our interface code here...!
+
+    # finally draw interface, then refresh screen
+    draw_interface()
+
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
+
+</TabItem>
 </Tabs>
 
 Let's add a panel now! Adding a panel takes two lines of code:
@@ -192,6 +220,18 @@ if (SplashKit.StartPanel("My panel", SplashKit.RectangleFrom(50, 50, 200, 100)))
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+# start the panel and check if it's open/visible
+if (start_panel("My panel", rectangle_from(50,50,200,100))):
+    # ...here we'll create all the UI elements
+
+    # end the panel
+    end_panel("My panel")
+```
 
 </TabItem>
 </Tabs>
@@ -270,7 +310,7 @@ int main()
 
     // close all open windows
     close_all_windows();
-    
+
     return 0;
 }
 ```
@@ -381,6 +421,46 @@ namespace InterfaceLayouts
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python ins={17-18, 25-26} {6-7, 19-24}
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# setup a variable to store the user's string - same as last tutorial
+user_message = "Default message!"
+
+# main loop
+while (not quit_requested()):
+    # get user events
+    process_events()
+
+    # clear screen
+    clear_screen_to_white()
+
+    # here we start the panel
+    if (start_panel("My panel", rectangle_from(50,50,200,100))):
+        # create the elements, just like last tutorial!
+        if button("Write To Terminal!"):
+            write_line(user_message)
+            
+        user_message = text_box(user_message)
+        
+        # end the panel
+        end_panel("My panel")
+
+
+    # finally draw interface, then refresh screen
+    draw_interface()
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
+
+</TabItem>
 </Tabs>
 
 :::tip[Elements inside panels]
@@ -455,6 +535,14 @@ if (SplashKit.Header("Edit Message!"))
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+if header("Edit Message!"):
+    user_message = text_box(user_message)
+```
 
 </TabItem>
 </Tabs>
@@ -545,6 +633,29 @@ SplashKit.EndInset("Inset area");
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python
+paragraph("This text is outside the inset area!")
+start_inset("Inset area", 60)
+
+if (button("Button 1!")):
+    write_line("Button 1 clicked!")
+if (button("Button 2!")):
+    write_line("Button 2 clicked!")
+if (button("Button 3!")):
+    write_line("Button 3 clicked!")
+if (button("Button 4!")):
+    write_line("Button 4 clicked!")
+if (button("Button 5!")):
+    write_line("Button 5 clicked!")
+if (button("Button 6!")):
+    write_line("Button 6 clicked!")
+
+end_inset("Inset area")
+```
+
+</TabItem>
 </Tabs>
 
 ![A panel with an inset region that is at a fixed position - it has its own scrollbar.](/gifs/guides/interface/panel_w_inset.gif)
@@ -579,15 +690,15 @@ if (start_treenode("Some more buttons!"))
     if (button("Button 5!"))
         write_line("Button 5 clicked!");
 
-    if (start_treenode("Buttons in buttons!!"))
-    {
-        if (button("Button 6!"))
-            write_line("Button 6 clicked!");
-        end_treenode("Buttons in buttons!!");
-    }
-    end_treenode("Some more buttons!");
-}
-```
+      if (start_treenode("Buttons in buttons!!")){
+          if (button("Button 6!")) write_line("Button 6 clicked!");
+
+          end_treenode("Buttons in buttons!!");
+      }
+
+      end_treenode("Some more buttons!");
+  }
+  ```
 
 </TabItem>
 <TabItem label="C#">
@@ -658,6 +769,32 @@ if (SplashKit.StartTreenode("Some more buttons!"))
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+if start_treenode("Some buttons!"):
+    if (button("Button 1!")):
+        write_line("Button 1 clicked!")
+    if (button("Button 2!")):
+        write_line("Button 2 clicked!")
+    if (button("Button 3!")):
+        write_line("Button 3 clicked!")
+    end_treenode("Some buttons!")
+        
+if start_treenode("Some more buttons!"):
+    if (button("Button 4!")):
+        write_line("Button 4 clicked!")
+    if (button("Button 5!")):
+        write_line("Button 5 clicked!")
+    
+    if start_treenode("Buttons in buttons!!"):
+        if (button("Button 6!")):
+            write_line("Button 6 clicked!")
+        end_treenode("Buttons in buttons!!")
+    end_treenode("Some more buttons!")
+```
 
 </TabItem>
 </Tabs>
@@ -793,6 +930,33 @@ SplashKit.ResetLayout();
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python
+start_custom_layout()
+split_into_columns(3)
+set_layout_height(64)
+
+if (button("Button 1!")):
+    write_line("Button 1 clicked!")
+if (button("Button 2!")):
+    write_line("Button 2 clicked!")
+if (button("Button 3!")):
+    write_line("Button 3 clicked!")
+
+set_layout_height(0); # 0 resets to default
+
+if (button("Button 4!")):
+    write_line("Button 4 clicked!")
+if (button("Button 5!")):
+    write_line("Button 5 clicked!")
+if (button("Button 6!")):
+    write_line("Button 6 clicked!")
+
+reset_layout()
+```
+
+</TabItem>
 </Tabs>
 
 ![A panel with 6 buttons. Each set of three are on a single row, and the top row is taller than the bottom.](/gifs/guides/interface/panel_w_sixbuttonstallshort.gif)
@@ -846,7 +1010,6 @@ reset_layout();
 <TabItem label="Top-level Statements">
 
 ```csharp
-// Start custom layout
 StartCustomLayout();
 SplitIntoColumns(2);
 
@@ -909,6 +1072,38 @@ SplashKit.ResetLayout();
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+start_custom_layout()
+split_into_columns(2)
+
+enter_column()
+set_layout_height(64)
+
+if (button("Button 1!")):
+    write_line("Button 1 clicked!")
+if (button("Button 2!")):
+    write_line("Button 2 clicked!")
+
+leave_column()
+
+enter_column()
+set_layout_height(0); # 0 resets to default
+
+if (button("Button 4!")):
+    write_line("Button 4 clicked!")
+if (button("Button 5!")):
+    write_line("Button 5 clicked!")
+if (button("Button 6!")):
+    write_line("Button 6 clicked!")
+
+leave_column()
+
+reset_layout()
+```
 
 </TabItem>
 </Tabs>
