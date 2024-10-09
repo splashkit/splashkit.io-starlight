@@ -6,8 +6,8 @@ OpenWindow("sprite_set_x", 600, 600);
 LoadBitmap("player", "player-run.png");
 Sprite playerSprite = CreateSprite(BitmapNamed("player"));
 
-// Setting the x coordinate in reference to the window
-SpriteSetX(playerSprite, 300);
+// Setting the y coordinate in reference to the window
+SpriteSetY(playerSprite, 300);
 
 ClearScreen(ColorBlack());
 DrawSprite(playerSprite);
