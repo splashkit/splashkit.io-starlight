@@ -51,7 +51,6 @@ int main()
     
     return 0;
 }
-
 ```
 
 </TabItem>
@@ -127,6 +126,33 @@ namespace InterfaceStyling
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python ins={6}
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# set the interface style
+set_interface_style(InterfaceStyle.shaded_light_style)
+
+while (not quit_requested()):
+    process_events()
+
+    clear_screen_to_white()
+
+    button_at_position("My Button!", rectangle_from(300, 260, 200, 24))
+    
+    draw_interface()
+
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
 
 </TabItem>
 </Tabs>
@@ -271,6 +297,15 @@ SplashKit.SetInterfaceFontSize(12);
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+my_font = load_font("Custom Font", "arial.ttf")
+set_interface_font(my_font)
+set_interface_font_size(12)
+```
 
 </TabItem>
 </Tabs>
