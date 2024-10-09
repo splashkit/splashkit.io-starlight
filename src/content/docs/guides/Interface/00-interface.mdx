@@ -3,7 +3,7 @@ title: Getting Started Creating User Interfaces
 description: This article will help you get started creating interfaces in SplashKit. In this one we'll see how to create and use basic elements, like buttons and sliders. In later the next ones, we'll move on to advanced layouting, and finally we'll see how we can style the interface to match our project.
 category: Tutorials
 author: Sean Boettger
-lastupdated: April 29 2024
+lastupdated: September 19 2024
 ---
 
 **{frontmatter.description}**
@@ -104,6 +104,26 @@ Let's see how we can create a simple button. We'll start in an empty project, an
 
     </TabItem>
     </Tabs>
+
+    </TabItem>
+    <TabItem label="Python">
+
+    ```python
+    from splashkit import *
+
+    # open a window and clear it to white
+    open_window("My Interface!", 800, 600)
+    clear_screen_to_white()
+
+    # ... we'll put our interface code here!...
+
+    # refresh the screen, then wait 5 seconds
+    refresh_screen()
+    delay(5000)
+
+    # close all open windows
+    close_all_windows()
+    ```
 
     </TabItem>
     </Tabs>
@@ -207,6 +227,28 @@ Let's see how we can create a simple button. We'll start in an empty project, an
 
     </TabItem>
     </Tabs>
+
+    </TabItem>
+    <TabItem label="Python">
+
+    ```python ins={5-9}
+    # open a window and clear it to white
+    open_window("My Interface!", 800, 600)
+    clear_screen_to_white()
+
+    # show button
+    button_at_position("My Button!", rectangle_from(300, 260, 200, 24))
+
+    # draw the interface!
+    draw_interface()
+
+    # refresh the screen, then wait 5 seconds
+    refresh_screen()
+    delay(5000)
+
+    # close all open windows
+    close_all_windows()
+    ```
 
     </TabItem>
     </Tabs>
@@ -332,6 +374,28 @@ Let's see how we can create a simple button. We'll start in an empty project, an
     </Tabs>
 
     </TabItem>
+    <TabItem label="Python">
+
+    ```python ins={4-5}
+    # open a window
+    open_window("My Interface!", 800, 600)
+
+    while (not quit_requested()):
+        process_events()
+        
+        clear_screen_to_white()
+
+        button_at_position("My Button!", rectangle_from(300, 260, 200, 24))
+
+        draw_interface()
+
+        refresh_screen()
+
+    # close all open windows
+    close_all_windows()
+    ```
+
+    </TabItem>
     </Tabs>
 
     And we can now click the button!
@@ -404,6 +468,14 @@ if (Button("Write To Terminal!", RectangleFrom(300, 260, 200, 24)))
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python ins="Write To Terminal!" ins="if " ins=":" ins={2}
+if button_at_position("Write To Terminal!", rectangle_from(300, 260, 200, 24)):
+    write_line("The button was clicked!")
+```
+
+</TabItem>
 </Tabs>
 
 Note how rather than _creating_ the button, and then checking if it's been clicked seperately, we've used a _single_ call to [Button](/api/interface/#button), that both shows the button _and_ returns whether its been clicked.
@@ -463,6 +535,18 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     </Tabs>
 
     </TabItem>
+    <TabItem label="Python">
+
+    ```python ins={3}
+    open_window("My Interface!", 800, 600)
+
+    user_message = "Default message!"
+
+    while (not quit_requested()):
+        process_events()
+    ```
+
+    </TabItem>
     </Tabs>
 
 2. Now let's add the text box. We can use the [Text Box](/api/interface/#text-box) function, which takes a string - the current text, and a position - where to draw it.
@@ -517,6 +601,16 @@ Now let's try out some more interesting elements - let's add a text box, so we c
 
     </TabItem>
     </Tabs>
+
+    </TabItem>
+    <TabItem label="Python">
+
+    ```python ins={1} ins="write_line(user_message)"
+        user_message = text_box_at_position(user_message, rectangle_from(300, 220, 200, 24))
+        
+        if button_at_position("Write To Terminal!", rectangle_from(300, 260, 200, 24)):
+            write_line(user_message)
+    ```
 
     </TabItem>
     </Tabs>
@@ -672,6 +766,40 @@ namespace CreatingUserInterfaces
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# define variables
+user_message = "Default message!"
+
+# main loop
+while (not quit_requested()):
+    # get user events
+    process_events()
+    
+    # clear screen
+    clear_screen_to_white()
+
+    # interface!
+    user_message = text_box_at_position(user_message, rectangle_from(300, 220, 200, 24))
+    
+    if button_at_position("Write To Terminal!", rectangle_from(300, 260, 200, 24)):
+        write_line(user_message)
+
+    # finally draw interface, then refresh screen
+    draw_interface()
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
 
 </TabItem>
 </Tabs>
@@ -831,6 +959,43 @@ namespace CreatingUserInterfaces
 </Tabs>
 
 </TabItem>
+<TabItem label="Python">
+
+```python ins={8, 24} ins=/(width), 2/  ins="400 - width/2"
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# define variables
+user_message = "Default message!"
+width = 200
+
+# main loop
+while (not quit_requested()):
+    # get user events
+    process_events()
+    
+    # clear screen
+    clear_screen_to_white()
+
+    # interface
+    user_message = text_box_at_position(user_message, rectangle_from(400 - width/2, 220, width, 24))
+    
+    if button_at_position("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)):
+        write_line(user_message)
+
+    width = slider_at_position(width, 10, 400, rectangle_from(300, 300, 200, 24))
+    
+    # finally draw interface, then refresh screen
+    draw_interface()
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
+
+</TabItem>
 </Tabs>
 
 </details>
@@ -890,7 +1055,6 @@ int main()
   ```
 
 </TabItem>
-
 <TabItem label="C#">
 
 <Tabs syncKey="csharp-style">
@@ -986,6 +1150,43 @@ namespace CreatingUserInterfaces
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+# open a window
+open_window("My Interface!", 800, 600)
+
+# define variables
+user_message = "Default message!"
+width = 200
+
+# main loop
+while (not quit_requested()):
+    # get user events
+    process_events()
+    
+    # clear screen
+    clear_screen_to_white()
+
+    # interface
+    user_message = text_box_at_position(user_message, rectangle_from(400 - width/2, 220, width, 24))
+    
+    if button_at_position("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)):
+        write_line(user_message)
+
+    width = slider_at_position(width, 10, 400, rectangle_from(300, 300, 200, 24))
+    
+    # finally draw interface, then refresh screen
+    draw_interface()
+    refresh_screen()
+
+# close all open windows
+close_all_windows()
+```
 
 </TabItem>
 </Tabs>
