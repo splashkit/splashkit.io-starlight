@@ -4,10 +4,12 @@
 
 /* Dark mode colors. */
 :root {
-  --splashkit-blue: #00A9E0;
-  --splashkit-blue: #00A9E0;
   --purple-hsl: 255, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --sk-logo-blue: #00ACC1;
+  --sk-logo-orange: #F5A623;
+  --link-button-border-color: var(--sk-logo-orange);
+  --link-hover-button-border-color: var(--sk-logo-blue);
   /* --table-head-color: rgb(35, 38, 47); */
 }
 
@@ -15,24 +17,27 @@
 :root[data-theme='light'] {
   /*   --sl-color-accent: #00A9E0; */
   --sl-color-accent: #3D50f5;
+  --link-button-border-color: var(--sk-logo-blue);
+  --link-hover-button-border-color: var(--sk-logo-orange);
 }
 
 .hero {
   padding-top: 80px;
   padding-bottom: 30px;
 }
+
 .hero img {
   transition: transform 0.3s ease, filter 0.3s ease;
   width: 90%;
   height: 90%;
   margin-top: -40px;
-  /* filter: drop-shadow(0 0 1rem var(--splashkit-blue)); */
+  /* filter: drop-shadow(0 0 1rem var(--sk-logo-blue)); */
 }
 
 .hero img:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
-  /* filter: drop-shadow(0 0 2rem var(--splashkit-blue)); */
+  /* filter: drop-shadow(0 0 2rem var(--sk-logo-blue)); */
 }
 
 [data-has-hero] .page {
@@ -65,17 +70,30 @@ iframe[id="stackblitz-iframe"] {
   margin: 0 auto;
 }
 
-[data-has-hero] .hero .action {
-  border: 1px solid var(--splashkit-blue);
-  transition: background-color ease-in-out 0.25s, color 0.3s ease;
+[data-has-hero] .hero .actions {
+  gap: 1.25rem;
+}
+
+[data-has-hero] .hero .sl-link-button {
+  border: 1px solid var(--link-button-border-color);
+  box-shadow: 0px 0px 5px var(--link-button-border-color);
+  /* transition: background-color ease-in-out 0.25s, color 0.3s ease; */
   position: relative;
   overflow: hidden;
-  /*   background-color: white;
-  color: black; */
   cursor: pointer;
 }
 
-[data-has-hero] .hero .action::before {
+[data-has-hero] .hero .sl-link-button:hover {
+  border: 1px solid var(--link-hover-button-border-color);
+  box-shadow: 0px 0px 10px var(--link-hover-button-border-color);
+}
+
+/* [data-has-hero] .hero .sl-link-button.minimal {
+  border: solid 1px var(--sl-color-text-accent);
+  padding: 1rem 1.25rem;
+} 
+
+[data-has-hero] .hero .sl-link-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -90,12 +108,12 @@ iframe[id="stackblitz-iframe"] {
   z-index: -1;
 }
 
-[data-has-hero] .hero .action:hover::before {
+[data-has-hero] .hero .sl-link-button:hover::before {
   opacity: 1;
   animation: moveGradient 3s linear infinite;
 }
 
-[data-has-hero] .hero .action:hover {
+[data-has-hero] .hero .sl-link-button:hover {
   color: white;
   background-color: transparent;
 }
@@ -112,18 +130,9 @@ iframe[id="stackblitz-iframe"] {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
-[data-has-hero] .hero .action.minimal {
-  border: solid 1px var(--sl-color-text-accent);
-  padding: 1rem 1.25rem;
-}
-
-[data-has-hero] .hero .actions {
-  gap: 1.25rem;
-}
-
-[data-has-hero] .hero .hero-gradient-text {
+/* [data-has-hero] .hero .hero-gradient-text {
   background: radial-gradient(circle at top left,
       hsl(296, 100%, 50%) 0%,
       transparent 50%),
@@ -133,13 +142,49 @@ iframe[id="stackblitz-iframe"] {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
 /* centre all images/gifs */
 img {
   display: block;
   margin: auto;
 }
+
+/* [data-has-hero] .card {
+  border-radius: 12px;
+  position: relative;
+  background: radial-gradient(
+      300px circle at top left,
+      rgba(85, 44, 190, 0.081) 20%,
+      transparent 100%
+    ),
+    radial-gradient(
+      300px circle at bottom right,
+      rgba(44, 102, 190, 0.09) 20%,
+      transparent 100%
+    );
+}
+
+[data-has-hero] .card::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border-radius: inherit;
+  transition: opacity 400ms ease 0s;
+  will-change: background, opacity;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(62, 85, 167, 0.212),
+    transparent 40%
+  );
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+[data-has-hero] .card:hover::before {
+  opacity: 1;
+} */
 
 [data-has-hero] .star-text {
   margin-top: 8px !important;
@@ -152,6 +197,12 @@ img {
   margin-top: 80px !important;
 }
 
+.home-card {
+  border-radius: 20%;
+  border: 1px dotted black;
+}
+
+/* OS icons on install pages */
 @font-face {
   font-family: "FontAwesomeBrands";
   src: url("/src/fonts/fa-brands-400.woff2") format("woff2");
@@ -160,55 +211,36 @@ img {
   font-display: swap;
 }
 
-.home-card {
-  border-radius: 20%;
-  border: 1px dotted black;
+a.pi:after,
+a.apple:after,
+a.windows:after,
+a.windows-wsl:after,
+a.linux:after {
+  font-family: "FontAwesomeBrands";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
 }
 
 a.pi:after {
-  font-family: "FontAwesomeBrands";
   content: "\f7bb";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
 a.apple:after {
-  font-family: "FontAwesomeBrands";
   content: "\f179";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
 a.windows:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17a";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-
 }
 
 a.windows-wsl:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17a  \f17c";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
 a.linux:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17c";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
 html[data-theme="dark"] a.apple:after,
