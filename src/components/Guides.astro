@@ -1,6 +1,9 @@
 ---
 import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+import fs from "fs";
+import path from "path";
 
+// Define the type for frontmatter
 interface Frontmatter {
   title: string;
   description?: string;
@@ -9,73 +12,84 @@ interface Frontmatter {
   category?: string;
 }
 
+// Define paths
+const jsonFilePath = path.resolve("./src/components/guides-groups.json");
+
+// Define the type for the group names
+type GroupName = string;
+
+// Helper function to capitalize and format group names
+function formatGroupName(groupName: GroupName): string {
+  // Replace dashes with spaces and capitalize each word
+  return groupName
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+// Read and parse the JSON file
+const groupNames: GroupName[] = JSON.parse(
+  fs.readFileSync(jsonFilePath, "utf-8"),
+);
+
+// Load and filter posts
 let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
 posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
-let guides = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "guides",
-);
-// sort guides on the basis of simplifyed File Path
-guides = guides.sort((a, b) =>
-  simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || ""),
-  ),
-);
-let tutorials = posts.filter(
-  (post) => post.frontmatter.category?.toLowerCase() == "tutorials",
-);
-tutorials = tutorials.sort((a, b) =>
-  simplifyFilePath(a.url?.toString() || "").localeCompare(
-    simplifyFilePath(b.url?.toString() || ""),
-  ),
-);
+// Function to check if URL contains the group name
+function urlContainsGroup(url: string, groupName: string): boolean {
+  return url.toLowerCase().includes(groupName.toLowerCase());
+}
 
-function simplifyFilePath(filePath: string) {
-  // Remove leading and trailing slashes
+// Function to simplify file path
+function simplifyFilePath(filePath: string): string {
   filePath = filePath.replace(/^\/|\/$/g, "");
-
-  // Split the path into parts using '/'
   const pathParts = filePath.split("/");
-
-  // Get the last part of the path (including directory name)
-  const folderPath = pathParts[4] + "/" + pathParts[pathParts.length - 1];
-
-  // Remove file extension (assuming it's after the last dot in the last part)
-  const simplifiedName = folderPath.split(".").slice(0, -1).join(".");
-
-  return simplifiedName.toLowerCase(); // Convert to lowercase for consistency
+  const fileFolder = pathParts[pathParts.length - 2];
+  const lastPart = pathParts[pathParts.length - 1];
+  const simplifiedName =
+    fileFolder + "/" + lastPart.split(".").slice(0, -1).join(".");
+  return simplifiedName.toLowerCase();
 }
 ---
 
-<h2>Tutorials</h2>
-<CardGrid stagger>
-  {
-    tutorials.map((post) => (
-      <LinkCard
-        title={post.frontmatter.title}
-        description={`Written by ${post.frontmatter.author || "Various"}${
-          post.frontmatter.lastupdated
-            ? ` on ${post.frontmatter.lastupdated}`
-            : ""
-        }`}
-        href={simplifyFilePath(post.url?.toString() || "")}
-      />
-    ))
-  }
-</CardGrid>
-<h2>Guides</h2>
-<CardGrid stagger>
-  {
-    guides.map((post) => (
-      <LinkCard
-        title={post.frontmatter.title}
-        description={`Written by ${post.frontmatter.author || "Various"}${
-          post.frontmatter.lastupdated
-            ? ` on ${post.frontmatter.lastupdated}`
-            : ""
-        }`}
-        href={simplifyFilePath(post.url?.toString() || "")}
-      />
-    ))
-  }
-</CardGrid>
+{
+  groupNames.map((groupName: GroupName) => {
+    // Filter posts by the current group name and check for "guides" or "tutorials" category
+    const filteredPosts = posts
+      .filter(
+        (post) =>
+          (post.frontmatter.category?.toLowerCase() === "guides" ||
+            post.frontmatter.category?.toLowerCase() === "tutorials") &&
+          urlContainsGroup(post.url?.toString() || "", groupName),
+      )
+      .sort((a, b) =>
+        simplifyFilePath(a.url?.toString() || "").localeCompare(
+          simplifyFilePath(b.url?.toString() || ""),
+        ),
+      );
+
+    // Capitalize and format the group name
+    const formattedGroupName = formatGroupName(groupName);
+
+    return (
+      <>
+        <h2>{formattedGroupName}</h2>
+        <CardGrid>
+          {filteredPosts.map((post) => (
+            <LinkCard
+              title={post.frontmatter.title}
+              description={`Written by ${post.frontmatter.author || "Various"}${
+                post.frontmatter.lastupdated
+                  ? ` on ${post.frontmatter.lastupdated}`
+                  : ""
+              }`}
+              href={simplifyFilePath(post.url?.toString() || "")}
+            />
+          ))}
+        </CardGrid>
+      </>
+    );
+  })
+}
