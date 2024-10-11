@@ -17,6 +17,24 @@
   --sl-color-accent: #3D50f5;
 }
 
+.hero {
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+.hero img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  width: 90%;
+  height: 90%;
+  margin-top: -40px;
+  /* filter: drop-shadow(0 0 1rem var(--splashkit-blue)); */
+}
+
+.hero img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  /* filter: drop-shadow(0 0 2rem var(--splashkit-blue)); */
+}
+
 [data-has-hero] .page {
   background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
     radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
@@ -30,7 +48,7 @@
   backdrop-filter: blur(16px);
 }
 
-[data-has-hero] .hero>img {
+[data-has-hero] .hero > img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
 }
 
@@ -39,7 +57,7 @@ iframe[id="stackblitz-iframe"] {
   min-height: 600px;
 }
 
-[data-has-hero] .hero>div.sl-flex {
+[data-has-hero] .hero > div.sl-flex {
   align-self: flex-start;
 }
 
@@ -287,19 +305,4 @@ code {
   vertical-align: middle;
   border: 1px solid lightgray;
   margin-left: 20px;
-}
-
-/* Applied a blue drop-shadow effect to hero images, enhancing their visibility and focus. */
-.hero img {
-  transition: transform 0.3s ease, filter 0.3s ease;
-  width: 90%;
-  height: 90%;
-  /* filter: drop-shadow(0 0 1rem var(--splashkit-blue)); */
-}
-
-/* Blue shadow background upon hover for the splashkit logo */
-.hero img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-  /* filter: drop-shadow(0 0 2rem var(--splashkit-blue)); */
 }
