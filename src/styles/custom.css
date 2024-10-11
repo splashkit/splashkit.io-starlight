@@ -294,12 +294,12 @@ code {
   transition: transform 0.3s ease, filter 0.3s ease;
   width: 90%;
   height: 90%;
-  filter: drop-shadow(0 0 1rem var(--splashkit-blue));
+  /* filter: drop-shadow(0 0 1rem var(--splashkit-blue)); */
 }
 
 /* Blue shadow background upon hover for the splashkit logo */
 .hero img:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 0 2rem var(--splashkit-blue));
+  /* filter: drop-shadow(0 0 2rem var(--splashkit-blue)); */
 }
