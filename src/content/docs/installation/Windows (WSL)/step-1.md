@@ -2,8 +2,8 @@
 title: Install WSL and Command Line Tools
 sidebar:
   label: 1. WSL and Command Line Tools
-  attrs:
-    class: windows
+  # attrs:
+  #   class: windows-wsl
 ---
 
 ## Install WSL (Ubuntu)

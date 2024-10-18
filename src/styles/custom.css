@@ -6,24 +6,38 @@
 :root {
   --purple-hsl: 255, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --sk-logo-blue: #00ACC1;
+  --sk-logo-orange: #F5A623;
+  --link-button-border-color: var(--sk-logo-orange);
+  --link-hover-button-border-color: var(--sk-logo-blue);
+  /* --table-head-color: rgb(35, 38, 47); */
 }
 
 /* Light mode colors. */
-:root[data-theme="light"] {
-  --purple-hsl: 255, 85%, 65%;
-  --sl-hue-accent: 350;
+:root[data-theme='light'] {
+  /*   --sl-color-accent: #00A9E0; */
   --sl-color-accent: #3D50f5;
+  --link-button-border-color: var(--sk-logo-blue);
+  --link-hover-button-border-color: var(--sk-logo-orange);
+}
+
+.hero {
+  padding-top: 80px;
+  padding-bottom: 30px;
 }
 
 .hero img {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   width: 90%;
   height: 90%;
+  margin-top: -40px;
+  /* filter: drop-shadow(0 0 1rem var(--sk-logo-blue)); */
 }
 
 .hero img:hover {
-  transform: scale(1.1); /* Enlarge the image on hover */
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  /* filter: drop-shadow(0 0 2rem var(--sk-logo-blue)); */
 }
 
 [data-has-hero] .page {
@@ -38,6 +52,7 @@
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
+
 [data-has-hero] .hero > img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
 }
@@ -46,6 +61,7 @@ iframe[id="stackblitz-iframe"] {
   width: 100%;
   min-height: 600px;
 }
+
 [data-has-hero] .hero > div.sl-flex {
   align-self: flex-start;
 }
@@ -54,41 +70,87 @@ iframe[id="stackblitz-iframe"] {
   margin: 0 auto;
 }
 
-[data-has-hero] .hero .action {
-  border-radius: 24px;
-  transition: background-color ease-in-out 0.25s;
-}
-
-[data-has-hero] .hero .action.minimal {
-  border: solid 1px var(--sl-color-text-accent);
-  padding: 1rem 1.25rem;
-}
-
 [data-has-hero] .hero .actions {
   gap: 1.25rem;
 }
 
-[data-has-hero] .hero .hero-gradient-text {
-  background: radial-gradient(
-      circle at top left,
+[data-has-hero] .hero .sl-link-button {
+  border: 1px solid var(--link-button-border-color);
+  box-shadow: 0px 0px 5px var(--link-button-border-color);
+  /* transition: background-color ease-in-out 0.25s, color 0.3s ease; */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+[data-has-hero] .hero .sl-link-button:hover {
+  border: 1px solid var(--link-hover-button-border-color);
+  box-shadow: 0px 0px 10px var(--link-hover-button-border-color);
+}
+
+/* [data-has-hero] .hero .sl-link-button.minimal {
+  border: solid 1px var(--sl-color-text-accent);
+  padding: 1rem 1.25rem;
+} 
+
+[data-has-hero] .hero .sl-link-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(60deg, #FF8300, #00A9E0);
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 24px;
+  z-index: -1;
+}
+
+[data-has-hero] .hero .sl-link-button:hover::before {
+  opacity: 1;
+  animation: moveGradient 3s linear infinite;
+}
+
+[data-has-hero] .hero .sl-link-button:hover {
+  color: white;
+  background-color: transparent;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
+/* [data-has-hero] .hero .hero-gradient-text {
+  background: radial-gradient(circle at top left,
       hsl(296, 100%, 50%) 0%,
-      transparent 50%
-    ),
+      transparent 50%),
     radial-gradient(circle at center, rgb(113, 147, 233) 0%, transparent 100%),
     radial-gradient(circle at bottom right, rgb(0, 68, 255) 0%, transparent 50%);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
-/* centre all images/gifs in guides */
+/* centre all images/gifs */
 img {
   display: block;
   margin: auto;
 }
 
-[data-has-hero] .card {
+/* [data-has-hero] .card {
   border-radius: 12px;
   position: relative;
   background: radial-gradient(
@@ -122,7 +184,7 @@ img {
 
 [data-has-hero] .card:hover::before {
   opacity: 1;
-}
+} */
 
 [data-has-hero] .star-text {
   margin-top: 8px !important;
@@ -135,7 +197,12 @@ img {
   margin-top: 80px !important;
 }
 
-/* after */
+.home-card {
+  border-radius: 20%;
+  border: 1px dotted black;
+}
+
+/* OS icons on install pages */
 @font-face {
   font-family: "FontAwesomeBrands";
   src: url("/src/fonts/fa-brands-400.woff2") format("woff2");
@@ -143,60 +210,44 @@ img {
   font-style: normal;
   font-display: swap;
 }
-.home-card {
-  border-radius: 20%;
-  border: 1px dotted black;
-}
-html[data-theme="dark"] a.multitool:after {
-  border: 1px solid black;
+
+a.pi:after,
+a.apple:after,
+a.windows:after,
+a.windows-wsl:after,
+a.linux:after {
+  font-family: "FontAwesomeBrands";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
 }
 
 a.pi:after {
-  font-family: "FontAwesomeBrands";
   content: "\f7bb";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.apple:after {
-  border: 1px solid black;
 }
 
 a.apple:after {
-  font-family: "FontAwesomeBrands";
   content: "\f179";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.windows:after {
-  border: 1px solid black;
 }
 
 a.windows:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17a";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
-html[data-theme="dark"] a.linux:after {
-  border: 1px solid black;
+a.windows-wsl:after {
+  content: "\f17a  \f17c";
 }
 
 a.linux:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17c";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
+}
+
+html[data-theme="dark"] a.apple:after,
+html[data-theme="dark"] a.windows:after,
+html[data-theme="dark"] a.windows-wsl:after,
+html[data-theme="dark"] a.linux:after {
+  border: 1px solid black;
 }
 
 /* XQuest changes */
@@ -224,45 +275,47 @@ a.decent:hover {
   color: var(--sl-color-accent) !important;
 }
 
-[data-has-hero] .page {
-  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
-}
-
-[data-has-hero] header {
-  border-bottom: 1px solid transparent;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-}
-
 /** Better table styling */
 .sl-markdown-content table {
   border-radius: 0.5rem;
   box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-5);
   width: max-content;
   max-width: 100%;
+  text-align: left;
+}
+
+.sl-markdown-content table th {
+  border-right: 1px solid var(--sl-color-gray-5);
+}
+
+.sl-markdown-content table td {
+  border-right: 1px solid var(--sl-color-gray-5);
 }
 
 .sl-markdown-content table td:first-child,
 .sl-markdown-content table th:first-child {
   border-left: none;
+  padding-left: 15px;
 }
 
 .sl-markdown-content table td:last-child,
 .sl-markdown-content table th:last-child {
   border-right: none;
+  padding-right: 15px;
 }
 
 .sl-markdown-content table tr:first-child th {
   border-top: none;
+  text-align: left;
+  background-color: var(--sl-color-gray-6);
+  /* color: white; */
 }
 
 .sl-markdown-content table tr:last-child td {
   border-bottom: none;
 }
+
 .starlight-aside,
 .card {
   border-radius: 0.5rem;
@@ -271,6 +324,7 @@ a.decent:hover {
 code {
   border-radius: 0.25rem;
 }
+
 .expressive-code {
   border-radius: 0.6rem;
   box-shadow: var(--sl-shadow-md);

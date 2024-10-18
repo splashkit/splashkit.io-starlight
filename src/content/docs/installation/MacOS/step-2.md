@@ -2,8 +2,8 @@
 title: Install SplashKit
 sidebar:
   label: 2. SplashKit
-  attrs:
-    class: apple
+#   attrs:
+#     class: apple
 ---
 
 [SplashKit](https://splashkit.io) is a beginner's all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.

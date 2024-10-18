@@ -2,8 +2,8 @@
 title: Install Language Specific Tools
 sidebar:
   label: 4. Language Tools
-  attrs:
-    class: apple
+  # attrs:
+  #   class: apple
 ---
 
 SplashKit works with a number of programming languages.

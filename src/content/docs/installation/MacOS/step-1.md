@@ -2,8 +2,8 @@
 title: Install Xcode Command Line Tools
 sidebar:
   label: 1. Command Line Tools
-  attrs:
-    class: apple
+  # attrs:
+  #   class: apple
 ---
 
 The Command Line Tools provided by Xcode provide a large amount of developer

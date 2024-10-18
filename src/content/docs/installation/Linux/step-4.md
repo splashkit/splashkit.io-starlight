@@ -2,8 +2,8 @@
 title: Install Language Specific Tools
 sidebar:
   label: 4. Language Tools
-  attrs:
-    class: linux
+  # attrs:
+  #   class: linux
 ---
 
 SplashKit works with a number of programming languages.

@@ -2,8 +2,8 @@
 title: Install Command Line Tools
 sidebar:
   label: 1. Command Line Tools
-  attrs:
-    class: linux
+  # attrs:
+  #   class: linux
 ---
 
 To install SplashKit, you will firstly need to install some command line tools using the apt or apt-get package manager.
