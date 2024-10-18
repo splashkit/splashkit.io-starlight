@@ -443,7 +443,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
 
       // Write the MDX file
-      fs.writeFileSync(`./src/content/docs/api/${name}.mdx`, mdxContent, (err) => {
+      fs.writeFile(`./src/content/docs/api/${name}.mdx`, mdxContent, (err) => {
         if (err) {
           console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
         } else {
