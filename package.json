@@ -3,14 +3,15 @@
   "type": "module",
   "version": "0.9",
   "scripts": {
-    "dev": "npm run generate-mdx && npm run generate-usage-examples-pages && astro dev",
-    "start": "npm run generate-mdx && npm run generate-usage-examples-pages && astro dev",
-    "build": "npm run generate-mdx && npm run generate-usage-examples-pages && astro build",
+    "dev": "npm run generate-mdx && npm run generate-usage-examples-pages && npm run generate-groups && astro dev",
+    "start": "npm run generate-mdx && npm run generate-usage-examples-pages && npm run generate-groups && astro dev",
+    "build": "npm run generate-mdx && npm run generate-usage-examples-pages && npm run generate-groups && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate-mdx": "node ./scripts/components.cjs",
     "generate-usage-examples-pages": "node ./scripts/usage-example-page-generation.cjs",
-    "check-links": "SET CHECK_LINKS=true && npm run build && SET CHECK_LINKS=false"
+    "check-links": "SET CHECK_LINKS=true && npm run build && SET CHECK_LINKS=false",
+    "generate-groups": "node ./scripts/generate-groups.cjs"
   },
   "dependencies": {
     "@astrojs/netlify": "^5.4.0",
