@@ -1,10 +1,10 @@
 ---
 title: bash <(curl... does nothing
-description: A reference page in my new Starlight docs site.
+description: Issue in MacOS, `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` does nothing, and how to fix it.
 sidebar:
   label: 1. Bash curl not working
-  attrs:
-    class: apple
+#  attrs:
+#    class: apple
 ---
 
 <h1> Issue : MacOS </h1>

@@ -1,5 +1,6 @@
 ---
 title: Install SplashKit
+description: Install SplashKit on Windows (WSL).
 sidebar:
   label: 2. SplashKit
 #   attrs:

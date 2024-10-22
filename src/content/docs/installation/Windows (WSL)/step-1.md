@@ -1,5 +1,6 @@
 ---
 title: Install WSL and Command Line Tools
+description: Install Windows Subsystem for Linux (WSL) and the necessary command line tools for SplashKit on Windows.
 sidebar:
   label: 1. WSL and Command Line Tools
   # attrs:

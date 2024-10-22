@@ -1,10 +1,10 @@
 ---
 title: system “Path” variable
-description: A reference page in my new Starlight docs site.
+description: Issue with the system “Path” variable on Windows, and how to fix it.
 sidebar:
   label: 7. Update Path Variable
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows
 ---
 
 ## Update your system “Path” variable

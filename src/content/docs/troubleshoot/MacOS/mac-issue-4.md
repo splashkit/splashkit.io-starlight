@@ -1,10 +1,10 @@
 ---
 title: System.DllNotFoundException
-description: A reference page in my new Starlight docs site.
+description: Issue with MacOS, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
 sidebar:
   label: 4. DllNotFoundException
-  attrs:
-    class: apple
+#  attrs:
+#    class: apple
 ---
 
 <h1> Issue : MacOS </h1>

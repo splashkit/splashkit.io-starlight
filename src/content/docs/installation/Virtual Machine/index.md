@@ -1,5 +1,8 @@
 ---
 title: Virtual Machine Installation Guide
+description: Installation guide for SplashKit using the provided virtual machine.
+sidebar:
+  label: Overview
 ---
 
 If you cannot get SplashKit working natively, you can download and use the provided SplashKit Virtual Machine. The provided virtual maching comes with everything you need to get started quickly with SplashKit.

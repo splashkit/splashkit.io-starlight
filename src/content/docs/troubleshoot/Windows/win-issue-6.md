@@ -1,10 +1,10 @@
 ---
 title: Missing an assembly reference?
-description: A reference page in my new Starlight docs site.
+description: Issue with the error that mentions (`are you missing an assembly reference?`) on Windows, and how to fix it.
 sidebar:
   label: 6. Assembly reference
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows
 ---
 
 <h1> Issue : Windows </h1>

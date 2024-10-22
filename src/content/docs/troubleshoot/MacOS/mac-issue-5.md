@@ -1,10 +1,10 @@
 ---
 title: zsh command not found skm
-description: A reference page in my new Starlight docs site.
+description: Issue with the `zsh` command not found on MacOS, and how to fix it.
 sidebar:
   label: 5. zsh not found
-  attrs:
-    class: apple
+#  attrs:
+#    class: apple
 ---
 
 <h1> Issue : MacOS </h1>

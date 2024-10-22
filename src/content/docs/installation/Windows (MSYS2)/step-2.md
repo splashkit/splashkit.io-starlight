@@ -1,5 +1,6 @@
 ---
 title: Install SplashKit
+description: Install SplashKit on Windows (MSYS2).
 sidebar:
   label: 2. SplashKit
 #   attrs:

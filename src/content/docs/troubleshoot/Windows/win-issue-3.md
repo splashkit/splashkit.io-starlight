@@ -1,10 +1,10 @@
 ---
 title: skm command not found
-description: A reference page in my new Starlight docs site.
+description: Issue with the `skm` command not found on Windows, and how to fix it.
 sidebar:
   label: 3. skm not found
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows
 ---
 
 <h1>Issue : Windows </h1>
@@ -15,7 +15,7 @@ sidebar:
 
 ## Solution
 
-Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7)
+Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/win-issue-7)
 
 Then come back here for the Next Step.
 Disable any antivirus software on your computer.

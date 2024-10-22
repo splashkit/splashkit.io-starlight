@@ -1,10 +1,10 @@
 ---
 title: install dotnet-sdk command not working
-description: A reference page in my new Starlight docs site.
+description: Issue with the `brew cask install dotnet-sdk` command not working on MacOS, and how to fix it.
 sidebar:
   label: 2. Brew cask install
-  attrs:
-    class: apple
+#  attrs:
+#    class: apple
 ---
 
 <h1> Issue : MacOS </h1>

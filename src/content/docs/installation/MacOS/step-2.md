@@ -1,5 +1,6 @@
 ---
 title: Install SplashKit
+description: Install SplashKit on MacOS.
 sidebar:
   label: 2. SplashKit
 #   attrs:

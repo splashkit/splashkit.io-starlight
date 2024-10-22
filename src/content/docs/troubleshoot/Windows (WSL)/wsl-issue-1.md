@@ -3,8 +3,8 @@ title: Stack overflow Exception for GUI applications in WSL
 description: Stack Overflow Exception when trying to open GUI application in WSL and how to resolve it.
 sidebar:
   label: 1. Stack Overflow
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows-wsl
 ---
 <h1> Issue : WSL </h1>
 

@@ -1,10 +1,10 @@
 ---
 title: ln -s /usr/local.... command not working
-description: A reference page in my new Starlight docs site.
+description: Issue with the `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` command not working on MacOS, and how to fix it.
 sidebar:
   label: 3. Local bin Error
-  attrs:
-    class: apple
+#  attrs:
+#    class: apple
 ---
 
 <h1> Issue : MacOS </h1>

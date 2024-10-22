@@ -1,5 +1,6 @@
 ---
 title: Install MSYS2 and Command Line Tools
+description: Install MSYS2 and the necessary command line tools for SplashKit on Windows.
 sidebar:
   label: 1. MSYS2 and Command Line Tools
   # attrs:

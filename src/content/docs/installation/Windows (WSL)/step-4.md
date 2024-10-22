@@ -1,5 +1,6 @@
 ---
 title: Install Language Specific Tools
+description: Install the language specific tools for SplashKit on Windows (WSL).
 sidebar:
   label: 4. Language Tools
   # attrs:

@@ -1,10 +1,10 @@
 ---
 title: System.DllNotFoundException
-description: A reference page in my new Starlight docs site.
+description: Issue with Windows, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
 sidebar:
   label: 2. DllNotFoundException
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows
 ---
 
 <h1> Issue : Windows </h1>
@@ -27,7 +27,7 @@ sidebar:
 terminal) and create the project files in its own directory/folder.
 1. **Solution 4:**
     Add the folder containing splashkit.dll file to your path environment variable manually.
-    Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/list/win-issue-7).
+    Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/win-issue-7).
 
     Then come back here for the Next Step.
 
@@ -40,7 +40,7 @@ terminal) and create the project files in its own directory/folder.
 
     Once it is added, click “OK” on all the windows, open a **new** MINGW64 terminal and try
     running the program again.
-1. **Solution 5 (if all else fails):**
+2. **Solution 5 (if all else fails):**
     Get it working by copying the SplashKit binaries to the build output:
     The SplashKit binaries are in
 

@@ -1,5 +1,6 @@
 ---
 title: Install Xcode Command Line Tools
+description: Install the Xcode Command Line Tools on MacOS.
 sidebar:
   label: 1. Command Line Tools
   # attrs:

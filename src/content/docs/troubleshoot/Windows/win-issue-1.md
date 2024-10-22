@@ -1,10 +1,10 @@
 ---
 title: bash <(curl.. does nothing
-description: A reference page in my new Starlight docs site.
+description: Issue in Windows, `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` does nothing, and how to fix it.
 sidebar:
   label: 1. Bash curl not working
-  attrs:
-    class: windows
+#  attrs:
+#    class: windows
 ---
 
 <h1> Issue : Windows </h1>
