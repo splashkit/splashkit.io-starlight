@@ -1,0 +1,3 @@
+### Printing Integers
+
+The following code shows examples of using [Write Line](/api/terminal#write-line-4) to print integers in the terminal.

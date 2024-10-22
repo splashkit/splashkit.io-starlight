@@ -2,8 +2,8 @@
 title: Getting Started With Servers
 description: This guide is an introduction to using web servers
 category: Guides
-author: Andrew Cain and Isaac Wallis
-lastupdated: Jul 14 2018
+author: Andrew Cain, Isaac Wallis and others
+lastupdated: October 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -50,52 +50,83 @@ We need to pair the [Start Web Server](/api/networking/#start-web-server) with a
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      // Start a web server - defaults to listening to port 8080
-      web_server server = start_web_server();
+    // Start a web server - defaults to listening to port 8080
+    web_server server = start_web_server();
 
-      // For now we are done... so lets shutdown...
-      stop_web_server(server);
+    // For now we are done... so lets shutdown...
+    stop_web_server(server);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  Console.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-  // Start a web server - defaults to listening to port 8080
-  WebServer server = SplashKit.StartWebServer();
+Console.WriteLine("About to start the server...");
 
-  // For now, we are done... so let's shutdown...
-  SplashKit.StopWebServer(server);
-  ```
+// Start a web server - defaults to listening to port 8080
+WebServer server = StartWebServer();
+
+// For now, we are done... so let's shutdown...
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            // Start the web server (defaults to listening to port 8080)
+            WebServer server = SplashKit.StartWebServer();
+
+            // Stop the web server
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  # Start a web server - defaults to listening to port 8080
-  server = start_web_server()
+# Start a web server - defaults to listening to port 8080
+server = start_web_server_with_default_port()
 
-  # For now we are done... so lets shutdown...
-  stop_web_server(server)
-  ```
+# For now we are done... so lets shutdown...
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>
@@ -111,80 +142,116 @@ The following code shows an appropriate `"Hello World"` web server program.
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      // Start a web server - defaults to listening to port 8080
-      web_server server = web_server();
+    // Start a web server - defaults to listening to port 8080
+    web_server server = start_web_server();
 
-      write_line("Waiting for a request - navigate to http://localhost:8080");
+    write_line("Waiting for a request - navigate to http://localhost:8080");
 
-      // Wait and get the first request that comes in
-      http_request request = next_web_request(server);
+    // Wait and get the first request that comes in
+    http_request request = next_web_request(server);
 
-      // Send back the index.html file
-      send_html_file_response(request, "index.html");
+    // Send back the index.html file
+    send_html_file_response(request, "index.html");
 
-      // For now we are done... so lets shutdown...
-      stop_web_server(server);
+    // For now we are done... so lets shutdown...
+    stop_web_server(server);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  SplashKit.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-  // Start a web server - defaults to listening to port 8080
-  WebServer server = SplashKit.StartWebServer();
+WriteLine("About to start the server...");
 
-  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+// Start a web server - defaults to listening to port 8080
+WebServer server = StartWebServer();
 
-  // Wait and get the first request that comes in
-  HttpRequest request = SplashKit.NextWebRequest(server);
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
-  // Send back the index.html file
-  SplashKit.SendResponse(request, "Hello World");
+// Wait and get the first request that comes in
+HttpRequest request = NextWebRequest(server);
 
-  // For now, we are done, so let's shutdown
-  SplashKit.StopWebServer(server);
+// Send back the index.html file
+SendResponse(request, "Hello World");
 
-  SplashKit.ReadLine(); // Pause to keep the console window open
-  ```
+// For now, we are done, so let's shutdown
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            // Start a web server - defaults to listening to port 8080
+            WebServer server = SplashKit.StartWebServer();
+
+            SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+            // Wait and get the first request that comes in
+            HttpRequest request = SplashKit.NextWebRequest(server);
+
+            // Send back the index.html file
+            SplashKit.SendResponse(request, "Hello World");
+
+            // For now, we are done, so let's shutdown
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  # Start a web server - defaults to listening to port 8080
-  server = start_web_server_with_default_port()
+# Start a web server - defaults to listening to port 8080
+server = start_web_server_with_default_port()
 
-  write_line("Waiting for a request - navigate to http://localhost:8080")
+write_line("Waiting for a request - navigate to http://localhost:8080")
 
-  # Wait and get the first request that comes in
-  request = next_web_request(server)
+# Wait and get the first request that comes in
+request = next_web_request(server)
 
-  # Send back the index.html file
-  send_response(request, "Hello World")
+# Send back the index.html file
+send_response(request, "Hello World")
 
-  # For now, we are done, so let's shutdown
-  stop_web_server(server)
-
-  read_line() # Pause to keep the console window open
-  ```
+# For now, we are done, so let's shutdown
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>
@@ -200,80 +267,115 @@ The follow code replaces the "Hello World" response with the details from the in
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      // Start a web server - defaults to listening to port 8080
-      web_server server = web_server();
+    // Start a web server - defaults to listening to port 8080
+    web_server server = start_web_server();
 
-      write_line("Waiting for a request - navigate to http://localhost:8080");
+    write_line("Waiting for a request - navigate to http://localhost:8080");
 
-      // Wait and get the first request that comes in
-      http_request request = next_web_request(server);
+    // Wait and get the first request that comes in
+    http_request request = next_web_request(server);
 
-      // Send back the index.html file
-      send_html_file_response(request, "index.html");
+    // Send back the index.html file
+    send_html_file_response(request, "index.html");
 
-      // For now we are done... so lets shutdown...
-      stop_web_server(server);
+    // For now we are done... so lets shutdown...
+    stop_web_server(server);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  SplashKit.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-  // Start a web server - defaults to listening to port 8080
-  WebServer server = SplashKit.StartWebServer();
+WriteLine("About to start the server...");
 
-  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+// Start a web server - defaults to listening to port 8080
+WebServer server = StartWebServer();
 
-  // Wait and get the first request that comes in
-  HttpRequest request = SplashKit.NextWebRequest(server);
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
-  // Send back the index.html file
-  SplashKit.SendHtmlFileResponse(request, "index.html");
+// Wait and get the first request that comes in
+HttpRequest request = NextWebRequest(server);
 
-  // For now, we are done, so let's shutdown
-  SplashKit.StopWebServer(server);
+// Send back the index.html file
+SendHtmlFileResponse(request, "index.html");
 
-  SplashKit.ReadLine(); // Pause to keep the console window open
-  ```
+// For now, we are done, so let's shutdown
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            // Start a web server - defaults to listening to port 8080
+            WebServer server = SplashKit.StartWebServer();
+
+            SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+            // Wait and get the first request that comes in
+            HttpRequest request = SplashKit.NextWebRequest(server);
+
+            // Send back the index.html file
+            SplashKit.SendHtmlFileResponse(request, "index.html");
+
+            // For now, we are done, so let's shutdown
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  # Start a web server - defaults to listening to port 8080
-  server = start_web_server_with_default_port()
+# Start a web server - defaults to listening to port 8080
+server = start_web_server_with_default_port()
 
-  write_line("Waiting for a request - navigate to http://localhost:8080")
+write_line("Waiting for a request - navigate to http://localhost:8080")
 
-  # Wait and get the first request that comes in
-  request = next_web_request(server)
+# Wait and get the first request that comes in
+request = next_web_request(server)
 
-  # Send back the index.html file
-  send_html_file_response(request, "index.html")
+# Send back the index.html file
+send_html_file_response(request, "index.html")
 
-  # For now, we are done, so let's shutdown
-  stop_web_server(server)
-
-  read_line() # Pause to keep the console window open
-  ```
+# For now, we are done, so let's shutdown
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>

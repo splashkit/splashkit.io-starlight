@@ -2,8 +2,8 @@
 title: Install SplashKit
 sidebar:
   label: 2. SplashKit
-  attrs:
-    class: windows
+#   attrs:
+#     class: windows-wsl
 ---
 
 Once you have WSL installed, you can install the SplashKit library:

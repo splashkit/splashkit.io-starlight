@@ -2,8 +2,8 @@
 title: Routing With Servers
 description: This guide is an intruduction to delivering different content based on route requested
 category: Guides
-author: Isaac Wallis
-lastupdated: Aug 10 2018
+author: Isaac Wallis and others
+lastupdated: October 2024
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -27,81 +27,115 @@ Start with this code, which we built in the introduction guide
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      // Start a web server - defaults to listening to port 8080
-      web_server server = web_server();
+    // Start a web server - defaults to listening to port 8080
+    web_server server = start_web_server();
 
-      write_line("Waiting for a request - navigate to http://localhost:8080");
+    write_line("Waiting for a request - navigate to http://localhost:8080");
 
-      // Wait and get the first request that comes in
-      http_request request = next_web_request(server);
+    // Wait and get the first request that comes in
+    http_request request = next_web_request(server);
 
-      // Send back the index.html file
-      send_html_file_response(request, "index.html");
+    // Send back the index.html file
+    send_html_file_response(request, "index.html");
 
-      // For now we are done... so lets shutdown...
-      stop_web_server(server);
+    // For now we are done... so lets shutdown...
+    stop_web_server(server);
 
-      return 0;
-  }
-
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  SplashKit.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-  // Start a web server - defaults to listening to port 8080
-  WebServer server = SplashKit.StartWebServer();
+WriteLine("About to start the server...");
 
-  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+// Start a web server - defaults to listening to port 8080
+WebServer server = StartWebServer();
 
-  // Wait and get the first request that comes in
-  HttpRequest request = SplashKit.NextWebRequest(server);
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
-  // Send back the index.html file
-  SplashKit.SendHtmlFileResponse(request, "index.html");
+// Wait and get the first request that comes in
+HttpRequest request = NextWebRequest(server);
 
-  // For now, we are done, so let's shutdown
-  SplashKit.StopWebServer(server);
+// Send back the index.html file
+SendHtmlFileResponse(request, "index.html");
 
-  SplashKit.ReadLine(); // Pause to keep the console window open
-  ```
+// For now, we are done, so let's shutdown
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            // Start a web server - defaults to listening to port 8080
+            WebServer server = SplashKit.StartWebServer();
+
+            SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+            // Wait and get the first request that comes in
+            HttpRequest request = SplashKit.NextWebRequest(server);
+
+            // Send back the index.html file
+            SplashKit.SendHtmlFileResponse(request, "index.html");
+
+            // For now, we are done, so let's shutdown
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  # Start a web server - defaults to listening to port 8080
-  server = start_web_server_with_default_port()
+# Start a web server - defaults to listening to port 8080
+server = start_web_server_with_default_port()
 
-  write_line("Waiting for a request - navigate to http://localhost:8080")
+write_line("Waiting for a request - navigate to http://localhost:8080")
 
-  # Wait and get the first request that comes in
-  request = next_web_request(server)
+# Wait and get the first request that comes in
+request = next_web_request(server)
 
-  # Send back the index.html file
-  send_html_file_response(request, "index.html")
+# Send back the index.html file
+send_html_file_response(request, "index.html")
 
-  # For now, we are done, so let's shutdown
-  stop_web_server(server)
-
-  read_line() # Pause to keep the console window open
-  ```
+# For now, we are done, so let's shutdown
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>
@@ -129,114 +163,151 @@ The following code shows the use of an if statement to serve some login text or 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      web_server server = start_web_server();
-      http_request request;
+    web_server server = start_web_server();
+    http_request request;
 
-      write_line("Waiting for a request - navigate to http://localhost:8080");
+    write_line("Waiting for a request - navigate to http://localhost:8080");
 
-      //Get the next request that the server has
-      request = next_web_request(server);
+    //Get the next request that the server has
+    request = next_web_request(server);
 
-      write_line("I got a request for " + request_uri(request));
+    write_line("I got a request for " + request_uri(request));
 
-      if (is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"))
-      {
-          // Serve page for login path, e.g.
-          // send_html_file_response(request, "login.html");
+    if (is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"))
+    {
+        // Serve page for login path
+        send_response(request, "login page");
+    }
+    else
+    {
+        //If no specified path is requested, serve index.html to the user
+        send_html_file_response(request, "index.html");
+    }
 
-          send_response(request, "login page");
-      }
-      else
-      {
-          //If no specified path is requested, serve index.html to the user
-          send_html_file_response(request, "index.html");
-      }
+    write_line("About to stop the server...");
+    stop_web_server(server);
 
-      write_line("About to stop the server...");
-      stop_web_server(server);
-
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  class Program
-  {
-      static void Main()
-      {
-          SplashKit.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-          WebServer server = SplashKit.StartWebServer();
-          HttpRequest request;
+WriteLine("About to start the server...");
 
-          SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+WebServer server = StartWebServer();
+HttpRequest request;
 
-          // Get the next request that the server has
-          request = SplashKit.NextWebRequest(server);
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
 
-          SplashKit.WriteLine("I got a request for " + SplashKit.RequestURI(request));
+// Get the next request that the server has
+request = NextWebRequest(server);
 
-          if (SplashKit.IsGetRequestFor(request, "/login") || SplashKit.IsGetRequestFor(request, "/login.html"))
-          {
-              // Serve page for login path, e.g.
-              // SplashKit.SendHtmlFileResponse(request, "login.html");
+WriteLine("I got a request for " + RequestURI(request));
 
-              SplashKit.SendResponse(request, "login page");
-          }
-          else
-          {
-              // If no specified path is requested, serve index.html to the user
-              SplashKit.SendHtmlFileResponse(request, "index.html");
-          }
+if (IsGetRequestFor(request, "/login") || IsGetRequestFor(request, "/login.html"))
+{
+    // Serve page for login path
+    SendResponse(request, "login page");
+}
+else
+{
+    // If no specified path is requested, serve index.html to the user
+    SendHtmlFileResponse(request, "index.html");
+}
 
-          SplashKit.WriteLine("About to stop the server...");
-          SplashKit.StopWebServer(server);
-      }
-  }
-  ```
+WriteLine("About to stop the server...");
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            WebServer server = SplashKit.StartWebServer();
+            HttpRequest request;
+
+            SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+
+            // Get the next request that the server has
+            request = SplashKit.NextWebRequest(server);
+
+            SplashKit.WriteLine("I got a request for " + SplashKit.RequestURI(request));
+
+            if (SplashKit.IsGetRequestFor(request, "/login") || SplashKit.IsGetRequestFor(request, "/login.html"))
+            {
+                // Serve page for login path
+                SplashKit.SendResponse(request, "login page");
+            }
+            else
+            {
+            // If no specified path is requested, serve index.html to the user
+            SplashKit.SendHtmlFileResponse(request, "index.html");
+            }
+
+            SplashKit.WriteLine("About to stop the server...");
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  server = start_web_server_with_default_port()
+server = start_web_server_with_default_port()
 
-  write_line("Waiting for a request - navigate to http://localhost:8080")
+write_line("Waiting for a request - navigate to http://localhost:8080")
 
-  # Get the next request that the server has
-  request = next_web_request(server)
+# Get the next request that the server has
+request = next_web_request(server)
 
-  write_line("I got a request for " + request_uri(request))
+write_line("I got a request for " + request_uri(request))
 
 
-  if is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"):
-      # Serve page for login path, e.g.
-      # send_html_file_response(request, "login.html")
+if is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"):
+    # Serve page for login path
+    send_response(request, "login page")
+else:
+    # If no specified path is requested, serve index.html to the user
+    send_html_file_response(request, "index.html")
 
-      send_response(request, "login page")
-  else:
-      # If no specified path is requested, serve index.html to the user
-      send_html_file_response(request, "index.html")
-
-  write_line("About to stop the server...")
-  stop_web_server(server)
-  ```
+write_line("About to stop the server...")
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>
@@ -256,176 +327,252 @@ The following code illustrates the use of the concepts covered so far. You can n
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      write_line("About to start the server...");
+int main()
+{
+    write_line("About to start the server...");
 
-      web_server server = start_web_server();
-      http_request request;
+    web_server server = start_web_server();
+    http_request request;
 
-      write_line("Waiting for a request - navigate to http://localhost:8080");
-      write_line("To end - navigate to http://localhost:8080/quit");
+    write_line("Waiting for a request - navigate to http://localhost:8080");
+    write_line("To end - navigate to http://localhost:8080/quit");
 
-      //Get the next request that the server has
-      request = next_web_request(server);
+    //Get the next request that the server has
+    request = next_web_request(server);
 
-      while ( ! is_get_request_for(request, "/quit")  )
-      {
-          write_line("I got a request for " + request_uri(request));
+    while ( ! is_get_request_for(request, "/quit")  )
+    {
+        write_line("I got a request for " + request_uri(request));
 
-          if (is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"))
-          {
-              // Serve page for login path, e.g.
-              // send_html_file_response(request, "login.html");
+        if (is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"))
+        {
+            // Serve page for login path, e.g.
+            // send_html_file_response(request, "login.html");
 
-              send_response(request, "login page");
-          }
-          else if (is_get_request_for(request, "/contact") or is_get_request_for(request, "/contact.html"))
-          {
-              // Serve page for contact path, e.g.
-              // send_html_file_response(request, "contact.html");
+            send_response(request, "login page");
+        }
+        else if (is_get_request_for(request, "/contact") or is_get_request_for(request, "/contact.html"))
+        {
+            // Serve page for contact path, e.g.
+            // send_html_file_response(request, "contact.html");
 
-              send_response(request, "contact page");
-          }
-          else if (is_get_request_for(request, "/about") or is_get_request_for(request, "/about.html"))
-          {
-              // Server page for about path, e.g.
-              // send_html_file_response(request, "about.html");
+            send_response(request, "contact page");
+        }
+        else if (is_get_request_for(request, "/about") or is_get_request_for(request, "/about.html"))
+        {
+            // Server page for about path, e.g.
+            // send_html_file_response(request, "about.html");
 
-              send_response(request, "about page");
-          }
-          else
-          {
-              //If no specified path is requested, serve index.html to the user
-              send_html_file_response(request, "index.html");
-          }
+            send_response(request, "about page");
+        }
+        else
+        {
+            //If no specified path is requested, serve index.html to the user
+            send_html_file_response(request, "index.html");
+        }
 
-          write_line("Waiting for a request - navigate to http://localhost:8080");
-          write_line("To end - navigate to http://localhost:8080/quit");
+        write_line("Waiting for a request - navigate to http://localhost:8080");
+        write_line("To end - navigate to http://localhost:8080/quit");
 
-          //Get the next request that the server has
-          request = next_web_request(server);
-      }
+        //Get the next request that the server has
+        request = next_web_request(server);
+    }
 
-      write_line("About to stop the server...");
-      stop_web_server(server);
+    write_line("About to stop the server...");
+    stop_web_server(server);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  SplashKit.WriteLine("About to start the server...");
+```csharp
+using static SplashKitSDK.SplashKit;
+using SplashKitSDK;
 
-  WebServer server = SplashKit.StartWebServer();
-  HttpRequest request;
+WriteLine("About to start the server...");
 
-  SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
-  SplashKit.WriteLine("To end - navigate to http://localhost:8080/quit");
+WebServer server = StartWebServer();
+HttpRequest request;
 
-  // Get the next request that the server has
-  request = SplashKit.NextWebRequest(server);
+WriteLine("Waiting for a request - navigate to http://localhost:8080");
+WriteLine("To end - navigate to http://localhost:8080/quit");
 
-  while (!SplashKit.IsGetRequestFor(request, "/quit"))
-  {
-      SplashKit.WriteLine("I got a request for " + SplashKit.RequestURI(request));
+// Get the next request that the server has
+request = NextWebRequest(server);
 
-      if (SplashKit.IsGetRequestFor(request, "/login") || SplashKit.IsGetRequestFor(request, "/login.html"))
-      {
-          // Serve page for login path, e.g.
-          // SendHtmlFileResponse(request, "login.html");
+while (!IsGetRequestFor(request, "/quit"))
+{
+    WriteLine("I got a request for " + RequestURI(request));
 
-          SplashKit.SendResponse(request, "login page");
-      }
-      else if (SplashKit.IsGetRequestFor(request, "/contact") || SplashKit.IsGetRequestFor(request, "/contact.html"))
-      {
-          // Serve page for contact path, e.g.
-          // SendHtmlFileResponse(request, "contact.html");
+    if (IsGetRequestFor(request, "/login") || IsGetRequestFor(request, "/login.html"))
+    {
+        // Serve page for login path, e.g.
+        // SendHtmlFileResponse(request, "login.html");
 
-          SplashKit.SendResponse(request, "contact page");
-      }
-      else if (SplashKit.IsGetRequestFor(request, "/about") || SplashKit.IsGetRequestFor(request, "/about.html"))
-      {
-          // Serve page for about path, e.g.
-          // SendHtmlFileResponse(request, "about.html");
+        SendResponse(request, "login page");
+    }
+    else if (IsGetRequestFor(request, "/contact") || IsGetRequestFor(request, "/contact.html"))
+    {
+        // Serve page for contact path, e.g.
+        // SendHtmlFileResponse(request, "contact.html");
 
-          SplashKit.SendResponse(request, "about page");
-      }
-      else
-      {
-          // If no specified path is requested, serve index.html to the user
-          SplashKit.SendHtmlFileResponse(request, "index.html");
-      }
+        SendResponse(request, "contact page");
+    }
+    else if (IsGetRequestFor(request, "/about") || IsGetRequestFor(request, "/about.html"))
+    {
+        // Serve page for about path, e.g.
+        // SendHtmlFileResponse(request, "about.html");
 
-      SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
-      SplashKit.WriteLine("To end - navigate to http://localhost:8080/quit");
+        SendResponse(request, "about page");
+    }
+    else
+    {
+        // If no specified path is requested, serve index.html to the user
+        SendHtmlFileResponse(request, "index.html");
+    }
 
-      // Get the next request that the server has
-      request = SplashKit.NextWebRequest(server);
-  }
+    WriteLine("Waiting for a request - navigate to http://localhost:8080");
+    WriteLine("To end - navigate to http://localhost:8080/quit");
 
-  SplashKit.WriteLine("About to stop the server...");
-  SplashKit.StopWebServer(server);
-  ```
+    // Get the next request that the server has
+    request = NextWebRequest(server);
+}
+
+WriteLine("About to stop the server...");
+StopWebServer(server);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+
+using SplashKitSDK;
+
+namespace WebServerApp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.WriteLine("About to start the server...");
+
+            WebServer server = SplashKit.StartWebServer();
+            HttpRequest request;
+
+            SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+            SplashKit.WriteLine("To end - navigate to http://localhost:8080/quit");
+
+            // Get the next request that the server has
+            request = SplashKit.NextWebRequest(server);
+
+            while (!SplashKit.IsGetRequestFor(request, "/quit"))
+            {
+                SplashKit.WriteLine("I got a request for " + SplashKit.RequestURI(request));
+
+                if (SplashKit.IsGetRequestFor(request, "/login") || SplashKit.IsGetRequestFor(request, "/login.html"))
+                {
+                    // Serve page for login path, e.g.
+                    // SendHtmlFileResponse(request, "login.html");
+
+                    SplashKit.SendResponse(request, "login page");
+                }
+                else if (SplashKit.IsGetRequestFor(request, "/contact") || SplashKit.IsGetRequestFor(request, "/contact.html"))
+                {
+                    // Serve page for contact path, e.g.
+                    // SendHtmlFileResponse(request, "contact.html");
+
+                    SplashKit.SendResponse(request, "contact page");
+                }
+                else if (SplashKit.IsGetRequestFor(request, "/about") || SplashKit.IsGetRequestFor(request, "/about.html"))
+                {
+                    // Serve page for about path, e.g.
+                    // SendHtmlFileResponse(request, "about.html");
+
+                    SplashKit.SendResponse(request, "about page");
+                }
+                else
+                {
+                    // If no specified path is requested, serve index.html to the user
+                    SplashKit.SendHtmlFileResponse(request, "index.html");
+                }
+
+                SplashKit.WriteLine("Waiting for a request - navigate to http://localhost:8080");
+                SplashKit.WriteLine("To end - navigate to http://localhost:8080/quit");
+
+                // Get the next request that the server has
+                request = SplashKit.NextWebRequest(server);
+            }
+
+            SplashKit.WriteLine("About to stop the server...");
+            SplashKit.StopWebServer(server);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem label="Python">
 
-  ```python
-  from splashkit import *
+```python
+from splashkit import *
 
 
-  write_line("About to start the server...")
+write_line("About to start the server...")
 
-  server = start_web_server_with_default_port()
+server = start_web_server_with_default_port()
 
-  write_line("Waiting for a request - navigate to http://localhost:8080")
-  write_line("To end - navigate to http://localhost:8080/quit")
+write_line("Waiting for a request - navigate to http://localhost:8080")
+write_line("To end - navigate to http://localhost:8080/quit")
 
-  # Get the next request that the server has
-  request = next_web_request(server)
+# Get the next request that the server has
+request = next_web_request(server)
 
-  while not is_get_request_for(request, "/quit"):
-      write_line("I got a request for " + request_uri(request))
+while not is_get_request_for(request, "/quit"):
+    write_line("I got a request for " + request_uri(request))
 
-      if is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"):
-          # Serve page for login path, e.g.
-          # send_html_file_response(request, "login.html")
+    if is_get_request_for(request, "/login") or is_get_request_for(request, "/login.html"):
+        # Serve page for login path, e.g.
+        # send_html_file_response(request, "login.html")
 
-          send_response(request, "login page")
-      elif is_get_request_for(request, "/contact") or is_get_request_for(request, "/contact.html"):
-          # Serve page for contact path, e.g.
-          # send_html_file_response(request, "contact.html")
+        send_response(request, "login page")
+    elif is_get_request_for(request, "/contact") or is_get_request_for(request, "/contact.html"):
+        # Serve page for contact path, e.g.
+        # send_html_file_response(request, "contact.html")
 
-          send_response(request, "contact page")
-          
-      elif is_get_request_for(request, "/about") or is_get_request_for(request, "/about.html"):
-          # Server page for about path, e.g.
-          # send_html_file_response(request, "about.html")
+        send_response(request, "contact page")
+        
+    elif is_get_request_for(request, "/about") or is_get_request_for(request, "/about.html"):
+        # Server page for about path, e.g.
+        # send_html_file_response(request, "about.html")
 
-          send_response(request, "about page")
+        send_response(request, "about page")
 
-      else:
-          # If no specified path is requested, serve index.html to the user
-          send_html_file_response(request, "index.html")
+    else:
+        # If no specified path is requested, serve index.html to the user
+        send_html_file_response(request, "index.html")
 
-      write_line("Waiting for a request - navigate to http://localhost:8080")
-      write_line("To end - navigate to http://localhost:8080/quit")
+    write_line("Waiting for a request - navigate to http://localhost:8080")
+    write_line("To end - navigate to http://localhost:8080/quit")
 
-      # Get the next request that the server has
-      request = next_web_request(server)
+    # Get the next request that the server has
+    request = next_web_request(server)
 
-  write_line("About to stop the server...")
-  stop_web_server(server)
-  ```
+write_line("About to stop the server...")
+stop_web_server(server)
+```
 
 </TabItem>
 </Tabs>

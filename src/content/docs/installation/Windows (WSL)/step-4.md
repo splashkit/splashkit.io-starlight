@@ -2,8 +2,8 @@
 title: Install Language Specific Tools
 sidebar:
   label: 4. Language Tools
-  attrs:
-    class: windows
+  # attrs:
+  #   class: windows
 ---
 
 ## Steps
