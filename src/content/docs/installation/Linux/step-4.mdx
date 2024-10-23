@@ -71,9 +71,115 @@ source ~/.zshrc
 
 ### For C++
 
-- For C++, you (should) _already_ be ready to go.
+For C++, you (should) _already_ be ready to go.
 
-Guides for other supported languages like Python and Pascal are coming soon.
+### For Python
+
+Most Linux distributions come with Python pre-installed. If not, you can install it using the package manager for your distribution.
+
+#### Installing Python
+
+For Ubuntu/Debian, Arch, Fedora, and Alpine, you can install Python 3 using the following commands:
+
+<Tabs syncKey="linux-distro">
+<TabItem label="Ubuntu/Debian">
+
+For Installing python3 run the following commands:
+
+```bash
+sudo apt install python3
+```
+
+Optionally, you can also install `pip`:
+
+```bash
+sudo apt install python3-pip
+```
+
+</TabItem>
+
+<TabItem label="Arch (pacman)">
+
+To install Python 3 on Arch (pacman), run the following:
+
+```bash
+sudo pacman -S python
+```
+
+Optionally, you can also install `pip`:
+
+```bash
+sudo pacman -S python-pip
+```
+
+</TabItem>
+
+<TabItem label="Arch (yay)">
+
+To install Python 3 using `yay`, run the following:
+
+```bash
+yay -S python
+```
+
+Optionally, you can also install `pip`:
+
+```bash
+yay -S python-pip
+```
+
+</TabItem>
+
+<TabItem label="Fedora">
+
+To install Python 3 on Fedora, run the following:
+
+```bash
+sudo dnf install python3
+```
+
+Optionally, you can also install `pip`:
+
+```bash
+sudo dnf install python3-pip
+```
+
+</TabItem>
+
+<TabItem label="Alpine">
+
+To install Python 3 on Alpine, run the following:
+
+```bash
+sudo apk add python3
+```
+
+Optionally, you can also install `pip`:
+
+```bash
+sudo apk add py3-pip
+```
+
+</TabItem>
+</Tabs>
+
+#### Checking the version of Python and Pip installed
+
+To check is python is installed, run:
+
+```bash
+python3 --version
+```
+
+To check if pip is installed, run:
+
+```bash
+pip3 --version
+```
+
+### Other Languages
+
+Guides for other supported languages like Pascal are coming soon.
 
 ## What's next?
 
