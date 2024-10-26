@@ -7,7 +7,7 @@ sidebar:
 #    class: windows
 ---
 
-<h1>  Issue : Windows </h1>
+<h1> Issue : Windows </h1>
 
 ## `Unable to find the .NET SDK:`
 

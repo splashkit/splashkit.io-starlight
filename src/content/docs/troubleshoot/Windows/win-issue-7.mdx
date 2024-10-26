@@ -1,0 +1,58 @@
+---
+title: system “Path” variable
+description: Issue with the system “Path” variable on Windows, and how to fix it.
+sidebar:
+  label: 7. Update Path Variable
+#  attrs:
+#    class: windows
+---
+
+<h1> Issue : Windows </h1>
+
+import { Steps } from '@astrojs/starlight/components';
+
+## Update Your System “Path” Variable on Windows
+
+If you encounter issues with the system “Path” variable on Windows, follow these steps to update it to include paths required by SplashKit.
+
+<Steps>
+
+1. **Open Environment Variables Settings**  
+   Search for "environment variables" using the search bar on the taskbar.
+
+   ![-](https://i.imgur.com/i3cb9nr.png)
+
+   **Note**: The Red box shows where to type "`env`", and the Green box shows the item to click.
+
+    ---
+
+2. **Access the Environment Variables Menu**  
+   In the “System Properties” window, go to the "`Advanced`" tab (Red box) and click "`Environment Variables`" (Green box).
+
+   ![-](https://i.imgur.com/4Cbmnja.png)
+
+   ---
+
+3. **Select the Path Variable for Editing**  
+   In the Environment Variables window, find and select "`Path`" (Red box), then click "`Edit`" (Green box).
+
+   ![-](https://i.imgur.com/e4H9XIF.png)
+
+   **Note**: To find your username for the next steps, you can check it in the File Explorer or by using the command shown in the terminal below.
+   ![-](https://i.imgur.com/2neJLOs.png)
+
+   ---
+
+4. **Add Required Paths for SplashKit**  
+   In the “Edit Environment Variable” window, add the following paths, replacing “your_username” with your actual username.
+
+   ![-](https://i.imgur.com/AvNrlNV.png)
+
+   After adding these paths, click “OK” on all open windows to save the changes.
+
+   ---
+
+5. **Verify the Update**  
+   Open a new MINGW64 terminal and try running your program again to confirm the paths are set correctly.
+
+</Steps>
