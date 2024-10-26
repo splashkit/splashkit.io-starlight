@@ -6,83 +6,117 @@ sidebar:
 #  attrs:
 #    class: linux
 ---
-
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
 
-To install SplashKit, you will firstly need to install some command line tools using the apt or apt-get package manager.
 
-## Steps
+SplashKit requires a few command line tools to be installed on your system before you can proceed with the installation. Follow the steps below to install these tools, then continue with the SplashKit installation.
 
-1. Open up a terminal.
+## Installation Steps
 
-    ![Opening a terminal in Linux](/gifs/linux/open-terminal.gif)
+<Steps>
 
-2. **Update your system** to make sure all packages are up-to-date before installing new tools.
+1. **Open a Terminal**  
 
-    <Tabs syncKey="linux-distro">
-    <TabItem label="Ubuntu/Debian">
-    ```bash
-    sudo apt-get update && sudo apt-get upgrade
-    ```
-    </TabItem>
+   Locate your terminal in the applications menu, or use the keyboard shortcut (`Ctrl + Alt + T` on most Linux systems).
 
-    <TabItem label="Arch (pacman)">
-    ```bash
-    sudo pacman -Syu
-    ```
-    </TabItem>
+   ![Opening a terminal in Linux](/gifs/linux/open-terminal.gif)
 
-    <TabItem label="Arch (yay)">
-    ```bash
-    yay -Syu
-    ```
-    </TabItem>
+   ---
 
-    <TabItem label="Fedora">
-    ```bash
-    sudo dnf update
-    ```
-    </TabItem>
+2. **Update Your System**  
 
-    <TabItem label="Alpine">
-    ```bash
-    sudo apk update && sudo apk upgrade
-    ```
-    </TabItem>
-    </Tabs>
+   Before installing new packages, it’s important to keep your system up-to-date to ensure the latest security and stability improvements. Run the following command based on your Linux distribution:
 
-3. Install Command Line Tools: **curl** and **git**, which will be used in the SplashKit install process.
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+   ```bash
+   sudo apt-get update && sudo apt-get upgrade
+   ```
+   </TabItem>
 
-    Install using your package manager. For example:
+   <TabItem label="Arch">
+   <Tabs syncKey="package-manager">
+   <TabItem label="With pacman">
+   ```bash
+   sudo pacman -Syu
+   ```
+   </TabItem>
+   <TabItem label="With yay">
+   ```bash
+   yay -Syu
+   ```
+   </TabItem>
+   </Tabs>
+   </TabItem>
 
-    <Tabs syncKey="linux-distro">
-    <TabItem label="Ubuntu/Debian">
-    ```bash
-    sudo apt-get install curl git
-    ```
-    </TabItem>
+   <TabItem label="Fedora">
+   ```bash
+   sudo dnf update
+   ```
+   </TabItem>
 
-    <TabItem label="Arch (pacman)">
-    ```bash
-    sudo pacman -S curl git
-    ```
-    </TabItem>
+   <TabItem label="Alpine">
+   ```bash
+   sudo apk update && sudo apk upgrade
+   ```
+   </TabItem>
+   </Tabs>
 
-    <TabItem label="Arch (yay)">
-    ```bash
-    yay -S curl git
-    ```
-    </TabItem>
+   ---
 
-    <TabItem label="Fedora">
-    ```bash
-    sudo dnf install curl git
-    ```
-    </TabItem>
+3. **Install Required Command Line Tools**  
 
-    <TabItem label="Alpine">
-    ```bash
-    sudo apk add curl git
-    ```
-    </TabItem>
-    </Tabs>
+   To proceed with SplashKit installation, you need to have **curl** and **git** installed. Use your package manager to install these tools:
+
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+   ```bash
+   sudo apt-get install curl git
+   ```
+   </TabItem>
+
+   <TabItem label="Arch">
+   <Tabs syncKey="package-manager">
+   <TabItem label="With pacman">
+   ```bash
+   sudo pacman -S curl git
+   ```
+   </TabItem>
+   <TabItem label="With yay">
+   ```bash
+   yay -S curl git
+   ```
+   </TabItem>
+   </Tabs>
+   </TabItem>
+
+   <TabItem label="Fedora">
+   ```bash
+   sudo dnf install curl git
+   ```
+   </TabItem>
+
+   <TabItem label="Alpine">
+   ```bash
+   sudo apk add curl git
+   ```
+   </TabItem>
+   </Tabs>
+
+   ---
+
+4. **Verify Installation (Optional)**  
+
+   To confirm the tools are successfully installed, run:
+
+   ```bash
+   curl --version
+   git --version
+   ```
+
+   Both commands should output version information if the installation was successful.
+
+</Steps>
+
+You’re now ready to continue with the SplashKit installation. Proceed to **Step 2** to complete your setup.

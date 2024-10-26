@@ -8,45 +8,54 @@ sidebar:
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
 
-SplashKit works with a number of programming languages. Each of these has its own set of tools you will need to install.
+SplashKit supports multiple programming languages, each with its own set of tools. Follow the instructions below to install the required tools for your language of choice.
 
-### For C# .NET
+## Language-Specific Installations
 
-To install .NET for using C# with Splashkit, this will depend on your Linux distribution. You can find the instructions for all Linux distributions on the [.NET website](https://dotnet.microsoft.com/en-us/download?initial-os=linux).
+### C# (.NET)
 
-- For Ubuntu, you can follow the instructions [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
-- For Debian, you can follow the instructions [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian).
-- For Fedora, you can follow the instructions [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux-fedora).
-- For Arch, you will need to install the `dotnet-sdk` package from the AUR.
-  - You can do this with:
+To develop with C# in SplashKit, you’ll need to install .NET. Installation methods vary by Linux distribution:
+
+<LinkButton href="https://dotnet](https://dotnet.microsoft.com/en-us/download?initial-os=linux">.NET Download Page</LinkButton>
+<LinkButton href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu">Ubuntu Page</LinkButton>
+<LinkButton href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian">Debian Page</LinkButton>
+<LinkButton href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-fedora">Fedora Page</LinkButton>
+
+  <details>
+  <summary>Arch Steps</summary>
+    To install .NET SDK on Arch:
 
     ```bash
     yay -S dotnet-sdk
     ```
 
-  - You can also install the `dotnet-runtime` package if you only want to run .NET applications with the command:
-  
+    To install only the .NET runtime (for running .NET apps without development tools):
+
     ```bash
     yay -S dotnet-runtime
     ```
 
-The .NET install should automatically update the bash or zsh file. If you encounter any issues, you can manually add the library to your path.
+  </details>
+
+If the .NET installer does not automatically update your shell profile, you can manually add it:
 
 <details>
 <summary>Update your `bash` or `zsh` profile manually:</summary>
 <Tabs syncKey="bash-zsh">
 <TabItem label="bash">
-Open your `~/.bashrc` profile:
+Open your `~/.bashrc` file:
 ```bash
 nano ~/.bashrc
 ```
-Then add the following two lines near the end of the file:
+Add the following lines near the end:
 ```bash
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$HOME/.dotnet
 ```
-Then run the following command to update your profile:
+Apply the changes:
 ```bash
 source ~/.bashrc
 ```
@@ -56,12 +65,12 @@ Open your `.zshrc` file:
 ```bash
 nano ~/.zshrc
 ```
-Then add the following two lines near the end of the file:
+Add the following lines near the end:
 ```bash
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$HOME/.dotnet
 ```
-Then run the following command to update your profile:
+Apply the changes:
 ```bash
 source ~/.zshrc
 ```
@@ -69,121 +78,83 @@ source ~/.zshrc
 </Tabs>
 </details>
 
-### For C++
+---
 
-For C++, you (should) _already_ be ready to go.
+### C++
 
-### For Python
+For C++, you should already have the necessary tools if you have a standard Linux development environment. No additional setup is required specifically for SplashKit.
 
-Most Linux distributions come with Python pre-installed. If not, you can install it using the package manager for your distribution.
+---
 
-#### Installing Python
+### Python
 
-For Ubuntu/Debian, Arch, Fedora, and Alpine, you can install Python 3 using the following commands:
+Most Linux distributions include Python pre-installed. If Python isn’t installed, or if you need additional Python tools, follow the steps below.
 
-<Tabs syncKey="linux-distro">
-<TabItem label="Ubuntu/Debian">
+<Steps>
+1. **Installing Python**
 
-For Installing python3 run the following commands:
+   Install Python 3 and `pip` (Python package installer) using the following commands based on your Linux distribution:
 
-```bash
-sudo apt install python3
-```
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+   ```bash
+   sudo apt install python3 python3-pip
+   ```
+   </TabItem>
 
-Optionally, you can also install `pip`:
+   <TabItem label="Arch">
+   <Tabs syncKey="package-manager">
+   <TabItem label="With pacman">
+   ```bash
+   sudo pacman -S python python-pip
+   ```
+   </TabItem>
+   <TabItem label="With yay">
+   ```bash
+   yay -S python python-pip
+   ```
+   </TabItem>
+   </Tabs>
+   </TabItem>
 
-```bash
-sudo apt install python3-pip
-```
+   <TabItem label="Fedora">
+   ```bash
+   sudo dnf install python3 python3-pip
+   ```
+   </TabItem>
 
-</TabItem>
+   <TabItem label="Alpine">
+   ```bash
+   sudo apk add python3 py3-pip
+   ```
+   </TabItem>
+   </Tabs>
 
-<TabItem label="Arch (pacman)">
+   ---
 
-To install Python 3 on Arch (pacman), run the following:
+2. **Verify Installation (Optional)**
 
-```bash
-sudo pacman -S python
-```
+    To confirm that Python and `pip` are successfully installed, check the versions:
 
-Optionally, you can also install `pip`:
+    ```bash
+    python3 --version
+    pip3 --version
+    ```
 
-```bash
-sudo pacman -S python-pip
-```
+    Both commands should output version information if the installation was successful.
 
-</TabItem>
+</Steps>
 
-<TabItem label="Arch (yay)">
-
-To install Python 3 using `yay`, run the following:
-
-```bash
-yay -S python
-```
-
-Optionally, you can also install `pip`:
-
-```bash
-yay -S python-pip
-```
-
-</TabItem>
-
-<TabItem label="Fedora">
-
-To install Python 3 on Fedora, run the following:
-
-```bash
-sudo dnf install python3
-```
-
-Optionally, you can also install `pip`:
-
-```bash
-sudo dnf install python3-pip
-```
-
-</TabItem>
-
-<TabItem label="Alpine">
-
-To install Python 3 on Alpine, run the following:
-
-```bash
-sudo apk add python3
-```
-
-Optionally, you can also install `pip`:
-
-```bash
-sudo apk add py3-pip
-```
-
-</TabItem>
-</Tabs>
-
-#### Checking the version of Python and Pip installed
-
-To check is python is installed, run:
-
-```bash
-python3 --version
-```
-
-To check if pip is installed, run:
-
-```bash
-pip3 --version
-```
+---
 
 ### Other Languages
 
-Guides for other supported languages like Pascal are coming soon.
+Support for other languages like Pascal is in progress, and installation guides will be added soon.
 
-## What's next?
+---
 
-Congratulations! If you've followed these steps correctly, then you will have
-installed all the tools needed to start programming with SplashKit!
+## Next Steps
 
-It's time to get programming...
+Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+
+**Ready to start coding?**  

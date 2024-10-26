@@ -3,93 +3,21 @@ title: Install Visual Studio Code
 description: Download and install Visual Studio Code to use as a source code editor, and install the necessary extensions for C# and C++.
 sidebar:
   label: 3. Visual Studio Code
-#  attrs:
-#    class: linux
+  # attrs:
+  #   class: apple
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { LinkButton } from '@astrojs/starlight/components';
-import { Steps } from '@astrojs/starlight/components';
 
-[Visual Studio Code](https://code.visualstudio.com/) is a versatile, user-friendly source code editor that supports extensions for multiple languages, including C#, C++ and python. Follow these steps to install Visual Studio Code on Linux and set up the necessary extensions.
+Visual Studio Code, also commonly known as *VS Code* or just *Code*, is a powerful and versatile code editor that enables efficient coding, debugging, and collaboration for your SplashKit projects!
 
----
+## Install Visual Studio Code
 
-### Installation Instructions for Ubuntu/Debian and Fedora
+1. Download `Visual Studio Code`, found at [code.visualstudio.com](https://code.visualstudio.com).
 
-<Steps>
+2. Install Visual Studio Code.
 
-1. **Download Visual Studio Code**  
-   Visit the [Visual Studio Code download page](https://code.visualstudio.com/) and choose the appropriate package:
-   - `.deb` package for Ubuntu/Debian
-   - `.rpm` package for Fedora
-
-   ![Downloading Visual Studio Code for Ubuntu](/gifs/linux/download-vsc.gif)
-
-   ---
-
-2. **Open a Terminal**  
-   Find your terminal in the applications menu or use the shortcut (`Ctrl + Alt + T` on most Ubuntu systems).
-
-   ![Opening a terminal in Ubuntu](/gifs/linux/open-terminal.gif)
-
-   ---
-
-3. **Install Visual Studio Code**  
-   Change to the directory where you downloaded Visual Studio Code, typically `~/Downloads`:
-
-   ```shell
-   cd ~/Downloads
-   ```
-
-   Then, run the following commands to install Visual Studio Code based on your distribution:
-
-   <Tabs syncKey="ubuntu-fedora">
-   <TabItem label="Ubuntu/Debian">
-   ```bash
-   sudo dpkg -i code_1.*.deb
-   ```
-   </TabItem>
-   <TabItem label="Fedora">
-   ```bash
-   sudo dnf install code-1.*.rpm
-   ```
-   </TabItem>
-   </Tabs>
-
-   ![Installing Visual Studio Code on Ubuntu](/gifs/linux/install-vsc.gif)
-
-</Steps>
-
----
-
-### Installation Instructions for Arch Linux
-
-For Arch Linux, you have two primary installation options:
-
-<Steps>
-
-1. **Install the Official Open-Source Version (Code - OSS)**  
-   The open-source version of Visual Studio Code is available directly from the Arch community repositories. Install it using:
-
-   ```bash
-   sudo pacman -S code
-   ```
-
-   ---
-
-2. **Install the Proprietary Visual Studio Code Binary from the AUR**  
-   This version includes Microsoft branding and telemetry and is maintained by the Arch User Repository (AUR). Install it with:
-
-   ```bash
-   yay -S visual-studio-code-bin
-   ```
-
-   *Note:* If `yay` is not installed, you can use another AUR helper (such as `paru`) or follow the [AUR manual installation instructions](https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_packages).
-
-</Steps>
-
----
+    ![Gif showing Visual Studio installation in Finder](/gifs/macos/vs-code-install.gif)
 
 ## Installing Extensions for Development
 
