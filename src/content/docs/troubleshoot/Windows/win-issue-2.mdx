@@ -11,70 +11,82 @@ import { Steps } from '@astrojs/starlight/components';
 
 <h1> Issue : Windows </h1>
 
-## `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program
+### `System.DllNotFoundException unable to load DLL splashkit.dll` When Running Program
 
-![-](https://i.imgur.com/uEz1nxT.png)
+**Description:** This guide provides solutions for Windows users encountering the `System.DllNotFoundException` error when trying to run a SplashKit program. This error typically occurs when the `splashkit.dll` file is missing or not correctly linked to the project.
+
+---
+
+## Problem
+
+When attempting to run a SplashKit program, you may see an error message: `System.DllNotFoundException unable to load DLL splashkit.dll`. This issue may stem from antivirus interference, path configuration, or project setup.
+
+![Error Example](https://i.imgur.com/uEz1nxT.png)
 
 ## Solutions
 
 <Steps>
 
-1. **Solution 1:**
+1. **Disable Antivirus Software Temporarily**
 
-    Disable any antivirus software on your computer.
+   Some antivirus programs may block `splashkit.dll`. Temporarily disable your antivirus software and try running the program again.
 
-    ---
+   ---
 
-2. **Solution 2:**
+2. **Avoid Naming Conflicts**
 
-    Make sure your project isn't called "SplashKit".
+   Ensure your project name is not "SplashKit," as this can cause conflicts. Rename the project folder if necessary.
 
-    ---
+   ---
 
-3. **Solution 3:**
+3. **Use the Correct Terminal and Folder Setup**
 
-    Make sure you are creating your project using the MINGW64 terminal (rather than the MSYS terminal) and create the project files in its own directory/folder.
+   - Open the **MINGW64** terminal, not the MSYS terminal, to create your project files.
+   - Ensure the project files are located in their own dedicated folder to avoid any path or configuration issues.
 
-    ---
+   ---
 
-4. **Solution 4:**
+4. **Manually Add `splashkit.dll` to Your System PATH**
 
-    Add the folder containing splashkit.dll file to your path environment variable manually.
-    Firstly, go through Steps 1 – 3 shown in the “Update your system “Path” variable” section [here](/troubleshoot/windows/win-issue-7).
+   To ensure Windows can locate `splashkit.dll`, manually add its directory to your PATH environment variable:
 
-    Then come back here for the Next Step.
+   - Follow steps 1–3 in the “Update your system PATH variable” section [here](/troubleshoot/windows/win-issue-7).
+   - Return to this guide and continue with the instructions below.
 
-    **Next Step:** In the “Edit environment variable” window, you should have these two paths shown in the image below (Green Box) – on the next page
-    ![-](https://i.imgur.com/lTzyRSo.png)
+   **Next Step:**
+   - In the “Edit environment variable” window, ensure the following paths are added to your PATH, similar to the example in the green box below:
 
-    If you are missing one of the paths in the Green box, click "New" (Red box), then add the path you are missing. It will be similar to what is shown in the Green box - just using your own username.
+     ![Path Configuration Example](https://i.imgur.com/lTzyRSo.png)
 
-    Once it is added, click “OK” on all the windows, open a **new** MINGW64 terminal and try running the program again.
+   - If any of the paths are missing, click **New** (red box) and add the missing path. Adjust it to match your own username.
+   - Once added, click **OK** in all windows, open a **new** MINGW64 terminal, and try running the program again.
 
-    ---
+   ---
 
-5. **Solution 5 (if all else fails):**
+5. **Copy SplashKit Binaries to Your Build Output Folder (Last Resort)**
 
-    Get it working by copying the SplashKit binaries to the build output:
-    The SplashKit binaries are in
+   If all else fails, try manually copying the SplashKit binaries to your project’s build output directory:
 
-    `C:\msys64\home\(your username)\.splashkit\lib\win64`
+    <Steps>
+      1. Navigate to the folder containing SplashKit binaries at `C:\msys64\home\(your username)\.splashkit\lib\win64`.
 
-    *Replace "(your username)" with your username. (See Note about “whoami” above to get your username.)*
+            *Replace "(your username)" with your actual username (you can use the `whoami` command in the terminal to confirm your username).*
 
-    The contents of the folder should look something like this:
-    ![-](https://i.imgur.com/XRha19P.png)
+            Your folder contents should look similar to this:
 
-    Copy all of these into the build output of your SplashKit project.
+            ![SplashKit Binaries Example](https://i.imgur.com/XRha19P.png)
 
-    This will usually be:
+      2. Copy all files from this folder into your project’s build output directory, which is typically located at:
 
-    `<Project folder name>\bin\Debug\net7.0`
+            `<Project folder name>\bin\Debug\net7.0`
 
-    *eg, if the folder name is MyProject, and you are using .NET 7.0, it would be:*
+            For example, if your project folder is named "MyProject" and uses .NET 7.0, the path would be:
 
-    `MyProject\bin\Debug\net7.0`
+            `MyProject\bin\Debug\net7.0`
 
-    **Note:** If you are using a different version of .NET, the folder name will be different.
+            **Note:** If you’re using a different .NET version, adjust the path accordingly.
+     </Steps>
 
 </Steps>
+
+Following these steps should help resolve the `System.DllNotFoundException` error and allow your program to locate `splashkit.dll` properly.

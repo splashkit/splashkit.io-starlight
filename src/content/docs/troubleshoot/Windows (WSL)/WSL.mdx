@@ -1,14 +1,24 @@
 ---
 title: Overview
 description: This page provides solutions to known installation issues encountered by WSL users while installing or using SplashKit.
-lastUpdated: 2024-07-31
+lastUpdated: 2024-10-30
 sidebar:
   order: 2
   attrs:
     class: windows-wsl
 ---
 
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
 *This repository provides solutions to known installation issues encountered by WSL users while installing SplashKit. If you are facing any problems with SplashKit, refer to this document for possible solutions.*
+
+<CardGrid>
+  <LinkCard
+    title="Issue 1: Stack Overflow Exception in WSL"
+    description="`Exception has occurred: CLR/System.StackOverflowException` when trying to open GUI applications."
+    href="/troubleshoot/windows-wsl/wsl-issue-1"
+  />
+</CardGrid>
 
 ## Table of Contents
 

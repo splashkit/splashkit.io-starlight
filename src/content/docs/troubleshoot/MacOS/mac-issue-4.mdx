@@ -11,40 +11,52 @@ import { Steps } from '@astrojs/starlight/components';
 
 <h1> Issue : MacOS </h1>
 
-### `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program
+### `System.DllNotFoundException unable to load DLL splashkit.dll` When Running Program
+
+**Description:** This guide provides solutions for MacOS users encountering the `System.DllNotFoundException` error when attempting to run programs that rely on `splashkit.dll`. This issue is often related to operating system compatibility or outdated SplashKit versions.
+
+---
+
+## Problem
+
+When attempting to run a program that uses SplashKit on MacOS, you may encounter the following error message: `System.DllNotFoundException unable to load DLL splashkit.dll`.
 
 ## Solutions
 
 <Steps>
 
-1. **Update your macOS to the latest version.**
-
-   Make sure your macOS is fully updated to the latest software if possible (at least version
-**12.0** or later).
+1. **Ensure macOS is Updated**
+   
+   Update your macOS to the latest version available. Ideally, your OS should be version **12.0** or later, as compatibility issues with `splashkit.dll` are less likely on recent versions of macOS.
 
    ---
 
-2. **For older macOS versions (pre-12.0)**
+2. **For Older macOS Versions (Pre-12.0)**
 
-   You can use the following commands in the terminal to change SplashKit to a previous version (run each line separately):
+   If you are using a version of macOS older than 12.0, you can revert SplashKit to a previous version that may be more compatible with your system. Run the following commands in Terminal, one line at a time:
 
     ```shell
     cd ~/.splashkit
     ```
 
     ```shell
-    git fetch –unshallow
+    git fetch --unshallow
     ```
 
     ```shell
     git checkout cbb68dc
     ```
 
-    Note: Using `skm dotnet new` after these commands might change the way that the
-    SplashKit project files are created, so you can use this [**Template SplashKit project**](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) to create new projects instead of using `skm dotnet new`:
+   **Note**: After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) for creating new projects. 
 
-    **Note**: Read the “`README.txt`” file for instructions on how to use the template for new
-    projects. There is also a comment in `Program.cs` file to help with this, and then you can
-    remove these commented lines.
+   **Instructions**:
+
+   <Steps>
+   1. Unzip the downloaded template.
+   2. Read the “`README.txt`” file for guidance on setting up new projects.
+   3. Review the `Program.cs` file, which includes a comment to help configure the project. Once set up, you can remove the comment lines.
+   </Steps>
 
 </Steps>
+
+These steps should help resolve compatibility issues with `splashkit.dll` and ensure that your programs run smoothly.

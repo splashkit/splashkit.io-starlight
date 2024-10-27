@@ -10,32 +10,53 @@ sidebar:
 
 import { Steps } from '@astrojs/starlight/components';
 
-### Stack Overflow Exception when trying to open GUI application in WSL
+### Stack Overflow Exception When Opening GUI Application in WSL
 
-![Image showing stack overflow issue when debugging](/images/installation/wsl/stack-overflow-error-wsl-terminal.png)
+**Description:** This guide addresses a Stack Overflow Exception encountered when trying to open a GUI application within the Windows Subsystem for Linux (WSL). This issue typically arises when the necessary vGPU driver for running Linux GUI applications in WSL is missing.
 
-![Image showing stack overflow issue when debugging](/images/installation/wsl/stack-overflow-error-wsl-debug.png)
+---
+
+## Problem
+
+When attempting to launch a Linux GUI application in WSL, a Stack Overflow Exception error may occur due to compatibility or driver issues, preventing the app from running correctly.
+
+![Stack Overflow Error in Terminal](/images/installation/wsl/stack-overflow-error-wsl-terminal.png)
+
+![Stack Overflow Error in Debug Mode](/images/installation/wsl/stack-overflow-error-wsl-debug.png)
 
 ## Solutions
 
-To run Linux GUI Apps in WSL, you need to install the correct vGPU driver for your system. Here are the steps to resolve the stack overflow exception:
+To enable Linux GUI applications in WSL, follow these steps to ensure you have the correct environment and drivers:
 
 <Steps>
 
-1. **Step 1: Update your WSL**
+1. **Update WSL**
 
-    Update your WSL with the command `wsl --update`, then restart your WSL by doing `wsl --shutdown` and then `wsl` to restart it.
+   Start by updating your WSL installation with the command below:
 
-    ---
+   ```shell
+   wsl --update
+   ```
 
-2. **Step 2: Install the correct vGPU driver**
+   After updating, restart WSL to apply the changes:
 
-    Find and install the correct vGPU driver for your system to run Linux GUI apps:
+   ```shell
+   wsl --shutdown
+   wsl
+   ```
 
-    - [Intel Graphics Driver](https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html)
-    - [AMD Graphics Driver](https://www.amd.com/en/support/download/drivers.html)
-    - [NVIDIA Graphics Driver](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+   ---
+
+2. **Install the Appropriate vGPU Driver**
+
+   Install the correct virtual GPU (vGPU) driver for your system to enable support for Linux GUI applications in WSL. Select the driver that matches your hardware:
+
+   - [Intel Graphics Driver](https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html)
+   - [AMD Graphics Driver](https://www.amd.com/en/support/download/drivers.html)
+   - [NVIDIA Graphics Driver](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 
 </Steps>
 
-For more information, you can read Microsoft's [Run Linux GUI apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps) article.
+For further details, consult Microsoft’s guide on [Running Linux GUI Apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps). 
+
+Following these steps should resolve the Stack Overflow Exception and allow you to successfully run GUI applications within WSL.

@@ -1,14 +1,54 @@
 ---
 title: Overview
 description: This page provides solutions to known installation issues encountered by Windows users while installing or using SplashKit.
-lastUpdated: 2023-09-01
+lastUpdated: 2024-10-30
 sidebar:
   order: 1
   attrs:
     class: windows
 ---
 
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
 *This repository provides solutions to known installation issues encountered by Windows users while installing SplashKit. If you are facing any problems with SplashKit, refer to this document for possible solutions.*
+
+<CardGrid>
+  <LinkCard
+    title="Issue 1: Bash Curl Does Nothing"
+    description="`bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/installscripts/skm-install.sh)` does nothing"
+    href="/troubleshoot/windows/win-issue-1"
+  />
+  <LinkCard
+    title="Issue 2: DLL Not Found"
+    description="`System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program"
+    href="/troubleshoot/windows/win-issue-2"
+  />
+  <LinkCard
+    title="Issue 3: SKM Command Not Found"
+    description="`-bash: skm: command not found`"
+    href="/troubleshoot/windows/win-issue-3"
+  />
+  <LinkCard
+    title="Issue 4: .NET SDK Not Found"
+    description="Error: `Unable to find the .NET SDK`"
+    href="/troubleshoot/windows/win-issue-4"
+  />
+  <LinkCard
+    title="Issue 5: Dotnet Command Not Found"
+    description="`dotnet: command not found`"
+    href="/troubleshoot/windows/win-issue-5"
+  />
+  <LinkCard
+    title="Issue 6: Assembly Reference Missing"
+    description="Error mentioning `are you missing an assembly reference?`"
+    href="/troubleshoot/windows/win-issue-6"
+  />
+  <LinkCard
+    title="Guide: Update PATH Variable"
+    description="Guide to updating the system PATH variable"
+    href="/troubleshoot/windows/win-issue-7"
+  />
+</CardGrid>
 
 ## Table of Contents
 

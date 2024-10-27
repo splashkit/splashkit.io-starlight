@@ -1,17 +1,49 @@
 ---
 title: Overview
 description: This page provides solutions to known installation issues encountered by Mac users while installing or using SplashKit.
-lastUpdated: 2023-09-01
-
+lastUpdated: 2024-10-30
 sidebar:
   order: 2
   attrs:
     class: apple
 ---
 
-*This repository provides solutions to known installation issues encountered by Mac
-users while installing SplashKit. If you are facing any problems with SplashKit,
-refer to this document for possible solutions.*
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+*This repository provides solutions to known installation issues encountered by Mac users while installing SplashKit. If you are facing any problems with SplashKit, refer to this document for possible solutions.*
+
+<CardGrid>
+  <LinkCard
+    title="Issue 1: Bash Curl Does Nothing"
+    description="`bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/installscripts/skm-install.sh)` does nothing"
+    href="/troubleshoot/macos/mac-issue-1"
+  />
+  <LinkCard
+    title="Issue 2: Brew Cask Install Not Working"
+    description="`brew cask install dotnet-sdk` command not working or issues with Homebrew installation"
+    href="/troubleshoot/macos/mac-issue-2"
+  />
+  <LinkCard
+    title="Issue 3: Symbolic Link Command Not Working"
+    description="`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` command not working"
+    href="/troubleshoot/macos/mac-issue-3"
+  />
+  <LinkCard
+    title="Issue 4: DLL Not Found"
+    description="`System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program"
+    href="/troubleshoot/macos/mac-issue-4"
+  />
+  <LinkCard
+    title="Issue 5: SKM Command Not Found in Zsh"
+    description="`zsh: command not found: skm`"
+    href="/troubleshoot/macos/mac-issue-5"
+  />
+  <LinkCard
+    title="Issue 6: Assembly Reference Missing"
+    description="Error mentioning `are you missing an assembly reference?`"
+    href="/troubleshoot/macos/mac-issue-6"
+  />
+</CardGrid>
 
 ## Table of Contents
 

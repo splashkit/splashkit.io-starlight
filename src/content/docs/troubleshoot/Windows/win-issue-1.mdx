@@ -11,35 +11,61 @@ import { Steps } from '@astrojs/starlight/components';
 
 <h1> Issue : Windows </h1>
 
-## "`bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)`" does nothing
+### `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` Does Nothing
 
-![-](https://i.imgur.com/c6ejBFS.png?1)
+**Description:** This guide provides solutions for Windows users who encounter issues when trying to run the command `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)`. This command may not execute as expected due to firewall or connection issues.
+
+---
+
+## Problem
+
+On Windows, running `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` may result in no output or action in the terminal, often due to network settings or restrictions.
+
+![Error Example](https://i.imgur.com/c6ejBFS.png?1)
 
 ## Solutions
 
+Follow the steps below to resolve this issue and successfully run the SplashKit installer script:
+
 <Steps>
 
-1. **Solution 1:**
+1. **Check Your Internet Connection**
 
-    Make sure you are connected to the internet.
+   Ensure your computer is connected to the internet, as this command requires a stable connection to download the script.
 
-    ---
+   ---
 
-2. **Solution 2:**
+2. **Temporarily Disable Firewall**
 
-    Disable your computer’s firewall.
+   Your firewall may be blocking the script from running. Try temporarily disabling your firewall:
 
-    ---
+    <Steps>
+    1. Open **Control Panel** and navigate to **System and Security** > **Windows Defender Firewall**.
+    2. Select **Turn Windows Defender Firewall on or off** and choose **Turn off** for both Private and Public networks.
+    3. Run the command again in your terminal, then re-enable the firewall after the installation.
+    </Steps>
 
-3. **Solution 3:**
+   ---
 
-   Go to this URL: [here](https://github.com/splashkit/skm/blob/master/install-scripts/skm-install.sh)
+3. **Manually Download and Run the Script**
 
-    Then click the “Download raw file” button shown below (where the red arrow is pointing
-    to) and save it to somewhere like the Downloads folder:
-    ![-](https://i.imgur.com/MWhWHRO.png)
-    Then open File Explorer to wherever you saved it. In the MINGW64 terminal, type `bash` and then drag and drop the file from File Explorer into the terminal window:
-    ![-](https://i.imgur.com/ZbcghXz.png)
-    Press "`Enter`" and that should run the script. That will install skm, and you can carry on in the tutorial from after the "`bash <( curl -s....)`" step.
+   If the command still does nothing, you can manually download and run the script with the following steps:
+
+    <Steps>
+   1. Go to the [skm-install.sh script](https://github.com/splashkit/skm/blob/master/install-scripts/skm-install.sh).
+   2. Click the “Download raw file” button as shown below:
+
+       ![Download Raw File](https://i.imgur.com/MWhWHRO.png)
+
+   3. Save the file to a location you can easily access, such as your **Downloads** folder.
+   4. Open the **MINGW64** terminal and type `bash ` (with a space at the end).
+   5. Drag the downloaded file from **File Explorer** into the terminal window to add its path, as shown here:
+
+       ![Drag and Drop Example](https://i.imgur.com/ZbcghXz.png)
+
+   6. Press **Enter** to run the script. This should complete the installation of `skm`, allowing you to continue with the tutorial from the next step.
+    </Steps>
 
 </Steps>
+
+These steps should allow you to successfully run the `skm` installation script on Windows. If issues persist, refer to the additional troubleshooting guides or contact support.
