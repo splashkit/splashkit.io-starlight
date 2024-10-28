@@ -6,17 +6,21 @@
 :root {
   --purple-hsl: 255, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
-  --sk-logo-blue: #00ACC1;
-  --sk-logo-orange: #F5A623;
-  --link-button-border-color: var(--sk-logo-orange);
-  --link-hover-button-border-color: var(--sk-logo-blue);
+  --sk-logo-dark-blue: #3E50B1;
+  /* --sk-logo-blue: #03ACC2; */
+  --sk-logo-blue: rgba(1, 172, 194, 1);
+  --sk-logo-blue-transparent: rgba(1, 172, 194, 0.18);
+  /* --sk-logo-orange: #F5A623; */
+  --sk-logo-orange: rgba(245, 166, 35, 1);
+  --sk-logo-orange-transparent: rgba(246, 166, 34, 0.18);
   /* --table-head-color: rgb(35, 38, 47); */
+  --sl-link-button-border: var(--sl-color-white);
 }
 
 /* Light mode colors. */
 :root[data-theme='light'] {
-  --sl-color-accent: #00A9E0;
   --sl-color-accent: #3D50f5;
+  --sl-link-button-border: var(--sl-color-white);
 }
 
 .hero {
@@ -29,13 +33,11 @@
   width: 90%;
   height: 90%;
   margin-top: -40px;
-  /* filter: drop-shadow(0 0 1rem var(--sk-logo-blue)); */
 }
 
 .hero img:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
-  /* filter: drop-shadow(0 0 2rem var(--sk-logo-blue)); */
 }
 
 [data-has-hero] .page {
@@ -51,7 +53,7 @@
   backdrop-filter: blur(16px);
 }
 
-[data-has-hero] .hero > img {
+[data-has-hero] .hero>img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
 }
 
@@ -60,7 +62,7 @@ iframe[id="stackblitz-iframe"] {
   min-height: 600px;
 }
 
-[data-has-hero] .hero > div.sl-flex {
+[data-has-hero] .hero>div.sl-flex {
   align-self: flex-start;
 }
 
@@ -72,26 +74,33 @@ iframe[id="stackblitz-iframe"] {
   gap: 1.25rem;
 }
 
+/* --- START: Link Button styling ------*/
+
 [data-has-hero] .hero .sl-link-button {
-  border: 1px solid var(--link-button-border-color);
-  box-shadow: 0px 0px 5px var(--link-button-border-color);
-  /* transition: background-color ease-in-out 0.25s, color 0.3s ease; */
+  padding: 1rem 1.25rem;
+  border: 3px solid transparent;
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
 
 [data-has-hero] .hero .sl-link-button:hover {
-  border: 1px solid var(--link-hover-button-border-color);
-  box-shadow: 0px 0px 10px var(--link-hover-button-border-color);
+  border: 3px solid var(--sl-color-white);
 }
 
-/* [data-has-hero] .hero .sl-link-button.minimal {
-  border: solid 1px var(--sl-color-text-accent);
-  padding: 1rem 1.25rem;
-} 
+[data-has-hero] .hero .sl-link-button.minimal {
+  background-color: var(--sk-logo-orange);
+  color: black;
+}
 
-[data-has-hero] .hero .sl-link-button::before {
+[data-has-hero] .hero .sl-link-button.secondary {
+  background-color: var(--sk-logo-blue);
+  color: black;
+}
+
+/* --- END: Link Button styling ------*/
+
+/* [data-has-hero] .hero .sl-link-button::before {
   content: '';
   position: absolute;
   top: 0;
