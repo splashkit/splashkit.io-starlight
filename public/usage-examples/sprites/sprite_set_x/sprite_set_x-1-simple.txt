@@ -1,0 +1,8 @@
+#### Setting Sprite x-coordinate
+
+The following code is an example of using [Sprite Set X](https://splashkit.io/api/sprites/#sprite-set-x) which sets the x-coordinate of a Sprite on a SplashKit window.
+
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/sprites/sprite_set_x/spriteSetX_BasicSpriteResources.zip).
+:::

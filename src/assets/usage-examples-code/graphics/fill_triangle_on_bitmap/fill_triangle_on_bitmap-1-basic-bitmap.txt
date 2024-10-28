@@ -1,7 +1,0 @@
-### Fill Triangle on Bitmap
-
-The following code shows an example of using the [Fill Triangle On Bitmap](/api/graphics#fill-triangle-on-bitmap-3) function to draw a red triangle on a loaded bitmap.
-
-:::note
-To test this example code you can download these [**Resources**](/resources/usage-examples/graphics/FillTriangle_OnBitmapBasicResources.zip).
-:::

@@ -1,7 +1,0 @@
-### Setting Sprite Position
-
-The following code is an example of using [Sprite Set Position](/api/sprites/#sprite-set-position) to set a new location of a Sprite on a SplashKit window.
-
-:::note
-To test this example code you can download these [**Resources**](/resources/usage-examples/sprites/spriteSetPosition_BasicSpriteResources.zip).
-:::

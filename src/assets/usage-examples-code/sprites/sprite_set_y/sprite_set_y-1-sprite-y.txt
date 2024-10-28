@@ -1,7 +1,0 @@
-### Setting Sprite y-coordinate
-
-The following code is an example of using [Sprite Set Y](https://splashkit.io/api/sprites/#sprite-set-y) which sets the y-coordinate of a Sprite on a SplashKit window.
-
-:::note
-To test this example code you can download these [**Resources**](/resources/usage-examples/sprites/spriteSetY_BasicSpriteResources.zip).
-:::
