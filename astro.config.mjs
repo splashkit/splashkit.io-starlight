@@ -94,10 +94,10 @@ export default defineConfig({
           label: "Usage Examples",
           autogenerate: { directory: "usage-examples", collapsed: true },
         },
-        {
-          label: "Arcade Hackathon Project",
-          autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
-        },
+        // {
+        //   label: "Arcade Hackathon Project",
+        //   autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
+        // },
       ],
 
     }),
