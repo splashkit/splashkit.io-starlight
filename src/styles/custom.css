@@ -13,14 +13,11 @@
   /* --sk-logo-orange: #F5A623; */
   --sk-logo-orange: rgba(245, 166, 35, 1);
   --sk-logo-orange-transparent: rgba(246, 166, 34, 0.18);
-  /* --table-head-color: rgb(35, 38, 47); */
-  --sl-link-button-border: var(--sl-color-white);
 }
 
 /* Light mode colors. */
 :root[data-theme='light'] {
   --sl-color-accent: #3D50f5;
-  --sl-link-button-border: var(--sl-color-white);
 }
 
 .hero {
@@ -100,98 +97,11 @@ iframe[id="stackblitz-iframe"] {
 
 /* --- END: Link Button styling ------*/
 
-/* [data-has-hero] .hero .sl-link-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(60deg, #FF8300, #00A9E0);
-  background-size: 300% 300%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 24px;
-  z-index: -1;
-}
-
-[data-has-hero] .hero .sl-link-button:hover::before {
-  opacity: 1;
-  animation: moveGradient 3s linear infinite;
-}
-
-[data-has-hero] .hero .sl-link-button:hover {
-  color: white;
-  background-color: transparent;
-}
-
-@keyframes moveGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-} */
-
-/* [data-has-hero] .hero .hero-gradient-text {
-  background: radial-gradient(circle at top left,
-      hsl(296, 100%, 50%) 0%,
-      transparent 50%),
-    radial-gradient(circle at center, rgb(113, 147, 233) 0%, transparent 100%),
-    radial-gradient(circle at bottom right, rgb(0, 68, 255) 0%, transparent 50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-
 /* centre all images/gifs */
 img {
   display: block;
   margin: auto;
 }
-
-/* [data-has-hero] .card {
-  border-radius: 12px;
-  position: relative;
-  background: radial-gradient(
-      300px circle at top left,
-      rgba(85, 44, 190, 0.081) 20%,
-      transparent 100%
-    ),
-    radial-gradient(
-      300px circle at bottom right,
-      rgba(44, 102, 190, 0.09) 20%,
-      transparent 100%
-    );
-}
-
-[data-has-hero] .card::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  border-radius: inherit;
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(62, 85, 167, 0.212),
-    transparent 40%
-  );
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-[data-has-hero] .card:hover::before {
-  opacity: 1;
-} */
 
 [data-has-hero] .star-text {
   margin-top: 8px !important;
@@ -258,12 +168,6 @@ html[data-theme="dark"] a.linux:after {
 }
 
 /* XQuest changes */
-article.card {
-  border-radius: 0.5rem;
-  box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-color-gray-5);
-}
-
 .legal {
   margin-top: 4rem !important;
   font-size: 12px;
@@ -323,8 +227,7 @@ a.decent:hover {
   border-bottom: none;
 }
 
-.starlight-aside,
-.card {
+.starlight-aside {
   border-radius: 0.5rem;
 }
 
