@@ -4,12 +4,31 @@
   --sl-card-background-dark: #333333;
   --sl-hover-text-light: #ffffff;
   --sl-hover-text-dark: #000000;
-  --sl-logo-orange: #F5A623;
-  --sl-logo-blue: #05acc1;
-  --sl-logo-dark-blue: #3E50B1;
   --gradient-light: rgba(232, 232, 234, 0.18);
   --gradient-dark: rgba(23, 10, 10, 0.18);
 }
+
+/* --- START: Link card styling ------*/
+.sl-markdown-content .sl-link-card {
+  border: 2px solid var(--sk-logo-orange);
+  background-color: var(--sk-logo-orange-transparent);
+
+  .description {
+    color: var(--sl-color-gray-2);
+  }
+}
+
+/* Hover effects */
+.sl-markdown-content .sl-link-card:hover {
+  border: 2px solid var(--sk-logo-blue);
+  background-color: var(--sk-logo-blue-transparent);
+
+  .description {
+    color: var(--sl-color-gray-1);
+  }
+}
+
+/* --- END: Link card styling ------*/
 
 /* --- START: Card styling ------*/
 
@@ -18,7 +37,7 @@
   background: var(--sl-card-background-light);
   color: var(--sl-hover-text-dark);
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid var(--sl-logo-dark-blue);
+  border: 1px solid var(--sk-logo-dark-blue);
   width: 95%;
 }
 
@@ -26,7 +45,7 @@
   background: var(--sl-card-background-dark);
   color: var(--sl-hover-text-light);
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid var(--sl-logo-dark-blue);
+  border: 1px solid var(--sk-logo-dark-blue);
   width: 95%;
 }
 
@@ -34,14 +53,14 @@
 
 /* Card hover effect in the light and dark themes. */
 /* [data-theme="light"] .card:hover {
-  background-color: var(--sl-logo-orange);
+  background-color: var(--sk-logo-orange);
   color: var(--sl-hover-text-dark);
   transform: scale(1.05);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .card:hover {
-  background-color: var(--sl-logo-dark-blue);
+  background-color: var(--sk-logo-dark-blue);
   color: var(--sl-hover-text-light);
   transform: scale(1.05);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
@@ -74,25 +93,3 @@
 } */
 
 /* --- END: Card styling ------*/
-
-/* --- START: Link card styling ------*/
-.sl-link-card {
-  border: 1px solid var(--sl-logo-orange);
-  box-shadow: 0px 0px 5px var(--sl-logo-orange);
-
-  .description {
-    color: var(--sl-color-gray-2);
-  }
-}
-
-/* Hover effects */
-.sl-link-card:hover {
-  border: 1px solid var(--sl-logo-blue);
-  box-shadow: 0px 0px 10px var(--sl-logo-blue);
-
-  .description {
-    color: var(--sl-color-gray-1);
-  }
-}
-
-/* --- END: Link card styling ------*/
