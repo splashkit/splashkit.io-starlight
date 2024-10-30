@@ -27,9 +27,9 @@
         "panel": "new",
         "echo": false
       },
-      "runOptions": {
-        "runOn": "folderOpen" // This starts both tasks when the container is started
-      }
+      // "runOptions": {
+      //   "runOn": "folderOpen" // This starts both tasks when the container is started
+      // }
     }
   ]
 }

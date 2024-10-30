@@ -80,9 +80,9 @@ function simplifyFilePath(filePath: string): string {
           {filteredPosts.map((post) => (
             <LinkCard
               title={post.frontmatter.title}
-              description={`Written by ${post.frontmatter.author || "Various"}${
+              description={`Written by: ${post.frontmatter.author || "Various"}${
                 post.frontmatter.lastupdated
-                  ? ` on ${post.frontmatter.lastupdated}`
+                  ? `. Last Updated: ${post.frontmatter.lastupdated}`
                   : ""
               }`}
               href={simplifyFilePath(post.url?.toString() || "")}

@@ -2,8 +2,8 @@
 title: Introduction to JSON in SplashKit
 description: JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and for machines to parse and generate.
 category: Guides
-author: Jonathan Tynan
-lastupdated: May 11 2024
+author: Jonathan Tynan and others
+lastupdated: October 2024
 sidebar:
   label: "Introduction to JSON"
 ---
@@ -18,7 +18,7 @@ _Last updated: {frontmatter.lastupdated}_
 
 ### What is JSON?
 
-[JSON](/api/json/) is often used in various programming environments, including game development, for data storage and configuration. In SplashKit, JSON functionality allows developers to efficiently manage game settings, level data, and more. This part of the tutorial introduces JSON and its basic structure, with an overview of its application in SplashKit.
+[JSON](/api/json/) is often used in various programming environments, including game development, for data storage and configuration. In SplashKit, JSON functionality allows developers to efficiently manage game settings, level data, and more. This section of the tutorial introduces JSON, its basic structure, and provides an overview of its application in SplashKit.
 
 ### Basic Structure of a JSON File
 
@@ -39,7 +39,7 @@ JSON objects are made up of values associated with keys. In this example, `gameT
 
 ### Overview of JSON in SplashKit
 
-SplashKit simplifies the process of working with JSON files in your games. Functions are provided for reading JSON files, so that we can easily read values and load configurations or game data. Additional functions are provided for writing JSON files, so that we can save configurations and game data.
+SplashKit simplifies the process of working with JSON files in your games. It provides functions for reading JSON files, allowing us to easily retrieve values and load configurations or game data. Additionally, it offers functions for writing JSON files, enabling us to save configurations and game data.
 
 ### Getting Started with JSON in SplashKit
 
@@ -54,45 +54,91 @@ This command creates sub-folders for each type of resource. One of these is name
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
-  int main()
-  {
-      json game_data;
-      game_data = json_from_file("game_data.json");
-      string game_title = json_read_string(game_data, "gameTitle");
+```cpp
+#include "splashkit.h"
+int main()
+{
+    json game_data = json_from_file("game_data.json");
+    string game_title = json_read_string(game_data, "gameTitle");
 
-      write("Game Title: ");
-      write_line(game_title);
+    write_line("Game Title: " + game_title);
 
-      free_json(game_data);
+    free_json(game_data);
 
-      return 0;
-  }
-  ```
+    return 0;
+}
+```
 
-  </TabItem>
-  
-  <TabItem label="C#">
+</TabItem>
+<TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  Json gameData = JsonFromFile("game_data.json");
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  string gameTitle = JsonReadString(gameData, "gameTitle");
+Json gameData = JsonFromFile("game_data.json");
+string gameTitle = JsonReadString(gameData, "gameTitle");
 
-  WriteLine("Game Title: " + gameTitle);
+WriteLine("Game Title: " + gameTitle);
 
-  FreeJson(gameData);
-  ```
+FreeJson(gameData);
+```
 
-  </TabItem>
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace GameDataManagement
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Json gameData = SplashKit.JsonFromFile("game_data.json");
+            string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+
+            SplashKit.WriteLine("Game Title: " + gameTitle);
+
+            SplashKit.FreeJson(gameData);
+        }
+    }
+}
+```
+
+</TabItem>
 </Tabs>
 
-In this code example, we're first using [Json From File](/api/json/#json-from-file) to load a JSON object with the details from the `game_data.json` file.
-Then we are getting the value of the key that matches `gameTitle` using [Json Read String](/api/json/#json-read-string). We write this to the console and free the JSON object using [Free Json](/api/json/#free-json) as we exit. By freeing the JSON object we are deallocating any memory that has been assigned to it, preventing any memory-related errors such as a `Segmentation Fault`. We can build this program with the following command.
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+def main():
+    game_data = json_from_file("game_data.json")
+    game_title = json_read_string(game_data, "gameTitle")
+
+    if not game_title:
+        write_line("Error retrieving gameTitle.")
+    else:
+        write_line(f"Game Title: {game_title}")
+
+    free_json(game_data)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
+</Tabs>
+
+In this code example, we first use [Json From File](/api/json/#json-from-file) to load a JSON object containing details from the `game_data.json` file.
+Next, we retrieve the value associated with the `gameTitle` key using [Json Read String](/api/json/#json-read-string)and output it to the console. Finally, we free the JSON object using [Free Json](/api/json/#free-json) before exiting the program. This deallocates any memory that was allocated to the JSON object, helping to prevent memory-related errors such as `Segmentation Fault`. We can build this program using the following command.
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
@@ -121,7 +167,6 @@ And run it with:
 ```
 
 </TabItem>
-
 <TabItem label="C#">
 
 ```shell
@@ -129,10 +174,16 @@ dotnet run
 ```
 
 </TabItem>
-  
+<TabItem label="Python">
+
+```shell
+skm python3 program.py
+```
+
+</TabItem>
 </Tabs>
 
-When we run this program it should output the following to the console:
+When we run this program, it should display the following output in the console:
 
 ```plaintext
 Game Title: My New Game
@@ -149,8 +200,7 @@ But what if we didn't have a `gameTitle` key in our JSON? Well, error messages w
 #include "splashkit.h"
 int main()
 {
-    json game_data;
-    game_data = json_from_file("game_data.json");
+    json game_data = json_from_file("game_data.json");
 
     if(json_has_key(game_data, "gameTitle"))
     {
@@ -170,14 +220,16 @@ int main()
 ```
 
 </TabItem>
-
 <TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
 ```csharp
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
-Json gameData =JsonFromFile("game_data.json");
+Json gameData = JsonFromFile("game_data.json");
 
 if (JsonHasKey(gameData, "gameTitle"))
 {
@@ -189,10 +241,64 @@ else
     WriteLine("Key \"gameTitle\" not found.");
 }
 
-  FreeJson(gameData);
+FreeJson(gameData);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace GameDataManagement
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Json gameData = SplashKit.JsonFromFile("game_data.json");
+
+            if (SplashKit.JsonHasKey(gameData, "gameTitle"))
+            {
+                string gameTitle = SplashKit.JsonReadString(gameData, "gameTitle");
+                SplashKit.WriteLine("Game Title: " + gameTitle);
+            }
+            else
+            {
+                SplashKit.WriteLine("Key \"gameTitle\" not found.");
+            }
+
+            SplashKit.FreeJson(gameData);
+        }
+    }
+}
 ```
 
 </TabItem>
 </Tabs>
 
-We have now loaded up our JSON file and retrieved the value stored with the `gameTitle` key. In the next tutorial we explore further how we can retrieve values stored in a JSON object.
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+def main():
+    game_data = json_from_file("game_data.json")
+
+    if json_has_key(game_data, "gameTitle"):
+        game_title = json_read_string(game_data, "gameTitle")
+        write_line(f"Game Title: {game_title}")
+    else:
+        write_line('Key "gameTitle" not found.')
+
+    free_json(game_data)
+
+if __name__ == "__main__":
+    main()
+```
+
+</TabItem>
+</Tabs>
+
+We have successfully loaded our JSON file and retrieved the value associated with the `gameTitle` key. In the next tutorial, we'll delve deeper into retrieving other values stored within a JSON object.

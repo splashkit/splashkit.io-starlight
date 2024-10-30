@@ -2,8 +2,8 @@
 title: Install SplashKit
 sidebar:
   label: 2. SplashKit
-  attrs:
-    class: linux
+#   attrs:
+#     class: linux
 ---
 
 Once you have installed the [Command Line Tools](/installation/linux/step-1/) you can install SplashKit and build the SplashKit library from its source.

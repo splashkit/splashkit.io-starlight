@@ -2,8 +2,8 @@
 title: Install MSYS2 and Command Line Tools
 sidebar:
   label: 1. MSYS2 and Command Line Tools
-  attrs:
-    class: windows
+  # attrs:
+  #   class: windows
 ---
 
 MSYS2 provide a unix terminal environment for Windows. We will need this to run the build commands to create our SplashKit programs.

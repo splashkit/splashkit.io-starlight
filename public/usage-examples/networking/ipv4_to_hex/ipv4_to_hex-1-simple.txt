@@ -1,0 +1,3 @@
+#### Simple IPv4 To Hex Converter
+
+The following code shows examples of using [IPv4 to Hex](/api/networking/#ipv4-to-hex) to convert an IP address into hex form.

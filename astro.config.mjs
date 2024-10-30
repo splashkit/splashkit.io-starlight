@@ -15,10 +15,6 @@ export default defineConfig({
     starlight({
       title: "SplashKit",
       description: 'SplashKit is a cross-platform game engine for C, C++ and Objective-C. It provides a simple API for 2D game development.',
-      components: {
-        Sidebar: './src/components/Sidebar.astro'
-      },
-
       plugins: [
         starlightLinksValidator({
           errorOnRelativeLinks: true,
@@ -89,7 +85,7 @@ export default defineConfig({
             { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
             { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
-            { label: "Sprites", autogenerate: { directory: "guides/Sprites", collapsed: false } },
+            // { label: "Sprites", autogenerate: { directory: "guides/Sprites", collapsed: false } },
             { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
           ]
           // autogenerate: { directory: "guides", collapsed: true },
@@ -98,10 +94,10 @@ export default defineConfig({
           label: "Usage Examples",
           autogenerate: { directory: "usage-examples", collapsed: true },
         },
-        {
-          label: "Arcade Hackathon Project",
-          autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
-        },
+        // {
+        //   label: "Arcade Hackathon Project",
+        //   autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
+        // },
       ],
 
     }),

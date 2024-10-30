@@ -1,0 +1,3 @@
+#### Basic Red Triangle
+
+The following code demonstrates how to use the [Fill Triangle](/api/graphics#fill-triangle-3) function to draw a simple red-colored filled triangle. It creates a triangle with specified coordinates and fills it with red color.
