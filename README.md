@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the official documentation for the SplashKit SDK on the Starlight framework! This README markdown script will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
+Welcome to the official documentation for the SplashKit SDK on the Starlight framework! This README will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
 
 ## Deployment Status
 
@@ -13,11 +13,11 @@ Welcome to the official documentation for the SplashKit SDK on the Starlight fra
 
 ## Installation
 
-1. Install and open Docker app.
-2. Fork then clone this repository.
-3. Reopen cloned repository in container (pop-up may appear in VS Code)
-
 If needed:
+
+1. Install and open Docker: Ensure Docker is installed and running on your machine.
+2. Fork and clone this repository: This allows you to make your own changes and submit them if needed.
+3. Reopen the cloned repository in a container: You may get a prompt to open it in a container in VS Code; select "Reopen in Container."
 
 - Install the necessary dependencies. Make sure you have the following installed:
 
@@ -32,6 +32,11 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 ```plaintext
 .
 ├── public/
+│   ├── gifs/
+│   ├── images/
+│   ├── resources/
+│   └── usage-examples/
+├── scripts/
 └── src/
     ├── assets/
     ├── components/
@@ -40,7 +45,8 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
     │   │   ├── api/
     │   │   ├── guides/
     │   │   ├── installation/
-    │   │   └── troubleshoot/
+    │   │   ├── troubleshoot/
+    │   │   └── arcade-hackathon-project/
     ├── fonts/
     ├── styles/
     <!-- ├── config.ts -->
@@ -50,25 +56,25 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons and gifs, can be placed in the `public/` directory.
+- **Documentation Files**: Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+- **Images and Assets**: Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+- **Static Assets**: Static assets, like favicons and gifs, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run generate-mdx`             | Generate MDX file *(for functions)* from JSON data in `test` folder                   |
+| Command                                 | Action                                                                                                      |
+| :-------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| `npm install`                           | Installs dependencies                                                                                       |
+| `npm run dev`                           | Starts local dev server at `localhost:4322`                                                                 |
+| `npm run build`                         | Builds your production site to `./dist/`                                                                    |
+| `npm run preview`                       | Previews your build locally, before deploying                                                               |
+| `npm run astro ...`                     | Runs CLI commands like `astro add`, `astro check`                                                           |
+| `npm run astro -- --help`               | Gets help using the Astro CLI                                                                               |
+| `npm run generate-mdx`                  | Generates an MDX file *(for functions)* from JSON data in the `test` folder                                 |
+| `npm run generate-usage-examples-pages` | Runs the script to generate usage example pages from the `./scripts/usage-example-page-generation.cjs` file |
+| `npm run check-links`                   | Sets `CHECK_LINKS=true`, runs `npm run build`, then resets `CHECK_LINKS=false`                              |
 
 ## Contributing
 
