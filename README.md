@@ -2,7 +2,7 @@
     <img width="150px" src="https://github.com/thoth-tech/.github/blob/main/images/splashkit.png"/>
 </p>
 
-### Splashkit Stats
+### [Splashkit](https://github.com/splashkit/splashkit.io-starlight) Stats
 
 [![GitHub contributors](https://img.shields.io/github/contributors/splashkit/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues/splashkit/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/issues)
@@ -12,7 +12,7 @@
 ![Forks](https://img.shields.io/github/forks/splashkit/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/splashkit/splashkit.io-starlight?label=Stars&color=F5A623)
 
-### Thoth Tech Stats
+### [Thoth Tech](https://github.com/thoth-tech/splashkit.io-starlight) Stats
 
 [![GitHub contributors](https://img.shields.io/github/contributors/thoth-tech/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues/thoth-tech/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/issues)
