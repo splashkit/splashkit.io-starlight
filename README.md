@@ -7,7 +7,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/splashkit/splashkit.io-starlight?label=Contributors&color=F5A623)
 ![GitHub issues](https://img.shields.io/github/issues/splashkit/splashkit.io-starlight?label=Issues&color=F5A623)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/splashkit/splashkit.io-starlight?label=Pull%20Requests&color=F5A623)
-![Website](https://img.shields.io/website?down_color=red&down_message=offline&label=Website&up_color=green&up_message=online&url=https%3A%2F%2Fsplashkit.io)
+[![Website](https://img.shields.io/website?down_color=red&down_message=offline&label=Website&up_color=green&up_message=online&url=https%3A%2F%2Fsplashkit.io)](https://splashkit.io/)
 ![Netlify](https://img.shields.io/netlify/29627b16-8f40-4b42-8ae8-1912895f5305?label=Netlify&color=F5A623)
 ![Forks](https://img.shields.io/github/forks/splashkit/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/splashkit/splashkit.io-starlight?label=Stars&color=F5A623)
