@@ -4,9 +4,9 @@
 
 ### Splashkit Stats
 
-![GitHub contributors](https://img.shields.io/github/contributors/splashkit/splashkit.io-starlight?label=Contributors&color=F5A623)
-![GitHub issues](https://img.shields.io/github/issues/splashkit/splashkit.io-starlight?label=Issues&color=F5A623)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/splashkit/splashkit.io-starlight?label=Pull%20Requests&color=F5A623)
+[![GitHub contributors](https://img.shields.io/github/contributors/splashkit/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/graphs/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/splashkit/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/splashkit/splashkit.io-starlight?label=Pull%20Requests&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/pulls)
 [![Website](https://img.shields.io/website?down_color=red&down_message=offline&label=Website&up_color=green&up_message=online&url=https%3A%2F%2Fsplashkit.io)](https://splashkit.io/)
 ![Netlify](https://img.shields.io/netlify/29627b16-8f40-4b42-8ae8-1912895f5305?label=Netlify&color=F5A623)
 ![Forks](https://img.shields.io/github/forks/splashkit/splashkit.io-starlight?label=Forks&color=F5A623)
@@ -14,12 +14,13 @@
 
 ### Thoth Tech Stats
 
-![GitHub contributors](https://img.shields.io/github/contributors/thoth-tech/splashkit.io-starlight?label=Contributors&color=F5A623)
-![GitHub issues](https://img.shields.io/github/issues/thoth-tech/splashkit.io-starlight?label=Issues&color=F5A623)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/thoth-tech/splashkit.io-starlight?label=Pull%20Requests&color=F5A623)
+[![GitHub contributors](https://img.shields.io/github/contributors/thoth-tech/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/graphs/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/thoth-tech/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/thoth-tech/splashkit.io-starlight?label=Pull%20Requests&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/pulls)
 [![Website Preview](https://img.shields.io/badge/Preview-splashkit.io-blue)](https://splashkit-io.netlify.app/)
 ![Forks](https://img.shields.io/github/forks/thoth-tech/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/thoth-tech/splashkit.io-starlight?label=Stars&color=F5A623)
+
 
 # SplashKit SDK - Starlight Framework
 
