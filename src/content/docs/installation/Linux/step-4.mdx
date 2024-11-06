@@ -24,21 +24,21 @@ To develop with C# in SplashKit, you’ll need to install .NET. Installation met
 <LinkButton href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian">Debian Page</LinkButton>
 <LinkButton href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-fedora">Fedora Page</LinkButton>
 
-  <details>
-  <summary>Arch Steps</summary>
-    To install .NET SDK on Arch:
+<details>
+<summary>Arch Steps</summary>
+  To install .NET SDK on Arch:
 
-    ```bash
-    yay -S dotnet-sdk
-    ```
+  ```bash
+  yay -S dotnet-sdk
+  ```
 
-    To install only the .NET runtime (for running .NET apps without development tools):
+  To install only the .NET runtime (for running .NET apps without development tools):
 
-    ```bash
-    yay -S dotnet-runtime
-    ```
+  ```bash
+  yay -S dotnet-runtime
+  ```
 
-  </details>
+</details>
 
 If the .NET installer does not automatically update your shell profile, you can manually add it:
 
@@ -94,55 +94,55 @@ Most Linux distributions include Python pre-installed. If Python isn’t install
 
 1. **Installing Python**
 
-   Install Python 3 and `pip` (Python package installer) using the following commands based on your Linux distribution:
+    Install Python 3 and `pip` (Python package installer) using the following commands based on your Linux distribution:
 
-   <Tabs syncKey="linux-distro">
-   <TabItem label="Ubuntu/Debian">
-   ```bash
-   sudo apt install python3 python3-pip
-   ```
-   </TabItem>
+    <Tabs syncKey="linux-distro">
+    <TabItem label="Ubuntu/Debian">
+    ```bash
+    sudo apt install python3 python3-pip
+    ```
+    </TabItem>
 
-   <TabItem label="Arch">
-   <Tabs syncKey="package-manager">
-   <TabItem label="With pacman">
-   ```bash
-   sudo pacman -S python python-pip
-   ```
-   </TabItem>
-   <TabItem label="With yay">
-   ```bash
-   yay -S python python-pip
-   ```
-   </TabItem>
-   </Tabs>
-   </TabItem>
+    <TabItem label="Arch">
+    <Tabs syncKey="package-manager">
+    <TabItem label="With pacman">
+    ```bash
+    sudo pacman -S python python-pip
+    ```
+    </TabItem>
+    <TabItem label="With yay">
+    ```bash
+    yay -S python python-pip
+    ```
+    </TabItem>
+    </Tabs>
+    </TabItem>
 
-   <TabItem label="Fedora">
-   ```bash
-   sudo dnf install python3 python3-pip
-   ```
-   </TabItem>
+    <TabItem label="Fedora">
+    ```bash
+    sudo dnf install python3 python3-pip
+    ```
+    </TabItem>
 
-   <TabItem label="Alpine">
-   ```bash
-   sudo apk add python3 py3-pip
-   ```
-   </TabItem>
-   </Tabs>
+    <TabItem label="Alpine">
+    ```bash
+    sudo apk add python3 py3-pip
+    ```
+    </TabItem>
+    </Tabs>
 
    ---
 
 2. **Verify Installation (Optional)**
 
-  To confirm that Python and `pip` are successfully installed, check the versions:
+    To confirm that Python and `pip` are successfully installed, check the versions:
 
-  ```bash
-  python3 --version
-  pip3 --version
-  ```
+    ```bash
+    python3 --version
+    pip3 --version
+    ```
 
-  Both commands should output version information if the installation was successful.
+    Both commands should output version information if the installation was successful.
 
 </Steps>
 
