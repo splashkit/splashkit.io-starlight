@@ -27,37 +27,34 @@ When trying to use `skm` in the terminal, you may see the error message `-bash: 
 
 Follow the steps below to add `skm` to your system PATH and resolve the issue.
 
-<Steps>
+### Update Your System PATH Variable
 
-1. **Update Your System PATH Variable**
+- Follow **Steps 1–3** in the “Update your system PATH variable” section [here](/troubleshoot/windows/win-issue-7).
+- After completing those steps, return here for further instructions.
 
-   - Follow **Steps 1–3** in the “Update your system PATH variable” section [here](/troubleshoot/windows/win-issue-7).
-   - After completing those steps, return here for further instructions.
+---
 
-   ---
+### Disable Antivirus Temporarily
 
-2. **Disable Antivirus Temporarily**
+Temporarily disable your antivirus software, as it may be blocking the `skm` command. Once the setup is complete, you can re-enable the antivirus for security.
 
-   Temporarily disable your antivirus software, as it may be blocking the `skm` command. Once the setup is complete, you can re-enable the antivirus for security.
+---
 
-   ---
+### Add Required Paths to PATH Variable
 
-3. **Add Required Paths to PATH Variable**
+Open the **Edit environment variable** window, and check for the two paths shown in the green box below:
 
-   Open the **Edit environment variable** window, and check for the two paths shown in the green box below:
+![Path Configuration Example](https://i.imgur.com/H9sF33y.png)
 
-     ![Path Configuration Example](https://i.imgur.com/H9sF33y.png)
+If any of these paths are missing:
 
-   If any of these paths are missing:
-     - Click **New** (red box) and add the missing path.
-     - Replace any username-specific segments with your actual Windows username.
+- Click **New** (red box) and add the missing path.
+- Replace any username-specific segments with your actual Windows username.
 
-   Once added, click **OK** in all windows to save the changes.
+Once added, click **OK** in all windows to save the changes.
 
-4. **Restart MINGW64 Terminal**
+### Restart MINGW64 Terminal
 
-   Open a **new** MINGW64 terminal window and try running the `skm` command again.
-
-</Steps>
+Open a **new** MINGW64 terminal window and try running the `skm` command again.
 
 These steps should resolve the issue, enabling the `skm` command to function as expected in your terminal.
