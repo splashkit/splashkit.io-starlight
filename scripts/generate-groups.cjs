@@ -1,3 +1,4 @@
+const kleur = require("kleur");
 const fs = require('fs'); // Import the file system module to interact with the file system
 const path = require('path'); // Import the path module to handle and transform file paths
 
@@ -16,4 +17,4 @@ const groupNames = fs.readdirSync(guidesDir, { withFileTypes: true })
 // Write the list of group names to the output JSON file
 fs.writeFileSync(outputFile, JSON.stringify(groupNames, null, 2));
 // Log a message to the console indicating that the JSON file has been created
-console.log('Group names have been written to', outputFile);
+console.log(kleur.green("Available tutorial/guide category names have been written to " + outputFile + "\n"));

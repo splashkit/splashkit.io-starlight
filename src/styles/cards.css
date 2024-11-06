@@ -1,84 +1,7 @@
-/* Variables for card background and hover text colors from splashkit logo. */
-:root {
-  --sl-card-background-light: #f8f8f8;
-  --sl-card-background-dark: #333333;
-  --sl-hover-text-light: #ffffff;
-  --sl-hover-text-dark: #000000;
-  --sl-logo-orange: #F5A623;
-  --sl-logo-blue: #05acc1;
-  --sl-logo-dark-blue: #3E50B1;
-  --gradient-light: rgba(232, 232, 234, 0.18);
-  --gradient-dark: rgba(23, 10, 10, 0.18);
-}
-
-/* --- START: Card styling ------*/
-
-/* Card styling for the light and dark themes, including smooth transitions for background and text colors. */
-[data-theme="light"] .card {
-  background: var(--sl-card-background-light);
-  color: var(--sl-hover-text-dark);
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid var(--sl-logo-dark-blue);
-  width: 95%;
-}
-
-[data-theme="dark"] .card {
-  background: var(--sl-card-background-dark);
-  color: var(--sl-hover-text-light);
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid var(--sl-logo-dark-blue);
-  width: 95%;
-}
-
-/* Will add parts below back in when button toggle for animations added */
-
-/* Card hover effect in the light and dark themes. */
-/* [data-theme="light"] .card:hover {
-  background-color: var(--sl-logo-orange);
-  color: var(--sl-hover-text-dark);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .card:hover {
-  background-color: var(--sl-logo-dark-blue);
-  color: var(--sl-hover-text-light);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-} */
-
-/* Radial gradient following mouse */
-/* .card::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  border-radius: inherit;
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-      var(--gradient-light),
-      transparent 40%);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-[data-theme="dark"] .card::before {
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-      var(--gradient-dark),
-      transparent 40%);
-}
-
-.card:hover::before {
-  opacity: 1;
-} */
-
-/* --- END: Card styling ------*/
-
 /* --- START: Link card styling ------*/
-.sl-link-card {
-  border: 1px solid var(--sl-logo-orange);
-  box-shadow: 0px 0px 5px var(--sl-logo-orange);
+.sl-markdown-content .sl-link-card {
+  border: 2px solid var(--sk-logo-orange);
+  background-color: var(--sk-logo-orange-transparent);
 
   .description {
     color: var(--sl-color-gray-2);
@@ -86,9 +9,9 @@
 }
 
 /* Hover effects */
-.sl-link-card:hover {
-  border: 1px solid var(--sl-logo-blue);
-  box-shadow: 0px 0px 10px var(--sl-logo-blue);
+.sl-markdown-content .sl-link-card:hover {
+  border: 2px solid var(--sk-logo-blue);
+  background-color: var(--sk-logo-blue-transparent);
 
   .description {
     color: var(--sl-color-gray-1);
@@ -96,3 +19,16 @@
 }
 
 /* --- END: Link card styling ------*/
+
+/* --- START: Card styling ------*/
+
+article.card {
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-2);
+  border: 1px solid var(--sk-logo-dark-blue);
+  border-radius: 0.5rem;
+  width: 95%;
+  box-shadow: var(--sl-shadow-md);
+}
+
+/* --- END: Card styling ------*/

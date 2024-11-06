@@ -1,35 +1,20 @@
-// See https://go.microsoft.com/fwlink/?LinkId=733558
-// for the documentation about the tasks.json format
 {
   "version": "2.0.0",
   "tasks": [
     {
       "label": "Build splashkit.io Website",
       "type": "shell",
-      "command": "npm install && npm run build",
+      "command": "npm install && npm run build && npm start",
       "group": "build",
-      "presentation": {
-        "group": "buildGroup",
-        "reveal": "always",
-        "panel": "new",
-        "echo": false
-      }
-    },
-    {
-      "label": "Serve splashkit.io Website",
-      "type": "shell",
-      "command": "npm start",
-      "group": "build",
-      "dependsOn": "Build splashkit.io Website",
       "presentation": {
         "group": "buildGroup",
         "reveal": "always",
         "panel": "new",
         "echo": false
       },
-      "runOptions": {
-        "runOn": "folderOpen" // This starts both tasks when the container is started
-      }
+      // "runOptions": {
+      //   "runOn": "folderOpen" // This starts the task automatically
+      // }
     }
   ]
 }
