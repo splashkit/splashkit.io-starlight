@@ -1,0 +1,30 @@
+---
+title: Updating SplashKit
+description: Update your SplashKit SDK to ensure compatibility with the latest features and bug fixes.
+sidebar:
+  label: 5. Updating SplashKit
+#  attrs:
+#    class: linux
+---
+
+import { Tabs, TabItem, Steps, LinkButton } from "@astrojs/starlight/components";
+
+The SplashKit SDK is regularly updated to ensure compatibility with the latest features and bug fixes. If you encounter issues with a SplashKit function or notice discrepancies between your system's SDK and the documentation, you may need to update SplashKit.
+
+## Updating SplashKit on Linux
+
+To update SplashKit on your system, use the following command:
+
+```bash
+skm update
+```
+
+### How the Update Works
+
+The `skm update` command performs several steps to ensure that your SplashKit installation is current:
+
+1. **Check for Dependencies**: Ensures any new dependencies required by the update are installed.
+2. **Check Branch Status**: Verifies that your SplashKit branch is up-to-date.
+3. **Rebuild SplashKit**: Recompiles the library files if updates are detected, ensuring all components are in sync.
+
+This command operates similarly to `skm linux install`, performing a complete check and refresh of your installation to match the latest SplashKit version.
