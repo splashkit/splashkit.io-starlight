@@ -1,0 +1,3 @@
+### Check the length of a string
+
+The following code shows examples of using [length of](/api/utilities/#length-of) to check the length of different strings.
