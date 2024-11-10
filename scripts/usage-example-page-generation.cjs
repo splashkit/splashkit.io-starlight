@@ -350,7 +350,7 @@ categories.forEach((categoryKey) => {
           let codePath = categoryFilePath + "/" + functionKey;
           const codeFiles = getAllFiles(codePath);
           let importTitle = exampleKey.replaceAll("-", "_");
-
+          let functionTag = "";
           languageOrder.forEach((lang) => {
             const languageFiles = codeFiles.filter(file => file.endsWith(languageFileExtensions[lang]));
             let codeFilePath = categoryPath + "/" + functionKey + "/" + exampleTxtKey.replaceAll(".txt", languageFileExtensions[lang]);
@@ -391,6 +391,15 @@ categories.forEach((categoryKey) => {
 
               // Check if both top level and oop code has been found for current function
               const csharpFiles = codeFiles.filter(file => file.endsWith("-top-level.cs") || file.endsWith("-oop.cs")).filter(file => file.includes(exampleKey));
+              functionTag = exampleKey.split("-")[0];
+              if (lang == "cpp") {
+                functionTag = groupName;
+              }
+              if (lang == "csharp") {
+                functionTag = groupName.split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join("");
+              }
               if (lang == "csharp" && csharpFiles.length > 0) {
                 mdxContent += "\n  <Tabs syncKey=\"csharp-style\">\n";
                 // use reverse order to make Top level first
@@ -398,12 +407,12 @@ categories.forEach((categoryKey) => {
                   if (file.includes(exampleKey)) {
                     if (file.includes("-top-level")) {
                       mdxContent += `    <TabItem label="Top-level Statements">\n`;
-                      mdxContent += `      <Code code={${importTitle}_top_level_${lang}} lang="${lang}" />\n`;
+                      mdxContent += `      <Code code={${importTitle}_top_level_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
                       mdxContent += "    </TabItem>\n";
                     }
                     if (file.includes("-oop")) {
                       mdxContent += `    <TabItem label="Object-Oriented">\n`;
-                      mdxContent += `      <Code code={${importTitle}_oop_${lang}} lang="${lang}" />\n`;
+                      mdxContent += `      <Code code={${importTitle}_oop_${lang}} lang="${lang}" mark={"SplashKit.${functionTag}"} />\n`;
                       mdxContent += "    </TabItem>\n";
                     }
                   }
@@ -412,7 +421,7 @@ categories.forEach((categoryKey) => {
                 mdxContent += "  </TabItem>\n";
               }
               else {
-                mdxContent += `    <Code code={${importTitle}_${lang}} lang="${lang}" />\n`;
+                mdxContent += `    <Code code={${importTitle}_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
                 mdxContent += "  </TabItem>\n";
               }
             }
