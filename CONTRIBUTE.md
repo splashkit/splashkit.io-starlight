@@ -56,30 +56,57 @@ By following these steps, you contribute effectively to the SplashKit website. R
 
 ## Website Guide
 
-<!-- TODO: Update the information below -->
-
-This guide provides information on the structure and organization of the SplashKit website using the Starlight framework. Follow these instructions to navigate through the project and make necessary updates.
+This guide provides information on the structure and organization of the SplashKit website, which is built on the Starlight framework. Follow these instructions to navigate through the project and make necessary updates effectively.
 
 ### Installation and Commands
 
-For basic installation and commands, please refer to the [`Readme.md`](/README.md) file in the project's root directory.
+For detailed installation instructions and common commands, refer to the [`README.md`](/README.md) file in the root directory of the project.
 
-### Image Resources
+### Project Structure Overview
 
-All image resources are located under the `public` root directory.
+The SplashKit website project structure is organized as follows:
+
+```plaintext
+.
+├── public/                   # Publicly accessible resources
+│   ├── gifs/                 # GIF files used across the website
+│   ├── images/               # General image resources
+│   ├── resources/            # Resource files for various purposes
+│   └── usage-examples/       # Files for usage examples
+├── src/
+│   ├── assets/               # Additional assets for the website
+│   ├── components/           # Reusable UI components
+│   ├── content/              # Documentation and content files
+│   │   ├── docs/             # Main documentation directory
+│   │   ├── guides/           # Guides for specific features
+│   │   ├── installation/     # Installation instructions
+│   │   ├── troubleshoot/     # Troubleshooting information
+│   │   └── arcade-hackathon-project/ # Arcade hackathon resources
+│   ├── fonts/                # Custom fonts used on the site
+│   ├── styles/               # Global and component CSS styles
+└── test/                     # Scripts for testing and page generation
+```
+
+### Image and Usage Example Resources
+
+All image resources are located in the `public/images` directory.
+
+Usage examples, which illustrate how to use different SplashKit functions, are organized under the `public/usage-examples/` directory. Ensure that any new usage example files are placed here.
 
 ### Documentation Pages
 
-Documentation pages are stored under `root/src/content/docs/`. To find information on specific SplashKit components such as Animations, Sounds, etc., refer to the respective sections within the `components` directory.
+Documentation pages are stored under `src/content/docs/`. For sections related to specific components, such as Animations, Sounds, or other SplashKit features, refer to the respective subdirectories within `src/content/docs/components`.
 
-Each working directory can contain an `index.mdx` file. This file serves as the page that will be accessed when only the section is fetched. For instance, under the `installation` directory, the `index.mdx` page will be accessed when `https://some-host/installation/` is fetched.
+- Each section may include an `index.mdx` file, which serves as the main page when navigating to a section URL (e.g., the `index.mdx` file in the `installation` folder is accessed via `https://your-site/installation/`).
 
-### CSS Files
+### Styling and CSS Files
 
-CSS files can be found under `src/styles/`. If you create a new directory or use new style files, update the `astro.config.mjs` file in the root directory to read the files.
+All CSS files can be found under the `src/styles/` directory. If you add new CSS files or directories, ensure they are referenced in the `astro.config.mjs` file in the root directory to apply styles correctly across the website.
 
 ### Test Directory
 
-Inside the `test` directory, you will find a NodeJS script that generates MDX pages required for component generation. Refer to the comments inside the script for detailed instructions on usage and customization.
+The `test` directory contains scripts, including a NodeJS script that generates MDX pages needed for component generation. Refer to comments within each script for specific instructions on usage and customization.
 
-Make sure to follow these guidelines to maintain a well-organized and functional SplashKit website powered by the Starlight framework.
+### Guidelines
+
+Adhere to these structure and organization guidelines to maintain a functional, well-organized SplashKit website on the Starlight framework. Consistency across directories and files will streamline contributions and enhance project maintainability.

@@ -1,5 +1,5 @@
 <p align="left">
-    <img width="150px" src="https://github.com/thoth-tech/.github/blob/main/images/splashkit.png"/>
+    <img width="150px" src="https://github.com/thoth-tech/.github/blob/main/images/splashkit.png" alt="SplashKit Logo"/>
 </p>
 
 ### [Splashkit](https://github.com/splashkit/splashkit.io-starlight) Stats
@@ -20,7 +20,6 @@
 [![Website Preview](https://img.shields.io/badge/Preview-splashkit.io-blue)](https://splashkit-io.netlify.app/)
 ![Forks](https://img.shields.io/github/forks/thoth-tech/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/thoth-tech/splashkit.io-starlight?label=Stars&color=F5A623)
-
 
 # SplashKit SDK - Starlight Framework
 
@@ -98,6 +97,15 @@ All commands are run from the root of the project, from a terminal:
 | `npm run generate-mdx`                  | Generates an MDX file *(for functions)* from JSON data in the `test` folder                                 |
 | `npm run generate-usage-examples-pages` | Runs the script to generate usage example pages from the `./scripts/usage-example-page-generation.cjs` file |
 | `npm run check-links`                   | Sets `CHECK_LINKS=true`, runs `npm run build`, then resets `CHECK_LINKS=false`                              |
+
+## 🧞 Starting the Development Environment
+
+To start the SplashKit website development environment, you can use the predefined tasks in the `tasks.json` file:
+
+1. Press `Ctrl+Shift+P` to open the command palette.
+2. Select **"Run Task"** and choose **"Build splashkit.io Website"** from the list. This will build the project.
+3. After the build is complete, open the command palette again with `Ctrl+Shift+P`.
+4. Select **"Run Task"** and then **"Serve splashkit.io Website"** to start the local server.
 
 ## Contributing
 
