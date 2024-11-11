@@ -98,15 +98,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run generate-usage-examples-pages` | Runs the script to generate usage example pages from the `./scripts/usage-example-page-generation.cjs` file |
 | `npm run check-links`                   | Sets `CHECK_LINKS=true`, runs `npm run build`, then resets `CHECK_LINKS=false`                              |
 
-## 🧞 Starting the Development Environment
-
-To start the SplashKit website development environment, you can use the predefined tasks in the `tasks.json` file:
-
-1. Press `Ctrl+Shift+P` to open the command palette.
-2. Select **"Run Task"** and choose **"Build splashkit.io Website"** from the list. This will build the project.
-3. After the build is complete, open the command palette again with `Ctrl+Shift+P`.
-4. Select **"Run Task"** and then **"Serve splashkit.io Website"** to start the local server.
-
 ## Contributing
 
 We welcome contributions from the community to enhance the SplashKit SDK on the Starlight framework. If you would like to contribute, please follow the guidelines outlined in the [CONTRIBUTE.md](./CONTRIBUTE.md) file.
