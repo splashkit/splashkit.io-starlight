@@ -4,6 +4,7 @@ import solidJs from "@astrojs/solid-js";
 import react from "@astrojs/react";
 import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from "@astrojs/sitemap";
+import starlightBlog from 'starlight-blog'
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,11 @@ export default defineConfig({
       title: "SplashKit",
       description: 'SplashKit is a cross-platform game engine for C, C++ and Objective-C. It provides a simple API for 2D game development.',
       plugins: [
+        starlightBlog({
+          title: 'SplashKit Blog',
+          recentPostCount: 5,
+          prevNextLinksOrder: 'chronological',
+        }),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
         }),
@@ -93,6 +99,10 @@ export default defineConfig({
         {
           label: "Usage Examples",
           autogenerate: { directory: "usage-examples", collapsed: true },
+        },
+        {
+          label: "Blog",
+          autogenerate: { directory: "blog", collapsed: true },
         },
         // {
         //   label: "Arcade Hackathon Project",
