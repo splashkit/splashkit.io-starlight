@@ -32,7 +32,7 @@ namespace BitmapCollisionsDemo
             };
 
             // Clear the screen and draw the elements
-            ClearScreen(Color.Rgb(67, 80, 175));
+            ClearScreen(RGBColor(67, 80, 175));
             DrawBitmap(skBmp, bmpLoc.X, bmpLoc.Y);
             FillRectangle(Color.Black, blackRectangle);
             FillRectangle(Color.Red, redRectangle);

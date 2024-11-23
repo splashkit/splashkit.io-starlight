@@ -25,13 +25,13 @@ sk_bmp_matrix = translation_matrix_to_point(sk_bmp_loc)
 # Clear the screen and draw the bitmap and dots
 clear_screen(color_white())
 draw_bitmap(sk_bmp, sk_bmp_loc.x, sk_bmp_loc.y)
-fill_circle(color_black(), circle_at(black_dot_loc, 2))
-fill_circle(color_red(), circle_at(red_dot_loc, 2))
+fill_circle_record(color_black(), circle_at(black_dot_loc, 2))
+fill_circle_record(color_red(), circle_at(red_dot_loc, 2))
 
 # Check for collisions
-if bitmap_point_collision(sk_bmp, sk_bmp_matrix, black_dot_loc):
+if bitmap_point_collision_with_translation(sk_bmp, sk_bmp_matrix, black_dot_loc):
     write_line("Black Dot Collision")
-if bitmap_point_collision(sk_bmp, sk_bmp_matrix, red_dot_loc):
+if bitmap_point_collision_with_translation(sk_bmp, sk_bmp_matrix, red_dot_loc):
     write_line("Red Dot Collision!")
 
 # Refresh the screen and wait

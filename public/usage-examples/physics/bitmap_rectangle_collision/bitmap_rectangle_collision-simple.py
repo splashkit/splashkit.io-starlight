@@ -25,8 +25,8 @@ red_rectangle.height = 20
 # Clear the screen and draw the elements
 clear_screen(rgb_color(67, 80, 175))
 draw_bitmap(sk_bmp, bmp_loc.x, bmp_loc.y)
-fill_rectangle(color_black(), black_rectangle)
-fill_rectangle(color_red(), red_rectangle)
+fill_rectangle_record(color_black(), black_rectangle)
+fill_rectangle_record(color_red(), red_rectangle)
 
 # Check for collisions
 if bitmap_rectangle_collision(sk_bmp, 50, 50, black_rectangle):
