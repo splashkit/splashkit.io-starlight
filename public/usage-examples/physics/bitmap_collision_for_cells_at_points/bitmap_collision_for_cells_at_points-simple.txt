@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with Another Bitmap Based on Cell and Drawing Points
+
+Check if two bitmaps collide, based on their cells and the points they are drawn to.
+
+Uses the [bitmap_collision](/api/physics/#bitmap-collision-4) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_collision/bitmap_collision-resources.zip).
+:::

@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with Circle Using a Point and Bitmap Cell
+
+Tests if a bitmap cell drawn using a passed in point and bitmap cell will intersect with a circle. You can use this to detect collisions between bitmaps and circles.
+
+Uses the [bitmap_circle_collision](/api/physics/#bitmap-circle-collision-4) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_circle_collision/bitmap_circle_collision-resources.zip).
+:::

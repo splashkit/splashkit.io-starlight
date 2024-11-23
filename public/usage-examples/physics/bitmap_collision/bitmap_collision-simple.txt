@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with Another Bitmap At Specified Coordinates
+
+Check if two bitmaps collide when drawn to specified coordinates.
+
+Uses the [bitmap_collision](/api/physics/#bitmap-collision-1) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_collision/bitmap_collision-resources.zip).
+:::

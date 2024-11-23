@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with a Point Given Specified Coordinates
+
+Tests if a cell of a bitmap drawn at x,y would draw a pixel at the passed in point. Use to check collisions between a point and a bitmap.
+
+Uses the [bitmap_point_collision](/api/physics/#bitmap-point-collision-5) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_point_collision/bitmap_point_collision-resources.zip).
+:::

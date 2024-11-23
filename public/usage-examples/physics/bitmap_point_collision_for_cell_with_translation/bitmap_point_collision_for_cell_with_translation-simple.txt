@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with a Cell of Translation Matrix
+
+Tests if a bitmap cell drawn using the passed in translation matrix would draw a pixel at the passed in point.
+
+Uses the [bitmap_point_collision](/api/physics/#bitmap-point-collision-4) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_point_collision/bitmap_point_collision-resources.zip).
+:::

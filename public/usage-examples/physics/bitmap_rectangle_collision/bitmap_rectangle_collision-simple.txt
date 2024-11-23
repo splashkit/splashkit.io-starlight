@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with a Rectangle at Given Coordinates
+
+Tests if a bitmap drawn at specified coordinates would intersect with a given rectangle.
+
+Uses the [bitmap_rectangle_collision](/api/physics/#bitmap-rectangle-collision-2) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_rectangle_collision/bitmap_rectangle_collision-resources.zip).
+:::

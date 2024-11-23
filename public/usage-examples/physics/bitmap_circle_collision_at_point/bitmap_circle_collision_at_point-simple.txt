@@ -1,0 +1,9 @@
+#### Test Bitmap Collision with Circle At a Point
+
+Tests if a bitmap drawn at point would intersect with a circle.
+
+Uses the [bitmap_circle_collision](/api/physics/#bitmap-circle-collision-1) function.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/bitmap_circle_collision/bitmap_circle_collision-resources.zip).
+:::
