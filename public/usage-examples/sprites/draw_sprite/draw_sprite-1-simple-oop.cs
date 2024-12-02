@@ -6,7 +6,7 @@ namespace DrawSpriteExample
     {
         public static void Main()
         {
-            SplashKit.OpenWindow("draw_sprite", 600, 600);
+            SplashKit.OpenWindow("Drawing a Player Sprite", 600, 600);
 
             SplashKit.LoadBitmap("player", "player.png");
             Sprite playerSprite = SplashKit.CreateSprite(SplashKit.BitmapNamed("player"));
