@@ -11,7 +11,6 @@ int main()
     refresh_screen();
     
     delay(4000);
-
     close_all_windows();
 
     return 0;
