@@ -1,8 +1,10 @@
-<p align="left">
-    <img width="150px" src="https://github.com/thoth-tech/.github/blob/main/images/splashkit.png" alt="SplashKit Logo"/>
-</p>
+# [splashkit.io](https://splashkit.io) Website - Starlight Framework
 
-### [Splashkit](https://github.com/splashkit/splashkit.io-starlight) Stats
+<img width="150px" align="right" src="https://github.com/thoth-tech/.github/blob/main/images/splashkit.png" alt="SplashKit Logo"/>
+
+Welcome to the official documentation website for the SplashKit SDK, using the Starlight (Astro) framework! This README will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
+
+[splashkit/splashkit.io-starlight](https://github.com/splashkit/splashkit.io-starlight)
 
 [![GitHub contributors](https://img.shields.io/github/contributors/splashkit/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues/splashkit/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/splashkit/splashkit.io-starlight/issues)
@@ -12,9 +14,7 @@
 ![Forks](https://img.shields.io/github/forks/splashkit/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/splashkit/splashkit.io-starlight?label=Stars&color=F5A623)
 
-### [Thoth Tech](https://github.com/thoth-tech/splashkit.io-starlight) Stats
-
-Thoth Tech is a people-focused educational technology company dedicated to empowering students and educators through innovative tools. As a capstone company in Deakin University's capstone subjects, Thoth Tech provides real-world learning opportunities and contributes significantly to projects like SplashKit, enhancing its capabilities and resources.
+[thoth-tech/splashkit.io-starlight](https://github.com/thoth-tech/splashkit.io-starlight) *
 
 [![GitHub contributors](https://img.shields.io/github/contributors/thoth-tech/splashkit.io-starlight?label=Contributors&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues/thoth-tech/splashkit.io-starlight?label=Issues&color=F5A623)](https://github.com/thoth-tech/splashkit.io-starlight/issues)
@@ -23,17 +23,9 @@ Thoth Tech is a people-focused educational technology company dedicated to empow
 ![Forks](https://img.shields.io/github/forks/thoth-tech/splashkit.io-starlight?label=Forks&color=F5A623)
 ![Stars](https://img.shields.io/github/stars/thoth-tech/splashkit.io-starlight?label=Stars&color=F5A623)
 
-# SplashKit SDK - Starlight Framework
+**\* SplashKit Development in Thoth Tech**
 
-## Introduction
-
-Welcome to the official documentation for the SplashKit SDK on the Starlight framework! This README will guide you through the installation process and provide an overview of the features and functionalities of the SDK.
-
-<!--## Deployment Status!-->
-<!--[Thoth Tech's 'splashkit.io' Site](https://splashkit-io.netlify.app/) - [![Netlify Status](https://api.netlify.com/api/v1/badges/e8def4e6-f39d-458a-8ca9-556d61ce1fbd/deploy-status)](https://app.netlify.com/sites/splashkit-io/deploys)--!>
-
-<!-- - [Production](https://master--splashkit.netlify.app/) -   [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=master)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=master)
-- [Development](https://development--splashkit.netlify.app/) - [![Netlify Status](https://api.netlify.com/api/v1/badges/29627b16-8f40-4b42-8ae8-1912895f5305/deploy-status?branch=development)](https://app.netlify.com/sites/splashkit/deploys) ![Github Pages](https://github.com/splashkit/splashkit.io-starlight/actions/workflows/astro.yml/badge.svg?branch=production) -->
+Thoth Tech is a people-focused educational technology company within Deakin University's capstone program which provides real-world learning opportunities and allows students to contribute significantly to projects like SplashKit, enhancing its capabilities and resources.
 
 ## Installation
 
@@ -98,6 +90,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help`               | Gets help using the Astro CLI                                                                               |
 | `npm run generate-mdx`                  | Generates an MDX file *(for functions)* from JSON data in the `test` folder                                 |
 | `npm run generate-usage-examples-pages` | Runs the script to generate usage example pages from the `./scripts/usage-example-page-generation.cjs` file |
+| `npm run generate-usage-examples-pages write_line-1-simple` | Runs the script to generate usage example pages from the `./scripts/usage-example-page-generation.cjs` file and prints the testing output for the `write_line-1-simple` example |
 | `npm run check-links`                   | Sets `CHECK_LINKS=true`, runs `npm run build`, then resets `CHECK_LINKS=false`                              |
 
 ## Contributing
