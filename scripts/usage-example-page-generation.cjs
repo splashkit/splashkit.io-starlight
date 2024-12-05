@@ -352,7 +352,7 @@ categories.forEach((categoryKey) => {
           let importTitle = exampleKey.replaceAll("-", "_");
           let functionTag = "";
           languageOrder.forEach((lang) => {
-            const languageFiles = codeFiles.filter(file => file.endsWith(languageFileExtensions[lang]));
+            const languageFiles = codeFiles.filter(file => file.startsWith(exampleKey)).filter(file => file.endsWith(languageFileExtensions[lang]));
             let codeFilePath = categoryPath + "/" + functionKey + "/" + exampleTxtKey.replaceAll(".txt", languageFileExtensions[lang]);
 
             // import code if available
