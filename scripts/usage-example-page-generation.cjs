@@ -434,21 +434,32 @@ categories.forEach((categoryKey) => {
 
           const imageFiles = categoryFiles.filter(file => file.endsWith(exampleKey + '.png'));
           let outputFilePath = categoryPath + "/" + functionKey + "/" + exampleTxtKey;
-
+          // Check for .png files
           if (imageFiles.length > 0) {
             outputFilePath = outputFilePath.replaceAll(".txt", ".png");
+            mdxContent += `![${exampleKey} example](${outputFilePath})\n`
           }
           else {
-            const gifFiles = categoryFiles.filter(file => file.endsWith('.gif'));
+            const gifFiles = categoryFiles.filter(file => file.endsWith('.gif')).filter(file => file.startsWith(exampleKey));
+            // Check for .gif files
             if (gifFiles.length > 0) {
               outputFilePath = outputFilePath.replaceAll(".txt", ".gif");
+              mdxContent += `![${exampleKey} example](${outputFilePath})\n`
             }
             else {
-              console.log(kleur.red("\nError: No image or gif files found for " + exampleKey + "usage example"));
+              const webmFiles = categoryFiles.filter(file => file.endsWith('.webm'));
+              // Check for .webm files
+              if (webmFiles.length > 0) {
+                outputFilePath = outputFilePath.replaceAll(".txt", ".webm");
+                mdxContent += `<video controls style="max-width:100%; margin:auto; margin-top:16px;">\n`
+                mdxContent += `\t<source src="${outputFilePath}" type="video/webm" />\n`
+                mdxContent += `</video>\n`
+              }
+              else {
+                console.log(kleur.red("\nError: No image, gif or webm (audio) files found for " + exampleKey + "usage example"));
+              }
             }
           }
-
-          mdxContent += `![${exampleKey} example](${outputFilePath})\n`
           mdxContent += "\n---\n";
         });
       }
