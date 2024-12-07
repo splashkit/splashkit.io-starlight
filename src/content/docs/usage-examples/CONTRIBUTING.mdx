@@ -7,7 +7,10 @@ sidebar:
 To contribute a function usage example, you need to create the following files:
 
 - **Text file** (.txt) containing a title and short description of the example.
-- **Image file** (.png) (or **Gif file** (.gif) if the example code is interactive) showing the expected output of the example.
+- **Output Image/Video file** showing the expected output of the example. This output file needs to be one of the following:
+  - **Image file** (.png)
+  - **Gif file** (.gif) if the example code is interactive
+  - **Webm file** (.webm) if there is audio in the code example.
 - **Code files** with the example code. This must be a complete code example, not just a snippet of code.
 - ***Zip file*** (*only if your code requires resource files*) containing the "Resources" folder created with the `skm resources` command, with any resources needed for your example code to run. (More info about adding this at the end.)
 
@@ -79,13 +82,14 @@ Here is an example of the contents of the `write_line-2-extended.txt` file:
 The following code is an example of using [Write Line](/api/terminal#write-line-5) to create ASCII art of "Charlie the Unicorn" in the terminal.
 ```
 
-### Image of Gif file
+### Output Image/Gif/Audio file
 
 Add a screenshot of the output of the example program.
 
-If the example program includes user input or any movement, please create a Gif showing the program running.
+- If the example program includes user input or any movement, please create a Gif showing the program running.
+- If the example program includes audio, please create a Webm file showing the program running. You can use a tool such as [ffmpeg](https://ffmpeg.org/) to convert your video files to `.webm` files.
 
-Remove identifying details from the image/gif where possible.
+Remove identifying details from the image/gif/audio where possible.
 
 ### Code file(s)
 
@@ -125,7 +129,7 @@ To test this example code you can download these [**Resources**](/usage-examples
 
 Then update the link in the template above to add the `<category>`, `<unique-global-name>` and `<your-zip-file-name>`.
 
-eg. For the `draw_bitmap_named` example that has been created, the text file contents would look like this:
+eg. For the first `draw_bitmap_named` example that has been created, the text file contents would look like this:
 
 ```plaintext
 ### Basic Bitmap Drawing
