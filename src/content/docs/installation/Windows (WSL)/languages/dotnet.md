@@ -1,5 +1,6 @@
 ---
 title: Installing the .NET Core SDK on Windows
+description: Instructions for installing the .NET Core SDK on Windows.
 sidebar:
   hidden: true
   attrs:
