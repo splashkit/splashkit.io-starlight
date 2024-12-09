@@ -3,20 +3,20 @@ title: skm global install fails on Arch-based Linux distributions
 description: Issue with the `skm global install` command failing during installation on Arch-based Linux due to `libjxl` dependency errors with `SDL2_image`.
 sidebar:
   label: 3. skm global install fails on Arch-based Linux
-#  attrs:
-#    class: linux
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-<h1> Issue : Linux </h1>
+:::caution[`skm global install` Fails During Installation on Arch-Based Distributions]
 
-## `skm global install` Fails During Installation on Arch-Based Distributions
+This guide addresses the issue where the `skm global install` command fails during the installation process on Arch-based Linux distributions like Manjaro due to a dependency error with `libjxl` required by `SDL2_image`.
 
-**Description:** This guide addresses the issue where the `skm global install` command fails during the installation process on Arch-based Linux distributions like Manjaro due to a dependency error with `libjxl` required by `SDL2_image`.
+:::
 
 :::note
+
 This error can also occur due to various package issues, which might give you an error for a different package, this often stems from outdated or corrupted dependencies in the default repository.
+
 :::
 
 ## Problem
@@ -35,7 +35,7 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
     Ensure your system's package repositories are up-to-date by running the following command:
 
-    ```bash
+    ```shell
     sudo pacman -Syu
     ```
 
@@ -45,7 +45,7 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
     If the issue persists due to `SDL2_image` dependencies (e.g., `libjxl`), use `pamac` to update the package cache and repositories linked to newer dependency versions:
 
-    ```bash
+    ```shell
     pamac update --no-aur
     ```
 
@@ -55,7 +55,7 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
     To manually check if `libjxl` and other related dependencies are installed, run:
 
-    ```bash
+    ```shell
     pamac install libjxl
     sudo pacman -S sdl2_image
     ```
@@ -66,7 +66,7 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
     After updating the dependencies, retry the SplashKit global installation:
 
-    ```bash
+    ```shell
     skm global install
     ```
 
@@ -76,8 +76,8 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
 ## Additional Notes
 
-- If you encounter further errors, verify your system's library paths and ensure `libSplashKit.so` is correctly located by running:
+If you encounter further errors, verify your system's library paths and ensure `libSplashKit.so` is correctly located by running:
 
-  ```bash
-  sudo ldconfig /usr/local/lib
-  ```
+```shell
+sudo ldconfig /usr/local/lib
+```

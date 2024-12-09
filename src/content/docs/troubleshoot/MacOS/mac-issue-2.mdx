@@ -3,19 +3,17 @@ title: install dotnet-sdk command not working
 description: Issue with the `brew cask install dotnet-sdk` command not working on MacOS, and how to fix it.
 sidebar:
   label: 2. Brew cask install
-#  attrs:
-#    class: apple
 ---
+
+{/*NOTE: Can probably remove this one now that we no longer have this command in our installation guide*/}
 
 import { Steps } from '@astrojs/starlight/components';
 
-<h1> Issue : MacOS </h1>
+:::caution[`brew cask install dotnet-sdk` Command Not Working]
 
-### `brew cask install dotnet-sdk` Command Not Working (or Issues Installing Homebrew)
+This guide addresses issues on MacOS where the command `brew cask install dotnet-sdk` fails. The instructions below provide the correct command and alternative installation options for the .NET SDK.
 
-**Description:** This guide addresses issues on MacOS where the command `brew cask install dotnet-sdk` fails. The instructions below provide the correct command and alternative installation options for the .NET SDK.
-
----
+:::
 
 ## Problem
 
@@ -40,10 +38,12 @@ This command installs the latest compatible version of the .NET SDK using Homebr
 If Homebrew is not an option or you encounter further issues, you can download the .NET SDK directly from the Microsoft website:
 
 <Steps>
+
 1. Go to the [.NET SDK 7.0 download page](https://dotnet.microsoft.com/en-us/download/dotnet/7.0).
 2. Select the macOS installer link for your system architecture:
    - **Arm64** for Apple Silicon (M1 and newer chips).
    - **x64** for Intel-based Macs.
+
 </Steps>
 
 Download and install using the installer provided on the website.

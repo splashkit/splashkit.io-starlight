@@ -3,19 +3,15 @@ title: Missing an assembly reference?
 description: Issue with the error that mentions (`are you missing an assembly reference?`) on Windows, and how to fix it.
 sidebar:
   label: 6. Assembly reference
-#  attrs:
-#    class: windows
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-<h1> Issue : Windows </h1>
+:::caution[Error: "Are you missing an assembly reference?"]
 
-### Error: "Are you missing an assembly reference?"
+This guide addresses the error on Windows where the message “are you missing an assembly reference?” appears when attempting to run a SplashKit project. This often occurs due to a naming conflict.
 
-**Description:** This guide addresses the error on Windows where the message “are you missing an assembly reference?” appears when attempting to run a SplashKit project. This often occurs due to a naming conflict.
-
----
+:::
 
 ## Problem
 
@@ -35,7 +31,7 @@ To resolve this error, avoid naming your project "SplashKit."
 
     Choose a unique folder name, as the project name is automatically generated based on this folder.
 
-1. **Recreate the Project (if needed)**
+2. **Recreate the Project (if needed)**
 
     If you continue to see the error, try recreating the project in a new folder with a different name to avoid cached references to the original setup.
 

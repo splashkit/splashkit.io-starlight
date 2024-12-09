@@ -3,19 +3,15 @@ title: System.DllNotFoundException
 description: Issue with Windows, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
 sidebar:
   label: 2. DllNotFoundException
-#  attrs:
-#    class: windows
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-<h1> Issue : Windows </h1>
+:::caution[`System.DllNotFoundException unable to load DLL splashkit.dll`]
 
-### `System.DllNotFoundException unable to load DLL splashkit.dll` When Running Program
+This guide provides solutions for Windows users encountering the `System.DllNotFoundException` error when trying to run a SplashKit program. This error typically occurs when the `splashkit.dll` file is missing or not correctly linked to the project.
 
-**Description:** This guide provides solutions for Windows users encountering the `System.DllNotFoundException` error when trying to run a SplashKit program. This error typically occurs when the `splashkit.dll` file is missing or not correctly linked to the project.
-
----
+:::
 
 ## Problem
 
@@ -66,24 +62,26 @@ To ensure Windows can locate `splashkit.dll`, manually add its directory to your
 
 If all else fails, try manually copying the SplashKit binaries to your project’s build output directory:
 
-   <Steps>
-   1. Navigate to the folder containing SplashKit binaries at `C:\msys64\home\(your username)\.splashkit\lib\win64`.
+<Steps>
 
-         *Replace "(your username)" with your actual username (you can use the `whoami` command in the terminal to confirm your username).*
+ 1. Navigate to the folder containing SplashKit binaries at `C:\msys64\home\(your username)\.splashkit\lib\win64`.
 
-         Your folder contents should look similar to this:
+       *Replace "(your username)" with your actual username (you can use the `whoami` command in the terminal to confirm your username).*
 
-         ![SplashKit Binaries Example](https://i.imgur.com/XRha19P.png)
+       Your folder contents should look similar to this:
 
-   2. Copy all files from this folder into your project’s build output directory, which is typically located at:
+       ![SplashKit Binaries Example](https://i.imgur.com/XRha19P.png)
 
-         `<Project folder name>\bin\Debug\net7.0`
+ 2. Copy all files from this folder into your project’s build output directory, which is typically located at:
 
-         For example, if your project folder is named "MyProject" and uses .NET 7.0, the path would be:
+       `<Project folder name>\bin\Debug\net7.0`
 
-         `MyProject\bin\Debug\net7.0`
+       For example, if your project folder is named "MyProject" and uses .NET 7.0, the path would be:
 
-         **Note:** If you’re using a different .NET version, adjust the path accordingly.
-   </Steps>
+       `MyProject\bin\Debug\net7.0`
+
+       **Note:** If you’re using a different .NET version, adjust the path accordingly.
+
+ </Steps>
 
 Following these steps should help resolve the `System.DllNotFoundException` error and allow your program to locate `splashkit.dll` properly.

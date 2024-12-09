@@ -3,8 +3,6 @@ title: Install SplashKit
 description: Install SplashKit on Windows (WSL).
 sidebar:
   label: 2. SplashKit
-#   attrs:
-#     class: windows-wsl
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -21,19 +19,15 @@ Follow these steps to set up SplashKit on WSL and start building interactive, vi
 
    Launch your WSL or Ubuntu terminal.
 
-   ---
-
 2. **Install the SplashKit Manager**  
 
    Copy and paste the following command into your terminal, then press **Enter**:
 
-    ```shell
-    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
-    ```
+   ```shell
+   bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+   ```
 
-    This command downloads the installer directly from the [SplashKit homepage](https://splashkit.io).
-
-    ---
+   This command downloads the installer directly from the [SplashKit homepage](https://splashkit.io).
 
 3. **Verify the Installation**
 
@@ -52,17 +46,13 @@ Follow these steps to set up SplashKit on WSL and start building interactive, vi
 
     *Tip:* Use `skm help` to explore additional commands for managing SplashKit.
 
-    ---
-
 4. **Install Dependencies and Compile SplashKit**
- 
+
    Run this command to install any necessary dependencies and compile SplashKit:
 
     ```shell
     skm linux install
     ```
-
-    ---
 
 5. **Install SplashKit Globally**
 

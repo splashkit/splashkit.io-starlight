@@ -3,8 +3,6 @@ title: Install Visual Studio Code
 description: Download and install Visual Studio Code to use as a source code editor, and install the necessary extensions for C# and C++.
 sidebar:
   label: 3. Visual Studio Code
-#  attrs:
-#    class: linux
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -18,26 +16,29 @@ import { Steps } from '@astrojs/starlight/components';
 <Steps>
 
 1. **Download Visual Studio Code**
+
    Visit the [Visual Studio Code download page](https://code.visualstudio.com/) and select the `.deb` package for Ubuntu/Debian systems. This will download the installer to your default `Downloads` folder.
 
    ![Downloading Visual Studio Code for Ubuntu](/gifs/linux/download-vsc.gif)
 
 2. **Open a Terminal**
+
    Open a terminal on your system:
 
    - Use the application menu to find "Terminal."
    - Or press `Ctrl + Alt + T` as a shortcut on most Ubuntu systems.
 
 3. **Navigate to the Download Location**
+
    By default, downloaded files are saved in the `~/Downloads` directory. Navigate there using:
 
-   ```bash
+   ```shell
    cd ~/Downloads
    ```
 
    Then run the following command to install Visual Studio Code:
 
-   ```bash
+   ```shell
    sudo dpkg -i code_1.*.deb
    ```
 
@@ -53,7 +54,7 @@ import { Steps } from '@astrojs/starlight/components';
 
    Open a terminal and add the Visual Studio Code repository and GPG key using the following commands:
 
-   ```bash
+   ```shell
    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
    echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
    ```
@@ -62,7 +63,7 @@ import { Steps } from '@astrojs/starlight/components';
 
    Update the package cache to ensure your system recognizes the new repository:
 
-   ```bash
+   ```shell
    dnf check-update
    ```
 
@@ -70,13 +71,13 @@ import { Steps } from '@astrojs/starlight/components';
 
    For Fedora 22 and newer, install Visual Studio Code using:
 
-   ```bash
+   ```shell
    sudo dnf install code
    ```
 
    For older systems, use:
 
-   ```bash
+   ```shell
    sudo yum install code
    ```
 
@@ -92,7 +93,7 @@ For Arch Linux, you have two primary installation options:
 
    This version includes Microsoft branding and telemetry, it's maintained by the Arch User Repository (AUR). Install it with:
 
-   ```bash
+   ```shell
    yay -S visual-studio-code-bin
    ```
 
@@ -102,7 +103,7 @@ For Arch Linux, you have two primary installation options:
 
    The open-source version of Visual Studio Code is available directly from the Arch community repositories. Install it using:
 
-   ```bash
+   ```shell
    sudo pacman -S code
    ```
 
@@ -126,9 +127,9 @@ If you are using code OSS you won't be able to install extensions via the comman
 
 Install the following C# extensions directly from the Visual Studio Marketplace:
 
-<LinkButton href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">C#</LinkButton>
-<LinkButton href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit">C# Dev Kit</LinkButton>
-<LinkButton href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp">Intellicode for C# Dev Kit</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" target="_blank">C#</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit" target="_blank">C# Dev Kit</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp" target="_blank">Intellicode for C# Dev Kit</LinkButton>
 
 #### Method 2: Via the Command Line
 
@@ -157,7 +158,7 @@ To add these extensions within Visual Studio Code:
 
 Install the C++ Extension Pack for comprehensive C++ support:
 
-<LinkButton href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack">C++ Extension Pack</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack" target="_blank">C++ Extension Pack</LinkButton>
 
 #### Method 2: Via the Command Line
 
@@ -184,7 +185,7 @@ To add the C++ extension within Visual Studio Code:
 
 For Python support, install the Python Extension Pack from the Visual Studio Marketplace:
 
-<LinkButton href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack">Python Extension Pack</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack" target="_blank">Python Extension Pack</LinkButton>
 
 #### Method 2: Via the Command Line
 

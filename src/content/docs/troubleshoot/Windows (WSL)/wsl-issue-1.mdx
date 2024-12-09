@@ -3,18 +3,15 @@ title: Stack overflow Exception for GUI applications in WSL
 description: Stack Overflow Exception when trying to open GUI application in WSL and how to resolve it.
 sidebar:
   label: 1. Stack Overflow
-#  attrs:
-#    class: windows-wsl
 ---
-<h1> Issue : WSL </h1>
 
 import { Steps } from '@astrojs/starlight/components';
 
-### Stack Overflow Exception When Opening GUI Application in WSL
+:::caution[Stack Overflow Exception When Opening GUI Application in WSL]
 
-**Description:** This guide addresses a Stack Overflow Exception encountered when trying to open a GUI application within the Windows Subsystem for Linux (WSL). This issue typically arises when the necessary vGPU driver for running Linux GUI applications in WSL is missing.
+This guide addresses a Stack Overflow Exception encountered when trying to open a GUI application within the Windows Subsystem for Linux (WSL). This issue typically arises when the necessary vGPU driver for running Linux GUI applications in WSL is missing.
 
----
+:::
 
 ## Problem
 
@@ -57,6 +54,6 @@ To enable Linux GUI applications in WSL, follow these steps to ensure you have t
 
 </Steps>
 
-For further details, consult Microsoft’s guide on [Running Linux GUI Apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps). 
+For further details, consult Microsoft’s guide on [Running Linux GUI Apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps).
 
 Following these steps should resolve the Stack Overflow Exception and allow you to successfully run GUI applications within WSL.

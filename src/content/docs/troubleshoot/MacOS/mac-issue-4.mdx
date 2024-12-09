@@ -3,19 +3,17 @@ title: System.DllNotFoundException
 description: Issue with MacOS, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
 sidebar:
   label: 4. DllNotFoundException
-#  attrs:
-#    class: apple
 ---
+
+{/*NOTE: Can probably remove this one now that we have the macos install*/}
 
 import { Steps } from '@astrojs/starlight/components';
 
-<h1> Issue : MacOS </h1>
+:::caution[`System.DllNotFoundException unable to load DLL splashkit.dll`]
 
-### `System.DllNotFoundException unable to load DLL splashkit.dll` When Running Program
+This guide provides solutions for MacOS users encountering the `System.DllNotFoundException` error when attempting to run programs that rely on `splashkit.dll`. This issue is often related to operating system compatibility or outdated SplashKit versions.
 
-**Description:** This guide provides solutions for MacOS users encountering the `System.DllNotFoundException` error when attempting to run programs that rely on `splashkit.dll`. This issue is often related to operating system compatibility or outdated SplashKit versions.
-
----
+:::
 
 ## Problem
 
@@ -50,9 +48,11 @@ git checkout cbb68dc
 ### Instructions
 
 <Steps>
+
 1. Unzip the downloaded template.
 2. Read the “`README.txt`” file for guidance on setting up new projects.
 3. Review the `Program.cs` file, which includes a comment to help configure the project. Once set up, you can remove the comment lines.
+
 </Steps>
 
 These steps should help resolve compatibility issues with `splashkit.dll` and ensure that your programs run smoothly.

@@ -3,9 +3,8 @@ title: Install SplashKit
 description: Install SplashKit on Linux.
 sidebar:
   label: 2. SplashKit
-#  attrs:
-#    class: linux
 ---
+
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
@@ -21,8 +20,6 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
 
     ![Opening a terminal](/gifs/linux/open-terminal.gif)
 
-    ---
-
 2. **Install the SplashKit Manager**
 
    Copy and paste the following command into your terminal, then press **Enter**:
@@ -30,8 +27,6 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
     ```shell
     bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
     ```
-
-    ---
 
 3. **Restart the Terminal and Test the Installation**
 
@@ -48,8 +43,6 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
     Missing skm command. For help use 'skm help'
     ```
 
-    ---
-
 4. **Install Dependencies and Compile SplashKit**
 
    Use the following command to install the necessary dependencies and compile SplashKit:
@@ -62,35 +55,38 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
 
    <Tabs syncKey="linux-distro">
    <TabItem label="Ubuntu/Debian">
-    ```bash
+
+    ```shell
     sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
     ```
-   </TabItem>
 
+   </TabItem>
    <TabItem label="Arch">
    <Tabs syncKey="pacman-yay">
    <TabItem label="pacman">
-    ```bash
+
+    ```shell
     sudo pacman -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
     ```
-   </TabItem>
 
+   </TabItem>
    <TabItem label="yay">
-    ```bash
+
+    ```shell
     yay -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
     ```
+
    </TabItem>
    </Tabs>
    </TabItem>
-
    <TabItem label="Fedora">
-    ```bash
+
+    ```shell
     sudo dnf install cmake libpng SDL2 SDL2_ttf SDL2_image SDL2_net SDL2_mixer SDL2_gfx clang freetype ncurses bzip2 flac libvorbis libmikmod libwebp
     ```
+
    </TabItem>
    </Tabs>
-
-   ---
 
 5. **Add SplashKit to Your Path**
 
@@ -106,36 +102,45 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
       <Tabs syncKey="bash-zsh">
       <TabItem label="bash">
       Open your `~/.bashrc` file:
-      ```bash
+
+      ```shell
       nano ~/.bashrc
       ```
+
       Add the following lines near the end:
-      ```bash
+
+      ```shell
       export PATH="$PATH:$HOME/.splashkit:$PATH"
       ```
+
       Update your profile:
-      ```bash
+
+      ```shell
       source ~/.bashrc
       ```
-      </TabItem>
 
+      </TabItem>
       <TabItem label="zsh">
       Open your `~/.zshrc` file:
-      ```bash
+
+      ```shell
       nano ~/.zshrc
       ```
+
       Add the following lines near the end:
-      ```bash
+
+      ```shell
       export PATH="$PATH:$HOME/.splashkit:$PATH"
       ```
+
       Update your profile:
-      ```bash
+
+      ```shell
       source ~/.zshrc
       ```
+
       </TabItem>
       </Tabs>
-
-      ---
 
    2. Update the System Library Path
 
@@ -147,8 +152,6 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
 
    </Steps>
    </details>
-
-   ---
 
 6. **Install SplashKit Globally**
    Run the following command to install SplashKit globally:
