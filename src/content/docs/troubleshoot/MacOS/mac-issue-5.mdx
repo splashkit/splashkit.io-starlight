@@ -1,0 +1,78 @@
+---
+title: zsh command not found skm
+description: Issue with the `zsh` command not found on MacOS, and how to fix it.
+sidebar:
+  label: 5. zsh not found
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[`zsh: command not found: skm`]
+
+This guide helps resolve the error `zsh: command not found: skm` on MacOS. This issue occurs when the SplashKit path is not correctly set in the `.zshrc` file.
+
+:::
+
+## Problem
+
+When trying to use `skm` in the terminal, you may encounter the error `zsh: command not found: skm`, indicating that the `.splashkit` directory is not included in your PATH.
+
+![Error Example](https://i.imgur.com/Qv8RaHc.png)
+
+## Solution
+
+To resolve this, add the `.splashkit` folder to your `.zshrc` file. Follow the steps below:
+
+<Steps>
+
+1. **Locate Your `.zshrc` File**
+
+    The `.zshrc` file is located in your home directory at `~/Users/(your username)/`.
+
+    If you don’t see it, press **Shift + Command + . (dot)** to toggle hidden files visibility in Finder.
+
+2. **Identify Your Username (Optional)**
+  
+    To ensure you’re in the correct directory, you can use the `whoami` command in Terminal to check your username:
+
+     ```shell
+     whoami
+     ```
+
+   ![Username Check Example](https://i.imgur.com/Le4nSdA.png)
+
+3. **Add SplashKit to PATH**
+  
+    Open the `.zshrc` file with a text editor and add the following line at the end to include the SplashKit path:
+
+     ```shell
+     export PATH="$HOME/.splashkit:$PATH"
+     ```
+
+4. **Optional: Add .NET Path to PATH**
+
+    For .NET compatibility, add this line to your `.zshrc` file as well:
+
+     ```shell
+     export PATH="/usr/local/share/dotnet:$PATH"
+     ```
+
+5. **Optional: Enable VS Code from Terminal**
+
+    To enable the `code .` command for opening Visual Studio Code from the terminal, add the following line:
+
+     ```shell
+     export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+     ```
+
+6. **Apply Changes**
+
+    Save the `.zshrc` file and then reload it with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+</Steps>
+
+After completing these steps, your terminal should recognize the `skm` command, and you should be able to use SplashKit as expected.

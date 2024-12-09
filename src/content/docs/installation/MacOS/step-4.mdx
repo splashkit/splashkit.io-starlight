@@ -1,0 +1,88 @@
+---
+title: Install Language Specific Tools
+description: Install the language specific tools for SplashKit on MacOS.
+sidebar:
+  label: 4. Language Tools
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+SplashKit supports multiple programming languages, each with its own set of tools. Follow the instructions below to install the required tools for your chosen language.
+
+## Language-Specific Installations
+
+### C# (.NET)
+
+To develop with C# in SplashKit, you’ll need to install the .NET SDK.
+
+<Steps>
+
+1. **Download the .NET SDK**  
+
+   Go to the [official .NET download page](https://dotnet.microsoft.com/download) and download the latest version of the .NET SDK for macOS.
+
+2. **Install the .NET SDK**  
+
+   Run the downloaded installer and follow the on-screen instructions to complete the installation.
+
+3. **Verify the Installation**  
+
+   Restart your terminal to ensure the SDK is recognized, then run the following command to confirm the installation:
+
+    ```shell
+    dotnet --version
+    ```
+
+   If installed correctly, this command will output the version number of the .NET SDK.
+
+</Steps>
+
+### For C++
+
+For C++, you (should) _already_ be ready to go.
+
+### Python
+
+To develop with Python in SplashKit, you’ll need Python 3 installed. You can easily install Python 3 using Homebrew.
+
+<Steps>
+
+1. **Install Homebrew** (if not already installed)  
+
+   Open your terminal and enter the following command to install Homebrew:
+
+   ```shell
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. **Install Python 3**  
+
+   Use Homebrew to install Python 3:
+
+   ```shell
+   brew install python
+   ```
+
+3. **Verify Installation (Optional)**
+
+   Check that Python 3 and `pip3` (Python’s package installer) are correctly installed by running:
+
+   ```shell
+   python3 --version
+   pip3 --version
+   ```
+
+   Both commands should output version information if the installation was successful.
+
+</Steps>
+
+### Other Languages
+
+Support for other languages such as Rust and Pascal are coming soon.
+
+## Next Steps
+
+Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+
+**Ready to start coding?**  

@@ -1,0 +1,173 @@
+---
+title: Install Language Specific Tools
+description: Install the language specific tools for SplashKit on Linux.
+sidebar:
+  label: 4. Language Tools
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+
+SplashKit supports multiple programming languages, each with its own set of tools. Follow the instructions below to install the required tools for your language of choice.
+
+## Language-Specific Installations
+
+### C# (.NET)
+
+To develop with C# in SplashKit, you’ll need to install .NET. Installation methods vary by Linux distribution:
+
+<LinkButton icon="external" href="https://dotnet.microsoft.com/en-us/download?initial-os=linux" target="_blank">.NET Download Page</LinkButton>
+<LinkButton icon="external" href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu" target="_blank">Ubuntu Page</LinkButton>
+<LinkButton icon="external" href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian" target="_blank">Debian Page</LinkButton>
+<LinkButton icon="external" href="https://learn.microsoft.com/en-us/dotnet/core/install/linux-fedora" target="_blank">Fedora Page</LinkButton>
+
+<details>
+<summary>Arch Steps</summary>
+  To install .NET SDK on Arch:
+
+  ```shell
+  yay -S dotnet-sdk
+  ```
+
+  To install only the .NET runtime (for running .NET apps without development tools):
+
+  ```shell
+  yay -S dotnet-runtime
+  ```
+
+</details>
+
+If the .NET installer does not automatically update your shell profile, you can manually add it:
+
+<details>
+<summary>Update your `bash` or `zsh` profile manually:</summary>
+<Tabs syncKey="bash-zsh">
+<TabItem label="bash">
+Open your `~/.bashrc` file:
+
+```shell
+nano ~/.bashrc
+```
+
+Add the following lines near the end:
+
+```shell
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$HOME/.dotnet
+```
+
+Apply the changes:
+
+```shell
+source ~/.bashrc
+```
+
+</TabItem>
+<TabItem label="zsh">
+Open your `.zshrc` file:
+
+```shell
+nano ~/.zshrc
+```
+
+Add the following lines near the end:
+
+```shell
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$HOME/.dotnet
+```
+
+Apply the changes:
+
+```shell
+source ~/.zshrc
+```
+
+</TabItem>
+</Tabs>
+</details>
+
+---
+
+### C++
+
+For C++, you should already have the necessary tools if you have a standard Linux development environment. No additional setup is required specifically for SplashKit.
+
+---
+
+### Python
+
+Most Linux distributions include Python pre-installed. If Python isn’t installed, or if you need additional Python tools, follow the steps below.
+
+<Steps>
+
+1. **Installing Python**
+
+    Install Python 3 and `pip` (Python package installer) using the following commands based on your Linux distribution:
+
+    <Tabs syncKey="linux-distro">
+    <TabItem label="Ubuntu/Debian">
+
+    ```shell
+    sudo apt install python3 python3-pip
+    ```
+
+    </TabItem>
+
+    <TabItem label="Arch">
+    <Tabs syncKey="package-manager">
+    <TabItem label="With pacman">
+
+    ```shell
+    sudo pacman -S python python-pip
+    ```
+
+    </TabItem>
+    <TabItem label="With yay">
+
+    ```shell
+    yay -S python python-pip
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+
+    <TabItem label="Fedora">
+
+    ```shell
+    sudo dnf install python3 python3-pip
+    ```
+
+    </TabItem>
+    </Tabs>
+
+   ---
+
+2. **Verify Installation (Optional)**
+
+    To confirm that Python and `pip` are successfully installed, check the versions:
+
+    ```shell
+    python3 --version
+    pip3 --version
+    ```
+
+    Both commands should output version information if the installation was successful.
+
+</Steps>
+
+---
+
+### Other Languages
+
+Support for other languages such as Rust and Pascal are coming soon.
+
+---
+
+## Next Steps
+
+Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+
+**Ready to start coding?**
