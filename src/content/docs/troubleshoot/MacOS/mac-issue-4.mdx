@@ -1,0 +1,58 @@
+---
+title: System.DllNotFoundException
+description: Issue with MacOS, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
+sidebar:
+  label: 4. DllNotFoundException
+---
+
+{/*NOTE: Can probably remove this one now that we have the macos install*/}
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[`System.DllNotFoundException unable to load DLL splashkit.dll`]
+
+This guide provides solutions for MacOS users encountering the `System.DllNotFoundException` error when attempting to run programs that rely on `splashkit.dll`. This issue is often related to operating system compatibility or outdated SplashKit versions.
+
+:::
+
+## Problem
+
+When attempting to run a program that uses SplashKit on MacOS, you may encounter the following error message: `System.DllNotFoundException unable to load DLL splashkit.dll`.
+
+## Solutions
+
+### Ensure macOS is Updated
+
+Update your macOS to the latest version available. Ideally, your OS should be version **12.0** or later, as compatibility issues with `splashkit.dll` are less likely on recent versions of macOS.
+
+---
+
+### For Older macOS Versions (Pre-12.0)
+
+If you are using a version of macOS older than 12.0, you can revert SplashKit to a previous version that may be more compatible with your system. Run the following commands in Terminal, one line at a time:
+
+```shell
+cd ~/.splashkit
+```
+
+```shell
+git fetch --unshallow
+```
+
+```shell
+git checkout cbb68dc
+```
+
+**Note**: After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) for creating new projects.
+
+### Instructions
+
+<Steps>
+
+1. Unzip the downloaded template.
+2. Read the “`README.txt`” file for guidance on setting up new projects.
+3. Review the `Program.cs` file, which includes a comment to help configure the project. Once set up, you can remove the comment lines.
+
+</Steps>
+
+These steps should help resolve compatibility issues with `splashkit.dll` and ensure that your programs run smoothly.

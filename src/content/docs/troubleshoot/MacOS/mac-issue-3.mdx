@@ -1,0 +1,57 @@
+---
+title: ln -s /usr/local.... command not working
+description: Issue with the `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` command not working on MacOS, and how to fix it.
+sidebar:
+  label: 3. Local bin Error
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` Command Not Working]
+
+This guide provides a solution for MacOS users encountering issues when trying to create a symbolic link for .NET using the command `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`.
+
+:::
+
+## Problem
+
+When running `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`, some users receive an error message or find that the command does not work as expected, often due to permission issues or existing conflicting files.
+
+![Error Example](https://i.imgur.com/MJgfrXW.png)
+
+## Solution
+
+To resolve this issue, use the following command, which includes `sudo` to grant temporary system (root) privileges:
+
+```shell
+sudo ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
+```
+
+*The `sudo` command is used here to give necessary permissions.*
+
+<Steps>
+
+1. **Enter Your Password:** After running the command above, you will be prompted to enter your password. Type it in and press **Enter**.
+
+2. **If You Encounter a Permission Denied Error:**
+  
+   If you receive a “`zsh: permission denied: dotnet`” error, it’s likely due to an existing file conflict in the `/usr/local/bin` directory.
+
+3. **Delete the Existing Dotnet File:**
+
+    Open Finder and navigate to the “`/usr/local/bin`” folder:
+    - Click “**Go**” at the top of the screen.
+    - Select “**Go to Folder…**” and enter `/usr/local/bin` as the folder path.
+    - In the `/usr/local/bin` folder, locate and delete any existing `dotnet` file.
+
+4. **Re-run the Command:**
+
+    Open a new Terminal window and re-enter the command:
+
+    ```shell
+    sudo ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
+    ```
+
+</Steps>
+
+Following these steps should successfully create the symbolic link, allowing you to use the `dotnet` command from any terminal session.

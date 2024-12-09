@@ -1,0 +1,87 @@
+---
+title: Install Language Specific Tools
+description: Install the language specific tools for SplashKit on Windows (WSL).
+sidebar:
+  label: 4. Language Tools
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+SplashKit supports multiple programming languages, each with its own set of tools. Follow the instructions below to install the required tools for your chosen language on Windows Subsystem for Linux (WSL).
+
+## Language-Specific Installations
+
+### C# (.NET)
+
+To develop with C# in SplashKit, you’ll need to install the .NET SDK.
+
+<Steps>
+
+1. **Visit the .NET Download Page**  
+
+   Go to the [.NET download page for Linux](https://dotnet.microsoft.com/en-us/download?initial-os=linux) and select the instructions for your Ubuntu distribution.
+
+2. **Follow the Installation Instructions**  
+
+   Follow the on-screen instructions provided by the .NET website to complete the installation on your WSL environment.
+
+3. **Verify Installation (Optional)**
+
+   Open your WSL terminal and run the following command to confirm the .NET SDK is installed:
+
+    ```shell
+    dotnet --version
+    ```
+
+   If installed correctly, this command will output the version number of the .NET SDK.
+
+</Steps>
+
+### C++
+
+For C++ development, your WSL setup should already include the necessary tools for SplashKit. No additional setup is required specifically for C++.
+
+### Python
+
+To develop with Python in SplashKit, follow these steps to install Python and `pip` on your WSL environment.
+
+<Steps>
+
+1. **Install Python 3**  
+
+   In your WSL terminal, run the following command to install Python 3:
+
+    ```shell
+    sudo apt install python3
+    ```
+
+2. **(Optional) Install pip**  
+
+   If you need the Python package manager, `pip`, run:
+
+    ```shell
+    sudo apt install python3-pip
+    ```
+
+3. **Verify Installation (Optional)**  
+
+   To check that Python and `pip` are installed, run the following commands:
+
+    ```shell
+    python3 --version
+    pip3 --version
+    ```
+
+   Both commands should output version information if the installation was successful.
+
+</Steps>
+
+### Other Languages
+
+Support for other languages such as Rust and Pascal are coming soon.
+
+## Next Steps
+
+Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+
+**Ready to start coding?**  
