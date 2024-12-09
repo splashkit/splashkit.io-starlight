@@ -1,0 +1,163 @@
+---
+title: Install SplashKit
+description: Install SplashKit on Linux.
+sidebar:
+  label: 2. SplashKit
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+[SplashKit](https://splashkit.io) is a beginner’s all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.
+
+Follow these steps to set up SplashKit on Linux and start building interactive, visually engaging applications quickly and easily!
+
+## Installation Steps
+
+<Steps>
+
+1. **Open the Terminal**
+
+    ![Opening a terminal](/gifs/linux/open-terminal.gif)
+
+2. **Install the SplashKit Manager**
+
+   Copy and paste the following command into your terminal, then press **Enter**:
+
+    ```shell
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+3. **Restart the Terminal and Test the Installation**
+
+   After restarting the terminal, run the following command to confirm the installation:
+
+    ```shell
+    skm
+    ```
+
+    You should see messages similar to:
+
+    ```shell
+    SplashKit is installed successfully!
+    Missing skm command. For help use 'skm help'
+    ```
+
+4. **Install Dependencies and Compile SplashKit**
+
+   Use the following command to install the necessary dependencies and compile SplashKit:
+
+    ```shell
+    skm linux install
+    ```
+
+   If you encounter dependency issues, you can install the dependencies manually using the commands below for your Linux distribution:
+
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+
+    ```shell
+    sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
+    ```
+
+   </TabItem>
+   <TabItem label="Arch">
+   <Tabs syncKey="pacman-yay">
+   <TabItem label="pacman">
+
+    ```shell
+    sudo pacman -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+   </TabItem>
+   <TabItem label="yay">
+
+    ```shell
+    yay -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+   </TabItem>
+   </Tabs>
+   </TabItem>
+   <TabItem label="Fedora">
+
+    ```shell
+    sudo dnf install cmake libpng SDL2 SDL2_ttf SDL2_image SDL2_net SDL2_mixer SDL2_gfx clang freetype ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+   </TabItem>
+   </Tabs>
+
+5. **Add SplashKit to Your Path**
+
+   If you encounter issues with the `skm` command, manually add SplashKit to your PATH:
+
+   <details>
+   <summary>Update your `bash` or `zsh` profile manually:</summary>
+
+   <Steps>
+
+   1. Update Path in `~/.bashrc` or `~/.zshrc`
+
+      <Tabs syncKey="bash-zsh">
+      <TabItem label="bash">
+      Open your `~/.bashrc` file:
+
+      ```shell
+      nano ~/.bashrc
+      ```
+
+      Add the following lines near the end:
+
+      ```shell
+      export PATH="$PATH:$HOME/.splashkit:$PATH"
+      ```
+
+      Update your profile:
+
+      ```shell
+      source ~/.bashrc
+      ```
+
+      </TabItem>
+      <TabItem label="zsh">
+      Open your `~/.zshrc` file:
+
+      ```shell
+      nano ~/.zshrc
+      ```
+
+      Add the following lines near the end:
+
+      ```shell
+      export PATH="$PATH:$HOME/.splashkit:$PATH"
+      ```
+
+      Update your profile:
+
+      ```shell
+      source ~/.zshrc
+      ```
+
+      </TabItem>
+      </Tabs>
+
+   2. Update the System Library Path
+
+      Run the following command to add `/usr/local/lib` to the system’s library path, ensuring they are available to your applications:
+
+      ```shell
+      sudo ldconfig /usr/local/lib
+      ```
+
+   </Steps>
+   </details>
+
+6. **Install SplashKit Globally**
+   Run the following command to install SplashKit globally:
+
+    ```shell
+    skm global install
+    ```
+
+</Steps>
