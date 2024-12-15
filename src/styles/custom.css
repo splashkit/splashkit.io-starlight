@@ -275,3 +275,7 @@ code {
   background-color: var(--sk-logo-orange);
   color: black;
 }
+
+.guidesAccordion:hover {
+  border: 2px solid var(--sl-color-white);
+}

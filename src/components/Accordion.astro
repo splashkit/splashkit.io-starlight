@@ -1,5 +1,5 @@
 ---
-const { title, uniqueID } = Astro.props;
+const { title, uniqueID, customButton, customContent } = Astro.props;
 
 let uniqueContent = uniqueID + "-content";
 ---
@@ -9,10 +9,14 @@ let uniqueContent = uniqueID + "-content";
     data-button={uniqueID}
     data-content={uniqueContent}
 >
-    <button id={uniqueID} class="accordionButton">
+    <button id={uniqueID} class={customButton || "accordionButton"}>
         {title}
     </button>
-    <div id={uniqueContent} class="accordionContent" style="display: none;">
+    <div
+        id={uniqueContent}
+        class={customContent || "accordionContent"}
+        style="display: none;"
+    >
         <slot />
     </div>
 </accordion-component>
@@ -32,7 +36,7 @@ let uniqueContent = uniqueID + "-content";
                     if (contentID != null)
                         accordionContent = document.getElementById(contentID);
                     if (accordionContent != null) {
-                        if (accordionContent.style.display != "none") {
+                        if (accordionContent.style.display !== "none") {
                             accordionContent.style.display = "none";
                         } else {
                             accordionContent.style.display = "block";
@@ -50,12 +54,12 @@ let uniqueContent = uniqueID + "-content";
     .accordionButton {
         margin-top: 10px;
         padding: 0.5rem 1.25rem;
-        border: 2px solid transparent;
+        border: 2px solid #ddd;
         border-radius: 50px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        background-color: var(--sk-logo-orange);
+        background: var(--sk-color-gray-7);
         color: black;
     }
     .accordionButton:hover {
