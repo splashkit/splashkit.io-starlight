@@ -1,16 +1,18 @@
 ---
-const { title, uniqueID, customButton, customContent } = Astro.props;
+const { title, uniqueID } = Astro.props;
 
 let uniqueContent = uniqueID + "-content";
 ---
 
-
-<accordion-component class="accordion" data-button={uniqueID} data-content={uniqueContent}>
-    <button id={uniqueID}
-    class={customButton || "accordionButton"}  >
-    {title}
+<accordion-component
+    class="accordion"
+    data-button={uniqueID}
+    data-content={uniqueContent}
+>
+    <button id={uniqueID} class="accordionButton">
+        {title}
     </button>
-    <div id={uniqueContent} class={customContent || "accordionContent"} style="display: none;">
+    <div id={uniqueContent} class="accordionContent" style="display: none;">
         <slot />
     </div>
 </accordion-component>
@@ -23,40 +25,40 @@ let uniqueContent = uniqueID + "-content";
             console.log(buttonID, contentID);
             var button;
             if (buttonID != null) button = document.getElementById(buttonID);
-            if (button != null)
-            {
-                button.onclick = function() {
-                    console.log('clicked')
+            if (button != null) {
+                button.onclick = function () {
+                    console.log("clicked");
                     var accordionContent;
-                    if (contentID != null) accordionContent = document.getElementById(contentID)
+                    if (contentID != null)
+                        accordionContent = document.getElementById(contentID);
                     if (accordionContent != null) {
-                        if (accordionContent.style.display !== 'none'){
-                        accordionContent.style.display = 'none';
-                    } else {
-                        accordionContent.style.display = 'block';
+                        if (accordionContent.style.display != "none") {
+                            accordionContent.style.display = "none";
+                        } else {
+                            accordionContent.style.display = "block";
+                        }
                     }
-                    }
-                }
+                };
             }
         }
     }
 
-    customElements.define('accordion-component', Accordion);
+    customElements.define("accordion-component", Accordion);
 </script>
 
 <style>
     .accordionButton {
         margin-top: 10px;
         padding: 0.5rem 1.25rem;
-        border: 2px solid #ddd;
+        border: 2px solid transparent;
         border-radius: 50px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        background: var(--sk-color-gray-7);
+        background-color: var(--sk-logo-orange);
         color: black;
     }
-    .sl-link-button.minimal:hover {
+    .accordionButton:hover {
         border: 2px solid var(--sl-color-white);
     }
     .accordionContent {
@@ -69,8 +71,8 @@ let uniqueContent = uniqueID + "-content";
     .accordionContentList {
         list-style-type: none;
     }
-    .accordionContentList a{
-        font-size:medium;
+    .accordionContentList a {
+        font-size: medium;
         font-weight: 600;
     }
 </style>

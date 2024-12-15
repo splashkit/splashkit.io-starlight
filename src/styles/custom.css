@@ -95,6 +95,21 @@ iframe[id="stackblitz-iframe"] {
   color: black;
 }
 
+/* Usage Example Link Buttons */
+.sl-markdown-content .sl-link-button.secondary {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--sk-logo-blue);
+  color: black;
+}
+
+.sl-markdown-content .sl-link-button:hover {
+  border: 2px solid var(--sl-color-white);
+}
+
 /* --- END: Link Button styling ------*/
 
 /* centre all images/gifs */
