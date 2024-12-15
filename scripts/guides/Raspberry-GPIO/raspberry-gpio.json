@@ -1,0 +1,72 @@
+{
+    "guides": [
+        {
+            "name": "Get Started with SplashKit GPIO",
+            "functions": [
+                "raspi_init",
+                "raspi_set_mode",
+                "open_window",
+                "any_key_pressed",
+                "raspi_cleanup",
+                "raspi_write",
+                "delay",
+                "process_events",
+                "close_all_windows"
+            ],
+            "url": "/guides/raspberry-gpio/0-blink-led/"
+        },
+        {
+            "name": "Reading Button Presses",
+            "functions": [
+                "raspi_init",
+                "raspi_set_mode",
+                "raspi_set_pull_up_down",
+                "open_window",
+                "any_key_pressed",
+                "process_events",
+                "raspi_read",
+                "raspi_write",
+                "close_all_windows",
+                "raspi_cleanup"
+            ],
+            "url": "/guides/raspberry-gpio/1-read-button-press/"
+        },
+        {
+            "name": "Using PWM to control LED brightness",
+            "functions": [
+                "raspi_init",
+                "raspi_set_mode",
+                "raspi_set_pwm_range",
+                "raspi_set_pwm_dutycycle",
+                "write",
+                "write_line_int",
+                "raspi_set_pwm_frequency",
+                "delay",
+                "raspi_cleanup"
+            ],
+            "url": "/guides/raspberry-gpio/2-pwm-control-led/"
+        },
+        {
+            "name": "Modify PWM through button presses",
+            "functions": [
+                "raspi_init",
+                "raspi_set_mode",
+                "raspi_set_pwm_dutycycle",
+                "raspi_set_pull_up_down",
+                "create_timer",
+                "start_timer",
+                "raspi_set_pwm_frequency",
+                "open_window",
+                "any_key_pressed",
+                "process_events",
+                "timer_ticks",
+                "raspi_read",
+                "close_all_windows",
+                "stop_timer",
+                "free_all_timers",
+                "raspi_cleanup"
+            ],
+            "url": "/guides/raspberry-gpio/3-pwm-button-control/"
+        }
+    ]
+}
