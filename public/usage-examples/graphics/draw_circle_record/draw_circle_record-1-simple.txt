@@ -1,0 +1,3 @@
+#### Concentric Ripple Effect with Colored Circles
+
+The following code shows examples of using [Draw Circle](/api/graphics/#draw-circle-1) to demonstrate how to draw a circle on the screen with different colors and radii, with and without using variables.
