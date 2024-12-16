@@ -1,0 +1,3 @@
+#### Creating a Red Planet
+
+The following code demonstrates how to use [Draw Circle On Bitmap](/api/graphics#draw-circle-on-bitmap) to create a red planet with surface details using multiple circles. 
