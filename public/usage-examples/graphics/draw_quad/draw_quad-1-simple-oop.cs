@@ -1,6 +1,6 @@
 using SplashKitSDK;
 
-namespace DrawQuad
+namespace DrawQuadExample
 {
     public class Program
     {
