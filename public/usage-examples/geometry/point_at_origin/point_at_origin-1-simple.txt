@@ -1,0 +1,3 @@
+#### Red Dot At Origin
+
+The following code shows an example of using [Point At Origin](/api/geometry/#point-at-origin) to show the location of the origin point with a small red dot.
