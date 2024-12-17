@@ -73,12 +73,12 @@ export default defineConfig({
             { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
             { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
           ],
-          badge: "New",
           // autogenerate: { directory: "guides", collapsed: true },
         },
         {
           label: "Usage Examples",
           autogenerate: { directory: "usage-examples", collapsed: true },
+          badge: "New",
         },
         {
           label: "Beyond SplashKit",
