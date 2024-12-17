@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm install
-          npm run generate-mdx
+          npm run build
       - name: Upload your site
         uses: withastro/action@v1
 
