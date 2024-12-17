@@ -10,9 +10,6 @@ import rehypeMathjax from 'rehype-mathjax'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://splashkit.io/',
-  // base: '/splashkit.io-starlight',  // if hosted without domain.
-  //   output: "server",
-  //   adapter: netlify(),
   integrations: [
     starlight({
       title: "SplashKit",
@@ -31,7 +28,6 @@ export default defineConfig({
         useDarkModeMediaQuery: true,
       },
       customCss: [
-
         "/src/styles/custom.css",
         "/src/styles/background.css",
         "/src/styles/cards.css",
@@ -49,26 +45,14 @@ export default defineConfig({
           label: "Installation",
           collapsed: true,
           autogenerate: { directory: "installation", collapsed: true },
-          // items: [
-          //   { label: "Linux", autogenerate: { directory: "linux", collapsed: true }, attrs: { class: 'linux' } },
-          //   { label: "MacOS", autogenerate: { directory: "macos", collapsed: true }, attrs: { class: 'macos' } },
-          //   { label: "Windows", autogenerate: { directory: "windows", collapsed: true }, attrs: { class: 'windows' } },
-          // ]
         },
         {
           label: "Troubleshooting",
-          // items: [
-          // 	// Each item here is one entry in the navigation menu.
-          // 	{ label: 'MacOS', link: '/troubleshoot/macos/mac/' },
-          // 	//{ label: 'Windows', link: '/troubleshoot/macOS/mac' },
-          // ],
           collapsed: true,
           autogenerate: { directory: "troubleshoot", collapsed: true },
-          badge: "New",
-
         },
         {
-          label: "Developer Documentation",
+          label: "Developer API Documentation",
           autogenerate: { directory: "api", collapsed: false },
         },
         {
@@ -87,9 +71,9 @@ export default defineConfig({
             { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
             { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
-            // { label: "Sprites", autogenerate: { directory: "guides/Sprites", collapsed: false } },
             { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
-          ]
+          ],
+          badge: "New",
           // autogenerate: { directory: "guides", collapsed: true },
         },
         {
@@ -99,11 +83,8 @@ export default defineConfig({
         {
           label: "Beyond SplashKit",
           autogenerate: { directory: "beyond-splashkit", collapsed: true },
+          badge: "New",
         },
-        // {
-        //   label: "Arcade Hackathon Project",
-        //   autogenerate: { directory: "arcade-hackathon-project", collapsed: true },
-        // },
       ],
 
     }),
