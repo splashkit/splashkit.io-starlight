@@ -1,5 +1,7 @@
 [
+  "Audio",
   "Cryptography",
   "Graphics",
-  "Maths"
+  "Maths",
+  "Utilities"
 ]
