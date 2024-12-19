@@ -64,6 +64,7 @@ export default defineConfig({
             { label: "Animations", autogenerate: { directory: "guides/Animations", collapsed: false } },
             { label: "Audio", autogenerate: { directory: "guides/Audio", collapsed: false } },
             { label: "Camera", autogenerate: { directory: "guides/Camera", collapsed: false } },
+            { label: "Color", autogenerate: { directory: "guides/Color", collapsed: false } },
             { label: "Graphics", autogenerate: { directory: "guides/Graphics", collapsed: false } },
             { label: "Input", autogenerate: { directory: "guides/Input", collapsed: false } },
             { label: "Interface", autogenerate: { directory: "guides/Interface", collapsed: false } },
