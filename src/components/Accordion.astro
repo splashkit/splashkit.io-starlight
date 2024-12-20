@@ -1,0 +1,82 @@
+---
+const { title, uniqueID, customButton, customContent } = Astro.props;
+
+let uniqueContent = uniqueID + "-content";
+---
+
+<accordion-component
+    class="accordion"
+    data-button={uniqueID}
+    data-content={uniqueContent}
+>
+    <button id={uniqueID} class={customButton || "accordionButton"}>
+        {title}
+    </button>
+    <div
+        id={uniqueContent}
+        class={customContent || "accordionContent"}
+        style="display: none;"
+    >
+        <slot />
+    </div>
+</accordion-component>
+
+<script>
+    class Accordion extends HTMLElement {
+        connectedCallback() {
+            const buttonID = this.dataset.button;
+            const contentID = this.dataset.content;
+            console.log(buttonID, contentID);
+            var button;
+            if (buttonID != null) button = document.getElementById(buttonID);
+            if (button != null) {
+                button.onclick = function () {
+                    console.log("clicked");
+                    var accordionContent;
+                    if (contentID != null)
+                        accordionContent = document.getElementById(contentID);
+                    if (accordionContent != null) {
+                        if (accordionContent.style.display !== "none") {
+                            accordionContent.style.display = "none";
+                        } else {
+                            accordionContent.style.display = "block";
+                        }
+                    }
+                };
+            }
+        }
+    }
+
+    customElements.define("accordion-component", Accordion);
+</script>
+
+<style>
+    .accordionButton {
+        margin-top: 10px;
+        padding: 0.5rem 1.25rem;
+        border: 2px solid #ddd;
+        border-radius: 50px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        background: var(--sk-color-gray-7);
+        color: black;
+    }
+    .accordionButton:hover {
+        border: 2px solid var(--sl-color-white);
+    }
+    .accordionContent {
+        padding: 10px;
+        background: var(--sl-color-gray-7);
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+    .accordionContentList {
+        list-style-type: none;
+    }
+    .accordionContentList a {
+        font-size: medium;
+        font-weight: 600;
+    }
+</style>

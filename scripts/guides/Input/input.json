@@ -1,0 +1,45 @@
+{
+    "guides": [
+        {
+            "name": "Reading Text",
+            "functions": [
+                "write",
+                "read_line",
+                "write_line",
+                "open_window",
+                "quit_requested",
+                "load_font",
+                "rectangle_from",
+                "start_reading_text",
+                "process_events",
+                "mouse_clicked",
+                "start_reading_text",
+                "reading_text",
+                "text_entry_cancelled",
+                "text_input",
+                "draw_rectangle_record",
+                "draw_collected_text",
+                "draw_text",
+                "refresh_screen_with_target_fps"
+            ],
+            "url": "/guides/input/0-reading-text/"
+        },
+        {
+            "name": "Using Mouse Inputs",
+            "functions": [
+                "color_red",
+                "color_yellow",
+                "color_white",
+                "process_events",
+                "mouse_clicked",
+                "clear_screen",
+                "refresh_window",
+                "window_close_requested",
+                "mouse_down",
+                "mouse_up",
+                "mouse_movement"
+            ],
+            "url": "/guides/input/1-mouse-button-inputs/"
+        }
+    ]
+}

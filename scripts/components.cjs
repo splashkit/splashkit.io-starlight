@@ -1,4 +1,5 @@
 // Script to generate .mdx file in a specific format to adapt to Starlight from JSON data.
+
 // Author: @XQuestCode and @omckeon
 const fs = require("fs");
 const kleur = require("kleur");
@@ -43,6 +44,61 @@ const languageOrder = ["cpp", "csharp", "python", "pascal"];
 var name = "";
 
 const sk_colors = ["alice_blue", "antique_white", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanched_almond", "blue", "blue_violet", "bright_green", "brown", "burly_wood", "cadet_blue", "chartreuse", "chocolate", "coral", "cornflower_blue", "cornsilk", "crimson", "cyan", "dark_blue", "dark_cyan", "dark_goldenrod", "dark_gray", "dark_green", "dark_khaki", "dark_magenta", "dark_olive_green", "dark_orange", "dark_orchid", "dark_red", "dark_salmon", "dark_sea_green", "dark_slate_blue", "dark_slate_gray", "dark_turquoise", "dark_violet", "deep_pink", "deep_sky_blue", "dim_gray", "dodger_blue", "firebrick", "floral_white", "forest_green", "fuchsia", "gainsboro", "ghost_white", "gold", "goldenrod", "gray", "green", "green_yellow", "honeydew", "hot_pink", "indian_red", "indigo", "ivory", "khaki", "lavender", "lavender_blush", "lawn_green", "lemon_chiffon", "light_blue", "light_coral", "light_cyan", "light_goldenrod_yellow", "light_gray", "light_green", "light_pink", "light_salmon", "light_sea_green", "light_sky_blue", "light_slate_gray", "light_steel_blue", "light_yellow", "lime", "lime_green", "linen", "magenta", "maroon", "medium_aquamarine", "medium_blue", "medium_orchid", "medium_purple", "medium_sea_green", "medium_slate_blue", "medium_spring_green", "medium_turquoise", "medium_violet_red", "midnight_blue", "mint_cream", "misty_rose", "moccasin", "navajo_white", "navy", "old_lace", "olive", "olive_drab", "orange", "orange_red", "orchid", "pale_goldenrod", "pale_green", "pale_turquoise", "pale_violet_red", "papaya_whip", "peach_puff", "peru", "pink", "plum", "powder_blue", "purple", "red", "rosy_brown", "royal_blue", "saddle_brown", "salmon", "sandy_brown", "sea_green", "sea_shell", "sienna", "silver", "sky_blue", "slate_blue", "slate_gray", "snow", "spring_green", "steel_blue", "swinburne_red", "tan", "teal", "thistle", "tomato", "transparent", "turquoise", "violet", "wheat", "white", "white_smoke", "yellow", "yellow_green"];
+
+function getAllFiles(dir, allFilesList = []) {
+  try {
+    const files = fs.readdirSync(dir);
+    files.map(file => {
+      const name = dir + '/' + file;
+      if (fs.statSync(name).isDirectory()) { // check if subdirectory is present
+        getAllFiles(name, allFilesList);     // do recursive execution for subdirectory
+      } else {
+        allFilesList.push(file);             // push filename into the array
+      }
+    })
+  } catch (err) {
+    console.error(kleur.yellow(`Warning: Unable to access directory ${dir}`), err);
+  }
+  return allFilesList;
+}
+
+function getAllFinishedExamples() {
+  var apiJsonData;
+  try {
+    var apiData = fs.readFileSync(`${__dirname}/api.json`);
+    apiJsonData = JSON.parse(apiData);
+  } catch (error) {
+    console.error(kluer.red("Error occurred when trying to parse API Json data: ", error));
+  }
+
+  const categories = []
+  for (const categoryKey in apiJsonData) {
+    if (categoryKey != "types") {
+      categories.push(categoryKey);
+    }
+  }
+
+  const allExamples = [];
+
+  categories.forEach((categoryKey) => {
+    //let categoryFilePath = './public/usage-examples/' + categoryKey;
+    const categoryFilePath = path.join(path.dirname(__dirname), "public", "usage-examples", categoryKey);
+    const categoryFiles = getAllFiles(categoryFilePath);
+
+    // Filter for .txt files
+    const txtFiles = categoryFiles.filter(file => file.endsWith('.txt'));
+
+    // Extract the portion before the first '-'
+    if (txtFiles.length > 0) {
+      txtFiles.forEach((file) => {
+        const filename = file.split('-')[0];
+        allExamples.push(filename);
+      });
+    }
+  });
+
+  return allExamples;
+}
 
 function Mappings(jsonData) {
   //generate mappings from API
@@ -91,6 +147,36 @@ function getColorRGBValues(colorName, jsonData) {
   return rgbValues;
 }
 
+function getJsonData() {
+  var jsonFile;
+  var jsonData;
+  try {
+    jsonFile = fs.readFileSync(`${__dirname}/guides.json`);
+  } catch (err) {
+    console.error(kleur.red("Error reading JSON file:"), err);
+    return;
+  }
+  try {
+    jsonData = JSON.parse(jsonFile);
+  } catch (error) {
+    console.error(kleur.red("Error parsing JSON:"), error);
+    return;
+  }
+  return jsonData;
+}
+
+function getApiCategories(jsonData) {
+  const apiCategories = [];
+  for (const categoryKey in jsonData) {
+    if (categoryKey != "types") {
+      apiCategories.push(jsonData[categoryKey]);
+    }
+  }
+  return apiCategories;
+}
+
+const readGuides = require('./api-guides-generation.cjs');
+
 fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
   if (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
@@ -101,14 +187,36 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
   try {
     const jsonData = JSON.parse(data);
     Mappings(jsonData);
-    console.log(`Generating MDX files for components`);
+    console.log(`Generating MDX files for components\n`);
+
+    const guidesDir = path.join(__dirname, 'guides'); // Base directory for guides
+    const outputFile = path.join(__dirname, 'guides.json')
+
+    try {
+      // console.log(kleur.green('Reading guides folder...'));
+      const guidesContent = readGuides(guidesDir);
+
+      try {
+        console.log(kleur.green('Writing guides functions to json file...\n'));
+        fs.writeFileSync(outputFile, JSON.stringify(guidesContent, null, 4));
+      } catch (err) {
+        console.log(kleur.red('Error writing output files: ', err));
+      }
+    } catch (error) {
+      console.log(kleur.red('Error processing guides files: ', error));
+    }
 
     const jsonColors = getColorData();
+    let guidesJson = getJsonData();
+    let guidesCategories = getApiCategories(guidesJson);
 
+    const usageExamples = getAllFinishedExamples();
+    // console.log(usageExamples);
 
     // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
     for (const categoryKey in jsonData) {
       const category = jsonData[categoryKey];
+      // console.log(categoryKey);
       let input = categoryKey;
       const categoryFunctions = category.functions;
       let mdxContent = "";
@@ -135,7 +243,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
           mdxContent += `:::\n`
         }
       }
-      mdxContent += `\nimport { Tabs, TabItem } from "@astrojs/starlight/components";\nimport { LinkCard, CardGrid } from "@astrojs/starlight/components";\n`;
+      mdxContent += `\nimport { Tabs, TabItem, LinkCard, CardGrid, LinkButton } from "@astrojs/starlight/components";\nimport Accordion from '../../../components/Accordion.astro'\n`;
       if (guidesAvailable[categoryKey]) {
         mdxContent += "\n## \n";
         mdxContent += `## ${name} Guides\n`;
@@ -157,6 +265,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
         functionGroups[functionName].push(func);
       });
 
+
       for (const functionName in functionGroups) {
         const overloads = functionGroups[functionName];
         const isOverloaded = overloads.length > 1;
@@ -172,6 +281,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
 
           const formattedGroupLink = `${formattedLink}`;
           mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
+
           mdxContent += ":::note\n\n";
           mdxContent += "This function is overloaded. The following versions exist:\n\n";
 
@@ -237,7 +347,6 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             mdxContent += ` <div class='color-box' style="background:rgba${rgbValues}"></div>`
           }
           else {
-
             mdxContent += `${formattedName}`;
           }
 
@@ -299,6 +408,50 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
             mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
           }
 
+          let usageHeading = false;
+
+          let linked = false;
+          usageExamples.forEach((example) => {
+            if (func.unique_global_name == example && !linked) {
+              formattedUsageLink = func.unique_global_name.replace(/_/g, "-");
+
+              mdxContent += `**Usage:**\n\n`
+              usageHeading = true;
+
+              mdxContent += `<LinkButton href="/usage-examples/${categoryKey}/#${formattedUsageLink}" variant="secondary">\nSee Example Code\n</LinkButton>\n\n`
+              linked = true;
+            }
+          });
+
+          let allGuides = [];
+          guidesCategories.forEach((category) => {
+            category.forEach((guide) => {
+              guide.functions.forEach((used) => {
+                if (func.unique_global_name == used) {
+                  allGuides.push({
+                    name: guide.name,
+                    url: guide.url
+                  });
+                }
+              })
+            })
+          })
+
+          if (allGuides.length > 0) {
+
+            if (!usageHeading) {
+              mdxContent += "**Usage:**\n\n"
+            }
+            mdxContent += `<Accordion title="See Implemenations in Guides" uniqueID={${JSON.stringify(func.unique_global_name)}} customButton="guidesAccordion">\n\n`
+
+            mdxContent += `<ul>`
+            allGuides.forEach((guide) => {
+              mdxContent += `<li> [${guide.name}](${guide.url}) </li>`
+            })
+            mdxContent += `</ul>\n\n`
+
+            mdxContent += `</Accordion>\n`
+          }
 
           mdxContent += "**Signatures:**\n\n";
           mdxContent += "<Tabs syncKey=\"code-language\">\n";
@@ -362,6 +515,7 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
                 .join(" ");
               const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
               const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+
               description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
             }
 

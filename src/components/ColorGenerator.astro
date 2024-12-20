@@ -1,0 +1,612 @@
+---
+import { Tabs, TabItem, Code } from "@astrojs/starlight/components";
+
+let rgbCppCode = "rgb_color(128, 128, 128);";
+let rgbCsharpCode = "SplashKit.RGBColor(128, 128, 128);";
+let rgbPythonCode = "rgb_color(128, 128, 128)";
+
+let hsbCppCode = "hsb_color(180.00, 0.50, 0.50);";
+let hsbCsharpCode = "SplashKit.HSBColor(180.00, 0.50, 0.50);";
+let hsbPythonCode = "hsb_color(180.00, 0.50, 0.50)";
+---
+
+<style>
+  /* General slider styles */
+  input[type="range"] {
+    -webkit-appearance: none; /* Remove default appearance */
+    width: 100%; /* Full width */
+    height: 10px; /* Height of the slider */
+    background: #ddd; /* Default background color */
+    border-radius: 5px; /* Rounded edges */
+    outline: none; /* Remove focus outline */
+    /* transition: background-color 0.3s ease; Smooth background color change */
+  }
+
+  /* Individual styling for Red slider */
+  #red-slider {
+    background-color: rgba(255, 150, 150, 0.5); /* Light red background */
+  }
+
+  #red-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Custom thumb styling */
+    background-color: red; /* Thumb color */
+  }
+
+  /* Styling for Green slider */
+  #green-slider {
+    background-color: rgba(150, 220, 150, 0.5); /* Light green */
+  }
+
+  #green-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: green;
+  }
+
+  /* Styling for Blue slider */
+  #blue-slider {
+    background-color: rgba(150, 150, 255, 0.5); /* Light blue */
+  }
+
+  #blue-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: blue;
+  }
+
+  /* Styling for Alpha (transparency) slider */
+  #alpha-slider {
+    background-color: rgba(128, 128, 128, 0.5); /* Neutral gray */
+  }
+  #alpha-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: grey;
+  }
+
+  /* Hue slider with gradient background */
+  #hue-slider {
+    background: linear-gradient(
+      to right,
+      red,
+      yellow,
+      green,
+      cyan,
+      blue,
+      magenta,
+      red
+    ); /* Full hue spectrum */
+    --hue-thumb-color: hsl(180, 100%, 50%);
+  }
+  #hue-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: var(--hue-thumb-color);
+  }
+
+  /* Saturation slider with a dynamic gradient */
+  #saturation-slider {
+    background: linear-gradient(
+      to right,
+      hsl(180, 0%, 25%),
+      hsl(180, 100%, 25%)
+    );
+    --saturation-thumb-color: hsl(180, 50%, 25%);
+  }
+  #saturation-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: var(--saturation-thumb-color);
+  }
+
+  /* Brightness slider with light-to-dark gradient */
+  #brightness-slider {
+    background: linear-gradient(to right, black, white);
+    --brightness-thumb-color: hsl(180, 0%, 50%);
+  }
+  #brightness-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: var(--brightness-thumb-color);
+  }
+
+  /* General thumb styling for sliders */
+  input[type="range"]::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Circular */
+    border: 2px solid #000; /* Black border */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth effects */
+  }
+  input[type="range"]:hover::-webkit-slider-thumb {
+    border: 2px solid #000; /* Black border */
+    transform: scale(1.2); /* Slightly larger */
+  }
+
+  /* Tab container styles */
+  .tab-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the container */
+  }
+
+  /* Tab header styling */
+  .tab-header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc; /* Divider line */
+  }
+
+  /* Tab button styles */
+  .tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none; /* Remove default button border */
+    background: none;
+    font-size: 1rem;
+  }
+  .tab-button.active {
+    border-bottom: 2px solid #007bff; /* Highlight active tab */
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  /* Tab content visibility control */
+  .tab-content {
+    display: none; /* Hidden by default */
+  }
+  .tab-content.active {
+    display: block; /* Visible when active */
+  }
+
+  /* Color preview boxes for RGB and HSB */
+  #rgb-color-preview,
+  #hsb-color-preview {
+    width: 150px;
+    height: 150px;
+    margin-left: 20px;
+    border: 2px solid #000;
+    border-radius: 4px; /* Rounded corners */
+  }
+
+  /* Code block styling */
+  pre {
+    margin: 0;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px; /* Rounded edges */
+    font-family: monospace; /* Code font */
+    font-size: 1rem;
+    overflow-x: auto; /* Horizontal scrolling for long code */
+    border: 1px solid #ddd;
+  }
+
+  /* Theme-specific colors */
+  :root {
+    --text-primary-light: #000; /* Text color for light mode */
+    --text-primary-dark: #fff; /* Text color for dark mode */
+    --background-light: #fff; /* Background color for light mode */
+    --background-dark: #121212; /* Background color for dark mode */
+  }
+
+  /* Theme handling for light mode */
+  [data-theme="light"] {
+    --text-primary: var(--text-primary-light);
+    --background: var(--background-light);
+  }
+
+  /* Theme handling for dark mode */
+  [data-theme="dark"] {
+    --text-primary: var(--text-primary-dark);
+    --background: var(--background-dark);
+  }
+
+  /* Body styles for theme transitions */
+  body {
+    color: var(--text-primary);
+    background-color: var(--background);
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  /* Code block color transitions */
+  pre,
+  code {
+    background-color: var(--background);
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 8px;
+    border-radius: 4px;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  /* Tab headers for theme consistency */
+  .tab-header {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--text-primary);
+  }
+
+  /* Slider label styling */
+  label {
+    color: var(--text-primary);
+  }
+</style>
+
+<div class="tab-container">
+  <!-- Main tabs to switch between RGB and HSB modes -->
+  <Tabs syncKey="color-mode">
+    <!-- RGB Tab -->
+    <TabItem label="RGB">
+      <!-- Container for RGB controls and preview -->
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+      >
+        <!-- RGB sliders container -->
+        <div
+          id="rgb-sliders-container"
+          style="flex: 1; display: flex; flex-direction: column; gap: 16px;"
+        >
+          <!-- Red slider -->
+          <div>
+            <label for="red-slider">Red: <span id="red-value">128</span></label>
+            <input id="red-slider" type="range" min="0" max="255" value="128" />
+          </div>
+          <!-- Green slider -->
+          <div>
+            <label for="green-slider"
+              >Green: <span id="green-value">128</span></label
+            >
+            <input
+              id="green-slider"
+              type="range"
+              min="0"
+              max="255"
+              value="128"
+            />
+          </div>
+          <!-- Blue slider -->
+          <div>
+            <label for="blue-slider"
+              >Blue: <span id="blue-value">128</span></label
+            >
+            <input
+              id="blue-slider"
+              type="range"
+              min="0"
+              max="255"
+              value="128"
+            />
+          </div>
+          <!-- Alpha toggle for enabling transparency -->
+          <div>
+            <label>
+              <input id="alpha-toggle" type="checkbox" />
+              Enable Alpha
+            </label>
+          </div>
+          <!-- Alpha slider for transparency control (hidden by default) -->
+          <div id="alpha-slider-container" class="hidden">
+            <label for="alpha-slider"
+              >Alpha: <span id="alpha-value">1.00</span></label
+            >
+            <input
+              id="alpha-slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="1.00"
+            />
+          </div>
+        </div>
+
+        <!-- RGB color preview box -->
+        <div
+          id="rgb-color-preview"
+          style="background-color: rgb(128, 128, 128);"
+        >
+        </div>
+      </div>
+
+      <!-- Tabs for RGB code outputs in different languages -->
+      <Tabs syncKey="rgb-output">
+        <TabItem label="C++">
+          <Code code={rgbCppCode} lang="cpp" />
+        </TabItem>
+        <TabItem label="C#">
+          <Code code={rgbCsharpCode} lang="csharp" />
+        </TabItem>
+        <TabItem label="Python">
+          <Code code={rgbPythonCode} lang="python" />
+        </TabItem>
+      </Tabs>
+    </TabItem>
+
+    <!-- HSB Tab -->
+    <TabItem label="HSB">
+      <!-- Container for HSB controls and preview -->
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+      >
+        <!-- HSB sliders container -->
+        <div
+          id="hsb-sliders-container"
+          style="flex: 1; display: flex; flex-direction: column; gap: 16px;"
+        >
+          <!-- Hue slider -->
+          <div>
+            <label for="hue-slider"
+              >Hue: <span id="hue-value">180.00</span></label
+            >
+            <input
+              id="hue-slider"
+              type="range"
+              min="0"
+              max="360"
+              step="1"
+              value="180"
+            />
+          </div>
+          <!-- Saturation slider -->
+          <div>
+            <label for="saturation-slider"
+              >Saturation: <span id="saturation-value">0.50</span></label
+            >
+            <input
+              id="saturation-slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.50"
+            />
+          </div>
+          <!-- Brightness slider -->
+          <div>
+            <label for="brightness-slider"
+              >Brightness: <span id="brightness-value">0.50</span></label
+            >
+            <input
+              id="brightness-slider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.50"
+            />
+          </div>
+        </div>
+        <!-- HSB color preview box -->
+        <div
+          id="hsb-color-preview"
+          style="background-color: hsl(180, 50%, 25%);"
+        >
+        </div>
+      </div>
+
+      <!-- Tabs for HSB code outputs in different languages -->
+      <Tabs syncKey="hsb-output">
+        <TabItem label="C++">
+          <Code code={hsbCppCode} lang="cpp" />
+        </TabItem>
+        <TabItem label="C#">
+          <Code code={hsbCsharpCode} lang="csharp" />
+        </TabItem>
+        <TabItem label="Python">
+          <Code code={hsbPythonCode} lang="python" />
+        </TabItem>
+      </Tabs>
+    </TabItem>
+  </Tabs>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // --- RGB Logic ---
+    // Get references to RGB sliders and alpha toggle/slider elements
+    const redSlider = document.getElementById("red-slider") as HTMLInputElement;
+    const greenSlider = document.getElementById(
+      "green-slider",
+    ) as HTMLInputElement;
+    const blueSlider = document.getElementById(
+      "blue-slider",
+    ) as HTMLInputElement;
+    const alphaToggle = document.getElementById(
+      "alpha-toggle",
+    ) as HTMLInputElement;
+    const alphaSlider = document.getElementById(
+      "alpha-slider",
+    ) as HTMLInputElement;
+    const alphaSliderContainer = document.getElementById(
+      "alpha-slider-container",
+    );
+
+    // Display elements for RGB/Alpha values
+    const redValue = document.getElementById("red-value");
+    const greenValue = document.getElementById("green-value");
+    const blueValue = document.getElementById("blue-value");
+    const alphaValue = document.getElementById("alpha-value");
+
+    // Preview box for RGB color
+    const rgbPreview = document.getElementById("rgb-color-preview");
+
+    // Function to update RGB preview and code outputs
+    function updateRgbPreview() {
+      // Retrieve slider values
+      const red = parseInt(redSlider.value, 10);
+      const green = parseInt(greenSlider.value, 10);
+      const blue = parseInt(blueSlider.value, 10);
+      const alpha = parseFloat(alphaSlider.value);
+
+      // Update value displays
+      if (redValue) redValue.textContent = red.toString();
+      if (greenValue) greenValue.textContent = green.toString();
+      if (blueValue) blueValue.textContent = blue.toString();
+
+      let rgbCPPCode, rgbCSCode, rgbPythonCode;
+
+      // Handle alpha toggle (RGBA vs RGB)
+      if (alphaToggle.checked) {
+        if (alphaValue) alphaValue.textContent = alpha.toFixed(2);
+        if (alphaSliderContainer)
+          alphaSliderContainer.classList.remove("hidden");
+        if (rgbPreview)
+          rgbPreview.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+
+        // Generate RGBA code snippets
+        rgbCPPCode = `rgba_color(${red}, ${green}, ${blue}, ${alpha.toFixed(2)});`;
+        rgbCSCode = `SplashKit.RGBAColor(${red}, ${green}, ${blue}, ${alpha.toFixed(2)});`;
+        rgbPythonCode = `rgba_color(${red}, ${green}, ${blue}, ${alpha.toFixed(2)})`;
+      } else {
+        if (alphaSliderContainer) alphaSliderContainer.classList.add("hidden");
+        if (rgbPreview)
+          rgbPreview.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+        // Generate RGB code snippets
+        rgbCPPCode = `rgb_color(${red}, ${green}, ${blue});`;
+        rgbCSCode = `SplashKit.RGBColor(${red}, ${green}, ${blue});`;
+        rgbPythonCode = `rgb_color(${red}, ${green}, ${blue})`;
+      }
+
+      // Dispatch an event with updated RGB code snippets
+      document.dispatchEvent(
+        new CustomEvent("updateRGBCode", {
+          detail: { rgbCPPCode, rgbCSCode, rgbPythonCode },
+        }),
+      );
+    }
+
+    // Attach event listeners to sliders and toggle
+    redSlider.addEventListener("input", updateRgbPreview);
+    greenSlider.addEventListener("input", updateRgbPreview);
+    blueSlider.addEventListener("input", updateRgbPreview);
+    alphaSlider.addEventListener("input", updateRgbPreview);
+    alphaToggle.addEventListener("change", updateRgbPreview);
+
+    // --- HSB Logic ---
+    // Get references to HSB sliders
+    const hueSlider = document.getElementById("hue-slider") as HTMLInputElement;
+    const saturationSlider = document.getElementById(
+      "saturation-slider",
+    ) as HTMLInputElement;
+    const brightnessSlider = document.getElementById(
+      "brightness-slider",
+    ) as HTMLInputElement;
+
+    // Display elements for HSB values
+    const hueValue = document.getElementById("hue-value");
+    const saturationValue = document.getElementById("saturation-value");
+    const brightnessValue = document.getElementById("brightness-value");
+
+    // Preview box for HSB color
+    const hsbPreview = document.getElementById("hsb-color-preview");
+
+    // Function to update HSB preview and code outputs
+    function updateHsbPreview() {
+      // Retrieve slider values
+      const hue = parseFloat(hueSlider.value);
+      const saturation = parseFloat(saturationSlider.value);
+      const brightness = parseFloat(brightnessSlider.value);
+
+      // Update value displays
+      if (hueValue) hueValue.textContent = hue.toString();
+      if (saturationValue) saturationValue.textContent = saturation.toString();
+      if (brightnessValue) brightnessValue.textContent = brightness.toString();
+
+      // Update preview box color
+      if (hsbPreview)
+        hsbPreview.style.backgroundColor = `hsl(${hue}, ${saturation * 100}%, ${brightness * 50}%)`;
+
+      // Update slider colors
+      if (hueSlider) {
+        hueSlider.style.setProperty(
+          "--hue-thumb-color",
+          `hsl(${hue}, 100%, 50%)`,
+        );
+      }
+      if (saturationSlider) {
+        saturationSlider.style.background = `linear-gradient(to right, hsl(${hue}, 0%, ${brightness * 50}%), hsl(${hue}, 100%, ${brightness * 50}%))`;
+        saturationSlider.style.setProperty(
+          "--saturation-thumb-color",
+          `hsl(${hue}, ${saturation * 100}%, ${brightness * 50}%)`,
+        );
+      }
+      if (brightnessSlider) {
+        brightnessSlider.style.setProperty(
+          "--brightness-thumb-color",
+          `hsl(${hue}, 0%, ${brightness * 100}%)`,
+        );
+      }
+
+      let hsbCPPCode, hsbCSCode, hsbPythonCode;
+
+      // Generate HSB code snippets
+      hsbCPPCode = `hsb_color(${hue.toFixed(2)}, ${saturation.toFixed(2)}, ${brightness.toFixed(2)});`;
+      hsbCSCode = `SplashKit.HSBColor(${hue.toFixed(2)}, ${saturation.toFixed(2)}, ${brightness.toFixed(2)});`;
+      hsbPythonCode = `hsb_color(${hue.toFixed(2)}, ${saturation.toFixed(2)}, ${brightness.toFixed(2)})`;
+
+      // Dispatch an event with updated HSB code snippets
+      document.dispatchEvent(
+        new CustomEvent("updateHSBCode", {
+          detail: { hsbCPPCode, hsbCSCode, hsbPythonCode },
+        }),
+      );
+    }
+
+    // Attach event listeners to HSB sliders
+    hueSlider.addEventListener("input", updateHsbPreview);
+    saturationSlider.addEventListener("input", updateHsbPreview);
+    brightnessSlider.addEventListener("input", updateHsbPreview);
+  });
+
+  // Listener to update RGB code blocks dynamically
+  document.addEventListener("updateRGBCode", (event) => {
+    const { rgbCPPCode, rgbCSCode, rgbPythonCode } = (event as CustomEvent)
+      .detail;
+
+    const codeBlocks = document.querySelectorAll(".tab-container .code");
+
+    // Update code blocks for each language tab
+    codeBlocks.forEach((block, index) => {
+      switch (index) {
+        case 0:
+          block.textContent = rgbCPPCode;
+          break;
+        case 1:
+          block.textContent = rgbCSCode;
+          break;
+        case 2:
+          block.textContent = rgbPythonCode;
+          break;
+        default:
+          break;
+      }
+    });
+  });
+
+  // Listener to update HSB code blocks dynamically
+  document.addEventListener("updateHSBCode", (event) => {
+    const { hsbCPPCode, hsbCSCode, hsbPythonCode } = (event as CustomEvent)
+      .detail;
+
+    const hsbCodeBlocks = document.querySelectorAll(".tab-container .code");
+
+    // Update code blocks for each language tab
+    hsbCodeBlocks.forEach((block, index) => {
+      switch (index) {
+        case 3:
+          block.textContent = hsbCPPCode;
+          break;
+        case 4:
+          block.textContent = hsbCSCode;
+          break;
+        case 5:
+          block.textContent = hsbPythonCode;
+          break;
+        default:
+          break;
+      }
+    });
+  });
+</script>
