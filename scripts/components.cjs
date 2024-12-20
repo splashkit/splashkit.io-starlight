@@ -4,6 +4,11 @@
 const fs = require("fs");
 const kleur = require("kleur");
 const path = require('path');
+
+// For cleaning files from usage-examples folder
+const directoryToClean = 'src/content/docs/api';
+const filesToKeep = ['index.mdx'];
+
 // Define type mappings
 const typeMappings = {
   int: "`Integer`",
@@ -175,6 +180,23 @@ function getApiCategories(jsonData) {
   return apiCategories;
 }
 
+// Clean directory function to remove all files except those in the exclusions list
+function cleanDirectory(directory, exclusions) {
+  const files = fs.readdirSync(directory, { withFileTypes: true });
+  files.forEach(file => {
+    const fullPath = path.join(directory, file.name);
+    if (file.isDirectory()) {
+      cleanDirectory(fullPath, exclusions);  // Recursively clean directories
+    } else if (!exclusions.includes(file.name)) {
+      fs.unlinkSync(fullPath);  // Delete file if not in exclusions
+      console.log(kleur.red(`Deleted:`) + ` ${fullPath}`);
+    }
+  });
+}
+
+console.log('Cleaning up directory for Api Documentation pages...\n');
+cleanDirectory(directoryToClean, filesToKeep);
+
 const readGuides = require('./api-guides-generation.cjs');
 
 fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
@@ -183,11 +205,11 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
     console.error("Error reading JSON file:", err);
     return;
   }
-
+  
   try {
     const jsonData = JSON.parse(data);
     Mappings(jsonData);
-    console.log(`Generating MDX files for components\n`);
+    console.log(`\nGenerating MDX files for components\n`);
 
     const guidesDir = path.join(__dirname, 'guides'); // Base directory for guides
     const outputFile = path.join(__dirname, 'guides.json')
