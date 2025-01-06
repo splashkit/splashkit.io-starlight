@@ -8,9 +8,8 @@ lastupdated: 08 Dec 24
 
 import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 
-**{frontmatter.description}**
-
-Written by: {frontmatter.author}  
+**{frontmatter.description}**  
+Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
 _While some Python code has been included in basic functions, full Python code for this tutorial is still in development._
@@ -30,25 +29,31 @@ Vector arithmetic involves the addition, subtraction, and multiplication of vect
 ## Vector Addition
 
 <Aside type="note" title="Function">
-  Vector addition combines two vectors into a new vector. The resulting vector represents the cumulative effect of the original vectors. This is particularly useful in scenarios where multiple forces, velocities, or displacements need to be combined.
+Vector addition combines two vectors into a new vector. The resulting vector represents the cumulative effect of the original vectors. This is particularly useful in scenarios where multiple forces, velocities, or displacements need to be combined.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    vector_2d vector_add(const vector_2d &v1, const vector_2d &v2)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static Vector2D Vector2D.VectorAdd(Vector2D v1, Vector2D v2);
-    public static Vector2D SplashKit.VectorAdd(Vector2D v1, Vector2D v2);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_add(v1, v2):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+vector_2d vector_add(const vector_2d &v1, const vector_2d &v2)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static Vector2D Vector2D.VectorAdd(Vector2D v1, Vector2D v2);
+public static Vector2D SplashKit.VectorAdd(Vector2D v1, Vector2D v2);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_add(v1, v2):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -61,34 +66,37 @@ $$ \text{Resultant Vector} = v_1.x + v_2.x, v_1.y + v_2.y $$
 We can make use of the `vector_add` function to compute this as follows:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  vector_2d v1 = {100, 50};
-  vector_2d v2 = {200, 150};
-  vector_2d result = vector_add(v1, v2);
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-{" "}
+```cpp
+vector_2d v1 = {100, 50};
+vector_2d v2 = {200, 150};
+vector_2d result = vector_add(v1, v2);
+```
+
+</TabItem>
 <TabItem label="C#">
+
   ```csharp Vector2D v1 = new Vector2D() {((X = 100), (Y = 50))}; Vector2D v2 =
   new Vector2D() {((X = 200), (Y = 150))}; Vector2D result =
-  SplashKit.VectorAdd(v1, v2); ```
-</TabItem>
+  SplashKit.VectorAdd(v1, v2);
+  ```
 
-  <TabItem label="Python">
-  ```python
-  v1 = Vector2D()
-  v1.x = 100
-  v1.y = 50
+</TabItem>
+<TabItem label="Python">
+
+```python
+v1 = Vector2D()
+v1.x = 100
+v1.y = 50
 
 v2 = Vector2D()
 v2.x = 200
 v2.y = 150
 
 result = vector_add(v1, v2)
+```
 
-````
 </TabItem>
 </Tabs>
 
@@ -101,6 +109,7 @@ In this example, `v1` and `v2` are added together to produce a new vector `resul
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {41-51}
 #include "splashkit.h"
 
@@ -183,10 +192,11 @@ int main()
 
   return 0;
 }
-````
+```
 
-</TabItem> 
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {41-46}
 using System;
 using SplashKitSDK;
@@ -242,8 +252,8 @@ Point2D origin = new Point2D() { X = 400, Y = 300 };
 // Main loop
 while (!SplashKit.WindowCloseRequested("Vector Addition"))
 {
-SplashKit.ProcessEvents();
-SplashKit.ClearScreen(Color.White);
+    SplashKit.ProcessEvents();
+    SplashKit.ClearScreen(Color.White);
 
     // Draw Cartesian grid
     DrawCartesianGrid();
@@ -259,35 +269,41 @@ SplashKit.ClearScreen(Color.White);
     SplashKit.DrawText("Sum (B): " + SplashKit.VectorToString(vectorSum), Color.Black, 10, 50);
 
     SplashKit.RefreshScreen(60);
-
 }
+```
 
-````
 </TabItem>
 </Tabs>
 </details>
 
 ## Vector Subtraction
-<Aside type="note" title="Function">
-  Conversely, vector subtraction finds the difference between two vectors, yielding a vector that points from the end of one vector to the other. This is useful for calculating relative positions, directions, or the change in velocity or force.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp
-    vector_2d vector_subtract(const vector_2d &v1, const vector_2d &v2)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp
-    public static Vector2D Vector2D.VectorSubtract(Vector2D v1, Vector2D v2);
-    public static Vector2D SplashKit.VectorSubtract(Vector2D v1, Vector2D v2);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python
-    def vector_subtract(v1, v2):
-    ```
-  </TabItem>
+<Aside type="note" title="Function">
+Conversely, vector subtraction finds the difference between two vectors, yielding a vector that points from the end of one vector to the other. This is useful for calculating relative positions, directions, or the change in velocity or force.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+vector_2d vector_subtract(const vector_2d &v1, const vector_2d &v2)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static Vector2D Vector2D.VectorSubtract(Vector2D v1, Vector2D v2);
+public static Vector2D SplashKit.VectorSubtract(Vector2D v1, Vector2D v2);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_subtract(v1, v2):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -300,23 +316,24 @@ $$ \text{Resultant Vector} = v_1.x - v_2.x, v_1.y - v_2.y $$
 We can make use of the `vector_subtract` function to compute this as follows:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp
-  vector_2d v1 = {300, 200};
-  vector_2d v2 = {100, 50};
-  vector_2d result = vector_subtract(v1, v2);
-````
+<TabItem label="C++">
 
-  </TabItem>
+```cpp
+vector_2d v1 = {300, 200};
+vector_2d v2 = {100, 50};
+vector_2d result = vector_subtract(v1, v2);
+```
 
-{" "}
-<TabItem label="C#">
-  ```csharp Vector2D v1 = new Vector2D() {((X = 300), (Y = 200))}; Vector2D v2 =
-  new Vector2D() {((X = 100), (Y = 50))}; Vector2D result =
-  SplashKit.VectorSubtract(v1, v2); ```
 </TabItem>
+<TabItem label="C#">
 
-    <TabItem label="Python">
+```csharp Vector2D v1 = new Vector2D() {((X = 300), (Y = 200))}; Vector2D v2 =
+new Vector2D() {((X = 100), (Y = 50))}; Vector2D result =
+SplashKit.VectorSubtract(v1, v2);
+```
+
+</TabItem>
+<TabItem label="Python">
 
 ```python
 v1 = Vector2D()
@@ -330,7 +347,7 @@ v2.y = 50
 result = vector_subtract(v1, v2)
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 In this example, `v2` is subtracted from `v1` to produce a new vector `result` with values `(200, 150)`.
@@ -342,6 +359,7 @@ In this example, `v2` is subtracted from `v1` to produce a new vector `result` w
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {41-51}
 #include "splashkit.h"
 
@@ -351,15 +369,15 @@ const int GRID_SPACING = 50;
 
 void draw_cartesian_grid()
 {
-// Draw vertical lines and labels
-for (int x = 0; x < screen_width(); x += GRID_SPACING)
-{
-draw_line(COLOR_LIGHT_GRAY, x, 0, x, screen_height());
-if (x != screen_width() / 2) // Avoid overlapping with the y-axis label
-{
-draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2 + 5);
-}
-}
+    // Draw vertical lines and labels
+    for (int x = 0; x < screen_width(); x += GRID_SPACING)
+    {
+        draw_line(COLOR_LIGHT_GRAY, x, 0, x, screen_height());
+        if (x != screen_width() / 2) // Avoid overlapping with the y-axis label
+        {
+            draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2 + 5);
+        }
+    }
 
     // Draw horizontal lines and labels
     for (int y = 0; y < screen_height(); y += GRID_SPACING)
@@ -373,16 +391,15 @@ draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2
 
     // Draw x-axis and y-axis
     draw_line(COLOR_BLACK, 0, screen_height() / 2, screen_width(), screen_height() / 2); // x-axis
-    draw_line(COLOR_BLACK, screen_width() / 2, 0, screen_width() / 2, screen_height());   // y-axis
+    draw_line(COLOR_BLACK, screen_width() / 2, 0, screen_width() / 2, screen_height());  // y-axis
 
     // Label the origin
     draw_text("0", COLOR_BLACK, screen_width() / 2 + 5, screen_height() / 2 + 5);
-
 }
 
 int main()
 {
-open_window("Vector Subtraction", 800, 600);
+    open_window("Vector Subtraction", 800, 600);
 
     // Define vectors
     vector_2d vector_a;
@@ -424,12 +441,12 @@ open_window("Vector Subtraction", 800, 600);
     }
 
     return 0;
-
 }
+```
 
-````
 </TabItem>
 <TabItem label="C#">
+
 ```csharp {41-46}
 using System;
 using SplashKitSDK;
@@ -502,9 +519,9 @@ while (!SplashKit.WindowCloseRequested("Vector Subtraction"))
 
     SplashKit.RefreshScreen(60);
 }
-````
+```
 
-</TabItem> 
+</TabItem>
 </Tabs>
 </details>
 
@@ -525,25 +542,28 @@ Each of these forces can be represented as vectors:
 By adding these vectors, you get the character’s final movement vector:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  vector_2d user_input = {35, 0}; // Moving right
-  vector_2d gravity = {0, -9.8};  // Gravity pulling down
-  vector_2d wind = {-20, 0};      // Wind blowing left
-  
-  vector_2d final_movement = vector_add(vector_add(user_input, gravity), wind); // Combining all forces
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  Vector2D userInput = new Vector2D() { X = 35, Y = 0 };    // Moving right
-  Vector2D gravity = new Vector2D() { X = 0, Y = -9.8 };    // Gravity pulling down
-  Vector2D wind = new Vector2D() { X = -20, Y = 0 };        // Wind blowing left
-  
-  Vector2D finalMovement = SplashKit.VectorAdd(SplashKit.VectorAdd(userInput, gravity), wind);
-  ```
-  </TabItem>
+```cpp
+vector_2d user_input = {35, 0}; // Moving right
+vector_2d gravity = {0, -9.8};  // Gravity pulling down
+vector_2d wind = {-20, 0};      // Wind blowing left
+
+vector_2d final_movement = vector_add(vector_add(user_input, gravity), wind); // Combining all forces
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+Vector2D userInput = new Vector2D() { X = 35, Y = 0 };    // Moving right
+Vector2D gravity = new Vector2D() { X = 0, Y = -9.8 };    // Gravity pulling down
+Vector2D wind = new Vector2D() { X = -20, Y = 0 };        // Wind blowing left
+
+Vector2D finalMovement = SplashKit.VectorAdd(SplashKit.VectorAdd(userInput, gravity), wind);
+```
+
+</TabItem>
 </Tabs>
 
 Let's visualise this!
@@ -555,6 +575,7 @@ Let's visualise this!
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {55-61}
 #include "splashkit.h"
 
@@ -565,23 +586,23 @@ const int GRID_SPACING = 50; // Define grid spacing for the Cartesian grid
 // Function to draw a vector on the screen
 void draw_vector(vector_2d vec, color c, point_2d start_point, string label, double scale)
 {
-point_2d end_point = {start_point.x + vec.x _ scale, start_point.y - vec.y _ scale}; // Adjust scale as needed
-draw_line(c, start_point.x, start_point.y, end_point.x, end_point.y);
-draw_text(label, c, end_point.x + 5, end_point.y - 15); // Adjust text position to avoid overlap
+    point_2d end_point = {start_point.x + vec.x_ scale, start_point.y - vec.y_ scale}; // Adjust scale as needed
+    draw_line(c, start_point.x, start_point.y, end_point.x, end_point.y);
+    draw_text(label, c, end_point.x + 5, end_point.y - 15); // Adjust text position to avoid overlap
 }
 
 // Function to draw the Cartesian grid
 void draw_cartesian_grid()
 {
-// Draw vertical lines and labels
-for (int x = 0; x < screen_width(); x += GRID_SPACING)
-{
-draw_line(COLOR_LIGHT_GRAY, x, 0, x, screen_height());
-if (x != screen_width() / 2) // Avoid overlapping with the y-axis label
-{
-draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2 + 5);
-}
-}
+    // Draw vertical lines and labels
+    for (int x = 0; x < screen_width(); x += GRID_SPACING)
+    {
+        draw_line(COLOR_LIGHT_GRAY, x, 0, x, screen_height());
+        if (x != screen_width() / 2) // Avoid overlapping with the y-axis label
+        {
+            draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2 + 5);
+        }
+    }
 
     // Draw horizontal lines and labels
     for (int y = 0; y < screen_height(); y += GRID_SPACING)
@@ -595,11 +616,10 @@ draw_text(to_string(x - screen_width() / 2), COLOR_BLACK, x, screen_height() / 2
 
     // Draw x-axis and y-axis
     draw_line(COLOR_BLACK, 0, screen_height() / 2, screen_width(), screen_height() / 2); // x-axis
-    draw_line(COLOR_BLACK, screen_width() / 2, 0, screen_width() / 2, screen_height());   // y-axis
+    draw_line(COLOR_BLACK, screen_width() / 2, 0, screen_width() / 2, screen_height());  // y-axis
 
     // Label the origin
     draw_text("0", COLOR_BLACK, screen_width() / 2 + 5, screen_height() / 2 + 5);
-
 }
 
 int main()
@@ -665,14 +685,13 @@ open_window("Vector Addition with Moving Player", 800, 600);
         // Refresh the screen
         refresh_screen(60);
     }
-
     return 0;
-
 }
+```
 
-````
 </TabItem>
 <TabItem label="C#">
+
 ```csharp {56-62}
 using System;
 using SplashKitSDK;
@@ -684,8 +703,8 @@ void DrawVector(Vector2D vec, Color c, Point2D startPoint, string label, double 
 {
     Point2D endPoint = new Point2D
     {
-        X = startPoint.X + vec.X * scale,
-        Y = startPoint.Y - vec.Y * scale
+        X = startPoint.X + vec.X *scale,
+        Y = startPoint.Y - vec.Y* scale
     }; // Adjust scale as needed
 
     SplashKit.DrawLine(c, startPoint.X, startPoint.Y, endPoint.X, endPoint.Y);
@@ -786,9 +805,9 @@ while (!SplashKit.WindowCloseRequested("Vector Addition with Moving Player"))
     // Refresh the screen
     SplashKit.RefreshScreen(60);
 }
-````
+```
 
-</TabItem> 
+</TabItem>
 </Tabs>
 </details>
 
@@ -803,29 +822,33 @@ In a navigation simulation game, a ship is moving towards an island, but it has 
 The goal is to determine the required heading for the ship to counteract the current and head directly to the island.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  point_2d ship_position = {-50, 50};  // Ship starts at (-50, 50)
-  point_2d island_position = {200, 250}; // Island at (200, 250)
-  
-  // Calculate vectors
-  vector_2d current_vector = {100, 5}; // Current affecting the ship
-  vector_2d target_vector = vector_point_to_point(ship_position, island_position);
-  vector_2d required_vector = vector_subtract(target_vector, current_vector);
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  Point2D shipPosition = new Point2D { X = -50, Y = 50 };  // Ship starts at (-50, 50)
-  Point2D islandPosition = new Point2D { X = 200, Y = 250 }; // Island at (200, 250)
+```cpp
+point_2d ship_position = {-50, 50};  // Ship starts at (-50, 50)
+point_2d island_position = {200, 250}; // Island at (200, 250)
+
+// Calculate vectors
+vector_2d current_vector = {100, 5}; // Current affecting the ship
+vector_2d target_vector = vector_point_to_point(ship_position, island_position);
+vector_2d required_vector = vector_subtract(target_vector, current_vector);
+```
+
+</TabItem>
+
+<TabItem label="C#">
+
+```csharp
+Point2D shipPosition = new Point2D { X = -50, Y = 50 };  // Ship starts at (-50, 50)
+Point2D islandPosition = new Point2D { X = 200, Y = 250 }; // Island at (200, 250)
 
 // Calculate vectors
 Vector2D currentVector = new Vector2D { X = 100, Y = 5 }; // Current affecting the ship
 Vector2D targetVector = SplashKit.VectorPointToPoint(shipPosition, islandPosition);
 Vector2D requiredVector = SplashKit.VectorSubtract(targetVector, currentVector);
 
-````
+```
+
 </TabItem>
 </Tabs>
 
@@ -838,6 +861,7 @@ Using the `vector_subtract` function from SplashKit, the `required_vector` is ca
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {57-63}
 #include "splashkit.h"
 #include "string"
@@ -928,17 +952,18 @@ int main()
   close_window("Vector Point to Point Example");
   return 0;
 }
-````
+```
 
-</TabItem> 
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {66-72}
 using System;
 using SplashKitSDK;
 
 public class Program
 {
-const int GRID_SPACING = 50;
+    const int GRID_SPACING = 50;
 
     // Function to draw the Cartesian grid
     public static void DrawCartesianGrid()
@@ -1027,13 +1052,11 @@ const int GRID_SPACING = 50;
 
             SplashKit.RefreshScreen(60);
         }
-
         window.Close();
     }
-
 }
+```
 
-````
 </TabItem>
 </Tabs>
 </details>
@@ -1041,25 +1064,31 @@ const int GRID_SPACING = 50;
 ## Vector Multiplication
 
 <Aside type="note" title="Function">
-  The `vector_multiply` function is used to scale a vector. This function takes two arguments: a vector `v1` and a scalar value `s`, and it returns a new vector where each component of the original vector is multiplied by the scalar.
+The `vector_multiply` function is used to scale a vector. This function takes two arguments: a vector `v1` and a scalar value `s`, and it returns a new vector where each component of the original vector is multiplied by the scalar.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp
-    vector_2d vector_multiply(const vector_2d &v1, double s)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp
-    public static Vector2D Vector2D.VectorMultiply(Vector2D v1, double s);
-    public static Vector2D SplashKit.VectorMultiply(Vector2D v1, double s);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python
-    def vector_multiply(v1, s):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+vector_2d vector_multiply(const vector_2d &v1, double s)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static Vector2D Vector2D.VectorMultiply(Vector2D v1, double s);
+public static Vector2D SplashKit.VectorMultiply(Vector2D v1, double s);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_multiply(v1, s):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -1072,30 +1101,31 @@ For example, if you have a vector `v1 = {2, 3}` and you multiply it by a scalar 
 In a space game, if you want to double the speed of your spaceship by activating the afterburners, you can use the `vector_multiply` function to scale the velocity vector representing the spaceship's movement:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp
-  const double SHIP_SPEED = 25.0; // Normal speed of the ship
-  const double AFTERBURNER_MULTIPLIER = 2.0; // Afterburner multiplier
+<TabItem label="C++">
 
-  vector_2d normal_velocity = { SHIP_SPEED, 0 }; // Normal velocity vector (moving right)
+```cpp
+const double SHIP_SPEED = 25.0; // Normal speed of the ship
+const double AFTERBURNER_MULTIPLIER = 2.0; // Afterburner multiplier
 
-  // Use vector_multiply to double the speed for afterburners
-  vector_2d afterburner_velocity = vector_multiply(normal_velocity, AFTERBURNER_MULTIPLIER);
-````
+vector_2d normal_velocity = { SHIP_SPEED, 0 }; // Normal velocity vector (moving right)
 
-  </TabItem>
+// Use vector_multiply to double the speed for afterburners
+vector_2d afterburner_velocity = vector_multiply(normal_velocity, AFTERBURNER_MULTIPLIER);
+```
 
-  <TabItem label="C#">
-  ```csharp 
-  public const double SHIP_SPEED = 25.0; // Normal speed of the ship
-  public const double AFTERBURNER_MULTIPLIER = 2.0; // Afterburner multiplier
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public const double SHIP_SPEED = 25.0; // Normal speed of the ship
+public const double AFTERBURNER_MULTIPLIER = 2.0; // Afterburner multiplier
 
 Vector2D normalVelocity = new Vector2D { X = SHIP_SPEED, Y = 0 }; // Normal velocity vector (moving right)
 
 // Use VectorMultiply to double the speed for afterburners
 Vector2D afterburnerVelocity = SplashKit.VectorMultiply(normalVelocity, AFTERBURNER_MULTIPLIER);
+```
 
-````
 </TabItem>
 </Tabs>
 
@@ -1111,6 +1141,7 @@ Vector2D afterburnerVelocity = SplashKit.VectorMultiply(normalVelocity, AFTERBUR
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {58-67}
 #include "splashkit.h"
 
@@ -1207,10 +1238,11 @@ int main()
   close_window("Ship with Velocity Vector");
   return 0;
 }
-````
+```
 
-</TabItem> 
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {68-77}
 using System;
 using SplashKitSDK;
@@ -1223,10 +1255,10 @@ const double AFTERBURNER_MULTIPLIER = 2.0; // Afterburner multiplier
 // Function to draw the Cartesian grid
 void DrawCartesianGrid()
 {
-int screenWidth = SplashKit.ScreenWidth();
-int screenHeight = SplashKit.ScreenHeight();
-int centerX = screenWidth / 2;
-int centerY = screenHeight / 2;
+    int screenWidth = SplashKit.ScreenWidth();
+    int screenHeight = SplashKit.ScreenHeight();
+    int centerX = screenWidth / 2;
+    int centerY = screenHeight / 2;
 
     for (int x = 0; x < screenWidth; x += GRID_SPACING)
     {
@@ -1249,23 +1281,13 @@ int centerY = screenHeight / 2;
     SplashKit.DrawLine(Color.Black, 0, centerY, screenWidth, centerY); // x-axis
     SplashKit.DrawLine(Color.Black, centerX, 0, centerX, screenHeight); // y-axis
     SplashKit.DrawText("0", Color.Black, centerX + 5, centerY + 5);
-
 }
 
 // Function to draw a vector
 void DrawVector(Vector2D start, Vector2D end, Color c, string label, int xOffset, int yOffset)
 {
-SplashKit.DrawLine(
-c,
-start.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - start.Y,
-end.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - end.Y
-);
-SplashKit.DrawText(
-label,
-c,
-end.X + SplashKit.ScreenWidth() / 2 + xOffset,
-SplashKit.ScreenHeight() / 2 - end.Y + yOffset
-);
+    SplashKit.DrawLine(c, start.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - start.Y, end.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - end.Y);
+    SplashKit.DrawText(label, c, end.X + SplashKit.ScreenWidth() / 2 + xOffset, SplashKit.ScreenHeight() / 2 - end.Y + yOffset);
 }
 
 SplashKit.OpenWindow("Ship with Velocity Vector", 800, 600);
@@ -1276,9 +1298,9 @@ bool afterburnersActivated = false; // Flag to track afterburner activation
 
 while (!SplashKit.WindowCloseRequested("Ship with Velocity Vector"))
 {
-SplashKit.ProcessEvents();
-SplashKit.ClearScreen(Color.White);
-DrawCartesianGrid();
+    SplashKit.ProcessEvents();
+    SplashKit.ClearScreen(Color.White);
+    DrawCartesianGrid();
 
     // Check if the ship has crossed the y-axis
     if (shipPosition.X >= 0)
@@ -1312,10 +1334,9 @@ DrawCartesianGrid();
 
     SplashKit.Delay(200);
     SplashKit.RefreshScreen();
-
 }
-
 ```
+
 </TabItem>
 </Tabs>
 </details>
@@ -1325,4 +1346,3 @@ DrawCartesianGrid();
 Here we have explored some simple vector arithmetic operations, including vector addition, subtraction, and multiplication. These fundamental operations are useful in various programming scenarios, particularly in game development. By understanding and applying vector arithmetic, you can effectively calculate and manipulate directions, positions, and forces, enhancing your ability to create realistic and dynamic movements.
 
 Mastering vector arithmetic will empower you to build more complex and interactive systems, laying a solid foundation for advanced topics in physics and game development.
-```

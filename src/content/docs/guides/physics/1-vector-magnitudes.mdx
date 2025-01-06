@@ -9,8 +9,7 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem , Aside } from "@astrojs/starlight/components";
 
 **{frontmatter.description}**  
-
-Written by: {frontmatter.author}  
+Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
 _While some Python code has been included in basic functions, full Python code for this tutorial is still in development._
@@ -24,33 +23,40 @@ Vectors are used in programming to represent quantities that involve direction a
 ### SplashKit Vector Functions Used in This Tutorial
 
 1. [Vector Magnitude](/api/physics/#vector-magnitude)
-2. [Vector Magnitude Squared](/api/physics/#vector-magnitude-sqared)
-3. [Vector Invert](/api/physics/#vector-invert) 
+2. [Vector Magnitude Squared](/api/physics/#vector-magnitude-squared)
+3. [Vector Invert](/api/physics/#vector-invert)
 
 ## Vector Magnitude
 
-The magnitude of a vector represents its length or size in space. It is calculated as the distance from the origin to the vector’s point. In a 2D space, the magnitude gives you a measure of how "long" or "strong" the vector is. 
+The magnitude of a vector represents its length or size in space. It is calculated as the distance from the origin to the vector’s point. In a 2D space, the magnitude gives you a measure of how "long" or "strong" the vector is.
 
 <Aside type="note" title="Function">
-  The `vector_magnitude` function returns the magnitude (or “length”) of the vector.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    double vector_magnitude(const vector_2d &v)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static double Vector2D.VectorMagnitude(Vector2D v);
-    public static double SplashKit.VectorMagnitude(Vector2D v);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_magnitude(v):
-    ```
-  </TabItem>
+The `vector_magnitude` function returns the magnitude (or “length”) of the vector.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double vector_magnitude(const vector_2d &v)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static double Vector2D.VectorMagnitude(Vector2D v);
+public static double SplashKit.VectorMagnitude(Vector2D v);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_magnitude(v):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -65,25 +71,31 @@ The magnitude provides a scalar value that reflects how "intense" or "strong" th
 ## Vector Magnitude Squared
 
 <Aside type="note" title="Function">
-  The `vector_magnitude_sqared` function returns the squared magnitude (or “length”) of the vector.
+The `vector_magnitude_sqared` function returns the squared magnitude (or “length”) of the vector.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    double vector_magnitude_sqared(const vector_2d &v)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static double Vector2D.VectorMagnitudeSqared(Vector2D v);
-    public static double SplashKit.VectorMagnitudeSqared(Vector2D v);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_magnitude_sqared(v):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  double vector_magnitude_sqared(const vector_2d &v)
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  public static double Vector2D.VectorMagnitudeSqared(Vector2D v);
+  public static double SplashKit.VectorMagnitudeSqared(Vector2D v);
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  def vector_magnitude_sqared(v):
+  ```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -93,9 +105,10 @@ The magnitude provides a scalar value that reflects how "intense" or "strong" th
 $$ \text{Magnitude Squared} = x^2 + y^2 $$
 </Aside>
 
-When comparing the lengths of two vectors, you only need to compare their magnitude squared values. This eliminates the need for square root calculations and speeds up the comparison process. In some performance-critical applications, calculating the magnitude squared value is often more computationally efficient than calculating the magnitude itself, due to it avoiding the computationally expensive square root operation. 
+When comparing the lengths of two vectors, you only need to compare their magnitude squared values. This eliminates the need for square root calculations and speeds up the comparison process. In some performance-critical applications, calculating the magnitude squared value is often more computationally efficient than calculating the magnitude itself, due to it avoiding the computationally expensive square root operation.
 
 ### When Not To Use `Magnitude Squared` to Compare?
+
 While both `vector_magnitude` and `vector_magnitude_sqared` have the same theoretical time complexity, the square root operation in the magnitude calculation is generally more computationally intensive than addition or multiplication. In practical terms, calculating the magnitude will typically take longer due to the square root operation.
 
 While the magnitude squared value is efficient for comparisons, it is less intuitive for humans to interpret compared to the actual magnitude of a vector. For displaying and understanding vector lengths in a graphical context, the actual magnitude is usually more meaningful and easier to comprehend.
@@ -103,25 +116,31 @@ While the magnitude squared value is efficient for comparisons, it is less intui
 ## Vector Invert
 
 <Aside type="note" title="Function">
-  The `vector_invert` function returns a new vector that is the inverse (or negation) of the input vector. 
+The `vector_invert` function returns a new vector that is the inverse (or negation) of the input vector.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    vector_2d vector_invert(const vector_2d &v)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static Vector2D Vector2D.VectorInvert(Vector2D v);
-    public static Vector2D SplashKit.VectorInvert(Vector2D v);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_invert(v):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+  ```cpp
+  vector_2d vector_invert(const vector_2d &v)
+  ```
+
+</TabItem>
+<TabItem label="C#">
+
+  ```csharp
+  public static Vector2D Vector2D.VectorInvert(Vector2D v);
+  public static Vector2D SplashKit.VectorInvert(Vector2D v);
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```python
+  def vector_invert(v):
+  ```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -130,42 +149,51 @@ While the magnitude squared value is efficient for comparisons, it is less intui
 In games or simulations, you might need to reverse the direction of movement or force. For example, if an object is moving in a certain direction and you want it to move in the exact opposite direction, you can use vector inversion.
 
 ## Visualising Magnitudes
-The below diagram (and code) graphically represents two vectors and their respective inverse. 
+
+The below diagram (and code) graphically represents two vectors and their respective inverse.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  vector_2d my_vector_1;
-  my_vector_1.x = 200;
-  my_vector_1.y = 100;
-  vector_2d inverted_my_vector_1 = vector_invert(my_vector_1);
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  Vector2D myVector1 = new Vector2D();
-  myVector1.X = 200;
-  myVector1.Y = 100;
-  Vector2D invertedMyVector1 = SplashKit.VectorInvert(myVector1);
-  ```
-  </TabItem>
-    <TabItem label="Python">
-  ```python
-  my_vector_1 = Vector2D()
-  my_vector_1.x = 200
-  my_vector_1.y = 100
-  inverted_my_vector_1 = vector_invert(my_vector_1)
-  ```
-  </TabItem>
+```cpp
+vector_2d my_vector_1;
+my_vector_1.x = 200;
+my_vector_1.y = 100;
+vector_2d inverted_my_vector_1 = vector_invert(my_vector_1);
+```
+
+</TabItem>
+
+<TabItem label="C#">
+
+```csharp
+Vector2D myVector1 = new Vector2D();
+myVector1.X = 200;
+myVector1.Y = 100;
+Vector2D invertedMyVector1 = SplashKit.VectorInvert(myVector1);
+```
+
+</TabItem>
+  <TabItem label="Python">
+
+```python
+my_vector_1 = Vector2D()
+my_vector_1.x = 200
+my_vector_1.y = 100
+inverted_my_vector_1 = vector_invert(my_vector_1)
+```
+
+</TabItem>
 </Tabs>
 
 **`Vector 1 (my_vector_1)`**:
+
 - This vector has coordinates (200, 100) and is drawn in red.
 - Its inverse, with coordinates (-200, -100), is drawn in blue.
 - Note how the `x` and `y` of the inverse is just the negative value of `my_vector_1`.
 
 **`Vector 2 (my_vector_2)`**:
+
 - This vector has coordinates (-300, 150) and is drawn in green.
 - Its inverse, with coordinates (300, -150), is drawn in violet.
 - Note how the `x` and `y` of the inverse is just the negative value of `my_vector_2`.
@@ -180,7 +208,7 @@ The magnitudes of the inverted vectors are the same as the original vectors beca
 <summary>Use this code in your own IDE to play with the functions for yourself!</summary>
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
 ```cpp {41-48, 55-61}
 #include "splashkit.h"
@@ -275,7 +303,8 @@ int main()
     return 0;
 }
 ```
-</TabItem> 
+
+</TabItem>
 <TabItem label="C#">
 
 ```csharp {43-45, 50-56}
@@ -363,12 +392,15 @@ while (!SplashKit.WindowCloseRequested(window))
     SplashKit.RefreshScreen(60);
 }
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 
 ## Conclusion
+
 Key take aways:
+
 - Magnitudes: Reflect the length of vectors and are always positive. Inverted vectors have the same magnitudes as the original vectors.
 - Comparison: Direct magnitude comparison indicates the relative lengths of vectors.
 - Magnitude Squared: Useful for comparisons to avoid the computational cost of square roots, retaining the same order of length comparison.

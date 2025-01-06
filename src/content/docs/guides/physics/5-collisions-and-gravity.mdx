@@ -9,8 +9,7 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 import SKOTutorialButton from '../../../../components/SKOTutorialButton.astro';
 
-**{frontmatter.description}**
-
+**{frontmatter.description}**  
 Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
@@ -103,6 +102,7 @@ By following this method, we can accurately determine the point on a wall that i
 When determining if a ball has collided with a wall, we need to calculate the distance between the ball’s centre and the closest point on the wall. The aim is to check if the distance between the ball's centre and the wall is less than or equal to the sum of their radii. If so, a collision is detected. We can work this out procedurally:
 
 ### **Calculate the Closest Point on the Wall**
+
 We first use a `closest_point_on_line` helper function (defined [above](#finding-the-closest-point-on-a-wall-for-collision-detection)) to find the closest point on the wall’s line segment to the centre of the ball. This is important because it tells us where along the wall the ball is closest to.
 
 ```cpp
@@ -112,6 +112,7 @@ point_2d closest = closest_point_on_line(b.ball_circle.centre, w.start_anchor.ce
 ```
 
 ### **Compute the Distance Between the Ball's Center and the Closest Point**
+
 Once we have the closest point, we can calculate the distance between this point and the centre of the ball. This is done by subtracting the `x` and `y` coordinates of the ball's centre from those of the closest point.
 
 ```cpp
@@ -120,7 +121,8 @@ double dy = b.ball_circle.centre.y - closest.y;
 double distance_squared = dx * dx + dy * dy;  // Using squared distance to avoid unnecessary square root calculations
 ```
 
-### **Check for Overlap Using Radii** 
+### **Check for Overlap Using Radii**
+
 To check for a collision, we need to compare the distance between the ball’s centre and the closest point on the wall with the sum of their radii (i.e., the ball's radius and the wall's radius). If the squared distance is less than or equal to the squared sum of their radii, then the ball is overlapping with the wall.
 
 ```cpp
@@ -135,6 +137,7 @@ This method works by treating the problem as a basic geometric distance check. I
 Once a collision between a ball and a wall is detected, the next step is to resolve it. This process involves adjusting the position of the ball to prevent further penetration into the wall and modifying the ball's velocity to simulate a realistic collision response, including bounce and energy loss.
 
 ### **Find the Closest Point on the Wall**
+
 Similar to before, the first step in resolving a collision is to find the closest point on the wall’s line segment to the ball’s centre. This is the point where the ball is essentially colliding with the wall.
 
 ```cpp
@@ -142,6 +145,7 @@ point_2d closest = closest_point_on_line(b.ball_circle.centre, w.start_anchor.ce
 ```
 
 ### **Calculate the Collision Normal Vector**
+
 After finding the closest point, we calculate the direction from that point on the wall to the ball's centre. This direction is called the collision normal and is represented as a unit vector (a vector with a length of 1). It indicates the direction in which the ball should be pushed to resolve the collision.
 
 ```cpp
@@ -150,6 +154,7 @@ collision_normal = unit_vector(collision_normal);
 ```
 
 ### **Determine the Penetration Depth**
+
 The penetration depth is how far the ball has moved into the wall. It’s calculated by finding the distance between the ball’s centre and the closest point on the wall and comparing it to the combined radii of the ball and the wall (the ball's radius and the wall's thickness). The difference between these two values gives us the penetration depth.
 
 ```cpp
@@ -160,6 +165,7 @@ double penetration = (b.ball_circle.radius + w.radius) - distance;
 ```
 
 ### **Push the Ball Out of the Wall**
+
 If the penetration is greater than 0, meaning the ball has overlapped with the wall, the next step is to push the ball out. This is done by moving the ball in the direction of the collision normal by the penetration amount.
 
 ```cpp
@@ -171,6 +177,7 @@ if (penetration > 0)
 ```
 
 ### **Reflect and Dampen the Velocity**
+
 After adjusting the ball’s position, we update the ball’s velocity to simulate the bounce. This is done by splitting the velocity into two components:
 
 - Normal Component: The part of the velocity directed along the collision normal.
@@ -244,9 +251,11 @@ By limiting the velocity in this way, we ensure that the ball falls at a realist
 
 :::note
 Key Points:
+
 - **Gravity as a Constant Acceleration**: This continuously pulls the ball downward, causing it to accelerate over time.
 - **Terminal Velocity**: A limit is set to the ball’s speed to prevent it from accelerating indefinitely, mimicking the effect of air resistance.
 - **Position Update**: Each frame, the ball’s position is updated based on its velocity, allowing it to move across the screen.
+
 :::
 
 ## Observing Gravity in Action with Wall Collisions
@@ -272,11 +281,11 @@ Depending on the wall's position and angle, the balls may bounce to the left or 
 
 Here you can see the balls falling due to gravity, accelerating until they reach terminal velocity, and bouncing off the walls. The collisions with the walls alter the balls’ direction, while gravity continues to pull them downward. Eventually, the balls may hit the bottom of the screen or bounce between walls, constantly interacting with both gravity and the obstacles in their environment.
 
-<SKOTutorialButton 
-  id="gravity-1" 
-  filePath="/guides/physics-code-files/gravity-1.cpp" 
-  buttonText="Test Code in SplashKit Online" 
-  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+<SKOTutorialButton
+  id="gravity-1"
+  filePath="/guides/physics-code-files/gravity-1.cpp"
+  buttonText="Test Code in SplashKit Online"
+  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
 />
 
 ## Conclusion

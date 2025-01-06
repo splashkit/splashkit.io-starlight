@@ -9,8 +9,7 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 
 **{frontmatter.description}**  
-
-Written by: {frontmatter.author}  
+Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
 _While some Python code has been included in basic functions, full Python code for this tutorial is still in development._
@@ -25,7 +24,7 @@ Understanding vector angles is important for creating dynamic and engaging gamep
 
 1. [Vector Angle](/api/physics/#vector-angle)
 2. [Dot Product](/api/physics/#dot-product)
-3. [Angle Between](/api/physics/#angle-between) 
+3. [Angle Between](/api/physics/#angle-between)
 
 ## Introduction to Vector Angles
 
@@ -36,25 +35,31 @@ Vector angles also play a significant role in various fields of physics, where t
 ## Vector Angles
 
 <Aside type="note" title="Function">
-  The `vector_angle` function determines the angle of a vector relative to the x-axis. This angle is essential for understanding the direction of a vector in a two-dimensional space. 
+The `vector_angle` function determines the angle of a vector relative to the x-axis. This angle is essential for understanding the direction of a vector in a two-dimensional space.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    double vector_angle(const vector_2d v)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static double Vector2D.VectorAngle(Vector2D v);
-    public static double SplashKit.VectorAngle(Vector2D v);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_angle(v):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double vector_angle(const vector_2d v)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static double Vector2D.VectorAngle(Vector2D v);
+public static double SplashKit.VectorAngle(Vector2D v);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_angle(v):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -65,6 +70,7 @@ Vector angles also play a significant role in various fields of physics, where t
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {61}
 #include "splashkit.h"
 
@@ -136,8 +142,10 @@ int main()
     return 0;
 }
 ```
-</TabItem> 
+
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {67}
 using System;
 using SplashKitSDK;
@@ -178,11 +186,7 @@ void DrawCartesianGrid()
 void DrawVectorWithAngle(Point2D start, Vector2D v, Color c, string label)
 {
     Point2D end = new Point2D { X = start.X + v.X, Y = start.Y + v.Y }; // End point of the vector
-    SplashKit.DrawLine(
-        c,
-        start.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - start.Y,
-        end.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - end.Y
-    );
+    SplashKit.DrawLine(c, start.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - start.Y, end.X + SplashKit.ScreenWidth() / 2, SplashKit.ScreenHeight() / 2 - end.Y);
 
     // Label the vector
     SplashKit.DrawText(label, c, end.X + SplashKit.ScreenWidth() / 2 + 10, SplashKit.ScreenHeight() / 2 - end.Y);
@@ -211,7 +215,8 @@ while (!SplashKit.WindowCloseRequested("Vector Angle Example"))
     SplashKit.RefreshScreen();
 }
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 
@@ -225,41 +230,47 @@ With a clear understanding of vector angles, you can create more intuitive and r
 
 ## Dot Product
 
-Now that we have covered the basics of vector angles, we can explore how the dot product further enhances our understanding of vector relationships. 
+Now that we have covered the basics of vector angles, we can explore how the dot product further enhances our understanding of vector relationships.
 
 <Aside type="note" title="Function">
-  SplashKit's `dot_product` function calculates the dot product (scalar product) between two vector parameters and returns the result as a scalar value.
+SplashKit's `dot_product` function calculates the dot product (scalar product) between two vector parameters and returns the result as a scalar value.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    double dot_product(const vector_2d &v1, const vector_2d &v2)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static double Vector2D.DotProduct(Vector2D v1, Vector2D v2);
-    public static double SplashKit.DotProduct(Vector2D v1, Vector2D v2);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def dot_product(v1, v2):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double dot_product(const vector_2d &v1, const vector_2d &v2)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static double Vector2D.DotProduct(Vector2D v1, Vector2D v2);
+public static double SplashKit.DotProduct(Vector2D v1, Vector2D v2);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def dot_product(v1, v2):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
 The dot product of two vectors is a scalar value that provides key insights into the relationship between them. If the dot product is positive, the angle is less than 90 degrees, indicating that the vectors are pointing in a generally similar direction. A negative dot product means the angle is greater than 90 degrees, showing that the vectors are pointing in generally opposite directions. If the dot product is zero, the vectors are perpendicular.
 
 <Aside type="note" title="Maths">
-Mathematically, the dot product of two vectors 
+Mathematically, the dot product of two vectors
 
-$ A = (A_x, A_y)$ 
+$ A = (A_x, A_y)$
 
-and 
+and
 
-$ B = (B_x, B_y)$ 
+$ B = (B_x, B_y)$
 
 is calculated as:
 
@@ -267,29 +278,34 @@ $$ \mathbf{A} \cdot \mathbf{B} = A_x \times B_x + A_y \times B_y $$
 </Aside>
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  double dot_product_result_ab = dot_product(vector_a, vector_b);
-  double dot_product_result_ac = dot_product(vector_a, vector_c);
-  double dot_product_result_ad = dot_product(vector_a, vector_d);
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  double dotProductResultAB = SplashKit.DotProduct(vectorA, vectorB);
-  double dotProductResultAC = SplashKit.DotProduct(vectorA, vectorC);
-  double dotProductResultAD = SplashKit.DotProduct(vectorA, vectorD);
-  ```
-  </TabItem>
+```cpp
+double dot_product_result_ab = dot_product(vector_a, vector_b);
+double dot_product_result_ac = dot_product(vector_a, vector_c);
+double dot_product_result_ad = dot_product(vector_a, vector_d);
+```
 
-    <TabItem label="Python">
-  ```python
-  dot_product_result_ab = dot_product(vector_a, vector_b)
-  dot_product_result_ac = dot_product(vector_a, vector_c)
-  dot_product_result_ad = dot_product(vector_a, vector_d)
-  ```
-  </TabItem>
+</TabItem>
+
+<TabItem label="C#">
+
+```csharp
+double dotProductResultAB = SplashKit.DotProduct(vectorA, vectorB);
+double dotProductResultAC = SplashKit.DotProduct(vectorA, vectorC);
+double dotProductResultAD = SplashKit.DotProduct(vectorA, vectorD);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+dot_product_result_ab = dot_product(vector_a, vector_b)
+dot_product_result_ac = dot_product(vector_a, vector_c)
+dot_product_result_ad = dot_product(vector_a, vector_d)
+```
+
+</TabItem>
 </Tabs>
 
 Consider the following diagram:
@@ -305,6 +321,7 @@ Consider the following diagram:
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {55-58}
 #include "splashkit.h"
 using std::to_string;
@@ -389,8 +406,10 @@ int main()
     return 0;
 }
 ```
-</TabItem> 
+
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {62-65}
 using System;
 using SplashKitSDK;
@@ -477,44 +496,50 @@ while (!SplashKit.WindowCloseRequested("Vector Dot Product Example"))
 
     SplashKit.RefreshScreen();
 }
+
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 
 One scenario where this may be useful is to determine if two game objects are facing each other or moving in similar directions. For instance, you can use it to check if an enemy is facing the player by comparing their direction vectors:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  double dot = dot_product(player_direction, enemy_direction);
-  if (dot > 0) 
-  {
-      // Objects are facing each other
-  }
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  double dot = DotProduct(playerDirection, enemyDirection);
-  if (dot > 0)
-  {
-	  // Objects are facing each other
-  }
-  ```
-  </TabItem>
+```cpp
+double dot = dot_product(player_direction, enemy_direction);
+if (dot > 0)
+{
+    // Objects are facing each other
+}
+```
 
-  <TabItem label="Python">
-  ```python
-  dot = dot_product(player_direction, enemy_direction)
-  if dot > 0:
-      # Objects are facing each other
-  ```
-  </TabItem>
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+double dot = DotProduct(playerDirection, enemyDirection);
+if (dot > 0)
+{
+    // Objects are facing each other
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+dot = dot_product(player_direction, enemy_direction)
+if dot > 0:
+    # Objects are facing each other
+```
+
+</TabItem>
 </Tabs>
 
-The dot product is used for other useful things such as determining the vector of a reflection, for example a ball bouncing off of a surface, however that is not within the scope of this tutorial. It is important to understand that using the dot product and calculating the angle between two vectors are both valuable techniques in vector mathematics, but they serve different purposes and have different advantages. 
+The dot product is used for other useful things such as determining the vector of a reflection, for example a ball bouncing off of a surface, however that is not within the scope of this tutorial. It is important to understand that using the dot product and calculating the angle between two vectors are both valuable techniques in vector mathematics, but they serve different purposes and have different advantages.
 
 - The dot product is computationally efficient, as it involves only a few multiplications and additions. This is particularly useful in performance-critical applications like real-time graphics or game development.
 - It can quickly determine if two vectors are pointing in similar or opposite directions without needing to compute the actual angle. This is useful in algorithms that need to classify vectors into different categories based on their alignment.
@@ -526,59 +551,72 @@ Let's dive into how we would calculate the angle between two vectors.
 <Aside type="note" title="Function">
   The `angle_between` function in SplashKit calculates the angle between two vectors. This function is particularly useful for determining the exact orientation between vectors, which is used in many game development scenarios such as navigation, aiming, and rotation.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    double angle_between(const vector_2d &v1, const vector_2d &v2)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static double Vector2D.AngleBetween(Vector2D v1, Vector2D v2);
-    public static double SplashKit.AngleBetween(Vector2D v1, Vector2D v2);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python
-    def angle_between(v1, v2):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double angle_between(const vector_2d &v1, const vector_2d &v2)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static double Vector2D.AngleBetween(Vector2D v1, Vector2D v2);
+public static double SplashKit.AngleBetween(Vector2D v1, Vector2D v2);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def angle_between(v1, v2):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
 To visualise the angle between two vectors, imagine an angle formed by placing a line from the end of the first vector to the end of the second vector. The angle between these vectors represents how much one vector needs to rotate to align with the other. This is helpful in applications where precise directional adjustments or relative orientations are necessary.
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-  ```cpp 
-  double angle = angle_between(vector1, vector2);
-  ```
-  </TabItem>
+<TabItem label="C++">
 
-  <TabItem label="C#">
-  ```csharp 
-  double angle = SplashKit.AngleBetween(vector1, vector2);
-  ```
-  </TabItem>
+```cpp
+double angle = angle_between(vector1, vector2);
+```
 
-  <TabItem label="Python">
-  ```python
-  angle = angle_between(vector1, vector2);
-  ```
-  </TabItem>
+</TabItem>
+
+<TabItem label="C#">
+
+```csharp
+double angle = SplashKit.AngleBetween(vector1, vector2);
+```
+
+</TabItem>
+
+<TabItem label="Python">
+
+```python
+angle = angle_between(vector1, vector2)
+```
+
+</TabItem>
 </Tabs>
 
 Observe the following diagram:
 
 ![Angle Between Vectors](./images/angle-between-vectors.png)
 
-Note that the green line that connects the two vectors is 135 degrees from the x axis, and not the angle created between the two lines. 
+Note that the green line that connects the two vectors is 135 degrees from the x axis, and not the angle created between the two lines.
 
 <details class="custom-details">
 <summary>Use this code in your own IDE to play with the functions for yourself!</summary>
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
+
 ```cpp {62}
 #include "splashkit.h"
 
@@ -650,9 +688,12 @@ int main()
     close_window("Angle Between Vectors Example");
     return 0;
 }
+
 ```
-</TabItem> 
+
+</TabItem>
 <TabItem label="C#">
+
 ```csharp {74}
 using System;
 using SplashKitSDK;
@@ -733,7 +774,8 @@ while (!SplashKit.WindowCloseRequested("Angle Between Vectors Example"))
     SplashKit.RefreshScreen();
 }
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 

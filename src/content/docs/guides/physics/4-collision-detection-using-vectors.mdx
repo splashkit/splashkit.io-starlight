@@ -9,9 +9,8 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem, Aside, Steps } from "@astrojs/starlight/components";
 import SKOTutorialButton from '../../../../components/SKOTutorialButton.astro';
 
-**{frontmatter.description}**
-
-Written by: {frontmatter.author}  
+**{frontmatter.description}**  
+Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
 _Full C# and Python code for this tutorial is still in development._
@@ -88,7 +87,7 @@ vector_2d force = vector_point_to_point(mouse_position(), selected_ball->ball_ci
 selected_ball->velocity = vector_multiply(vector_add(selected_ball->velocity, force), SCALING_FACTOR);
 ```
 
-Recall that integrating the acceleration vector over time gives us the velocity, and integrating the velocity vector over time gives us the position. 
+Recall that integrating the acceleration vector over time gives us the velocity, and integrating the velocity vector over time gives us the position.
 
 In our simulation, we account for the effects of friction by using a deceleration factor. This factor reduces the ball's velocity over time, simulating the slowing down due to friction. The process involves integrating the acceleration to update the velocity and then integrating the velocity to update the ball’s position.
 
@@ -105,7 +104,8 @@ b.ball_circle.center.x += b.velocity.x;
 b.ball_circle.center.y += b.velocity.y;
 ```
 
-#### Explanation: 
+### Explanation
+
 - `vector_multiply(b.velocity, decceleration_factor)` calculates the deceleration vector, which will be subtracted from the ball's velocity.
 - `vector_add(b.velocity, b.acceleration)` updates the ball's velocity by applying the deceleration.
 - `b.ball_circle.center.x += b.velocity.x` and `b.ball_circle.center.y += b.velocity.y` adjust the ball’s position based on the updated velocity.
@@ -153,16 +153,16 @@ Let's see it in action!
 
 ![Applying Forces to Balls](/gifs/guides/physics/ball-physics-1.gif)
 
-<SKOTutorialButton 
-  id="collision-detection-1" 
-  filePath="/guides/physics-code-files/collision-detection-1.cpp" 
-  buttonText="Test Code in SplashKit Online" 
-  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+<SKOTutorialButton
+  id="collision-detection-1"
+  filePath="/guides/physics-code-files/collision-detection-1.cpp"
+  buttonText="Test Code in SplashKit Online"
+  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
 />
 
 ## Handling Collisions
 
-To handle collisions between multiple balls in the window, we need to determine if they have collided and then resolve the collision appropriately. 
+To handle collisions between multiple balls in the window, we need to determine if they have collided and then resolve the collision appropriately.
 
 To check if two balls overlap, we use the Pythagorean theorem to compute the distance between their centres and compare it to the sum of their radii. If the distance is less than or equal to the sum of their radii, a collision has occurred.
 
@@ -178,19 +178,19 @@ return (dx * dx + dy * dy) <= (radius_sum * radius_sum);
 ![Collision Detection](./images/collisions-2.png)
 
 :::note
-This uses a slightly modified version of Pythagorean Theorum to determine if the circles overlap. The square root can be quite costly to compute, so to remove this, we just square both sides of the equation and leave it in the form 
+This uses a slightly modified version of Pythagorean Theorum to determine if the circles overlap. The square root can be quite costly to compute, so to remove this, we just square both sides of the equation and leave it in the form
 
 $ a^2 + b^2 = c^2 $
 :::
 
-If any of the balls do indeed overlap, we have a collision. Once a collision is detected, we need to resolve it by updating the positions and velocities of the colliding balls. 
+If any of the balls do indeed overlap, we have a collision. Once a collision is detected, we need to resolve it by updating the positions and velocities of the colliding balls.
 
 ![Collision Detection](./images/normal-tangent-diagram.png)
 
 Let's assume that `Ball 1` is moving along its vector `v1` and that `Ball 2` is moving along its vector `v2`. If we draw a line between the two centre points and find the `normal` to that line (i.e. a line that is perpendicular to that), this tangential line (represented by the dotted line) effectively represents a solid object from which both balls will bounce off of. The movement of the balls along the normal after a collision is called the **tangential response**.
 
 :::note
-In a perfect world, if one of the balls was stationary and the other was moving along it's velocity vector, the stationary ball would move along the line that is drawn between the centre points, and the moving ball will move along the tangential line, or the **normal**. There will always be 90 degrees between the resulting movement of the two balls. The only exception to this is if the velocity of the moving ball is in the exact same direction as the line between the centre points. 
+In a perfect world, if one of the balls was stationary and the other was moving along it's velocity vector, the stationary ball would move along the line that is drawn between the centre points, and the moving ball will move along the tangential line, or the **normal**. There will always be 90 degrees between the resulting movement of the two balls. The only exception to this is if the velocity of the moving ball is in the exact same direction as the line between the centre points.
 :::
 
 To resolve the collision and apply the forces to each of the balls, we follow the following steps:
@@ -247,7 +247,7 @@ double ball_1_collision_dot_product = dot_product(ball_1.velocity, normalised_co
 double ball_2_collision_dot_product = dot_product(ball_2.velocity, normalised_collision);
 ```
 
-### Caclulate Resulting Velocities 
+### Caclulate Resulting Velocities
 
 To calculate the velocities after collision, we must also factor in the mass of each ball. In physics, an elastic collision is one between two bodies in which the total kinetic energy of the bodies remains the same. We use the following formula:
 
@@ -276,14 +276,14 @@ Let's see it in action!
 
 ![Applying Forces to Balls](/gifs/guides/physics/ball-physics-2.gif)
 
-<SKOTutorialButton 
-  id="collision-detection-2" 
+<SKOTutorialButton
+  id="collision-detection-2"
   filePath="/guides/physics-code-files/collision-detection-2.cpp"
-  buttonText="Test Code in SplashKit Online" 
-  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+  buttonText="Test Code in SplashKit Online"
+  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
 />
 
-Play around with the number of balls, the scaling factors and circles sizes or masses to get a feel for how you can use 2D vectors and vector physics in your games. 
+Play around with the number of balls, the scaling factors and circles sizes or masses to get a feel for how you can use 2D vectors and vector physics in your games.
 
 ![Applying Forces to Balls](/gifs/guides/physics/ball-physics-3.gif)
 

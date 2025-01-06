@@ -9,8 +9,7 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 import SKOTutorialButton from "../../../../components/SKOTutorialButton.astro";
 
-**{frontmatter.description}**
-
+**{frontmatter.description}**  
 Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
@@ -137,6 +136,7 @@ Rays can interact with any object that you desire, you will just need to create 
 
 <details>
 <summary>Click to expand!</summary>
+
 ```cpp
 bool triangle_ray_intersection(const point_2d &origin, const vector_2d &heading, const triangle &tri, point_2d &hit_point, double &hit_distance)
 {
@@ -191,7 +191,6 @@ bool triangle_ray_intersection(const point_2d &origin, const vector_2d &heading,
         hit_distance = closest_distance;
     }
     return has_collision;
-
 }
 ```
 
@@ -199,6 +198,7 @@ bool triangle_ray_intersection(const point_2d &origin, const vector_2d &heading,
 :::
 
 ## Applying Illumination
+
 The brightness of objects is determined by the distance between the source and the intersection point. Closer objects appear brighter, while farther objects fade. The brightness is linearly scaled based on the intersection distance relative to the maximum ray distance (`MAX_RAY_DISTANCE`).
 
 ```cpp
@@ -218,6 +218,7 @@ color rect_color = hsb_color(hue_of(COLOR_PURPLE), saturation_of(COLOR_PURPLE), 
 The `hsb_color` function simplifies dynamic colour changes, allowing you to adjust brightness without modifying an object’s base hue or saturation.
 
 ### The `hsb_color` Function
+
 `hsb_color` is used to dynamically adjust the brightness of objects based on their interaction with rays. This function allows us to modify an object's hue, saturation, and brightness (HSB), enabling realistic illumination effects.
 
 When a ray intersects an object, the brightness component of its colour is calculated based on the distance of the intersection point from the light source. Closer objects appear brighter, while those farther away fade into darkness. This is achieved without altering the object’s original hue or saturation, ensuring its base colour remains consistent.
@@ -238,11 +239,11 @@ Now that we've covered the individual components of the raycasting and illuminat
 - **Illumination Simulation**: Calculates brightness for objects based on their distance from the light source, making closer objects brighter.
 - **Real-time Visualisation**: Visualises rays and illuminated objects in real time as the mouse moves through the scene.
 
-<SKOTutorialButton 
-  id="raycasting-light-1" 
-  filePath="/guides/physics-code-files/raycasting-light-1.cpp" 
-  buttonText="Test Code in SplashKit Online" 
-  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+<SKOTutorialButton
+  id="raycasting-light-1"
+  filePath="/guides/physics-code-files/raycasting-light-1.cpp"
+  buttonText="Test Code in SplashKit Online"
+  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
 />
 
 ## Conclusion

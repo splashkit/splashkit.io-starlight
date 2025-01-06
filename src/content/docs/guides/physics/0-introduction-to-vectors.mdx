@@ -8,8 +8,7 @@ lastupdated: 08 Dec 24
 
 import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 
-**{frontmatter.description}**
-
+**{frontmatter.description}**  
 Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
@@ -63,55 +62,69 @@ A **force vector** represents the magnitude and direction of a force acting on a
 
 ## Visualising Vectors
 
-To visualise vectors, we will create a simple program using SplashKit to draw vectors on a Cartesian plane. 
+To visualise vectors, we will create a simple program using SplashKit to draw vectors on a Cartesian plane.
 
 <Aside type="note" title="Function">
-  The `vector_to_string` function converts a vector's x and y components into a readable format. This helps display vector data for debugging or educational purposes.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    string vector_to_string(const vector_2d &v)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static string Vector2D.VectorToString(Vector2D v);
-    public static string SplashKit.VectorToString(Vector2D v);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python 
-    def vector_to_string(v):
-    ```
-  </TabItem>
+The `vector_to_string` function converts a vector's x and y components into a readable format. This helps display vector data for debugging or educational purposes.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string vector_to_string(const vector_2d &v)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static string Vector2D.VectorToString(Vector2D v);
+public static string SplashKit.VectorToString(Vector2D v);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_to_string(v):
+```
+
+</TabItem>
 </Tabs>
+
 </Aside>
 
 We will first need to declare and initialise a vector with some `x` and `y` values:
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    vector_2d my_vector; 
-    my_vector.x = 200; 
-    my_vector.y = 100; 
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    Vector2D myVector = new Vector2D(); 
-    myVector.X = 200; 
-    myVector.Y = 100; 
-    ```
-  </TabItem>
-    <TabItem label="Python">
-    ```python 
-    my_vector = Vector2D()
-    my_vector.x = 200
-    my_vector.y = 100 
-    ```
-  </TabItem>
+<TabItem label="C++">
+
+```cpp
+vector_2d my_vector;
+my_vector.x = 200;
+my_vector.y = 100;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+Vector2D myVector = new Vector2D();
+myVector.X = 200;
+myVector.Y = 100;
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+my_vector = Vector2D()
+my_vector.x = 200
+my_vector.y = 100
+```
+
+</TabItem>
 </Tabs>
 
 - **`vector_2d`** holds two values, x and y, representing the vector's coordinates in 2D space.
@@ -132,7 +145,7 @@ Pulling this all together, we can visualise this vector on a Cartesian plane and
 <summary>Use this code in your own IDE to play with the functions for yourself!</summary>
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
 ```cpp {43-44, 64}
 #include "splashkit.h"
@@ -207,7 +220,7 @@ int main()
 }
 ```
 
-</TabItem> 
+</TabItem>
 <TabItem label="C#">
 
 ```csharp {46-47, 67}
@@ -252,7 +265,7 @@ void DrawCartesianGrid()
 }
 
 // Main entry point using top-level statements
-var window = SplashKit.OpenWindow("Introduction to Vectors", 800, 600);
+Window window = SplashKit.OpenWindow("Introduction to Vectors", 800, 600);
 
 // Define a vector
 Vector2D myVector = new Vector2D();
@@ -282,32 +295,40 @@ while (!SplashKit.WindowCloseRequested("Introduction to Vectors"))
     SplashKit.RefreshScreen(60);
 }
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 
 ## Creating Vectors from Points
 
 <Aside type="note" title="Function">
-  To create a vector from two specific points in 2D space, we use the `vector_point_to_point` function. This function computes a vector representing the direction and distance from one point to another.
+  
+To create a vector from two specific points in 2D space, we use the `vector_point_to_point` function. This function computes a vector representing the direction and distance from one point to another.
 
-  <Tabs syncKey="code-language">
-  <TabItem label="C++">
-    ```cpp 
-    vector_2d vector_point_to_point(const point_2d &start, const point_2d &end_pt)
-    ```
-  </TabItem>
-  <TabItem label="C#">
-    ```csharp 
-    public static Vector2D Vector2D.VectorPointToPoint(Point2D start, Point2D endPt);
-    public static Vector2D SplashKit.VectorPointToPoint(Point2D start, Point2D endPt);
-    ```
-  </TabItem>
-  <TabItem label="Python">
-    ```python
-    def vector_point_to_point(start, end_pt):
-    ```
-  </TabItem>
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+vector_2d vector_point_to_point(const point_2d &start, const point_2d &end_pt)
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+public static Vector2D Vector2D.VectorPointToPoint(Point2D start, Point2D endPt);
+public static Vector2D SplashKit.VectorPointToPoint(Point2D start, Point2D endPt);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vector_point_to_point(start, end_pt):
+```
+
+</TabItem>
 </Tabs>
 </Aside>
 
@@ -320,35 +341,41 @@ The `vector_point_to_point` function is useful because it calculates the vector 
 Let's see it in action. Suppose we have two points, `start` and `end_pt`. To compute the vector from `start` to `end_pt`, you can use:
 
 <Tabs syncKey="code-language">
-    <TabItem label="C++">
-    ```cpp
-    point_2d start = {-100, -150};
-    point_2d end_pt = {100, 150};
+<TabItem label="C++">
 
-    vector_2d v = vector_point_to_point(start, end_pt);
-    ```
-    </TabItem>
-    <TabItem label="C#">
-    ```csharp
-    Point2D start = new Point2D { X = -100, Y = -150 };
-    Point2D endPt = new Point2D { X = 100, Y = 150 };
+```cpp
+point_2d start = {-100, -150};
+point_2d end_pt = {100, 150};
 
-    Vector2D v = SplashKit.VectorPointToPoint(start, endPt);
-    ```
-    </TabItem>
-    <TabItem label="Python">
-    ```python
-    start = Point2D()
-    start.x = -100
-    start.y = -150
+vector_2d v = vector_point_to_point(start, end_pt);
+```
 
-    end_pt = Point2D()
-    end_pt.x = 100
-    end_pt.y = 150
+</TabItem>
+<TabItem label="C#">
 
-    v = vector_point_to_point(start, end_pt)
-    ```
-    </TabItem>
+```csharp
+Point2D start = new Point2D { X = -100, Y = -150 };
+Point2D endPt = new Point2D { X = 100, Y = 150 };
+
+Vector2D v = SplashKit.VectorPointToPoint(start, endPt);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+start = Point2D()
+start.x = -100
+start.y = -150
+
+end_pt = Point2D()
+end_pt.x = 100
+end_pt.y = 150
+
+v = vector_point_to_point(start, end_pt)
+```
+
+</TabItem>
 </Tabs>
 
 ![Vector Point to Point](./images/vector-point-to-point.png)
@@ -357,7 +384,7 @@ Let's see it in action. Suppose we have two points, `start` and `end_pt`. To com
 <summary>Use this code in your own IDE to play with the functions for yourself!</summary>
 
 <Tabs syncKey="code-language">
-  <TabItem label="C++">
+<TabItem label="C++">
 
 ```cpp {41-44}
 #include "splashkit.h"
@@ -432,7 +459,8 @@ int main()
     return 0;
 }
 ```
-</TabItem> 
+
+</TabItem>
 <TabItem label="C#">
 
 ```csharp {42-45}
@@ -508,7 +536,8 @@ public class Program
     }
 }
 ```
-</TabItem> 
+
+</TabItem>
 </Tabs>
 </details>
 

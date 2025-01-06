@@ -9,8 +9,7 @@ lastupdated: 08 Dec 24
 import { Tabs, TabItem, Aside, Steps } from "@astrojs/starlight/components";
 import SKOTutorialButton from '../../../../components/SKOTutorialButton.astro';
 
-**{frontmatter.description}**
-
+**{frontmatter.description}**  
 Written by: {frontmatter.authors}  
 _Last updated: {frontmatter.lastupdated}_
 
@@ -19,12 +18,14 @@ _Full C# and Python code for this tutorial is still in development._
 ---
 
 ## Introduction to 2D to 3D Projection Using Raycasting
+
 Raycasting is a powerful technique in game development that allows us to simulate how rays of light or vision interact with objects in a virtual environment. While it is commonly used for simple collision detection or line-of-sight mechanics, it also serves as the foundation for more advanced applications, such as creating 3D effects in 2D environments. By projecting a 2D map into a first-person 3D perspective, we can simulate a 3D world using only 2D assets—a technique famously used in early 3D games like [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) and [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D).
 
 In this tutorial, we’ll explore how to use SplashKit to build a 2D to 3D raycasting system. You’ll learn how to:
+
 - Cast rays from a player’s position to detect walls in a grid-based map.
 - Use ray distances to render a first-person 3D view of the environment.
-- Display a top-down 2D map alongside the 3D view for reference. 
+- Display a top-down 2D map alongside the 3D view for reference.
 
 This approach is ideal if you are looking to take your games to the next level. Even beginners can experiment with these concepts to add a visually striking effect to simpler applications, such as dungeon crawlers or maze games. By the end of this tutorial, you’ll have a dynamic system that combines 2D and 3D perspectives, bringing your virtual worlds to life.
 
@@ -35,13 +36,15 @@ We recommend you first familiarise yourself with the [Raycasting Basics](/guides
 </Aside>
 
 ### Important SplashKit Functions Used in This Tutorial
+
 1. [Vector Magnitude](/api/physics/#vector-magnitude)
 2. [Vector From Angle](/api/physics/#vector-from-angle)
 3. [Vector Point To Point](/api/physics/#vector-point-to-point)
 4. [Point Offset By](/api/geometry/#point-offset-by)
 
 ## The Basics of 2D to 3D Projection
-Imagine transforming a flat blueprint of a maze into an immersive first-person view, where walls rise around you as you move through the space. This is the essence of raycasting in creating 3D projections. The map is represented as a simple grid of numbers, where `1` represents walls, and `0` represents empty spaces. 
+
+Imagine transforming a flat blueprint of a maze into an immersive first-person view, where walls rise around you as you move through the space. This is the essence of raycasting in creating 3D projections. The map is represented as a simple grid of numbers, where `1` represents walls, and `0` represents empty spaces.
 
 ```cpp
 // Map grid (1 = wall, 0 = empty space)
@@ -59,17 +62,18 @@ const std::vector<std::vector<int>> MAP = {
 };
 ```
 
-From the player’s position on this grid, rays are "cast" outward in the direction they are facing, acting like beams of light or vision probing the environment. 
+From the player’s position on this grid, rays are "cast" outward in the direction they are facing, acting like beams of light or vision probing the environment.
 
 ![2D Grid Overlay](./images/2d-3d-projection-1.png)
 
 These rays detect the distance to walls in their path. To generate a 3D projection, we can apply the following principles:
 
-1. The closer the wall, the taller it appears on the screen; the farther away, the shorter it looks. 
-2. By calculating the height of these walls and drawing them as vertical wall slices, we create the illusion of depth. 
+1. The closer the wall, the taller it appears on the screen; the farther away, the shorter it looks.
+2. By calculating the height of these walls and drawing them as vertical wall slices, we create the illusion of depth.
 3. Repeat this process for multiple rays across the player’s field of view to produce a complete first-person perspective. This process transforms the flat 2D map into a visually immersive 3D environment.
 
 ## Mapping Ray to Screen Projection
+
 In 3D projection, the screen is divided into vertical slices, with each ray corresponding to one slice along the x-axis. The number of rays determines the level of detail in the projection, as each ray extends outward from the player’s position, scanning the environment for walls.
 
 ![Low Res Projection](./images/2d-3d-projection-2.png)
@@ -157,6 +161,7 @@ if (distance > MAX_RAY_DISTANCE)
 ```
 
 ## Breaking Down the Projection Process
+
 At its core, raycasting reduces the complex task of simulating a 3D environment to drawing a series of lines with mathematical precision. Each ray serves as a "scanner," collecting data about the environment and translating it into a visually coherent projection.
 
 <Steps>
@@ -172,6 +177,7 @@ At its core, raycasting reduces the complex task of simulating a 3D environment 
 ## Projecting Your 3D World
 
 ### Determine the Ray Angle
+
 The first step in our raycasting process is to calculate the angle of each ray relative to the player’s FOV. Each ray will "travel" outward from the player’s position, probing the environment for walls. The angle of each ray determines its direction, ensuring that rays span the entire FOV evenly.
 
 Each ray represents a specific vertical slice of the screen, and its angle is calculated relative to the player's current viewing direction. This is achieved by dividing the FOV into equal increments, with one ray per vertical slice.
@@ -201,6 +207,7 @@ double angle_step = PLAYER_FOV / NUM_RAYS;            // Calculate the angular s
 ```
 
 ### Iterate Across the Screen
+
 To create the 3D projection, the screen is divided into vertical slices, with each slice corresponding to a ray cast from the player’s position. A loop iterates over the total number of rays, calculating the data for each slice.
 
 For each ray, calculate the distance to the nearest wall:
@@ -218,6 +225,7 @@ for (int i = 0; i < NUM_RAYS; ++i)
 This loop ensures that every ray spans the FOV, producing a smooth visual projection.
 
 ### Calculate Wall Height
+
 The wall height is then calculated based on the distance of each ray to its nearest intersection with a wall. This calculation is essential to creating the illusion of depth, as closer walls appear taller while distant walls appear shorter.
 
 <Aside type="note" title="Maths">
@@ -248,18 +256,20 @@ int wall_bottom = (SCREEN_HEIGHT / 2) + (wall_height / 2);
 These boundaries ensure that walls are drawn in the correct location relative to the player's viewpoint.
 
 ### Draw the World
+
 The final step combines rendering the ceiling, walls, and floor to create a complete first-person perspective. Each vertical slice of the screen is divided into three distinct sections: the ceiling, the wall, and the floor. Together, these elements form a cohesive, immersive view of the world.
 
 #### Draw the Ceiling
-The space above the wall height represents the ceiling. A line is drawn from the top of the screen (`0`) to the top of the wall slice (`wall_top`), filling this area with a ceiling colour. This ensures the upper portion of the screen reflects the absence of walls in that vertical slice. 
+
+The space above the wall height represents the ceiling. A line is drawn from the top of the screen (`0`) to the top of the wall slice (`wall_top`), filling this area with a ceiling colour. This ensures the upper portion of the screen reflects the absence of walls in that vertical slice.
 
 #### Draw the Wall
+
 The wall slice is the focal point of the projection. A vertical line is drawn between `wall_top` and `wall_bottom` to represent the wall section corresponding to the ray’s intersection point. The height of this line is determined by the wall height calculated in the previous step, and its brightness is adjusted based on the wall's distance to achieve more depth.
 
 #### Draw the Floor
+
 The floor occupies the space beneath the wall slice. A line is drawn from `wall_bottom` to the bottom of the screen (`SCREEN_HEIGHT`), filling the remainder of the screen with a floor colour. Like the ceiling, the floor provides spatial context and completes the projection.
-
-
 
 ![Basic 3D Projection](./images/2d-3d-projection-6.png)
 
@@ -270,6 +280,7 @@ In this code, the ceiling and floor are represented by blank space, but you coul
 :::
 
 ### Repeat for All Rays
+
 To create the full 3D projection, the process described in the earlier steps—calculating the ray angle, casting rays, determining wall distances, calculating wall heights, and drawing ceiling, wall, and floor slices—is repeated for every ray in the player's field of view. Each ray corresponds to a single vertical column on the screen, and by rendering all rays sequentially, the scene is constructed line by line.
 
 ```cpp
@@ -298,30 +309,31 @@ Try modifying the map, field of view, or the number of rays cast to see how thes
 
 <Tabs>
   <TabItem label="2D">
-    <SKOTutorialButton 
-      id="raycasting-2d" 
-      filePath="/guides/physics-code-files/raycasting-2d.cpp" 
-      buttonText="Test 2D Code in SplashKit Online" 
-      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+    <SKOTutorialButton
+      id="raycasting-2d"
+      filePath="/guides/physics-code-files/raycasting-2d.cpp"
+      buttonText="Test 2D Code in SplashKit Online"
+      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
     />  
   </TabItem>
   <TabItem label="3D">
-  <SKOTutorialButton 
-      id="raycasting-3d" 
-      filePath="/guides/physics-code-files/raycasting-3d.cpp" 
-      buttonText="Test 3D Code in SplashKit Online" 
-      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+  <SKOTutorialButton
+      id="raycasting-3d"
+      filePath="/guides/physics-code-files/raycasting-3d.cpp"
+      buttonText="Test 3D Code in SplashKit Online"
+      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
     />  
   </TabItem>
   <TabItem label="2D + 3D">
-  <SKOTutorialButton 
-      id="raycasting-2d-3d" 
-      filePath="/guides/physics-code-files/raycasting-2d-3d.cpp" 
-      buttonText="Test 2D + 3D Code in SplashKit Online" 
-      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+  <SKOTutorialButton
+      id="raycasting-2d-3d"
+      filePath="/guides/physics-code-files/raycasting-2d-3d.cpp"
+      buttonText="Test 2D + 3D Code in SplashKit Online"
+      iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++"
     />  
   </TabItem>
 </Tabs>
 
 ## Conclusion
+
 You’ve now seen how raycasting works to create both a 2D map and a 3D projection of a grid-based environment. By combining mathematical calculations with simple rendering techniques, you can create an interactive program that connects these perspectives in real time. From here, you can experiment with the code by modifying parameters like field of view, map layouts, or even introducing interactive elements. These changes will help you explore the potential of raycasting for your own projects.
