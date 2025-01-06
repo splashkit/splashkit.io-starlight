@@ -70,6 +70,7 @@ export default defineConfig({
             { label: "Interface", autogenerate: { directory: "guides/Interface", collapsed: false } },
             { label: "Json", autogenerate: { directory: "guides/JSON", collapsed: false } },
             { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
+            { label: "Physics", badge: 'New', autogenerate: { directory: "guides/Physics", collapsed: false } },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
             { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
             { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
@@ -97,8 +98,9 @@ export default defineConfig({
   image: { service: squooshImageService() },
   server: {
     host: true,
-    port: 4322
+    port: 4321
   },
+
   // Render mathematical equations using remark-math and rehype-mathjax
   markdown: {
     remarkPlugins: [remarkMath],

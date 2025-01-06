@@ -30,6 +30,7 @@ const guidesAvailable = {
   inputs: false,
   json: false,
   networking: false,
+  physics: false,
   sprites: false,
   utilities: false
 };

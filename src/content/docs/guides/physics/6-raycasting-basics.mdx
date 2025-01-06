@@ -1,0 +1,220 @@
+---
+title: Raycasting Basics
+description: This tutorial introduces raycasting, a foundational technique in game development and computer graphics used to simulate line-of-sight, detect collisions, and render 3D effects in 2D environments.
+category: Guides
+authors: Shaun Ratcliff
+lastupdated: 08 Dec 24
+---
+
+import { Tabs, TabItem, Aside, Steps } from "@astrojs/starlight/components";
+import SKOTutorialButton from '../../../../components/SKOTutorialButton.astro';
+
+**{frontmatter.description}**
+
+Written by: {frontmatter.authors}  
+_Last updated: {frontmatter.lastupdated}_
+
+_Full C# and Python code for this tutorial is still in development._
+
+---
+
+## Introduction to Raycasting
+
+Raycasting is a technique used in computer graphics and game development to simulate how light or vision interacts with objects in a virtual environment. By casting an imaginary ray from a source point (like a player's position in a game), we can determine what the ray intersects with, how far away the object is, and how to represent that interaction visually.  
+
+Think of raycasting as shining a flashlight in a dark room. As the beam travels forward, it reveals objects in its path. In programming, this concept allows us to calculate collisions, detect objects, or render 3D scenes in a 2D space.
+
+Raycasting is often used in:
+
+- 2D games: To determine if a player can "see" an enemy or if a projectile hits a wall.
+- 3D rendering: Simulating 3D environments, as seen in classic games like [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) or [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D).
+- Physics simulations: Calculating line-of-sight or detecting where a ray intersects a surface
+
+At its core, raycasting is about using mathematics to track the path of a ray, calculate where it hits, and decide what happens next. It’s simpler than full 3D rendering techniques, making it an excellent starting point for understanding game development concepts like collision detection, shading, and spatial relationships.
+
+### Important SplashKit Functions Used in This Tutorial
+
+1. [Vector To](/api/physics/#vector-to)
+2. [Vector From Angle](/api/physics/#vector-from-angle)
+3. [Vector Multiply](/api/physics/#vector-multiply)
+4. [Point Offset By](/api/geometry/#point-offset-by)
+
+<Aside type="caution" title="Checkpoint!">
+<p>We recommend you first familiarise yourself with the suite of vector basics tutorials before proceeding with this one.</p>
+
+<p>[Introduction to Vectors](/guides/physics/0-introduction-to-vectors/)</p>
+<p>[Vector Magnitudes](/guides/physics/1-vector-magnitudes/)</p>
+<p>[Vector Arithmetic](/guides/physics/2-vector-arithmetic/)</p>
+<p>[Vector Angles](/guides/physics/3-vector-geometry-angles/)</p>
+
+These will provide you with a solid understanding of the fundamental principles of vectors and how to effectively make use of the SplashKit physics functions.
+</Aside>
+
+## Key Raycasting Concepts
+
+To understand raycasting, we need to break down a few fundamental concepts.
+
+### The Ray
+A ray is like a one-way laser beam that starts at a specific point and travels infinitely in a certain direction. In raycasting, we use rays to simulate vision, light, or projectiles. Imagine shining a flashlight in a dark room—the beam you see is a good analogy for a ray.
+
+### The Origin
+The origin is the starting point of a ray. In a game, this might be the player’s position or the source of light. The ray begins here and travels outward.
+
+### The Direction
+The direction of a ray determines where it travels. In SplashKit, this is represented using a vector. SplashKit’s `vector_from_angle` function simplifies converting an angle into a normalised vector, saving you from manually handling trigonometric calculations. This lets you focus on building your program rather than working out complex mathematical formulas.
+
+<Aside type="note" title="Function">
+  The `vector_from_angle` function generates a vector from the provided angle and distance.
+
+  <Tabs syncKey="code-language">
+  <TabItem label="C++">
+    ```cpp 
+    vector_2d vector_from_angle(double angle, double magnitude)
+    ```
+  </TabItem>
+  <TabItem label="C#">
+    ```csharp 
+    public static Vector2D Vector2D.VectorFromAngle(double angle, double magnitude);
+    public static Vector2D SplashKit.VectorFromAngle(double angle, double magnitude);
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python 
+    def vector_from_angle(angle, magnitude):
+    ```
+  </TabItem>
+</Tabs>
+</Aside>
+
+### The Intersection
+An intersection (or collision) occurs when a ray collides with an object in the environment, like a wall or an enemy. The intersection point tells us where this collision happens, which can be used to calculate distances or simulate effects like lighting or vision blocking.
+
+You'll be able to use the concepts and apply them in your program in some way:
+
+<Steps>
+1. Represent the ray by defining the origin and the direction
+2. Represent the object you want to test for collisions, such as a `rectangle`. While this tutorial will focus on rectangles first, SplashKit offers other objects such as `triangle`, `circle`, `bitmap` and `sprite`.
+3. Calculate the intersection. There are different algorithms for different objects, however they all determine if the ray intersects the object and calculate the intersection point and distance from the origin.
+4. Use the intersection data to trigger the next part of your program.
+</Steps>
+
+![Key Raycasting Concepts](/gifs/guides/physics/raycasting-basics-1.gif)
+
+## Generating a Ray
+In our program, a ray is simply a line that starts at a specific point and extends in a particular direction. SplashKit functions make it easy to define these elements and visualise the ray.
+
+### Define the Origin
+The origin of the ray is the starting point. In our example, we will use the player’s position, which is represented as a `point_2d` in SplashKit.
+
+```cpp
+point_2d origin = player.position;
+```
+
+To make the origin clear on the screen, we've drawn it as a blue circle and labeled it as "Player".
+
+### Calculate the Direction
+The direction of the ray determines where it travels. We'll use the `vector_from_angle` function to generate a directional vector based on the player’s viewing angle:
+
+```cpp
+vector_2d ray_direction = vector_from_angle(player.angle, 1.0);
+```
+
+### Extend the Ray
+To simulate the ray extending out from the player, we calculate a distant endpoint using `point_offset_by`. 
+
+<Aside type="note" title="Function">
+  The `point_offset_by` calculates another `point_2d` that is offset from a point (i.e., the origin) by an offset value. Since we only care about the direction in this case, we can enter the value of `1.0` to generate a unit vector. 
+
+  <Tabs syncKey="code-language">
+  <TabItem label="C++">
+    ```cpp 
+    point_2d point_offset_by(const point_2d &start_point, const vector_2d &offset)
+    ```
+  </TabItem>
+  <TabItem label="C#">
+    ```csharp 
+    public static Point2D Geometry.PointOffsetBy(Point2D startPoint, Vector2D offset);
+    public static Point2D SplashKit.PointOffsetBy(Point2D startPoint, Vector2D offset);
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python 
+    def point_offset_by(start_point, offset):
+    ```
+  </TabItem>
+</Tabs>
+</Aside>
+
+This function takes the origin and scales the direction vector by a large factor (the diagonal of the screen):
+
+```cpp
+double calculate_max_ray_length()
+{
+    return sqrt(SCREEN_WIDTH * SCREEN_WIDTH + SCREEN_HEIGHT * SCREEN_HEIGHT);
+}
+
+point_2d ray_end = point_offset_by(origin, vector_multiply(ray_direction, calculate_max_ray_length()));
+```
+
+<Aside type="note" title="Function">
+  The `vector_multiply` function multiplies a vector by a passed in value. In this case, we want the ray out to it's maximum value. 
+
+  <Tabs syncKey="code-language">
+  <TabItem label="C++">
+    ```cpp 
+    vector_2d vector_multiply(const vector_2d &v1, double s)
+    ```
+  </TabItem>
+  <TabItem label="C#">
+    ```csharp 
+    public static Vector2D Vector2D.VectorMultiply(Vector2D v1, double s);
+    public static Vector2D SplashKit.VectorMultiply(Vector2D v1, double s);
+    ```
+  </TabItem>
+  <TabItem label="Python">
+    ```python 
+    def vector_multiply(v1, s):
+    ```
+  </TabItem>
+</Tabs>
+</Aside>
+
+### Detecting Collisions
+Once the ray is generated, the next step is to check if it interacts with objects in the environment.If the ray intersects an object (such as a rectangle), we calculate the intersection point using the `ray_rectangle_intersection` function. This function returns the exact point of collision and the distance from the origin:
+
+```cpp
+if (ray_rectangle_intersection(player.position, ray_direction, rect, intersection, distance))
+{
+    fill_circle(COLOR_GREEN, intersection.x, intersection.y, 5);
+    draw_text("Intersection", COLOR_GREEN, "arial", 14, intersection.x + 10, intersection.y - 10);
+}
+```
+
+## Putting it All Together
+
+Now that you have the basics, let's see it all in action. Click the `Test Code in SplashKit Online` button below to load the SplashKit Online IDE and run the code yourself. The code demonstrates a simple program where:
+- A player emits a ray that extends outward in the direction they are facing.
+- The ray checks for collisions with rectangles in the scene.
+- When the ray intersects with a rectangle, the collision point is highlighted and the program responds accordingly. 
+
+This interactive example allows you to rotate the player's view using the `A` and `D` keys to see how the ray dynamically interacts with the objects in a 2D environment.
+
+<SKOTutorialButton 
+  id="raycasting-basics-1" 
+  filePath="/guides/physics-code-files/raycasting-basics-1.cpp" 
+  buttonText="Test Code in SplashKit Online" 
+  iframeSrc="https://thoth-tech.github.io/SplashkitOnline/?language=C++" 
+/>
+
+![Raycasting Basics Example](/gifs/guides/physics/raycasting-basics-2.gif)
+
+## Other Uses for Raycasting
+Raycasting is an incredibly versatile technique with applications that extend far beyond simple collision detection. In 2D games, it can be used for line-of-sight calculations, such as determining whether a player can "see" an enemy or if a light source illuminates an area. In 3D game development, raycasting forms the backbone of techniques like ray tracing, enabling realistic lighting, shadows, and reflections. It's also a fundamental tool for physics simulations, helping to calculate projectile trajectories or detect where objects collide with surfaces.
+
+Beyond games, raycasting is used in applications like robotics, where it helps machines perceive their surroundings using sensors, and in computer-aided design (CAD), where it assists in visualising intersections between objects. Its simplicity and efficiency make it a go-to method for solving many spatial problems in interactive environments.
+
+## Conclusion
+
+This tutorial covered the basics of raycasting, breaking it down into its key concepts — rays, origins, directions, and intersections. You also now have a basic practical program to demonstrate these concepts, using SplashKit to create a dynamic system where a player’s ray interacts with objects in a 2D space. 
+
+Raycasting is a foundational skill in game development and graphics programming, and the concepts you've learned here can be extended to more advanced scenarios. Experiment with the example code, modify it to test other shapes, and explore the possibilities that raycasting unlocks in your projects.
