@@ -12,12 +12,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-#mdx output files
-
-
-
-
-
 # environment variables
 .env
 .env.production
@@ -25,61 +19,13 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-src/content/docs/api/Animations.mdx
-src/content/docs/api/Audio.mdx
-src/content/docs/api/Camera.mdx
-src/content/docs/api/Color.mdx
-src/content/docs/api/Database.mdx
-src/content/docs/api/Geometry.mdx
-src/content/docs/api/Graphics.mdx
-src/content/docs/api/Input.mdx
-src/content/docs/api/Interface.mdx
-src/content/docs/api/Json.mdx
-src/content/docs/api/Logging.mdx
-src/content/docs/api/Networking.mdx
-src/content/docs/api/Physics.mdx
-src/content/docs/api/Raspberry.mdx
-src/content/docs/api/Resource-Bundles.mdx
-src/content/docs/api/Resources.mdx
-src/content/docs/api/Social.mdx
-src/content/docs/api/Sprites.mdx
-src/content/docs/api/Terminal.mdx
-src/content/docs/api/Timers.mdx
-src/content/docs/api/Types.mdx
-src/content/docs/api/Utilities.mdx
-src/content/docs/api/Windows.mdx
-src/content/docs/usage-examples/Animations.mdx
-src/content/docs/usage-examples/Audio.mdx
-src/content/docs/usage-examples/Camera.mdx
-src/content/docs/usage-examples/Color.mdx
-src/content/docs/usage-examples/Database.mdx
-src/content/docs/usage-examples/Geometry.mdx
-src/content/docs/usage-examples/Graphics.mdx
-src/content/docs/usage-examples/Input.mdx
-src/content/docs/usage-examples/Interface.mdx
-src/content/docs/usage-examples/Json.mdx
-src/content/docs/usage-examples/Logging.mdx
-src/content/docs/usage-examples/Networking.mdx
-src/content/docs/usage-examples/Physics.mdx
-src/content/docs/usage-examples/Raspberry.mdx
-src/content/docs/usage-examples/Resource-Bundles.mdx
-src/content/docs/usage-examples/Resources.mdx
-src/content/docs/usage-examples/Social.mdx
-src/content/docs/usage-examples/Sprites.mdx
-src/content/docs/usage-examples/Terminal.mdx
-src/content/docs/usage-examples/Timers.mdx
-src/content/docs/usage-examples/Types.mdx
-src/content/docs/usage-examples/Utilities.mdx
-src/content/docs/usage-examples/Windows.mdx
-src/content/docs/guides/Animations/index.mdx
-src/content/docs/guides/Audio/index.mdx
-src/content/docs/guides/Camera/index.mdx
-src/content/docs/guides/Database/index.mdx
-src/content/docs/guides/Inputs/index.mdx
-src/content/docs/guides/JSON/index.mdx
-src/content/docs/guides/Networking/index.mdx
-src/content/docs/guides/Others/Cmake/index.mdx
-src/content/docs/guides/Others/index.mdx
-src/content/docs/guides/Sprites/index.mdx
-src/content/docs/guides/Starter/index.mdx
-src/content/docs/guides/Utilities/index.mdx
+# mdx output files
+
+# Ignore all files in the api and usage-examples directory
+src/content/docs/api/*.mdx
+src/content/docs/usage-examples/*.mdx
+
+# Except for these files (such as index.mdx files)
+!src/content/docs/api/index.mdx
+!src/content/docs/usage-examples/index.mdx
+!src/content/docs/usage-examples/CONTRIBUTING.mdx
