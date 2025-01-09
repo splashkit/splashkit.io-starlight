@@ -6,6 +6,7 @@ import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from "@astrojs/sitemap";
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax'
+import starlightBlog from 'starlight-blog'
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +16,11 @@ export default defineConfig({
       title: "SplashKit",
       description: 'SplashKit is a cross-platform game engine for C, C++ and Objective-C. It provides a simple API for 2D game development.',
       plugins: [
+        starlightBlog({
+          title: 'SplashKit Blog',
+          recentPostCount: 5,
+          prevNextLinksOrder: 'chronological',
+        }),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
         }),
@@ -41,6 +47,10 @@ export default defineConfig({
         src: "./src/assets/favicon.svg",
       },
       sidebar: [
+        {
+          label: "Blog",
+          autogenerate: { directory: "blog", collapsed: true },
+        },
         {
           label: "Installation",
           collapsed: true,
@@ -70,6 +80,7 @@ export default defineConfig({
             { label: "Interface", autogenerate: { directory: "guides/Interface", collapsed: false } },
             { label: "Json", autogenerate: { directory: "guides/JSON", collapsed: false } },
             { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
+            { label: "Physics", badge: 'New', autogenerate: { directory: "guides/Physics", collapsed: false } },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
             { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
             { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
@@ -97,8 +108,9 @@ export default defineConfig({
   image: { service: squooshImageService() },
   server: {
     host: true,
-    port: 4322
+    port: 4321
   },
+
   // Render mathematical equations using remark-math and rehype-mathjax
   markdown: {
     remarkPlugins: [remarkMath],

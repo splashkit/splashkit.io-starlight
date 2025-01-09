@@ -1,0 +1,82 @@
+---
+title: No module named 'splashkit' in Python error
+description: Python code files are unable to find the splashkit dependancy installed in Homebrew.
+sidebar:
+  label: "7. Python ModuleNotFoundError"
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+:::caution[ModuleNotFoundError: No module named 'splashkit' in Python]
+
+This guide helps resolve the error `ModuleNotFoundError: No module named 'splashkit' in Python` on MacOS. This issue occurs when the Homebrew path is not correctly set in the `.zshrc` file as SplashKit's global python library is added in using the path where the Homebrew version of Python is present.
+
+:::
+
+## Problem
+
+MacOS prioritises its built-in Python installation located in `/usr/bin/python3`. SplashKit and other dependencies are likely installed in the Python environment managed by Homebrew, which is located at `/opt/homebrew/bin/python3` or similar. Due to this, the SplashKit module cannot be located in shell’s environment variables (`PATH`).
+
+![Error Example](https://i.imgur.com/1HMsz87.png)
+
+## Solution
+
+To resolve this, add this line: `eval "$(/opt/homebrew/bin/brew shellenv)"` to your `.zshrc` file. Follow the steps below:
+
+<Steps>
+
+1. **Locate Your `.zshrc` File**
+
+   The `.zshrc` file is located in your home directory at `~/Users/(your username)/`.
+
+   If you don’t see it, press **Shift + Command + . (dot)** to toggle hidden files visibility in Finder.
+
+   :::tip[Identify Your Username]
+
+   To ensure you’re in the correct directory, you can use the `whoami` command in Terminal to check your username:
+
+   ```shell
+   whoami
+   ```
+
+   ![Username Check Example](https://i.imgur.com/Le4nSdA.png)
+
+   :::
+
+2. **Add 'homebrew' path**
+
+   To ensure macOS uses the Homebrew-installed version of Python, open the `.zshrc` file with a text editor and add the following line at the start to include the homebrew path:
+
+   ```shell
+   eval "$(/opt/homebrew/bin/brew shellenv)"
+   ```
+
+3. **Apply Changes**
+
+   Save the `.zshrc` file and then reload it with the following command to apply changes immediately:
+
+   ```shell
+   source ~/.zshrc
+   ```
+
+4. **Check Python version**
+
+   Verify that the terminal is using the Homebrew-installed Python version:
+
+   ```shell
+   which python3
+   ```
+
+   The output should be something like:
+
+   ```shell
+   /opt/homebrew/bin/python3
+   ```
+
+5. **Test the setup**
+
+   Run your Python script again. It should now successfully locate the SplashKit module.
+
+</Steps>
+
+After completing these steps, your terminal will use the Homebrew-installed version of Python, and your Python script should now successfully find and run the SplashKit module without encountering the `ModuleNotFoundError`.

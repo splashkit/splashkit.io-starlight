@@ -1,0 +1,173 @@
+---
+export interface SKOTutorialButtonProps {
+  id: string;
+  filePath: string;
+  buttonText: string;
+  iframeSrc: string;
+}
+
+const { id, filePath, buttonText, iframeSrc } = Astro.props;
+---
+
+<div style="text-align: center; margin-top: 1rem;">
+  <button
+    id={id}
+    class="sko-button"
+    style="margin-top: 1rem;"
+    onclick={`(function() {
+        try {
+          // Check the screen size and restrict functionality for small screens
+          const screenWidth = window.innerWidth;
+          if (screenWidth < 768) {
+            alert('This feature is not available on screens of this size.');
+            return;
+          }
+
+          let globalIframeContainer = document.getElementById('sko_iframe_global_container');
+          let globalIframe = document.getElementById('sko_iframe_global');
+          let messageQueue = [];
+          let isIframeReady = false;
+          let readinessTimeout = null;
+
+          const resetMessageQueue = () => {
+            console.log('Resetting message queue. Current queue:', messageQueue);
+            messageQueue = [];
+            console.log('Reset message queue. Current queue:', messageQueue);
+          };
+
+          if (!window.skoListenerAdded) {
+            window.skoListenerAdded = true;
+            window.addEventListener('message', function(event) {
+              if (event.data.type === 'SplashKitOnlineListening') {
+                isIframeReady = true;
+                if (readinessTimeout) clearTimeout(readinessTimeout);
+                while (messageQueue.length > 0) {
+                  const message = messageQueue.shift();
+                  globalIframe.contentWindow.postMessage(message, '*');
+                }
+              }
+            });
+          }
+
+          if (!globalIframeContainer) {
+            globalIframeContainer = document.createElement('div');
+            globalIframeContainer.id = 'sko_iframe_global_container';
+            globalIframeContainer.style.position = 'fixed';
+            globalIframeContainer.style.top = '50%';
+            globalIframeContainer.style.left = '50%';
+            globalIframeContainer.style.transform = 'translate(-50%, -50%)';
+            globalIframeContainer.style.width = '75vw';
+            globalIframeContainer.style.height = '75vh';
+            globalIframeContainer.style.border = '1px solid #ccc';
+            globalIframeContainer.style.borderRadius = '8px';
+            globalIframeContainer.style.backgroundColor = '#fff';
+            globalIframeContainer.style.zIndex = '9999';
+            document.body.appendChild(globalIframeContainer);
+
+            const dragBar = document.createElement('div');
+            dragBar.style.width = '100%';
+            dragBar.style.height = '30px';
+            dragBar.style.backgroundColor = '#333';
+            dragBar.style.color = '#fff';
+            dragBar.style.display = 'flex';
+            dragBar.style.justifyContent = 'space-between';
+            dragBar.style.alignItems = 'center';
+            dragBar.style.padding = '0 10px';
+            dragBar.style.cursor = 'move';
+            dragBar.textContent = 'Drag to move';
+            globalIframeContainer.appendChild(dragBar);
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'X';
+            closeButton.style.backgroundColor = '#e74c3c';
+            closeButton.style.color = '#fff';
+            closeButton.style.border = 'none';
+            closeButton.style.cursor = 'pointer';
+            closeButton.onclick = function () {
+              globalIframeContainer.style.display = 'none';
+            };
+            dragBar.appendChild(closeButton);
+
+            globalIframe = document.createElement('iframe');
+            globalIframe.id = 'sko_iframe_global';
+            globalIframe.src = '${iframeSrc}';
+            globalIframe.style.width = '100%';
+            globalIframe.style.height = 'calc(100% - 30px)';
+            globalIframe.style.border = 'none';
+            globalIframeContainer.appendChild(globalIframe);
+
+            // Add drag functionality.
+            let offsetX = 0, offsetY = 0, isDragging = false;
+
+            dragBar.addEventListener('mousedown', function(event) {
+              isDragging = true;
+              offsetX = event.clientX - globalIframeContainer.getBoundingClientRect().left;
+              offsetY = event.clientY - globalIframeContainer.getBoundingClientRect().top;
+              document.addEventListener('mousemove', onMouseMove);
+              document.addEventListener('mouseup', onMouseUp);
+            });
+
+            function onMouseMove(event) {
+              if (isDragging) {
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                const containerRect = globalIframeContainer.getBoundingClientRect();
+                let newLeft = event.clientX - offsetX;
+                let newTop = event.clientY - offsetY;
+                newLeft = Math.max(0, Math.min(newLeft, viewportWidth - containerRect.width));
+                newTop = Math.max(0, Math.min(newTop, viewportHeight - containerRect.height));
+                globalIframeContainer.style.left = newLeft + 'px';
+                globalIframeContainer.style.top = newTop + 'px';
+                globalIframeContainer.style.transform = 'translate(0, 0)';
+              }
+            }
+
+            function onMouseUp() {
+              isDragging = false;
+              document.removeEventListener('mousemove', onMouseMove);
+              document.removeEventListener('mouseup', onMouseUp);
+            }
+          }
+
+          globalIframeContainer.style.display = 'block';
+
+          const sendMessageToIframe = (message) => {
+            if (isIframeReady) {
+              globalIframe.contentWindow.postMessage(message, '*');
+            } else {
+              messageQueue.push(message);
+            }
+          };
+
+          sendMessageToIframe({ eventType: 'ResetProjectState' });
+
+          readinessTimeout = setTimeout(() => {
+            isIframeReady = true;
+            while (messageQueue.length > 0) {
+              const message = messageQueue.shift();
+              globalIframe.contentWindow.postMessage(message, '*');
+            }
+          }, 100);
+
+          fetch('${filePath}')
+            .then(response => {
+              if (!response.ok) throw new Error('Failed to fetch C++ file.');
+              return response.text();
+            })
+            .then(codeData => {
+              const message = {
+                eventType: 'InitializeProjectFromOutsideWorld',
+                files: [{ path: '/code/main.cpp', data: codeData }]
+              };
+              sendMessageToIframe(message);
+            })
+            .catch(err => console.error('Error fetching resources:', err));
+        } catch (error) {
+          console.error('Error initializing iframe:', error);
+        }
+      })();
+    `}
+  >
+    {buttonText}
+  </button>
+</div>
