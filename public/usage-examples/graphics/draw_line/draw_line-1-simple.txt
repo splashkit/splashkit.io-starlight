@@ -1,0 +1,3 @@
+### Colourful Starburst
+
+The following code shows examples of using [Draw Line](/api/graphics#draw-line-1) to draw a colourful starburst pattern on the screen.

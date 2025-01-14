@@ -1,0 +1,3 @@
+#### Traffic Lights
+
+The following code shows an example of using [Fill Circle On Window](/api/graphics/#fill-circle-on-window-1) to display three circles of different colors and placement in a specified window to look like traffic lights. 

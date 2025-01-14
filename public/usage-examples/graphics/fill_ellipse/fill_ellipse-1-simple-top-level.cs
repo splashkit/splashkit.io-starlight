@@ -9,5 +9,4 @@ DrawRectangle(ColorRed(), 200, 200, 400, 200);
 RefreshScreen();
 
 Delay(4000);
-
 CloseAllWindows();

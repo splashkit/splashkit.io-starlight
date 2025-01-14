@@ -1,0 +1,3 @@
+#### Halved Ninja Star
+
+The following code shows examples of using [Draw Quad On Window](/api/graphics#draw-quad-on-window-1) to show how to draw a 4 sided shape to a specific window. The example extends [this Draw Quad usage example](/usage-examples/graphics/#ninja-star) to split it across 2 separate windows.

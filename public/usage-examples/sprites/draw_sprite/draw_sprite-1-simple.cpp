@@ -2,7 +2,7 @@
 
 int main()
 {
-    window start = open_window("draw_sprite", 600, 600);
+    window start = open_window("Drawing a Player Sprite", 600, 600);
 
     load_bitmap("player", "player.png");
     sprite player_sprite = create_sprite(bitmap_named("player"));

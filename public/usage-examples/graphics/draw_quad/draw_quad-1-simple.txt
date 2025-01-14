@@ -1,0 +1,3 @@
+#### Ninja Star
+
+The following code shows examples of using [Draw Quad](/api/graphics#draw-quad-1) to show how to draw a 4 sided shape. This example aranges for diamond style shapes into a ninja star pattern.

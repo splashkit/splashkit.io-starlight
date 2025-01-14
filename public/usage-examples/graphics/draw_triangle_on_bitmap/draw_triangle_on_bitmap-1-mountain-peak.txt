@@ -1,0 +1,3 @@
+#### Creating a Mountain Peak
+
+The following code demonstrates how to use [Draw Triangle On Bitmap](/api/graphics#draw-triangle-on-bitmap) to create a simple mountain peak outline against a sky background.

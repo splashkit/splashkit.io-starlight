@@ -2,9 +2,9 @@
 
 int main()
 {
-    open_window("Fill triangle Example", 800, 600);
+    open_window("Fill Triangle Example", 800, 600);
+    
     clear_screen();
-
     fill_triangle(COLOR_RED, 100, 100, 200, 200, 300, 100);
     refresh_screen();
 
