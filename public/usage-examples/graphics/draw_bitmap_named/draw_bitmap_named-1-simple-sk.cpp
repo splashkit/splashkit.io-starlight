@@ -2,9 +2,11 @@
 
 int main()
 {
+    // Open Window
     open_window("Basic Bitmap Drawing", 315, 330);
 
-    load_bitmap("skbox", "skbox.png"); // Load bitmap image
+    // Load bitmap image
+    load_bitmap("skbox", "skbox.png");
 
     while (!quit_requested())
     {
@@ -15,6 +17,7 @@ int main()
         refresh_screen();
     }
     close_all_windows();
+    free_all_bitmaps();
 
     return 0;
 }

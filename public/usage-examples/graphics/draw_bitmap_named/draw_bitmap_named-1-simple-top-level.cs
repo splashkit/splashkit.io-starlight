@@ -1,8 +1,10 @@
 using static SplashKitSDK.SplashKit;
 
+// Open Window
 OpenWindow("Basic Bitmap Drawing", 315, 330);
 
-LoadBitmap("skbox", "skbox.png"); // Load bitmap image
+// Load bitmap image
+LoadBitmap("skbox", "skbox.png"); 
 
 while (!QuitRequested())
 {

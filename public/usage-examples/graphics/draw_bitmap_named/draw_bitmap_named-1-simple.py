@@ -1,8 +1,10 @@
 from splashkit import *
 
+# Open Window
 open_window("Basic Bitmap Drawing", 315, 330)
 
-load_bitmap("skbox", "skbox.png") # Load bitmap image
+# Load bitmap image
+load_bitmap("skbox", "skbox.png")
 
 while (not quit_requested()):
     process_events()
