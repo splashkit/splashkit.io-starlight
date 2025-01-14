@@ -1,0 +1,3 @@
+#### Hot Summer Sun
+
+The following code shows an example of using [Point At Origin](/api/geometry/#point-at) to create a "sun" at the origin point.
