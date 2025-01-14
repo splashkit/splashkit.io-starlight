@@ -17,7 +17,7 @@ This guide helps resolve the error `ModuleNotFoundError: No module named 'splash
 
 MacOS prioritises its built-in Python installation located in `/usr/bin/python3`. SplashKit and other dependencies are likely installed in the Python environment managed by Homebrew, which is located at `/opt/homebrew/bin/python3` or similar. Due to this, the SplashKit module cannot be located in shell’s environment variables (`PATH`).
 
-![Error Example](https://i.imgur.com/1HMsz87.png)
+![Error Example](./images/macos-issue-7_problem.png)
 
 ## Solution
 
@@ -39,7 +39,7 @@ To resolve this, add this line: `eval "$(/opt/homebrew/bin/brew shellenv)"` to y
    whoami
    ```
 
-   ![Username Check Example](https://i.imgur.com/Le4nSdA.png)
+   ![Username Check Example](./images/macos-whoami.png)
 
    :::
 

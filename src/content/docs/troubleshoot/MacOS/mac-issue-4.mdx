@@ -21,13 +21,23 @@ When attempting to run a program that uses SplashKit on MacOS, you may encounter
 
 ## Solutions
 
-### Ensure macOS is Updated
+Firstly, update your macOS to the latest version available. Ideally, your OS should be version **12.0** or later, as compatibility issues with `splashkit.dll` are less likely with more recent versions of macOS.
 
-Update your macOS to the latest version available. Ideally, your OS should be version **12.0** or later, as compatibility issues with `splashkit.dll` are less likely on recent versions of macOS.
+### Solution 1: Build the SplashKit library locally
 
----
+Run the following command to build the library for your OS, which will overwrite the provided library file from when you installed SplashKit:
 
-### For Older macOS Versions (Pre-12.0)
+```shell
+skm macos install
+```
+
+Then, if needed, re-install the library globally with the following command:
+
+```shell
+skm global install
+```
+
+### Solution 2: Use an older version of SplashKit
 
 If you are using a version of macOS older than 12.0, you can revert SplashKit to a previous version that may be more compatible with your system. Run the following commands in Terminal, one line at a time:
 
@@ -43,9 +53,9 @@ git fetch --unshallow
 git checkout cbb68dc
 ```
 
-**Note**: After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) for creating new projects.
+#### Using SplashKit with Solution 2
 
-### Instructions
+**Note**: After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) for creating new projects.
 
 <Steps>
 
