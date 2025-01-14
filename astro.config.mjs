@@ -1,6 +1,6 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import solidJs from "@astrojs/solid-js";
+// import solidJs from "@astrojs/solid-js";
 import react from "@astrojs/react";
 import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from "@astrojs/sitemap";
@@ -101,11 +101,11 @@ export default defineConfig({
 
     }),
 
-    solidJs(), sitemap()
+    react(), sitemap()
   ],
 
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
-  image: { service: squooshImageService() },
+  // image: { service: squooshImageService() },
   server: {
     host: true,
     port: 4321
