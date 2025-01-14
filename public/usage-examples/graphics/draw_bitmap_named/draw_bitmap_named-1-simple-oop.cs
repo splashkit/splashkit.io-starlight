@@ -6,10 +6,11 @@ namespace DrawBitmapNamed
     {
         public static void Main()
         {
-
+            // Open Window
             Window window = new Window("Basic Bitmap Drawing", 315, 330);
 
-            SplashKit.LoadBitmap("skbox", "skbox.png"); // Load bitmap image
+            // Load bitmap image
+            SplashKit.LoadBitmap("skbox", "skbox.png");
 
             while (!window.CloseRequested)
             {
