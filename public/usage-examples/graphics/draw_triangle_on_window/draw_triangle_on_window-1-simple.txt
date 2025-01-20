@@ -1,0 +1,3 @@
+#### Bunting Flags
+
+The following code shows an example of using [Draw Triangle On Window](/api/graphics/#draw-triangle-on-window-3) to draw a row of triangles at the top of the window like bunting flags.

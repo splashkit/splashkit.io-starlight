@@ -1,0 +1,3 @@
+### Check the index of a given word in a string
+
+The following code shows examples of using [Index Of](/api/utilities/#index-of), it asks the user to enter the sentence, then the word they want to find the index of, and the program returns the index of the word in the sentence. If the word is not found, the program says that the word is not in the sentence.

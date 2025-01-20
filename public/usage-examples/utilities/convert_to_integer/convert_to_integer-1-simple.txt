@@ -1,0 +1,3 @@
+### Convert to Integer Guessing Game
+
+The following code shows examples of using [Convert To Integer](/api/utilities/#convert-to-integer) to play a simple guessing game where the user enters a number, the program converts it to an integer, and then checks if it is the correct number. The program also validates the user input to ensure it is a valid integer.

@@ -1,0 +1,4 @@
+### How many ticks?
+
+The following code shows an example of using [Current Ticks](/api/utilities/#current-ticks) to track the number of ticks since the program started. The code captures the number of ticks before a delay, then captures the number of ticks after the delay. The difference between the two captures is the number of ticks that have passed during the delay.
+Note: The 'tick' numbers may vary on different machines.

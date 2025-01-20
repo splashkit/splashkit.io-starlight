@@ -1,0 +1,3 @@
+#### Checking for Font using Name string
+
+The following code shows an example of using [Has Font](/api/graphics/#has-font-2) to show how validate if the font has been loaded or not.

@@ -1,0 +1,3 @@
+### Checking if a string contains a word
+
+The following code shows an example of using [Contains](/api/utilities/#contains) to check if a string contains a word with a specific case.
