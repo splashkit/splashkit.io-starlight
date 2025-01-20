@@ -1,0 +1,3 @@
+#### Point 2D Guessing Game
+
+The following code shows an example of using [Same Point](/api/geometry#same-point) to compare two pixel coordinates with a simple guessing game.
