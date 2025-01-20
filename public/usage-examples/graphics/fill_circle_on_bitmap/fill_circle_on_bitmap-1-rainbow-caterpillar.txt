@@ -1,0 +1,3 @@
+#### Creating a Rainbow Caterpillar
+
+The following code demonstrates how to use [Fill Circle On Bitmap](/api/graphics#fill-circle-on-bitmap) to create a colorful caterpillar by drawing a series of circles in rainbow colors.
