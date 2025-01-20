@@ -1,0 +1,3 @@
+### Simple Convert to Double Interest Calculator
+
+The following code shows examples of using [Convert To Double](/api/utilities/#convert-to-double) to calculate the interest on a loan. The user enters the loan amount, the interest rate, and the number of years, and the program converts them to doubles and calculates the total amount to be repaid.
