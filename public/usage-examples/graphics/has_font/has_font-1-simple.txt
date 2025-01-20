@@ -1,0 +1,4 @@
+#### Checking for Font using Variable
+
+The following code shows an example of using [Has Font](/api/graphics#has-font-1) to check if a font exists in the program.
+
