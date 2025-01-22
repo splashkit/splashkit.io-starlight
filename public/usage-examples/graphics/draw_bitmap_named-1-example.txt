@@ -1,0 +1,5 @@
+SplashKit Logo
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/graphics/draw_bitmap_named-1-example-resources.zip).
+:::

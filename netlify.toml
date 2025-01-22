@@ -1,5 +1,6 @@
 # example netlify.toml
 [build]
-  command = "npm run generate-guides-json && npm run generate-mdx && npm run generate-groups && npm run build"
+  command = "npm run build"
   functions = "netlify/functions"
   publish = "dist"
+fill_circle_on_bitmap
