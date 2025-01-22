@@ -3,4 +3,3 @@
   command = "npm run build"
   functions = "netlify/functions"
   publish = "dist"
-fill_circle_on_bitmap
