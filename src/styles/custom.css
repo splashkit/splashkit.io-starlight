@@ -257,10 +257,14 @@ code {
 
 /* Light Mode Colors for .custom-details */
 .custom-details {
-  --custom-details-border: #3498db; /* Vibrant blue border */
-  --custom-details-background: #d3dbe2; /* Light gray background */
-  --icon-color: #3498db; /* Vibrant blue for the icon */
-  --icon-hover-color: #2980b9; /* Darker blue for the icon on hover */
+  --custom-details-border: #3498db;
+  /* Vibrant blue border */
+  --custom-details-background: #d3dbe2;
+  /* Light gray background */
+  --icon-color: #3498db;
+  /* Vibrant blue for the icon */
+  --icon-hover-color: #2980b9;
+  /* Darker blue for the icon on hover */
 
   border: 3px solid var(--custom-details-border);
   border-radius: 8px;
@@ -273,24 +277,31 @@ code {
   font-weight: bold;
   position: relative;
   padding-left: 30px;
-  margin: 0; /* Reset any default margin */
+  margin: 0;
+  /* Reset any default margin */
 }
 
 /* Custom icon before the summary in .custom-details */
 .custom-details summary::before {
   position: absolute;
   left: 0;
-  color: var(--icon-color); /* Use the defined icon color */
+  color: var(--icon-color);
+  /* Use the defined icon color */
   font-weight: bold;
-  transition: transform 0.2s ease, color 0.2s ease; /* Smooth transition for icon change */
+  transition: transform 0.2s ease, color 0.2s ease;
+  /* Smooth transition for icon change */
 }
 
 /* Dark Mode Colors for .custom-details */
 [data-theme="dark"] .custom-details {
-  --custom-details-border: #1e2a38; /* Darker border color */
-  --custom-details-background: #2e3a47; /* Darker gray background */
-  --icon-color: #00aaff; /* Light blue for the icon */
-  --icon-hover-color: #0099cc; /* Darker blue for the icon on hover */
+  --custom-details-border: #1e2a38;
+  /* Darker border color */
+  --custom-details-background: #2e3a47;
+  /* Darker gray background */
+  --icon-color: #00aaff;
+  /* Light blue for the icon */
+  --icon-hover-color: #0099cc;
+  /* Darker blue for the icon on hover */
 
   border: 3px solid var(--custom-details-border);
   border-radius: 8px;
@@ -299,19 +310,25 @@ code {
 }
 
 [data-theme="dark"] .custom-details summary::before {
-  color: var(--icon-color); /* Use the defined icon color */
+  color: var(--icon-color);
+  /* Use the defined icon color */
 }
 
 [data-theme="dark"] .custom-details summary:hover::before {
-  color: var(--icon-hover-color); /* Use the defined hover icon color */
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
 }
 
 /* Light Mode Colors for .custom-details */
 .custom-details {
-  --custom-details-border: var(--sl-color-accent); /* Accent color from the light theme */
-  --custom-details-background: #d3dbe2; /* Light gray background */
-  --icon-color: var(--sl-color-accent); /* Accent color for the icon */
-  --icon-hover-color: darken(var(--sl-color-accent), 10%); /* Slightly darker color for the icon on hover */
+  --custom-details-border: var(--sl-color-accent);
+  /* Accent color from the light theme */
+  --custom-details-background: #d3dbe2;
+  /* Light gray background */
+  --icon-color: var(--sl-color-accent);
+  /* Accent color for the icon */
+  --icon-hover-color: darken(var(--sl-color-accent), 10%);
+  /* Slightly darker color for the icon on hover */
 
   border: 3px solid var(--custom-details-border);
   border-radius: 8px;
@@ -324,36 +341,47 @@ code {
   font-weight: bold;
   position: relative;
   padding-left: 30px;
-  margin: 0; /* Reset any default margin */
+  margin: 0;
+  /* Reset any default margin */
 }
 
 /* Custom icon before the summary in .custom-details */
 .custom-details summary::before {
-  content: "+"; /* Default symbol when collapsed */
+  content: "+";
+  /* Default symbol when collapsed */
   position: absolute;
   left: 0;
-  font-size: 18px; /* Size of the symbol */
-  color: var(--icon-color); /* Use the defined icon color */
+  font-size: 18px;
+  /* Size of the symbol */
+  color: var(--icon-color);
+  /* Use the defined icon color */
   font-weight: bold;
-  transition: color 0.2s ease; /* Smooth transition for icon color change */
+  transition: color 0.2s ease;
+  /* Smooth transition for icon color change */
 }
 
 /* Change symbol when .custom-details is open */
 .custom-details[open] summary::before {
-  content: "-"; /* Change to minus symbol when open */
+  content: "-";
+  /* Change to minus symbol when open */
 }
 
 /* Add hover effect to the custom icon in .custom-details */
 .custom-details summary:hover::before {
-  color: var(--icon-hover-color); /* Use the defined hover icon color */
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
 }
 
 /* Dark Mode Colors for .custom-details */
 [data-theme="dark"] .custom-details {
-  --custom-details-border: #1e2a38; /* Darker border color */
-  --custom-details-background: #2e3a47; /* Darker gray background */
-  --icon-color: #00aaff; /* Light blue for the icon */
-  --icon-hover-color: #0099cc; /* Darker blue for the icon on hover */
+  --custom-details-border: #1e2a38;
+  /* Darker border color */
+  --custom-details-background: #2e3a47;
+  /* Darker gray background */
+  --icon-color: #00aaff;
+  /* Light blue for the icon */
+  --icon-hover-color: #0099cc;
+  /* Darker blue for the icon on hover */
 
   border: 3px solid var(--custom-details-border);
   border-radius: 8px;
@@ -362,11 +390,13 @@ code {
 }
 
 [data-theme="dark"] .custom-details summary::before {
-  color: var(--icon-color); /* Use the defined icon color */
+  color: var(--icon-color);
+  /* Use the defined icon color */
 }
 
 [data-theme="dark"] .custom-details summary:hover::before {
-  color: var(--icon-hover-color); /* Use the defined hover icon color */
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
 }
 
 .color-box {
@@ -378,19 +408,30 @@ code {
   margin-left: 20px;
 }
 
-.guidesAccordion {
-  margin-top: 10px;
+.guidesAccordion,
+.usageExamplesAccordion {
+  margin-top: 20px;
   padding: 0.5rem 1.25rem;
   border: 2px solid transparent;
   border-radius: 50px;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: pointer;
   background-color: var(--sk-logo-orange);
   color: black;
 }
 
-.guidesAccordion:hover {
+.guidesAccordion {
+  background-color: var(--sk-logo-orange);
+}
+
+.usageExamplesAccordion {
+  margin-left: 10px;
+  background-color: var(--sk-logo-blue);
+}
+
+.guidesAccordion:hover,
+.usageExamplesAccordion:hover {
   border: 2px solid var(--sl-color-white);
 }
 
@@ -400,18 +441,28 @@ mjx-container svg {
 }
 
 .sko-button {
-  padding: 1rem 1.5rem; /* Adjusted padding for better proportions */
-  border: 3px solid transparent; /* Ensures clean border */
-  position: relative; /* Keeps the button content in place */
-  overflow: hidden; /* Handles any child element overflow */
-  cursor: pointer; /* Makes it clear the button is clickable */
-  background-color: var(--sk-logo-blue); /* SplashKit's brand color */
-  color: black; /* Text color */
-  border-radius: 9999px; /* Fully rounded edges for the stadium shape */
-  text-align: center; /* Ensures the text is centered */
+  padding: 1rem 1.5rem;
+  /* Adjusted padding for better proportions */
+  border: 3px solid transparent;
+  /* Ensures clean border */
+  position: relative;
+  /* Keeps the button content in place */
+  overflow: hidden;
+  /* Handles any child element overflow */
+  cursor: pointer;
+  /* Makes it clear the button is clickable */
+  background-color: var(--sk-logo-blue);
+  /* SplashKit's brand color */
+  color: black;
+  /* Text color */
+  border-radius: 9999px;
+  /* Fully rounded edges for the stadium shape */
+  text-align: center;
+  /* Ensures the text is centered */
 }
 
 .sko-button:hover {
   border: 3px solid var(--sl-color-white);
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
 }

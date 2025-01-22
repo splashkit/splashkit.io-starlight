@@ -1,3 +1,0 @@
-#### Random Trangles
-
-The following code shows examples of using [Random Bitmap Point](/api/geometry#random-bitmap-point) to select random points on a bitmap to draw triangle shapes.

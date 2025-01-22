@@ -1,3 +1,0 @@
-#### Halved Coloured Star
-
-The following code shows examples of using [Fill Quad On Window](/api/graphics#fill-quad-on-window-1) to show how to draw filled-in 4 sided diamond shapes to a specific window. This example shows a filled in version of [this Draw Quad On Window usage example](/usage-examples/graphics/#halved-ninja-star).

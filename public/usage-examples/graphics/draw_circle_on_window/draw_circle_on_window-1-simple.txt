@@ -1,3 +1,0 @@
-#### Bubbles
-
-The following code shows an example of using [Draw Circle On Window](/api/graphics/#draw-circle-on-window-1) to draw multiple random color and random size circles on window to look like bubbles.

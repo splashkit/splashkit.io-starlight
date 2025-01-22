@@ -1,3 +1,0 @@
-#### Using the Circle Y-coordinate
-
-The following code shows an example of using [Circle Y](/api/geometry/#circle-y) to show how to find the y position for the circle and draw more circles with the same y coordinate.

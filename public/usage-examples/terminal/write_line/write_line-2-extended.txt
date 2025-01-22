@@ -1,3 +1,0 @@
-#### ASCII Art - Charlie the Unicorn
-
-The following code is an example of using [Write Line](/api/terminal#write-line-5) to create ASCII art of "Charlie the Unicorn" in the terminal.

@@ -1,3 +1,0 @@
-### Double type?
-
-The following code shows examples of using [Is Double](/api/utilities/#is-double) to check if a set of values are valid doubles. The code will print the value along with the result using "true" or "false".

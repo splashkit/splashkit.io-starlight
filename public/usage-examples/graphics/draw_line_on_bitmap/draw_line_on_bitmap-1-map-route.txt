@@ -1,3 +1,0 @@
-#### Drawing a Route on a Map
-
-The following code demonstrates how to use [Draw Line On Bitmap](/api/graphics#draw-line-on-bitmap) to create a simple route between two points on a map.

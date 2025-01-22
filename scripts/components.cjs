@@ -44,6 +44,13 @@ const languageLabelMappings = {
   // Add more mappings as needed
 };
 
+// Define language file extensions
+const languageFileExtensions = {
+  cpp: ".cpp",
+  csharp: ".cs",
+  python: ".py",
+  pascal: ".pas"
+};
 
 // Define language order
 const languageOrder = ["cpp", "csharp", "python", "pascal"];
@@ -87,7 +94,6 @@ function getAllFinishedExamples() {
   const allExamples = [];
 
   categories.forEach((categoryKey) => {
-    //let categoryFilePath = './public/usage-examples/' + categoryKey;
     const categoryFilePath = path.join(path.dirname(__dirname), "public", "usage-examples", categoryKey);
     const categoryFiles = getAllFiles(categoryFilePath);
 
@@ -97,8 +103,7 @@ function getAllFinishedExamples() {
     // Extract the portion before the first '-'
     if (txtFiles.length > 0) {
       txtFiles.forEach((file) => {
-        const filename = file.split('-')[0];
-        allExamples.push(filename);
+        allExamples.push(file);
       });
     }
   });
@@ -171,11 +176,12 @@ function getColorRGBValues(colorName, jsonData) {
   return rgbValues;
 }
 
-function getJsonData() {
+// Get JSON data from .json file
+function getJsonData(jsonFileName) {
   var jsonFile;
   var jsonData;
   try {
-    jsonFile = fs.readFileSync(`${__dirname}/guides.json`);
+    jsonFile = fs.readFileSync(`${__dirname}/${jsonFileName}`);
   } catch (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
     return;
@@ -199,6 +205,218 @@ function getApiCategories(jsonData) {
   return apiCategories;
 }
 
+// import code
+function getUsageExampleImports(categoryKey, functionKey) {
+  let languageCodeAvailable = {
+    cpp: false,
+    csharp: false,
+    python: false,
+    // pascal: false
+  };
+  let mdxData = "";
+  let categoryPath = '/usage-examples/' + categoryKey;
+  let categoryFilePath = './public/usage-examples/' + categoryKey;
+
+  const functionFiles = getAllFiles(categoryFilePath).filter(file => file.startsWith(functionKey));
+  if (functionFiles.length > 0) {
+    const txtFiles = functionFiles.filter(file => file.endsWith('.txt'))
+    if (txtFiles.length > 0) {
+      txtFiles.forEach((exampleTxtKey) => {
+        let exampleKey = exampleTxtKey.replaceAll(".txt", "");
+
+        let importTitle = exampleKey.replaceAll("-", "_");
+
+        languageOrder.forEach((lang) => {
+          const languageFiles = functionFiles.filter(file => file.endsWith(languageFileExtensions[lang]));
+          let codeFilePath = categoryPath + "/" + exampleTxtKey.replaceAll(".txt", languageFileExtensions[lang]);
+
+          // import code if available
+          if (languageFiles.length > 0) {
+            languageCodeAvailable[lang] = true;
+
+            // Check if both top level and oop code has been found for current function
+            const csharpFiles = functionFiles.filter(file => file.endsWith("-top-level.cs") || file.endsWith("-oop.cs")).filter(file => file.includes(exampleKey));
+            const cppFiles = functionFiles.filter(file => file.endsWith("-sk.cpp") || file.endsWith("-beyond.cpp")).filter(file => file.includes(exampleKey));
+            if (lang == "csharp" && csharpFiles.length > 0) {
+              csharpFiles.forEach(file => {
+                if (file.includes(exampleKey)) {
+                  if (file.includes("-top-level")) {
+                    mdxData += `import ${importTitle}_top_level_${lang} from '${codeFilePath.replaceAll(".cs", "-top-level.cs").replaceAll("/usage", "/public/usage")}?raw';\n`;
+                  }
+                  if (file.includes("-oop")) {
+                    mdxData += `import ${importTitle}_oop_${lang} from '${codeFilePath.replaceAll(".cs", "-oop.cs").replaceAll("/usage", "/public/usage")}?raw';\n`;
+                  }
+                }
+              });
+            } // Check for cpp files for standard SK and Beyond SK
+            else if (lang == "cpp" && cppFiles.length > 0) {
+              cppFiles.forEach(file => {
+                if (file.includes(exampleKey)) {
+                  if (file.includes("-sk")) {
+                    mdxData += `import ${importTitle}_sk_${lang} from '${codeFilePath.replaceAll(".cpp", "-sk.cpp").replaceAll("/usage", "/public/usage")}?raw';\n`;
+                  }
+                  if (file.includes("-beyond")) {
+                    mdxData += `import ${importTitle}_beyond_${lang} from '${codeFilePath.replaceAll(".cpp", "-beyond.cpp").replaceAll("/usage", "/public/usage")}?raw';\n`;
+                  }
+                }
+              });
+            }
+            else {
+              mdxData += `import ${importTitle}_${lang} from '${codeFilePath.replaceAll("/usage", "/public/usage")}?raw';\n`;
+            }
+          }
+        });
+      });
+    }
+  }
+  mdxData += "\n";
+  return mdxData;
+}
+
+function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
+  let languageCodeAvailable = {
+    cpp: false,
+    csharp: false,
+    python: false,
+    // pascal: false
+  };
+  let mdxData = "";
+  let categoryPath = '/usage-examples/' + categoryKey;
+  let categoryFilePath = './public/usage-examples/' + categoryKey;
+
+  let exampleKey = functionKey.replaceAll(".txt", "");
+  const functionFiles = getAllFiles(categoryFilePath).filter(file => file.startsWith(exampleKey));
+
+  if (functionFiles.length > 0) {
+
+    const functionExampleFiles = functionFiles.filter(file => file.endsWith(".txt"));
+    functionExampleFiles.forEach((exampleTxtKey) => {
+
+      // import code if available
+      if (functionFiles.length > 0) {
+        let importTitle = exampleKey.replaceAll("-", "_");
+
+        // Description
+        let exampleNum = exampleKey.replace(/\D/g, '');
+        mdxData += `#### Example ${exampleNum}: `;
+        let exampleTxt = fs.readFileSync(categoryFilePath + "/" + exampleTxtKey);
+        mdxData += exampleTxt.toString();
+        mdxData += "\n\n";
+
+        // Code tabs
+        mdxData += "<Tabs syncKey=\"code-language\">\n";
+        languageOrder.forEach((lang) => {
+          const languageFiles = functionFiles.filter(file => file.startsWith(exampleKey)).filter(file => file.endsWith(languageFileExtensions[lang]));
+
+          if (languageFiles.length > 0) {
+            languageCodeAvailable[lang] = true;
+            // add code tab if available
+            if (languageCodeAvailable[lang]) {
+              const languageLabel = languageLabelMappings[lang] || lang;
+              mdxData += `  <TabItem label="${languageLabel}">\n`;
+
+              // Check if both top level and oop code has been found for current function
+              const csharpFiles = functionFiles.filter(file => file.endsWith("-top-level.cs") || file.endsWith("-oop.cs")).filter(file => file.includes(exampleKey));
+              const cppFiles = functionFiles.filter(file => file.endsWith("-sk.cpp") || file.endsWith("-beyond.cpp")).filter(file => file.includes(exampleKey));
+              functionTag = exampleKey.split("-")[0];
+              if (lang == "cpp") {
+                functionTag = groupName.split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join("");
+              }
+              if (lang == "csharp") {
+                functionTag = groupName.split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join("");
+              }
+              if (lang == "csharp" && csharpFiles.length > 0) {
+                mdxData += "\n  <Tabs syncKey=\"csharp-style\">\n";
+                // use reverse order to make Top level first
+                csharpFiles.slice().reverse().forEach(file => {
+                  if (file.includes(exampleKey)) {
+                    if (file.includes("-top-level")) {
+                      mdxData += `    <TabItem label="Top-level Statements">\n`;
+                      mdxData += `      <Code code={${importTitle}_top_level_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
+                      mdxData += "    </TabItem>\n";
+                    }
+                    if (file.includes("-oop")) {
+                      mdxData += `    <TabItem label="Object-Oriented">\n`;
+                      mdxData += `      <Code code={${importTitle}_oop_${lang}} lang="${lang}" mark={"SplashKit.${functionTag}"} />\n`;
+                      mdxData += "    </TabItem>\n";
+                    }
+                  }
+                });
+                mdxData += "  </Tabs>\n\n";
+                mdxData += "  </TabItem>\n";
+              } // Check for cpp files and generate nested tabs
+              else if (lang == "cpp" && cppFiles.length > 0) {
+                mdxData += "\n  <Tabs syncKey=\"cpp-style\">\n";
+                cppFiles.slice().reverse().forEach(file => {
+                  if (file.includes(exampleKey)) {
+                    if (file.includes("-sk")) {
+                      mdxData += `    <TabItem label="SplashKit">\n`;
+                      mdxData += `      <Code code={${importTitle}_sk_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
+                      mdxData += "    </TabItem>\n";
+                    }
+                    if (file.includes("-beyond")) {
+                      mdxData += `    <TabItem label="Beyond SplashKit">\n`;
+                      mdxData += `      See the [Graphics](https://splashkit.io/beyond-splashkit/graphics/0-getting-started-with-graphics/#getting-started-without-splashkit) or [Audio](https://splashkit.io/beyond-splashkit/audio/0-sound-effects/#getting-started-without-splashkit) Beyond SplashKit guides for help compiling without SplashKit.\n`;
+                      mdxData += `      <Code code={${importTitle}_beyond_${lang}} lang="${lang}" mark={"SplashKit.${functionTag}"} />\n`;
+                      mdxData += "    </TabItem>\n";
+                    }
+                  }
+                });
+                mdxData += "  </Tabs>\n\n";
+                mdxData += "  </TabItem>\n";
+              }
+              else {
+                mdxData += `    <Code code={${importTitle}_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
+                mdxData += "  </TabItem>\n";
+              }
+            }
+          }
+        });
+      }
+      mdxData += "</Tabs>\n\n";
+
+      // Image or gif output
+      mdxData += "**Output**:\n\n";
+
+      let outputFilePath = categoryPath + "/" + exampleTxtKey;
+
+
+      const imageFiles = functionFiles.filter(file => file.endsWith(exampleKey + '.png'));
+      // Check for .png files
+      if (imageFiles.length > 0) {
+        outputFilePath = outputFilePath.replaceAll(".txt", ".png");
+        mdxData += `![${exampleKey} example](${outputFilePath})\n`
+      }
+      else {
+        const gifFiles = functionFiles.filter(file => file.endsWith('.gif')).filter(file => file.startsWith(exampleKey));
+        // Check for .gif files
+        if (gifFiles.length > 0) {
+          outputFilePath = outputFilePath.replaceAll(".txt", ".gif");
+          mdxData += `![${exampleKey} example](${outputFilePath})\n`
+        }
+        else {
+          const webmFiles = functionFiles.filter(file => file.endsWith('.webm'));
+          // Check for .webm files
+          if (webmFiles.length > 0) {
+            outputFilePath = outputFilePath.replaceAll(".txt", ".webm");
+            mdxData += `<video controls style="max-width:100%; margin:auto; margin-top:16px;">\n`
+            mdxData += `\t<source src="${outputFilePath}" type="video/webm" />\n`
+            mdxData += `</video>\n`
+          }
+          else {
+            console.log(kleur.red("\nError: No image, gif or webm (audio) files found for " + exampleKey + " usage example"));
+          }
+        }
+      }
+    });
+  }
+  return mdxData;
+}
+
 // Clean directory function to remove all files except those in the exclusions list
 function cleanDirectory(directory, exclusions) {
   const files = fs.readdirSync(directory, { withFileTypes: true });
@@ -213,185 +431,194 @@ function cleanDirectory(directory, exclusions) {
   });
 }
 
+// ==============================================================================
+// ========================= START of main script ===============================
+// ==============================================================================
+
 console.log('Cleaning up directory for Api Documentation pages...\n');
 cleanDirectory(directoryToClean, filesToKeep);
 
-const readGuides = require('./api-guides-generation.cjs');
+let mdxContent = "";
+let success = true;
+const jsonData = getJsonData("api.json");
+const jsonColors = getColorData();
+let guidesJson = getJsonData("guides.json");
+let guidesCategories = getApiCategories(guidesJson);
+const usageExamples = getAllFinishedExamples();
 
-fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
-  if (err) {
-    console.error(kleur.red("Error reading JSON file:"), err);
-    console.error("Error reading JSON file:", err);
-    return;
-  }
-  
-  try {
-    const jsonData = JSON.parse(data);
-    Mappings(jsonData);
-    console.log(`\nGenerating MDX files for components\n`);
+Mappings(jsonData);
+console.log(`\nGenerating MDX files for components\n`);
 
-    const guidesDir = path.join(__dirname, 'guides'); // Base directory for guides
-    const outputFile = path.join(__dirname, 'guides.json')
+// Please select an option: "animations, audio, camera, color, geometry, graphics, input, json, networking, physics, resource_bundles, resources, sprites, terminal, timers, types, utilities, windows"
+for (const categoryKey in jsonData) {
+  const category = jsonData[categoryKey];
+  let input = categoryKey;
+  const categoryFunctions = category.functions;
+  let mdxContent = "";
+  name = input.split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" "); //name of the category
+  const functionNames = category.functions.map((func) => func.name);
 
-    try {
-      // console.log(kleur.green('Reading guides folder...'));
-      const guidesContent = readGuides(guidesDir);
+  mdxContent += "---\n";
+  mdxContent += `title: ${name}\n`;
+  if (category.brief != "") { mdxContent += `description: ${category.brief.replace(/\n/g, '')}\n`; }
+  else { mdxContent += `description: Some description....\n`; }
 
-      try {
-        console.log(kleur.green('Writing guides functions to json file...\n'));
-        fs.writeFileSync(outputFile, JSON.stringify(guidesContent, null, 4));
-      } catch (err) {
-        console.log(kleur.red('Error writing output files: ', err));
-      }
-    } catch (error) {
-      console.log(kleur.red('Error processing guides files: ', error));
+  mdxContent += "---\n\n";
+  if (category.brief != "") {
+    if (categoryFunctions.description != null) {
+      mdxContent += `:::tip[${category.brief}]\n`;
+      mdxContent += `${category.description}\n`
+      mdxContent += `:::\n`
     }
-
-    const jsonColors = getColorData();
-    let guidesJson = getJsonData();
-    let guidesCategories = getApiCategories(guidesJson);
-
-    const usageExamples = getAllFinishedExamples();
-    // console.log(usageExamples);
-
-    // Please select an option: "animations, audio, camera, color, database, geometry, graphics, input, json, networking, physics, resource_bundles, resources, social, sprites, terminal, timers, types, utilities, windows"
-    for (const categoryKey in jsonData) {
-      const category = jsonData[categoryKey];
-      // console.log(categoryKey);
-      let input = categoryKey;
-      const categoryFunctions = category.functions;
-      let mdxContent = "";
-      name = input.split("_")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "); //name of the category
-      const functionNames = category.functions.map((func) => func.name);
-
-      mdxContent += "---\n";
-      mdxContent += `title: ${name}\n`;
-      if (category.brief != "") { mdxContent += `description: ${category.brief.replace(/\n/g, '')}\n`; }
-      else { mdxContent += `description: Some description....\n`; }
-
-      mdxContent += "---\n\n";
-      if (category.brief != "") {
-        if (categoryFunctions.description != null) {
-          mdxContent += `:::tip[${category.brief}]\n`;
-          mdxContent += `${category.description}\n`
-          mdxContent += `:::\n`
-        }
-        else {
-          mdxContent += `:::tip[${name}]\n`;
-          mdxContent += `${category.brief}\n`
-          mdxContent += `:::\n`
-        }
-      }
-      mdxContent += `\nimport { Tabs, TabItem, LinkCard, CardGrid, LinkButton } from "@astrojs/starlight/components";\nimport Accordion from '../../../components/Accordion.astro'\n`;
-      if (guidesAvailable[categoryKey]) {
-        mdxContent += "\n## \n";
-        mdxContent += `## ${name} Guides\n`;
-        mdxContent += `<LinkCard
-          title="Using ${name}"
-          description="Examples & Guides"
-          href="/guides/${input}/"
+    else {
+      mdxContent += `:::tip[${name}]\n`;
+      mdxContent += `${category.brief}\n`
+      mdxContent += `:::\n`
+    }
+  }
+  mdxContent += `\nimport { Code, Tabs, TabItem, LinkCard, CardGrid, LinkButton } from "@astrojs/starlight/components";\nimport Accordion from '../../../components/Accordion.astro'\n`;
+  if (guidesAvailable[categoryKey]) {
+    mdxContent += "\n## \n";
+    mdxContent += `## ${name} Guides\n`;
+    mdxContent += `<LinkCard
+        title="Using ${name}"
+        description="Examples & Guides"
+        href="/guides/${input}/"
         />\n\n`;
-      }
-      mdxContent += "\n";
-      mdxContent += "## Functions\n";
-      // mdxContent += "\n";
-      const functionGroups = {}; // Store functions grouped by name
-      categoryFunctions.forEach((func) => {
-        const functionName = func.name;
-        if (!functionGroups[functionName]) {
-          functionGroups[functionName] = [];
+  }
+  mdxContent += "\n";
+  mdxContent += "## Functions\n";
+  // mdxContent += "\n";
+  const functionGroups = {}; // Store functions grouped by name
+  categoryFunctions.forEach((func) => {
+    const functionName = func.name;
+    if (!functionGroups[functionName]) {
+      functionGroups[functionName] = [];
+    }
+    functionGroups[functionName].push(func);
+  });
+
+
+  for (const functionName in functionGroups) {
+    const overloads = functionGroups[functionName];
+    const isOverloaded = overloads.length > 1;
+
+    if (isOverloaded) {
+      // Create a section for overloaded functions
+
+      const formattedFunctionName = functionName
+        .split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+      const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
+
+      const formattedGroupLink = `${formattedLink}`;
+      mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
+
+      mdxContent += ":::note\n\n";
+      mdxContent += "This function is overloaded. The following versions exist:\n\n";
+
+      overloads.forEach((func, index) => {
+        mdxContent += `- [**${formattedFunctionName}** (`;
+
+        var paramCount = Object.keys(func.parameters).length;
+        var paramNumber = 1;
+
+        for (const paramName in func.parameters) {
+          const param = func.parameters[paramName];
+          const paramType = param.type;
+          if (index > 0) {
+            mdxContent += "";
+          }
+
+          // mdxContent += `${paramName}: ${paramType}, `;
+
+          mdxContent += `${paramName}: ${paramType}`;
+          if (paramNumber < paramCount) {
+            mdxContent += ", "
+          }
+          paramNumber++;
         }
-        functionGroups[functionName].push(func);
+        mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
       });
 
+      mdxContent += "\n:::\n";
+    }
 
-      for (const functionName in functionGroups) {
-        const overloads = functionGroups[functionName];
-        const isOverloaded = overloads.length > 1;
+    overloads.forEach((func, index) => {
+      // Format the header based on whether it's overloaded or not
+      let functionName2 = functionName.split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+      const formattedName3 = func.name
+        .split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 
-        if (isOverloaded) {
-          // Create a section for overloaded functions
+      const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
 
-          const formattedFunctionName = functionName
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-          const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
-
-          const formattedGroupLink = `${formattedLink}`;
-          mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
-
-          mdxContent += ":::note\n\n";
-          mdxContent += "This function is overloaded. The following versions exist:\n\n";
-
-          overloads.forEach((func, index) => {
-            mdxContent += `- [**${formattedFunctionName}** (`;
-
-            var paramCount = Object.keys(func.parameters).length;
-            var paramNumber = 1;
-
-            for (const paramName in func.parameters) {
-              const param = func.parameters[paramName];
-              const paramType = param.type;
-              if (index > 0) {
-                mdxContent += "";
-              }
-
-              // mdxContent += `${paramName}: ${paramType}, `;
-
-              mdxContent += `${paramName}: ${paramType}`;
-              if (paramNumber < paramCount) {
-                mdxContent += ", "
-              }
-              paramNumber++;
-            }
-            mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
-          });
-
-          mdxContent += "\n:::\n";
-        }
-
-        overloads.forEach((func, index) => {
-          // Format the header based on whether it's overloaded or not
-          let functionName2 = functionName.split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-          const formattedName3 = func.name
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-
-          const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
-
-          const formattedName = isOverloaded
-            ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
-            : `\n### [${functionName2}](#${formattedLink})`;
+      const formattedName = isOverloaded
+        ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
+        : `\n### [${functionName2}](#${formattedLink})`;
 
 
-          // Replace type names in the description with formatted versions
-          let description = func.description || "";
+      // Replace type names in the description with formatted versions
+      let description = func.description || "";
+      for (const typeName in typeMappings) {
+        const typeMapping = typeMappings[typeName];
+        description = description.replace(
+          new RegExp(`\`\\b${typeName}\\b\``, "g"),
+          typeMapping
+        );
+      }
+
+      // Color boxes next to heading
+      if (functionName.startsWith("color_") && sk_colors.includes(functionName.replace("color_", ""))) {
+        mdxContent += `\n#### <span style="display:none;">${functionName2}</span>\n` // Added to fix links validator issue
+        mdxContent += `${formattedName}`;
+        const rgbValues = getColorRGBValues(functionName, jsonColors);
+        mdxContent += ` <div class='color-box' style="background:rgba${rgbValues}"></div>`
+      }
+      else {
+        mdxContent += `${formattedName}`;
+      }
+
+      mdxContent += "\n\n";
+
+      for (const names of functionNames) {
+        const normalName = names
+          .split("_")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+        const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+        const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+        description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+        description = description.replaceAll("\n", " ");
+      }
+      mdxContent += description ? `${description}\n\n` : "";
+
+      // Add Parameters section only if there are parameters
+      if (Object.keys(func.parameters).length > 0) {
+        mdxContent += "**Parameters:**\n\n";
+        mdxContent +=
+          "| Name   | Type                                               | Description                                                                        |\n";
+        mdxContent +=
+          "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
+
+        for (const paramName in func.parameters) {
+          const param = func.parameters[paramName];
+          const paramType = typeMappings[param.type] || param.type;
+          let description2 = param.description || "";
           for (const typeName in typeMappings) {
             const typeMapping = typeMappings[typeName];
-            description = description.replace(
+
+            description2 = description2.replace(
               new RegExp(`\`\\b${typeName}\\b\``, "g"),
               typeMapping
             );
           }
-
-          // Color boxes next to heading
-          if (functionName.startsWith("color_") && sk_colors.includes(functionName.replace("color_", ""))) {
-            mdxContent += `\n#### <span style="display:none;">${functionName2}</span>\n` // Added to fix links validator issue
-            mdxContent += `${formattedName}`;
-            const rgbValues = getColorRGBValues(functionName, jsonColors);
-            mdxContent += ` <div class='color-box' style="background:rgba${rgbValues}"></div>`
-          }
-          else {
-            mdxContent += `${formattedName}`;
-          }
-
-          mdxContent += "\n\n";
 
           for (const names of functionNames) {
             const normalName = names
@@ -400,284 +627,259 @@ fs.readFile(`${__dirname}/api.json`, "utf8", async (err, data) => {
               .join(" ");
             const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
             const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-            description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-            description = description.replaceAll("\n", " ");
+            description2 = description2.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+            description2 = description2.replaceAll("\n", " ");
           }
-          mdxContent += description ? `${description}\n\n` : "";
 
-          // Add Parameters section only if there are parameters
-          if (Object.keys(func.parameters).length > 0) {
-            mdxContent += "**Parameters:**\n\n";
+          mdxContent += `| ${paramName} | ${paramType} | ${description2} |\n`;
+        }
+
+        mdxContent += "\n";
+      }
+      if (func.return.type == 'unsigned int') {
+        mdxContent += "**Return Type:** Unsigned Integer\n\n";
+      }
+      else if (func.return.type != 'void') {
+        mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
+      }
+
+      mdxContent += "**Signatures:**\n\n";
+      mdxContent += "<Tabs syncKey=\"code-language\">\n";
+
+      // Reorder Code tabs
+      languageOrder.forEach((lang) => {
+        if (func.signatures[lang].length > 0 && func.signatures[lang] != undefined) {
+          try {
+
+            const code = (Array.isArray(func.signatures[lang])) ? func.signatures[lang].join("\n") : func.signatures[lang];
+            const languageLabel = languageLabelMappings[lang] || lang;
+            mdxContent += `  <TabItem label="${languageLabel}">\n`;
             mdxContent +=
-              "| Name   | Type                                               | Description                                                                        |\n";
-            mdxContent +=
-              "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
+              "\n```" + lang + "\n" + code + '\n```\n\n';
+            mdxContent += "  </TabItem>\n";
+          } catch (e) {
+            console.log(e + " " + lang + " " + func.name)
+          }
+        }
+      });
 
-            for (const paramName in func.parameters) {
-              const param = func.parameters[paramName];
-              const paramType = typeMappings[param.type] || param.type;
-              let description2 = param.description || "";
-              for (const typeName in typeMappings) {
-                const typeMapping = typeMappings[typeName];
+      mdxContent += "</Tabs>\n\n";
 
-                description2 = description2.replace(
-                  new RegExp(`\`\\b${typeName}\\b\``, "g"),
-                  typeMapping
-                );
-              }
-
-              for (const names of functionNames) {
-                const normalName = names
-                  .split("_")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ");
-                const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-                description2 = description2.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-                description2 = description2.replaceAll("\n", " ");
-              }
-
-              mdxContent += `| ${paramName} | ${paramType} | ${description2} |\n`;
+      let usageHeading = false;
+      let allGuides = [];
+      guidesCategories.forEach((category) => {
+        category.forEach((guide) => {
+          guide.functions.forEach((used) => {
+            if (func.unique_global_name == used) {
+              allGuides.push({
+                name: guide.name,
+                url: guide.url
+              });
             }
-
-            mdxContent += "\n";
-          }
-          if (func.return.type == 'unsigned int') {
-            mdxContent += "**Return Type:** Unsigned Integer\n\n";
-          }
-          else if (func.return.type != 'void') {
-            mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
-          }
-
-          let usageHeading = false;
-
-          let linked = false;
-          usageExamples.forEach((example) => {
-            if (func.unique_global_name == example && !linked) {
-              formattedUsageLink = func.unique_global_name.replace(/_/g, "-");
-
-              mdxContent += `**Usage:**\n\n`
-              usageHeading = true;
-
-              mdxContent += `<LinkButton href="/usage-examples/${categoryKey}/#${formattedUsageLink}" variant="secondary">\nSee Example Code\n</LinkButton>\n\n`
-              linked = true;
-            }
-          });
-
-          let allGuides = [];
-          guidesCategories.forEach((category) => {
-            category.forEach((guide) => {
-              guide.functions.forEach((used) => {
-                if (func.unique_global_name == used) {
-                  allGuides.push({
-                    name: guide.name,
-                    url: guide.url
-                  });
-                }
-              })
-            })
           })
+        })
+      })
 
-          if (allGuides.length > 0) {
+      if (allGuides.length > 0) {
 
-            if (!usageHeading) {
-              mdxContent += "**Usage:**\n\n"
-            }
-            mdxContent += `<Accordion title="See Implemenations in Guides" uniqueID={${JSON.stringify(func.unique_global_name)}} customButton="guidesAccordion">\n\n`
+        if (!usageHeading) {
+          mdxContent += "**Usage:**\n\n"
+          usageHeading = true;
+        }
+        mdxContent += `<Accordion title="See Implemenations in Guides" uniqueID={${JSON.stringify(func.unique_global_name + "_guides")}} customButton="guidesAccordion">\n\n`
 
-            mdxContent += `<ul>`
-            allGuides.forEach((guide) => {
-              mdxContent += `<li> [${guide.name}](${guide.url}) </li>`
-            })
-            mdxContent += `</ul>\n\n`
+        mdxContent += `<ul>`
+        allGuides.forEach((guide) => {
+          mdxContent += `<li> [${guide.name}](${guide.url}) </li>`
+        })
+        mdxContent += `</ul>\n\n`
 
-            mdxContent += `</Accordion>\n`
+        mdxContent += `</Accordion>\n\n`
+      }
+
+      let linked = false;
+      usageExamples.forEach((example) => {
+        if (func.unique_global_name == example.split('-')[0]) {
+          if (!usageHeading) {
+            mdxContent += `**Usage:**\n\n`
+            usageHeading = true;
+          }
+          mdxContent += getUsageExampleImports(categoryKey, example.replace(".txt", ""));
+          if (!linked) {
+            // Import code files
+            mdxContent += `<Accordion title="See Code Examples" uniqueID={${JSON.stringify(func.unique_global_name + "_example")}} customButton="usageExamplesAccordion">\n\n`;
+            linked = true;
           }
 
-          mdxContent += "**Signatures:**\n\n";
+          mdxContent += getUsageExampleContent(jsonData, categoryKey, func.name, example);
+          mdxContent += `\n`;
+
+        }
+      });
+      if (linked) {
+        mdxContent += `</Accordion>\n`;
+        linked = true;
+      }
+
+      mdxContent += "---\n"; // Add --- after each function ends
+
+    });
+  }
+  let allTypes = [];
+
+  allTypes.push(...category.typedefs, ...category.enums, ...category.structs);
+  // Remove empty arrays
+  allTypes = allTypes.filter((type) => type.name != undefined); // Assuming name property is present
+
+  const sortedTypes = allTypes.sort((a, b) => a.name.localeCompare(b.name));
+
+  if (sortedTypes.length > 0) {
+    // Add the Types section
+    mdxContent += "\n## Types\n";
+
+    sortedTypes.forEach((type) => {
+      if (type.name != undefined) {
+        const formattedName = type.name
+          .split("_")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+
+        const formattedTypeName = formattedName || `\`${type.name}\``;
+        let formattedLinkName = type.name.toLowerCase();
+        formattedLinkName = formattedLinkName.replaceAll("_", "-");
+        mdxContent += `\n### [${formattedTypeName}](#${formattedLinkName})\n\n`;
+
+        let description = type.description || "";
+        for (const typeName in typeMappings) {
+          const typeMapping = typeMappings[typeName];
+          description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+        }
+
+        for (const names of functionNames) {
+          const normalName = names
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+          const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+          const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+
+          description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+        }
+
+        // If it's a struct, add a table for its fields
+        if (type.fields) {
+          mdxContent +=
+            "| Field  | Type                                               | Description                                                                        |\n";
+          mdxContent +=
+            "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
+
+          for (const fieldName in type.fields) {
+            const field = type.fields[fieldName];
+            const fieldType = typeMappings[field.type] || field.type;
+            let fieldDescription = field.description || "";
+
+            for (const typeName in typeMappings) {
+              const typeMapping = typeMappings[typeName];
+              fieldDescription = fieldDescription.replace(
+                new RegExp(`\`\\b${typeName}\\b\``, "g"),
+                typeMapping
+              );
+            }
+            for (const names of functionNames) {
+              const normalName = names
+                .split("_")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ");
+              const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+              const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+              description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+            }
+
+            mdxContent += `| ${fieldName} | ${fieldType} | ${fieldDescription.replace(/\n/g, '')} |\n`;
+          }
+
+          mdxContent += "\n";
+        }
+
+        // If it's an enum, add a table for its constants
+        if (type.constants) {
           mdxContent += "<Tabs syncKey=\"code-language\">\n";
 
-          // Reorder Code tabs
-          languageOrder.forEach((lang) => {
-            if (func.signatures[lang].length > 0 && func.signatures[lang] != undefined) {
-              try {
+          // Build constantsData from type.constants so that they remain the same in all tabs
+          const constantsData = {};
+          Object.keys(type.constants).forEach((constantName) => {
+            const constant = type.constants[constantName];
+            constantsData[constantName] = {
+              description: constant.description.replace(/\n/g, '') || "No description" // If description is undefined, display "No description"
+            };
+          });
 
-                const code = (Array.isArray(func.signatures[lang])) ? func.signatures[lang].join("\n") : func.signatures[lang];
-                const languageLabel = languageLabelMappings[lang] || lang;
-                mdxContent += `  <TabItem label="${languageLabel}">\n`;
-                mdxContent +=
-                  "\n```" + lang + "\n" + code + '\n```\n\n';
-                mdxContent += "  </TabItem>\n";
-              } catch (e) {
-                console.log(e + " " + lang + " " + func.name)
-              }
+          // Iterate over each language
+          languageOrder.forEach(lang => {
+            if (type.signatures[lang]) {
+              const signature = Array.isArray(type.signatures[lang]) ? type.signatures[lang].join("\n") : type.signatures[lang];
+              const enumValues = extractEnumValues(signature, lang);
+
+              // Build the mapping so that each constant has its own name, but the description remains the same
+              const formattedNames = {};
+              const cppNames = Object.keys(type.constants);
+              cppNames.forEach((cppName, index) => {
+                formattedNames[cppName] = enumValues[index] || cppName;
+              });
+
+              mdxContent += `  <TabItem label="${languageLabelMappings[lang] || lang}">\n`;
+              mdxContent += "| Constant | Description |\n";
+              mdxContent += "| --------- | ----------- |\n";
+
+              // Keep the description the same for all constants using the constantsData object
+              Object.keys(constantsData).forEach((cppName) => {
+                const formattedName = formattedNames[cppName] || cppName;
+                const data = constantsData[cppName];
+                mdxContent += `| ${formattedName} | ${data.description} |\n`;
+              });
+
+              mdxContent += "  </TabItem>\n";
             }
           });
 
           mdxContent += "</Tabs>\n";
-          mdxContent += "\n---\n"; // Add --- after each function ends
-
-        });
-      }
-      let allTypes = [];
-
-      allTypes.push(...category.typedefs, ...category.enums, ...category.structs);
-      // Remove empty arrays
-      allTypes = allTypes.filter((type) => type.name != undefined); // Assuming name property is present
-
-      const sortedTypes = allTypes.sort((a, b) => a.name.localeCompare(b.name));
-
-      if (sortedTypes.length > 0) {
-        // Add the Types section
-        mdxContent += "\n## Types\n";
-
-        sortedTypes.forEach((type) => {
-          if (type.name != undefined) {
-            const formattedName = type.name
-              .split("_")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(" ");
-
-            const formattedTypeName = formattedName || `\`${type.name}\``;
-            let formattedLinkName = type.name.toLowerCase();
-            formattedLinkName = formattedLinkName.replaceAll("_", "-");
-            mdxContent += `\n### [${formattedTypeName}](#${formattedLinkName})\n\n`;
-
-            let description = type.description || "";
-            for (const typeName in typeMappings) {
-              const typeMapping = typeMappings[typeName];
-              description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-            }
-
-            for (const names of functionNames) {
-              const normalName = names
-                .split("_")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ");
-              const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-
-              description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-            }
-
-
-            // mdxContent += `${description}\n\n`;
-            // If it's a struct, add a table for its fields
-            if (type.fields) {
-              mdxContent +=
-                "| Field  | Type                                               | Description                                                                        |\n";
-              mdxContent +=
-                "| ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------- |\n";
-
-              for (const fieldName in type.fields) {
-                const field = type.fields[fieldName];
-                const fieldType = typeMappings[field.type] || field.type;
-                let fieldDescription = field.description || "";
-
-                for (const typeName in typeMappings) {
-                  const typeMapping = typeMappings[typeName];
-                  fieldDescription = fieldDescription.replace(
-                    new RegExp(`\`\\b${typeName}\\b\``, "g"),
-                    typeMapping
-                  );
-                }
-                for (const names of functionNames) {
-                  const normalName = names
-                    .split("_")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ");
-                  const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-                  const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-                  description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-                }
-
-                mdxContent += `| ${fieldName} | ${fieldType} | ${fieldDescription.replace(/\n/g, '')} |\n`;
-              }
-
-              mdxContent += "\n";
-            }
-
-            // If it's an enum, add a table for its constants
-            if (type.constants) {
-              mdxContent += "<Tabs syncKey=\"code-language\">\n";
-            
-              // Build constantsData from type.constants so that they remain the same in all tabs
-              const constantsData = {};
-              Object.keys(type.constants).forEach((constantName) => {
-                const constant = type.constants[constantName];
-                constantsData[constantName] = {
-                  description: constant.description.replace(/\n/g, '') || "No description" // If description is undefined, display "No description"
-                };
-              });
-            
-              // Iterate over each language
-              languageOrder.forEach(lang => {
-                if (type.signatures[lang]) {
-                  const signature = Array.isArray(type.signatures[lang]) ? type.signatures[lang].join("\n") : type.signatures[lang];
-                  const enumValues = extractEnumValues(signature, lang);
-            
-                  // Build the mapping so that each constant has its own name, but the description remains the same
-                  const formattedNames = {};
-                  const cppNames = Object.keys(type.constants);
-                  cppNames.forEach((cppName, index) => {
-                    formattedNames[cppName] = enumValues[index] || cppName;
-                  });
-            
-                  mdxContent += `  <TabItem label="${languageLabelMappings[lang] || lang}">\n`;
-                  mdxContent += "| Constant | Description |\n";
-                  mdxContent += "| --------- | ----------- |\n";
-            
-                  // Keep the description the same for all constants using the constantsData object
-                  Object.keys(constantsData).forEach((cppName) => {
-                    const formattedName = formattedNames[cppName] || cppName;
-                    const data = constantsData[cppName];
-                    mdxContent += `| ${formattedName} | ${data.description} |\n`;
-                  });
-            
-                  mdxContent += "  </TabItem>\n";
-                }
-              });
-
-              mdxContent += "</Tabs>\n";
-            }
-
-            for (const typeName in typeMappings) {
-              const typeMapping = typeMappings[typeName];
-              description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-            }
-            for (const names of functionNames) {
-              const normalName = names
-                .split("_")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ");
-              const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-              const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-              description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-            }
-            description = description.replaceAll("\n\n\n", "\n\n");
-            mdxContent += `${description}\n\n`;
-            mdxContent += `---\n`;
-          }
-        });
-      }
-
-
-      // Replace spaces with hyphens in the name
-      const formattedName = name.replace(/\s+/g, '-');
-
-      // Write the MDX file
-      fs.writeFile(`./src/content/docs/api/${formattedName}.mdx`, mdxContent, (err) => {
-        if (err) {
-          console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
-        } else {
-
-          console.log(kleur.yellow('API Documentation') + kleur.green(` -> ${input}`));
         }
-      });
 
-    }
-    console.log(kleur.green("All component MDX files generated successfully.\n"));
-  } catch (error) {
-    console.error(kleur.red("Error parsing JSON:"), error);
+        for (const typeName in typeMappings) {
+          const typeMapping = typeMappings[typeName];
+          description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+        }
+        for (const names of functionNames) {
+          const normalName = names
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+          const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+          const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+          description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+        }
+        description = description.replaceAll("\n\n\n", "\n\n");
+        mdxContent += `${description}\n\n`;
+        mdxContent += `---\n`;
+      }
+    });
   }
-});
+
+
+  // Replace spaces with underscores in the name
+  const formattedName = name.replace(/\s+/g, '_');
+
+  // Write the MDX file
+  try {
+    fs.writeFileSync(`./src/content/docs/api/${formattedName}.mdx`, mdxContent);
+    console.log(kleur.yellow('API Documentation') + kleur.green(` -> ${name}`));
+  } catch (err) {
+    success = false;
+    console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
+    return;
+  }
+}
+// Check if all MDX files generated successfully
+if (success) {
+  console.log(kleur.green("All component MDX files generated successfully.\n"));
+}

@@ -1,3 +1,0 @@
-#### Windows OS Logo
-
-The following code demonstrates how to use [Fill Quad On Bitmap](/api/graphics#fill-quad-on-bitmap) to create the windows logo using four quads to represent the window panels.

@@ -1,3 +1,0 @@
-### How long is a string?
-
-The following code shows an example of using [Length Of](/api/utilities/#length-of) to check the length of different strings.

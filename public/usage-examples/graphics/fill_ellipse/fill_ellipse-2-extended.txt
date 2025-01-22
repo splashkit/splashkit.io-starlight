@@ -1,3 +1,0 @@
-#### Clover Drawing
-
-The following code shows an example of using [Fill Ellipse](/api/graphics#fill-ellipse-3) with different dimensions to draw a three-leaf clover.

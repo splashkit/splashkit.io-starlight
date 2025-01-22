@@ -1,3 +1,0 @@
-#### How Does "Point Point Angle" Work?
-
-The following code shows an example of using [Point Point Angle](/api/geometry/#point-point-angle) to show this angle is calculated using the screen center point and the mouse point.

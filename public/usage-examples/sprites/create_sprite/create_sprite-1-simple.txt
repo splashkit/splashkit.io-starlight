@@ -1,7 +1,0 @@
-#### Creating a Player Sprite
-
-The following code is an example of using [Create Sprite](https://splashkit.io/api/sprites/#create-sprite-1) to create a sprite of a 2D game character and draw it on a SplashKit window.
-
-:::note
-To test this example code you can download these [**Resources**](/usage-examples/sprites/create_sprite/createSprite_BasicSpriteResources.zip).
-:::

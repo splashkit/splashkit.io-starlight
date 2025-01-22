@@ -1,3 +1,0 @@
-#### Creating Water Ripples
-
-The following code demonstrates how to use [Fill Ellipse On Bitmap](/api/graphics#fill-ellipse-on-bitmap) to create a water ripple effect using concentric ellipses with varying transparency.

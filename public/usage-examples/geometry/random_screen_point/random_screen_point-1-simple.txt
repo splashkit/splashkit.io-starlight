@@ -1,3 +1,0 @@
-#### Stars in the Sky
-
-The following code shows an example of using [Random Screen Point](/api/geometry#random-screen-point) to create the nightsky with pixels at random points on the screen.

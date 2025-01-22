@@ -1,3 +1,0 @@
-#### X Coordinate: Middle of Circle
-
-The following code shows an example of using [Circle X](/api/geometry/#circle-x) to show how to find the x position for the circle.

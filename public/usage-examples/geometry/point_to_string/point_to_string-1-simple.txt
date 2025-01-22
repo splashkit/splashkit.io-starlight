@@ -1,3 +1,0 @@
-#### Mouse Click Location
-
-The following code shows examples of using [Point To String](/api/geometry#point-to-string) to show the coordinates of a mouse click.

@@ -1,3 +1,0 @@
-#### Simple Hexadecimal to Decimal String Converter
-
-The following code shows examples of using [hex to dec string](/api/networking/#hex-to-dec-string) to convert a hex value into a decimal string.

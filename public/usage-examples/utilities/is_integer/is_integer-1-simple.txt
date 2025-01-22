@@ -1,3 +1,0 @@
-### Input Validation of Integers
-
-The following code shows examples of using [Is Integer](/api/utilities/#is-integer), which asks the user to enter an integer and then checks if the input is an integer, if it is not an integer, it will ask the user to enter an integer again.

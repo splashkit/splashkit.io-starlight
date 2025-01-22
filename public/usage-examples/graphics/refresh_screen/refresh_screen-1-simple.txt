@@ -1,3 +1,0 @@
-#### House Drawing
-
-The following code shows examples of using [Refresh Screen](/api/graphics#refresh-screen-1) to show how double buffering works.

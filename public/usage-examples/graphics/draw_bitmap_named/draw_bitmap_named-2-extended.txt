@@ -1,5 +1,0 @@
-#### Hello World! This is SplashKit!
-
-The following code shows a fun example of using [Draw Bitmap](/api/graphics/#draw-bitmap-3) to create a fun animation/video. This example was created by someone that grew up as a "horse girl" and is reminded of the Saddle Club intro theme song (played in this example) every time she creates a new "hello world" program.
-
-*Originally created for the [programmers.guide](https://programmers.guide/) website.*

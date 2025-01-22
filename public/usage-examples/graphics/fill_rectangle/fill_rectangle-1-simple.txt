@@ -1,3 +1,0 @@
-#### Basic Blue Rectangle
-
-The following code shows examples of using [Fill Rectangle](/api/graphics#fill-rectangle-3) to show how to draw a filled-in blue rectangle.

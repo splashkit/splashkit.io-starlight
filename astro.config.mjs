@@ -88,11 +88,6 @@ export default defineConfig({
           // autogenerate: { directory: "guides", collapsed: true },
         },
         {
-          label: "Usage Examples",
-          autogenerate: { directory: "usage-examples", collapsed: true },
-          badge: "New",
-        },
-        {
           label: "Beyond SplashKit",
           autogenerate: { directory: "beyond-splashkit", collapsed: true },
           badge: "New",
