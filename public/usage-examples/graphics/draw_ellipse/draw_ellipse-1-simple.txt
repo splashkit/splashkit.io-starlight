@@ -1,0 +1,3 @@
+#### Radiating Wave
+
+The following code shows an example of using [Draw Ellipse](/api/graphics#draw-ellipse-3) to draw a radiating wave pattern.
