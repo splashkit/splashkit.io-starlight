@@ -17,7 +17,7 @@ export default defineConfig({
       description: 'SplashKit is a cross-platform game engine for C, C++ and Objective-C. It provides a simple API for 2D game development.',
       plugins: [
         starlightBlog({
-          title: 'SplashKit Blog',
+          title: 'Announcements',
           recentPostCount: 5,
           prevNextLinksOrder: 'chronological',
         }),
@@ -47,10 +47,6 @@ export default defineConfig({
         src: "./src/assets/favicon.svg",
       },
       sidebar: [
-        {
-          label: "Blog",
-          autogenerate: { directory: "blog", collapsed: true },
-        },
         {
           label: "Installation",
           collapsed: true,
