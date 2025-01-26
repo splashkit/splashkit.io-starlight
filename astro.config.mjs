@@ -49,8 +49,22 @@ export default defineConfig({
       sidebar: [
         {
           label: "Installation",
-          collapsed: true,
-          autogenerate: { directory: "installation", collapsed: true },
+          collapsed: false,
+          items: [
+            { label: "Installation Overview", link: "installation/" },
+            {
+              label: "Windows",
+              collapsed: true,
+              items:
+                [
+                  { label: "MSYS2", autogenerate: { directory: "installation/Windows (MSYS2)" }, collapsed: false },
+                  { label: "WSL", autogenerate: { directory: "installation/Windows (WSL)" }, collapsed: false },
+                ]
+            },
+            { label: "MacOS", autogenerate: { directory: "installation/MacOS" }, collapsed: true },
+            { label: "Linux", autogenerate: { directory: "installation/Linux" }, collapsed: true },
+            { label: "Virtual Machine", autogenerate: { directory: "installation/Virtual Machine" }, collapsed: true },
+          ],
         },
         {
           label: "Troubleshooting",
@@ -58,28 +72,28 @@ export default defineConfig({
           autogenerate: { directory: "troubleshoot", collapsed: true },
         },
         {
-          label: "Developer API Documentation",
+          label: "API Documentation",
           autogenerate: { directory: "api", collapsed: false },
         },
         {
           label: "Tutorials and Guides",
-          collapsed: true,
+          collapsed: false,
           items: [
             { label: "Overview", link: "guides/" },
-            { label: "Using SplashKit", autogenerate: { directory: "guides/Using-SplashKit", collapsed: false } },
-            { label: "Animations", autogenerate: { directory: "guides/Animations", collapsed: false } },
-            { label: "Audio", autogenerate: { directory: "guides/Audio", collapsed: false } },
-            { label: "Camera", autogenerate: { directory: "guides/Camera", collapsed: false } },
-            { label: "Color", autogenerate: { directory: "guides/Color", collapsed: false } },
-            { label: "Graphics", autogenerate: { directory: "guides/Graphics", collapsed: false } },
-            { label: "Input", autogenerate: { directory: "guides/Input", collapsed: false } },
-            { label: "Interface", autogenerate: { directory: "guides/Interface", collapsed: false } },
-            { label: "Json", autogenerate: { directory: "guides/JSON", collapsed: false } },
-            { label: "Networking", autogenerate: { directory: "guides/Networking", collapsed: false } },
-            { label: "Physics", badge: 'New', autogenerate: { directory: "guides/Physics", collapsed: false } },
-            { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO", collapsed: false } },
-            { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles", collapsed: false } },
-            { label: "Utilities", autogenerate: { directory: "guides/Utilities", collapsed: false } },
+            { label: "Using SplashKit", autogenerate: { directory: "guides/Using-SplashKit" }, collapsed: true },
+            { label: "Animations", autogenerate: { directory: "guides/Animations" }, collapsed: true },
+            { label: "Audio", autogenerate: { directory: "guides/Audio" }, collapsed: true },
+            { label: "Camera", autogenerate: { directory: "guides/Camera" }, collapsed: true },
+            { label: "Color", autogenerate: { directory: "guides/Color" }, collapsed: true },
+            { label: "Graphics", autogenerate: { directory: "guides/Graphics" }, collapsed: true },
+            { label: "Input", autogenerate: { directory: "guides/Input" }, collapsed: true },
+            { label: "Interface", autogenerate: { directory: "guides/Interface" }, collapsed: true },
+            { label: "Json", autogenerate: { directory: "guides/JSON" }, collapsed: true },
+            { label: "Networking", autogenerate: { directory: "guides/Networking" }, collapsed: true },
+            { label: "Physics", badge: 'New', autogenerate: { directory: "guides/Physics" }, collapsed: true },
+            { label: "Raspberry GPIO", autogenerate: { directory: "guides/Raspberry-GPIO" }, collapsed: true },
+            { label: "Resource Bundles", autogenerate: { directory: "guides/Resource-Bundles" }, collapsed: true },
+            { label: "Utilities", autogenerate: { directory: "guides/Utilities" }, collapsed: true },
           ],
           // autogenerate: { directory: "guides", collapsed: true },
         },
@@ -96,7 +110,6 @@ export default defineConfig({
   ],
 
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
-  // image: { service: squooshImageService() },
   server: {
     host: true,
     port: 4321
