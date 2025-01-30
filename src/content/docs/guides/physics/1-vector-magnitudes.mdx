@@ -71,35 +71,35 @@ The magnitude provides a scalar value that reflects how "intense" or "strong" th
 ## Vector Magnitude Squared
 
 <Aside type="note" title="Function">
-The `vector_magnitude_sqared` function returns the squared magnitude (or “length”) of the vector.
+The `vector_magnitude_squared` function returns the squared magnitude (or “length”) of the vector.
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
   ```cpp
-  double vector_magnitude_sqared(const vector_2d &v)
+  double vector_magnitude_squared(const vector_2d &v)
   ```
 
 </TabItem>
 <TabItem label="C#">
 
   ```csharp
-  public static double Vector2D.VectorMagnitudeSqared(Vector2D v);
-  public static double SplashKit.VectorMagnitudeSqared(Vector2D v);
+  public static double Vector2D.VectorMagnitudeSquared(Vector2D v);
+  public static double SplashKit.VectorMagnitudeSquared(Vector2D v);
   ```
 
 </TabItem>
 <TabItem label="Python">
 
   ```python
-  def vector_magnitude_sqared(v):
+  def vector_magnitude_squared(v):
   ```
 
 </TabItem>
 </Tabs>
 </Aside>
 
-`vector_magnitude_sqared` is calculated using the formula:
+`vector_magnitude_squared` is calculated using the formula:
 
 <Aside type="note" title="Maths">
 $$ \text{Magnitude Squared} = x^2 + y^2 $$
@@ -109,7 +109,7 @@ When comparing the lengths of two vectors, you only need to compare their magnit
 
 ### When Not To Use `Magnitude Squared` to Compare?
 
-While both `vector_magnitude` and `vector_magnitude_sqared` have the same theoretical time complexity, the square root operation in the magnitude calculation is generally more computationally intensive than addition or multiplication. In practical terms, calculating the magnitude will typically take longer due to the square root operation.
+While both `vector_magnitude` and `vector_magnitude_squared` have the same theoretical time complexity, the square root operation in the magnitude calculation is generally more computationally intensive than addition or multiplication. In practical terms, calculating the magnitude will typically take longer due to the square root operation.
 
 While the magnitude squared value is efficient for comparisons, it is less intuitive for humans to interpret compared to the actual magnitude of a vector. For displaying and understanding vector lengths in a graphical context, the actual magnitude is usually more meaningful and easier to comprehend.
 
