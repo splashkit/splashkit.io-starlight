@@ -5,7 +5,7 @@ import { Tabs, TabItem, Code } from "@astrojs/starlight/components";
 
 // Function to read JSON file dynamically
 function getColorData() {
-  const filePath = path.resolve("./scripts/splashkit-color-palette.json");
+  const filePath = path.resolve("./scripts/json-files/splashkit-color-palette.json");
   const data = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(data);
 }

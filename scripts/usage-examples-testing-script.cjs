@@ -1,5 +1,7 @@
 // Written and maintained by Olivia McKeon (@omckeon)
 
+// Note: Can be used for testing, but currently not in use for the website pages.
+
 const fs = require("fs");
 const kleur = require("kleur");
 const path = require('path');
@@ -32,7 +34,7 @@ function getJsonData() {
   var jsonFile;
   var jsonData;
   try {
-    jsonFile = fs.readFileSync(`${__dirname}/api.json`);
+    jsonFile = fs.readFileSync(`${__dirname}/json-files/api.json`);
   } catch (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
     return;

@@ -1,10 +1,20 @@
-// Script to generate .mdx file in a specific format to adapt to Starlight from JSON data.
+// ------------------------------------------------------------------------------
+// Script to generate .mdx files in the "/src/content/docs/api" folder,
+// using a specific format to adapt to markdown from JSON data.
 
-// Author: @XQuestCode and @omckeon
+// Authors: @XQuestCode, @omckeon, and @thoth-tech members
+// ------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------
+// Imports
+// ------------------------------------------------------------------------------
 const fs = require("fs");
 const kleur = require("kleur");
 const path = require('path');
 
+// ------------------------------------------------------------------------------
+// Constants
+// ------------------------------------------------------------------------------
 // For cleaning files from usage-examples folder
 const directoryToClean = 'src/content/docs/api';
 const filesToKeep = ['index.mdx'];
@@ -58,6 +68,13 @@ var name = "";
 
 const sk_colors = ["alice_blue", "antique_white", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanched_almond", "blue", "blue_violet", "bright_green", "brown", "burly_wood", "cadet_blue", "chartreuse", "chocolate", "coral", "cornflower_blue", "cornsilk", "crimson", "cyan", "dark_blue", "dark_cyan", "dark_goldenrod", "dark_gray", "dark_green", "dark_khaki", "dark_magenta", "dark_olive_green", "dark_orange", "dark_orchid", "dark_red", "dark_salmon", "dark_sea_green", "dark_slate_blue", "dark_slate_gray", "dark_turquoise", "dark_violet", "deep_pink", "deep_sky_blue", "dim_gray", "dodger_blue", "firebrick", "floral_white", "forest_green", "fuchsia", "gainsboro", "ghost_white", "gold", "goldenrod", "gray", "green", "green_yellow", "honeydew", "hot_pink", "indian_red", "indigo", "ivory", "khaki", "lavender", "lavender_blush", "lawn_green", "lemon_chiffon", "light_blue", "light_coral", "light_cyan", "light_goldenrod_yellow", "light_gray", "light_green", "light_pink", "light_salmon", "light_sea_green", "light_sky_blue", "light_slate_gray", "light_steel_blue", "light_yellow", "lime", "lime_green", "linen", "magenta", "maroon", "medium_aquamarine", "medium_blue", "medium_orchid", "medium_purple", "medium_sea_green", "medium_slate_blue", "medium_spring_green", "medium_turquoise", "medium_violet_red", "midnight_blue", "mint_cream", "misty_rose", "moccasin", "navajo_white", "navy", "old_lace", "olive", "olive_drab", "orange", "orange_red", "orchid", "pale_goldenrod", "pale_green", "pale_turquoise", "pale_violet_red", "papaya_whip", "peach_puff", "peru", "pink", "plum", "powder_blue", "purple", "red", "rosy_brown", "royal_blue", "saddle_brown", "salmon", "sandy_brown", "sea_green", "sea_shell", "sienna", "silver", "sky_blue", "slate_blue", "slate_gray", "snow", "spring_green", "steel_blue", "swinburne_red", "tan", "teal", "thistle", "tomato", "transparent", "turquoise", "violet", "wheat", "white", "white_smoke", "yellow", "yellow_green"];
 
+// ------------------------------------------------------------------------------
+// Functions
+// ------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------
+// Get a list of all the files in a directory and it's subdirectories
+// ------------------------------------------------------------------------------
 function getAllFiles(dir, allFilesList = []) {
   try {
     const files = fs.readdirSync(dir);
@@ -75,10 +92,13 @@ function getAllFiles(dir, allFilesList = []) {
   return allFilesList;
 }
 
+// ------------------------------------------------------------------------------
+// Get list of all finished examples
+// ------------------------------------------------------------------------------
 function getAllFinishedExamples() {
   var apiJsonData;
   try {
-    var apiData = fs.readFileSync(`${__dirname}/api.json`);
+    var apiData = fs.readFileSync(`${__dirname}/json-files/api.json`);
     apiJsonData = JSON.parse(apiData);
   } catch (error) {
     console.error(kluer.red("Error occurred when trying to parse API Json data: ", error));
@@ -111,6 +131,9 @@ function getAllFinishedExamples() {
   return allExamples;
 }
 
+// ------------------------------------------------------------------------------
+// Type Mappings
+// ------------------------------------------------------------------------------
 function Mappings(jsonData) {
   //generate mappings from API
   for (const categoryKey in jsonData) {
@@ -142,12 +165,9 @@ function Mappings(jsonData) {
   }
 }
 
-function getColorData() {
-  var data = fs.readFileSync(`${__dirname}/colors.json`);
-  return JSON.parse(data);
-}
-
+// ------------------------------------------------------------------------------
 // Regex pattern for extracting the enums from the api.json signatures
+// ------------------------------------------------------------------------------
 function extractEnumValues(signature, language) {
   const details = [];
   let regex;
@@ -165,6 +185,9 @@ function extractEnumValues(signature, language) {
   return details;
 }
 
+// ------------------------------------------------------------------------------
+// Get Color RGB values from json file
+// ------------------------------------------------------------------------------
 function getColorRGBValues(colorName, jsonData) {
   const simplifiedName = colorName.replace("color_", "");
 
@@ -176,12 +199,14 @@ function getColorRGBValues(colorName, jsonData) {
   return rgbValues;
 }
 
+// ------------------------------------------------------------------------------
 // Get JSON data from .json file
+// ------------------------------------------------------------------------------
 function getJsonData(jsonFileName) {
   var jsonFile;
   var jsonData;
   try {
-    jsonFile = fs.readFileSync(`${__dirname}/${jsonFileName}`);
+    jsonFile = fs.readFileSync(`${__dirname}/json-files/${jsonFileName}`);
   } catch (err) {
     console.error(kleur.red("Error reading JSON file:"), err);
     return;
@@ -195,6 +220,9 @@ function getJsonData(jsonFileName) {
   return jsonData;
 }
 
+// ------------------------------------------------------------------------------
+// Get API categories from JSON data
+// ------------------------------------------------------------------------------
 function getApiCategories(jsonData) {
   const apiCategories = [];
   for (const categoryKey in jsonData) {
@@ -205,7 +233,9 @@ function getApiCategories(jsonData) {
   return apiCategories;
 }
 
-// import code
+// ------------------------------------------------------------------------------
+// Import Code for Usage example content
+// ------------------------------------------------------------------------------
 function getUsageExampleImports(categoryKey, functionKey) {
   let languageCodeAvailable = {
     cpp: false,
@@ -273,6 +303,9 @@ function getUsageExampleImports(categoryKey, functionKey) {
   return mdxData;
 }
 
+// ------------------------------------------------------------------------------
+// Get mdx string for Usage example content (with code tabs etc)
+// ------------------------------------------------------------------------------
 function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
   let languageCodeAvailable = {
     cpp: false,
@@ -320,9 +353,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
               const cppFiles = functionFiles.filter(file => file.endsWith("-sk.cpp") || file.endsWith("-beyond.cpp")).filter(file => file.includes(exampleKey));
               functionTag = exampleKey.split("-")[0];
               if (lang == "cpp") {
-                functionTag = groupName.split("_")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join("");
+                functionTag = groupName;
               }
               if (lang == "csharp") {
                 functionTag = groupName.split("_")
@@ -348,7 +379,8 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
                 });
                 mdxData += "  </Tabs>\n\n";
                 mdxData += "  </TabItem>\n";
-              } // Check for cpp files and generate nested tabs
+              } 
+              // Check for cpp files and generate nested tabs
               else if (lang == "cpp" && cppFiles.length > 0) {
                 mdxData += "\n  <Tabs syncKey=\"cpp-style\">\n";
                 cppFiles.slice().reverse().forEach(file => {
@@ -417,7 +449,9 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
   return mdxData;
 }
 
-// Clean directory function to remove all files except those in the exclusions list
+// ------------------------------------------------------------------------------
+// Clean directory to remove all files except those in the exclusions list
+// ------------------------------------------------------------------------------
 function cleanDirectory(directory, exclusions) {
   const files = fs.readdirSync(directory, { withFileTypes: true });
   files.forEach(file => {
@@ -426,7 +460,7 @@ function cleanDirectory(directory, exclusions) {
       cleanDirectory(fullPath, exclusions);  // Recursively clean directories
     } else if (!exclusions.includes(file.name)) {
       fs.unlinkSync(fullPath);  // Delete file if not in exclusions
-      console.log(kleur.red(`Deleted:`) + ` ${fullPath}`);
+      console.log(kleur.red(`  Deleted: `) + kleur.dim(`${fullPath}`));
     }
   });
 }
@@ -435,19 +469,23 @@ function cleanDirectory(directory, exclusions) {
 // ========================= START of main script ===============================
 // ==============================================================================
 
-console.log('Cleaning up directory for Api Documentation pages...\n');
+console.log(kleur.cyan('------------------------------------------------------------------------------'));
+console.log(kleur.magenta('API Documentation mdx pages Generation:'));
+console.log(kleur.cyan('------------------------------------------------------------------------------\n'));
+
+console.log('Cleaning up directory for API Documentation pages...');
 cleanDirectory(directoryToClean, filesToKeep);
 
 let mdxContent = "";
 let success = true;
 const jsonData = getJsonData("api.json");
-const jsonColors = getColorData();
+const jsonColors = getJsonData("colors.json");
 let guidesJson = getJsonData("guides.json");
 let guidesCategories = getApiCategories(guidesJson);
 const usageExamples = getAllFinishedExamples();
 
 Mappings(jsonData);
-console.log(`\nGenerating MDX files for components\n`);
+console.log(`\nGenerating MDX files for API Documentation pages...\n`);
 
 // Please select an option: "animations, audio, camera, color, geometry, graphics, input, json, networking, physics, resource_bundles, resources, sprites, terminal, timers, types, utilities, windows"
 for (const categoryKey in jsonData) {
@@ -867,12 +905,12 @@ for (const categoryKey in jsonData) {
 
 
   // Replace spaces with underscores in the name
-  const formattedName = name.replace(/\s+/g, '_');
+  const formattedName = name.replace(/\s+/g, '-');
 
   // Write the MDX file
   try {
     fs.writeFileSync(`./src/content/docs/api/${formattedName}.mdx`, mdxContent);
-    console.log(kleur.yellow('API Documentation') + kleur.green(` -> ${name}`));
+    console.log(kleur.yellow('  Generated: ') + kleur.green(`${formattedName}.mdx`));
   } catch (err) {
     success = false;
     console.log(kleur.red(`Error writing ${input} MDX file: ${err.message}`));
@@ -881,5 +919,5 @@ for (const categoryKey in jsonData) {
 }
 // Check if all MDX files generated successfully
 if (success) {
-  console.log(kleur.green("All component MDX files generated successfully.\n"));
+  console.log(kleur.green("\nAll API Documentation MDX files generated successfully.\n"));
 }
