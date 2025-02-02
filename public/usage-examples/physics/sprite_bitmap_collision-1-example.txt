@@ -1,0 +1,5 @@
+Does SplashKit have bugs?
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/sprite_bitmap_collision-1-resources.zip).
+:::
