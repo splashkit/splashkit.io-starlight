@@ -7,7 +7,7 @@ int main()
     load_bitmap("player", "player-run.png");
     sprite player_sprite = create_sprite(bitmap_named("player"));
 
-    // Setting the y coordinate in refrence to the window
+    // Setting the y coordinate in reference to the window
     sprite_set_y(player_sprite, 300);
 
     clear_screen(COLOR_BLACK);
