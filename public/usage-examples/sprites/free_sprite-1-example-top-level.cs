@@ -1,7 +1,7 @@
 using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
-OpenWindow("free_sprite", 600, 600);
+OpenWindow("Free Sprite Memory Resource", 600, 600);
 
 LoadBitmap("player", "player.png");
 Sprite playerSprite = CreateSprite(BitmapNamed("player"));
@@ -14,7 +14,7 @@ while (!QuitRequested())
 {
     ProcessEvents();
 
-    ClearScreen(Color.Black);
+    ClearScreen(ColorBlack());
     if (spriteExists)
     {
         DrawSprite(playerSprite);

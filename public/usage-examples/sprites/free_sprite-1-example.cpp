@@ -2,7 +2,7 @@
 
 int main()
 {
-    open_window("free_sprite", 600, 600);
+    open_window("Free Sprite Memory Resource", 600, 600);
 
     bitmap player = load_bitmap("player", "player.png");
     sprite player_sprite = create_sprite(bitmap_named("player"));
