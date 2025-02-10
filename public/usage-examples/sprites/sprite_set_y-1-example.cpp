@@ -2,7 +2,7 @@
 
 int main()
 {
-    open_window("sprite_set_x", 600, 600);
+    open_window("sprite_set_y", 600, 600);
 
     load_bitmap("player", "player-run.png");
     sprite player_sprite = create_sprite(bitmap_named("player"));
