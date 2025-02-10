@@ -1,7 +1,7 @@
 using static SplashKitSDK.SplashKit;
 using SplashKitSDK;
 
-OpenWindow("spriteSetVelocity", 600, 600);
+OpenWindow("sprite-set-velocity", 600, 600);
 
 LoadBitmap("player", "player-run.png");
 Sprite playerSprite = CreateSprite(BitmapNamed("player"));
