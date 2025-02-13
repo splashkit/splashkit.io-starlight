@@ -101,24 +101,32 @@ iframe[id="stackblitz-iframe"] {
 
 [data-has-hero] .hero .sl-link-button {
   padding: 1rem 1.25rem;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
 
-[data-has-hero] .hero .sl-link-button:hover {
-  border: 3px solid var(--sl-color-white);
+[data-has-hero] .hero .sl-link-button.primary {
+  border: 1px solid var(--sl-color-accent);
+  background-color: transparent;
+  color: black;
 }
 
 [data-has-hero] .hero .sl-link-button.minimal {
   background-color: var(--sk-logo-orange);
+  border-color: var(--sk-logo-orange);
   color: black;
 }
 
 [data-has-hero] .hero .sl-link-button.secondary {
   background-color: var(--sk-logo-blue);
   color: black;
+}
+
+[data-has-hero] .hero .sl-link-button:hover {
+  box-shadow: inset 0 0 0 2px var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
 }
 
 /* Usage Example Link Buttons */
