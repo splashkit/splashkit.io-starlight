@@ -331,7 +331,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
 
         // Description
         let exampleNum = exampleKey.replace(/\D/g, '');
-        mdxData += `#### Example ${exampleNum}: `;
+        mdxData += `**Example ${exampleNum}**: `;
         let exampleTxt = fs.readFileSync(categoryFilePath + "/" + exampleTxtKey);
         mdxData += exampleTxt.toString();
         mdxData += "\n\n";
