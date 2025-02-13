@@ -724,7 +724,7 @@ for (const categoryKey in jsonData) {
           mdxContent += "**Usage:**\n\n"
           usageHeading = true;
         }
-        mdxContent += `<Accordion title="See Implemenations in Guides" uniqueID={${JSON.stringify(func.unique_global_name + "_guides")}} customButton="guidesAccordion">\n\n`
+        mdxContent += `<Accordion title="See Implementations in Guides" uniqueID={${JSON.stringify(func.unique_global_name + "_guides")}} customButton="guidesAccordion">\n\n`
 
         mdxContent += `<ul>`
         allGuides.forEach((guide) => {
