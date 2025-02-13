@@ -25,7 +25,6 @@ jobs:
           npm install
       - name: Upload your site
         uses: withastro/action@v3
-        with:
 
   deploy:
     needs: build
