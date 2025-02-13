@@ -7,6 +7,17 @@ import sitemap from "@astrojs/sitemap";
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax'
 import starlightBlog from 'starlight-blog'
+import starlightDocSearch from '@astrojs/starlight-docsearch';
+import { loadEnv } from "vite";
+
+const { DOCSEARCH_API_ID } = loadEnv(process.env.DOCSEARCH_API_ID, process.cwd(), "");
+const { DOCSEARCH_API_SEARCH_KEY } = loadEnv(process.env.DOCSEARCH_API_SEARCH_KEY, process.cwd(), "");
+const { DOCSEARCH_INDEX_NAME } = loadEnv(process.env.DOCSEARCH_INDEX_NAME, process.cwd(), "");
+
+if (!DOCSEARCH_API_ID || !DOCSEARCH_API_SEARCH_KEY || !DOCSEARCH_INDEX_NAME){
+  console.error("Algolia DocSearch enviroment variables are invalid. Please check configuration!");
+  process.exit(1);
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +34,11 @@ export default defineConfig({
         }),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
+        }),
+        starlightDocSearch({
+          appId: DOCSEARCH_API_ID,
+          apiKey: DOCSEARCH_API_SEARCH_KEY,
+          indexName: DOCSEARCH_INDEX_NAME,
         }),
       ],
       expressiveCode: {
