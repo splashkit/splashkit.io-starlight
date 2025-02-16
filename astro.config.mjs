@@ -14,7 +14,7 @@ const { DOCSEARCH_API_ID } = loadEnv(process.env.DOCSEARCH_API_ID, process.cwd()
 const { DOCSEARCH_API_SEARCH_KEY } = loadEnv(process.env.DOCSEARCH_API_SEARCH_KEY, process.cwd(), "");
 const { DOCSEARCH_INDEX_NAME } = loadEnv(process.env.DOCSEARCH_INDEX_NAME, process.cwd(), "");
 
-if (!DOCSEARCH_API_ID || !DOCSEARCH_API_SEARCH_KEY || !DOCSEARCH_INDEX_NAME){
+if (!DOCSEARCH_API_ID || !DOCSEARCH_API_SEARCH_KEY || !DOCSEARCH_INDEX_NAME) {
   console.error("Algolia DocSearch enviroment variables are invalid. Please check configuration!");
   process.exit(1);
 }
@@ -85,7 +85,21 @@ export default defineConfig({
         {
           label: "Troubleshooting",
           collapsed: true,
-          autogenerate: { directory: "troubleshoot", collapsed: true },
+          items: [
+            { label: "Troubleshooting Overview", link: "troubleshoot/" },
+            {
+              label: "Windows",
+              collapsed: true,
+              items:
+                [
+                  { label: "MSYS2", autogenerate: { directory: "troubleshoot/Windows (MSYS2)" }, collapsed: false },
+                  { label: "WSL", autogenerate: { directory: "troubleshoot/Windows (WSL)" }, collapsed: false },
+                ]
+            },
+            { label: "MacOS", autogenerate: { directory: "troubleshoot/MacOS" }, collapsed: true },
+            { label: "Linux", autogenerate: { directory: "troubleshoot/Linux" }, collapsed: true },
+          ],
+          // autogenerate: { directory: "troubleshoot", collapsed: true },
         },
         {
           label: "API Documentation",
@@ -122,10 +136,10 @@ export default defineConfig({
 
     }),
 
-    react(), sitemap()
+    react(),
+    sitemap()
   ],
 
-  // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   server: {
     host: true,
     port: 4321
