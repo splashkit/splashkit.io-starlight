@@ -39,7 +39,7 @@ The following table shows the supported audio formats for Sound Effect and Music
 
 To play a sound effect you fist must load the audio file into your program. Sounds are stored in the **Resources/sounds** folder, and can be loaded using [Load Sound Effect](/api/audio/#load-sound-effect). You only need to load the sound effect once, and you can then access it using the name you assigned to the sound effect and [Sound Effect Named](/api/audio/#sound-effect-named), or by using the name of the sound effect in other calls.
 
-Once it is loaded, you can use the name you can play the sound effect using [Play Sound Effect](/api/audio/#play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
+Once it is loaded, you can use the name to play the sound effect using [Play Sound Effect](/api/audio/#play-sound-effect). By default the sound effect will play once, at full volume. Additional parameters can be passed along with the sound effect to change the number of times the sound plays, and the volume.
 
 Sounds play until the file ends or until it is manually stopped in your code using [Stop Sound Effect](/api/audio/#stop-sound-effect) or [Stop Music](/api/audio/#stop-music). The sound effect or music will play in the background while your program's code continues to run.
 
@@ -92,7 +92,7 @@ void draw_instructions()
     draw_text("Keyboard Controls", COLOR_BLACK, "arial", 20, (screen_width() - text_width("Keyboard Controls", "arial", 20)) / 2, 10);
     set_font_style("arial", NORMAL_FONT);
 
-    // Draw left box with SplashKit Cyan/Teal bo
+    // Draw left box with SplashKit Cyan/Teal border
     fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85);
     fill_rectangle(COLOR_PAPAYA_WHIP, 20, 55, screen_width() / 2 - 10, screen_height() - 105);
     draw_line(COLOR_LIGHT_GRAY, 30, 105, screen_width() / 2, 105);
@@ -110,7 +110,7 @@ void draw_instructions()
     draw_text("Press [Escape] or [Q] to quit", COLOR_BLACK, "arial", 16, 65, 290);
     set_font_style("arial", NORMAL_FONT);
 
-    // Draw left box with SplashKit Cyan/Teal bo
+    // Draw left box with SplashKit Cyan/Teal border
     fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55);
     fill_rectangle(COLOR_PAPAYA_WHIP, screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75);
     draw_line(COLOR_LIGHT_GRAY, screen_width() / 2 + 50, 105, screen_width() - 30, 105);
@@ -209,7 +209,7 @@ static void DrawInstructions()
     DrawText("Keyboard Controls", ColorBlack(), "arial", 20, (ScreenWidth() - TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
     SetFontStyle("arial", FontStyle.NormalFont);
 
-    // Draw left box with SplashKit Cyan/Teal bo
+    // Draw left box with SplashKit Cyan/Teal border
     FillRectangle(RGBColor(5, 172, 193), 10, 45, ScreenWidth() / 2 + 10, ScreenHeight() - 85);
     FillRectangle(ColorPapayaWhip(), 20, 55, ScreenWidth() / 2 - 10, ScreenHeight() - 105);
     DrawLine(ColorLightGray(), 30, 105, ScreenWidth() / 2, 105);
@@ -227,7 +227,7 @@ static void DrawInstructions()
     DrawText("Press [Escape] or [Q] to quit", ColorBlack(), "arial", 16, 65, 290);
     SetFontStyle("arial", FontStyle.NormalFont);
 
-    // Draw left box with SplashKit Cyan/Teal bo
+    // Draw left box with SplashKit Cyan/Teal border
     FillRectangle(RGBColor(5, 172, 193), ScreenWidth() / 2 + 30, 45, ScreenWidth() / 2 - 40, ScreenHeight() - 55);
     FillRectangle(ColorPapayaWhip(), ScreenWidth() / 2 + 40, 55, ScreenWidth() / 2 - 60, ScreenHeight() - 75);
     DrawLine(ColorLightGray(), ScreenWidth() / 2 + 50, 105, ScreenWidth() - 30, 105);
@@ -322,7 +322,7 @@ namespace SoundPlayer
             SplashKit.DrawText("Keyboard Controls", Color.Black, "arial", 20, (SplashKit.ScreenWidth() - SplashKit.TextWidth("Keyboard Controls", "arial", 20)) / 2, 10);
             SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
 
-            // Draw left box with SplashKit Cyan/Teal bo
+            // Draw left box with SplashKit Cyan/Teal border
             SplashKit.FillRectangle(Color.RGBColor(5, 172, 193), 10, 45, SplashKit.ScreenWidth() / 2 + 10, SplashKit.ScreenHeight() - 85);
             SplashKit.FillRectangle(Color.PapayaWhip, 20, 55, SplashKit.ScreenWidth() / 2 - 10, SplashKit.ScreenHeight() - 105);
             SplashKit.DrawLine(Color.LightGray, 30, 105, SplashKit.ScreenWidth() / 2, 105);
@@ -340,7 +340,7 @@ namespace SoundPlayer
             SplashKit.DrawText("Press [Escape] or [Q] to quit", Color.Black, "arial", 16, 65, 290);
             SplashKit.SetFontStyle("arial", FontStyle.NormalFont);
 
-            // Draw left box with SplashKit Cyan/Teal bo
+            // Draw left box with SplashKit Cyan/Teal border
             SplashKit.FillRectangle(Color.RGBColor(5, 172, 193), SplashKit.ScreenWidth() / 2 + 30, 45, SplashKit.ScreenWidth() / 2 - 40, SplashKit.ScreenHeight() - 55);
             SplashKit.FillRectangle(Color.PapayaWhip, SplashKit.ScreenWidth() / 2 + 40, 55, SplashKit.ScreenWidth() / 2 - 60, SplashKit.ScreenHeight() - 75);
             SplashKit.DrawLine(Color.LightGray, SplashKit.ScreenWidth() / 2 + 50, 105, SplashKit.ScreenWidth() - 30, 105);
@@ -438,7 +438,7 @@ def draw_instructions():
     draw_text_font_as_string("Keyboard Controls", color_black(), "arial", 20, (screen_width() - text_width_font_named("Keyboard Controls", "arial", 20)) / 2, 10)
     set_font_style_name_as_string("arial", FontStyle.normal_font)
 
-    # Draw left box with SplashKit Cyan/Teal bo
+    # Draw left box with SplashKit Cyan/Teal border
     fill_rectangle(rgb_color(5, 172, 193), 10, 45, screen_width() / 2 + 10, screen_height() - 85)
     fill_rectangle(color_papaya_whip(), 20, 55, screen_width() / 2 - 10, screen_height() - 105)
     draw_line(color_light_gray(), 30, 105, screen_width() / 2, 105)
@@ -456,7 +456,7 @@ def draw_instructions():
     draw_text_font_as_string("Press [Escape] or [Q] to quit", color_black(), "arial", 16, 65, 290)
     set_font_style_name_as_string("arial", FontStyle.normal_font)
 
-    # Draw left box with SplashKit Cyan/Teal bo
+    # Draw left box with SplashKit Cyan/Teal border
     fill_rectangle(rgb_color(5, 172, 193), screen_width() / 2 + 30, 45, screen_width() / 2 - 40, screen_height() - 55)
     fill_rectangle(color_papaya_whip(), screen_width() / 2 + 40, 55, screen_width() / 2 - 60, screen_height() - 75)
     draw_line(color_light_gray(), screen_width() / 2 + 50, 105, screen_width() - 30, 105)

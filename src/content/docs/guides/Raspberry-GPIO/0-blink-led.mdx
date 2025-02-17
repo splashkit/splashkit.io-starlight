@@ -3,10 +3,10 @@ title: Get Started with SplashKit GPIO
 description: General-purpose input/output, or GPIO, pins are a type of pin found on many microcontrollers that can be used for a variety of purposes. In this guide we use them to control the state of an LED
 category: Guides
 author: Jonathan Tynan
-lastupdated: Apr 27 2024
+lastupdated: December 2024
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Tabs, TabItem, Steps } from "@astrojs/starlight/components";
 
 **{frontmatter.description}**  
 Written by: {frontmatter.author}  
@@ -169,28 +169,66 @@ blinks an LED on and off.
 </TabItem>
 <TabItem label="C#">
 
-  ```csharp
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
 
-  RaspiInit();
-  Pins ledPin = (Pins)11;
-  RaspiSetMode(led_pin, (PinModes) 1);
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  OpenWindow("dummy_window", 1, 1);
-  while(!AnyKeyPressed())
-  {
-      ProcessEvents();
-      RaspiWrite(led_pin, (PinState) 1);
-      Delay(500);
-      RaspiWrite(led_pin, (PinState) 0);
-      Delay(500);
-  }
+RaspiInit();
+Pins ledPin = (Pins)11;
+RaspiSetMode(led_pin, (PinModes) 1);
 
-  CloseAllWindows();
-  RaspiCleanup();
-  ```
-  
+OpenWindow("dummy_window", 1, 1);
+while(!AnyKeyPressed())
+{
+    ProcessEvents();
+    RaspiWrite(led_pin, (PinState) 1);
+    Delay(500);
+    RaspiWrite(led_pin, (PinState) 0);
+    Delay(500);
+}
+
+CloseAllWindows();
+RaspiCleanup();
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiBlinkingLED
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.RaspiInit();
+            Pins ledPin = (Pins)11;
+            SplashKit.RaspiSetMode(ledPin, (PinModes)1);
+
+            SplashKit.OpenWindow("dummy_window", 1, 1);
+            while (!SplashKit.AnyKeyPressed())
+            {
+                SplashKit.ProcessEvents();
+                SplashKit.RaspiWrite(ledPin, (PinValues)1);
+                SplashKit.Delay(500);
+                SplashKit.RaspiWrite(ledPin, (PinValues)0);
+                SplashKit.Delay(500);
+            }
+
+            SplashKit.CloseAllWindows();
+            SplashKit.RaspiCleanup();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 </TabItem>
 </Tabs>
 
@@ -198,25 +236,42 @@ blinks an LED on and off.
 
 To understand this code better, lets break it down and explore each section.
 
-1.
+<Steps>
+1. **Part 1**
+
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-      ```cpp
-      raspi_init();
-      pins led_pin = PIN_11;
-      raspi_set_mode(led_pin, GPIO_OUTPUT);
-      ```
+    ```cpp
+    raspi_init();
+    pins led_pin = PIN_11;
+    raspi_set_mode(led_pin, GPIO_OUTPUT);
+    ```
 
     </TabItem>
+
     <TabItem label="C#">
 
-      ```csharp
-      RaspiInit();
-      Pins ledPin = (Pins)11;
-      RaspiSetMode(led_pin, (PinModes) 1);
-      ```
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
 
+    ```csharp
+    RaspiInit();
+    Pins ledPin = (Pins)11;
+    RaspiSetMode(led_pin, (PinModes) 1);
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp
+    SplashKit.RaspiInit();
+    Pins ledPin = (Pins)11;
+    SplashKit.RaspiSetMode(ledPin, (PinModes)1);
+    ```
+
+    </TabItem>
+    </Tabs>
     </TabItem>
     </Tabs>
 
@@ -225,85 +280,137 @@ To understand this code better, lets break it down and explore each section.
 
     We pass this value to [Raspi Set Mode](/api/raspberry/#raspi-set-mode) along with `GPIO_OUTPUT` which sets the pin to be ready to output a signal on our command. The `GPIO_OUTPUT` value is one of the [Pin Modes](/api/types/#pin-modes) that can be set. Each pin has alternative modes but we are only interested in the output mode for now.
 
-2.
+2. **Part 2**
+
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-      ```cpp
-      open_window("dummy_window", 1, 1);
-      while(!any_key_pressed())
-      {
-          process_events();
-          ...
-      }
-
-      ```
+    ```cpp
+    open_window("dummy_window", 1, 1);
+    while(!any_key_pressed())
+    {
+        process_events();
+        ...
+    }
+    ```
 
     </TabItem>
+
     <TabItem label="C#">
 
-      ```csharp
-      OpenWindow("dummy_window", 1, 1);
-      while(!AnyKeyPressed())
-      {
-          ProcessEvents();
-          ...
-      }
-      ```
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
 
+    ```csharp
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        ...
+    }
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp
+    SplashKit.OpenWindow("dummy_window", 1, 1);
+    while (!SplashKit.AnyKeyPressed())
+    {
+        SplashKit.ProcessEvents();
+        ...
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
     </TabItem>
     </Tabs>
 
     This is a small trick we can do to recognise keyboard inputs. We open up a dummy window using [Open Window](/api/windows/#open-window) and this initialises the backend so that we can detect input. We'll create  a loop that runs while [Any Key Pressed](/api/input/#any-key-pressed) returns false. We use [Process Events](/api/input/#process-events) at the start of the loop to actually detect any user input. We can now press a key to end the program and ensure we cleanup correctly.
 
-3.
+3. **Part 3**
+
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-      ```cpp
-      raspi_write(led_pin, GPIO_HIGH);
-      delay(500);
-      raspi_write(led_pin, GPIO_LOW);
-      delay(500);
-      ```
+    ```cpp
+    raspi_write(led_pin, GPIO_HIGH);
+    delay(500);
+    raspi_write(led_pin, GPIO_LOW);
+    delay(500);
+    ```
 
     </TabItem>
+
     <TabItem label="C#">
 
-      ```csharp
-      RaspiWrite(led_pin, (PinState) 1);
-      Delay(500);
-      RaspiWrite(led_pin, (PinState) 0);
-      Delay(500);
-      ```
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
 
+    ```csharp
+    RaspiWrite(led_pin, (PinState) 1);
+    Delay(500);
+    RaspiWrite(led_pin, (PinState) 0);
+    Delay(500);
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp
+    SplashKit.RaspiWrite(ledPin, (PinValues)1);
+    SplashKit.Delay(500);
+    SplashKit.RaspiWrite(ledPin, (PinValues)0);
+    SplashKit.Delay(500);
+    ```
+
+    </TabItem>
+    </Tabs>
     </TabItem>
     </Tabs>
 
     Now that we've setup our pins and defined our end condition, we can now manipulate the LED. Inside the while loop we first use [Raspi Write](/api/raspberry/#raspi-write) to change the output of our pin to `GPIO_HIGH`, one of the [Pin Values](/api/types/#pin-values). Doing this provides electricity to the LED and turn it on. We then wait for half a second using [Delay](/api/utilities/#delay). Then we turn our LED off using [Raspi Write](/api/raspberry/#raspi-write), but now we use `GPIO_LOW`, and wait for another half-second.
 
-4.
+4. **Part 4**
+
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-      ```cpp
-      close_all_windows();
-      raspi_cleanup();
-      return 0;
-      ```
+    ```cpp
+    close_all_windows();
+    raspi_cleanup();
+    return 0;
+    ```
 
     </TabItem>
+
     <TabItem label="C#">
 
-      ```csharp
-      CloseAllWindows();
-      RaspiCleanup();
-      ```
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
 
+    ```csharp
+    CloseAllWindows();
+    RaspiCleanup();
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp
+    SplashKit.CloseAllWindows();
+    SplashKit.RaspiCleanup();
+    ```
+
+    </TabItem>
+    </Tabs>
     </TabItem>
     </Tabs>
 
     Finally, as we exit the program we must ensure that we cleanup our program properly. We must first close the dummy window we opened use [Close All Windows](/api/windows/#close-all-windows). We then call [Raspi Cleanup](/api/raspberry/#raspi-cleanup) to ensure our pins are turned off and cleaned.
+
+</Steps>
 
 :::tip[Program Shutdown]
 It is crucial we plan for the program's shutdown procedure, because if we instead used `CTRL + C` to stop the program then cleanup is not performed and the GPIO pins remain in the same state they were in when the program was stopped. We do not want to unintentionally keep pins active.

@@ -7,6 +7,17 @@ import sitemap from "@astrojs/sitemap";
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax'
 import starlightBlog from 'starlight-blog'
+import starlightDocSearch from '@astrojs/starlight-docsearch';
+import { loadEnv } from "vite";
+
+const { DOCSEARCH_API_ID } = loadEnv(process.env.DOCSEARCH_API_ID, process.cwd(), "");
+const { DOCSEARCH_API_SEARCH_KEY } = loadEnv(process.env.DOCSEARCH_API_SEARCH_KEY, process.cwd(), "");
+const { DOCSEARCH_INDEX_NAME } = loadEnv(process.env.DOCSEARCH_INDEX_NAME, process.cwd(), "");
+
+if (!DOCSEARCH_API_ID || !DOCSEARCH_API_SEARCH_KEY || !DOCSEARCH_INDEX_NAME) {
+  console.error("Algolia DocSearch enviroment variables are invalid. Please check configuration!");
+  process.exit(1);
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +34,11 @@ export default defineConfig({
         }),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
+        }),
+        starlightDocSearch({
+          appId: DOCSEARCH_API_ID,
+          apiKey: DOCSEARCH_API_SEARCH_KEY,
+          indexName: DOCSEARCH_INDEX_NAME,
         }),
       ],
       expressiveCode: {
@@ -69,7 +85,21 @@ export default defineConfig({
         {
           label: "Troubleshooting",
           collapsed: true,
-          autogenerate: { directory: "troubleshoot", collapsed: true },
+          items: [
+            { label: "Troubleshooting Overview", link: "troubleshoot/" },
+            {
+              label: "Windows",
+              collapsed: true,
+              items:
+                [
+                  { label: "MSYS2", autogenerate: { directory: "troubleshoot/Windows (MSYS2)" }, collapsed: false },
+                  { label: "WSL", autogenerate: { directory: "troubleshoot/Windows (WSL)" }, collapsed: false },
+                ]
+            },
+            { label: "MacOS", autogenerate: { directory: "troubleshoot/MacOS" }, collapsed: true },
+            { label: "Linux", autogenerate: { directory: "troubleshoot/Linux" }, collapsed: true },
+          ],
+          // autogenerate: { directory: "troubleshoot", collapsed: true },
         },
         {
           label: "API Documentation",
@@ -106,10 +136,10 @@ export default defineConfig({
 
     }),
 
-    react(), sitemap()
+    react(),
+    sitemap()
   ],
 
-  // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   server: {
     host: true,
     port: 4321

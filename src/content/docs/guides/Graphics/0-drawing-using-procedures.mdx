@@ -1,9 +1,9 @@
 ---
 title: Drawing using Procedures
-description: This article provide a quick overview of getting started with SplashKit. It includes how to create a window and do some basic drawing in order to create a small animation. This is a great place to start with SplashKit.
+description: This article provides a quick overview of getting started with SplashKit. It includes how to create a window and do some basic drawing in order to create a small animation. This is a great place to start with SplashKit.
 category: Tutorials
 author: Andrew Cain and others
-lastupdated: October 2024
+lastupdated: January 2025
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
@@ -302,6 +302,6 @@ You should be able to get Visual Studio Code to show you to list of parameters. 
 
 ## Double Buffering
 
-To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in **sequence**).  However, we dont want each element to appear individually, we just want the whole picture to appear at once, so in this case the whole house should show all at once. SplashKit uses a technique called **Double Buffering** to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user.  With SplashKit, the shapes are all shown together when you call the `refresh_screen` procedure. This is illustrated below.
+To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in **sequence**). However, we dont want each element to appear individually, we just want the whole picture to appear at once, so in this case the whole house should show all at once. SplashKit uses a technique called **Double Buffering** to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user.  With SplashKit, the shapes are all shown together when you call the `refresh_screen` procedure. This is illustrated below.
 
 ![Illustration of double buffering, and the need to refresh screen](./images/drawing/RefreshScreen.png)

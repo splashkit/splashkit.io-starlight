@@ -21,6 +21,10 @@ jobs:
           npm install
       - name: Upload your site
         uses: withastro/action@v3
+        env:
+          DOCSEARCH_API_ID: ${{ secrets.DOCSEARCH_API_ID }}
+          DOCSEARCH_API_SEARCH_KEY: ${{ secrets.DOCSEARCH_API_SEARCH_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ secrets.DOCSEARCH_INDEX_NAME }}
 
   deploy:
     needs: build
