@@ -1,27 +1,53 @@
 ---
-title: zsh command not found skm
-description: Issue with the `zsh` command not found on MacOS, and how to fix it.
+title: zsh 'code' command not found
 sidebar:
-  label: 5. zsh not found
+  label: 5. zsh 'code' not found
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`zsh: command not found: skm`]
+:::caution[Issue:]
 
-This guide helps resolve the error `zsh: command not found: skm` on MacOS. This issue occurs when the SplashKit path is not correctly set in the `.zshrc` file.
+When trying to use `code .` in the terminal, you may encounter the error `zsh: command not found: code`, indicating that the path to the Visual Studio Code 'code' command is not included in your PATH.
 
+![code command not found in terminal](/images/troubleshoot/macos/code-not-found.png)
 :::
 
-## Problem
+---
 
-When trying to use `skm` in the terminal, you may encounter the error `zsh: command not found: skm`, indicating that the `.splashkit` directory is not included in your PATH.
+## Solution(s)
 
-![Error Example](https://i.imgur.com/Qv8RaHc.png)
+### 1. Ensure Visual Studio Code is in Applications folder
 
-## Solution
+Check your "Applications" folder contains the "Visual Studio Code" app.
 
-To resolve this, add the `.splashkit` folder to your `.zshrc` file. Follow the steps below:
+If it is missing from this folder, find where it is currently located and drag the file into the Applications folder.
+
+---
+
+### 2. Add the 'code' path to your PATH using terminal
+
+<Steps>
+
+1. If you are having issues getting the `code` command to work, an alternative method you can try is to run the following command (adapted from the [Alternative Manual Instructions](https://code.visualstudio.com/docs/setup/mac#_alternative-manual-instructions) section).
+
+    ```zsh
+    echo "export PATH=\"\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin\"" >> ~/.zshrc
+    ```
+
+2. **Apply Changes**
+
+    Save the `.zshrc` Reload the `.zshrc` paths with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+</Steps>
+
+---
+
+### 3. Add the 'code' path to your PATH manually
 
 <Steps>
 
@@ -39,33 +65,17 @@ To resolve this, add the `.splashkit` folder to your `.zshrc` file. Follow the s
      whoami
      ```
 
-   ![Username Check Example](./images/macos-whoami.png)
+   ![Username Check Example](/images/troubleshoot/macos/macos-whoami.png)
 
-3. **Add SplashKit to PATH**
+3. **Add VS Code to PATH**
   
-    Open the `.zshrc` file with a text editor and add the following line at the end to include the SplashKit path:
-
-     ```shell
-     export PATH="$HOME/.splashkit:$PATH"
-     ```
-
-4. **Optional: Add .NET Path to PATH**
-
-    For .NET compatibility, add this line to your `.zshrc` file as well:
-
-     ```shell
-     export PATH="/usr/local/share/dotnet:$PATH"
-     ```
-
-5. **Optional: Enable VS Code from Terminal**
-
-    To enable the `code .` command for opening Visual Studio Code from the terminal, add the following line:
+    Open the `.zshrc` file with a text editor and add the following line at the end to include the Visual Studio Code path:
 
      ```shell
      export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
      ```
 
-6. **Apply Changes**
+4. **Apply Changes**
 
     Save the `.zshrc` file and then reload it with the following command to apply changes immediately:
 
@@ -75,4 +85,10 @@ To resolve this, add the `.splashkit` folder to your `.zshrc` file. Follow the s
 
 </Steps>
 
-After completing these steps, your terminal should recognize the `skm` command, and you should be able to use SplashKit as expected.
+---
+
+### 4. Update permissions
+
+If you are still having issues, try following the steps on the [3. .zshrc permission issues](/troubleshoot/macos/mac-issue-3) page first, then come back to repeat the steps above.
+
+---

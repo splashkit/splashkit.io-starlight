@@ -1,68 +1,88 @@
 ---
-title: System.DllNotFoundException
-description: Issue with MacOS, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
+title: zsh 'skm' command not found
 sidebar:
-  label: 4. DllNotFoundException
+  label: 4. zsh 'skm' not found
 ---
-
-{/*NOTE: Can probably remove this one now that we have the macos install*/}
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`System.DllNotFoundException unable to load DLL splashkit.dll`]
+:::caution[Issue:]
 
-This guide provides solutions for MacOS users encountering the `System.DllNotFoundException` error when attempting to run programs that rely on `splashkit.dll`. This issue is often related to operating system compatibility or outdated SplashKit versions.
+When trying to use `skm` in the terminal, you may encounter the error `zsh: command not found: skm`, indicating that the `.splashkit` directory is not included in your PATH.
+
+![skm not found in terminal](/images/troubleshoot/macos/skm-not-found.png)
 
 :::
 
-## Problem
+---
 
-When attempting to run a program that uses SplashKit on MacOS, you may encounter the following error message: `System.DllNotFoundException unable to load DLL splashkit.dll`.
+## Solution(s)
 
-## Solutions
-
-Firstly, update your macOS to the latest version available. Ideally, your OS should be version **12.0** or later, as compatibility issues with `splashkit.dll` are less likely with more recent versions of macOS.
-
-### Solution 1: Build the SplashKit library locally
-
-Run the following command to build the library for your OS, which will overwrite the provided library file from when you installed SplashKit:
-
-```shell
-skm macos install
-```
-
-Then, if needed, re-install the library globally with the following command:
-
-```shell
-skm global install
-```
-
-### Solution 2: Use an older version of SplashKit
-
-If you are using a version of macOS older than 12.0, you can revert SplashKit to a previous version that may be more compatible with your system. Run the following commands in Terminal, one line at a time:
-
-```shell
-cd ~/.splashkit
-```
-
-```shell
-git fetch --unshallow
-```
-
-```shell
-git checkout cbb68dc
-```
-
-#### Using SplashKit with Solution 2
-
-**Note**: After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](https://deakin365-my.sharepoint.com/:u:/g/personal/o_mckeon_deakin_edu_au/EZWAVnpc1QxHqFB7KbZ-j_sBreJCSEJLomdDUKsnT7DykA?e=EKefqK) (*zipped folder*) for creating new projects.
+### 1: Add SplashKit PATH to .zshrc file using terminal
 
 <Steps>
 
-1. Unzip the downloaded template.
-2. Read the “`README.txt`” file for guidance on setting up new projects.
-3. Review the `Program.cs` file, which includes a comment to help configure the project. Once set up, you can remove the comment lines.
+1. To add SplashKit to your PATH, run the following command:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.zshrc
+    ```
+
+2. **Apply Changes**
+
+    Save the `.zshrc` Reload the `.zshrc` paths with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
 
 </Steps>
 
-These steps should help resolve compatibility issues with `splashkit.dll` and ensure that your programs run smoothly.
+:::note
+If you get permissions issues, try following the steps on the [3. .zshrc permission issues](/troubleshoot/macos/mac-issue-3) page first, then come back to repeat the steps above.
+
+---
+
+### 2: Add SplashKit PATH to .zshrc file manually
+
+To resolve this, add the `.splashkit` folder to your `.zshrc` file. Follow the steps below:
+
+<Steps>
+
+1. **Locate Your `.zshrc` File**
+
+    The `.zshrc` file is located in your home directory at `~/Users/(your username)/`.
+
+    If you don’t see it, press **Shift + Command + . (dot)** to toggle hidden files visibility in Finder.
+
+2. **Identify Your Username (Optional)**
+  
+    To ensure you’re in the correct directory, you can use the `whoami` command in Terminal to check your username:
+
+     ```shell
+     whoami
+     ```
+
+   ![Username Check Example](/images/troubleshoot/macos/macos-whoami.png)
+
+3. **Add SplashKit to PATH**
+  
+    Open the `.zshrc` file with a text editor and add the following line at the end to include the SplashKit path:
+
+     ```shell
+     export PATH="$HOME/.splashkit:$PATH"
+     ```
+
+4. **Apply Changes**
+
+    Save the `.zshrc` file and then reload it with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+</Steps>
+
+After completing these steps, your terminal should recognize the `skm` command, and you should be able to use SplashKit as expected.
+
+---
