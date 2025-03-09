@@ -46,11 +46,11 @@ We recommend you first familiarise yourself with the [Resolving Collisions Using
 
 When detecting collisions between a ball and a wall in a 2D game, we need to determine whether the ball has collided with the wall. While we've used the radii to represent the sizes of the objects, for collision detection purposes, we treat them as points to simplify the calculations.
 
-![Intermediate Collisions 1](./images/gravity-and-collisions-1.png)
+![Intermediate Collisions 1](/images/guides/physics/gravity-and-collisions-1.png)
 
 The goal is to find the point along the wall, referred to as `t`, that is closest to the centre of the ball (point `p`). The closest point forms a right angle with the ball’s centre.
 
-![Intermediate Collisions 2](./images/gravity-and-collisions-2.png)
+![Intermediate Collisions 2](/images/guides/physics/gravity-and-collisions-2.png)
 
 In these scenarios, calculating this point directly using world coordinates can be complex, so we use normalised coordinates instead. By parameterising the wall, we define its start point as 0 and its end point as 1. This allows us to determine where along the wall the closest point is located, represented by the parameter `t`.
 
@@ -58,7 +58,7 @@ In these scenarios, calculating this point directly using world coordinates can 
 
 We begin by creating a vector (the green line) from the centre of the ball to the start of the wall. The distance between the closest point and the start of the wall can be calculated using the dot product between this green vector and the vector representing the wall.
 
-![Intermediate Collisions 3](./images/gravity-and-collisions-3.png)
+![Intermediate Collisions 3](/images/guides/physics/gravity-and-collisions-3.png)
 
 ```cpp
 // Vector from the start of the wall to the ball's centre
