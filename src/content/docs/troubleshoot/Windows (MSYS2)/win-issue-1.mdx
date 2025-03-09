@@ -1,35 +1,30 @@
 ---
-title: bash <(curl.. does nothing
-description: Issue in Windows, `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` does nothing, and how to fix it.
+title: "\"bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)\" does nothing"
 sidebar:
-  label: 1. Bash curl not working
+  label: 1. bash curl not working
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`bash <(curl -s ... install-scripts/skm-install.sh)` Command Does Nothing]
+:::caution[Issue:]
 
-This guide provides solutions for Windows users who encounter issues when trying to run the install script command from the main page. This command may not execute as expected due to firewall or connection issues.
+Attempting to run the command `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` results in no response from the terminal, with no indication of success or error.
+
+![bash curl installation command does nothing](/images/troubleshoot/windows-msys2/skm-install-does-nothing-windows.png)
 
 :::
 
-## Problem
+---
 
-On Windows, running `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` may result in no output or action in the terminal, often due to network settings or restrictions.
+## Solution(s)
 
-![Error Example](https://i.imgur.com/c6ejBFS.png?1)
+### 1: Check Internet Connection
 
-## Solutions
-
-Follow the steps below to resolve this issue and successfully run the SplashKit installer script:
-
-### Check Your Internet Connection
-
-Ensure your computer is connected to the internet, as this command requires a stable connection to download the script.
+Make sure your device is connected to the internet, as this command depends on a stable connection to access the script online.
 
 ---
 
-### Temporarily Disable Firewall
+### 2: Temporarily Disable Firewall
 
 Your firewall may be blocking the script from running. Try temporarily disabling your firewall:
 
@@ -43,7 +38,9 @@ Your firewall may be blocking the script from running. Try temporarily disabling
 
 ---
 
-### Manually Download and Run the Script
+### 3: Manually Download and Run the Script
+
+If the command still doesn’t respond, you can manually download and execute the script as follows:
 
 If the command still does nothing, you can manually download and run the script with the following steps:
 
@@ -65,3 +62,5 @@ If the command still does nothing, you can manually download and run the script 
 </Steps>
 
 These steps should allow you to successfully run the `skm` installation script on Windows. If issues persist, refer to the additional troubleshooting guides or contact support.
+
+---

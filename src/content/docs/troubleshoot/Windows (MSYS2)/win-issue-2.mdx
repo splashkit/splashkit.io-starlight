@@ -1,46 +1,41 @@
 ---
 title: System.DllNotFoundException
-description: Issue with Windows, `System.DllNotFoundException unable to load DLL splashkit.dll` when trying to run program, and how to fix it.
 sidebar:
   label: 2. DllNotFoundException
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`System.DllNotFoundException unable to load DLL splashkit.dll`]
-
-This guide provides solutions for Windows users encountering the `System.DllNotFoundException` error when trying to run a SplashKit program. This error typically occurs when the `splashkit.dll` file is missing or not correctly linked to the project.
-
-:::
-
-## Problem
+:::caution[Issue:]
 
 When attempting to run a SplashKit program, you may see an error message: `System.DllNotFoundException unable to load DLL splashkit.dll`. This issue may stem from antivirus interference, path configuration, or project setup.
 
 ![Error Example](https://i.imgur.com/uEz1nxT.png)
 
-## Solutions
+:::
 
-### Disable Antivirus Software Temporarily
+## Solution(s)
+
+### 1. Disable Antivirus Software Temporarily
 
 Some antivirus programs may block `splashkit.dll`. Temporarily disable your antivirus software and try running the program again.
 
 ---
 
-### Avoid Naming Conflicts
+### 2. Avoid Naming Conflicts
 
 Ensure your project name is not "SplashKit," as this can cause conflicts. Rename the project folder if necessary.
 
  ---
 
-### Use the Correct Terminal and Folder Setup
+### 3. Use the Correct Terminal and Folder Setup
 
 - Open the **MINGW64** terminal, not the MSYS terminal, to create your project files.
 - Ensure the project files are located in their own dedicated folder to avoid any path or configuration issues.
 
 ---
 
-### Manually Add `splashkit.dll` to Your System PATH
+### 4. Manually Add `splashkit.dll` to Your System PATH
 
 To ensure Windows can locate `splashkit.dll`, manually add its directory to your PATH environment variable:
 
@@ -58,7 +53,7 @@ To ensure Windows can locate `splashkit.dll`, manually add its directory to your
 
 ---
 
-### Copy SplashKit Binaries to Your Build Output Folder (Last Resort)
+### 5. Copy SplashKit Binaries to Your Build Output Folder (Last Resort)
 
 If all else fails, try manually copying the SplashKit binaries to your project’s build output directory:
 
