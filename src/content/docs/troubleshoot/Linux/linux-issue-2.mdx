@@ -1,59 +1,127 @@
 ---
 title: Error while loading shared libraries, skm global install failed
-description: Issue with the error `libSplashKit.so` not found when trying to run a SplashKit program on Linux, and how to fix it.
 sidebar:
   label: 2. libSplashKit.so not found
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
-:::caution[`error while loading shared libraries: libSplashKit.so`]
+:::caution[Issue:]
 
-This guide addresses the error where `libSplashKit.so` cannot be found when attempting to run a SplashKit program on Linux. This issue typically occurs when the system cannot locate the SplashKit library path, especially if recent changes were made to `bash` or `zsh` profiles.
+You receive an error when attempting to install SplashKit using `skm global install`, or when compiling SplashKit code, it’s likely because the system cannot locate the necessary SplashKit library files. Adding these paths manually can resolve the issue.
+
+![Error Example](/images/installation/linux/skm-global-linux-fail.png)
 
 :::
 
-## Problem
+## Solution(s)
 
-When trying to run a SplashKit program, you may see an error indicating that `libSplashKit.so` cannot be found. This is often due to missing or incorrect paths in the shell profile or system library configuration.
+### 1. Update Your Shell Profile (`~/.bashrc` or `~/.zshrc`) using echo
 
-![Error Example](/images/installation/linux/missing-library.png)
-
-## Solutions
-
-Follow these steps to ensure your shell profile and system library paths are configured correctly.
-
-### Step 1: Update Your Shell Profile (`~/.bashrc` or `~/.zshrc`)
+Follow these steps to update your shell profiles and system library path to include SplashKit.
 
 **For Bash Users**:
 
+<Tabs syncKey="shell-profile">
+<TabItem label="Bash Users">
+
 <Steps>
 
-1. Open the `~/.bashrc` file:
+1. To add SplashKit to your PATH, run the following command:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.bashrc
+    ```
+
+2. **Apply Changes**
+
+    Reload the `.bashrc` paths with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.bashrc
+     ```
+
+3. Run the global install command again using:
+
+    ```shell
+    skm global install
+    ```
+
+</Steps>
+
+</TabItem>
+<TabItem label="Zsh Users">
+
+<Steps>
+
+1. To add SplashKit to your PATH, run the following command:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.zshrc
+    ```
+
+2. **Apply Changes**
+
+    Reload the `.zshrc` paths with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+3. Run the global install command again using:
+
+    ```shell
+    skm global install
+    ```
+
+</Steps>
+
+</TabItem>
+</Tabs>
+
+### 2. Update Your Shell Profile (`~/.bashrc` or `~/.zshrc`) using nano
+
+Follow these steps to update your shell profiles and system library path to include SplashKit.
+
+**For Bash Users**:
+
+<Tabs syncKey="shell-profile">
+<TabItem label="Bash Users">
+
+<Steps>
+
+1. Open your `~/.bashrc` file:
 
     ```shell
     nano ~/.bashrc
     ```
 
-2. Add the following line near the end of the file to include SplashKit in your PATH:
+2. Add the following line near the end of the file:
 
     ```shell
     export PATH="$PATH:$HOME/.splashkit"
     ```
 
-3. Save and close the file, then apply the changes:
+3. Save and close the file, then update your profile:
 
     ```shell
     source ~/.bashrc
     ```
 
+4. Run the global install command again using:
+
+    ```shell
+    skm global install
+    ```
+
 </Steps>
 
-**For Zsh Users**:
+</TabItem>
+<TabItem label="Zsh Users">
 
 <Steps>
 
-1. Open the `~/.zshrc` file:
+1. Open your `~/.zshrc` file:
 
     ```shell
     nano ~/.zshrc
@@ -71,18 +139,13 @@ Follow these steps to ensure your shell profile and system library paths are con
     source ~/.zshrc
     ```
 
+4. Run the global install command again using:
+
+    ```shell
+    skm global install
+    ```
+
 </Steps>
 
-### Step 2: Update the System Library Path
-
-To ensure the system can locate `libSplashKit.so`, add `/usr/local/lib` to the system’s library path:
-
-```shell
-sudo ldconfig /usr/local/lib
-```
-
-This command configures the system to recognize libraries in `/usr/local/lib`, ensuring that `libSplashKit.so` is accessible to your applications.
-
----
-
-Following these steps should resolve the `libSplashKit.so` not found error and allow you to successfully run SplashKit programs on Linux.
+</TabItem>
+</Tabs>
