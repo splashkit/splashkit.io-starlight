@@ -68,7 +68,7 @@ struct ball
 };
 ```
 
-![Introduction to Collisions](./images/collisions-1.png)
+![Introduction to Collisions](/images/guides/physics/collisions-1.png)
 
 ## Applying Forces to Balls
 
@@ -175,7 +175,7 @@ double radius_sum = c1.radius + c2.radius; // Sum of both radii
 return (dx * dx + dy * dy) <= (radius_sum * radius_sum);
 ```
 
-![Collision Detection](./images/collisions-2.png)
+![Collision Detection](/images/guides/physics/collisions-2.png)
 
 :::note
 This uses a slightly modified version of Pythagorean Theorum to determine if the circles overlap. The square root can be quite costly to compute, so to remove this, we just square both sides of the equation and leave it in the form
@@ -185,7 +185,7 @@ $ a^2 + b^2 = c^2 $
 
 If any of the balls do indeed overlap, we have a collision. Once a collision is detected, we need to resolve it by updating the positions and velocities of the colliding balls.
 
-![Collision Detection](./images/normal-tangent-diagram.png)
+![Collision Detection](/images/guides/physics/normal-tangent-diagram.png)
 
 Let's assume that `Ball 1` is moving along its vector `v1` and that `Ball 2` is moving along its vector `v2`. If we draw a line between the two centre points and find the `normal` to that line (i.e. a line that is perpendicular to that), this tangential line (represented by the dotted line) effectively represents a solid object from which both balls will bounce off of. The movement of the balls along the normal after a collision is called the **tangential response**.
 

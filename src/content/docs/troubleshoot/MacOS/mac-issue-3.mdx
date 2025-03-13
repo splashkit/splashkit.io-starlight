@@ -1,57 +1,104 @@
 ---
-title: ln -s /usr/local.... command not working
-description: Issue with the `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` command not working on MacOS, and how to fix it.
+title: Permission issue when running SplashKit installation command
 sidebar:
-  label: 3. Local bin Error
+  label: 3. .zshrc permission issues
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`ln -s /usr/local/share/dotnet/dotnet /usr/local/bin` Command Not Working]
+:::caution[Issue:]
 
-This guide provides a solution for MacOS users encountering issues when trying to create a symbolic link for .NET using the command `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`.
+The `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` command shows an error message near the end that looks similar to either of the following images:
+
+![Terminal window showing permission denied for .zshrc file](/images/troubleshoot/macos/permission-issue.png)
+
+![Terminal window showing Operation not permitted for .zshrc file](/images/troubleshoot/macos/file-locked.png)
 
 :::
 
-## Problem
+---
 
-When running `ln -s /usr/local/share/dotnet/dotnet /usr/local/bin`, some users receive an error message or find that the command does not work as expected, often due to permission issues or existing conflicting files.
+## Solution(s)
 
-![Error Example](https://i.imgur.com/MJgfrXW.png)
-
-## Solution
-
-To resolve this issue, use the following command, which includes `sudo` to grant temporary system (root) privileges:
-
-```shell
-sudo ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
-```
-
-*The `sudo` command is used here to give necessary permissions.*
+### 1: Update File Permissions using Terminal
 
 <Steps>
 
-1. **Enter Your Password:** After running the command above, you will be prompted to enter your password. Type it in and press **Enter**.
-
-2. **If You Encounter a Permission Denied Error:**
-  
-   If you receive a “`zsh: permission denied: dotnet`” error, it’s likely due to an existing file conflict in the `/usr/local/bin` directory.
-
-3. **Delete the Existing Dotnet File:**
-
-    Open Finder and navigate to the “`/usr/local/bin`” folder:
-    - Click “**Go**” at the top of the screen.
-    - Select “**Go to Folder…**” and enter `/usr/local/bin` as the folder path.
-    - In the `/usr/local/bin` folder, locate and delete any existing `dotnet` file.
-
-4. **Re-run the Command:**
-
-    Open a new Terminal window and re-enter the command:
+1. Open the Terminal App, and run the following command:
 
     ```shell
-    sudo ln -s /usr/local/share/dotnet/dotnet /usr/local/bin
+    sudo chmod a=rw ~/.zshrc
+    ```
+
+    :::note
+    If the error message mentions a different file such as `.bash_profile`, then you will use that file in the command above instead of the `.zshrc` file used in this example.
+    :::
+
+2. Remove the existing `.splashkit` folder by running the following command:
+
+    ```shell
+    rm -rf ~/.splashkit
+    ```
+
+3. Close and reopen the Terminal, and run the initial install script command again:
+
+    ```shell
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
     ```
 
 </Steps>
 
-Following these steps should successfully create the symbolic link, allowing you to use the `dotnet` command from any terminal session.
+---
+
+If you still have issues, try the steps below:
+
+### 2: Update File Permissions using Finder
+
+To resolve this issue using Finder rather than the terminal, you can update the file permissions with the following steps:
+
+<Steps>
+
+1. Open Finder.
+2. Click on "Go" at the top of the screen, then "Home":
+
+    ![Finder window showing how to get to Home folder](/images/troubleshoot/macos/finder-go-to-home.png)
+
+3. Click into the **Macintosh HD** (or similar) folder, then the **Users** folder, and finally, click into the folder with your computer's username.
+4. Show the hidden files with the shortcut: `Shift` + `Command` + `.` and you should be able to scroll down to see the file mentioned in the terminal error.
+
+    Here is an example to show the hidden `.zshrc` file mentioned in the screenshots above:
+
+    ![Finder window showing folder steps to .zshrc file](/images/troubleshoot/macos/finder-hidden-files-zshrc.png)
+
+    :::note
+    If the error message mentions a different file such as `.bash_profile`, then you will edit that file instead of the `.zshrc` file used in this example.
+    :::
+
+5. Right-click on the file and then select "**Get Info**".  
+    You will see something that looks similar to this:
+
+    ![Get info window for .zshrc file](/images/troubleshoot/macos/get-info-zshrc.png)
+
+6. Check the information in the orange boxes shown in the image above:
+
+   - Make sure the "**Locked**" checkbox is **not** ticked (as shown above).
+   - Make sure the file has "**Read & Write**" Privileges for at least your username, but sometimes you may need to change all of them to Read & Write.
+
+7. Close the Info window.
+8. Open your terminal and run the SplashKit installation script command again:
+
+    ```bash
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+9. If you get a message the SplashKit is already installed, copy the text to uninstall (highlighted in the image below - yours will have a different username):
+
+    ![Terminal window showing splashkit already installed](/images/troubleshoot/macos/skm-already-installed.png)
+
+10. Paste and run the command to uninstall SplashKit.
+11. Close and re-open the Terminal and run the SplashKit installation script command again.
+12. SplashKit should now be able to install successfully, so you can continue on with the next installation step.
+
+</Steps>
+
+---

@@ -64,7 +64,7 @@ const std::vector<std::vector<int>> MAP = {
 
 From the player’s position on this grid, rays are "cast" outward in the direction they are facing, acting like beams of light or vision probing the environment.
 
-![2D Grid Overlay](./images/2d-3d-projection-1.png)
+![2D Grid Overlay](/images/guides/physics/2d-3d-projection-1.png)
 
 These rays detect the distance to walls in their path. To generate a 3D projection, we can apply the following principles:
 
@@ -76,11 +76,11 @@ These rays detect the distance to walls in their path. To generate a 3D projecti
 
 In 3D projection, the screen is divided into vertical slices, with each ray corresponding to one slice along the x-axis. The number of rays determines the level of detail in the projection, as each ray extends outward from the player’s position, scanning the environment for walls.
 
-![Low Res Projection](./images/2d-3d-projection-2.png)
+![Low Res Projection](/images/guides/physics/2d-3d-projection-2.png)
 
 The direction of each ray is calculated based on the player’s position and field of view (FOV). The distance to the nearest wall is then used to render the corresponding slice on the screen. This process creates the illusion of depth and perspective, transforming a flat 2D map into a dynamic, 3D-like experience.
 
-![High Res Projection](./images/2d-3d-projection-3.png)
+![High Res Projection](/images/guides/physics/2d-3d-projection-3.png)
 
 Increasing the number of rays and vertical slices enhances the quality of the projection, resulting in smoother visuals and greater detail, while fewer rays produce a simpler, blockier effect.
 
@@ -172,7 +172,7 @@ At its core, raycasting reduces the complex task of simulating a 3D environment 
 5. **Repeat for All Rays** - Repeat this process for every ray, effectively rendering each column of the screen. The result is a projection that simulates depth and perspective in the environment.
 </Steps>
 
-![Basic 3D Projection](./images/2d-3d-projection-4.png)
+![Basic 3D Projection](/images/guides/physics/2d-3d-projection-4.png)
 
 ## Projecting Your 3D World
 
@@ -195,7 +195,7 @@ Match the number of rays to the screen width for a 1:1 mapping (e.g., 600 rays f
 :::note
 You will need to ensure that you start casting your rays from either side of the player's current viewing angle. By halving the player FOV and then casting rays from that value subtracted from the current player angle, you will get a true FOV.
 
-![Correct FOV Start](./images/2d-3d-projection-5.png)
+![Correct FOV Start](/images/guides/physics/2d-3d-projection-5.png)
 :::
 
 ```cpp
@@ -271,12 +271,12 @@ The wall slice is the focal point of the projection. A vertical line is drawn be
 
 The floor occupies the space beneath the wall slice. A line is drawn from `wall_bottom` to the bottom of the screen (`SCREEN_HEIGHT`), filling the remainder of the screen with a floor colour. Like the ceiling, the floor provides spatial context and completes the projection.
 
-![Basic 3D Projection](./images/2d-3d-projection-6.png)
+![Basic 3D Projection](/images/guides/physics/2d-3d-projection-6.png)
 
 :::note
 In this code, the ceiling and floor are represented by blank space, but you could explicitly draw lines to fill these areas. Alternatively, you could fill these areas with an image (or a series of images) to provide the illusion of a sky or a floor.
 
-![Basic 3D Projection](./images/2d-3d-projection-7.png)
+![Basic 3D Projection](/images/guides/physics/2d-3d-projection-7.png)
 :::
 
 ### Repeat for All Rays

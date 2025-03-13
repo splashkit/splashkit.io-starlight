@@ -1,55 +1,60 @@
 ---
-title: install dotnet-sdk command not working
-description: Issue with the `brew cask install dotnet-sdk` command not working on MacOS, and how to fix it.
+title: dotnet run command unable to find SplashKit library
 sidebar:
-  label: 2. Brew cask install
+  label: 2. dotnet run can't find SplashKit library
 ---
-
-{/*NOTE: Can probably remove this one now that we no longer have this command in our installation guide*/}
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`brew cask install dotnet-sdk` Command Not Working]
+:::caution[Issue:]
 
-This guide addresses issues on MacOS where the command `brew cask install dotnet-sdk` fails. The instructions below provide the correct command and alternative installation options for the .NET SDK.
+You get an error message when running the `dotnet run` command (after running the `dotnet add package SplashKit` command), which might look something like this:
+
+![dotnet run not working with .NET 9](/images/troubleshoot/macos/dotnet-9-issue.png)
 
 :::
 
-## Problem
-
-Running `brew cask install dotnet-sdk` on MacOS returns an error, as `cask` is no longer required for this command in recent versions of Homebrew.
-
-## Solution
-
-### Corrected Command
-
-The updated command for installing .NET SDK is:
-
-```shell
-brew install dotnet-sdk --cask
-```
-
-This command installs the latest compatible version of the .NET SDK using Homebrew. Make sure Homebrew is updated by running `brew update` before trying the installation.
-
 ---
 
-### Alternative Installation
+## Solution(s)
 
-If Homebrew is not an option or you encounter further issues, you can download the .NET SDK directly from the Microsoft website:
+There are a few ways to resolve this issue:
+
+### 1: Update SplashKit
 
 <Steps>
 
-1. Go to the [.NET SDK 7.0 download page](https://dotnet.microsoft.com/en-us/download/dotnet/7.0).
-2. Select the macOS installer link for your system architecture:
-   - **Arm64** for Apple Silicon (M1 and newer chips).
-   - **x64** for Intel-based Macs.
+1. Run the following command in a new terminal window:
+
+    ```shell
+    skm update
+    ```
+
+    Make sure to check if there are any errors in the output such as permissions issues.
+
+2. You may also need to run:
+
+    ```shell
+    skm global install
+    ```
+
+    This command is usually run when using the update command above, but running it again won't cause issues.
+
+3. To test if this has been resolved:
+
+    Create a new project folder and a new C# project.
 
 </Steps>
 
-Download and install using the installer provided on the website.
-
-**Note:** Make sure to choose the correct architecture for your Mac model to avoid compatibility issues.
-
 ---
 
-This should resolve issues with installing .NET SDK on MacOS via Homebrew or the Microsoft website.
+### 2: Use `skm` commands
+
+You can use `skm` at the start of any compiling/building commands, or when running C# programs.
+
+For example, you can use the following commands:
+
+- `skm dotnet build`: compile/bui;d the project in the current working directory.
+- `skm dotnet run`: build if needed, then run/execute your program.
+
+---

@@ -1,25 +1,67 @@
 ---
 title: No module named 'splashkit' in Python error
-description: Python code files are unable to find the splashkit dependancy installed in Homebrew.
 sidebar:
   label: "7. Python ModuleNotFoundError"
 ---
 
 import { Steps } from "@astrojs/starlight/components";
 
-:::caution[ModuleNotFoundError: No module named 'splashkit' in Python]
+:::caution[Issue:]
 
-This guide helps resolve the error `ModuleNotFoundError: No module named 'splashkit' in Python` on MacOS. This issue occurs when the Homebrew path is not correctly set in the `.zshrc` file as SplashKit's global python library is added in using the path where the Homebrew version of Python is present.
+When running python SplashKit code, you can an error: `ModuleNotFoundError: No module named 'splashkit' in Python`:
+
+![ModuleNotFoundError: No module named 'splashkit' in Python](/images/troubleshoot/macos/macos-issue-7_problem.png)
+
+MacOS prioritises its built-in Python installation located in `/usr/bin/python3`. SplashKit and other dependencies are likely installed in the Python environment managed by Homebrew, which is located at `/opt/homebrew/bin/python3` or similar. Due to this, the SplashKit module cannot be located in shell’s PATH environment variable.
 
 :::
 
-## Problem
+---
 
-MacOS prioritises its built-in Python installation located in `/usr/bin/python3`. SplashKit and other dependencies are likely installed in the Python environment managed by Homebrew, which is located at `/opt/homebrew/bin/python3` or similar. Due to this, the SplashKit module cannot be located in shell’s environment variables (`PATH`).
+## Solution(s)
 
-![Error Example](./images/macos-issue-7_problem.png)
+### 1. Install python using homebrew
 
-## Solution
+If you haven't installed homebrew, or homebrew's python package, follow the steps below:
+
+<Steps>
+
+1. Install [Homebrew](https://docs.brew.sh/Installation).
+2. Install [python, using homebrew](https://formulae.brew.sh/formula/python@3.13) with the following command:
+
+   ```shell
+   brew install python@3.13
+   ```
+
+3. Add homebrew to your path using the steps in the [2. Add Homebrew to your PATH using terminal](#2-add-homebrew-to-your-path-using-terminal) or [3. Add Homebrew to your PATH manually](#3-add-homebrew-to-your-path-manually) solutions below.
+
+</Steps>
+
+---
+
+### 2. Add Homebrew to your PATH using terminal
+
+<Steps>
+
+1. To add 'dotnet' to your PATH, run the following command:
+
+    ```zsh
+    echo "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> ~/.zshrc
+    ```
+
+2. **Apply Changes**
+
+    Save the `.zshrc` Reload the `.zshrc` paths with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+</Steps>
+
+---
+
+### 3. Add Homebrew to your PATH manually
 
 To resolve this, add this line: `eval "$(/opt/homebrew/bin/brew shellenv)"` to your `.zshrc` file. Follow the steps below:
 
@@ -39,7 +81,7 @@ To resolve this, add this line: `eval "$(/opt/homebrew/bin/brew shellenv)"` to y
    whoami
    ```
 
-   ![Username Check Example](./images/macos-whoami.png)
+   ![Username Check Example](/images/troubleshoot/macos/macos-whoami.png)
 
    :::
 
@@ -75,8 +117,10 @@ To resolve this, add this line: `eval "$(/opt/homebrew/bin/brew shellenv)"` to y
 
 5. **Test the setup**
 
-   Run your Python script again. It should now successfully locate the SplashKit module.
+   Run your Python code again. It should now successfully locate the SplashKit module.
 
 </Steps>
 
 After completing these steps, your terminal will use the Homebrew-installed version of Python, and your Python script should now successfully find and run the SplashKit module without encountering the `ModuleNotFoundError`.
+
+---

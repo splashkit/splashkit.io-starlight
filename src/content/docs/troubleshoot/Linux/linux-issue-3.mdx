@@ -1,15 +1,16 @@
 ---
 title: skm global install fails on Arch-based Linux distributions
-description: Issue with the `skm global install` command failing during installation on Arch-based Linux due to `libjxl` dependency errors with `SDL2_image`.
 sidebar:
   label: 3. skm global install fails on Arch-based Linux
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[`skm global install` Fails During Installation on Arch-Based Distributions]
+:::caution[Issue:]
 
-This guide addresses the issue where the `skm global install` command fails during the installation process on Arch-based Linux distributions like Manjaro due to a dependency error with `libjxl` required by `SDL2_image`.
+When running the `skm global install` command, you encounter an error like the one shown below, indicating issues with unresolved references to `libjxl` in `SDL2_image`. This typically happens due to outdated dependencies in the default repository.
+
+![Error Example](/images/installation/linux/arch-error.png)
 
 :::
 
@@ -19,13 +20,9 @@ This error can also occur due to various package issues, which might give you an
 
 :::
 
-## Problem
+## Solution(s)
 
-When running the `skm global install` command, you may encounter an error like the one shown below, indicating issues with unresolved references to `libjxl` in `SDL2_image`. This typically happens due to outdated dependencies in the default repository.
-
-![Error Example](/images/installation/linux/arch-error.png)
-
-## Solution
+### 1. Update/upgrade dependencies
 
 Follow the steps below to resolve the issue by upgrading dependencies or linking to updated repositories.
 
@@ -74,7 +71,7 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
 </Steps>
 
-## Additional Notes
+#### Additional Notes
 
 If you encounter further errors, verify your system's library paths and ensure `libSplashKit.so` is correctly located by running:
 

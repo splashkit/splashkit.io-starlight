@@ -1,0 +1,58 @@
+---
+title: Stack overflow Exception for GUI applications in WSL
+sidebar:
+  label: 2. GUI applications not working
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When attempting to launch a Linux GUI application in WSL, a Stack Overflow Exception error may occur due to compatibility or driver issues, preventing the app from running correctly.
+
+![Stack Overflow Error in Terminal](/images/troubleshoot/windows-wsl/stack-overflow-error-wsl-terminal.png)
+
+![Stack Overflow Error in Debug Mode](/images/troubleshoot/windows-wsl/stack-overflow-error-wsl-debug.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Enable Linux GUI applications in WSL
+
+To enable Linux GUI applications in WSL, follow these steps to ensure you have the correct environment and drivers:
+
+<Steps>
+
+1. **Update WSL**
+
+   Start by updating your WSL installation with the command below:
+
+   ```shell
+   wsl --update
+   ```
+
+   After updating, restart WSL to apply the changes:
+
+   ```shell
+   wsl --shutdown
+   wsl
+   ```
+
+2. **Install the Appropriate vGPU Driver**
+
+   Install the correct virtual GPU (vGPU) driver for your system to enable support for Linux GUI applications in WSL. Select the driver that matches your hardware:
+
+   - [Intel Graphics Driver](https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html)
+   - [AMD Graphics Driver](https://www.amd.com/en/support/download/drivers.html)
+   - [NVIDIA Graphics Driver](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+
+</Steps>
+
+For further details, consult Microsoft’s guide on [Running Linux GUI Apps on the Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps).
+
+Following these steps should resolve the Stack Overflow Exception and allow you to successfully run GUI applications within WSL.
+
+---

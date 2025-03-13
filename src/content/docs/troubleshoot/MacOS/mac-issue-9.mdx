@@ -1,0 +1,36 @@
+---
+title: Unable to add SplashKit NuGet package to project
+sidebar:
+  label: 6. 'dotnet add package' not working
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When adding the SplashKit NuGet package to your project using `dotnet add package splashkit`, you get an error that looks like this:
+
+![dotnet add package splashkit error](/images/troubleshoot/macos/dotnet-add-package-error.png)
+:::
+
+---
+
+## Solution(s)
+
+To resolve this error, ensure your project (and folder) is NOT named "SplashKit".
+
+<Steps>
+
+1. **Rename Your Project Folder**
+
+    Make sure the folder where you create your SplashKit project does not have the name “SplashKit”.
+
+    Choose a unique name for the folder, as the project name is automatically derived from it.
+
+2. **Recreate the Project (if needed)**
+
+    If the error persists, try recreating the project in a new folder with a different name to avoid any cached references to the previous setup.
+
+</Steps>
+
+Following these steps should eliminate the naming conflict, allowing your SplashKit project to compile and run without the assembly reference error.

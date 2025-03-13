@@ -1,40 +1,95 @@
 ---
-title: Missing an assembly reference?
-description: Issue with the error that mentions (`are you missing an assembly reference?`) on MacOS, and how to fix it.
+title: zsh 'dotnet' command not found
 sidebar:
-  label: 6. Assembly reference
+  label: 6. zsh 'dotnet' not found
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::caution[Error: "Are you missing an assembly reference?"]
+:::caution[Issue:]
 
-This guide addresses the common error on MacOS where the message “are you missing an assembly reference?” appears when trying to run a SplashKit project. This is often due to a naming conflict in the project setup.
+When trying to use `dotnet run` in the terminal, you may encounter the error `zsh: command not found: dotnet`:
+
+![dotnet not found in terminal](/images/troubleshoot/macos/dotnet-not-found.png)
 
 :::
 
-## Problem
+---
 
-When creating or running a SplashKit project, an error message stating "are you missing an assembly reference?" may appear. This can happen if the project is named "SplashKit," which conflicts with internal references.
+## Solution(s)
 
-![Error Example](https://i.imgur.com/IE0qHXu.png)
+### 1. Download and install .NET (version 8 or 9)
 
-## Solution
+Download and install [.NET](https://dotnet.microsoft.com/en-us/download) if you haven't already.
 
-To resolve this error, ensure your project name is different from "SplashKit."
+Then close and reopen your terminal to test the command again.
+
+---
+
+### 2. Add the 'dotnet' path to your PATH using terminal
 
 <Steps>
 
-1. **Rename Your Project Folder**
+1. To add 'dotnet' to your PATH, run the following command:
 
-    Make sure the folder where you create your SplashKit project does not have the name “SplashKit.”
+    ```zsh
+    echo "export PATH=\"/usr/local/share/dotnet:\$PATH\"" >> ~/.zshrc
+    ```
 
-    Choose a unique name for the folder, as the project name is automatically derived from it.
+2. **Apply Changes**
 
-2. **Recreate the Project (if needed)**
+    Save the `.zshrc` Reload the `.zshrc` paths with the following command to apply changes immediately:
 
-    If the error persists, try recreating the project in a new folder with a different name to avoid any cached references to the previous setup.
+     ```shell
+     source ~/.zshrc
+     ```
 
 </Steps>
 
-Following these steps should eliminate the naming conflict, allowing your SplashKit project to compile and run without the assembly reference error.
+---
+
+### 3. Add the 'dotnet' path to your PATH manually
+
+<Steps>
+
+1. **Locate Your `.zshrc` File**
+
+    The `.zshrc` file is located in your home directory at `~/Users/(your username)/`.
+
+    If you don’t see it, press **Shift + Command + . (dot)** to toggle hidden files visibility in Finder.
+
+2. **Identify Your Username (Optional)**
+  
+    To ensure you’re in the correct directory, you can use the `whoami` command in Terminal to check your username:
+
+     ```shell
+     whoami
+     ```
+
+   ![Username Check Example](/images/troubleshoot/macos/macos-whoami.png)
+
+3. **Add .NET Path to PATH**
+
+    For .NET compatibility, add this line to your `.zshrc` file as well:
+
+     ```shell
+     export PATH="/usr/local/share/dotnet:$PATH"
+     ```
+
+4. **Apply Changes**
+
+    Save the `.zshrc` file and then reload it with the following command to apply changes immediately:
+
+     ```shell
+     source ~/.zshrc
+     ```
+
+</Steps>
+
+---
+
+### 4. Update permissions
+
+If you are still having issues, try following the steps on the [3. .zshrc permission issues](/troubleshoot/macos/mac-issue-3) page first, then come back to repeat the steps above.
+
+---
