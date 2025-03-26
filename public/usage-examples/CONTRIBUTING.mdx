@@ -30,36 +30,37 @@ To allow the files to be used to automatically generate the usage example MDX pa
 Here is an example of files for two code examples added for the `write_line` function that are demonstrating the use of `void write_line(string line);`:
 
 ```plaintext
-write_line-1-oop.cs
-write_line-1-top-level.cs
-write_line-1-sk.cpp
-write-line-1-beyond.cpp
-write_line-1.png
-write_line-1.py
-write_line-1.txt
-write_line-2-oop.cs
-write_line-2-top-level.cs
-write_line-2.cpp
-write_line-2.png
-write_line-2.py
-write_line-2.txt
+write_line-1-example-oop.cs
+write_line-1-example-top-level.cs
+write_line-1-example-sk.cpp
+write_line-1-example-beyond.cpp
+write_line-1-example.png
+write_line-1-example.py
+write_line-1-example.txt
+write_line-2-example-oop.cs
+write_line-2-example-top-level.cs
+write_line-2-example.cpp
+write_line-2-example.png
+write_line-2-example.py
+write_line-2-example.txt
 ```
 
-Breaking down the first line from above:
+Breaking down the first file name from above:
 
 ```plaintext
-write_line-1.cpp
-    ^      ^  ^
-    |      |  |
-    |      |  ----: file type: .cpp
-    |      |
-    |      |
-    |      -------: number id of example: -1
-    |               (used to separate examples)
+write_line-1-example-oop.cs
+    ^      ^    ^     ^   ^-: file type: .cs
+    |      |    |     |
+    |      |    |     ------: specifies this is a C# OOP example
+    |      |    |
+    |      |    ------------: designates the file as an example
+    |      |      
+    |      -----------------: number id of example: 1
+    |                         (used to separate examples)
     |
-    --------------: folder name: write_line
-                    (created using the "unique_global_name" key
-                    from SplashKit's "api.json" file, in "scripts/json-files")
+    ------------------------: function name: write_line
+                              (created using the "unique_global_name" key
+                              from SplashKit's "api.json" file, in "scripts/json-files")
 ```
 
 ## File Contents
@@ -71,7 +72,7 @@ The text file needs to include:
 - Name of the example program
 - (Optional) Link to Resources (See the "Adding Zip File Resources" section below)
 
-Here is an example of the contents of the `write_line-2.txt` file:
+Here is an example of the contents of the `write_line-2-example.txt` file:
 
 ```plaintext
 ASCII Art - Charlie the Unicorn
@@ -127,6 +128,6 @@ eg. For the first `draw_bitmap_named` example that has been created, the text fi
 Basic Bitmap Drawing
 
 :::note
-To test this example code you can download these [**Resources**](/usage-examples/graphics/draw_bitmap-1-resources.zip).
+To test this example code you can download these [**Resources**](/usage-examples/graphics/draw_bitmap_named-1-example-resources.zip).
 :::
 ```
