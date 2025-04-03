@@ -839,6 +839,22 @@ for (const categoryKey in jsonData) {
           mdxContent += "\n";
         }
 
+        for (const typeName in typeMappings) {
+          const typeMapping = typeMappings[typeName];
+          description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
+        }
+        for (const names of functionNames) {
+          const normalName = names
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+          const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
+          const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
+          description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
+        }
+        description = description.replaceAll("\n\n\n", "\n\n");
+        mdxContent += `${description}\n\n`;
+
         // If it's an enum, add a table for its constants
         if (type.constants) {
           mdxContent += "<Tabs syncKey=\"code-language\">\n";
@@ -883,22 +899,7 @@ for (const categoryKey in jsonData) {
           mdxContent += "</Tabs>\n";
         }
 
-        for (const typeName in typeMappings) {
-          const typeMapping = typeMappings[typeName];
-          description = description.replace(new RegExp(`\`\\b${typeName}\\b\``, "g"), typeMapping);
-        }
-        for (const names of functionNames) {
-          const normalName = names
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
-          const formattedLink = normalName.toLowerCase().replace(/\s+/g, "-");
-          const link = `[\`${normalName}\`](/api/${input}/#${formattedLink})`
-          description = description.replace(new RegExp(`\`\\b${names}\\b\``, "g"), link);
-        }
-        description = description.replaceAll("\n\n\n", "\n\n");
-        mdxContent += `${description}\n\n`;
-        mdxContent += `---\n`;
+        mdxContent += `\n---\n`;
       }
     });
   }

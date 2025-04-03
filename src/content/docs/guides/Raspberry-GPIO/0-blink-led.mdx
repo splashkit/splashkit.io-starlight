@@ -276,9 +276,9 @@ To understand this code better, lets break it down and explore each section.
     </Tabs>
 
     In this bit of the code we're setting up the hardware, we call [Raspi Init](/api/raspberry/#raspi-init) to initialise the GPIO pins,
-    and then we define the specific pin we're using which is Pin 11 in this case and it is of the [Pins](/api/types/#pins) type.
+    and then we define the specific pin we're using which is Pin 11 in this case and it is of the [Gpio Pin](/api/types/#gpio-pin) type.
 
-    We pass this value to [Raspi Set Mode](/api/raspberry/#raspi-set-mode) along with `GPIO_OUTPUT` which sets the pin to be ready to output a signal on our command. The `GPIO_OUTPUT` value is one of the [Pin Modes](/api/types/#pin-modes) that can be set. Each pin has alternative modes but we are only interested in the output mode for now.
+    We pass this value to [Raspi Set Mode](/api/raspberry/#raspi-set-mode) along with `GPIO_OUTPUT` which sets the pin to be ready to output a signal on our command. The `GPIO_OUTPUT` value is one of the [Gpio Pin Modes](/api/types/#gpio-pin-mode) that can be set. Each pin has alternative modes but we are only interested in the output mode for now.
 
 2. **Part 2**
 
@@ -370,7 +370,7 @@ To understand this code better, lets break it down and explore each section.
     </TabItem>
     </Tabs>
 
-    Now that we've setup our pins and defined our end condition, we can now manipulate the LED. Inside the while loop we first use [Raspi Write](/api/raspberry/#raspi-write) to change the output of our pin to `GPIO_HIGH`, one of the [Pin Values](/api/types/#pin-values). Doing this provides electricity to the LED and turn it on. We then wait for half a second using [Delay](/api/utilities/#delay). Then we turn our LED off using [Raspi Write](/api/raspberry/#raspi-write), but now we use `GPIO_LOW`, and wait for another half-second.
+    Now that we've setup our pins and defined our end condition, we can now manipulate the LED. Inside the while loop we first use [Raspi Write](/api/raspberry/#raspi-write) to change the output of our pin to `GPIO_HIGH`, one of the [Pin Values](/api/types/#gpio-pin-value). Doing this provides electricity to the LED and turn it on. We then wait for half a second using [Delay](/api/utilities/#delay). Then we turn our LED off using [Raspi Write](/api/raspberry/#raspi-write), but now we use `GPIO_LOW`, and wait for another half-second.
 
 4. **Part 4**
 

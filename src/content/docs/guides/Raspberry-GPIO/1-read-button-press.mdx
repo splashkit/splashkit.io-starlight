@@ -241,7 +241,7 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-    We start this code by initialising our hardware through [Raspi Init](/api/raspberry/#raspi-init), we then define the [Pins](/api/types/#pins) that we're are using for the button (Pin 29), and the LED (Pin 11). We also initialise a variable, `led_state`, to hold the state of the LED at any point in time. We use `led_state` later to determine whether to switch the LED on, or off.
+    We start this code by initialising our hardware through [Raspi Init](/api/raspberry/#raspi-init), we then define the [Pins](/api/types/#gpio-pin) that we're are using for the button (Pin 29), and the LED (Pin 11). We also initialise a variable, `led_state`, to hold the state of the LED at any point in time. We use `led_state` later to determine whether to switch the LED on, or off.
 
     ---
 
@@ -286,7 +286,7 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-    We begin by setting the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode). The button pin is set to [`GPIO_INPUT`](/api/types/#pin-modes) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#pin-modes). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
+    We begin by setting the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode). The button pin is set to [`GPIO_INPUT`](/api/types/#gpio-pin-mode) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#gpio-pin-mode). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
 
     ---
 
@@ -498,9 +498,9 @@ We can then run the program with the following command:
 
 ### Floating Pins
 
-A 'floating' pin is one that is not actively driven high (connected to some kind of power) or driven low (connected to ground). When this is the case the pin is said to be 'floating' as the state of the pin can change due to electrical noise or interference. If we were to read the pin in this state, then the value returned would be randomly either [`GPIO_HIGH`](/api/types/#pin-values) or [`GPIO_LOW`](/api/types/#pin-values)
+A 'floating' pin is one that is not actively driven high (connected to some kind of power) or driven low (connected to ground). When this is the case the pin is said to be 'floating' as the state of the pin can change due to electrical noise or interference. If we were to read the pin in this state, then the value returned would be randomly either [`GPIO_HIGH`](/api/types/#gpio-pin-value) or [`GPIO_LOW`](/api/types/#gpio-pin-value)
 
-In this tutorial we've used an internal pull-down resistor to prevent this. A pull-down resistor connects the pin to ground which effectively neutralises the electrical interference. Doing this ensures the pin only reads[`GPIO_LOW`](/api/types/#pin-values) until the button is actually pressed and the pin is powered.
+In this tutorial we've used an internal pull-down resistor to prevent this. A pull-down resistor connects the pin to ground which effectively neutralises the electrical interference. Doing this ensures the pin only reads[`GPIO_LOW`](/api/types/#gpio-pin-value) until the button is actually pressed and the pin is powered.
 
 ### Debouncing
 
