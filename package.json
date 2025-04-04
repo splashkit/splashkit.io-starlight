@@ -25,6 +25,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rehype-mathjax": "^6.0.0",
+    "remark-heading-id": "^1.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.33.5",
     "starlight-blog": "^0.18.0",

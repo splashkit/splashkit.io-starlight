@@ -552,8 +552,8 @@ for (const categoryKey in jsonData) {
         .join(" ");
       const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
 
-      const formattedGroupLink = `${formattedLink}`;
-      mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})\n\n`;
+      const formattedGroupLink = `${formattedLink}-functions`;
+      mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink}) \\{#${formattedGroupLink}\\}\n\n`;
 
       mdxContent += ":::note\n\n";
       mdxContent += "This function is overloaded. The following versions exist:\n\n";
@@ -579,7 +579,8 @@ for (const categoryKey in jsonData) {
           }
           paramNumber++;
         }
-        mdxContent += `)](/api/${input}/#${formattedLink.toLowerCase()}-${index + 1})\n`;
+        const formattedUniqueLink =  func.unique_global_name.toLowerCase().replace(/_/g, "-");
+        mdxContent += `)](/api/${input}/#${formattedUniqueLink})\n`;
       });
 
       mdxContent += "\n:::\n";
@@ -596,9 +597,10 @@ for (const categoryKey in jsonData) {
         .join(" ");
 
       const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
+      const formattedUniqueLink =  func.unique_global_name.toLowerCase().replace(/_/g, "-");
 
       const formattedName = isOverloaded
-        ? `\n#### [${functionName2}](#${formattedLink.toLowerCase()}-${index + 1})`
+        ? `\n#### [${functionName2}](#${formattedUniqueLink}) \\{#${formattedUniqueLink}\\}`
         : `\n### [${functionName2}](#${formattedLink})`;
 
 

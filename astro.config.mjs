@@ -8,6 +8,7 @@ import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax'
 import starlightBlog from 'starlight-blog'
 import starlightDocSearch from '@astrojs/starlight-docsearch';
+import remarkHeadingID from 'remark-heading-id';
 import { loadEnv } from "vite";
 
 const { DOCSEARCH_API_ID } = loadEnv(process.env.DOCSEARCH_API_ID, process.cwd(), "");
@@ -147,7 +148,7 @@ export default defineConfig({
 
   // Render mathematical equations using remark-math and rehype-mathjax
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkHeadingID],
     rehypePlugins: [rehypeMathjax],
   },
 });

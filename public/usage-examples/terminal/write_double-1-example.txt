@@ -1,3 +1,1 @@
 Calculate the Radius of a Circle
-
-The following code shows an example of using [write](/api/terminal/#write-2) to calculate the radius of a circle for a given circumference.
