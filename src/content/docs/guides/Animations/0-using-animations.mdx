@@ -388,6 +388,64 @@ namespace UsingAnimations
 </Tabs>
 
 </TabItem>
+
+<TabItem label="python">
+
+  ```python
+  from splashkit import *
+
+open_window("Animation Test", 120, 120)
+
+# # We could load all of the resources in a bundle
+# load_resource_bundle("dance bundle", "dance_bundle.txt")
+
+# # Then access by name
+# dance_script = animation_script_named("WalkingScript")
+# frog = bitmap_named("FrogBmp")
+
+# Loading them separately
+
+# Load image and set its cell details
+frog = load_bitmap("FrogBmp", "Frog.png")
+bitmap_set_cell_details(frog, 73, 105, 4, 4, 16)  # cell width, height, cols, rows, count
+
+# Load the animation script
+dance_script = load_animation_script("WalkingScript", "kermit.txt")
+
+# Create the animation
+frog_animation = create_animation(dance_script, "WalkFront")
+
+# Create a drawing option
+opt = option_with_animation(frog_animation)
+
+# Basic event loop
+while not quit_requested():
+    process_events()
+
+    # Draw the bitmap - using opt to link to animation
+    clear_screen(color_white())
+    draw_bitmap_with_options(frog, 20, 20, opt)
+    draw_text_no_font_no_size(animation_name(frog_animation), color_black(), 0, 0)
+    refresh_screen_with_target_fps(60)
+
+    # Update the animation
+    update_animation(frog_animation)
+
+    # Switch animations
+    if key_typed(KeyCode.up_key):
+        assign_animation(frog_animation, "WalkBack")
+    elif key_typed(KeyCode.down_key):
+        assign_animation(frog_animation, "WalkFront")
+    elif key_typed(KeyCode.left_key):
+        assign_animation(frog_animation, "WalkLeft")
+    elif key_typed(KeyCode.right_key):
+        assign_animation(frog_animation, "WalkRight")
+    elif key_typed(KeyCode.d_key):
+        assign_animation(frog_animation, "Dance")
+
+close_all_windows()
+  ```
+</TabItem>
 </Tabs>
 
 ## Other Options
@@ -690,6 +748,77 @@ namespace UsingAnimations
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem label="python">
+
+```python
+
+from splashkit import *
+
+# Initialize the window for displaying the animation
+open_window("Animation Test", 120, 120)
+
+# Load the resource bundle (assuming "dance_bundle.txt" exists with necessary resources)
+load_resource_bundle("dance bundle", "dance_bundle.txt")
+
+# Load the animation script and the bitmap (image) by their names
+dance_script = animation_script_named("WalkingScript")  # Get the animation script named "WalkingScript"
+frog = bitmap_named("FrogBmp")  # Load the bitmap (image) named "FrogBmp"
+
+# Create the animation using the loaded dance script and the name of the animation ("WalkFront")
+frog_animation = create_animation(dance_script, "WalkFront")
+
+# Create drawing options linked to the animation
+opt = option_with_animation(frog_animation)
+
+# Main event loop
+while not quit_requested():
+    process_events()  # Process all input events (keyboard, mouse, etc.)
+
+    # Clear the screen to white before drawing new frame
+    clear_screen(color_white())
+    
+    # Draw the frog image at position (20, 20) using the animation options
+    draw_bitmap_with_options(frog, 20, 20, opt)
+    
+    # Display the current animation name (for debugging or reference)
+    draw_text(animation_name(frog_animation), color_black(), 0, 0, 24)  # Display animation name with font size 24
+    
+    # Refresh the screen at 60 FPS (frames per second)
+    refresh_screen(60)
+
+    # Update the animation for the next frame
+    update_animation(frog_animation)
+
+    # Switch animations based on key presses
+    # Use the arrow keys or the 'd' key to switch between different animations
+    if key_typed(KeyCode.up_key):  # Up arrow key
+        if key_down(KeyCode.left_shift_key):  # If left shift is held down
+            assign_animation(frog_animation, "MoonWalkBack")  # Assign "MoonWalkBack" animation
+        else:
+            assign_animation(frog_animation, "WalkBack")  # Otherwise, assign "WalkBack" animation
+    elif key_typed(KeyCode.down_key):  # Down arrow key
+        if key_down(KeyCode.left_shift_key):  # If left shift is held down
+            assign_animation(frog_animation, "MoonWalkFront")  # Assign "MoonWalkFront" animation
+        else:
+            assign_animation(frog_animation, "WalkFront")  # Otherwise, assign "WalkFront" animation
+    elif key_typed(KeyCode.left_key):  # Left arrow key
+        if key_down(KeyCode.left_shift_key):  # If left shift is held down
+            assign_animation(frog_animation, "MoonWalkLeft")  # Assign "MoonWalkLeft" animation
+        else:
+            assign_animation(frog_animation, "WalkLeft")  # Otherwise, assign "WalkLeft" animation
+    elif key_typed(KeyCode.right_key):  # Right arrow key
+        if key_down(KeyCode.left_shift_key):  # If left shift is held down
+            assign_animation(frog_animation, "MoonWalkRight")  # Assign "MoonWalkRight" animation
+        else:
+            assign_animation(frog_animation, "WalkRight")  # Otherwise, assign "WalkRight" animation
+    elif key_typed(KeyCode.d_key):  # 'd' key
+        assign_animation(frog_animation, "Dance")  # Assign "Dance" animation
+
+# Close the window when done
+close_all_windows()
+
+```
 </TabItem>
 </Tabs>
 
