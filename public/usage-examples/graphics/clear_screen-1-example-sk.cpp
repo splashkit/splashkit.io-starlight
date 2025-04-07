@@ -4,7 +4,7 @@ int main()
 {
     open_window("Blue Background", 800, 600);
 
-    //Use Clear Screen to change the background color to blue 
+    // Clear screen to blue
     clear_screen(COLOR_BLUE);
 
     refresh_screen(60);
