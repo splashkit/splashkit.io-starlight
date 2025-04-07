@@ -36,8 +36,14 @@ int main(int argv, char **args)
         exit(1);
     }
 
-    // Hold window 4 seconds
-    SDL_Delay(4000);
+    // Hold window open for 4 seconds
+    Uint32 start_time = SDL_GetTicks(); // Start timer
+    SDL_Event event;
+
+    while (SDL_GetTicks() - start_time < 4000) // Run for 4 seconds
+    {
+        if (SDL_PollEvent(&event) && event.type == SDL_QUIT) break;
+    }
 
     // Cleanup and free memory
     SDL_DestroyWindow(window);
