@@ -15,9 +15,19 @@ int main()
     
     // Draw circles for caterpillar segments with alternating y positions
     double x = 50;
+    double y;
     for(int i = 0; i < 6; i++)
     {
-        double y = 100 + (i % 2 == 0 ? 20 : -20);  // Alternate up and down
+        y = 100;
+        // Alternate up and down
+        if (i % 2 == 0)
+        {
+            y += 20;
+        }
+        else
+        {
+            y -= 20;
+        }
         fill_circle_on_bitmap(bitmap, colors[i], x, y, 40);
         x += 60;
     }

@@ -32,12 +32,23 @@ namespace LinesIntersectExample
             SplashKit.DrawText("C", Color.Black, startPointC.X - 20, startPointC.Y - 10);
 
             // Check intersections
-            bool intersectAB = SplashKit.LinesIntersect(demoLineA, demoLineB);
-            bool intersectAC = SplashKit.LinesIntersect(demoLineA, demoLineC);
+            if (SplashKit.LinesIntersect(demoLineA, demoLineB))
+            {
+                SplashKit.DrawText("A and B intersect: Yes", Color.Black, 150, 130);
+            }
+            else
+            {
+                SplashKit.DrawText("A and B intersect: No", Color.Black, 150, 130);
+            }
 
-            // Display intersection results
-            SplashKit.DrawText("A and B intersect: " + (intersectAB ? "Yes" : "No"), Color.Black, 150, 130);
-            SplashKit.DrawText("A and C intersect: " + (intersectAC ? "Yes" : "No"), Color.Black, 150, 150);
+            if (SplashKit.LinesIntersect(demoLineA, demoLineC))
+            {
+                SplashKit.DrawText("A and C intersect: Yes", Color.Black, 150, 150);
+            }
+            else
+            {
+                SplashKit.DrawText("A and C intersect: No", Color.Black, 150, 150);
+            }
 
             SplashKit.RefreshScreen();
             SplashKit.Delay(5000);

@@ -28,12 +28,23 @@ int main()
     draw_text("C", COLOR_BLACK, start_point_c.x - 20, start_point_c.y - 10);
 
     // Check intersections
-    bool intersect_ab = lines_intersect(demo_line_a, demo_line_b);
-    bool intersect_ac = lines_intersect(demo_line_a, demo_line_c);
+    if (lines_intersect(demo_line_a, demo_line_b))
+    {
+        draw_text("A and B intersect: Yes", COLOR_BLACK, 150, 130);
+    }
+    else
+    {
+        draw_text("A and B intersect: No", COLOR_BLACK, 150, 130);
+    }
 
-    // Display intersection results
-    draw_text("A and B intersect: " + std::string(intersect_ab ? "Yes" : "No"), COLOR_BLACK, 150, 130);
-    draw_text("A and C intersect: " + std::string(intersect_ac ? "Yes" : "No"), COLOR_BLACK, 150, 150);
+    if (lines_intersect(demo_line_a, demo_line_c))
+    {
+        draw_text("A and C intersect: Yes", COLOR_BLACK, 150, 150);
+    }
+    else
+    {
+        draw_text("A and C intersect: No", COLOR_BLACK, 150, 150);
+    }
 
     refresh_screen();
     delay(5000);

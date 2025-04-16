@@ -20,7 +20,12 @@ colors = [
 # Draw circles for caterpillar segments with alternating y positions
 x = 50
 for i, color in enumerate(colors):
-    y = 100 + (20 if i % 2 == 0 else -20)  # Alternate up and down
+    y = 100
+    # Alternate up and down
+    if (i % 2 == 0):
+        y += 20
+    else:
+        y -= 20
     fill_circle_on_bitmap(bitmap, color, x, y, 40)
     x += 60
 

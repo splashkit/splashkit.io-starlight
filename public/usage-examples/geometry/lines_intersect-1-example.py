@@ -41,14 +41,15 @@ draw_text_no_font_no_size(
     "C", color_black(), start_point_c.x - 20, start_point_c.y - 10)
 
 # Check intersections
-intersect_ab = lines_intersect(demo_line_a, demo_line_b)
-intersect_ac = lines_intersect(demo_line_a, demo_line_c)
+if (lines_intersect(demo_line_a, demo_line_b)):
+    draw_text_no_font_no_size("A and B intersect: Yes", color_black(), 150, 130)
+else:
+    draw_text_no_font_no_size("A and B intersect: No", color_black(), 150, 130)
 
-# Display intersection results
-draw_text_no_font_no_size(
-    "A and B intersect: " + ("Yes" if intersect_ab else "No"), color_black(), 150, 130)
-draw_text_no_font_no_size(
-    "A and C intersect: " + ("Yes" if intersect_ac else "No"), color_black(), 150, 150)
+if (lines_intersect(demo_line_a, demo_line_c)):
+    draw_text_no_font_no_size("A and C intersect: Yes", color_black(), 150, 150)
+else:
+    draw_text_no_font_no_size("A and C intersect: No", color_black(), 150, 150)
 
 refresh_screen()
 delay(5000)

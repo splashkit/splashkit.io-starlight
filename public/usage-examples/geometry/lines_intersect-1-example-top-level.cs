@@ -27,12 +27,23 @@ DrawLine(ColorGreen(), demoLineC);
 DrawText("C", ColorBlack(), startPointC.X - 20, startPointC.Y - 10);
 
 // Check intersections
-bool intersectAB = LinesIntersect(demoLineA, demoLineB);
-bool intersectAC = LinesIntersect(demoLineA, demoLineC);
+if (LinesIntersect(demoLineA, demoLineB))
+{
+    DrawText("A and B intersect: Yes", ColorBlack(), 150, 130);
+}
+else
+{
+    DrawText("A and B intersect: No", ColorBlack(), 150, 130);
+}
 
-// Display intersection results
-DrawText("A and B intersect: " + (intersectAB ? "Yes" : "No"), ColorBlack(), 150, 130);
-DrawText("A and C intersect: " + (intersectAC ? "Yes" : "No"), ColorBlack(), 150, 150);
+if (LinesIntersect(demoLineA, demoLineC))
+{
+    DrawText("A and C intersect: Yes", ColorBlack(), 150, 150);
+}
+else
+{
+    DrawText("A and C intersect: No", ColorBlack(), 150, 150);
+}
 
 RefreshScreen();
 Delay(5000);

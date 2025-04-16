@@ -14,9 +14,19 @@ Color[] colors = { ColorRed(), ColorOrange(), ColorYellow(),
 
 // Draw circles for caterpillar segments with alternating y positions
 double x = 50;
+double y;
 for (int i = 0; i < colors.Length; i++)
 {
-    double y = 100 + (i % 2 == 0 ? 20 : -20);  // Alternate up and down
+    y = 100;
+    // Alternate up and down
+    if (i % 2 == 0)
+    {
+        y += 20;
+    }
+    else
+    {
+        y -= 20;
+    }
     FillCircleOnBitmap(bitmap, colors[i], x, y, 40);
     x += 60;
 }
