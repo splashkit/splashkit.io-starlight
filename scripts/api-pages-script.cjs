@@ -379,7 +379,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
                 });
                 mdxData += "  </Tabs>\n\n";
                 mdxData += "  </TabItem>\n";
-              } 
+              }
               // Check for cpp files and generate nested tabs
               else if (lang == "cpp" && cppFiles.length > 0) {
                 mdxData += "\n  <Tabs syncKey=\"cpp-style\">\n";
@@ -543,17 +543,31 @@ for (const categoryKey in jsonData) {
     const overloads = functionGroups[functionName];
     const isOverloaded = overloads.length > 1;
 
+    // Create a section for overloaded functions
     if (isOverloaded) {
-      // Create a section for overloaded functions
+      const hasExampleInGroup = functionGroups[functionName].some((func) =>
+        usageExamples.some((example) => example.endsWith(func.unique_global_name + "-1-example.txt"))
+      );
+
+      const hasGuideInGroup = functionGroups[functionName].some((func) =>
+        guidesCategories.some((category) =>
+          category.some((guide) =>
+            guide.functions.includes(func.unique_global_name)
+          )
+        )
+      );
 
       const formattedFunctionName = functionName
         .split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
       const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
-
+  
+      // Put {</>} symbol at the end of header if function has a usage example
+      const hasSymbol = (hasExampleInGroup || hasGuideInGroup) ? `&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;`: "";
       const formattedGroupLink = `${formattedLink}-functions`;
-      mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink}) \\{#${formattedGroupLink}\\}\n\n`;
+
+      mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})${hasSymbol} \\{#${formattedGroupLink}\\}\n\n`;
 
       mdxContent += ":::note\n\n";
       mdxContent += "This function is overloaded. The following versions exist:\n\n";
@@ -579,8 +593,18 @@ for (const categoryKey in jsonData) {
           }
           paramNumber++;
         }
-        const formattedUniqueLink =  func.unique_global_name.toLowerCase().replace(/_/g, "-");
-        mdxContent += `)](/api/${input}/#${formattedUniqueLink})\n`;
+        const formattedUniqueLink = func.unique_global_name.toLowerCase().replace(/_/g, "-");
+        mdxContent += `)](/api/${input}/#${formattedUniqueLink})`;
+
+        // Put bolded {</>} symbol at the end of heading link if function has a usage example
+        const hasExample = usageExamples.some(example => example.endsWith(func.unique_global_name + "-1-example.txt"));
+        const hasGuide =  guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
+
+        if (hasExample || hasGuide) {
+          mdxContent += "&nbsp;&nbsp;<strong>&lcub;&lt;/&gt;&rcub;</strong>";
+        }
+
+        mdxContent += `\n`;
       });
 
       mdxContent += "\n:::\n";
@@ -597,12 +621,14 @@ for (const categoryKey in jsonData) {
         .join(" ");
 
       const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
-      const formattedUniqueLink =  func.unique_global_name.toLowerCase().replace(/_/g, "-");
-
+      const formattedUniqueLink = func.unique_global_name.toLowerCase().replace(/_/g, "-");
+      const hasExample = usageExamples.some(example => example.endsWith(func.unique_global_name + "-1-example.txt"));
+      const hasGuide =  guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
+      
+      // Put {</>} symbol at the end of headers of overloaded functions with usage example or else just keep empty
       const formattedName = isOverloaded
-        ? `\n#### [${functionName2}](#${formattedUniqueLink}) \\{#${formattedUniqueLink}\\}`
-        : `\n### [${functionName2}](#${formattedLink})`;
-
+    ? `\n#### [${functionName2}](#${formattedUniqueLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''} \\{#${formattedUniqueLink}\\}`
+    : `\n### [${functionName2}](#${formattedLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''}`;
 
       // Replace type names in the description with formatted versions
       let description = func.description || "";
@@ -723,7 +749,7 @@ for (const categoryKey in jsonData) {
       if (allGuides.length > 0) {
 
         if (!usageHeading) {
-          mdxContent += "**Usage:**\n\n"
+          mdxContent += "**Usage:&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;**\n\n";
           usageHeading = true;
         }
         mdxContent += `<Accordion title="See Implementations in Guides" uniqueID={${JSON.stringify(func.unique_global_name + "_guides")}} customButton="guidesAccordion">\n\n`
@@ -741,7 +767,7 @@ for (const categoryKey in jsonData) {
       usageExamples.forEach((example) => {
         if (func.unique_global_name == example.split('-')[0]) {
           if (!usageHeading) {
-            mdxContent += `**Usage:**\n\n`
+            mdxContent += "**Usage:&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;**\n\n";
             usageHeading = true;
           }
           mdxContent += getUsageExampleImports(categoryKey, example.replace(".txt", ""));
