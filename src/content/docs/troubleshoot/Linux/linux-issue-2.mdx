@@ -1,5 +1,5 @@
 ---
-title: Error while loading shared libraries, skm global install failed
+title: Error while loading shared libraries when testing install
 sidebar:
   label: 2. libSplashKit.so not found
 ---
@@ -8,7 +8,7 @@ import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
 :::caution[Issue:]
 
-You receive an error when attempting to install SplashKit using `skm global install`, or when compiling SplashKit code, it’s likely because the system cannot locate the necessary SplashKit library files. Adding these paths manually can resolve the issue.
+You receive an error when running the installation script to install SplashKit, or when compiling SplashKit code, it’s likely because the system cannot locate the necessary SplashKit library files. Adding these paths manually can resolve the issue.
 
 ![Error Example](/images/installation/linux/skm-global-linux-fail.png)
 
@@ -41,7 +41,7 @@ Follow these steps to update your shell profiles and system library path to incl
      source ~/.bashrc
      ```
 
-3. Run the global install command again using:
+3. Run the global install command using:
 
     ```shell
     skm global install
@@ -68,7 +68,7 @@ Follow these steps to update your shell profiles and system library path to incl
      source ~/.zshrc
      ```
 
-3. Run the global install command again using:
+3. Run the global install command using:
 
     ```shell
     skm global install
@@ -108,7 +108,7 @@ Follow these steps to update your shell profiles and system library path to incl
     source ~/.bashrc
     ```
 
-4. Run the global install command again using:
+4. Run the global install command using:
 
     ```shell
     skm global install
@@ -139,7 +139,7 @@ Follow these steps to update your shell profiles and system library path to incl
     source ~/.zshrc
     ```
 
-4. Run the global install command again using:
+4. Run the global install command using:
 
     ```shell
     skm global install

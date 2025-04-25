@@ -1,14 +1,14 @@
 ---
-title: skm global install fails on Arch-based Linux distributions
+title: Testing install fails on Arch-based Linux distributions
 sidebar:
-  label: 3. skm global install fails on Arch-based Linux
+  label: 3. Test install fails on Arch-based Linux
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
 :::caution[Issue:]
 
-When running the `skm global install` command, you encounter an error like the one shown below, indicating issues with unresolved references to `libjxl` in `SDL2_image`. This typically happens due to outdated dependencies in the default repository.
+When running installation script, you encounter an error like the one shown below, indicating issues with unresolved references to `libjxl` in `SDL2_image`. This typically happens due to outdated dependencies in the default repository.
 
 ![Error Example](/images/installation/linux/arch-error.png)
 
@@ -59,9 +59,9 @@ Follow the steps below to resolve the issue by upgrading dependencies or linking
 
     These commands will ensure that the necessary libraries for SplashKit are correctly installed.
 
-4. **Step 4: Retry `skm global install`**
+4. **Step 4: Run `skm global install`**
 
-    After updating the dependencies, retry the SplashKit global installation:
+    After updating the dependencies, run the SplashKit global installation:
 
     ```shell
     skm global install
