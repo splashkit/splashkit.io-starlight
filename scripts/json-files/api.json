@@ -72741,7 +72741,7 @@
     ]
   },
   "raspberry": {
-    "brief": "Splashkit allows you to read and write to the GPIO pins on the Raspberry Pi.",
+    "brief": "Provides support for using an ADC device with the GPIO pins on the Raspberry Pi.Splashkit allows you to read and write to the GPIO pins on the Raspberry Pi.",
     "description": "",
     "functions": [
       {
@@ -72991,44 +72991,6 @@
         }
       },
       {
-        "signature": "bool has_gpio();",
-        "name": "has_gpio",
-        "method_name": null,
-        "unique_global_name": "has_gpio",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Checks if the system has GPIO capabilities.",
-        "brief": null,
-        "return": {
-          "type": "bool",
-          "description": "true if the system has GPIO capabilities, false otherwise.",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-        },
-        "attributes": {
-          "group": "raspberry",
-          "static": "raspberry"
-        },
-        "signatures": {
-          "cpp": [
-            "bool has_gpio()"
-          ],
-          "python": [
-            "def has_gpio():"
-          ],
-          "csharp": [
-            "public static bool SplashKit.HasGpio();"
-          ],
-          "pascal": [
-            "function HasGpio(): Boolean"
-          ]
-        }
-      },
-      {
         "signature": "adc_device open_adc(const string &name,adc_type type);",
         "name": "open_adc",
         "method_name": null,
@@ -73186,6 +73148,177 @@
           ],
           "pascal": [
             "function OpenAdc(const name: String; bus: Integer; address: Integer; type: AdcType): AdcDevice"
+          ]
+        }
+      },
+      {
+        "signature": "int read_adc(adc_device adc,adc_pin channel);",
+        "name": "read_adc",
+        "method_name": "read",
+        "unique_global_name": "read_adc",
+        "unique_method_name": "adc_device.read",
+        "suffix_name": null,
+        "description": "Reads an 8-bit value from the specified ADC channel on the device.",
+        "brief": null,
+        "return": {
+          "type": "int",
+          "description": "The ADC conversion value (0–255), or -1 on error.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "adc": {
+            "type": "adc_device",
+            "description": "The ADC device to read from.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "channel": {
+            "type": "adc_pin",
+            "description": "The channel number to read (range depends on ADC type).",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "class": "adc_device",
+          "method": "read",
+          "self": "adc",
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "int read_adc(adc_device adc, adc_pin channel)"
+          ],
+          "python": [
+            "def read_adc(adc, channel):"
+          ],
+          "csharp": [
+            "public int AdcDevice.Read(AdcPin channel);",
+            "public static int SplashKit.ReadAdc(AdcDevice adc, AdcPin channel);"
+          ],
+          "pascal": [
+            "function ReadAdc(adc: AdcDevice; channel: AdcPin): Integer"
+          ]
+        }
+      },
+      {
+        "signature": "int read_adc(const string &name,adc_pin channel);",
+        "name": "read_adc",
+        "method_name": null,
+        "unique_global_name": "read_adc_named",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Reads an 8-bit value from the specified ADC channel on the device using its name.",
+        "brief": null,
+        "return": {
+          "type": "int",
+          "description": "The ADC conversion value (0–255), or -1 on error.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "name": {
+            "type": "string",
+            "description": "The ADC name string to close.",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "channel": {
+            "type": "adc_pin",
+            "description": "The channel number to read (range depends on ADC type).",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "named",
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "int read_adc(const string &name, adc_pin channel)"
+          ],
+          "python": [
+            "def read_adc_named(name, channel):"
+          ],
+          "csharp": [
+            "public static int SplashKit.ReadAdc(string name, AdcPin channel);"
+          ],
+          "pascal": [
+            "function ReadAdc(const name: String; channel: AdcPin): Integer"
+          ]
+        }
+      },
+      {
+        "signature": "bool has_gpio();",
+        "name": "has_gpio",
+        "method_name": null,
+        "unique_global_name": "has_gpio",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Checks if the system has GPIO capabilities.",
+        "brief": null,
+        "return": {
+          "type": "bool",
+          "description": "true if the system has GPIO capabilities, false otherwise.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+        },
+        "attributes": {
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "bool has_gpio()"
+          ],
+          "python": [
+            "def has_gpio():"
+          ],
+          "csharp": [
+            "public static bool SplashKit.HasGpio();"
+          ],
+          "pascal": [
+            "function HasGpio(): Boolean"
           ]
         }
       },
@@ -73966,139 +74099,6 @@
           ],
           "pascal": [
             "procedure RaspiWrite(pin: GpioPin; value: GpioPinValue)"
-          ]
-        }
-      },
-      {
-        "signature": "int read_adc(adc_device adc,adc_pin channel);",
-        "name": "read_adc",
-        "method_name": "read",
-        "unique_global_name": "read_adc",
-        "unique_method_name": "adc_device.read",
-        "suffix_name": null,
-        "description": "Reads an 8-bit value from the specified ADC channel on the device.",
-        "brief": null,
-        "return": {
-          "type": "int",
-          "description": "The ADC conversion value (0–255), or -1 on error.",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-          "adc": {
-            "type": "adc_device",
-            "description": "The ADC device to read from.",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          },
-          "channel": {
-            "type": "adc_pin",
-            "description": "The channel number to read (range depends on ADC type).",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          }
-        },
-        "attributes": {
-          "class": "adc_device",
-          "method": "read",
-          "self": "adc",
-          "group": "raspberry",
-          "static": "raspberry"
-        },
-        "signatures": {
-          "cpp": [
-            "int read_adc(adc_device adc, adc_pin channel)"
-          ],
-          "python": [
-            "def read_adc(adc, channel):"
-          ],
-          "csharp": [
-            "public int AdcDevice.Read(AdcPin channel);",
-            "public static int SplashKit.ReadAdc(AdcDevice adc, AdcPin channel);"
-          ],
-          "pascal": [
-            "function ReadAdc(adc: AdcDevice; channel: AdcPin): Integer"
-          ]
-        }
-      },
-      {
-        "signature": "int read_adc(const string &name,adc_pin channel);",
-        "name": "read_adc",
-        "method_name": null,
-        "unique_global_name": "read_adc_named",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Reads an 8-bit value from the specified ADC channel on the device using its name.",
-        "brief": null,
-        "return": {
-          "type": "int",
-          "description": "The ADC conversion value (0–255), or -1 on error.",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-          "name": {
-            "type": "string",
-            "description": "The ADC name string to close.",
-            "is_pointer": false,
-            "is_const": true,
-            "is_reference": true,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          },
-          "channel": {
-            "type": "adc_pin",
-            "description": "The channel number to read (range depends on ADC type).",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          }
-        },
-        "attributes": {
-          "suffix": "named",
-          "group": "raspberry",
-          "static": "raspberry"
-        },
-        "signatures": {
-          "cpp": [
-            "int read_adc(const string &name, adc_pin channel)"
-          ],
-          "python": [
-            "def read_adc_named(name, channel):"
-          ],
-          "csharp": [
-            "public static int SplashKit.ReadAdc(string name, AdcPin channel);"
-          ],
-          "pascal": [
-            "function ReadAdc(const name: String; channel: AdcPin): Integer"
           ]
         }
       },
