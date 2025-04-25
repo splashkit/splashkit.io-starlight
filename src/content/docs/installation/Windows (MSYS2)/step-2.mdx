@@ -1,63 +1,85 @@
 ---
-title: Install SplashKit
-description: Install SplashKit on Windows (MSYS2).
+title: Install Language Specific Tools
+description: Install the language specific tools for SplashKit on Windows (MSYS2).
 sidebar:
-  label: 2. SplashKit
+  label: 2. Language Tools
 ---
 
+import { LinkButton } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 
-[SplashKit](https://splashkit.io) is a beginner’s all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.
+SplashKit supports multiple programming languages, each with its own set of tools. Follow the steps below to install the necessary tools for your chosen language.
 
-Follow these steps to set up SplashKit on Windows with MSYS2 and start building interactive, visually appealing applications!
+## Language-Specific Installations
 
-## Installation Steps
+### C# (.NET)
+
+To develop with C# in SplashKit, you’ll need to install the .NET SDK.
 
 <Steps>
 
-1. **Run the SplashKit Installer**
+1. **Download the .NET SDK**  
 
-   In your MSYS2 Terminal, paste and run the following command to download and install SplashKit:
+   Go to the [official .NET SDK download page](https://dotnet.microsoft.com/download) and download the latest version for Windows.
 
-    ```shell
-    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
-    ```
+2. **Install the .NET SDK**  
 
-    This command downloads the installer directly from the [SplashKit homepage](https://splashkit.io).
+   Run the downloaded installer and follow the on-screen instructions to complete the installation.
 
-    {/*TODO: Add gif*/}
+3. **Verify the Installation**
 
-2. **Verify the Installation**
-
-   Restart your MSYS2 terminal, then enter the following command to check if SplashKit Manager (`skm`) is installed:
+   Open your MSYS2 terminal and run the following command to confirm that .NET is installed:
 
     ```shell
-    skm
+    dotnet --version
     ```
 
-    You should see messages confirming the installation, such as:
-
-    ```shell
-    SplashKit is installed successfully!
-    Missing skm command. For help use 'skm help'
-    ```
-
-    *Tip:* Use `skm help` to explore available commands for working with SplashKit.
-
-3. **Install Dependencies**
-
-   Use the following command to install the necessary dependencies and compile SplashKit:
-
-    ```shell
-    skm windows install
-    ```
-
-4. **Install SplashKit Globally**
-
-   For easier access, install SplashKit globally by running:
-
-    ```shell
-    skm global install
-    ```
+   If installed correctly, this command will output the version number of the .NET SDK.
 
 </Steps>
+
+### C++
+
+For C++ development, your MSYS2 setup already includes the necessary tools for SplashKit. No additional setup is required specifically for C++.
+
+### Python
+
+To develop with Python in SplashKit, follow these steps to install Python on your system.
+
+<Steps>
+
+1. **Download the Python Installer**
+
+   Go to the [Python download page](https://www.python.org/downloads/windows/) and download the latest Python installer for Windows.
+
+2. **Run the Installer and Select Optional Features**  
+
+   - During the installation, check the box to **Add python.exe to PATH**.
+   - Choose additional features, such as installing `pip`, as needed.
+
+3. **Complete the Installation**  
+
+   Follow the on-screen instructions to complete the installation.
+
+4. **Verify Installation (Optional)**  
+
+    To confirm that `Python` and `pip` are successfully installed, open your MSYS2 terminal and run the following commands:
+
+    ```shell
+    python --version
+    pip --version
+    ```
+
+   Both commands should output version information if the installation was successful.
+
+</Steps>
+
+### Other Languages
+
+Support for other languages such as Rust and Pascal are coming soon.
+
+## Next Steps
+
+Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+
+**Ready to start coding?**  

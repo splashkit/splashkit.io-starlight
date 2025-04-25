@@ -1,85 +1,97 @@
 ---
-title: Install Language Specific Tools
-description: Install the language specific tools for SplashKit on Windows (MSYS2).
+title: Install Visual Studio Code
+description: Download and install Visual Studio Code to use as a source code editor, and install the necessary extensions for C# and C++.
 sidebar:
-  label: 4. Language Tools
+  label: 4. Visual Studio Code
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
-import { Steps } from '@astrojs/starlight/components';
 
-SplashKit supports multiple programming languages, each with its own set of tools. Follow the steps below to install the necessary tools for your chosen language.
+[Visual Studio Code](https://code.visualstudio.com/) is a versatile, user-friendly source code editor that supports extensions for multiple languages, including C#, C++ and python. Follow these steps to install Visual Studio Code on Windows and set up the necessary extensions.
 
-## Language-Specific Installations
+## Install Visual Studio Code
 
-### C# (.NET)
+Download [Visual Studio Code](https://code.visualstudio.com), and run the installer.
 
-To develop with C# in SplashKit, you’ll need to install the .NET SDK.
+## Installing Extensions for Development
 
-<Steps>
+After setting up Visual Studio Code, enhance your development environment by adding essential extensions for C#, C++, and Python. These extensions provide robust tools for coding, debugging, and code intelligence, making your setup complete for SplashKit projects.
 
-1. **Download the .NET SDK**  
+### C# Extensions
 
-   Go to the [official .NET SDK download page](https://dotnet.microsoft.com/download) and download the latest version for Windows.
+#### Method 1: Via the Extensions Website
 
-2. **Install the .NET SDK**  
+Install the following C# extensions directly from the Visual Studio Marketplace:
 
-   Run the downloaded installer and follow the on-screen instructions to complete the installation.
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" target="_blank">C#</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit" target="_blank">C# Dev Kit</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp" target="_blank">Intellicode for C# Dev Kit</LinkButton>
 
-3. **Verify the Installation**
+#### Method 2: Via the Command Line
 
-   Open your MSYS2 terminal and run the following command to confirm that .NET is installed:
+You can also install these C# extensions directly from the terminal by running:
 
-    ```shell
-    dotnet --version
-    ```
+```shell
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension ms-dotnettools.vscodeintellicode-csharp
+```
 
-   If installed correctly, this command will output the version number of the .NET SDK.
+#### Method 3: Within Visual Studio Code
 
-</Steps>
+To add these extensions within Visual Studio Code:
 
-### C++
+1. Open the Extensions view by pressing `Ctrl+Shift+X`.
+2. Search for "C# Microsoft" and the top 3 extensions listed above should appear. Click **Install** for each. If they don't then search for them individually.
 
-For C++ development, your MSYS2 setup already includes the necessary tools for SplashKit. No additional setup is required specifically for C++.
+![Adding C# extensions in Visual Studio Code](/images/installation/csharp-in-vscode.png)
 
-### Python
+### C++ Extensions
 
-To develop with Python in SplashKit, follow these steps to install Python on your system.
+#### Method 1: Via the Extensions Website
 
-<Steps>
+Install the C++ Extension Pack for comprehensive C++ support:
 
-1. **Download the Python Installer**
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack" target="_blank">C++ Extension Pack</LinkButton>
 
-   Go to the [Python download page](https://www.python.org/downloads/windows/) and download the latest Python installer for Windows.
+#### Method 2: Via the Command Line
 
-2. **Run the Installer and Select Optional Features**  
+To install the C++ Extension Pack directly from the terminal:
 
-   - During the installation, check the box to **Add python.exe to PATH**.
-   - Choose additional features, such as installing `pip`, as needed.
+```shell
+code --install-extension ms-vscode.cpptools-extension-pack
+```
 
-3. **Complete the Installation**  
+#### Method 3: Within Visual Studio Code
 
-   Follow the on-screen instructions to complete the installation.
+To add the C++ extension within Visual Studio Code:
 
-4. **Verify Installation (Optional)**  
+1. Open the Extensions view (`Ctrl+Shift+X`).
+2. Search for "C++ Extension Pack" and click **Install**.
 
-    To confirm that `Python` and `pip` are successfully installed, open your MSYS2 terminal and run the following commands:
+![Adding C++ extensions in Visual Studio Code](/images/installation/cplus-in-vscode.png)
 
-    ```shell
-    python --version
-    pip --version
-    ```
+### Python Extensions
 
-   Both commands should output version information if the installation was successful.
+#### Method 1: Via the Extensions Website
 
-</Steps>
+For Python support, install the Python Extension Pack from the Visual Studio Marketplace:
 
-### Other Languages
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack" target="_blank">Python Extension Pack</LinkButton>
 
-Support for other languages such as Rust and Pascal are coming soon.
+#### Method 2: Via the Command Line
 
-## Next Steps
+To install the Python Extension Pack directly from the terminal:
 
-Congratulations! You've completed the setup of language-specific tools for SplashKit. You're now ready to start developing.
+```shell
+code --install-extension donjayamanne.python-extension-pack
+```
 
-**Ready to start coding?**  
+#### Method 3: Within Visual Studio Code
+
+To install the Python extensions within Visual Studio Code:
+
+1. Open the Extensions view (`Ctrl+Shift+X`).
+2. Search for "Python Extension Pack" and click **Install**.
+
+![Adding Python extensions in Visual Studio Code](/images/installation/python-in-vscode.png)
