@@ -6,6 +6,8 @@ dist/
 # vscode settings
 .vscode/
 
+*.sln
+
 # dependencies
 node_modules/
 
