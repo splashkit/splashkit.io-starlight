@@ -1,7 +1,8 @@
 ---
 title: dotnet run command unable to find SplashKit library
 sidebar:
-  label: 2. dotnet run can't find SplashKit library
+  label: 7. dotnet run can't find SplashKit library
+  order: 7
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -17,8 +18,6 @@ You get an error message when running the `dotnet run` command (after running th
 ---
 
 ## Solution(s)
-
-There are a few ways to resolve this issue:
 
 ### 1: Update SplashKit
 
@@ -40,6 +39,16 @@ There are a few ways to resolve this issue:
 
     This command is usually run when using the update command above, but running it again won't cause issues.
 
+    :::note[Using OSX version older than 12.3?]
+
+    If using an OSX version pre-12.3, you will need to build the library locally. You can do this by running:
+
+    ```shell
+    skm macos install
+    ```
+
+    :::
+
 3. To test if this has been resolved:
 
     Create a new project folder and a new C# project.
@@ -54,7 +63,8 @@ You can use `skm` at the start of any compiling/building commands, or when runni
 
 For example, you can use the following commands:
 
-- `skm dotnet build`: compile/bui;d the project in the current working directory.
+- `skm dotnet build`: compile/build the project in the current working directory.
 - `skm dotnet run`: build if needed, then run/execute your program.
+- `skm dotnet new`: create a new project in the current working directory.
 
 ---

@@ -1,0 +1,45 @@
+---
+title: zsh 'dotnet' command not found
+sidebar:
+  label: 5. zsh 'dotnet' not found
+  order: 5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to use `dotnet run` in the terminal, you may encounter the error `zsh: command not found: dotnet`:
+
+![dotnet not found in terminal](/images/troubleshoot/macos/dotnet-not-found.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Download and install .NET (version 8 or 9)
+
+Download and install [.NET](https://dotnet.microsoft.com/en-us/download) if you haven't already.
+
+Then close and reopen your terminal to test the command again.
+
+---
+
+### 2. Add the 'dotnet' path to your PATH
+
+To add 'dotnet' to your PATH, run the following command:
+
+```zsh
+echo "export PATH=\"/usr/local/share/dotnet:\$PATH\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+---
+
+### 3. Update permissions
+
+If you are still having issues, try following the steps on the [3. .zshrc permission issues](/troubleshoot/macos/issue-2-zshrc-permission-issues) page first, then come back to repeat the steps above.
+
+---

@@ -1,0 +1,44 @@
+---
+title: zsh 'code' command not found
+sidebar:
+  label: 4. zsh 'code' not found
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to use `code .` in the terminal, you may encounter the error `zsh: command not found: code`, indicating that the path to the Visual Studio Code 'code' command is not included in your PATH.
+
+![code command not found in terminal](/images/troubleshoot/macos/code-not-found.png)
+:::
+
+---
+
+## Solution(s)
+
+### 1. Ensure Visual Studio Code is in Applications folder
+
+Check your "Applications" folder contains the "Visual Studio Code" app.
+
+If it is missing from this folder, find where it is currently located and drag the file into the Applications folder.
+
+---
+
+### 2. Add the 'code' path to your PATH
+
+If you are having issues getting the `code` command to work, an alternative method you can try is to run the following command (adapted from the [Alternative Manual Instructions](https://code.visualstudio.com/docs/setup/mac#_alternative-manual-instructions) section).
+
+```zsh
+echo "export PATH=\"\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+---
+
+### 3. Update permissions
+
+If you are still having issues, try following the steps on the [2. .zshrc permission issues](/troubleshoot/macos/issue-2-zshrc-permission-issues) page first, then come back to repeat the steps above.
+
+---
