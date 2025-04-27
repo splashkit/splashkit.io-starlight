@@ -1,0 +1,68 @@
+---
+title: Error while loading shared libraries when testing install
+sidebar:
+  label: 4. libSplashKit.so not found
+  order: 4
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+You receive an error when running the installation script to install SplashKit, or when compiling SplashKit code, it’s likely because the system cannot locate the necessary SplashKit library files. Adding these paths manually can resolve the issue.
+
+![Error Example 1](/images/troubleshoot/linux/skm-global-linux-fail.png)
+
+![Error Example 1](/images/troubleshoot/linux/missing-library.png)
+
+:::
+
+## Solution(s)
+
+### 1. Update Your Shell Profile (`~/.bashrc` or `~/.zshrc`)
+
+Follow these steps to update your shell profiles and system library path to include SplashKit.
+
+**For Bash Users**:
+
+<Tabs syncKey="shell-profile">
+<TabItem label="Bash Users">
+
+<Steps>
+
+1. To add SplashKit to your PATH, run the following command:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.bashrc
+    ```
+
+2. Install the necessary dependencies, compile and install SplashKit globally with the following command:
+
+    ```shell
+    skm linux install
+    ```
+
+</Steps>
+
+</TabItem>
+<TabItem label="Zsh Users">
+
+<Steps>
+
+1. To add SplashKit to your PATH, run the following command:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+2. Install the necessary dependencies, compile and install SplashKit globally with the following command:
+
+    ```shell
+    skm linux install
+    ```
+
+</Steps>
+
+</TabItem>
+</Tabs>

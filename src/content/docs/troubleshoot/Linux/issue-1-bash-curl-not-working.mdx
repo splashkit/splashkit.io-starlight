@@ -2,6 +2,7 @@
 title: "\"bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)\" does nothing"
 sidebar:
   label: 1. bash curl not working
+  order: 1
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -26,15 +27,7 @@ Make sure your device is connected to the internet, as this command depends on a
 
 ### 2: Temporarily Disable Firewall
 
-Sometimes, a MacOS firewall may block the terminal from downloading content. To check if this is the issue, temporarily disable your firewall:
-
-<Steps>
-
-1. Open **System Preferences** and go to **Security & Privacy**.
-2. Select the **Firewall** tab.
-3. Click **Turn Off Firewall** temporarily and retry the command.
-
-</Steps>
+Sometimes, a firewall may block the terminal from downloading content. To check if this is the issue, temporarily disable your firewall.
 
 Once the installation completes, you can re-enable the firewall for security.
 
@@ -53,10 +46,8 @@ If the command still doesn’t respond, you can manually download and execute th
 
 3. Save the file to an easily accessible location, such as the Downloads folder.
 4. Open Terminal and type the command `bash` (with a space after the word).
-5. Drag the downloaded file from Finder into the Terminal window, then press **Enter** to run it.
+5. Drag the downloaded file from the file manager into the Terminal window, then press **Enter** to run it.
 
 </Steps>
-
-![Drag and Drop into Terminal](https://i.imgur.com/LTCf6qW.png)
 
 ---
