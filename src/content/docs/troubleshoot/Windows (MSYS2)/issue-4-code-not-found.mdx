@@ -1,0 +1,78 @@
+---
+title: code command not found
+sidebar:
+  label: 4. 'code' not found
+  order: 3
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to use `code .` in the terminal, you may encounter the error `-bash: code: command not found`, indicating that the path to the Visual Studio Code 'code' command is not included in your PATH.
+
+![Error Example](/images/troubleshoot/windows-msys2/code-not-found.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Restart MINGW64 Terminal
+
+Close all open terminal windows and then open a **new** MINGW64 terminal window and try running the `code .` command again.
+
+### 2: Add 'code' path to your PATH variable
+
+Follow these steps to update your system “Path” variable:
+
+<Steps>
+
+1. **Open Environment Variables Settings**  
+
+    Use the taskbar search bar to type “environment variables”.
+
+    Select the matching result, as shown below.
+
+    ![Environment Variables Search](https://i.imgur.com/i3cb9nr.png)
+
+2. **Access the Environment Variables Menu**  
+
+    In the “System Properties” window, go to the **Advanced** tab (red box) and click **Environment Variables** (green box).
+
+    ![System Properties](https://i.imgur.com/4Cbmnja.png)
+
+3. **Select the Path Variable for Editing**  
+
+    In the Environment Variables window, locate the **Path** variable (red box) and select it, then click **Edit** (green box).
+
+    ![Edit Path Variable](/images/troubleshoot/windows-msys2/env-var-windows.png)
+
+    :::tip[Finding your username]
+
+    To find your username for the paths in the next steps, open File Explorer or type `whoami` in the terminal to confirm your username.
+
+    ![Finding Username](https://i.imgur.com/2neJLOs.png)
+
+    :::
+
+4. **Add Required Path for VS Code**
+
+    In the “Edit Environment Variable” window, click **New** and then add the path below (replacing `livmc` with your own username):
+
+    ```plaintext
+    C:\Users\livmc\AppData\Local\Programs\Microsoft VS Code\bin
+    ```
+
+    {/* TODO: Add image with path */}
+
+    Once the path is added, click **OK** on all open windows to save your changes.
+
+5. **Verify the Update**  
+
+    Open a **new** MINGW64 terminal and run your program to confirm the paths have been correctly set and that SplashKit functions as expected.
+
+</Steps>
+
+---
