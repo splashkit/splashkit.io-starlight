@@ -3,10 +3,10 @@ title: Install SplashKit
 description: Install SplashKit on Linux.
 sidebar:
   label: 3. SplashKit
+  order: 3
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
 [SplashKit](https://splashkit.io) is a beginner’s all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.
 
@@ -18,7 +18,7 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
 
 1. **Run the SplashKit Installer**
 
-   Open your Terminal and paste the following command to download and install SplashKit:
+    Open your Terminal and paste the following command to download and install SplashKit:
 
     ```shell
     bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
@@ -26,7 +26,7 @@ Follow these steps to set up SplashKit on Linux and start building interactive, 
 
 2. **Restart the Terminal and Test the Installation**
 
-   After restarting the terminal, run the following command to confirm the installation:
+    After restarting the terminal, run the following command to confirm the installation:
 
     ```shell
     skm
@@ -47,18 +47,18 @@ The commands below are run in the initial installation script, and therefore are
 
 - To install the necessary dependencies and build the SplashKit library natively on linux, use:
 
-   ```shell
-   skm linux install
-   ```
+    ```shell
+    skm linux install
+    ```
 
-   :::caution[If you encounter dependency issues:]
+    :::caution[If you encounter dependency issues:]
 
-   See the [Error installing dependencies](/troubleshoot/linux/issue-3-error-installing-dependencies) troubleshooting page.
+    See the [Error installing dependencies](/troubleshoot/linux/issue-3-error-installing-dependencies) troubleshooting page.
 
-- To install SplashKit into the system global directories, use:
+- To install SplashKit into the default global locations, use:
 
-   ```shell
-   skm global install
-   ```
+    ```shell
+    skm global install
+    ```
 
 :::

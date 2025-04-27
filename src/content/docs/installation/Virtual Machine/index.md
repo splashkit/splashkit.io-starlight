@@ -5,6 +5,12 @@ sidebar:
   label: Overview
 ---
 
+:::caution[SplashKitVM.ova is out of date]
+
+Please note that the SplashKit virtual machine archive file below has not been updated since 2024.
+
+:::
+
 If you cannot get SplashKit working natively, you can download and use the provided SplashKit Virtual Machine. The provided virtual maching comes with everything you need to get started quickly with SplashKit.
 
 ## Virtual Machines
