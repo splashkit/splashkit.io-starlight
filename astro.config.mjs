@@ -111,7 +111,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { label: "Overview", link: "guides/" },
-            { label: "Using SplashKit", autogenerate: { directory: "guides/Using-SplashKit" }, collapsed: true },
+            { label: "Using SplashKit", link: "guides/0-using-splashkit" },
             { label: "Animations", autogenerate: { directory: "guides/Animations" }, collapsed: true },
             { label: "Audio", autogenerate: { directory: "guides/Audio" }, collapsed: true },
             { label: "Camera", autogenerate: { directory: "guides/Camera" }, collapsed: true },
