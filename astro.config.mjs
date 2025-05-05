@@ -55,10 +55,10 @@ export default defineConfig({
         "/src/styles/background.css",
         "/src/styles/cards.css",
       ],
-      social: {
-        github: "https://github.com/splashkit",
-        youtube: 'https://www.youtube.com/@splashkit7674'
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/splashkit' },
+        { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@splashkit7674' },
+      ],
       favicon: "/images/favicon.svg",
       logo: {
         src: "./src/assets/favicon.svg",
