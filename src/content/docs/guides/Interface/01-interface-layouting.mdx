@@ -259,9 +259,13 @@ This'll give us a button like this:
 
 ![A panel with a button in it.](/gifs/guides/interface/panel_w_button.gif)
 
-Similarly, we can add a [Text Box](/api/interface/#text-box) by declaring a `string` variable _outside_ the main loop, and then calling `my_string = text_box(my_string)`:
+Similarly, we can add a [Text Box](/api/interface/#text-box) by declaring a `string` variable _outside_ the main loop, and then calling `my_string = text_box("id", my_string)`:
 
 ![A panel with a button and a text box in it.](/gifs/guides/interface/panel_w_button_and_textbox.gif)
+
+:::tip["id"?]
+You have to give a identifier/label for each text box. This is used to identify it when the user interacts with it.
+:::
 
 Here's the full code recreating what we had last tutorial, while creating a panel and adding the elements inside it.
 
@@ -297,7 +301,7 @@ int main()
                 write_line(user_message);
             }
 
-            user_message = text_box(user_message);
+            user_message = text_box("id", user_message);
 
             // end the panel
             end_panel("My panel");
@@ -348,7 +352,7 @@ while (!QuitRequested())
             WriteLine(userMessage);
         }
 
-        userMessage = TextBox(userMessage);
+        userMessage = TextBox("id" userMessage);
 
         // end the panel
         EndPanel("My panel");
@@ -399,7 +403,7 @@ namespace InterfaceLayouts
                         SplashKit.WriteLine(userMessage);
                     }
 
-                    userMessage = SplashKit.TextBox(userMessage);
+                    userMessage = SplashKit.TextBox("id" userMessage);
 
                     // end the panel
                     SplashKit.EndPanel("My panel");
@@ -446,7 +450,7 @@ while (not quit_requested()):
         if button("Write To Terminal!"):
             write_line(user_message)
             
-        user_message = text_box(user_message)
+        user_message = text_box("id", user_message)
         
         # end the panel
         end_panel("My panel")
@@ -467,9 +471,9 @@ close_all_windows()
 To place elements inside panels, we just need to create them _between_ the `start` and `end` calls.
 :::
 
-Another useful thing you can do now is add _labels_ to your elements. You can do this by passing an additional string to each element function at the start - as an example, `text_box(my_string)` can become `text_box("Message", my_string)`, which will give us this:
+Another useful thing you can do now is add _labels_ to your elements. You can do this by passing an additional string to each element function at the start - as an example, `button("Click Me")` can become `button("Label", "Click Me")`, which will give us this. All `text_box` must have a label, to show the label you need to pass in an additional boolean parameter `text_box("Message", my_string, true)`:
 
-![A panel with a textbox that has a label to the left of it.](./images/panel_w_labeltextbox.png)
+![A panel with a text box that has a label to the left of it.](./images/panel_w_labeltextbox.png)
 
 :::note[SplashKit Interfaces]
 Here's a quick rundown of common element functions:
@@ -479,7 +483,7 @@ Here's a quick rundown of common element functions:
 |boolean button(text)           | boolean button("Label:", text)          |
 |boolean checkbox(text, state)  | boolean checkbox("Label:", text, state) |
 |number slider(value, min, max) | number slider("Label:", value, min, max)|
-|string text_box(text)          | string text_box("Label:", text)         |
+|string text_box(id, text)      | string text_box("Label:", text, true)   |
 
 -------------------------------------------
 
@@ -506,7 +510,7 @@ Headers are really easy to add - we can use the [Header](/api/interface/#header)
 ```cpp
 if (header("Edit Message!"))
 {
-    user_message = text_box(user_message);
+    user_message = text_box("id", user_message);
 }
 ```
 
@@ -519,7 +523,7 @@ if (header("Edit Message!"))
 ```csharp
 if (Header("Edit Message!"))
 {
-    userMessage = TextBox(userMessage);
+    userMessage = TextBox("id" userMessage);
 }
 ```
 
@@ -529,7 +533,7 @@ if (Header("Edit Message!"))
 ```csharp
 if (SplashKit.Header("Edit Message!"))
 {
-    userMessage = SplashKit.TextBox(userMessage);
+    userMessage = SplashKit.TextBox("id" userMessage);
 }
 ```
 
@@ -541,7 +545,7 @@ if (SplashKit.Header("Edit Message!"))
 
 ```python
 if header("Edit Message!"):
-    user_message = text_box(user_message)
+    user_message = text_box("id", user_message)
 ```
 
 </TabItem>

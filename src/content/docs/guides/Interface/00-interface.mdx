@@ -549,11 +549,15 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     </TabItem>
     </Tabs>
 
-2. Now let's add the text box. We can use the [Text Box](/api/interface/#text-box) function, which takes a string - the current text, and a position - where to draw it.
+2. Now let's add the text box. We can use the [Text Box](/api/interface/#text-box) function, which takes two strings - a label/identifier and the current text, and a position - where to draw it.
 
     It then _returns_ the updated text - if the user hasn't typed anything, this will be the same text that was passed in. But if the user _has_ typed something, this will be our new text, and we can store it in the variable!
 
-    For example, `user_text = text_box(user_text, rectangle_from(0,0,200,24));` would show a text box at the top-right corner of the screen, with the text that's in the variable `user_text`, and if the user has _altered_ the text, it would return the new text and store it back into `user_text`.
+    For example, `user_text = text_box("user_text", user_text, rectangle_from(0, 0, 200, 24));` would show a text box at the top-right corner of the screen, with the text that's in the variable `user_text`, and if the user has _altered_ the text, it would return the new text and store it back into `user_text`.
+
+    :::tip[Identifiers / Labels]
+    The first parameter passes in the identifier/label for the textbox. SplashKit uses this to identifity the text when you edit it. We used the variable name as the string here, but you can use any unique identifier.
+    :::
 
     Finally, we can use this variable in our [Write Line](/api/terminal/#write-line), to write the user's text to the console.
 
@@ -563,7 +567,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     <TabItem label="C++">
 
     ```cpp ins={1} ins="write_line(user_message);"
-            user_message = text_box(user_message, rectangle_from(300, 220, 200, 24));
+            user_message = text_box("user_message", user_message, rectangle_from(300, 220, 200, 24));
 
             if (button("Write To Terminal!", rectangle_from(300, 260, 200, 24)))
             {
@@ -578,7 +582,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     <TabItem label="Top-level Statements">
 
     ```csharp ins={1} ins="WriteLine(userMessage);"
-        userMessage = TextBox(userMessage, RectangleFrom(300, 220, 200, 24));
+        userMessage = TextBox("user_message", userMessage, RectangleFrom(300, 220, 200, 24));
 
         if (Button("Write To Terminal!", RectangleFrom(300, 260, 200, 24)))
         {
@@ -590,7 +594,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     <TabItem label="Object-Oriented">
 
     ```csharp ins={1} ins="SplashKit.WriteLine(userMessage);"
-                        userMessage = SplashKit.TextBox(userMessage, SplashKit.RectangleFrom(300, 220, 200, 24));
+                        userMessage = SplashKit.TextBox("user_message", userMessage, SplashKit.RectangleFrom(300, 220, 200, 24));
 
                         // Check if the button is clicked
                         if (SplashKit.Button("Write To Terminal!", SplashKit.RectangleFrom(300, 260, 200, 24)))
@@ -606,7 +610,7 @@ Now let's try out some more interesting elements - let's add a text box, so we c
     <TabItem label="Python">
 
     ```python ins={1} ins="write_line(user_message)"
-        user_message = text_box_at_position(user_message, rectangle_from(300, 220, 200, 24))
+        user_message = text_box_at_position("user_message", user_message, rectangle_from(300, 220, 200, 24))
         
         if button_at_position("Write To Terminal!", rectangle_from(300, 260, 200, 24)):
             write_line(user_message)
@@ -656,7 +660,7 @@ int main()
         clear_screen(COLOR_WHITE);
 
         // interface!
-        user_message = text_box(user_message, rectangle_from(300, 220, 200, 24));
+        user_message = text_box("user_message", user_message, rectangle_from(300, 220, 200, 24));
 
         if (button("Write To Terminal!", rectangle_from(300, 260, 200, 24)))
         {
@@ -701,7 +705,7 @@ while (!QuitRequested())
     ClearScreen(ColorWhite());
 
     // interface!
-    userMessage = TextBox(userMessage, RectangleFrom(300, 220, 200, 24));
+    userMessage = TextBox("userMessage", userMessage, RectangleFrom(300, 220, 200, 24));
 
     if (Button("Write To Terminal!", RectangleFrom(300, 260, 200, 24)))
     {
@@ -745,7 +749,7 @@ namespace CreatingUserInterfaces
                 window.Clear(Color.White);
 
                 // interface!
-                userMessage = SplashKit.TextBox(userMessage, SplashKit.RectangleFrom(300, 220, 200, 24));
+                userMessage = SplashKit.TextBox("userMessage", userMessage, SplashKit.RectangleFrom(300, 220, 200, 24));
 
                 if (SplashKit.Button("Write To Terminal!", SplashKit.RectangleFrom(300, 260, 200, 24)))
                 {
@@ -788,7 +792,7 @@ while (not quit_requested()):
     clear_screen_to_white()
 
     # interface!
-    user_message = text_box_at_position(user_message, rectangle_from(300, 220, 200, 24))
+    user_message = text_box_at_position("user_message", user_message, rectangle_from(300, 220, 200, 24))
     
     if button_at_position("Write To Terminal!", rectangle_from(300, 260, 200, 24)):
         write_line(user_message)
@@ -840,7 +844,7 @@ int main()
         clear_screen(COLOR_WHITE);
 
         // interface!
-        user_message = text_box(user_message, rectangle_from(400 - width/2, 220, width, 24));
+        user_message = text_box("user_message", user_message, rectangle_from(400 - width/2, 220, width, 24));
 
         if (button("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)))
         {
@@ -887,7 +891,7 @@ while (!QuitRequested())
     ClearScreen(ColorWhite());
 
     // interface!
-    userMessage = TextBox(userMessage, RectangleFrom(400 - width/2, 220, width, 24));
+    userMessage = TextBox("userMessage", userMessage, RectangleFrom(400 - width/2, 220, width, 24));
 
     if (Button("Write To Terminal!", RectangleFrom(400 - width/2, 260, width, 24)))
     {
@@ -934,7 +938,7 @@ namespace CreatingUserInterfaces
                 window.Clear(Color.White);
 
                 // interface!
-                userMessage = SplashKit.TextBox(userMessage, SplashKit.RectangleFrom(400 - width / 2, 220, width, 24));
+                userMessage = SplashKit.TextBox("userMessage", userMessage, SplashKit.RectangleFrom(400 - width / 2, 220, width, 24));
 
                 if (SplashKit.Button("Write To Terminal!", SplashKit.RectangleFrom(400 - width / 2, 260, width, 24)))
                 {
@@ -980,7 +984,7 @@ while (not quit_requested()):
     clear_screen_to_white()
 
     # interface
-    user_message = text_box_at_position(user_message, rectangle_from(400 - width/2, 220, width, 24))
+    user_message = text_box_at_position("user_message", user_message, rectangle_from(400 - width/2, 220, width, 24))
     
     if button_at_position("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)):
         write_line(user_message)
@@ -1033,7 +1037,7 @@ int main()
         clear_screen(COLOR_WHITE);
 
         // interface!
-        user_message = text_box(user_message, rectangle_from(400 - width/2, 220, width, 24));
+        user_message = text_box("user_message", user_message, rectangle_from(400 - width/2, 220, width, 24));
 
         if (button("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)))
         {
@@ -1080,7 +1084,7 @@ while (!QuitRequested())
     ClearScreen(ColorWhite());
 
     // interface!
-    userMessage = TextBox(userMessage, RectangleFrom(400 - width/2, 220, width, 24));
+    userMessage = TextBox("userMessage", userMessage, RectangleFrom(400 - width/2, 220, width, 24));
 
     if (Button("Write To Terminal!", RectangleFrom(400 - width/2, 260, width, 24)))
     {
@@ -1127,7 +1131,7 @@ namespace CreatingUserInterfaces
                 window.Clear(Color.White);
 
                 // interface!
-                userMessage = SplashKit.TextBox(userMessage, SplashKit.RectangleFrom(400 - width / 2, 220, width, 24));
+                userMessage = SplashKit.TextBox("userMessage", userMessage, SplashKit.RectangleFrom(400 - width / 2, 220, width, 24));
 
                 if (SplashKit.Button("Write To Terminal!", SplashKit.RectangleFrom(400 - width / 2, 260, width, 24)))
                 {
@@ -1173,7 +1177,7 @@ while (not quit_requested()):
     clear_screen_to_white()
 
     # interface
-    user_message = text_box_at_position(user_message, rectangle_from(400 - width/2, 220, width, 24))
+    user_message = text_box_at_position("user_message", user_message, rectangle_from(400 - width/2, 220, width, 24))
     
     if button_at_position("Write To Terminal!", rectangle_from(400 - width/2, 260, width, 24)):
         write_line(user_message)
