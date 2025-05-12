@@ -1,0 +1,61 @@
+---
+title: Install SplashKit
+description: Install SplashKit on Windows (MSYS2).
+sidebar:
+  label: 3. SplashKit
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+[SplashKit](https://splashkit.io) is a beginner’s all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.
+
+Follow these steps to set up SplashKit on Windows with MSYS2 and start building interactive, visually appealing applications!
+
+## Installation Steps
+
+<Steps>
+
+1. **Run the SplashKit Installer**
+
+   Open your MINGW64 Terminal and paste the following command to download and install SplashKit:
+
+    ```shell
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+2. **Verify the Installation**
+
+   Restart your MSYS2 terminal, then enter the following command to check if SplashKit Manager (`skm`) is installed:
+
+    ```shell
+    skm
+    ```
+
+    You should see messages confirming the installation, such as:
+
+    ```shell
+    SplashKit is installed successfully!
+    Missing skm command. For help use 'skm help'
+    ```
+
+    *Tip:* Use `skm help` to explore available commands for working with SplashKit.
+
+</Steps>
+
+:::note[Optional Installation Commands]
+
+The commands below are run in the initial installation script, and therefore are not required to be run unless you experience issues.
+
+- To install the necessary dependencies, use:
+
+   ```shell
+   skm windows install
+   ```
+
+- To install SplashKit into the system global directories, use:
+
+   ```shell
+   skm global install
+   ```
+
+:::

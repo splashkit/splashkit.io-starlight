@@ -1,0 +1,62 @@
+---
+title: No module named 'splashkit' in Python error
+sidebar:
+  label: 8. Python ModuleNotFoundError
+  order: 8
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+:::caution[Issue:]
+
+When running python SplashKit code, you can an error: `ModuleNotFoundError: No module named 'splashkit' in Python`:
+
+![ModuleNotFoundError: No module named 'splashkit' in Python](/images/troubleshoot/macos/macos-issue-7_problem.png)
+
+MacOS prioritises its built-in Python installation located in `/usr/bin/python3`. SplashKit and other dependencies are likely installed in the Python environment managed by Homebrew, which is located at `/opt/homebrew/bin/python3` or similar. Due to this, the SplashKit module cannot be located in shell’s PATH environment variable.
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Install python using homebrew
+
+If you haven't installed homebrew, or homebrew's python package, follow the steps below:
+
+<Steps>
+
+1. Install [Homebrew](https://docs.brew.sh/Installation).
+2. Install [python, using homebrew](https://formulae.brew.sh/formula/python@3.13) with the following command:
+
+   ```shell
+   brew install python@3.13
+   ```
+
+3. Add homebrew to your path using the following command:
+
+   ```zsh
+   echo "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+4. Verify that the terminal is using the Homebrew-installed Python version:
+
+   ```shell
+   which python3
+   ```
+
+   The output should be something like:
+
+   ```plaintext
+   /opt/homebrew/bin/python3
+   ```
+
+5. Run your Python code again. It should now successfully locate the SplashKit module.
+
+</Steps>
+
+After completing these steps, your terminal will use the Homebrew-installed version of Python, and your Python script should now successfully find and run the SplashKit module without encountering the `ModuleNotFoundError`.
+
+---

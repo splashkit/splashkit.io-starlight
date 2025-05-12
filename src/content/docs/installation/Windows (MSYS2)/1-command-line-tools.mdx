@@ -1,0 +1,59 @@
+---
+title: Install MSYS2 and Command Line Tools
+description: Install MSYS2 and the necessary command line tools for SplashKit on Windows.
+sidebar:
+  label: 1. MSYS2 and Command Line Tools
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+SplashKit requires a few command line tools to be installed on your system before you proceed with the installation. Follow the steps below to install these tools, then you can continue with the SplashKit installation.
+
+MSYS2 provides a Unix-like terminal environment for Windows, allowing you to run the build commands needed to create SplashKit programs.
+
+## Installation Steps
+
+<Steps>
+
+1. **Download MSYS2**
+
+   Download the installer from the official MSYS2 website: [www.msys2.org](https://www.msys2.org/)
+
+2. **Install MSYS2**
+
+   Double-click the downloaded executable file and follow the on-screen instructions to complete the installation.
+
+   *We recommend using the default installation path, though you may customize other options as needed.*
+
+3. **Open the MINGW64 Terminal**
+
+   MSYS2 includes several terminal environments, and we recommend the **MINGW64** environment for 64-bit systems (use **MINGW32** for 32-bit). This terminal best supports the C# and C++ commands used with SplashKit.
+
+   :::note[Choosing the Correct Terminal]
+   To open **MINGW64**, search for "mingw64" in the Windows Start menu and select the **MSYS2 MINGW64** app.
+   :::
+
+   :::tip[Pin MINGW64 to the Taskbar]
+   To make it easier to open each time, you can pin MINGW64 to the taskbar:
+   - Open the MINGW64 terminal.
+   - Right-click on the blue MSYS2 icon in the taskbar.
+   - Select "Pin to taskbar."
+
+   ![Image showing MSYS2 MINGW64 App pinning to taskbar](/images/installation/windows/mingw64-pin-to-taskbar.png)
+   :::
+
+4. **Install Command Line Tools**
+
+   To prepare for SplashKit, you’ll need to install essential tools using the `pacman` package manager within **MINGW64**.
+
+   Copy and paste the following command into the **MINGW64** terminal window to install `git`, `clang`, `gcc`, and `gdb`:
+
+   ```shell
+   pacman -S git mingw-w64-x86_64-clang mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb --noconfirm --disable-download-timeout
+   ```
+
+   :::caution[Pasting Commands in MINGW64 Terminal]
+   `Ctrl` + `V` won’t work to paste in MINGW64. Instead, right-click anywhere in the terminal window and select **Paste**.
+   :::
+
+</Steps>

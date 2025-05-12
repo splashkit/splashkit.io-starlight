@@ -1,0 +1,53 @@
+---
+title: "\"bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)\" does nothing"
+sidebar:
+  label: 1. bash curl not working
+  order: 1
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+Attempting to run the command `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` results in no response from the terminal, with no indication of success or error.
+
+![bash curl installation command does nothing](/images/troubleshoot/macos/bash-curl-does-nothing.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1: Check Internet Connection
+
+Make sure your device is connected to the internet, as this command depends on a stable connection to access the script online.
+
+---
+
+### 2: Temporarily Disable Firewall
+
+Sometimes, a firewall may block the terminal from downloading content. To check if this is the issue, temporarily disable your firewall.
+
+Once the installation completes, you can re-enable the firewall for security.
+
+---
+
+### 3: Manually Download and Run the Script
+
+If the command still doesn’t respond, you can manually download and execute the script as follows:
+
+<Steps>
+
+1. Go to the [skm-install.sh script](https://github.com/splashkit/skm/blob/master/install-scripts/skm-install.sh).
+2. Click the “Download raw file” button (see below):
+
+    ![Download Raw File](https://i.imgur.com/MWhWHRO.png)
+
+3. Save the file to an easily accessible location, such as the Downloads folder.
+4. Open Terminal and type the command `bash` (with a space after the word).
+5. Drag the downloaded file from the file manager into the Terminal window, then press **Enter** to run it.
+
+</Steps>
+
+---

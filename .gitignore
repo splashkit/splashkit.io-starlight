@@ -2,7 +2,11 @@
 dist/
 # generated types
 .astro/
+
+# vscode settings
 .vscode/
+
+*.sln
 
 # dependencies
 node_modules/
@@ -13,20 +17,20 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-#mdx output files
-
-
-
-
-
 # environment variables
 .env
 .env.production
 
 # macOS-specific files
 .DS_Store
-# Ignore all files in the directory
-src/content/docs/api/*
 
-# Except for index.mdx
+# mdx output files
+
+# Ignore all files in the api and usage-examples directory
+src/content/docs/api/*.mdx
+src/content/docs/usage-examples/*.mdx
+
+# Except for these files (such as index.mdx files)
 !src/content/docs/api/index.mdx
+!src/content/docs/usage-examples/index.mdx
+!src/content/docs/usage-examples/CONTRIBUTING.mdx

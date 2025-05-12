@@ -1,0 +1,83 @@
+---
+title: System.DllNotFoundException
+sidebar:
+  label: 9. Using older OSX version
+  order: 9
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When attempting to run a program that uses SplashKit on MacOS, you may encounter the following error message: `System.DllNotFoundException unable to load DLL splashkit.dll`.
+
+This issue is often related to using a version of OSX older than 13 (macOS Ventura).
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Update your macOS software
+
+Firstly, update your macOS to the latest version available. Ideally, your OS should be "macOS Ventura" (13) or later, as compatibility issues with `splashkit.dll` are less likely with more recent versions of macOS.
+
+---
+
+### 2: Build the SplashKit library locally
+
+Run the following command to build the library for your OS, which will overwrite the provided library file from when you installed SplashKit:
+
+```shell
+skm macos install
+```
+
+Then, if needed, re-install the library globally with the following command:
+
+```shell
+skm global install
+```
+
+---
+
+### 3: Use an older version of SplashKit
+
+If you are using a version of macOS older than 12.0, you can revert SplashKit to a previous version that may be more compatible with your system. Run the following commands in Terminal, one line at a time:
+
+```shell
+cd ~/.splashkit
+```
+
+```shell
+git fetch --unshallow
+```
+
+```shell
+git checkout cbb68dc
+```
+
+#### Using SplashKit with Solution 3
+
+When using SplashKit with this older version above, you will need to use `skm` at the start of any compiling/building commands, or when running C# programs.
+
+Here are the most common commands you might use:
+
+- `skm dotnet new console`: create a new C# terminal project in the current working directory. (See note below)
+- `skm dotnet build`: compile the project in the current working directory.
+- `skm dotnet run`: build if needed, then execute your program.
+
+:::note
+After these commands, using `skm dotnet new` might affect the structure of SplashKit project files. Instead, you can use this [Template SplashKit Project](/resources/troubleshooting/Template_SplashKit_Project.zip) (*zipped folder*) for creating new projects.
+
+<Steps>
+
+1. Unzip the downloaded template.
+2. Read the “`README.txt`” file for guidance on setting up new projects.
+3. Review the `Program.cs` file, which includes a comment to help configure the project. Once set up, you can remove the comment lines.
+
+</Steps>
+
+:::
+
+---

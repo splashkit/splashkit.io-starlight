@@ -1,0 +1,71 @@
+---
+title: Install SplashKit
+description: Install SplashKit on MacOS.
+sidebar:
+  label: 3. SplashKit
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+[SplashKit](https://splashkit.io) is a beginner’s all-purpose software toolkit that will allow you to create fun and exciting programs more easily, especially for Graphical User Interface (GUI) programs.
+
+Follow these steps to set up SplashKit on macOS and begin building interactive, visually appealing applications!
+
+## Installation Steps
+
+<Steps>
+
+1. **Run the SplashKit Installer**
+
+   Open your Terminal and paste the following command to download and install SplashKit:
+
+   ```shell
+   bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+   ```
+
+   :::tip[Fingerprint Authentication]
+
+   If you want to use fingerprint authentication when the installation needs elevated permissions, rather than typing your password each time, run the following command in your terminal *(**before running the command above**)*:
+
+   ```shell
+   sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
+   ```
+
+   :::
+
+2. **Verify the Installation**
+
+   Restart your Terminal to ensure the new installation path is recognized. Then, enter the following command to check if SplashKit Manager (`skm`) is installed:
+
+   ```shell
+   skm
+   ```
+
+   You should see a message confirming the installation:
+
+   ```shell
+   SplashKit is installed successfully!
+   Missing skm command. For help, use 'skm help'
+   ```
+
+   *Tip:* Use `skm help` to explore additional commands for managing SplashKit.
+
+</Steps>
+
+:::note[Optional Installation Commands]
+
+The commands below are run in the initial installation script, and therefore are not required to be run unless you experience issues.
+
+- To install the necessary dependencies and build the SplashKit library natively on macOS, use:
+
+   ```shell
+   skm macos install
+   ```
+
+- To install SplashKit into the system global directories, use:
+
+   ```shell
+   skm global install
+   ```
+
+:::

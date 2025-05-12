@@ -1,0 +1,3 @@
+How many ticks?
+
+Note: The 'tick' numbers may vary slightly on different machines.

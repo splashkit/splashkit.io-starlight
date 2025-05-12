@@ -1,0 +1,550 @@
+---
+import fs from "fs";
+import path from "path";
+import { Tabs, TabItem, Code } from "@astrojs/starlight/components";
+
+// Function to read JSON file dynamically
+function getColorData() {
+  const filePath = path.resolve("./scripts/json-files/splashkit-color-palette.json");
+  const data = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(data);
+}
+
+const colorPaletteData = getColorData();
+
+// Group like colours and present them in a specified order
+const colorOrder = [
+  // Greys and Neutral Tones
+  [
+    "Black",
+    "Dim Gray",
+    "Gray",
+    "Dark Gray",
+    "Silver",
+    "Light Gray",
+    "Gainsboro",
+    "Rosy Brown",
+    "Light Coral",
+    "Indian Red",
+    "Brown",
+    "Firebrick",
+  ],
+  // Reds and Pinks
+  [
+    "Maroon",
+    "Dark Red",
+    "Red",
+    "Swinburne Red",
+    "Salmon",
+    "Tomato",
+    "Dark Salmon",
+    "Coral",
+    "Orange Red",
+    "Light Salmon",
+    "Sienna",
+    "Saddle Brown",
+  ],
+  // Oranges and Warm Tones
+  [
+    "Chocolate",
+    "Sandy Brown",
+    "Peach Puff",
+    "Peru",
+    "Bisque",
+    "Dark Orange",
+    "Burly Wood",
+    "Antique White",
+    "Tan",
+    "Navajo White",
+    "Blanched Almond",
+    "Papaya Whip",
+    "Moccasin",
+    "Orange",
+    "Wheat",
+    "Dark Goldenrod",
+    "Goldenrod",
+    "Gold",
+    "Lemon Chiffon",
+    "Khaki",
+    "Pale Goldenrod",
+    "Dark Khaki",
+    "Beige",
+    "Light Yellow",
+  ],
+  // Yellow-greens
+  [
+    "Light Goldenrod Yellow",
+    "Olive",
+    "Yellow",
+    "Olive Drab",
+    "Yellow Green",
+    "Dark Olive Green",
+    "Green Yellow",
+    "Chartreuse",
+    "Lawn Green",
+    "Dark Sea Green",
+    "Light Green",
+    "Pale Green",
+  ],
+  // Greens
+  [
+    "Forest Green",
+    "Lime Green",
+    "Dark Green",
+    "Green",
+    "Bright Green",
+    "Lime",
+    "Sea Green",
+    "Medium Sea Green",
+    "Spring Green",
+    "Medium Spring Green",
+    "Medium Aquamarine",
+    "Aquamarine",
+  ],
+  // Aquas and Teals
+  [
+    "Turquoise",
+    "Light Sea Green",
+    "Medium Turquoise",
+    "Light Cyan",
+    "Pale Turquoise",
+    "Dark Slate Gray",
+    "Teal",
+    "Dark Cyan",
+    "Aqua",
+    "Cyan",
+    "Dark Turquoise",
+    "Cadet Blue",
+  ],
+  // Blues
+  [
+    "Powder Blue",
+    "Light Blue",
+    "Deep Sky Blue",
+    "Sky Blue",
+    "Light Sky Blue",
+    "Steel Blue",
+    "Dodger Blue",
+    "Light Slate Gray",
+    "Slate Gray",
+    "Light Steel Blue",
+    "Cornflower Blue",
+    "Royal Blue",
+    "Midnight Blue",
+    "Navy",
+    "Dark Blue",
+    "Medium Blue",
+    "Blue",
+    "Slate Blue",
+    "Dark Slate Blue",
+    "Medium Slate Blue",
+    "Medium Purple",
+    "Blue Violet",
+    "Indigo",
+    "Dark Orchid",
+  ],
+  // Purples and Magentas
+  [
+    "Dark Violet",
+    "Medium Orchid",
+    "Thistle",
+    "Plum",
+    "Violet",
+    "Purple",
+    "Dark Magenta",
+    "Fuchsia",
+    "Magenta",
+    "Orchid",
+    "Medium Violet Red",
+    "Deep Pink",
+  ],
+  // Pinks
+  ["Hot Pink", "Pale Violet Red", "Crimson", "Pink", "Light Pink"],
+  // Almost White colours
+  [
+    "White Smoke",
+    "Lavender",
+    "Linen",
+    "Old Lace",
+    "Transparent",
+    "White",
+    "Snow",
+    "Ghost White",
+    "Mint Cream",
+    "Alice Blue",
+    "Honeydew",
+    "Azure",
+    "Lavender Blush",
+    "Floral White",
+    "Ivory",
+    "Sea Shell",
+    "Misty Rose",
+    "Cornsilk",
+  ],
+];
+
+// Sort the colour data based on colorOrder
+const sortedColors: any[] = [];
+colorOrder.forEach((row) => {
+  row.forEach((name) => {
+    const color = colorPaletteData.find((c: any) => c.name === name);
+    if (color) sortedColors.push(color);
+  });
+});
+---
+
+<style>
+  /* Define colour and background variables for light and dark themes */
+  :root {
+    --text-primary-light: #000; /* Text colour for light mode */
+    --text-primary-dark: #fff; /* Text colour for dark mode */
+    --background-light: #fff; /* Background colour for light mode */
+    --background-dark: #121212; /* Background colour for dark mode */
+    --code-box-light: #f4f4f4; /* Code box background for light mode */
+    --code-box-dark: #1e1e1e; /* Code box background for dark mode */
+    --border-color-light: #ddd; /* Border colour for light mode */
+    --border-color-dark: #333; /* Border colour for dark mode */
+  }
+
+  /* Apply theme-specific variables based on the data-theme attribute */
+  [data-theme="light"] {
+    --text-primary: var(--text-primary-light);
+    --background: var(--background-light);
+    --code-box: var(--code-box-light);
+    --border-color: var(--border-color-light);
+  }
+
+  [data-theme="dark"] {
+    --text-primary: var(--text-primary-dark);
+    --background: var(--background-dark);
+    --code-box: var(--code-box-dark);
+    --border-color: var(--border-color-dark);
+  }
+
+  /* Global body styles */
+  body {
+    color: var(--text-primary); /* Text colour */
+    background-color: var(--background); /* Background colour */
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease; /* Smooth transitions */
+  }
+
+  /* Grid container for the colour palette */
+  .palette-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12-column grid */
+    max-width: fit-content; /* Adjust grid width */
+    align-items: start; /* Align items to the top */
+  }
+
+  /* Add spacing above the first colour box */
+  .palette-container > .color-box:first-child {
+    margin-top: 16px;
+  }
+
+  /* Style for each colour box */
+  .color-box {
+    width: 100%;
+    aspect-ratio: 0.725; /* Maintain aspect ratio */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 4px; /* Rounded corners */
+    position: relative; /* Position for hover text */
+    cursor: crosshair; /* Pointer style */
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease; /* Smooth hover effects */
+    box-sizing: border-box; /* Include padding in width/height */
+    line-height: 0.9rem;
+  }
+
+  /* Hover effect for colour boxes */
+  .color-box:hover {
+    transform: scale(1.1); /* Slight zoom-in effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    z-index: 1;
+  }
+
+  /* Hidden label inside the colour box */
+  .color-box span {
+    display: none; /* Hidden by default */
+    position: absolute; /* Centered text */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    font-weight: bold;
+    /* color: white; */
+    /* text-shadow: #000 0px 0px 1px; Add shadow to text */
+    text-align: center;
+  }
+
+  /* Show label on hover */
+  .color-box:hover span {
+    display: block; /* Make the text visible */
+  }
+
+  /* Container for detailed colour info and code output */
+  .color-info {
+    margin-top: 20px; /* Space above the container */
+    padding: 10px; /* Inner padding */
+    border: 1px solid var(--border-color); /* Dynamic border colour */
+    border-radius: 4px; /* Rounded corners */
+    background-color: var(--code-box); /* Dynamic background */
+    color: var(--text-primary); /* Dynamic text colour */
+    text-align: center; /* Center the text */
+    font-family: Arial, sans-serif; /* Font styling */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease; /* Smooth transitions */
+  }
+
+  /* Styles for code block content */
+  .tab-content {
+    margin: 0; /* Remove extra margin */
+    padding: 0; /* Reset padding */
+    background: var(--code-box); /* Dynamic background colour */
+    border-radius: 5px; /* Rounded corners */
+    font-family: monospace; /* Monospace font for code */
+    font-size: 1rem; /* Font size */
+    overflow-x: auto; /* Allow horizontal scrolling for long code */
+    border: 1px solid var(--border-color); /* Dynamic border colour */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease; /* Smooth transitions */
+    text-align: left; /* Left-align the text */
+  }
+  .cpp-code,
+  .csharp-code,
+  .python-code {
+    padding-bottom: 10px;
+  }
+
+  .cpp-color-func,
+  .cpp-code-rgb,
+  .cpp-code-hsb,
+  .cs-code-color-oo,
+  .cs-code-rgb-sk,
+  .cs-code-rgb-oo,
+  .cs-code-hsb-sk,
+  .cs-code-hsb-oo,
+  .python-code-rgb,
+  .python-code-hsb {
+    display: none; /* Hidden by default */
+  }
+  /* Styles for tab headers */
+  .tab-header {
+    color: var(--text-primary); /* Dynamic text colour */
+    border-bottom: 2px solid var(--text-primary); /* Dynamic border colour */
+  }
+
+  /* Reset margin and add consistent padding to code blocks */
+  .expressive-code pre {
+    margin: 0;
+    padding: 8px;
+  }
+
+  /* Adjust spacing for the colour-info section */
+  .color-info {
+    margin-top: 8px; /* Reduce gap above the section */
+    padding: 0; /* Remove unnecessary padding */
+  }
+
+  /* Reset spacing for expressive-code component inside colour-info */
+  .color-info .expressive-code {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<div class="palette-container" id="palette-container">
+  <!-- Dynamically rendered colour boxes (with text colour based on contrast to box colour) -->
+  {
+    sortedColors.map((color) => (
+      <div
+        class="color-box"
+        style={`background-color: rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b});`}
+        data-color-name={color.name}
+        data-color-rgb={`rgb_color(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`}
+        data-color-hsb={`hsb_color(${color.hsb.h.toFixed(2)}, ${color.hsb.s.toFixed(2)}, ${color.hsb.b.toFixed(2)})`}
+      >
+        <span
+          style={`color: hsl(0, 0%, ${Math.round((100 - Math.round((0.2126 * color.rgb.r + 0.7152 * color.rgb.g + 0.0722 * color.rgb.b + 0.05) / (0.2126 + 0.7152 + 0.0722 + 0.05))) / 100 + 0.5) * 100}%);`}
+        >
+          {color.name}
+        </span>
+      </div>
+    ))
+  }
+</div>
+
+<div class="color-info" id="color-info">
+  <Tabs syncKey="code-language">
+    <TabItem label="C++">
+      <div class="tab-content cpp-code">
+        <div class="cpp-color-const" id="cpp-color-const">
+          <Code code="Click a colour to see details for C++" lang="cpp" />
+        </div>
+        <div class="cpp-color-func" id="cpp-color-func">
+          <Code code="Click a colour to see details for C++" lang="cpp" />
+        </div>
+        <div class="cpp-code-rgb" id="cpp-code-rgb">
+          <Code code="Click a colour to see details for C++" lang="cpp" />
+        </div>
+        <div class="cpp-code-hsb" id="cpp-code-hsb">
+          <Code code="Click a colour to see details for C++" lang="cpp" />
+        </div>
+      </div>
+    </TabItem>
+    <TabItem label="C#">
+      <div class="tab-content csharp-code">
+        <div class="cs-code-color-sk" id="cs-code-color-sk">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+        <div class="cs-code-color-oo" id="cs-code-color-oo">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+        <div class="cs-code-rgb-sk" id="cs-code-rgb-sk">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+        <div class="cs-code-rgb-oo" id="cs-code-rgb-oo">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+        <div class="cs-code-hsb-sk" id="cs-code-hsb-sk">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+        <div class="cs-code-hsb-oo" id="cs-code-hsb-oo">
+          <Code code="Click a colour to see details for C#" lang="csharp" />
+        </div>
+      </div>
+    </TabItem>
+    <TabItem label="Python">
+      <div class="tab-content python-code">
+        <div class="python-code-color" id="python-code-color">
+          <Code code="Click a colour to see details for Python" lang="python" />
+        </div>
+        <div class="python-code-rgb" id="python-code-rgb">
+          <Code code="Click a colour to see details for Python" lang="python" />
+        </div>
+        <div class="python-code-hsb" id="python-code-hsb">
+          <Code code="Click a colour to see details for Python" lang="python" />
+        </div>
+      </div>
+    </TabItem>
+  </Tabs>
+</div>
+
+<script>
+  // Wait until the DOM is fully loaded before executing the script
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get the palette container element by its ID
+    const paletteContainer = document.getElementById("palette-container");
+
+    // Add a click event listener to the palette container
+    paletteContainer?.addEventListener("click", (event) => {
+      // Identify the closest clicked element with the class 'color-box'
+      const colorBox = event.target?.closest(".color-box");
+      if (colorBox) {
+        // Retrieve custom data attributes from the selected colour box
+        const colorName = colorBox.dataset.colorName; // Colour name (e.g., "Red")
+        const colorRgb = colorBox.dataset.colorRgb; // RGB value (e.g., "rgb_color(255, 0, 0)")
+        const colorHsb = colorBox.dataset.colorHsb; // HSB value (e.g., "hsb_color(0.00, 1.00, 1.00)")
+
+        // Generate the C++ code snippet using the colour data
+        const cppCodeForColorConst = `COLOR_${colorName
+          .toUpperCase()
+          .replaceAll(" ", "_")}`;
+        const cppCodeForColorFunc = `color_${colorName
+          .toLowerCase()
+          .replaceAll(" ", "_")}()`;
+        const cppCodeForRgb = `${colorRgb}`;
+        const cppCodeForHsb = `${colorHsb}`;
+
+        // Generate the C# code snippet using the color data
+        const csCodeForColorSK = `SplashKit.Color${colorName.replaceAll(" ", "")}()`;
+        const csCodeForColorOO = `Color.${colorName.replaceAll(" ", "")}`;
+        const csCodeForRgbSK = `SplashKit.RGBColor(${colorRgb.slice(10, -1)})`;
+        const csCodeForRgbOO = `Color.RGBColor(${colorRgb.slice(10, -1)})`;
+        const csCodeForHsbSK = `SplashKit.HSBColor(${colorHsb.slice(10, -1)})`;
+        const csCodeForHsbOO = `Color.HSBColor(${colorHsb.slice(10, -1)})`;
+
+        // Generate the Python code snippet using the colour data
+        const pythonCodeForColor = `color_${colorName
+          .toLowerCase()
+          .replaceAll(" ", "_")}()`;
+        const pythonCodeForRgb = `rgb_color(${colorRgb.slice(10, -1)})`;
+        const pythonCodeForHsb = `hsb_color(${colorHsb.slice(10, -1)})`;
+
+        // Update the C++ tab content with the generated code
+        // C++ Color
+        const cppColorConst = document.querySelector(".cpp-color-const .code");
+        if (cppColorConst) cppColorConst.textContent = cppCodeForColorConst;
+        const cppColorFunc = document.querySelector(".cpp-color-func .code");
+        if (cppColorFunc) cppColorFunc.textContent = cppCodeForColorFunc;
+        const cppColorFuncDisplay = document.getElementById("cpp-color-func");
+        if (cppColorFuncDisplay) cppColorFuncDisplay.style.display = "block";
+
+        // C++ RGB
+        const cppRgb = document.querySelector(".cpp-code-rgb .code");
+        if (cppRgb) cppRgb.textContent = cppCodeForRgb;
+        const cppRgbDisplay = document.getElementById("cpp-code-rgb");
+        if (cppRgbDisplay) cppRgbDisplay.style.display = "block";
+
+        // C++ HSB
+        const cppHsb = document.querySelector(".cpp-code-hsb .code");
+        if (cppHsb) cppHsb.textContent = cppCodeForHsb;
+        const cppHsbDisplay = document.getElementById("cpp-code-hsb");
+        if (cppHsbDisplay) cppHsbDisplay.style.display = "block";
+
+        // Update the C# tab content with the generated code
+        // C# Color
+        const csColorSK = document.querySelector(".cs-code-color-sk .code");
+        if (csColorSK) csColorSK.textContent = csCodeForColorSK;
+
+        const csColorOO = document.querySelector(".cs-code-color-oo .code");
+        if (csColorOO) csColorOO.textContent = csCodeForColorOO;
+        const csColorOODisplay = document.getElementById("cs-code-color-oo");
+        if (csColorOODisplay) csColorOODisplay.style.display = "block";
+
+        // C# RGB
+        const csRgbSK = document.querySelector(".cs-code-rgb-sk .code");
+        if (csRgbSK) csRgbSK.textContent = csCodeForRgbSK;
+        const csRgbSKDisplay = document.getElementById("cs-code-rgb-sk");
+        if (csRgbSKDisplay) csRgbSKDisplay.style.display = "block";
+
+        const csRgbOO = document.querySelector(".cs-code-rgb-oo .code");
+        if (csRgbOO) csRgbOO.textContent = csCodeForRgbOO;
+        const csRgbOODisplay = document.getElementById("cs-code-rgb-oo");
+        if (csRgbOODisplay) csRgbOODisplay.style.display = "block";
+
+        // C# HSB
+        const csHsbSK = document.querySelector(".cs-code-hsb-sk .code");
+        if (csHsbSK) csHsbSK.textContent = csCodeForHsbSK;
+        const csHsbSKDisplay = document.getElementById("cs-code-hsb-sk");
+        if (csHsbSKDisplay) csHsbSKDisplay.style.display = "block";
+
+        const csHsbOO = document.querySelector(".cs-code-hsb-oo .code");
+        if (csHsbOO) csHsbOO.textContent = csCodeForHsbOO;
+        const csHsbOODisplay = document.getElementById("cs-code-hsb-oo");
+        if (csHsbOODisplay) csHsbOODisplay.style.display = "block";
+
+        // Update the Python tab content with the generated code
+        // Python Color
+        const pythonColor = document.querySelector(".python-code-color .code");
+        if (pythonColor) pythonColor.textContent = pythonCodeForColor;
+
+        // Python RGB
+        const pythonRgb = document.querySelector(".python-code-rgb .code");
+        if (pythonRgb) pythonRgb.textContent = pythonCodeForRgb;
+        const pythonRgbDisplay = document.getElementById("python-code-rgb");
+        if (pythonRgbDisplay) pythonRgbDisplay.style.display = "block";
+
+        // Python HSB
+        const pythonHsb = document.querySelector(".python-code-hsb .code");
+        if (pythonHsb) pythonHsb.textContent = pythonCodeForHsb;
+        const pythonHsbDisplay = document.getElementById("python-code-hsb");
+        if (pythonHsbDisplay) pythonHsbDisplay.style.display = "block";
+      }
+    });
+  });
+</script>

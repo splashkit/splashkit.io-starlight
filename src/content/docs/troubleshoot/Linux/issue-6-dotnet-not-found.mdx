@@ -1,0 +1,61 @@
+---
+title: "'dotnet' command not found"
+sidebar:
+  label: 6. 'dotnet' not found
+  order: 6
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to use a `dotnet` command in the terminal, you may encounter the error `Command 'dotnet' not found`:
+
+![dotnet not found in terminal](/images/troubleshoot/linux/dotnet-not-found.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1. Download and install .NET (version 8 or 9)
+
+Download and install [.NET](https://dotnet.microsoft.com/en-us/download) if you haven't already.
+
+Then close and reopen your terminal to test the command again.
+
+---
+
+### 2. Add the '.dotnet' folder to your PATH
+
+To add 'dotnet' to your PATH, run the following command:
+
+<Tabs syncKey="shell-profile">
+<TabItem label="Bash Users">
+
+```shell
+echo "export PATH=\"\$PATH:\$HOME/.dotnet\"" >> ~/.zshrc
+echo "export PATH=\"\$DOTNET_ROOT:\$HOME/.dotnet\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+</TabItem>
+<TabItem label="Zsh Users">
+
+```zsh
+echo "export PATH=\"\$PATH:\$HOME/.dotnet\"" >> ~/.zshrc
+echo "export PATH=\"\$DOTNET_ROOT:\$HOME/.dotnet\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+### 3. Update permissions
+
+If you are still having issues, try following the steps on the [3. .zshrc permission issues](/troubleshoot/macos/issue-2-zshrc-permission-issues) page first, then come back to repeat the steps above.
+
+---

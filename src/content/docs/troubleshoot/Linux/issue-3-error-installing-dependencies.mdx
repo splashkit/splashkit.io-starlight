@@ -1,0 +1,86 @@
+---
+title: Error installing dependencies
+sidebar:
+  label: 3. Error installing dependencies
+  order: 3
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+You receive an error when running the installation script to install SplashKit, or when running the `skm linux install` command. This is likely because the system cannot detect your linux distribution.
+
+![Error Example](/images/troubleshoot/linux/linux-deps-issue.png)
+
+:::
+
+## Solution(s)
+
+### 1. Install dependencies manually
+
+<Steps>
+
+1. Install the dependencies for your Linux distribution manually using the command below:
+
+    <Tabs syncKey="linux-distro">
+    <TabItem label="Ubuntu/Debian">
+
+    ```shell
+    sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
+    ```
+
+    </TabItem>
+    <TabItem label="Arch">
+    <Tabs syncKey="pacman-yay">
+    <TabItem label="pacman">
+
+    ```shell
+    sudo pacman -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+    </TabItem>
+    <TabItem label="yay">
+
+    ```shell
+    yay -S cmake libpng sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx clang freetype2 ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    <TabItem label="Fedora">
+
+    ```shell
+    sudo dnf install cmake libpng SDL2 SDL2_ttf SDL2_image SDL2_net SDL2_mixer SDL2_gfx clang freetype ncurses bzip2 flac libvorbis libmikmod libwebp
+    ```
+
+    </TabItem>
+    </Tabs>
+
+    If your distribution is not included above, you will need to install the following dependencies with the package manager for your linux distro:
+
+    - cmake
+    - libpng
+    - SDL2
+    - SDL2_ttf
+    - SDL2_image
+    - SDL2_net
+    - SDL2_mixer
+    - SDL2_gfx
+    - clang
+    - freetype
+    - ncurses
+    - bzip2
+    - flac
+    - libvorbis
+    - libmikmod
+    - libwebp
+
+2. Build and install SplashKit in the default globally locations using the following command:
+
+    ```shell
+    skm linux install
+    ```
+
+</Steps>

@@ -1,0 +1,81 @@
+---
+title: Testing install fails on Arch-based Linux distributions
+sidebar:
+  label: 5. Test install fails on Arch-based Linux
+  order: 5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When running installation script, you encounter an error like the one shown below, indicating issues with unresolved references to `libjxl` in `SDL2_image`. This typically happens due to outdated dependencies in the default repository.
+
+![Error Example](/images/troubleshoot/linux/arch-error.png)
+
+:::
+
+:::note
+
+This error can also occur due to various package issues, which might give you an error for a different package, this often stems from outdated or corrupted dependencies in the default repository.
+
+:::
+
+## Solution(s)
+
+### 1. Update/upgrade dependencies
+
+Follow the steps below to resolve the issue by upgrading dependencies or linking to updated repositories.
+
+<Steps>
+
+1. **Step 1: Update System Repositories**
+
+    Ensure your system's package repositories are up-to-date by running the following command:
+
+    ```shell
+    sudo pacman -Syu
+    ```
+
+    This will synchronize your system with the latest versions of all installed packages.
+
+2. **Step 2: Use `pamac` to Update Without AUR Packages**
+
+    If the issue persists due to `SDL2_image` dependencies (e.g., `libjxl`), use `pamac` to update the package cache and repositories linked to newer dependency versions:
+
+    ```shell
+    pamac update --no-aur
+    ```
+
+    This command ensures that your system links to updated repositories and fetches the latest dependencies for `SDL2_image`.
+
+3. **Step 3: Verify Installation of `SDL2_image` Dependencies**
+
+    To manually check if `libjxl` and other related dependencies are installed, run:
+
+    ```shell
+    pamac install libjxl
+    sudo pacman -S sdl2_image
+    ```
+
+    These commands will ensure that the necessary libraries for SplashKit are correctly installed.
+
+4. **Step 4: Run `skm global install`**
+
+    After updating the dependencies, run the SplashKit global installation:
+
+    ```shell
+    skm global install
+    ```
+
+    If the dependencies were resolved correctly, the installation should now complete without errors.
+
+</Steps>
+
+#### Additional Notes
+
+If you encounter further errors, verify your system's library paths and ensure `libSplashKit.so` is correctly located by running:
+
+```shell
+sudo ldconfig /usr/local/lib
+```

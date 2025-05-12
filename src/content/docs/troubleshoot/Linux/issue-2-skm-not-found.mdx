@@ -1,0 +1,67 @@
+---
+title: "'skm' command not found"
+sidebar:
+  label: 2. skm not found
+  order: 2
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to use `skm` in the terminal, you may encounter the error `zsh: command not found: skm`, indicating that the `.splashkit` directory is not included in your PATH.
+
+![Error Example](/images/troubleshoot/linux/linux-skm-not-found.png)
+
+:::
+
+## Solution(s)
+
+### 1. Update Your Shell Profile (`~/.bashrc` or `~/.zshrc`)
+
+Follow these steps to update your shell profiles and system library path to include SplashKit.
+
+**For Bash Users**:
+
+<Tabs syncKey="shell-profile">
+<TabItem label="Bash Users">
+
+<Steps>
+
+1. To add SplashKit to your PATH, run the following commands:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+2. Install the necessary dependencies, compile and install SplashKit globally with the following command:
+
+    ```shell
+    skm linux install
+    ```
+
+</Steps>
+
+</TabItem>
+<TabItem label="Zsh Users">
+
+<Steps>
+
+1. To add SplashKit to your PATH, run the following commands:
+
+    ```zsh
+    echo "export PATH=\"$HOME/.splashkit:\$PATH\"" >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+2. Install the necessary dependencies, compile and install SplashKit globally with the following command:
+
+    ```shell
+    skm linux install
+    ```
+
+</Steps>
+
+</TabItem>
+</Tabs>

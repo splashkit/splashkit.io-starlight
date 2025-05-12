@@ -1,0 +1,32 @@
+---
+title: The type or namespace 'SplashKitSDK' could not be found
+sidebar:
+  label: 6. SplashKitSDK not found
+  order: 6
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When running a SplashKit C# project on macos, an error may appear that mentions: `The type or namespace 'SplashKitSDK' could not be found`.
+
+This happens when the SplashKit dotnet package has not been added to the project.
+
+![Error Example](/images/troubleshoot/macos/namespace-splashkitsdk-not-found.png)
+
+:::
+
+## Solution(s)
+
+### 1. Add the SplashKit package to your project
+
+To resolve this error, run the following command in the directory where your project is located:
+
+```shell
+dotnet add package SplashKit
+```
+
+You should now see "SplashKit" mentioned in your `.csproj` file.
+
+Confirm this has been successful by running the `dotnet run` command again.

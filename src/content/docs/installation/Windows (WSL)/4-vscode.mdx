@@ -1,0 +1,157 @@
+---
+title: Install Visual Studio Code
+sidebar:
+  label: 4. Visual Studio Code
+---
+
+import { Steps, Tabs, TabItem, LinkButton } from '@astrojs/starlight/components';
+
+[Visual Studio Code](https://code.visualstudio.com/) is a versatile, user-friendly source code editor that supports extensions for multiple languages, including C#, C++ and python. Follow these steps to install Visual Studio Code on WSL and set up the necessary extensions.
+
+## Install Visual Studio Code
+
+Download [Visual Studio Code](https://code.visualstudio.com), and run the installer.
+
+## Installing Extensions for Development
+
+After setting up Visual Studio Code, enhance your development environment by adding essential extensions for C#, C++, and Python. These extensions provide robust tools for coding, debugging, and code intelligence, making your setup complete for SplashKit projects.
+
+### WSL Extension
+
+<Tabs syncKey="vscode-extensions-install-method">
+<TabItem label="Using the Command Line">
+
+You can install the WSL extension directly from the terminal by running:
+
+```shell
+code --install-extension ms-vscode-remote.remote-wsl
+```
+
+</TabItem>
+<TabItem label="Using Visual Studio Code">
+
+To add the WSL extension within Visual Studio Code:
+
+1. Open the Extensions view by pressing `Ctrl+Shift+X`.
+2. Search for "WSL" and click **Install**.
+
+![Adding WSL extension in Visual Studio Code](/images/installation/WSL-in-vscode.png)
+
+</TabItem>
+<TabItem label="Using the Extensions Website">
+
+Install the WSL extension directly from the Visual Studio Marketplace:
+
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">WSL Extension</LinkButton>
+
+</TabItem>
+</Tabs>
+
+### C# Extensions
+
+<Tabs syncKey="vscode-extensions-install-method">
+<TabItem label="Using the Command Line">
+
+You can install these C# extensions directly from the terminal by running:
+
+```shell
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-dotnettools.csdevkit
+code --install-extension ms-dotnettools.vscodeintellicode-csharp
+```
+
+</TabItem>
+<TabItem label="Using Visual Studio Code">
+
+To add these extensions within Visual Studio Code:
+
+1. Open the Extensions view by pressing `Ctrl+Shift+X`.
+2. Search for "C# Microsoft" and the top 3 extensions listed above should appear. Click **Install** for each. If they don't then search for them individually.
+
+![Adding C# extensions in Visual Studio Code](/images/installation/csharp-in-vscode.png)
+
+</TabItem>
+<TabItem label="Using the Extensions Website">
+
+Install the following C# extensions directly from the Visual Studio Marketplace:
+
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" target="_blank">C#</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit" target="_blank">C# Dev Kit</LinkButton>
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp" target="_blank">Intellicode for C# Dev Kit</LinkButton>
+
+</TabItem>
+</Tabs>
+
+### C++ Extensions
+
+<Tabs syncKey="vscode-extensions-install-method">
+<TabItem label="Using the Command Line">
+
+To install the C++ Extension Pack directly from the terminal:
+
+```shell
+code --install-extension ms-vscode.cpptools-extension-pack
+```
+
+</TabItem>
+<TabItem label="Using Visual Studio Code">
+
+To add the C++ extension within Visual Studio Code:
+
+1. Open the Extensions view (`Ctrl+Shift+X`).
+2. Search for "C++ Extension Pack" and click **Install**.
+
+![Adding C++ extensions in Visual Studio Code](/images/installation/cplus-in-vscode.png)
+
+</TabItem>
+<TabItem label="Using the Extensions Website">
+
+Install the C++ Extension Pack for comprehensive C++ support:
+
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack" target="_blank">C++ Extension Pack</LinkButton>
+
+</TabItem>
+</Tabs>
+
+### Python Extensions
+
+<Tabs syncKey="vscode-extensions-install-method">
+<TabItem label="Using the Command Line">
+
+To install the Python Extension Pack directly from the terminal:
+
+```shell
+code --install-extension donjayamanne.python-extension-pack
+```
+
+</TabItem>
+<TabItem label="Using Visual Studio Code">
+
+To install the Python Extension Pack within Visual Studio Code:
+
+1. Open the Extensions view (`Ctrl+Shift+X`).
+2. Search for "Python Extension Pack" and click **Install**.
+
+![Adding Python extensions in Visual Studio Code](/images/installation/python-in-vscode.png)
+
+</TabItem>
+<TabItem label="Using the Extensions Website">
+
+For Python support, install the Python Extension Pack from the Visual Studio Marketplace:
+
+<LinkButton icon="external" href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack" target="_blank">Python Extension Pack</LinkButton>
+
+</TabItem>
+</Tabs>
+
+## Next Steps
+
+Congratulations! You've completed the setup of everything you need to get started with SplashKit. You're now ready to start developing.
+
+:::tip[Ready to start coding?]
+
+You can find more information about compiling and running SplashKit programs in the link below:
+
+<LinkButton icon="open-book" href="/guides/0-using-splashkit">Using SplashKit</LinkButton>
+
+:::

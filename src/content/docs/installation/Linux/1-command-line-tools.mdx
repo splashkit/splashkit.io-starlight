@@ -1,0 +1,112 @@
+---
+title: Install Command Line Tools
+description: Install command line tools on Linux.
+sidebar:
+  label: 1. Command Line Tools
+  order: 1
+---
+
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+
+SplashKit requires a few command line tools to be installed on your system before you can proceed with the installation. Follow the steps below to install these tools, then continue with the SplashKit installation.
+
+## Installation Steps
+
+<Steps>
+
+1. **Open a Terminal**  
+
+   Locate your terminal in the applications menu, or use the keyboard shortcut (`Ctrl + Alt + T` on most Linux systems).
+
+   ![Opening a terminal in Linux](/gifs/linux/open-terminal.gif)
+
+2. **Update Your System**  
+
+   Before installing new packages, it’s important to keep your system up-to-date to ensure the latest security and stability improvements. Run the following command based on your Linux distribution:
+
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+
+   ```shell
+   sudo apt-get update && sudo apt-get upgrade
+   ```
+
+   </TabItem>
+   <TabItem label="Arch">
+   <Tabs syncKey="package-manager">
+   <TabItem label="With pacman">
+
+   ```shell
+   sudo pacman -Syu
+   ```
+
+   </TabItem>
+   <TabItem label="With yay">
+
+   ```shell
+   yay -Syu
+   ```
+
+   </TabItem>
+   </Tabs>
+   </TabItem>
+   <TabItem label="Fedora">
+
+   ```shell
+   sudo dnf update
+   ```
+
+   </TabItem>
+   </Tabs>
+
+3. **Install Required Command Line Tools**  
+
+   To proceed with SplashKit installation, you need to have **curl** and **git** installed. Use your package manager to install these tools:
+
+   <Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+
+   ```shell
+   sudo apt-get install curl git
+   ```
+
+   </TabItem>
+   <TabItem label="Arch">
+   <Tabs syncKey="package-manager">
+   <TabItem label="With pacman">
+
+   ```shell
+   sudo pacman -S curl git
+   ```
+
+   </TabItem>
+   <TabItem label="With yay">
+
+   ```shell
+   yay -S curl git
+   ```
+
+   </TabItem>
+   </Tabs>
+   </TabItem>
+   <TabItem label="Fedora">
+
+   ```shell
+   sudo dnf install curl git
+   ```
+
+   </TabItem>
+   </Tabs>
+
+4. **Verify Installation (Optional)**  
+
+   To confirm the tools are successfully installed, run:
+
+   ```shell
+   curl --version
+   git --version
+   ```
+
+   Both commands should output version information if the installation was successful.
+
+</Steps>

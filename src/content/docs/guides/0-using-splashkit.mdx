@@ -1,0 +1,114 @@
+---
+title: Using SplashKit
+sidebar:
+  order: 1
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+Here is a basic overview of how to compile and run SplashKit programs in C++, C# and python.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+To compile C++ SplashKit code, you will use the following command (assuming the code file is named `program.cpp`):
+
+```shell
+clang++ program.cpp -l SplashKit -o test_program
+```
+
+Or:
+
+```shell
+g++ program.cpp -l SplashKit -o test_program
+```
+
+Then you can run the program with:
+
+```shell
+./test_program
+```
+
+Or, if using MSYS2 (MINGW64):
+
+```shell
+./test_program.exe
+```
+
+:::note[With 'skm']
+
+You can also compile your C++ code using the following command:
+
+```shell
+skm clang++ program.cpp -o test_program
+```
+
+Or:
+
+```shell
+skm g++ program.cpp -o test_program
+```
+
+:::
+
+</TabItem>
+<TabItem label="C#">
+
+To run C# SplashKit code with dotnet, you will need to first run the command below:
+
+```shell
+dotnet add package SplashKit
+```
+
+This will add the SplashKit NuGet package, to link the SplashKit SDK to your project.
+
+Then you can run the program using:
+
+```shell
+dotnet run
+```
+
+:::note[With 'skm']
+
+You can also build and run your C# code using the following command:
+
+```shell
+skm dotnet run
+```
+
+:::
+
+</TabItem>
+<TabItem label="Python">
+
+To run SplashKit python code, you will use the following command (assuming the code file is named `program.py`):
+
+```shell
+python3 program.py
+```
+
+:::note[With 'skm']
+
+You can also run your Python code using the following command:
+
+```shell
+skm python3 program.py
+```
+
+:::
+
+</TabItem>
+</Tabs>
+
+## More Information
+
+More detailed guides on getting started with SplashKit coming soon...
+
+For now, you can look at these guides in the [programmers.guide](https://programmers.guide/) online textbook:
+
+| Language | Overview                                      | Link                                                                                                                                   |
+| -------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| C#       | Setting up a basic SplashKit C# project.      | [**Your First Program**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/1-hello-world-cli/)          |
+| C#       | Building a graphical (GUI) SplashKit program. | [**Build Graphical Hello World**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/1-hello-world-cli/) |
+| C++      | Setting up a basic SplashKit C++ program.     | [**Hello from C/C++**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/3-hello-cpp/)                  |
+| C++      | More in-depth C++ guide.                      | [**Building a C/C++ Program**](https://programmers.guide/book/part-2-organised-code/1-starting-cpp/2-trailside/1-0-building-cpp/)      |

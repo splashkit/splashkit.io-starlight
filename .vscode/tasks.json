@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build splashkit.io Website",
+      "type": "shell",
+      "command": "npm install && npm run build && npm start",
+      "group": "build",
+      "presentation": {
+        "group": "buildGroup",
+        "reveal": "always",
+        "panel": "new",
+        "echo": false
+      },
+      // "runOptions": {
+      //   "runOn": "folderOpen" // This starts the task automatically
+      // }
+    }
+  ]
+}

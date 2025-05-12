@@ -1,0 +1,105 @@
+---
+title: Permission issue when running SplashKit installation command
+sidebar:
+  label: 2. .zshrc permission issues
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+The `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` command shows an error message near the end that looks similar to either of the following images:
+
+![Terminal window showing permission denied for .zshrc file](/images/troubleshoot/macos/permission-issue.png)
+
+![Terminal window showing Operation not permitted for .zshrc file](/images/troubleshoot/macos/file-locked.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1: Update File Permissions using Terminal
+
+<Steps>
+
+1. Open the Terminal App, and run the following command:
+
+    ```shell
+    sudo chmod a=rw ~/.zshrc
+    ```
+
+    :::note
+    If the error message mentions a different file such as `.bash_profile`, then you will use that file in the command above instead of the `.zshrc` file used in this example.
+    :::
+
+2. Remove the existing `.splashkit` folder by running the following command:
+
+    ```shell
+    rm -rf ~/.splashkit
+    ```
+
+3. Close and reopen the Terminal, and run the initial install script command again:
+
+    ```shell
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+</Steps>
+
+---
+
+If you still have issues, try the steps below:
+
+### 2: Update File Permissions using Finder
+
+To resolve this issue using Finder rather than the terminal, you can update the file permissions with the following steps:
+
+<Steps>
+
+1. Open Finder.
+2. Click on "Go" at the top of the screen, then "Home":
+
+    ![Finder window showing how to get to Home folder](/images/troubleshoot/macos/finder-go-to-home.png)
+
+3. Click into the **Macintosh HD** (or similar) folder, then the **Users** folder, and finally, click into the folder with your computer's username.
+4. Show the hidden files with the shortcut: `Shift` + `Command` + `.` and you should be able to scroll down to see the file mentioned in the terminal error.
+
+    Here is an example to show the hidden `.zshrc` file mentioned in the screenshots above:
+
+    ![Finder window showing folder steps to .zshrc file](/images/troubleshoot/macos/finder-hidden-files-zshrc.png)
+
+    :::note
+    If the error message mentions a different file such as `.bash_profile`, then you will edit that file instead of the `.zshrc` file used in this example.
+    :::
+
+5. Right-click on the file and then select "**Get Info**".  
+    You will see something that looks similar to this:
+
+    ![Get info window for .zshrc file](/images/troubleshoot/macos/get-info-zshrc.png)
+
+6. Check the information in the orange boxes shown in the image above:
+
+   - Make sure the "**Locked**" checkbox is **not** ticked (as shown above).
+   - Make sure the file has "**Read & Write**" Privileges for at least your username, but sometimes you may need to change all of them to Read & Write.
+
+7. Close the Info window.
+8. Open your terminal and run the SplashKit installation script command again:
+
+    ```bash
+    bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)
+    ```
+
+9. If you get a message the SplashKit is already installed, copy the text to uninstall (highlighted in the image below - yours will have a different username):
+
+    ![Terminal window showing splashkit already installed](/images/troubleshoot/macos/skm-already-installed.png)
+
+10. Paste and run the command to uninstall SplashKit.
+11. Close and re-open the Terminal and run the SplashKit installation script command again.
+12. SplashKit should now be able to install successfully, so you can continue on with the next installation step.
+
+</Steps>
+
+---

@@ -1,0 +1,65 @@
+---
+title: "\"bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)\" does nothing"
+sidebar:
+  label: 1. bash curl not working
+  order: 1
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+Attempting to run the command `bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-scripts/skm-install.sh)` results in no response from the terminal, with no indication of success or error.
+
+![bash curl installation command does nothing](/images/troubleshoot/windows-msys2/skm-install-does-nothing-windows.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1: Check Internet Connection
+
+Make sure your device is connected to the internet, as this command depends on a stable connection to access the script online.
+
+---
+
+### 2: Temporarily Disable Firewall
+
+Your firewall may be blocking the script from running. Try temporarily disabling your firewall:
+
+<Steps>
+
+1. Open **Control Panel** and navigate to **System and Security** > **Windows Defender Firewall**.
+2. Select **Turn Windows Defender Firewall on or off** and choose **Turn off** for both Private and Public networks.
+3. Run the command again in your terminal, then re-enable the firewall after the installation.
+
+</Steps>
+
+---
+
+### 3: Manually Download and Run the Script
+
+If the command still doesn’t respond, you can manually download and execute the script as follows:
+
+<Steps>
+
+1. Go to the [skm-install.sh script](https://github.com/splashkit/skm/blob/master/install-scripts/skm-install.sh).
+2. Click the “Download raw file” button as shown below:
+
+    ![Download Raw File](https://i.imgur.com/MWhWHRO.png)
+
+3. Save the file to a location you can easily access, such as your **Downloads** folder.
+4. Open the **MINGW64** terminal and type `bash` (with a space at the end).
+5. Drag the downloaded file from **File Explorer** into the terminal window to add its path, as shown here:
+
+    ![Drag and Drop Example](https://i.imgur.com/ZbcghXz.png)
+
+6. Press **Enter** to run the script. This should complete the installation of `skm`, allowing you to continue with the tutorial from the next step.
+
+</Steps>
+
+These steps should allow you to successfully run the `skm` installation script on Windows. If issues persist, refer to the additional troubleshooting guides or contact support.
+
+---

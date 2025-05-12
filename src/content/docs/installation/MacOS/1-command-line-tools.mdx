@@ -1,0 +1,41 @@
+---
+title: Install Xcode Command Line Tools
+description: Install the Xcode Command Line Tools on MacOS.
+sidebar:
+  label: 1. Command Line Tools
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+SplashKit requires a few command line tools to be installed on your system before you can proceed with the installation. Follow the steps below to install these tools, then continue with the SplashKit installation.
+
+## Installation Steps
+
+<Steps>
+
+1. **Open the Terminal Application**  
+   Locate the Terminal using Spotlight Search:
+
+   :::tip[How to Open Terminal on macOS]
+   1. Press **Command** (⌘) + **Space bar** to open Spotlight Search.
+   2. Begin typing "Terminal."
+   3. Select the **Terminal** app from the search results.
+   :::
+
+2. **Install Xcode Command Line Tools**  
+   In the Terminal, copy and paste the following command, then press **Enter**:
+
+   ```shell
+   xcode-select --install
+   ```
+
+   ![Gif showing Spotlight Search to open Terminal and pasting Xcode install command](/gifs/macos/terminal-xcode-install.gif)
+
+3. **Follow the On-Screen Prompts**  
+   A pop-up window will appear, prompting you to install the Command Line Tools. Follow the instructions to complete the installation.
+
+   **Note:** If you see a message indicating that "Command Line Tools" are already installed, you can proceed to the next step without reinstalling.
+
+   ![A Terminal window showing message that 'Command Line Tools' are already installed](/images/installation/macos/xcode-install.png)
+
+</Steps>

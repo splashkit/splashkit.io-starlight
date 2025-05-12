@@ -1,0 +1,98 @@
+{
+    "guides": [
+        {
+            "name": "Introduction to Vectors",
+            "functions": [
+                "vector_to_string",
+                "vector_point_to_point"
+            ],
+            "url": "/guides/physics/0-introduction-to-vectors/"
+        },
+        {
+            "name": "Vector Magnitudes",
+            "functions": [
+                "vector_magnitude",
+                "vector_magnitude_squared",
+                "vector_invert"
+            ],
+            "url": "/guides/physics/1-vector-magnitudes/"
+        },
+        {
+            "name": "Vector Arithmetic",
+            "functions": [
+                "vector_add",
+                "vector_subtract",
+                "vector_multiply"
+            ],
+            "url": "/guides/physics/2-vector-arithmetic/"
+        },
+        {
+            "name": "Vector Angles",
+            "functions": [
+                "vector_angle",
+                "dot_product",
+                "angle_between"
+            ],
+            "url": "/guides/physics/3-vector-geometry-angles/"
+        },
+        {
+            "name": "Resolving Collisions Using Vectors",
+            "functions": [
+                "vector_normal",
+                "dot_product",
+                "vector_add",
+                "vector_multiply",
+                "vector_point_to_point"
+            ],
+            "url": "/guides/physics/4-collision-detection-using-vectors/"
+        },
+        {
+            "name": "Collisions and Gravity",
+            "functions": [
+                "vector-point-to-point",
+                "vector_magnitude",
+                "unit_vector",
+                "vector_normal",
+                "vector_multiply",
+                "vector_subtract",
+                "vector_add",
+                "dot_product"
+            ],
+            "url": "/guides/physics/5-collisions-and-gravity/"
+        },
+        {
+            "name": "Raycasting Basics",
+            "functions": [
+                "vector_to",
+                "vector_from_angle",
+                "vector_multiply",
+                "point_offset_by"
+            ],
+            "url": "/guides/physics/6-raycasting-basics/"
+        },
+        {
+            "name": "Raycasting and Illumination",
+            "functions": [
+                "point_offset_by",
+                "vector_multiply",
+                "vector_to",
+                "vector_from_angle",
+                "hsb_color",
+                "hue_of",
+                "saturation_of",
+                "brightness_of"
+            ],
+            "url": "/guides/physics/7-raycasting-light/"
+        },
+        {
+            "name": "2D to 3D Projection",
+            "functions": [
+                "vector_magnitude",
+                "vector_from_angle",
+                "vector_point_to_point",
+                "point_offset_by"
+            ],
+            "url": "/guides/physics/8-3d-projection-raycasting/"
+        }
+    ]
+}

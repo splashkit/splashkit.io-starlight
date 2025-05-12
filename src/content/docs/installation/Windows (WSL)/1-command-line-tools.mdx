@@ -1,0 +1,96 @@
+---
+title: Install WSL and Command Line Tools
+description: Install Windows Subsystem for Linux (WSL) and the necessary command line tools for SplashKit on Windows.
+sidebar:
+  label: 1. WSL and Command Line Tools
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+SplashKit requires several command line tools to be installed on your system before you proceed with the installation. Follow the steps below to install these tools, then you can continue with the SplashKit installation.
+
+Windows Subsystem for Linux (WSL) is a feature of Windows that lets you run a Linux environment on your Windows machine without needing a virtual machine or dual-boot setup.
+
+## Installation Steps
+
+<Steps>
+
+1. **Install WSL (Ubuntu)**
+
+   ### Method 1: Command Line (Recommended)
+
+   To install both WSL and Ubuntu from the command line, follow these steps. Open Terminal, PowerShell, or Command Prompt in *administrator mode* by right-clicking and selecting "Run as administrator," then enter the command below:
+
+   ```shell
+   wsl --install
+   ```
+
+   ![Gif showing WSL terminal running wsl --install commands](/gifs/windows/wsl-terminal.gif)
+
+   ### Method 2: Microsoft Store (Alternative)
+
+   Alternatively, you can install WSL (and Ubuntu) directly from the Microsoft Store.
+
+   - Search "WSL" in the Microsoft Store app, or [click here](https://apps.microsoft.com/store/detail/9P9TQF7MRM4R).
+   - Next, download **Ubuntu** from the Microsoft Store. Search "Ubuntu," or [click this link](https://apps.microsoft.com/store/detail/9PDXGNCFSCZV).
+
+   ![Gif showing WSL being installed from Microsoft Store](/gifs/windows/install-wsl.gif)
+
+2. **Create Ubuntu User Account**
+
+   Restart your computer if you haven’t already. After restarting, a terminal window will open to finish Ubuntu setup. If it doesn’t, open the WSL or Ubuntu app manually.
+
+   When prompted, enter a UNIX username and password.  
+   For example, if you choose the username "**default-user**," your terminal will look like this:
+
+   ![Image showing WSL terminal with ubuntu user account setup](/images/installation/windows/terminal-ubuntu-user-account.png)
+
+   :::tip[Troubleshooting Installation Issues]
+   If you have issues installing WSL with Ubuntu, reset the installation by entering:
+
+   ```shell
+   wsl --unregister Ubuntu
+   ```
+
+   Then, reinstall using:
+
+   ```shell
+   wsl --install
+   ```
+
+   Lastly, open Ubuntu again to create your user account.
+   :::
+
+3. **(Optional) Configure Windows Terminal for WSL**
+
+   To have the Windows **Terminal** app automatically open with WSL, you can set the *Default profile* to WSL (Ubuntu).
+
+   - Open the Terminal app, click the drop-down arrow at the top of the window, then click "Settings."
+   - In *Default profile*, select an **Ubuntu** profile. Choose the profile with the Linux penguin icon if available.
+   - Click **Save** to apply changes.
+
+   ![Image showing Terminal App settings to set WSL as default profile](/images/installation/windows/windows-terminal-default-profile.png)
+
+   :::tip[Pin it to the Taskbar]
+   To make the Terminal app easily accessible, open it, right-click its icon in the taskbar, and select "Pin to taskbar."
+   :::
+
+4. **Install Command Line Tools**
+
+   To proceed with SplashKit on WSL, you’ll need to install `git`, `curl`, and `clang` using `apt` in your **WSL Terminal**.
+
+   First, update the package lists:
+
+   ```shell
+   sudo apt update
+   ```
+
+   Next, install the tools:
+
+   ```shell
+   sudo apt install git curl clang
+   ```
+
+   ![Gif showing command above being run in WSL Terminal](/gifs/windows/wsl-git-curl.gif)
+
+</Steps>

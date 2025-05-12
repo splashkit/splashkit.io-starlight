@@ -1,34 +1,39 @@
 {
-  "name": "zapping-zenith",
+  "name": "splashkit.io",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.9",
   "scripts": {
-    "dev": "npm run generate-mdx && astro dev",
-    "start": "npm run generate-mdx && astro dev",
-    "build": "astro build",
+    "dev": "npm run setup && astro dev",
+    "start": "npm run setup && astro dev",
+    "build": "npm run setup && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-mdx": "node ./scripts/components.cjs"
+    "setup": "node ./scripts/json-files-script.cjs && node ./scripts/api-pages-script.cjs",
+    "generate-mdx": "node ./scripts/api-pages-script.cjs",
+    "generate-json": "node ./scripts/json-files-script.cjs",
+    "check-links": "SET CHECK_LINKS=true && npm run build && SET CHECK_LINKS=false"
   },
   "dependencies": {
-    "@astrojs/netlify": "^4.0.2",
-    "@astrojs/prism": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.4",
-    "@astrojs/solid-js": "^3.0.3",
-    "@astrojs/starlight": "^0.15.1",
-    "@mdx-js/mdx": "^3.0.0",
-    "astro": "^4.0.8",
-    "astro-expressive-code": "^0.29.2",
-    "astro-icon": "^0.8.2",
-    "front-matter": "^4.0.2",
-    "fs": "^0.0.1-security",
+    "@astrojs/react": "^4.2.7",
+    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/starlight": "^0.34.2",
+    "@astrojs/starlight-docsearch": "^0.3.0",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^5.5.2",
     "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.0",
-    "kleur": "^4.1.5",
-    "path": "^0.12.7",
-    "remark-frontmatter": "^5.0.0",
-    "sharp": "^0.32.6",
-    "solid-js": "^1.8.6",
-    "tailwindcss": "^3.3.5"
+    "kleur": "4.1.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "rehype-mathjax": "^6.0.0",
+    "remark-heading-id": "^1.0.1",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.34.1",
+    "starlight-blog": "^0.21.0",
+    "starlight-links-validator": "^0.16.0",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "accessible-astro-components": "^3.0.1"
   }
 }

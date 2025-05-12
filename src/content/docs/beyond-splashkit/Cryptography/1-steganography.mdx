@@ -1,0 +1,1905 @@
+---
+title: Steganography
+description: Explore using steganography to hide messages in images and bitmaps.
+category: Guides
+author: Brianna Laird
+lastupdated: December 2024
+---
+
+import { Tabs, TabItem, Steps } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+Steganography is the practice of concealing a message within another message or medium. In this guide, we will explore how to use steganography to hide messages in bitmaps, covering how to implement a program to embed and extract messages from images using Least Significant Bit (LSB) steganography. We will also discuss how to enhance the security of hidden messages by applying the Caesar Cipher to the plaintext before embedding it in the image.
+
+## What is Steganography?
+
+Steganography is an ancient technique of hiding information in plain sight. The term is derived from the Greek words steganos (covered) and graphein (writing), meaning "covered writing." Unlike encryption, which scrambles the content of a message to make it unreadable to unauthorised parties, steganography disguises the very existence of the message by embedding it within another seemingly innocuous medium, such as an image, audio file, or text document.
+
+Modern digital steganography often takes advantage of the characteristics of multimedia files to hide information. Images are particularly useful for this purpose because their pixel data provides a high degree of redundancy, which means small changes in pixel values are imperceptible to the human eye. For added security, steganography is frequently combined with encryption, ensuring that even if a hidden message is discovered, it remains unreadable without the proper decryption key.
+
+### Applications of Steganography
+
+Steganography has a range of applications, both benign and malicious. Legitimate uses include watermarking to protect intellectual property, secure communication in censorship-prone environments, and embedding metadata for digital forensics. However, it has also been misused for covert communication in cybercrime and espionage. This dual-use nature makes it a fascinating but critical subject in cybersecurity.
+
+## How Does Steganography Work?
+
+At its core, digital steganography involves embedding a secret message within a host medium. For images, this is typically done by modifying the binary representation of pixel values. Each pixel in a digital image is represented by a combination of red, green, and blue (RGB) color values. These values are stored as binary numbers, allowing for subtle alterations to be made without visibly affecting the image.
+
+The most common method is Least Significant Bit (LSB) Steganography, where the least significant bit (the last bit in a binary number) of each pixel is replaced with a bit from the secret message. This approach leverages the fact that small changes to the least significant bit have negligible visual impact on the image.
+
+For example, consider the binary representation of a pixel's red channel:
+
+```plaintext
+Original: 11110010
+Modified: 11110011
+```
+
+The difference between these two values is imperceptible to the human eye, but the change encodes a bit of the hidden message.
+
+To ensure the hidden message can be retrieved, both the sender and receiver must agree on an encoding scheme. This includes specifying which bits will carry the hidden data and how the message length will be encoded.
+
+### Why Use Base64 Encoding?
+
+Before embedding the message, encoding it in a format like Base64 is common. Base64 ensures that the message is represented using only printable characters, making it easier to handle and less prone to corruption during transmission. This step is particularly useful when the message contains non-textual or binary data.
+
+## Using Steganography to Hide Messages in Images
+
+In this guide, we will demonstrate how to use steganography to hide messages within bitmap images using LSB steganography. This technique is straightforward, making it ideal for beginners, while still being robust enough to illustrate the core principles of steganography.
+
+### Embedding a Message in an Image
+
+To hide a message:
+
+<Steps>
+1. **Choose an Image:** Any bitmap image can be used, but high-resolution images provide more space for hiding data. For this guide, we'll use a bitmap image of a cat.
+2. **Prepare the Message:** The message will be encoded in Base64 before embedding to ensure compatibility and readability.
+3. **Embed the Message:** Using LSB steganography, replace the least significant bits of the image's pixel data with bits from the encoded message.
+</Steps>
+
+Here is the cat image we'll use! (right-click to save the image)
+
+![Cat Image](/beyond-splashkit/images/cryptography/1-steganography/cat.bmp)
+
+### Code Example
+
+Here is how you can embed a message in a bitmap using C++, C#, or Python:
+
+:::note
+You will need to update the path to be the path to your bitmap file.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include <bitset>
+#include <sstream>
+
+using namespace std;
+
+string base64_encode(const string &input)
+{
+    string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string encoded_string;
+    int value = 0, bits = -6;
+    const unsigned int base64_mask = 0x3F;
+
+    for (unsigned char character : input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encoded_string.push_back(BASE64_CHARS[(value >> bits) & base64_mask]);
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encoded_string.push_back(BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]);
+    }
+
+    while (encoded_string.size() % 4)
+    {
+        encoded_string.push_back('='); // Padding to make the length a multiple of 4
+    }
+
+    return encoded_string;
+}
+
+// This will allow us to highlight the differences in the binary data
+pair<string, string> highlight_changes(const string &original, const string &modified)
+{
+    string highlighted_original, highlighted_modified;
+    for (size_t i = 0; i < original.size(); ++i)
+    {
+        if (original[i] != modified[i])
+        {
+            highlighted_original += "[" + string(1, original[i]) + "]";
+            highlighted_modified += "[" + string(1, modified[i]) + "]";
+        }
+        else
+        {
+            highlighted_original += original[i];
+            highlighted_modified += modified[i];
+        }
+    }
+    return {highlighted_original, highlighted_modified};
+}
+
+vector<char> embed_message(const vector<char>& data, const string& message, int offset) {
+    // Encode the message using Base64
+    string base64_message = base64_encode(message);
+    cout << "Base64-encoded message: " << base64_message << endl;
+    cout << "Base64 length (in characters): " << base64_message.length() << endl;
+
+    // Convert the Base64 message to binary
+    string binary_message;
+    for (char ch : base64_message) {
+        binary_message += bitset<8>(ch).to_string();
+    }
+    cout << "Binary message: " << binary_message << endl;
+
+    // Embed the length of the Base64 message (in bytes) in the first 32 bits
+    int length = base64_message.length();
+    string length_bits = bitset<32>(length).to_string();
+    cout << "Length bits: " << length_bits << endl;
+
+    // Create a modifiable copy of the data
+    vector<char> modified_data = data;
+
+    // Extract original binary data at embedding positions
+    string original_binary;
+    for (size_t i = 0; i < length_bits.size() + binary_message.size(); ++i) {
+        original_binary += bitset<8>(modified_data[offset + i]).to_string();
+    }
+
+    // Embed the message into the least significant bits
+    size_t index = 0;
+    for (const char& bit : length_bits + binary_message) {
+        modified_data[offset + index] = (modified_data[offset + index] & 0xFE) | (bit - '0');
+        index++;
+    }
+
+    // Extract modified binary data at embedding positions
+    string modified_binary;
+    for (size_t i = 0; i < length_bits.size() + binary_message.size(); ++i) {
+        modified_binary += bitset<8>(modified_data[offset + i]).to_string();
+    }
+
+    // Highlight changes
+    auto [highlighted_original, highlighted_modified] = highlight_changes(original_binary, modified_binary);
+
+    // Truncate for readability
+    auto truncate_binary = [](const string& binary_str, size_t show_bits = 64) {
+        if (binary_str.length() > show_bits * 2) {
+            return binary_str.substr(0, show_bits) + "..." + binary_str.substr(binary_str.length() - show_bits);
+        }
+        return binary_str;
+    };
+
+    cout << "\nOriginal binary data at embedding positions (truncated):" << endl;
+    cout << truncate_binary(highlighted_original) << endl;
+
+    cout << "\nModified binary data at embedding positions (truncated):" << endl;
+    cout << truncate_binary(highlighted_modified) << endl;
+
+    return modified_data;
+}
+
+void save_to_file(const vector<char>& data, const string& file_path) {
+    FILE *output_file = fopen(file_path.c_str(), "wb");
+    fwrite(data.data(), 1, data.size(), output_file);
+    fclose(output_file);
+}
+
+int main()
+{
+    string path = "PATH TO YOUR FOLDER HERE";
+    string input_file_path = path + "/cat.bmp";
+    string output_file_path = path + "/hiddencat.bmp";
+    
+    FILE *input_file = fopen(input_file_path.c_str(), "rb");
+    if (!input_file) {
+        cout << "Error opening input file." << endl;
+        return 1;
+    }
+
+    fseek(input_file, 0, SEEK_END);
+    size_t file_size = ftell(input_file);
+    fseek(input_file, 0, SEEK_SET);
+
+    vector<char> data(file_size);
+    fread(data.data(), 1, file_size, input_file);
+    fclose(input_file);
+
+    cout << "Enter the message to embed: ";
+    string message_to_embed;
+    getline(cin, message_to_embed);
+
+    int pixel_data_offset = *reinterpret_cast<int*>(&data[10]);
+
+    vector<char> encoded_data = embed_message(data, message_to_embed, pixel_data_offset);
+
+    save_to_file(encoded_data, output_file_path);
+
+    cout << "Message embedded successfully in Base64! Encoded image saved as " << output_file_path << "." << endl;
+
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+string path = "PATH TO YOUR FOLDER HERE";
+string inputFilePath = Path.Combine(path, "cat.bmp");
+string outputFilePath = Path.Combine(path, "hiddencat.bmp");
+
+string Base64Encode(string input)
+{
+    string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string encodedString = "";
+    int value = 0, bits = -6;
+    const int base64Mask = 0x3F;
+
+    foreach (char character in input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encodedString += BASE64_CHARS[(value >> bits) & base64Mask];
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encodedString += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64Mask];
+    }
+
+    while (encodedString.Length % 4 != 0)
+    {
+        encodedString += '=';
+    }
+    return encodedString;
+}
+
+// This will allow us to highlight the differences in the binary data
+(string, string) HighlightChanges(string original, string modified)
+{
+    StringBuilder highlightedOriginal = new StringBuilder();
+    StringBuilder highlightedModified = new StringBuilder();
+
+    for (int i = 0; i < original.Length; i++)
+    {
+        if (original[i] != modified[i])
+        {
+            highlightedOriginal.Append($"[{original[i]}]");
+            highlightedModified.Append($"[{modified[i]}]");
+        }
+        else
+        {
+            highlightedOriginal.Append(original[i]);
+            highlightedModified.Append(modified[i]);
+        }
+    }
+
+    return (highlightedOriginal.ToString(), highlightedModified.ToString());
+}
+
+List<byte> EmbedMessage(List<byte> data, string message, int offset)
+{
+    // Encode the message using Base64
+    string base64Message = Base64Encode(message);
+    Console.WriteLine("Base64-encoded message: " + base64Message);
+    Console.WriteLine("Base64 length (in characters): " + base64Message.Length);
+
+    // Convert the Base64 message to binary
+    StringBuilder binaryMessage = new StringBuilder();
+    foreach (char ch in base64Message)
+    {
+        binaryMessage.Append(Convert.ToString(ch, 2).PadLeft(8, '0'));
+    }
+    Console.WriteLine("Binary message: " + binaryMessage);
+
+    // Embed the length of the Base64 message (in bytes) in the first 32 bits
+    StringBuilder lengthBits = new StringBuilder();
+    int length = base64Message.Length;
+    for (int j = 31; j >= 0; --j)
+    {
+        lengthBits.Append((length >> j) & 1);
+    }
+    Console.WriteLine("Length bits: " + lengthBits);
+
+    // Create a modifiable copy of the data
+    List<byte> modifiedData = new List<byte>(data);
+
+    // Extract original binary data at embedding positions
+    StringBuilder originalBinary = new StringBuilder();
+    for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+    {
+        originalBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+    }
+
+    // Embed the message into the least significant bits
+    int bitIndex = 0;
+    foreach (char bit in lengthBits.ToString() + binaryMessage.ToString())
+    {
+        modifiedData[offset + bitIndex] = (byte)((modifiedData[offset + bitIndex] & 0xFE) | (bit - '0'));
+        bitIndex++;
+    }
+
+    // Extract modified binary data at embedding positions
+    StringBuilder modifiedBinary = new StringBuilder();
+    for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+    {
+        modifiedBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+    }
+
+    // Highlight changes
+    (string highlightedOriginal, string highlightedModified) = HighlightChanges(originalBinary.ToString(), modifiedBinary.ToString());
+
+    // Truncate for readability
+    string TruncateBinary(string binaryStr, int showBits = 64)
+    {
+        if (binaryStr.Length > showBits * 2)
+        {
+            return binaryStr.Substring(0, showBits) + "..." + binaryStr.Substring(binaryStr.Length - showBits);
+        }
+        return binaryStr;
+    }
+
+    Console.WriteLine("\nOriginal binary data at embedding positions (truncated):");
+    Console.WriteLine(TruncateBinary(highlightedOriginal));
+
+    Console.WriteLine("\nModified binary data at embedding positions (truncated):");
+    Console.WriteLine(TruncateBinary(highlightedModified));
+
+    return modifiedData;
+}
+
+void SaveToFile(List<byte> data, string filePath)
+{
+    File.WriteAllBytes(filePath, data.ToArray());
+}
+
+if (!File.Exists(inputFilePath))
+{
+    Console.WriteLine("Error opening input file.");
+    return;
+}
+
+List<byte> data = new List<byte>(File.ReadAllBytes(inputFilePath));
+
+Console.WriteLine("Enter the message to embed: ");
+string? messageToEmbed = Console.ReadLine();
+
+if (string.IsNullOrEmpty(messageToEmbed))
+{
+    Console.WriteLine("Message cannot be empty.");
+    return;
+}
+
+int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+
+List<byte> encodedData = EmbedMessage(data, messageToEmbed, pixelDataOffset);
+
+SaveToFile(encodedData, outputFilePath);
+
+Console.WriteLine("Message embedded successfully in Base64! Encoded image saved as " + outputFilePath + ".");
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+class Program
+{
+    static string Base64Encode(string input)
+    {
+        string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        string encodedString = "";
+        int value = 0, bits = -6;
+        const int base64Mask = 0x3F;
+
+        foreach (char character in input)
+        {
+            value = (value << 8) + character;
+            bits += 8;
+
+            while (bits >= 0)
+            {
+                encodedString += BASE64_CHARS[(value >> bits) & base64Mask];
+                bits -= 6;
+            }
+        }
+
+        if (bits > -6)
+        {
+            encodedString += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64Mask];
+        }
+
+        while (encodedString.Length % 4 != 0)
+        {
+            encodedString += '=';
+        }
+        return encodedString;
+    }
+
+    // This will allow us to highlight the differences in the binary data
+    static (string, string) HighlightChanges(string original, string modified)
+    {
+        StringBuilder highlightedOriginal = new StringBuilder();
+        StringBuilder highlightedModified = new StringBuilder();
+
+        for (int i = 0; i < original.Length; i++)
+        {
+            if (original[i] != modified[i])
+            {
+                highlightedOriginal.Append($"[{original[i]}]");
+                highlightedModified.Append($"[{modified[i]}]");
+            }
+            else
+            {
+                highlightedOriginal.Append(original[i]);
+                highlightedModified.Append(modified[i]);
+            }
+        }
+
+        return (highlightedOriginal.ToString(), highlightedModified.ToString());
+    }
+
+    static List<byte> EmbedMessage(List<byte> data, string message, int offset)
+    {
+        // Encode the message using Base64
+        string base64Message = Base64Encode(message);
+        Console.WriteLine("Base64-encoded message: " + base64Message);
+        Console.WriteLine("Base64 length (in characters): " + base64Message.Length);
+
+        // Convert the Base64 message to binary
+        StringBuilder binaryMessage = new StringBuilder();
+        foreach (char ch in base64Message)
+        {
+            binaryMessage.Append(Convert.ToString(ch, 2).PadLeft(8, '0'));
+        }
+        Console.WriteLine("Binary message: " + binaryMessage);
+
+        // Embed the length of the Base64 message (in bytes) in the first 32 bits
+        StringBuilder lengthBits = new StringBuilder();
+        int length = base64Message.Length;
+        for (int j = 31; j >= 0; --j)
+        {
+            lengthBits.Append((length >> j) & 1);
+        }
+        Console.WriteLine("Length bits: " + lengthBits);
+
+        // Create a modifiable copy of the data
+        List<byte> modifiedData = new List<byte>(data);
+
+        // Extract original binary data at embedding positions
+        StringBuilder originalBinary = new StringBuilder();
+        for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+        {
+            originalBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+        }
+
+        // Embed the message into the least significant bits
+        int bitIndex = 0;
+        foreach (char bit in lengthBits.ToString() + binaryMessage.ToString())
+        {
+            modifiedData[offset + bitIndex] = (byte)((modifiedData[offset + bitIndex] & 0xFE) | (bit - '0'));
+            bitIndex++;
+        }
+
+        // Extract modified binary data at embedding positions
+        StringBuilder modifiedBinary = new StringBuilder();
+        for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+        {
+            modifiedBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+        }
+
+        // Highlight changes
+        (string highlightedOriginal, string highlightedModified) = HighlightChanges(originalBinary.ToString(), modifiedBinary.ToString());
+
+        // Truncate for readability
+        string TruncateBinary(string binaryStr, int showBits = 64)
+        {
+            if (binaryStr.Length > showBits * 2)
+            {
+                return binaryStr.Substring(0, showBits) + "..." + binaryStr.Substring(binaryStr.Length - showBits);
+            }
+            return binaryStr;
+        }
+
+        Console.WriteLine("\nOriginal binary data at embedding positions (truncated):");
+        Console.WriteLine(TruncateBinary(highlightedOriginal));
+
+        Console.WriteLine("\nModified binary data at embedding positions (truncated):");
+        Console.WriteLine(TruncateBinary(highlightedModified));
+
+        return modifiedData;
+    }
+
+    static void SaveToFile(List<byte> data, string filePath)
+    {
+        File.WriteAllBytes(filePath, data.ToArray());
+    }
+
+    static void Main()
+    {
+        string path = "PATH TO YOUR FOLDER HERE";
+        string inputFilePath = Path.Combine(path, "cat.bmp");
+        string outputFilePath = Path.Combine(path, "hiddencat.bmp");
+
+        if (!File.Exists(inputFilePath))
+        {
+            Console.WriteLine("Error opening input file.");
+            return;
+        }
+
+        List<byte> data = new List<byte>(File.ReadAllBytes(inputFilePath));
+
+        Console.WriteLine("Enter the message to embed: ");
+        string? messageToEmbed = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(messageToEmbed))
+        {
+            Console.WriteLine("Message cannot be empty.");
+            return;
+        }
+
+        int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+
+        List<byte> encodedData = EmbedMessage(data, messageToEmbed, pixelDataOffset);
+
+        SaveToFile(encodedData, outputFilePath);
+
+        Console.WriteLine("Message embedded successfully in Base64! Encoded image saved as " + outputFilePath + ".");
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+import os
+
+path = "PATH TO YOUR FOLDER HERE"
+
+def base64_encode(input_string):
+    BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    encoded_string = ""
+    value = 0
+    bits = -6
+    base64_mask = 0x3F
+
+    for character in input_string.encode():
+        value = (value << 8) + character
+        bits += 8
+
+        while bits >= 0:
+            encoded_string += BASE64_CHARS[(value >> bits) & base64_mask]
+            bits -= 6
+    
+    if bits > -6:
+        encoded_string += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]
+    
+    while len(encoded_string) % 4:
+        encoded_string += "="
+    
+    return encoded_string
+
+# This will allow us to highlight the differences in the binary data
+def highlight_changes(original, modified):
+    highlighted_original = []
+    highlighted_modified = []
+
+    for o, m in zip(original, modified):
+        if o != m:
+            highlighted_original.append(f"[{o}]")
+            highlighted_modified.append(f"[{m}]")
+        else:
+            highlighted_original.append(o)
+            highlighted_modified.append(m)
+
+    return ''.join(highlighted_original), ''.join(highlighted_modified)
+
+def embed_message(data, message, offset):
+    # Encode the message using Base64
+    base64_message = base64_encode(message)
+    print(f"Base64-encoded message: {base64_message}")
+    print(f"Base64 length (in characters): {len(base64_message)}")
+
+    binary_message = ''.join(format(ord(char), '08b') for char in base64_message)
+    print(f"Binary message: {binary_message}")
+
+    # Embed the length of the Base64 message (in bytes) in the first 32 bits
+    length_bits = format(len(base64_message), '032b')
+    print(f"Length bits: {length_bits}")
+
+    data = bytearray(data)
+    # Extract original binary at embedding positions
+    original_binary = "".join(format(data[offset + i], '08b') for i in range(len(length_bits + binary_message)))
+    modified_data = bytearray(data)
+
+    # Embed the message into the least significant bits
+    for i, bit in enumerate(length_bits + binary_message):
+        modified_data[offset + i] = (modified_data[offset + i] & 0xFE) | int(bit)
+
+    # Extract modified binary at embedding positions
+    modified_binary = "".join(format(modified_data[offset + i], '08b') for i in range(len(length_bits + binary_message)))
+
+    # Highlight changes
+    highlighted_original, highlighted_modified = highlight_changes(original_binary, modified_binary)
+
+    # Truncate for readability
+    def truncate_binary(binary_str, show_bits=64):
+        if len(binary_str) > show_bits * 2:
+            return binary_str[:show_bits] + "..." + binary_str[-show_bits:]
+        return binary_str
+
+    print("\nOriginal binary data at embedding positions (truncated):")
+    print(truncate_binary(highlighted_original))
+
+    print("\nModified binary data at embedding positions (truncated):")
+    print(truncate_binary(highlighted_modified))
+
+    return modified_data
+
+
+input_file_path = os.path.join(path, "cat.bmp")
+output_file_path = os.path.join(path, "hiddencat.bmp")
+
+with open(input_file_path, "rb") as f:
+    data = f.read()
+
+print("Enter the message to embed: ")
+message_to_embed = input()
+
+# Specify the offset where the pixel data starts (e.g., 54 for standard BMP)
+pixel_data_offset = int.from_bytes(data[10:14], byteorder='little')
+
+encoded_data = embed_message(data, message_to_embed, pixel_data_offset)
+
+with open(output_file_path, "wb") as f:
+    f.write(encoded_data)
+
+print(f"Message embedded successfully in Base64! Encoded image saved as {output_file_path}.")
+```
+
+</TabItem>
+</Tabs>
+
+### Expected Output
+
+After embedding the message, you'll see an output like:
+
+```plaintext
+Enter the message to embed: 
+im a cat
+Base64-encoded message: aW0gYSBjYXQ=
+Base64 length (in characters): 12
+Binary message: 011000010101011100110000011001110101100101010011010000100110101001011001010110000101000100111101
+Length bits: 00000000000000000000000000001100
+
+Original binary data at embedding positions (truncated):
+0011100[1]00100100000101100001011[1]011111101100000[1]0000101[1]...100110001111001[0]0010000[0]0101111[0]1000110[0]0000110010100101
+
+Modified binary data at embedding positions (truncated):
+0011100[0]00100100000101100001011[0]011111101100000[0]0000101[0]...100110001111001[1]0010000[1]0101111[1]1000110[1]0000110010100101
+Message embedded successfully in Base64! Encoded image saved as /yourfolders/hiddencat.bmp.
+```
+
+The comparison between the original and modified binary data highlights the subtle but precise changes made during the embedding process. Notice how the least significant bits (LSBs) of the original binary data are modified to encode the length and content of the hidden message. These alterations are so minor that they do not visibly affect the image, yet they securely store the message within its pixel data. This clever manipulation of binary values demonstrates the power of steganography, where seemingly insignificant details carry meaningful information—hidden in plain sight. By preserving the image's integrity while embedding a secret, this technique showcases how technology can be used creatively to protect and communicate information.
+
+## Extracting a Message from an Image
+
+To retrieve the hidden message, the recipient must reverse the embedding process. This involves:
+
+<Steps>
+1. **Load the Image:** Open the image containing the hidden message.
+2. **Extract the Message Length:** Retrieve the length of the hidden message from the least significant bits of the image's pixel data.
+3. **Extract the Message:** Using the message length, extract the hidden message from the least significant bits of the image's pixel data.
+4. **Decode the Message:** Decode the extracted message from Base64 to reveal the original content.
+</Steps>
+
+### Code Example
+
+Here is how you can extract a message from a bitmap using C++, C#, or Python:
+
+:::note
+You will need to update the path to be the path to your bitmap file.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include <fstream>
+#include <vector>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string base64_decode(const string &input)
+{
+    const string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string decoded_string;
+    int value = 0, bits = -8;
+    for (unsigned char character : input)
+    {
+        if (BASE64_CHARS.find(character) == string::npos)
+        {
+            if (character == '=')
+                break; // Padding character, stop decoding
+            continue;  // Ignore any characters not in Base64 alphabet
+        }
+
+        value = (value << 6) + BASE64_CHARS.find(character);
+        bits += 6;
+
+        if (bits >= 0)
+        {
+            decoded_string.push_back(char((value >> bits) & 0xFF));
+            bits -= 8;
+        }
+    }
+    return decoded_string;
+}
+
+string extract_message(const vector<char>& data, int offset) {
+    // Extract the length of the base64 encoded message
+    int base64_length = 0;
+    for (int i = 0; i < 32; ++i) {
+        base64_length = (base64_length << 1) | (data[offset + i] & 1);
+    }
+    cout << "Extracted Base64 length (in characters): " << base64_length << endl;
+
+    // Extract the binary message
+    string binary_message;
+    for (int i = 0; i < base64_length * 8; ++i) {
+        binary_message += to_string(data[offset + 32 + i] & 1);
+    }
+
+    // Convert binary message to base64 string
+    string base64_message;
+    for (size_t i = 0; i < binary_message.length(); i += 8) {
+        if (i + 8 <= binary_message.length()) {
+            char character = 0;
+            for (int j = 0; j < 8; ++j) {
+                character = (character << 1) | (binary_message[i + j] - '0');
+            }
+            base64_message += character;
+        }
+    }
+
+    cout << "Extracted Base64 message: " << base64_message << endl;
+    cout << "Extracted Binary message: " << binary_message << endl;
+
+    return base64_decode(base64_message);
+}
+
+int main()
+{
+    string path = "PATH TO YOUR FOLDER HERE";
+    string encoded_file_path = path + "/hiddencat.bmp";
+    
+    ifstream input_file(encoded_file_path, ios::binary);
+    vector<char> data;
+    char ch;
+    while (input_file.get(ch)) {
+        data.push_back(ch);
+    }
+    input_file.close();
+
+    int pixel_data_offset = *reinterpret_cast<int*>(&data[10]);
+    cout << "Pixel data offset: " << pixel_data_offset << endl;
+
+    string hidden_message = extract_message(data, pixel_data_offset);
+    cout << "Extracted message: " << hidden_message << endl;
+
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+string path = "PATH TO YOUR FOLDER HERE";
+string encodedFilePath = Path.Combine(path, "hiddencat.bmp");
+
+string Base64Decode(string input)
+{
+    string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string decodedString = "";
+    int value = 0, bits = -8;
+
+    foreach (char character in input)
+    {
+        if (character == '=') break;
+        if (BASE64_CHARS.IndexOf(character) == -1) continue;
+
+        value = (value << 6) + BASE64_CHARS.IndexOf(character);
+        bits += 6;
+
+        if (bits >= 0)
+        {
+            decodedString += (char)((value >> bits) & 0xFF);
+            bits -= 8;
+        }
+    }
+    return decodedString;
+}
+
+string ExtractMessage(List<byte> data, int offset)
+{
+    // Extract the length of the Base64 encoded message
+    int base64Length = 0;
+    for (int i = 0; i < 32; ++i)
+    {
+        base64Length = (base64Length << 1) | (data[offset + i] & 1);
+    }
+    Console.WriteLine($"Extracted Base64 length (in characters): {base64Length}");
+
+    // Extract the binary message
+    StringBuilder binaryMessage = new StringBuilder();
+    for (int i = 0; i < base64Length * 8; ++i)
+    {
+        binaryMessage.Append(data[offset + 32 + i] & 1);
+    }
+
+    // Convert binary message to Base64 string
+    StringBuilder base64Message = new StringBuilder();
+    for (int i = 0; i < binaryMessage.Length; i += 8)
+    {
+        if (i + 8 <= binaryMessage.Length)
+        {
+            char character = (char)0;
+            for (int j = 0; j < 8; ++j)
+            {
+                character = (char)((character << 1) | (binaryMessage[i + j] - '0'));
+            }
+            base64Message.Append(character);
+        }
+    }
+
+    Console.WriteLine($"Extracted Base64 message: {base64Message}");
+    Console.WriteLine($"Extracted Binary message: {binaryMessage}");
+
+    return Base64Decode(base64Message.ToString());
+}
+
+if (!File.Exists(encodedFilePath))
+{
+    Console.WriteLine("Encoded file not found.");
+    return;
+}
+
+// Read the file into a byte list
+List<byte> data = new List<byte>(File.ReadAllBytes(encodedFilePath));
+
+// Get the pixel data offset
+int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+Console.WriteLine($"Pixel data offset: {pixelDataOffset}");
+
+// Extract and decode the hidden message
+string hiddenMessage = ExtractMessage(data, pixelDataOffset);
+Console.WriteLine($"Extracted message: {hiddenMessage}");
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+class Program
+{
+    static string Base64Decode(string input)
+    {
+        string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        string decodedString = "";
+        int value = 0, bits = -8;
+
+        foreach (char character in input)
+        {
+            if (character == '=') break;
+            if (BASE64_CHARS.IndexOf(character) == -1) continue;
+
+            value = (value << 6) + BASE64_CHARS.IndexOf(character);
+            bits += 6;
+
+            if (bits >= 0)
+            {
+                decodedString += (char)((value >> bits) & 0xFF);
+                bits -= 8;
+            }
+        }
+        return decodedString;
+    }
+
+    static string ExtractMessage(List<byte> data, int offset)
+    {
+        // Extract the length of the Base64 encoded message
+        int base64Length = 0;
+        for (int i = 0; i < 32; ++i)
+        {
+            base64Length = (base64Length << 1) | (data[offset + i] & 1);
+        }
+        Console.WriteLine($"Extracted Base64 length (in characters): {base64Length}");
+
+        // Extract the binary message
+        StringBuilder binaryMessage = new StringBuilder();
+        for (int i = 0; i < base64Length * 8; ++i)
+        {
+            binaryMessage.Append(data[offset + 32 + i] & 1);
+        }
+
+        // Convert binary message to Base64 string
+        StringBuilder base64Message = new StringBuilder();
+        for (int i = 0; i < binaryMessage.Length; i += 8)
+        {
+            if (i + 8 <= binaryMessage.Length)
+            {
+                char character = (char)0;
+                for (int j = 0; j < 8; ++j)
+                {
+                    character = (char)((character << 1) | (binaryMessage[i + j] - '0'));
+                }
+                base64Message.Append(character);
+            }
+        }
+
+        Console.WriteLine($"Extracted Base64 message: {base64Message}");
+        Console.WriteLine($"Extracted Binary message: {binaryMessage}");
+
+        return Base64Decode(base64Message.ToString());
+    }
+
+    static void Main()
+    {
+        string path = "PATH TO YOUR FOLDER HERE";
+        string encodedFilePath = Path.Combine(path, "hiddencat.bmp");
+
+        if (!File.Exists(encodedFilePath))
+        {
+            Console.WriteLine("Encoded file not found.");
+            return;
+        }
+
+        // Read the file into a byte list
+        List<byte> data = new List<byte>(File.ReadAllBytes(encodedFilePath));
+
+        // Get the pixel data offset
+        int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+        Console.WriteLine($"Pixel data offset: {pixelDataOffset}");
+
+        // Extract and decode the hidden message
+        string hiddenMessage = ExtractMessage(data, pixelDataOffset);
+        Console.WriteLine($"Extracted message: {hiddenMessage}");
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+import os
+path = "PATH TO YOUR FOLDER HERE"
+
+def base64_decode(input_string):
+    BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    decoded_string = bytearray()
+    value = 0
+    bits = -8
+
+    for character in input_string:
+        if character not in BASE64_CHARS:
+            if character == "=":
+                break
+            continue
+        
+        value = (value << 6) + BASE64_CHARS.index(character)
+        bits += 6
+
+        if bits >= 0:
+            decoded_string.append((value >> bits) & 0xFF)
+            bits -= 8
+    
+    return decoded_string.decode()
+
+def extract_message(data, offset):
+    # Extract the length of the Base64 message (first 32 bits)
+    length_bits = ''.join(str(data[offset + i] & 1) for i in range(32))
+    print(f"Length bits: {length_bits}")
+    base64_length = int(length_bits, 2)
+    print(f"Extracted Base64 length (in characters): {base64_length}")
+
+    # Extract the Base64 message
+    binary_message = ''.join(str(data[offset + 32 + i] & 1) for i in range(base64_length * 8))
+    base64_message = ''.join(chr(int(binary_message[i:i+8], 2)) for i in range(0, len(binary_message), 8))
+    print(f"Extracted Base64 message: {base64_message}")
+    print(f"Extracted Binary message: {binary_message}")
+
+    # Decode the Base64 message
+    return base64_decode(base64_message)
+
+encoded_file_path = os.path.join(path, "hiddencat.bmp")
+with open(encoded_file_path, "rb") as f: data = f.read()
+
+# Specify the offset where the pixel data starts (e.g., 54 for standard BMP)
+pixel_data_offset = int.from_bytes(data[10:14], byteorder='little')
+
+hidden_message = extract_message(data, pixel_data_offset)
+print(f"Extracted message: {hidden_message}")
+```
+
+</TabItem>
+</Tabs>
+
+### Expected Output
+
+After extracting the message, you'll see an output like:
+
+```plaintext
+Length bits: 00000000000000000000000000001100
+Extracted Base64 length (in characters): 12
+Extracted Base64 message: aW0gYSBjYXQ=
+Extracted Binary message: 011000010101011100110000011001110101100101010011010000100110101001011001010110000101000100111101
+Extracted message: im a cat
+```
+
+The extracted message is identical to the original message, demonstrating the successful retrieval of the hidden information. By following the reverse process of the embedding algorithm, the recipient can recover the message without any visible changes to the image. This seamless integration of data within the image's pixel data showcases the elegance and effectiveness of LSB steganography as a method of secure communication.
+
+## Enhancing Security with the Caesar Cipher
+
+Before embedding the message in the image using Base64 encoding, an additional layer of obfuscation can be applied to make the message more secure. One simple technique for this is the **Caesar Cipher**. Named after Julius Caesar, who reportedly used it in his private correspondence, the Caesar Cipher is a substitution cipher that shifts each character in the plaintext by a fixed number of positions in the alphabet.
+
+By applying a Caesar Cipher to the message prior to Base64 encoding, you introduce an extra hurdle for anyone trying to extract and interpret the hidden message without the necessary key. This is particularly useful when the steganographic embedding is coupled with plaintext messages. However, in real-world scenarios, more advanced encryption techniques should be used for sensitive information as the Caesar Cipher is relatively easy to break.
+
+### How the Caesar Cipher Works
+
+The Caesar Cipher replaces each letter in the message with another letter a fixed number of positions down (or up) the alphabet. For example, with a shift of 3:
+
+- `A` becomes `D`
+- `B` becomes `E`
+- `C` becomes `F`
+
+The process wraps around at the end of the alphabet, so `X` becomes `A`, `Y` becomes `B`, and `Z` becomes `C`. Numbers and punctuation are typically left unchanged, but this can vary based on implementation.
+
+To decrypt a Caesar Cipher message, the recipient simply shifts the letters in the opposite direction by the same number of positions.
+
+### Applying Caesar Cipher to Steganography
+
+Here’s how the process works:
+
+<Steps>
+1. **Plaintext Message:** Start with the original message (e.g., `"im a cat"`).
+2. **Apply Caesar Cipher:** Obfuscate the message using a chosen shift value (e.g., `3`). The message `"im a cat"` might become `"lp d fdw"`.
+3. **Encode in Base64:** Convert the obfuscated message into Base64, producing a string of printable characters.
+4. **Embed in Image:** Use LSB steganography to embed the Base64-encoded string into the image.
+</Steps>
+
+To extract and interpret the message, the reverse process is followed:
+
+<Steps>
+1. **Extract the Base64 Message:** Decode the embedded Base64 string from the image.
+2. **Decrypt Caesar Cipher:** Apply the inverse Caesar Cipher shift to recover the original plaintext message.
+</Steps>
+
+By combining Caesar Cipher obfuscation with LSB steganography, you can enhance the security of your hidden messages while exploring the principles of encryption and steganography. Here is how you can implement this in your code:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include <bitset>
+#include <sstream>
+
+using namespace std;
+
+string caesar_cipher_encode(const string &input, int shift)
+{
+    string encoded_string;
+    for (char character : input)
+    {
+        if (isalpha(character))
+        {
+            char base = islower(character) ? 'a' : 'A';
+            encoded_string += (character - base + shift) % 26 + base;
+        }
+        else
+        {
+            encoded_string += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encoded_string;
+}
+
+string base64_encode(const string &input)
+{
+    string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string encoded_string;
+    int value = 0, bits = -6;
+    const unsigned int base64_mask = 0x3F;
+
+    for (unsigned char character : input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encoded_string.push_back(BASE64_CHARS[(value >> bits) & base64_mask]);
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encoded_string.push_back(BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]);
+    }
+
+    while (encoded_string.size() % 4)
+    {
+        encoded_string.push_back('='); // Padding to make the length a multiple of 4
+    }
+
+    return encoded_string;
+}
+
+// This will allow us to highlight the differences in the binary data
+pair<string, string> highlight_changes(const string &original, const string &modified)
+{
+    string highlighted_original, highlighted_modified;
+    for (size_t i = 0; i < original.size(); ++i)
+    {
+        if (original[i] != modified[i])
+        {
+            highlighted_original += "[" + string(1, original[i]) + "]";
+            highlighted_modified += "[" + string(1, modified[i]) + "]";
+        }
+        else
+        {
+            highlighted_original += original[i];
+            highlighted_modified += modified[i];
+        }
+    }
+    return {highlighted_original, highlighted_modified};
+}
+
+vector<char> embed_message(const vector<char>& data, const string& message, int offset) {
+    // Ask the user for the Caesar cipher shift
+    int shift;
+    cout << "Enter the shift for the Caesar cipher: ";
+    cin >> shift;
+    cin.ignore(); // Ignore the newline character left in the buffer
+
+    // Encode the message using Caesar cipher
+    string caesar_encoded_message = caesar_cipher_encode(message, shift);
+    cout << "Caesar cipher encoded message: " << caesar_encoded_message << endl;
+
+    // Encode the Caesar cipher encoded message using Base64
+    string base64_message = base64_encode(caesar_encoded_message);
+    cout << "Base64-encoded message: " << base64_message << endl;
+    cout << "Base64 length (in characters): " << base64_message.length() << endl;
+
+    // Convert the Base64 message to binary
+    string binary_message;
+    for (char ch : base64_message) {
+        binary_message += bitset<8>(ch).to_string();
+    }
+    cout << "Binary message: " << binary_message << endl;
+
+    // Embed the length of the Base64 message (in bytes) in the first 32 bits
+    int length = base64_message.length();
+    string length_bits = bitset<32>(length).to_string();
+    cout << "Length bits: " << length_bits << endl;
+
+    // Create a modifiable copy of the data
+    vector<char> modified_data = data;
+
+    // Extract original binary data at embedding positions
+    string original_binary;
+    for (size_t i = 0; i < length_bits.size() + binary_message.size(); ++i) {
+        original_binary += bitset<8>(modified_data[offset + i]).to_string();
+    }
+
+    // Embed the message into the least significant bits
+    size_t index = 0;
+    for (const char& bit : length_bits + binary_message) {
+        modified_data[offset + index] = (modified_data[offset + index] & 0xFE) | (bit - '0');
+        index++;
+    }
+
+    // Extract modified binary data at embedding positions
+    string modified_binary;
+    for (size_t i = 0; i < length_bits.size() + binary_message.size(); ++i) {
+        modified_binary += bitset<8>(modified_data[offset + i]).to_string();
+    }
+
+    // Highlight changes
+    auto [highlighted_original, highlighted_modified] = highlight_changes(original_binary, modified_binary);
+
+    // Truncate for readability
+    auto truncate_binary = [](const string& binary_str, size_t show_bits = 64) {
+        if (binary_str.length() > show_bits * 2) {
+            return binary_str.substr(0, show_bits) + "..." + binary_str.substr(binary_str.length() - show_bits);
+        }
+        return binary_str;
+    };
+
+    cout << "\nOriginal binary data at embedding positions (truncated):" << endl;
+    cout << truncate_binary(highlighted_original) << endl;
+
+    cout << "\nModified binary data at embedding positions (truncated):" << endl;
+    cout << truncate_binary(highlighted_modified) << endl;
+
+    return modified_data;
+}
+
+void save_to_file(const vector<char>& data, const string& file_path) {
+    FILE *output_file = fopen(file_path.c_str(), "wb");
+    fwrite(data.data(), 1, data.size(), output_file);
+    fclose(output_file);
+}
+
+int main()
+{
+    string path = "PATH TO YOUR FOLDER HERE";
+    string input_file_path = path + "/cat.bmp";
+    string output_file_path = path + "/hiddencat.bmp";
+    
+    FILE *input_file = fopen(input_file_path.c_str(), "rb");
+    if (!input_file) {
+        cout << "Error opening input file." << endl;
+        return 1;
+    }
+
+    fseek(input_file, 0, SEEK_END);
+    size_t file_size = ftell(input_file);
+    fseek(input_file, 0, SEEK_SET);
+
+    vector<char> data(file_size);
+    fread(data.data(), 1, file_size, input_file);
+    fclose(input_file);
+
+    cout << "Enter the message to embed: ";
+    string message_to_embed;
+    getline(cin, message_to_embed);
+
+    int pixel_data_offset = *reinterpret_cast<int*>(&data[10]);
+
+    vector<char> encoded_data = embed_message(data, message_to_embed, pixel_data_offset);
+
+    save_to_file(encoded_data, output_file_path);
+
+    cout << "Message embedded successfully in Base64! Encoded image saved as " << output_file_path << "." << endl;
+
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+string path = "PATH TO YOUR FOLDER HERE";
+string inputFilePath = Path.Combine(path, "cat.bmp");
+string outputFilePath = Path.Combine(path, "hiddencat.bmp");
+
+string caesarCipherEncode(string input, int shift)
+{
+    string encodedString = "";
+
+    foreach (char character in input)
+    {
+        if (char.IsLetter(character))
+        {
+            char baseChar = char.IsLower(character) ? 'a' : 'A';
+            encodedString += (char)((character - baseChar + shift) % 26 + baseChar);
+        }
+        else
+        {
+            encodedString += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encodedString;
+}
+
+string Base64Encode(string input)
+{
+    string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    string encodedString = "";
+    int value = 0, bits = -6;
+    const int base64Mask = 0x3F;
+
+    foreach (char character in input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encodedString += BASE64_CHARS[(value >> bits) & base64Mask];
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encodedString += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64Mask];
+    }
+
+    while (encodedString.Length % 4 != 0)
+    {
+        encodedString += '=';
+    }
+    return encodedString;
+}
+
+// This will allow us to highlight the differences in the binary data
+(string, string) HighlightChanges(string original, string modified)
+{
+    StringBuilder highlightedOriginal = new StringBuilder();
+    StringBuilder highlightedModified = new StringBuilder();
+
+    for (int i = 0; i < original.Length; i++)
+    {
+        if (original[i] != modified[i])
+        {
+            highlightedOriginal.Append($"[{original[i]}]");
+            highlightedModified.Append($"[{modified[i]}]");
+        }
+        else
+        {
+            highlightedOriginal.Append(original[i]);
+            highlightedModified.Append(modified[i]);
+        }
+    }
+
+    return (highlightedOriginal.ToString(), highlightedModified.ToString());
+}
+
+List<byte> EmbedMessage(List<byte> data, string message, int offset)
+{
+    // Ask the user for the Caesar shift
+    Console.WriteLine("Enter the Caesar shift value: ");
+    if (!int.TryParse(Console.ReadLine(), out int shift))
+    {
+        Console.WriteLine("Invalid shift value.");
+        return data;
+    }
+
+    // Encode the message using Caesar Cipher
+    string caesarEncodedMessage = caesarCipherEncode(message, shift);
+    Console.WriteLine("Caesar-encoded message: " + caesarEncodedMessage);
+
+    // Encode the Caesar-encoded message using Base64
+    string base64Message = Base64Encode(caesarEncodedMessage);
+    Console.WriteLine("Base64-encoded message: " + base64Message);
+    Console.WriteLine("Base64 length (in characters): " + base64Message.Length);
+
+    // Convert the Base64 message to binary
+    StringBuilder binaryMessage = new StringBuilder();
+    foreach (char ch in base64Message)
+    {
+        binaryMessage.Append(Convert.ToString(ch, 2).PadLeft(8, '0'));
+    }
+    Console.WriteLine("Binary message: " + binaryMessage);
+
+    // Embed the length of the Base64 message (in bytes) in the first 32 bits
+    StringBuilder lengthBits = new StringBuilder();
+    int length = base64Message.Length;
+    for (int j = 31; j >= 0; --j)
+    {
+        lengthBits.Append((length >> j) & 1);
+    }
+    Console.WriteLine("Length bits: " + lengthBits);
+
+    // Create a modifiable copy of the data
+    List<byte> modifiedData = new List<byte>(data);
+
+    // Extract original binary data at embedding positions
+    StringBuilder originalBinary = new StringBuilder();
+    for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+    {
+        originalBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+    }
+
+    // Embed the message into the least significant bits
+    int bitIndex = 0;
+    foreach (char bit in lengthBits.ToString() + binaryMessage.ToString())
+    {
+        modifiedData[offset + bitIndex] = (byte)((modifiedData[offset + bitIndex] & 0xFE) | (bit - '0'));
+        bitIndex++;
+    }
+
+    // Extract modified binary data at embedding positions
+    StringBuilder modifiedBinary = new StringBuilder();
+    for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+    {
+        modifiedBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+    }
+
+    // Highlight changes
+    (string highlightedOriginal, string highlightedModified) = HighlightChanges(originalBinary.ToString(), modifiedBinary.ToString());
+
+    // Truncate for readability
+    string TruncateBinary(string binaryStr, int showBits = 64)
+    {
+        if (binaryStr.Length > showBits * 2)
+        {
+            return binaryStr.Substring(0, showBits) + "..." + binaryStr.Substring(binaryStr.Length - showBits);
+        }
+        return binaryStr;
+    }
+
+    Console.WriteLine("\nOriginal binary data at embedding positions (truncated):");
+    Console.WriteLine(TruncateBinary(highlightedOriginal));
+
+    Console.WriteLine("\nModified binary data at embedding positions (truncated):");
+    Console.WriteLine(TruncateBinary(highlightedModified));
+    
+    return modifiedData;
+}
+
+void SaveToFile(List<byte> data, string filePath)
+{
+    File.WriteAllBytes(filePath, data.ToArray());
+}
+
+if (!File.Exists(inputFilePath))
+{
+    Console.WriteLine("Error opening input file.");
+    return;
+}
+
+List<byte> data = new List<byte>(File.ReadAllBytes(inputFilePath));
+
+Console.WriteLine("Enter the message to embed: ");
+string? messageToEmbed = Console.ReadLine();
+
+if (string.IsNullOrEmpty(messageToEmbed))
+{
+    Console.WriteLine("Message cannot be empty.");
+    return;
+}
+
+int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+
+List<byte> encodedData = EmbedMessage(data, messageToEmbed, pixelDataOffset);
+
+SaveToFile(encodedData, outputFilePath);
+
+Console.WriteLine("Message embedded successfully in Base64! Encoded image saved as " + outputFilePath + ".");
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+class Program
+{
+
+    static string caesarCipherEncode(string input, int shift)
+    {
+        string encodedString = "";
+
+        foreach (char character in input)
+        {
+            if (char.IsLetter(character))
+            {
+                char baseChar = char.IsLower(character) ? 'a' : 'A';
+                encodedString += (char)((character - baseChar + shift) % 26 + baseChar);
+            }
+            else
+            {
+                encodedString += character; // Non-alphabet characters remain unchanged
+            }
+        }
+        return encodedString;
+    }
+    
+    static string Base64Encode(string input)
+    {
+        string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        string encodedString = "";
+        int value = 0, bits = -6;
+        const int base64Mask = 0x3F;
+
+        foreach (char character in input)
+        {
+            value = (value << 8) + character;
+            bits += 8;
+
+            while (bits >= 0)
+            {
+                encodedString += BASE64_CHARS[(value >> bits) & base64Mask];
+                bits -= 6;
+            }
+        }
+
+        if (bits > -6)
+        {
+            encodedString += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64Mask];
+        }
+
+        while (encodedString.Length % 4 != 0)
+        {
+            encodedString += '=';
+        }
+        return encodedString;
+    }
+
+    // This will allow us to highlight the differences in the binary data
+    static (string, string) HighlightChanges(string original, string modified)
+    {
+        StringBuilder highlightedOriginal = new StringBuilder();
+        StringBuilder highlightedModified = new StringBuilder();
+
+        for (int i = 0; i < original.Length; i++)
+        {
+            if (original[i] != modified[i])
+            {
+                highlightedOriginal.Append($"[{original[i]}]");
+                highlightedModified.Append($"[{modified[i]}]");
+            }
+            else
+            {
+                highlightedOriginal.Append(original[i]);
+                highlightedModified.Append(modified[i]);
+            }
+        }
+
+        return (highlightedOriginal.ToString(), highlightedModified.ToString());
+    }
+
+    static List<byte> EmbedMessage(List<byte> data, string message, int offset)
+    {
+        // Ask the user for the Caesar shift
+        Console.WriteLine("Enter the Caesar shift value: ");
+        if (!int.TryParse(Console.ReadLine(), out int shift))
+        {
+            Console.WriteLine("Invalid shift value.");
+            return data;
+        }
+
+        // Encode the message using Caesar Cipher
+        string caesarEncodedMessage = caesarCipherEncode(message, shift);
+        Console.WriteLine("Caesar-encoded message: " + caesarEncodedMessage);
+
+        // Encode the Caesar-encoded message using Base64
+        string base64Message = Base64Encode(caesarEncodedMessage);
+        Console.WriteLine("Base64-encoded message: " + base64Message);
+        Console.WriteLine("Base64 length (in characters): " + base64Message.Length);
+
+        // Convert the Base64 message to binary
+        StringBuilder binaryMessage = new StringBuilder();
+        foreach (char ch in base64Message)
+        {
+            binaryMessage.Append(Convert.ToString(ch, 2).PadLeft(8, '0'));
+        }
+        Console.WriteLine("Binary message: " + binaryMessage);
+
+        // Embed the length of the Base64 message (in bytes) in the first 32 bits
+        StringBuilder lengthBits = new StringBuilder();
+        int length = base64Message.Length;
+        for (int j = 31; j >= 0; --j)
+        {
+            lengthBits.Append((length >> j) & 1);
+        }
+        Console.WriteLine("Length bits: " + lengthBits);
+
+        // Create a modifiable copy of the data
+        List<byte> modifiedData = new List<byte>(data);
+
+        // Extract original binary data at embedding positions
+        StringBuilder originalBinary = new StringBuilder();
+        for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+        {
+            originalBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+        }
+
+        // Embed the message into the least significant bits
+        int bitIndex = 0;
+        foreach (char bit in lengthBits.ToString() + binaryMessage.ToString())
+        {
+            modifiedData[offset + bitIndex] = (byte)((modifiedData[offset + bitIndex] & 0xFE) | (bit - '0'));
+            bitIndex++;
+        }
+
+        // Extract modified binary data at embedding positions
+        StringBuilder modifiedBinary = new StringBuilder();
+        for (int i = 0; i < lengthBits.Length + binaryMessage.Length; i++)
+        {
+            modifiedBinary.Append(Convert.ToString(modifiedData[offset + i], 2).PadLeft(8, '0'));
+        }
+
+        // Highlight changes
+        (string highlightedOriginal, string highlightedModified) = HighlightChanges(originalBinary.ToString(), modifiedBinary.ToString());
+
+        // Truncate for readability
+        string TruncateBinary(string binaryStr, int showBits = 64)
+        {
+            if (binaryStr.Length > showBits * 2)
+            {
+                return binaryStr.Substring(0, showBits) + "..." + binaryStr.Substring(binaryStr.Length - showBits);
+            }
+            return binaryStr;
+        }
+
+        Console.WriteLine("\nOriginal binary data at embedding positions (truncated):");
+        Console.WriteLine(TruncateBinary(highlightedOriginal));
+
+        Console.WriteLine("\nModified binary data at embedding positions (truncated):");
+        Console.WriteLine(TruncateBinary(highlightedModified));
+
+        return modifiedData;
+    }
+
+    static void SaveToFile(List<byte> data, string filePath)
+    {
+        File.WriteAllBytes(filePath, data.ToArray());
+    }
+
+    static void Main()
+    {
+        string path = "PATH TO YOUR FOLDER HERE";
+        string inputFilePath = Path.Combine(path, "cat.bmp");
+        string outputFilePath = Path.Combine(path, "hiddencat.bmp");
+
+        if (!File.Exists(inputFilePath))
+        {
+            Console.WriteLine("Error opening input file.");
+            return;
+        }
+
+        List<byte> data = new List<byte>(File.ReadAllBytes(inputFilePath));
+
+        Console.WriteLine("Enter the message to embed: ");
+        string? messageToEmbed = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(messageToEmbed))
+        {
+            Console.WriteLine("Message cannot be empty.");
+            return;
+        }
+
+        int pixelDataOffset = BitConverter.ToInt32(data.ToArray(), 10);
+
+        List<byte> encodedData = EmbedMessage(data, messageToEmbed, pixelDataOffset);
+
+        SaveToFile(encodedData, outputFilePath);
+
+        Console.WriteLine("Message embedded successfully in Base64! Encoded image saved as " + outputFilePath + ".");
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+import os
+
+path = "PATH TO YOUR FOLDER HERE"
+
+def ceaser_cipher_encode(input_string, shift):
+    encoded_string = ""
+    for character in input_string:
+        if character.isalpha():
+            base = ord('a') if character.islower() else ord('A')
+            encoded_string += chr((ord(character) - base + shift) % 26 + base)
+        else:
+            encoded_string += character  # Non-alphabet characters remain unchanged
+    return encoded_string
+
+def base64_encode(input_string):
+    BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    encoded_string = ""
+    value = 0
+    bits = -6
+    base64_mask = 0x3F
+
+    for character in input_string.encode():
+        value = (value << 8) + character
+        bits += 8
+
+        while bits >= 0:
+            encoded_string += BASE64_CHARS[(value >> bits) & base64_mask]
+            bits -= 6
+    
+    if bits > -6:
+        encoded_string += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]
+    
+    while len(encoded_string) % 4:
+        encoded_string += "="
+    
+    return encoded_string
+
+# This will allow us to highlight the differences in the binary data
+def highlight_changes(original, modified):
+    highlighted_original = []
+    highlighted_modified = []
+
+    for o, m in zip(original, modified):
+        if o != m:
+            highlighted_original.append(f"[{o}]")
+            highlighted_modified.append(f"[{m}]")
+        else:
+            highlighted_original.append(o)
+            highlighted_modified.append(m)
+
+    return ''.join(highlighted_original), ''.join(highlighted_modified)
+
+def embed_message(data, message, offset, shift):
+    # Apply Caesar cipher shift to the message
+    shifted_message = ceaser_cipher_encode(message, shift)
+    print(f"Caesar cipher shifted message: {shifted_message}")
+
+    # Encode the shifted message using Base64
+    base64_message = base64_encode(shifted_message)
+    print(f"Base64-encoded message: {base64_message}")
+    print(f"Base64 length (in characters): {len(base64_message)}")
+
+    # Convert the Base64 message to binary
+    binary_message = ''.join(format(ord(char), '08b') for char in base64_message)
+    print(f"Binary message: {binary_message}")
+
+    # Embed the length of the Base64 message (in bytes) in the first 32 bits
+    length_bits = format(len(base64_message), '032b')
+    print(f"Length bits: {length_bits}")
+
+    data = bytearray(data)
+
+    # Extract original binary at embedding positions
+    original_binary = "".join(format(data[offset + i], '08b') for i in range(len(length_bits + binary_message)))
+    modified_data = bytearray(data)
+
+    # Embed the message into the least significant bits
+    for i, bit in enumerate(length_bits + binary_message):
+        modified_data[offset + i] = (modified_data[offset + i] & 0xFE) | int(bit)
+
+    # Extract modified binary at embedding positions
+    modified_binary = "".join(format(modified_data[offset + i], '08b') for i in range(len(length_bits + binary_message)))
+
+    highlighted_original, highlighted_modified = highlight_changes(original_binary, modified_binary)
+    
+    # Truncate for readability
+    def truncate_binary(binary_str, show_bits=64):
+        if len(binary_str) > show_bits * 2:
+            return binary_str[:show_bits] + "..." + binary_str[-show_bits:]
+        return binary_str
+
+    print("\nOriginal binary data at embedding positions (truncated):")
+    print(truncate_binary(highlighted_original))
+
+    print("\nModified binary data at embedding positions (truncated):")
+    print(truncate_binary(highlighted_modified))
+
+    return modified_data
+
+input_file_path = os.path.join(path, "cat.bmp")
+output_file_path = os.path.join(path, "hiddencat.bmp")
+with open(input_file_path, "rb") as f:
+    data = f.read()
+
+print("Enter the message to embed: ")
+message_to_embed = input()
+
+print("Enter the Caesar cipher shift value: ")
+shift_value = int(input())
+
+# Specify the offset where the pixel data starts (e.g., 54 for standard BMP)
+pixel_data_offset = int.from_bytes(data[10:14], byteorder='little')
+
+encoded_data = embed_message(data, message_to_embed, pixel_data_offset, shift_value)
+with open(output_file_path, "wb") as f:
+    f.write(encoded_data)
+print(f"Message embedded successfully in Base64! Encoded image saved as {output_file_path}.")
+```
+
+</TabItem>
+</Tabs>
+
+### Expected Output
+
+After extracting the message and decrypting it using the Caesar Cipher, you'll see an output like:
+
+```plaintext
+Enter the message to embed: 
+im a cat  
+Enter the Caesar cipher shift value: 
+8
+Caesar cipher shifted message: qu i kib
+Base64-encoded message: cXUgaSBraWI=
+Base64 length (in characters): 12
+Binary message: 011000110101100001010101011001110110000101010011010000100111001001100001010101110100100100111101
+Length bits: 00000000000000000000000000001100
+
+Original binary data at embedding positions (truncated):
+0011100[1]00100100000101100001011[1]011111101100000[1]0000101[1]...100110001111001[0]0010000[0]0101111[0]1000110[0]0000110010100101
+
+Modified binary data at embedding positions (truncated):
+0011100[0]00100100000101100001011[0]011111101100000[0]0000101[0]...100110001111001[1]0010000[1]0101111[1]1000110[1]0000110010100101
+Message embedded successfully in Base64! Encoded image saved as /yourfolders/hiddencat.bmp.
+```
+
+If we then run the same decode script, we would see:
+
+```plaintext
+Length bits: 00000000000000000000000000001100
+Extracted Base64 length (in characters): 12
+Extracted Base64 message: cXUgaSBraWI=
+Extracted message: qu i kib
+```
+
+So now, while someone can extract the message, they would need to know that you used Ceaser Cipher, as well as what the shift value was, to get the original message.

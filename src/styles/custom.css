@@ -4,58 +4,45 @@
 
 /* Dark mode colors. */
 :root {
-    --purple-hsl: 255, 60%, 60%;
-    --overlay-blurple: hsla(var(--purple-hsl), 0.2);
-  /* --sl-color-bg: #00edc5; */
+  --purple-hsl: 255, 60%, 60%;
+  --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --sk-logo-dark-blue: #3E50B1;
+  /* --sk-logo-blue: #03ACC2; */
+  --sk-logo-blue: rgba(1, 172, 194, 1);
+  --sk-logo-blue-transparent: rgba(1, 172, 194, 0.18);
+  /* --sk-logo-orange: #F5A623; */
+  --sk-logo-orange: rgba(245, 166, 35, 1);
+  --sk-logo-orange-transparent: rgba(246, 166, 34, 0.18);
 }
-
 
 /* Light mode colors. */
-:root[data-theme="light"] {
-    --purple-hsl: 255, 85%, 65%;
-    --sl-hue-accent: 350;
-  /* --sl-color-bg: #20ef0d; */
+:root[data-theme='light'] {
+  --sl-color-accent: #3D50f5;
 }
 
-/* Headings */
-#_top {
-  /* Your CSS styles for the <h1> element go here */
-
-  color: #f5a623; /* Example style */
+.hero {
+  padding-top: 80px;
+  padding-bottom: 30px;
 }
 
-/* .astro-ML6NTD6L h2{
- Add effect for # headings 
-} */
-.astro-jbfsktt5 img {
-  /* Image */
-
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
-}
-.astro-jbfsktt5 img {
-  width: 250px;
-  height: 250px;
-}
-.astro-jbfsktt5 img:hover {
-  /* Image */
-
-  transform: scale(1.1); /* Enlarge the image on hover */
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
+.hero img {
+  margin-top: -40px;
 }
 
 [data-has-hero] .page {
-    background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-      radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-      radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
-  }
-  
+  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
+    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
+    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
+}
+
 [data-has-hero] header {
   border-bottom: 1px solid transparent;
   background-color: transparent;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
-[data-has-hero] .hero > img {
+
+[data-has-hero] .hero>img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
 }
 
@@ -63,7 +50,8 @@ iframe[id="stackblitz-iframe"] {
   width: 100%;
   min-height: 600px;
 }
-[data-has-hero] .hero > div.sl-flex {
+
+[data-has-hero] .hero>div.sl-flex {
   align-self: flex-start;
 }
 
@@ -71,72 +59,97 @@ iframe[id="stackblitz-iframe"] {
   margin: 0 auto;
 }
 
-[data-has-hero] .hero .action {
-  border-radius: 24px;
-  transition: background-color ease-in-out 0.25s;
-}
-
-
-
-[data-has-hero] .hero .action.minimal {
-  border: solid 1px var(--sl-color-text-accent);
-  padding: 1rem 1.25rem;
-}
-
-
-
 [data-has-hero] .hero .actions {
   gap: 1.25rem;
 }
 
-[data-has-hero] .hero .hero-gradient-text {
-  background: radial-gradient(
-      circle at top left,
-      hsl(296, 100%, 50%) 0%,
-      transparent 50%
-    ),
-    radial-gradient(circle at center, rgb(113, 147, 233) 0%, transparent 100%),
-    radial-gradient(circle at bottom right, rgb(0, 68, 255) 0%, transparent 50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Potential new sidebar styling*/
+/* .sidebar-content {
+  background-color: var(--sl-color-gray-7);
 
-[data-has-hero] .card {
-  border-radius: 12px;
+  .top-level li {
+    border-radius: 0.5rem;
+    box-shadow: var(--sl-shadow-md);
+    background-color: var(--sl-color-bg);
+
+    summary {
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.5rem;
+      background-color: var(--sl-color-gray-6);
+
+    }
+
+    li:last-of-type {
+      padding-bottom: 3px;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    li {
+      border-left: 1px solid var(--sl-color-gray-5);
+      box-shadow: none;
+      border-radius: 0rem;
+
+      summary {
+        border: 1px solid transparent;
+        background-color: transparent;
+      }
+    }
+  }
+} */
+
+/* --- START: Link Button styling ------*/
+
+[data-has-hero] .hero .sl-link-button {
+  padding: 1rem 1.25rem;
+  border: 1px solid transparent;
   position: relative;
-  background: radial-gradient(
-      300px circle at top left,
-      rgba(85, 44, 190, 0.081) 20%,
-      transparent 100%
-    ),
-    radial-gradient(
-      300px circle at bottom right,
-      rgba(44, 102, 190, 0.09) 20%,
-      transparent 100%
-    );
+  overflow: hidden;
+  cursor: pointer;
 }
 
-[data-has-hero] .card::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  border-radius: inherit;
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(62, 85, 167, 0.212),
-    transparent 40%
-  );
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
+[data-has-hero] .hero .sl-link-button.primary {
+  border: 1px solid var(--sl-color-accent);
+  background-color: transparent;
+  color: var(--sl-color-white);
 }
 
-[data-has-hero] .card:hover::before {
-  opacity: 1;
+[data-has-hero] .hero .sl-link-button.minimal {
+  background-color: var(--sk-logo-orange);
+  border-color: var(--sk-logo-orange);
+  color: black;
+}
+
+[data-has-hero] .hero .sl-link-button.secondary {
+  background-color: var(--sk-logo-blue);
+  color: black;
+}
+
+[data-has-hero] .hero .sl-link-button:hover {
+  box-shadow: inset 0 0 0 2px var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+}
+
+/* Usage Example Link Buttons */
+.sl-markdown-content .sl-link-button.secondary {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--sk-logo-blue);
+  color: black;
+}
+
+.sl-markdown-content .sl-link-button:hover {
+  border: 2px solid var(--sl-color-white);
+}
+
+/* --- END: Link Button styling ------*/
+
+/* centre all images/gifs */
+img {
+  display: block;
+  margin: auto;
 }
 
 [data-has-hero] .star-text {
@@ -150,36 +163,12 @@ iframe[id="stackblitz-iframe"] {
   margin-top: 80px !important;
 }
 
-@media (max-width: 50em) {
-  [data-has-hero] .hero img {
-    display: none;
-  }
-
-  [data-has-hero] .header .right-group {
-    display: flex !important;
-  }
+.home-card {
+  border-radius: 20%;
+  border: 1px dotted black;
 }
 
-@media (min-width: 1700px) {
-  [data-has-hero] .hero img {
-    position: absolute;
-    overflow: hidden;
-    top: 10vh;
-    right: -10vw;
-    width: 1000px;
-  }
-}
-
-@media (min-width: 2400px) {
-  [data-has-hero] .hero img {
-    position: absolute;
-    overflow: hidden;
-    top: 6vh;
-    right: 0vw;
-    width: 1200px;
-  }
-}
-/* after */
+/* OS icons on install pages */
 @font-face {
   font-family: "FontAwesomeBrands";
   src: url("/src/fonts/fa-brands-400.woff2") format("woff2");
@@ -187,73 +176,47 @@ iframe[id="stackblitz-iframe"] {
   font-style: normal;
   font-display: swap;
 }
-.home-card {
-  border-radius: 20%;
-  border: 1px dotted black;
-}
-html[data-theme="dark"] a.multitool:after {
-  border: 1px solid black;
+
+a.pi:after,
+a.apple:after,
+a.windows:after,
+a.windows-wsl:after,
+a.linux:after {
+  font-family: "FontAwesomeBrands";
+  float: right;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
 }
 
 a.pi:after {
-  font-family: "FontAwesomeBrands";
   content: "\f7bb";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.apple:after {
-  border: 1px solid black;
 }
 
 a.apple:after {
-  font-family: "FontAwesomeBrands";
   content: "\f179";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-
-html[data-theme="dark"] a.windows:after {
-  border: 1px solid black;
 }
 
 a.windows:after {
-  font-family: "FontAwesomeBrands";
   content: "\f17a";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
 }
 
+a.windows-wsl:after {
+  content: "\f17a  \f17c";
+}
+
+a.linux:after {
+  content: "\f17c";
+}
+
+html[data-theme="dark"] a.apple:after,
+html[data-theme="dark"] a.windows:after,
+html[data-theme="dark"] a.windows-wsl:after,
 html[data-theme="dark"] a.linux:after {
   border: 1px solid black;
 }
 
-a.linux:after {
-  font-family: "FontAwesomeBrands";
-  content: "\f17c";
-  float: right;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 0px 5px 0px 5px;
-}
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 /* XQuest changes */
-article.card {
-  border-radius: 0.5rem;
-  box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-color-gray-5);
-}
-
 .legal {
   margin-top: 4rem !important;
   font-size: 12px;
@@ -272,55 +235,268 @@ a.decent:hover {
   color: var(--sl-color-accent) !important;
 }
 
-[data-has-hero] .page {
-  background: linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-    radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-    radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem 30rem;
-}
-
-[data-has-hero] header {
-  border-bottom: 1px solid transparent;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-}
-
 /** Better table styling */
 .sl-markdown-content table {
   border-radius: 0.5rem;
   box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-5);
   width: max-content;
   max-width: 100%;
+  text-align: left;
+}
+
+.sl-markdown-content table th {
+  border-right: 1px solid var(--sl-color-gray-5);
+}
+
+.sl-markdown-content table td {
+  border-right: 1px solid var(--sl-color-gray-5);
 }
 
 .sl-markdown-content table td:first-child,
 .sl-markdown-content table th:first-child {
   border-left: none;
+  padding-left: 15px;
 }
 
 .sl-markdown-content table td:last-child,
 .sl-markdown-content table th:last-child {
   border-right: none;
+  padding-right: 15px;
 }
 
 .sl-markdown-content table tr:first-child th {
   border-top: none;
+  text-align: left;
+  background-color: var(--sl-color-gray-6);
+  /* color: white; */
 }
 
 .sl-markdown-content table tr:last-child td {
   border-bottom: none;
 }
-.starlight-aside,
-.card {
+
+.starlight-aside {
   border-radius: 0.5rem;
 }
 
 code {
   border-radius: 0.25rem;
 }
+
 .expressive-code {
   border-radius: 0.6rem;
   box-shadow: var(--sl-shadow-md);
+}
 
+/* Light Mode Colors for .custom-details */
+.custom-details {
+  --custom-details-border: #3498db;
+  /* Vibrant blue border */
+  --custom-details-background: #d3dbe2;
+  /* Light gray background */
+  --icon-color: #3498db;
+  /* Vibrant blue for the icon */
+  --icon-hover-color: #2980b9;
+  /* Darker blue for the icon on hover */
+
+  border: 3px solid var(--custom-details-border);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--custom-details-background);
+}
+
+.custom-details summary {
+  cursor: help;
+  font-weight: bold;
+  position: relative;
+  padding-left: 30px;
+  margin: 0;
+  /* Reset any default margin */
+}
+
+/* Custom icon before the summary in .custom-details */
+.custom-details summary::before {
+  position: absolute;
+  left: 0;
+  color: var(--icon-color);
+  /* Use the defined icon color */
+  font-weight: bold;
+  transition: transform 0.2s ease, color 0.2s ease;
+  /* Smooth transition for icon change */
+}
+
+/* Dark Mode Colors for .custom-details */
+[data-theme="dark"] .custom-details {
+  --custom-details-border: #1e2a38;
+  /* Darker border color */
+  --custom-details-background: #2e3a47;
+  /* Darker gray background */
+  --icon-color: #00aaff;
+  /* Light blue for the icon */
+  --icon-hover-color: #0099cc;
+  /* Darker blue for the icon on hover */
+
+  border: 3px solid var(--custom-details-border);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--custom-details-background);
+}
+
+[data-theme="dark"] .custom-details summary::before {
+  color: var(--icon-color);
+  /* Use the defined icon color */
+}
+
+[data-theme="dark"] .custom-details summary:hover::before {
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
+}
+
+/* Light Mode Colors for .custom-details */
+.custom-details {
+  --custom-details-border: var(--sl-color-accent);
+  /* Accent color from the light theme */
+  --custom-details-background: #d3dbe2;
+  /* Light gray background */
+  --icon-color: var(--sl-color-accent);
+  /* Accent color for the icon */
+  --icon-hover-color: darken(var(--sl-color-accent), 10%);
+  /* Slightly darker color for the icon on hover */
+
+  border: 3px solid var(--custom-details-border);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--custom-details-background);
+}
+
+.custom-details summary {
+  cursor: help;
+  font-weight: bold;
+  position: relative;
+  padding-left: 30px;
+  margin: 0;
+  /* Reset any default margin */
+}
+
+/* Custom icon before the summary in .custom-details */
+.custom-details summary::before {
+  content: "+";
+  /* Default symbol when collapsed */
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  /* Size of the symbol */
+  color: var(--icon-color);
+  /* Use the defined icon color */
+  font-weight: bold;
+  transition: color 0.2s ease;
+  /* Smooth transition for icon color change */
+}
+
+/* Change symbol when .custom-details is open */
+.custom-details[open] summary::before {
+  content: "-";
+  /* Change to minus symbol when open */
+}
+
+/* Add hover effect to the custom icon in .custom-details */
+.custom-details summary:hover::before {
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
+}
+
+/* Dark Mode Colors for .custom-details */
+[data-theme="dark"] .custom-details {
+  --custom-details-border: #1e2a38;
+  /* Darker border color */
+  --custom-details-background: #2e3a47;
+  /* Darker gray background */
+  --icon-color: #00aaff;
+  /* Light blue for the icon */
+  --icon-hover-color: #0099cc;
+  /* Darker blue for the icon on hover */
+
+  border: 3px solid var(--custom-details-border);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--custom-details-background);
+}
+
+[data-theme="dark"] .custom-details summary::before {
+  color: var(--icon-color);
+  /* Use the defined icon color */
+}
+
+[data-theme="dark"] .custom-details summary:hover::before {
+  color: var(--icon-hover-color);
+  /* Use the defined hover icon color */
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid lightgray;
+  margin-left: 20px;
+}
+
+.guidesAccordion,
+.usageExamplesAccordion {
+  margin-top: 20px;
+  padding: 0.5rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  position: relative;
+  /* overflow: hidden; */
+  cursor: pointer;
+  background-color: var(--sk-logo-orange);
+  color: black;
+}
+
+.guidesAccordion {
+  background-color: var(--sk-logo-orange);
+}
+
+.usageExamplesAccordion {
+  margin-left: 10px;
+  background-color: var(--sk-logo-blue);
+}
+
+.guidesAccordion:hover,
+.usageExamplesAccordion:hover {
+  border: 2px solid var(--sl-color-white);
+}
+
+/* Display maths equations on single line */
+mjx-container svg {
+  display: inline !important;
+}
+
+.sko-button {
+  padding: 1rem 1.5rem;
+  /* Adjusted padding for better proportions */
+  border: 3px solid transparent;
+  /* Ensures clean border */
+  position: relative;
+  /* Keeps the button content in place */
+  overflow: hidden;
+  /* Handles any child element overflow */
+  cursor: pointer;
+  /* Makes it clear the button is clickable */
+  background-color: var(--sk-logo-blue);
+  /* SplashKit's brand color */
+  color: black;
+  /* Text color */
+  border-radius: 9999px;
+  /* Fully rounded edges for the stadium shape */
+  text-align: center;
+  /* Ensures the text is centered */
+}
+
+.sko-button:hover {
+  border: 3px solid var(--sl-color-white);
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
 }

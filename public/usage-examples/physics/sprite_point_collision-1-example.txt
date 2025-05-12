@@ -1,0 +1,5 @@
+Determine Sprite Collisions with Points
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/physics/sprite_point_collision-1-resources.zip).
+:::
