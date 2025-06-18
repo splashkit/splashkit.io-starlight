@@ -562,9 +562,9 @@ for (const categoryKey in jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
       const formattedLink = formattedFunctionName.toLowerCase().replace(/\s+/g, "-");
-  
+
       // Put {</>} symbol at the end of header if function has a usage example
-      const hasSymbol = (hasExampleInGroup || hasGuideInGroup) ? `&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;`: "";
+      const hasSymbol = (hasExampleInGroup || hasGuideInGroup) ? `&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;` : "";
       const formattedGroupLink = `${formattedLink}-functions`;
 
       mdxContent += `\n### [${formattedFunctionName}](#${formattedGroupLink})${hasSymbol} \\{#${formattedGroupLink}\\}\n\n`;
@@ -598,7 +598,7 @@ for (const categoryKey in jsonData) {
 
         // Put bolded {</>} symbol at the end of heading link if function has a usage example
         const hasExample = usageExamples.some(example => example.endsWith(func.unique_global_name + "-1-example.txt"));
-        const hasGuide =  guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
+        const hasGuide = guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
 
         if (hasExample || hasGuide) {
           mdxContent += "&nbsp;&nbsp;<strong>&lcub;&lt;/&gt;&rcub;</strong>";
@@ -623,12 +623,12 @@ for (const categoryKey in jsonData) {
       const formattedLink = formattedName3.toLowerCase().replace(/\s+/g, "-");
       const formattedUniqueLink = func.unique_global_name.toLowerCase().replace(/_/g, "-");
       const hasExample = usageExamples.some(example => example.endsWith(func.unique_global_name + "-1-example.txt"));
-      const hasGuide =  guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
-      
+      const hasGuide = guidesCategories.some((category) => category.some((guide) => guide.functions.includes(func.unique_global_name)));
+
       // Put {</>} symbol at the end of headers of overloaded functions with usage example or else just keep empty
       const formattedName = isOverloaded
-    ? `\n#### [${functionName2}](#${formattedUniqueLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''} \\{#${formattedUniqueLink}\\}`
-    : `\n### [${functionName2}](#${formattedLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''}`;
+        ? `\n#### [${functionName2}](#${formattedUniqueLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''} \\{#${formattedUniqueLink}\\}`
+        : `\n### [${functionName2}](#${formattedLink})${(hasExample || hasGuide) ? '&nbsp;&nbsp;&lcub;&lt;/&gt;&rcub;' : ''}`;
 
       // Replace type names in the description with formatted versions
       let description = func.description || "";
@@ -707,6 +707,19 @@ for (const categoryKey in jsonData) {
       }
       else if (func.return.type != 'void') {
         mdxContent += "**Return Type:** " + typeMappings[func.return.type] + "\n\n";
+
+        mdxContent += "*Returns:* ";
+        let returnDescription = func.return.description || "";
+        for (const typeName in typeMappings) {
+          const typeMapping = typeMappings[typeName];
+
+          returnDescription = returnDescription.replace(
+            new RegExp(`\`\\b${typeName}\\b\``, "g"),
+            typeMapping
+          );
+        }
+
+        mdxContent += `${returnDescription}\n\n`;
       }
 
       mdxContent += "**Signatures:**\n\n";
