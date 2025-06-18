@@ -259,6 +259,11 @@ a.decent:hover {
   padding-left: 15px;
 }
 
+.sl-markdown-content .function-parameters-list table td:nth-child(1),
+.sl-markdown-content .function-parameters-list table td:nth-child(2) {
+  white-space: nowrap;
+}
+
 .sl-markdown-content table td:last-child,
 .sl-markdown-content table th:last-child {
   border-right: none;

@@ -668,6 +668,7 @@ for (const categoryKey in jsonData) {
       // Add Parameters section only if there are parameters
       if (Object.keys(func.parameters).length > 0) {
         mdxContent += "**Parameters:**\n\n";
+        mdxContent += `<div class="function-parameters-list">\n\n`;
         mdxContent +=
           "| Name   | Type                                               | Description                                                                        |\n";
         mdxContent +=
@@ -675,7 +676,10 @@ for (const categoryKey in jsonData) {
 
         for (const paramName in func.parameters) {
           const param = func.parameters[paramName];
-          const paramType = typeMappings[param.type] || param.type;
+          let paramType = typeMappings[param.type] || param.type;
+          if (paramType == 'unsigned int') {
+            paramType = "`Unsigned Integer`";
+          }
           let description2 = param.description || "";
           for (const typeName in typeMappings) {
             const typeMapping = typeMappings[typeName];
@@ -701,6 +705,7 @@ for (const categoryKey in jsonData) {
         }
 
         mdxContent += "\n";
+        mdxContent += `</div>\n\n`;
       }
       if (func.return.type == 'unsigned int') {
         mdxContent += "**Return Type:** Unsigned Integer\n\n";
