@@ -516,6 +516,7 @@ mjx-container svg {
   --tab-hover-bg: var(--sl-color-gray-6);
   --tab-text: var(--sl-color-gray-3);
   --tab-hover-text: var(--sl-color-white);
+  --focused-tab-bg: var(--sl-color-bg);
 }
 
 [data-theme="dark"] {
@@ -526,50 +527,63 @@ mjx-container svg {
 [data-theme="light"] {
   --tab-outline: var(--sk-logo-blue);
   --focused-tab-outline: var(--sk-logo-orange);
+
+  .accordionContent {
+    --focused-tab-bg: var(--sl-color-gray-7);
+  }
 }
 
 /* Basic Tab Style */
-[role="tab"] {
+.tab {
   position: relative;
   margin-right: 4px;
   margin-left: 4px;
-  padding-bottom: 2px;
+  padding-top: 5px;
   border-radius: 0.5rem 0.5rem 0 0;
   border: 2px solid var(--focused-tab-outline);
   background-color: var(--tab-bg);
 }
 
-[role="tab"][aria-selected="true"] {
-  background-color: inherit;
-  border-bottom-color: var(--sl-color-bg);
-  padding-top: 2px;
+/* Fill whole tab area when tab text is different heights */
+[role="tab"] {
+  display: block;
+  height: 100%;
 }
 
-[data-theme="light"] .accordionContent [role="tab"][aria-selected="true"] {
-  /* Correct focused tab bottom border colour in Usage example tabs */
-  border-bottom-color: var(--sl-color-gray-7) !important;
+.tab:has(> [role="tab"][aria-selected="true"]) {
+  background-color: var(--focused-tab-bg);
+  border-bottom-color: var(--focused-tab-bg);
+
+  [role="tab"][aria-selected="true"] {
+    border-bottom-color: var(--focused-tab-bg);
+  }
 }
 
-[role="tab"][aria-selected="false"] {
+.tab:has(> [role="tab"][aria-selected="false"]) {
   margin-top: 3px;
+  margin-bottom: 0px;
   color: var(--tab-text);
   border-color: var(--tab-outline);
   border-width: 1px;
   border-bottom: none;
 }
 
-[role="tab"][aria-selected="false"]:hover {
+.tab:has(> [role="tab"][aria-selected="false"]):hover {
   cursor: pointer;
   color: var(--tab-hover-text);
   background-color: var(--tab-hover-bg);
+
+  [role="tab"][aria-selected="false"] {
+    border-bottom-color: var(--tab-hover-bg);
+  }
 }
 
 [role="tablist"] {
   border-bottom-color: var(--focused-tab-outline);
 }
 
-/* Round out styling using circle pseudo-element */
-[role="tab"][aria-selected="true"]::after {
+/* Round out styling using circle pseudo-element - right side */
+.tab:has(> [role="tab"][aria-selected="true"])::after {
   content: "";
   display: block;
   position: absolute;
@@ -584,10 +598,11 @@ mjx-container svg {
   border-bottom-color: var(--focused-tab-outline);
   clip-path: inset(7px 5px 1px 0);
   z-index: 2;
-  box-shadow: -4px 6px 0 var(--sl-color-bg);
+  box-shadow: -4px 6px 0 var(--focused-tab-bg);
 }
 
-[role="tab"][aria-selected="true"]::before {
+/* Round out styling using circle pseudo-element - left side */
+.tab:has(> [role="tab"][aria-selected="true"])::before {
   content: "";
   display: block;
   position: absolute;
@@ -602,7 +617,7 @@ mjx-container svg {
   border-bottom-color: var(--focused-tab-outline);
   clip-path: inset(7px 0 1px 5px);
   z-index: 2;
-  box-shadow: 4px 6px 0 var(--sl-color-bg);
+  box-shadow: 4px 6px 0 var(--focused-tab-bg);
 }
 
 /* 
