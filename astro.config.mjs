@@ -114,7 +114,7 @@ export default defineConfig({
             { label: "Using SplashKit", link: "guides/0-using-splashkit" },
             { label: "Getting Started", autogenerate: { directory: "guides/getting-started" }, collapsed: false },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry-gpio" }, collapsed: true },
-            { label: "Physics", badge: 'New', autogenerate: { directory: "guides/physics" }, collapsed: true },
+            { label: "Physics", autogenerate: { directory: "guides/physics" }, collapsed: true },
             { label: "Interface", autogenerate: { directory: "guides/interface" }, collapsed: true },
             { label: "Networking", autogenerate: { directory: "guides/networking" }, collapsed: true },
           ],
@@ -122,7 +122,7 @@ export default defineConfig({
         },
         {
           label: "Beyond SplashKit",
-          collapsed: true,
+          collapsed: false,
           items: [
             { label: "Overview", link: "beyond-splashkit/" },
             { label: "Using SDL2", autogenerate: { directory: "beyond-splashkit/getting-started-with-sdl" }, collapsed: false },
@@ -130,7 +130,6 @@ export default defineConfig({
             { label: "Utilities", autogenerate: { directory: "beyond-splashkit/utilities" }, collapsed: true },
           ],
           // autogenerate: { directory: "beyond-splashkit", collapsed: true },
-          badge: "New",
         },
       ],
 
