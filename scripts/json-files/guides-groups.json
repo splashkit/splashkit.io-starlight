@@ -1,15 +1,7 @@
 [
-  "Animations",
-  "Audio",
-  "Camera",
-  "Color",
-  "Graphics",
-  "Input",
-  "Interface",
-  "JSON",
-  "Networking",
-  "Physics",
-  "Raspberry-GPIO",
-  "Resource-Bundles",
-  "Utilities"
+  "getting-started",
+  "interface",
+  "networking",
+  "physics",
+  "raspberry-gpio"
 ]

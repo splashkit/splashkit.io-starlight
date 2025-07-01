@@ -1,0 +1,24 @@
+{
+    "guides": [
+        {
+            "name": "Using Animations in SplashKit",
+            "functions": [
+                    "open_window",
+                    "load_resource_bundle",
+                    "animation_script_named",
+                    "bitmap_named",
+                    "create_animation_from_script_named",
+                    "option_with_animation",
+                    "process_events",
+                    "draw_bitmap_with_options",
+                    "draw_text_no_font_no_size",
+                    "animation_name",
+                    "update_animation",
+                    "key_typed",
+                    "key_down",
+                    "assign_animation"
+            ],
+            "url": "/guides/getting-started/6-using-animations/"
+        }
+    ]
+}

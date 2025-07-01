@@ -5,16 +5,55 @@ sidebar:
   order: 0
 ---
 
+import { LinkCard } from "@astrojs/starlight/components";
 
-:::tip["Beyond" SplashKit SDK]
-
-SplashKit provides a versatile set of categories, encompassing graphics, audio, input, and more, offering developers a comprehensive toolkit for game and multimedia development.
-
-"Beyond" SplashKit provides tutorials and examples outside of the SplashKit SDK.
-
+:::tip[Beyond SplashKit]
+This part of our documentation site provides useful tutorials and examples outside of the SplashKit SDK to help beginner developers extend their skills.
 :::
 
-import BeyondSKList from "../../../components/BeyondSplashKit.astro";
+### Using SDL2
 
-<BeyondSKList>
-</BeyondSKList>
+*Compare SplashKit code snippets with the equivalent code in SDL2 (one of SplashKit's dependencies):*
+
+<LinkCard
+  title="Getting Started with SDL2 Graphics"
+  href="/beyond-splashkit/getting-started-with-sdl/0-getting-started-with-graphics/"
+/>
+<LinkCard
+  title="Playing Sound Effects and Music with SDL2 Audio"
+  href="/beyond-splashkit/getting-started-with-sdl/1-sound-effects/"
+/>
+
+## Cryptography
+
+*Explore encoding and decoding techniques, as well as other interesting cryptography topics:*
+
+<LinkCard
+  title="Encoding and Decoding"
+  href="/beyond-splashkit/cryptography/0-encoding-and-decoding/"
+/>
+<LinkCard
+  title="Steganography"
+  href="/beyond-splashkit/cryptography/1-steganography/"
+/>
+<LinkCard
+  title="Morse Code"
+  href="/beyond-splashkit/cryptography/2-morse-code/"
+/>
+
+### Utilities
+
+*Learn more about how to code basic mathematical operations, conversion operations, and input validation:*
+
+<LinkCard
+  title="Basic Maths Operations"
+  href="/beyond-splashkit/utilities/0-math-basics/"
+/>
+<LinkCard
+  title="Conversion Operations"
+  href="/beyond-splashkit/utilities/1-converting-values/"
+/>
+<LinkCard
+  title="Basic Integer Input Validation Without SplashKit"
+  href="/beyond-splashkit/utilities/2-integer-input-validation/"
+/>

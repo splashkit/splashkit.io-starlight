@@ -1,0 +1,2080 @@
+---
+title: Basic Maths Operations
+description: Learn how to perform basic mathematical operations in programming, including square roots, prime numbers, factors, greatest common divisors, least common multiples, and modular arithmetic.
+author: Brianna Laird
+lastupdated: December 2024
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+Mathematics is a fundamental part of programming, providing essential tools and methods that enable developers to solve complex problems efficiently. This guide explores a range of mathematical operations and demonstrates how to implement them effectively. In later tutorials, you'll learn how to integrate these operations into your SplashKit projects to create programs, games and encrypted messaging applications.
+
+## Basic Maths Operations
+
+This section introduces fundamental mathematical operations that are essential for programming. We'll explore various mathematical functions and algorithms, starting with basic calculations like square roots and progressing to more complex operations like finding prime numbers and calculating greatest common divisors, least common multiples, and finding factors.
+
+### Square Root
+
+The square root of a number is a value that, when multiplied by itself, gives the original number. For example, the square root of $9$ is $3$ since $3 × 3 = 9$.
+
+To calculate the square root efficiently, we use the Newton-Raphson method, an iterative numerical technique for finding roots of real-valued functions. This method starts with an initial estimate and repeatedly refines it using the formula:
+
+$$
+x_{n+1} = \frac{1}{2}(x_n + \frac{N}{x_n})
+$$
+
+Where:
+
+- $x_n$ is the current estimate
+- $N$ is the number we want to find the square root of
+- $x_{n+1}$ is the improved estimate
+
+This can be implemented in code as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double calculate_square_root(double x)
+{
+    double y;
+    int p, square, c;
+
+    // Find the first perfect square greater than the input number
+    p = 0;
+    do
+    {
+        p++;
+        square = (p + 1) * (p + 1); // Calculate the next perfect square
+    }
+    while (x > square); // Stop when x is less than or equal to the square
+
+    // Approximate the square root using the Newton-Raphson method
+    y = (double)p;
+    c = 0;
+    while (c < 10) // Perform a maximum of 10 iterations
+    {
+        y = (x / y + y) / 2; // Update the guess by averaging x/y and y
+
+        if (y * y == x) // Check if the square of the current guess matches the input
+            return y; // If exact, return the square root
+
+        c++;
+    }
+
+    return y;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+double CalculateSquareRoot(int x)
+{
+    double y = 0.0;
+    int p = 0;
+    int c = 0;
+
+    // Find the first perfect square greater than the input number
+    while (true)
+    {
+        p++;
+        int square = (p + 1) * (p + 1); // Calculate the next perfect square
+        if (x <= square) // Stop when x is less than or equal to the square
+            break;
+    }
+
+    // Approximate the square root using the Newton-Raphson method
+    y = (double)p;
+    c = 0;
+    while (c < 10) // Perform a maximum of 10 iterations
+    {
+        y = (x / y + y) / 2; // Update the guess by averaging x/y and y
+
+        if (y * y == x) // Check if the square of the current guess matches the input
+            return y; // If exact, return the square root
+
+        c++;
+    }
+
+    return y;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def calculate_square_root(x):
+    # Find the first perfect square greater than the input number
+    p = 0
+    while True:
+        p += 1
+        square = (p + 1) * (p + 1)  # Calculate the next perfect square
+        if x <= square:  # Stop when x is less than or equal to the square
+            break
+
+    # Approximate the square root using the Newton-Raphson method
+    y = float(p)
+    c = 0
+    while c < 10:  # Perform a maximum of 10 iterations
+        y = (x / y + y) / 2  # Update the guess by averaging x/y and y
+
+        if y * y == x:  # Check if the square of the current guess matches the input
+            return y  # If exact, return the square root
+
+        c += 1
+
+    return y
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for solving quadratic equations, calculating side lengths in right-angled triangles, or determining the magnitude of vectors in physics and mathematics.
+:::
+
+#### Using this function
+
+You can use the `calculate_square_root` function to find the square root of a number. For example, to calculate the square root of $25$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+double result = calculate_square_root(25);
+std::cout << "The square root of 25 is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+double result = CalculateSquareRoot(25);
+Console.WriteLine($"The square root of 25 is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = calculate_square_root(25)
+print(f"The square root of 25 is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The square root of 25 is: 5.0
+```
+
+If we swapped the value to be $23$ instead of $25$, the output would then be:
+
+```plaintext
+The square root of 23 is: 4.795831523312719
+```
+
+---
+
+### Prime Number
+
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. To check if a number is prime, you will need to also calculate the square root of the number. You can use the following functions to check if a number is prime:
+
+To check if a number is prime, we can use a simple algorithm that checks if the number is divisible by any number from 2 to its square root. The logic behind this approach is based on the following mathematical principles:
+
+1. Any non-prime number $n$ can be written as a product of two factors: $n = a \times b$
+2. If $n$ is not prime, at least one of these factors must be less than or equal to $\sqrt{n}$
+3. If we can't find any factors up to $\sqrt{n}$, then the number must be prime
+
+This can be implemented in code as follows:
+
+:::note
+This function relies on the `calculate_square_root` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool is_the_number_prime(int n)
+{
+    if (n <= 1) return false;
+
+    // Check if the number is divisible by any number from 2 to the square root of the number
+    for (int i = 2; i <= calculate_square_root(n); i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool IsTheNumberPrime(int n)
+{
+    if (n <= 1) return false;
+
+    // Check if the number is divisible by any number from 2 to the square root of the number
+    for (int i = 2; i <= CalculateSquareRoot(n); i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def is_the_number_prime(n):
+    if n <= 1:
+        return False
+
+    # Check if the number is divisible by any number from 2 to the square root of the number
+    for i in range(2, int(calculate_square_root(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful in cryptography, generating unique identifiers, or finding factors of numbers in mathematics and computer science.
+:::
+
+#### Using this function
+
+You can use the `is_the_number_prime` function to check if a number is prime. For example, to check if $17$ is a prime number:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool is_prime = is_the_number_prime(17);
+std::cout << "Is 17 a prime number? " << (is_prime ? "Yes" : "No") << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool isPrime = IsTheNumberPrime(17);
+Console.WriteLine($"Is 17 a prime number? {(isPrime ? "Yes" : "No")}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+is_prime = is_the_number_prime(17)
+print(f"Is 17 a prime number? {'Yes' if is_prime else 'No'}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Is 17 a prime number? Yes
+```
+
+If we swapped the value to be $24$ instead of $17$, the output would then be:
+
+```plaintext
+Is 24 a prime number? No
+```
+
+### Finding Prime Numbers up to a Given Number
+
+Finding prime numbers up to a given number is a common task in number theory and cryptography. The following function implements the Sieve of Eratosthenes algorithm, which efficiently finds all prime numbers up to a specified maximum $n$. The algorithm works by:
+
+1. Creating a list of numbers from 2 to $n$
+2. Starting with $p=2$ (the first prime), marking all multiples of $p$ up to $n$ as composite
+3. Finding the next unmarked number and repeating step 2
+4. The remaining unmarked numbers are prime
+
+This can be expressed mathematically as finding all numbers $p$ where:
+
+$$
+p \in \{2,\ldots,n\} \text{ and } p \nmid k \text{ for all } k < p
+$$
+
+For example, to find primes up to 20, we would mark off:
+
+- Multiples of 2: $4, 6, 8, 10, 12, 14, 16, 18, 20$
+- Multiples of 3: $9, 15$
+- Multiples of 5: none remaining
+- Leaving primes: $2, 3, 5, 7, 11, 13, 17, 19$
+
+:::note
+This function relies on the `is_the_number_prime` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+void find_prime_numbers_up_to(int limit)
+{
+    std::cout << "Prime numbers up to " << limit << ":";
+
+    // Check all numbers up to the limit to see if they are prime
+    for (int i = 2; i <= limit; i++)
+    {
+        if (is_the_number_prime(i))
+        {
+            std::cout << i << " ";
+        }
+    }
+    std::cout << std::endl;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+void FindPrimeNumbersUpTo(int limit)
+{
+    Console.WriteLine($"Prime numbers up to {limit}:");
+
+    // Check all numbers up to the limit to see if they are prime
+    for (int i = 2; i <= limit; i++)
+    {
+        if (IsTheNumberPrime(i))
+        {
+            Console.Write($"{i} ");
+        }
+    }
+    Console.WriteLine("");
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def find_prime_numbers_up_to(limit):
+    print(f"Prime numbers up to {limit}:")
+
+    # Check all numbers up to the limit to see if they are prime
+    for i in range(2, limit + 1):
+        if is_the_number_prime(i):
+            print(f"{i} ")
+    print("")
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for understanding number theory, building encryption algorithms, or solving problems in combinatorics.
+:::
+
+#### Using this function
+
+You can use the `find_prime_numbers_up_to` function to find all prime numbers up to a given limit. For example, to find prime numbers up to $40$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+find_prime_numbers_up_to(40);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+FindPrimeNumbersUpTo(40);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+find_prime_numbers_up_to(40)
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Prime numbers up to 40:
+2 3 5 7 11 13 17 19 23 29 31 37
+```
+
+### Finding the Number of Divisors
+
+The number of divisors of a positive integer $n$ is the count of positive integers that divide $n$ without leaving a remainder. We can find the number of divisors efficiently by only checking up to $\sqrt{n}$ because divisors come in pairs.
+
+For any divisor $d$ of $n$, there exists a corresponding divisor $\frac{n}{d}$ such that $d \times \frac{n}{d} = n$. For example, for $n=12$:
+
+- When $d=1$, we get $\frac{n}{d}=12$
+- When $d=2$, we get $\frac{n}{d}=6$
+- When $d=3$, we get $\frac{n}{d}=4$
+
+Therefore, except for perfect squares where $d=\sqrt{n}$, divisors occur in pairs. The total count can be calculated by:
+
+$$
+\text{divisors}(n) = 2 \times |\{d : d|\sqrt{n}\}| + |\{d : d^2=n\}|
+$$
+
+where $d|n$ denotes that $d$ divides $n$ evenly.
+
+:::note
+This function relies on the `calculate_square_root` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int count_divisors(int n)
+{
+    int count = 0;
+
+    // Check all numbers up to the square root of n
+    for (int i = 1; i <= calculate_square_root(n); i++)
+    {
+        if (n % i == 0)
+        {
+            // If divisors are equal, count only one
+            if (n / i == i)
+                count++;
+            // Otherwise count both
+            else
+                count += 2;
+        }
+    }
+    return count;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int CountDivisors(int n)
+{
+    int count = 0;
+
+    // Check all numbers up to the square root of n
+    for (int i = 1; i <= CalculateSquareRoot(n); i++)
+    {
+        if (n % i == 0)
+        {
+            // If divisors are equal, count only one
+            if (n / i == i)
+                count++;
+            // Otherwise count both
+            else
+                count += 2;
+        }
+    }
+    return count;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def count_divisors(n):
+    count = 0
+
+    # Check all numbers up to the square root of n
+    for i in range(1, int(calculate_square_root(n)) + 1):
+        if n % i == 0:
+            # If divisors are equal, count only one
+            if n // i == i:
+                count += 1
+            # Otherwise count both
+            else:
+                count += 2
+    return count
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for solving problems in divisibility, determining properties of numbers, or analysing integer factorisation.
+:::
+
+#### Using this function
+
+You can use the `count_divisors` function to find the number of divisors of a given number. For example, to find the number of divisors of $12$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int divisors = count_divisors(12);
+std::cout << "The number of divisors of 12 is: " << divisors << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int divisors = CountDivisors(12);
+Console.WriteLine($"The number of divisors of 12 is: {divisors}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+divisors = count_divisors(12)
+print(f"The number of divisors of 12 is: {divisors}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The number of divisors of 12 is: 6
+```
+
+If we swapped the value to be $24$ instead of $12$, the output would then be:
+
+```plaintext
+The number of divisors of 24 is: 8
+```
+
+### Finding the Sum of Divisors
+
+The sum of divisors of a positive integer is the sum of all positive integers that divide the number without leaving a remainder. This function calculates the sum of divisors of a given number by iterating through all numbers up to the square root of the input number and summing the divisors.
+
+For a number $n$, finding the sum of its divisors involves:
+
+1. Iterating through numbers from 1 to $\sqrt{n}$
+2. For each divisor $d$, if $n$ is divisible by $d$:
+    - If $d^2 = n$, add $d$ once
+    - Otherwise, add both $d$ and $\frac{n}{d}$
+
+For example, for $n=12$:
+
+- Divisors are: 1, 2, 3, 4, 6, 12
+- Sum = 1 + 2 + 3 + 4 + 6 + 12 = 28
+
+This can be expressed mathematically as:
+
+$$
+\sum_{d|n} d = \sum_{d \leq \sqrt{n}} d \cdot [n \bmod d = 0] + \frac{n}{d} \cdot [d^2 \neq n]
+$$
+
+where $[P]$ is 1 if condition $P$ is true, and 0 otherwise.
+
+:::note
+This function relies on the `calculate_square_root` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int sum_divisors(int n)
+{
+    int sum = 0;
+
+    // Check all numbers up to the square root of n
+    for (int i = 1; i <= calculate_square_root(n); i++)
+    {
+        if (n % i == 0)
+        {
+            // If divisors are equal, add only one
+            if (n / i == i)
+                sum += i;
+            // Otherwise add both
+            else
+                sum += i + n / i;
+        }
+    }
+    return sum;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int SumDivisors(int n)
+{
+    int sum = 0;
+
+    // Check all numbers up to the square root of n
+    for (int i = 1; i <= CalculateSquareRoot(n); i++)
+    {
+        if (n % i == 0)
+        {
+            // If divisors are equal, add only one
+            if (n / i == i)
+                sum += i;
+            // Otherwise add both
+            else
+                sum += i + n / i;
+        }
+    }
+    return sum;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def sum_divisors(n):
+    sum = 0
+
+    # Check all numbers up to the square root of n
+    for i in range(1, int(calculate_square_root(n)) + 1):
+        if n % i == 0:
+            # If divisors are equal, add only one
+            if n // i == i:
+                sum += i
+            # Otherwise add both
+            else:
+                sum += i + n // i
+    return sum
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful in solving problems related to perfect numbers, amicable numbers, and understanding the properties of integers.
+:::
+
+#### Using this function
+
+You can use the `sum_divisors` function to find the sum of divisors of a given number. For example, to find the sum of divisors of $12$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int sum = sum_divisors(12);
+std::cout << "The sum of divisors of 12 is: " << sum << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int sum = SumDivisors(12);
+Console.WriteLine($"The sum of divisors of 12 is: {sum}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+sum = sum_divisors(12)
+print(f"The sum of divisors of 12 is: {sum}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The sum of divisors of 12 is: 28
+```
+
+If we swapped the value to be $24$ instead of $12$, the output would then be:
+
+```plaintext
+The sum of divisors of 24 is: 60
+```
+
+### Greatest Common Divisor
+
+The greatest common divisor (GCD) of two numbers is the largest positive integer that divides both numbers without leaving a remainder. The algorithm works by repeatedly dividing the larger number by the smaller number and replacing the larger number with the remainder until the remainder is zero. The last non-zero remainder is the GCD of the two numbers. This algorithm is known as the Euclidean algorithm which can be expressed mathematically as:
+
+$$
+\text{GCD}(a,b) = \text{GCD}~(b, a \bmod b)
+$$
+
+where $a \bmod b$ represents the remainder when $a$ is divided by $b$.
+
+You can use the following functions to calculate the GCD of two numbers:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int greatest_common_divisor(int a, int b)
+{
+
+    // Repeat the euclidean algorithm until the remainder is zero
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int GreatestCommonDivisor(int a, int b)
+{
+
+    // Repeat the euclidean algorithm until the remainder is zero
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def greatest_common_divisor(a, b):
+
+    # Repeat the euclidean algorithm until the remainder is zero
+    while b != 0:
+        temp = b
+        b = a % b
+        a = temp
+    return a
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for simplifying fractions, solving Diophantine equations, cryptographic algorithms ,or analysing periodic patterns in mathematics and engineering.
+:::
+
+#### Using this function
+
+You can use the `greatest_common_divisor` function to find the GCD of two numbers. For example, to find the GCD of $24$ and $36$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int gcd = greatest_common_divisor(24, 36);
+std::cout << "The GCD of 24 and 36 is: " << gcd << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int gcd = GreatestCommonDivisor(24, 36);
+Console.WriteLine($"The GCD of 24 and 36 is: {gcd}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+gcd = greatest_common_divisor(24, 36)
+print(f"The GCD of 24 and 36 is: {gcd}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The GCD of 24 and 36 is: 12
+```
+
+If we swapped the value to be $15$ instead of $36$, the output would then be:
+
+```plaintext
+The GCD of 24 and 15 is: 3
+```
+
+### Least Common Multiple
+
+The least common multiple (LCM) of two numbers is the smallest positive integer that is divisible by both of those numbers. An efficient way to calculate the LCM is by using the relationship between the LCM and the greatest common divisor (GCD) of those numbers. The formula for finding the LCM using the GCD is:
+
+$$
+\text{LCM}(a, b) = \frac{|a \times b|}{\text{GCD}(a, b)}
+$$
+
+:::note
+This function relies on the `greatest_common_divisor` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int least_common_multiple(int a, int b)
+{
+    return abs(a * b) / greatest_common_divisor(a, b);
+}
+
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int LeastCommonMultiple(int a, int b)
+{
+    return Math.Abs(a * b) / GreatestCommonDivisor(a, b);
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def least_common_multiple(a, b):
+    return abs(a * b) // greatest_common_divisor(a, b)
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for finding synchronisation points in schedules, adding fractions with different denominators, or solving modular arithmetic problems.
+:::
+
+#### Using this function
+
+You can use the `least_common_multiple` function to find the LCM of two numbers. For example, to find the LCM of $24$ and $36$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int lcm = least_common_multiple(24, 36);
+std::cout << "The LCM of 24 and 36 is: " << lcm << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int lcm = LeastCommonMultiple(24, 36);
+Console.WriteLine($"The LCM of 24 and 36 is: {lcm}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+lcm = least_common_multiple(24, 36)
+print(f"The LCM of 24 and 36 is: {lcm}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The LCM of 24 and 36 is: 72
+```
+
+If we swapped the value to be $15$ instead of $36$, the output would then be:
+
+```plaintext
+The LCM of 24 and 15 is: 120
+```
+
+### Checking for Coprime Numbers
+
+Two numbers are coprime (or relatively prime) if their greatest common divisor (GCD) is $1$. For example, $8$ and $15$ are coprime because their GCD is $1$, even though neither number is prime.
+
+:::note
+This function relies on the `greatest_common_divisor` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool are_coprime(int a, int b) 
+{
+    return greatest_common_divisor(a, b) == 1;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool AreCoprime(int a, int b) 
+{
+    return GreatestCommonDivisor(a, b) == 1;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def are_coprime(a, b):
+    return greatest_common_divisor(a, b) == 1
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for cryptographic algorithms, modular arithmetic, or simplifying problems involving fractions
+:::
+
+#### Using this function
+
+You can use the `are_coprime` function to check if two numbers are coprime. For example, to check if $8$ and $15$ are coprime:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool coprime = are_coprime(8, 15);
+std::cout << "Are 8 and 15 coprime? " << (coprime ? "Yes" : "No") << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool coprime = AreCoprime(8, 15);
+Console.WriteLine($"Are 8 and 15 coprime? {(coprime ? "Yes" : "No")}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+coprime = are_coprime(8, 15)
+print(f"Are 8 and 15 coprime? {'Yes' if coprime else 'No'}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Are 8 and 15 coprime? Yes
+```
+
+If we swapped the value to be $12$ instead of $15$, the output would then be:
+
+```plaintext
+Are 8 and 12 coprime? No
+```
+
+### Finding All Coprime Numbers
+
+Finding all numbers that are coprime to a given value is useful in many mathematical applications, particularly in cryptography and number theory. The following function identifies all numbers that are coprime to an input value up to a specified maximum. Two numbers are coprime if their greatest common divisor (GCD) is $1$.
+
+For example, if we want to find all numbers coprime to $12$ up to $20$, we would get: $1, 5, 7, 11, 13, 17, 19$
+
+:::note
+This function relies on the `are_coprime` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+void find_coprimes_up_to(int n, int max) 
+{
+    std::cout << "Numbers coprime to " << n << " up to " << max << ":";
+
+    // Check all numbers up to the maximum
+    for (int i = 1; i <= max; i++) 
+    {
+        if (are_coprime(n, i)) 
+        {
+            std::cout << i << " ";
+        }
+    }
+    std::cout << std::endl;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+void FindCoprimesUpTo(int n, int max) 
+{
+    Console.WriteLine($"Numbers coprime to {n} up to {max}:");
+
+    // Check all numbers up to the maximum
+    for (int i = 1; i <= max; i++) 
+    {
+        if (AreCoprime(n, i)) 
+        {
+            Console.Write($"{i} ");
+        }
+    }
+    Console.WriteLine("");
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def find_coprimes_up_to(n, max):
+    print(f"Numbers coprime to {n} up to {max}:")
+
+    # Check all numbers up to the maximum
+    for i in range(1, max + 1):
+        if are_coprime(n, i):
+            write(f"{i} ")
+    print("")
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful in modular arithmetic, number theory, and creating encryption keys in cryptography.
+:::
+
+#### Using this function
+
+You can use the `find_coprimes_up_to` function to find all numbers coprime to a given value up to a specified maximum. For example, to find all numbers coprime to $12$ up to $20$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+find_coprimes_up_to(12, 20);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+FindCoprimesUpTo(12, 20);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+find_coprimes_up_to(12, 20)
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Numbers coprime to 12 up to 20:
+1 5 7 11 13 17 19
+```
+
+If we swapped the value to be $15$ instead of $12$, the output would then be:
+
+```plaintext
+Numbers coprime to 15 up to 20:
+1 2 4 7 8 11 13 14 16 17 19
+```
+
+### Eulers Totient Function
+
+Euler's totient function, denoted as $\phi(n)$, is a mathematical function that counts the number of positive integers less than or equal to $n$ that are coprime to $n$. For example, $\phi(8) = 4$ because the numbers $1, 3, 5,$ and $7$ are coprime to $8$.
+
+The totient function can be calculated using the formula:
+
+$$
+\phi(n) = n \times \prod_{p|n} (1 - \frac{1}{p})
+$$
+
+Where:
+
+- $p|n$ denotes that $p$ divides $n$ evenly
+- The product is taken over all prime factors of $n$
+- The formula can be simplified to:
+
+$$
+\phi(n) = n \times (1 - \frac{1}{p_1}) \times (1 - \frac{1}{p_2}) \times \ldots
+$$
+
+This can be implemented in code as follows:
+
+:::note
+This function relies on the `calculate_square_root` function defined above.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int euler_totient_function(int n)
+{
+    int result = n;
+
+    // Check all numbers up to the square root of n
+    for (int i = 2; i <= calculate_square_root(n); i++)
+    {
+        if (n % i == 0)
+        {
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;
+        }
+    }
+
+    if (n > 1)
+        result -= result / n;
+
+    return result;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int EulerTotientFunction(int n)
+{
+    int result = n;
+
+    // Check all numbers up to the square root of n
+    for (int i = 2; i <= CalculateSquareRoot(n); i++)
+    {
+        if (n % i == 0)
+        {
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;
+        }
+    }
+
+    if (n > 1)
+        result -= result / n;
+
+    return result;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def euler_totient_function(n):
+    result = n
+
+    # Check all numbers up to the square root of n
+    for i in range(2, int(calculate_square_root(n)) + 1):
+        if n % i == 0:
+            while n % i == 0:
+                n //= i
+            result -= result // i
+
+    if n > 1:
+        result -= result // n
+
+    return result
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for solving problems in number theory, or in cryptographic algorithms such as the RSA encryption scheme.
+:::
+
+#### Using this function
+
+You can use the `euler_totient_function` to find the totient function of a given number. For example, to find $\phi(12)$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int result = euler_totient_function(12);
+std::cout << "The Euler's totient function of 12 is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int result = EulerTotientFunction(12);
+Console.WriteLine($"The Euler's totient function of 12 is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = euler_totient_function(12)
+print(f"The Euler's totient function of 12 is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The Euler's totient function of 12 is: 4
+```
+
+If we swapped the value to be $24$ instead of $12$, the output would then be:
+
+```plaintext
+The Euler's totient function of 24 is: 8
+```
+
+### Finding Factors
+
+A factor is a number that divides evenly into another number with no remainder. For example, the factors of $12$ are $1, 2, 3, 4, 6,$ and $12$. Finding factors is useful in various mathematical applications, including:
+
+- Simplifying fractions
+- Finding common divisors
+- Breaking down numbers into their prime factorisation
+
+The following function finds all factors of a given number by checking all potential divisors up to the input number:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+void find_factors(int n) 
+{
+    std::cout << "Factors of " << n << ": ";
+
+    // Check all potential divisors up to n
+    for (int i = 1; i <= n; i++) 
+    {
+        if (n % i == 0) 
+        {
+            std::cout << i << " ";
+        }
+    }
+    std::cout << std::endl;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+void FindFactors(int n) 
+{
+    Console.WriteLine($"Factors of {n}:");
+
+    // Check all potential divisors up to n
+    for (int i = 1; i <= n; i++) 
+    {
+        if (n % i == 0) 
+        {
+            Console.Write($"{i} ");
+        }
+    }
+    Console.WriteLine("");
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def find_factors(n):
+    print(f"Factors of {n}:")
+
+    # Check all potential divisors up to n
+    factors = [i for i in range(1, n + 1) if n % i == 0]
+    print(" ".join(map(str, factors)))
+    print("")
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for understanding the structure of integers, solving polynomial equations, or optimising divisibility problems.
+:::
+
+#### Using this function
+
+You can use the `find_factors` function to find all factors of a given number. For example, to find all factors of $24$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+find_factors(24);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+FindFactors(24);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+find_factors(24)
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Factors of 24:
+1 2 3 4 6 8 12 24
+```
+
+If we swapped the value to be $15$ instead of $24$, the output would then be:
+
+```plaintext
+Factors of 15:
+1 3 5 15
+```
+
+### Finding Prime Factors
+
+The prime factorisation of a number is its decomposition into a product of prime numbers. For example, $24$ can be written as $2 × 2 × 2 × 3$. The following function identifies all prime factors of a given number by:
+
+1. First extracting all factors of $2$ (the smallest prime number)
+2. Then checking odd numbers up to the square root for remaining factors
+3. If any number remains after this process, it must be a prime factor itself
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+void find_prime_factors(int n) 
+{
+    std::cout << "Prime factors of " << n << ": ";
+    
+    // Extract all factors of 2
+    while (n % 2 == 0) 
+    {
+        std::cout << "2 ";
+        n /= 2;
+    }
+    
+    // Check odd numbers up to square root
+    for (int i = 3; i * i <= n; i += 2) 
+    {
+        while (n % i == 0) 
+        {
+            std::cout << i << " ";
+            n /= i;
+        }
+    }
+    
+    // If n is still greater than 2, it's a prime factor
+    if (n > 2)
+        std::cout << n;
+        
+    std::cout << std::endl;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+void FindPrimeFactors(int n) 
+{
+    Console.WriteLine($"Prime factors of {n}:");
+    
+    // Extract all factors of 2
+    while (n % 2 == 0) 
+    {
+        Write("2 ");
+        n /= 2;
+    }
+    
+    // Check odd numbers up to square root
+    for (int i = 3; i * i <= n; i += 2) 
+    {
+        while (n % i == 0) 
+        {
+            Write($"{i} ");
+            n /= i;
+        }
+    }
+    
+    // If n is still greater than 2, it's a prime factor
+    if (n > 2)
+        Write(n);
+        
+    Console.WriteLine("");
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def find_prime_factors(n):
+    print(f"Prime factors of {n}:")
+    
+    # Extract all factors of 2
+    while n % 2 == 0:
+        write("2 ")
+        n //= 2
+    
+    # Check odd numbers up to square root
+    for i in range(3, int(n**0.5) + 1, 2):
+        while n % i == 0:
+            write(f"{i} ")
+            n //= i
+    
+    # If n is still greater than 2, it's a prime factor
+    if n > 2:
+        write(str(n))
+        
+    print("")
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for cryptographic key generation, determining the uniqueness of numbers, or solving problems in number theory.
+:::
+
+#### Using this function
+
+You can use the `find_prime_factors` function to find all prime factors of a given number. For example, to find all prime factors of $24$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+find_prime_factors(24);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+FindPrimeFactors(24);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+find_prime_factors(24)
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Prime factors of 24:
+2 2 2 3
+```
+
+If we swapped the value to be $15$ instead of $24$, the output would then be:
+
+```plaintext
+Prime factors of 15:
+3 5
+```
+
+### Checking Congruence
+
+Two numbers $a$ and $b$ are considered congruent modulo $m$ if they yield the same remainder when divided by $m$. This relationship is written mathematically as:
+
+$$
+a \equiv b \pmod{m}
+$$
+
+For example, $38 \equiv 14 \pmod{12}$ because both numbers leave a remainder of $2$ when divided by $12$.
+
+We can implement a function to check if two numbers are congruent modulo $m$ as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool is_congruent(int a, int b, int mod) {
+    return (a % mod) == (b % mod);
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool IsCongruent(int a, int b, int mod) {
+    return (a % mod) == (b % mod);
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def is_congruent(a, b, mod):
+    return (a % mod) == (b % mod)
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+This could be useful for modular arithmetic, solving problems in computer science algorithms, or verifying conditions in cryptography.
+:::
+
+#### Using this function
+
+You can use the `is_congruent` function to check if two numbers are congruent modulo $m$. For example, to check if $38$ and $14$ are congruent modulo $12$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+bool congruent = is_congruent(38, 14, 12);
+std::cout << "Are 38 and 14 congruent modulo 12? " << (congruent ? "Yes" : "No") << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+bool congruent = IsCongruent(38, 14, 12);
+Console.WriteLine($"Are 38 and 14 congruent modulo 12? {(congruent ? "Yes" : "No")}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+congruent = is_congruent(38, 14, 12)
+print(f"Are 38 and 14 congruent modulo 12? {'Yes' if congruent else 'No'}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+Are 38 and 14 congruent modulo 12? Yes
+```
+
+If we swapped the value to be $15$ instead of $14$, the output would then be:
+
+```plaintext
+Are 38 and 15 congruent modulo 12? No
+```
+
+## Modular Arithmetic Operations
+
+Modular arithmetic is a system of arithmetic for integers, where numbers "wrap around" upon reaching a certain value—the modulus. This section includes functions for modular addition, subtraction, multiplication, and exponentiation. The function `modular_exponentiation` performs modular exponentiation, which raises a base to an exponent under a modulus efficiently. This operation is commonly used in cryptography and number theory.
+
+:::tip
+Modular arithmetic can be useful for solving problems involving cycles, such as clock calculations or repeating patterns. It’s also fundamental in cryptography, computer science algorithms, and number theory.
+:::
+
+### Modular Addition
+
+Modular addition is the operation of adding two numbers and taking the remainder when divided by a modulus. This operation is useful in many applications, including cryptography and computer science.
+
+Mathematically, modular addition can be expressed as:
+
+$$
+(a + b) \mod m
+$$
+
+where:
+
+- $a$ and $b$ are the numbers to be added
+- $m$ is the modulus
+- $mod$ denotes the modulo operation, which finds the remainder after division of one number by another
+
+For example, if we want to add $7$ and $5$ with a modulus of $10$, we calculate:
+
+$$
+(7 + 5) \mod 10 = 12 \mod 10 = 2
+$$
+
+This means that $7$ and $5$ add up to $12$, and when we take the remainder after dividing by $10$, we get $2$.
+
+This can be implemented in code as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int modular_addition(int a, int b, int mod) {
+    return (a + b) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int ModularAddition(int a, int b, int mod) {
+    return (a + b) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def modular_addition(a, b, mod):
+    return (a + b) % mod
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+You can use the `modular_addition` function to perform modular addition of two numbers. For example, to add $7$ and $5$ with a modulus of $10$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int result = modular_addition(7, 5, 10);
+std::cout << "The result of modular addition is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int result = ModularAddition(7, 5, 10);
+Console.WriteLine($"The result of modular addition is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = modular_addition(7, 5, 10)
+print(f"The result of modular addition is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The result of modular addition is: 2
+```
+
+If we swapped the value to be $15$ instead of $5$, the output would then be:
+
+```plaintext
+The result of modular addition is: 2
+```
+
+### Modular Subtraction
+
+Modular subtraction is the operation of subtracting two numbers and taking the remainder when divided by a modulus. This operation is useful in many applications, including cryptography and computer science.
+
+Mathematically, modular subtraction can be expressed as:
+
+$$
+(a - b) \mod m
+$$
+
+where:
+
+- $a$ and $b$ are the numbers to be subtracted
+- $m$ is the modulus
+- $mod$ denotes the modulo operation, which finds the remainder after division of one number by another
+
+For example, if we want to subtract $5$ from $7$ with a modulus of $10$, we calculate:
+
+$$
+(7 - 5) \mod 10 = 2 \mod 10 = 2
+$$
+
+This means that $7$ minus $5$ is $2$, and when we take the remainder after dividing by $10$, we get $2$.
+
+This can be implemented in code as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int modular_subtraction(int a, int b, int mod) {
+    return (a - b + mod) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int ModularSubtraction(int a, int b, int mod) {
+    return (a - b + mod) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def modular_subtraction(a, b, mod):
+    return (a - b + mod) % mod
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+You can use the `modular_subtraction` function to perform modular subtraction of two numbers. For example, to subtract $5$ from $7$ with a modulus of $10$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int result = modular_subtraction(7, 5, 10);
+std::cout << "The result of modular subtraction is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int result = ModularSubtraction(7, 5, 10);
+Console.WriteLine($"The result of modular subtraction is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = modular_subtraction(7, 5, 10)
+print(f"The result of modular subtraction is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The result of modular subtraction is: 2
+```
+
+If we swapped the value to be $24$ instead of $5$, the output would then be:
+
+```plaintext
+The result of modular subtraction is: 3
+```
+
+### Modular Multiplication
+
+Modular multiplication is the operation of multiplying two numbers and taking the remainder when divided by a modulus. This operation is useful in many applications, including cryptography and computer science.
+
+Mathematically, modular multiplication can be expressed as:
+
+$$
+(a \times b) \mod m
+$$
+
+where:
+
+- $a$ and $b$ are the numbers to be multiplied
+- $m$ is the modulus
+- $mod$ denotes the modulo operation, which finds the remainder after division of one number by another
+
+For example, if we want to multiply $7$ and $5$ with a modulus of $10$, we calculate:
+
+$$
+(7 \times 5) \mod 10 = 35 \mod 10 = 5
+$$
+
+This means that $7$ multiplied by $5$ is $35$, and when we take the remainder after dividing by $10$, we get $5$.
+
+This can be implemented in code as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int modular_multiplication(int a, int b, int mod) {
+    return (a * b) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int ModularMultiplication(int a, int b, int mod) {
+    return (a * b) % mod;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def modular_multiplication(a, b, mod):
+    return (a * b) % mod
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+You can use the `modular_multiplication` function to perform modular multiplication of two numbers. For example, to multiply $7$ and $5$ with a modulus of $10$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int result = modular_multiplication(7, 5, 10);
+std::cout << "The result of modular multiplication is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int result = ModularMultiplication(7, 5, 10);
+Console.WriteLine($"The result of modular multiplication is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = modular_multiplication(7, 5, 10)
+print(f"The result of modular multiplication is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The result of modular multiplication is: 5
+```
+
+If we swapped the value to be $15$ instead of $5$, the output would then be:
+
+```plaintext
+The result of modular multiplication is: 5
+```
+
+### Modular Exponentiation
+
+Modular exponentiation is the operation of raising a base to an exponent and taking the remainder when divided by a modulus. This operation is useful in many applications, including cryptography and computer science.
+
+Mathematically, modular exponentiation can be expressed as:
+
+$$
+\text{base}^{\text{exponent}} \mod m
+$$
+
+where:
+
+- $\text{base}$ is the number to be raised to the power
+- $\text{exponent}$ is the power to which the base is raised
+- $m$ is the modulus
+- $mod$ denotes the modulo operation, which finds the remainder after division of one number by another
+
+For example, if we want to calculate $3^4$ with a modulus of $5$, we calculate:
+
+$$
+3^4 \mod 5 = 81 \mod 5 = 1
+$$
+
+This means that $3$ raised to the power of $4$ is $81$, and when we take the remainder after dividing by $5$, we get $1$.
+
+This can be implemented in code as follows:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int modular_exponentiation(int base, int exponent, int mod) {
+    int result = 1;
+    base = base % mod;
+
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result = (result * base) % mod;
+        }
+        exponent >>= 1;
+        base = (base * base) % mod;
+    }
+    return result;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int ModularExponentiation(int base, int exponent, int mod) {
+    int result = 1;
+    base = base % mod;
+
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result = (result * base) % mod;
+        }
+        exponent >>= 1;
+        base = (base * base) % mod;
+    }
+    return result;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def modular_exponentiation(base, exponent, mod):
+    result = 1
+    base = base % mod
+
+    while exponent > 0:
+        if exponent % 2 == 1:
+            result = (result * base) % mod
+        exponent >>= 1
+        base = (base * base) % mod
+    return result
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+You can use the `modular_exponentiation` function to perform modular exponentiation of a base to an exponent. For example, to calculate $3^4$ with a modulus of $5$:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+int result = modular_exponentiation(3, 4, 5);
+std::cout << "The result of modular exponentiation is: " << result << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+int result = ModularExponentiation(3, 4, 5);
+Console.WriteLine($"The result of modular exponentiation is: {result}");
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+result = modular_exponentiation(3, 4, 5)
+print(f"The result of modular exponentiation is: {result}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+After running the above code, the expected output should be:
+
+```plaintext
+The result of modular exponentiation is: 1
+```
+
+If we swapped the value to be $2$ instead of $4$, the output would then be:
+
+```plaintext
+The result of modular exponentiation is: 4
+```
+
+## Summary
+
+This guide covered various mathematical utilities and functions that are commonly used in programming and discrete mathematics. You learned how to implement functions for finding the greatest common divisor (GCD), least common multiple (LCM), coprime numbers, factors, prime factors, and modular arithmetic operations. These functions are essential for solving mathematical problems, cryptography, and number theory. By understanding and implementing these functions, you can enhance your programming skills and solve a wide range of mathematical problems efficiently. You can use this knowledge to build more complex algorithms and applications that require mathematical computations.

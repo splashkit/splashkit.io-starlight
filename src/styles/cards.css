@@ -1,7 +1,8 @@
 /* --- START: Link card styling ------*/
 .sl-markdown-content .sl-link-card {
-  border: 2px solid var(--sk-logo-orange);
-  background-color: var(--sk-logo-orange-transparent);
+  border: none;
+  outline: 1px solid var(--sk-logo-blue);
+  background-color: var(--sl-color-gray-5);
 
   .description {
     color: var(--sl-color-gray-2);
@@ -10,8 +11,9 @@
 
 /* Hover effects */
 .sl-markdown-content .sl-link-card:hover {
-  border: 2px solid var(--sk-logo-blue);
-  background-color: var(--sk-logo-blue-transparent);
+  border: none;
+  outline: 2px solid var(--sk-logo-orange);
+  background-color: var(--sl-color-gray-7);
 
   .description {
     color: var(--sl-color-gray-1);

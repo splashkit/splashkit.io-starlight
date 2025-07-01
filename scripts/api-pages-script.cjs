@@ -392,7 +392,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
                     }
                     if (file.includes("-beyond")) {
                       mdxData += `    <TabItem label="Beyond SplashKit">\n`;
-                      mdxData += `      See the [Graphics](https://splashkit.io/beyond-splashkit/graphics/0-getting-started-with-graphics/#getting-started-without-splashkit) or [Audio](https://splashkit.io/beyond-splashkit/audio/0-sound-effects/#getting-started-without-splashkit) Beyond SplashKit guides for help compiling without SplashKit.\n`;
+                      mdxData += `      See the [Graphics](/beyond-splashkit/getting-started-with-sdl/0-getting-started-with-graphics/#getting-started-without-splashkit) or [Audio](/beyond-splashkit/getting-started-with-sdl/1-sound-effects/#getting-started-without-splashkit) Beyond SplashKit guides for help compiling without SplashKit.\n`;
                       mdxData += `      <Code code={${importTitle}_beyond_${lang}} lang="${lang}" mark={"SplashKit.${functionTag}"} />\n`;
                       mdxData += "    </TabItem>\n";
                     }

@@ -1,0 +1,31 @@
+{
+    "guides": [
+        {
+            "name": "Using JSON in SplashKit",
+            "functions": [
+                "json_from_file",
+                "json_read_string",
+                "write_line",
+                "free_json",
+                "json_has_key",
+                "json_read_array_of_string",
+                "write_line",
+                "write",
+                "json_read_object",
+                "json_read_number_as_int",
+                "create_json",
+                "json_set_string",
+                "json_set_bool",
+                "json_set_number_integer",
+                "json_set_array_of_string",
+                "json_set_object",
+                "json_to_file",
+                "free_all_json",
+                "json_from_file",
+                "json_read_object",
+                "json_read_number_as_int"
+            ],
+            "url": "/guides/getting-started/9-json_intro/"
+        }
+    ]
+}
