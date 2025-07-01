@@ -5,7 +5,7 @@ description:
   to read GPIO inputs by using a simple button to turn an LED on and off.
 category: Guides
 author: Jonathan Tynan
-lastupdated: December 2024
+lastupdated: May 2025
 ---
 
 import { Tabs, TabItem , Steps} from "@astrojs/starlight/components";
@@ -16,7 +16,7 @@ _Last updated: {frontmatter.lastupdated}_
 
 ---
 
-:::caution[Before you begin.]
+:::caution[Before you begin:]
 When working with Raspberry Pi GPIO pins, it's crucial to handle the setup and cleanup processes carefully.
 
 - Always ensure that the GPIO pins are properly initialised before use and cleaned up afterwards to prevent any damage to your Raspberry Pi
@@ -54,51 +54,51 @@ The physical circuit is show in the below image, where we can see the physical i
 
 ## The Code
 
-:::caution[Before running the code.]
+:::caution[Before running the code:]
 This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
-  ```cpp
-  #include "splashkit.h"
+```cpp
+#include "splashkit.h"
 
-  int main()
-  {
-      raspi_init();
-      pins button_pin = PIN_29;
-      pins led_pin = PIN_11;
-      pin_values led_state = GPIO_LOW;
+int main()
+{
+    raspi_init();
+    gpio_pin button_pin = PIN_29;
+    gpio_pin led_pin = PIN_11;
+    gpio_pin_value led_state = GPIO_LOW;
 
-      raspi_set_mode(button_pin, GPIO_INPUT);
-      raspi_set_mode(led_pin, GPIO_OUTPUT);
+    raspi_set_mode(button_pin, GPIO_INPUT);
+    raspi_set_mode(led_pin, GPIO_OUTPUT);
 
-      raspi_set_pull_up_down(button_pin, PUD_DOWN);
+    raspi_set_pull_up_down(button_pin, PUD_DOWN);
 
-      open_window("dummy_window", 1, 1);
-      while(!any_key_pressed())
-      {
-          process_events();
-          if(raspi_read(button_pin) == GPIO_HIGH)
-          {
-              led_state = raspi_read(led_pin);
-              if(led_state == GPIO_LOW)
-              {
-                  raspi_write(led_pin, GPIO_HIGH);
-              }
-              else
-              {
-                  raspi_write(led_pin, GPIO_LOW);
-              }
-          }
-      }
+    open_window("dummy_window", 1, 1);
+    while(!any_key_pressed())
+    {
+        process_events();
+        if(raspi_read(button_pin) == GPIO_HIGH)
+        {
+            led_state = raspi_read(led_pin);
+            if(led_state == GPIO_LOW)
+            {
+                raspi_write(led_pin, GPIO_HIGH);
+            }
+            else
+            {
+                raspi_write(led_pin, GPIO_LOW);
+            }
+        }
+    }
 
-      close_all_windows();
-      raspi_cleanup();
-      return 0;
-  }
-  ```
+    close_all_windows();
+    raspi_cleanup();
+    return 0;
+}
+```
 
 </TabItem>
 <TabItem label="C#">
@@ -106,40 +106,40 @@ This code requires the `pigpio` daemon, so make sure it is running! For more inf
 <Tabs syncKey="csharp-style">
 <TabItem label="Top-level Statements">
 
-  ```csharp
-  using SplashKitSDK;
-  using static SplashKitSDK.SplashKit;
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
 
-  RaspiInit();
-  Pins button_pin = (Pins)29;
-  Pins led_pin = (Pins)11;
-  PinValues led_state = (PinValues) 0;
+RaspiInit();
+GpioPin buttonPin = (GpioPin)29;
+GpioPin ledPin = (GpioPin)11;
+GpioPinValue ledState = (GpioPinValue) 0;
 
-  RaspiSetMode(button_pin, (PinModes) 0);
-  RaspiSetMode(led_pin, (PinModes) 1);
+RaspiSetMode(buttonPin, (GpioPinMode) 0);
+RaspiSetMode(ledPin, (GpioPinMode) 1);
 
-  RaspiSetPullUpDown(button_pin, (PullUpDown) 1);
+RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
 
-  OpenWindow("dummy_window", 1, 1);
-  while(!AnyKeyPressed())
-  {
-      ProcessEvents();
-      if(RaspiRead(button_pin) == (PinValues) 1)
-      {
-          led_state = RaspiRead(led_pin);
-          if(led_state == (PinValues) 0)
-          {
-              RaspiWrite(led_pin, (PinValues) 1);
-          }
-          else
-          {
-              RaspiWrite(led_pin, (PinValues) 0);
-          }
-      }
-  }
+OpenWindow("dummy_window", 1, 1);
+while(!AnyKeyPressed())
+{
+    ProcessEvents();
+    if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+    {
+        ledState = RaspiRead(ledPin);
+        if(ledState == (GpioPinValue) 0)
+        {
+          RaspiWrite(ledPin, (GpioPinValue) 1);
+        }
+        else
+        {
+          RaspiWrite(ledPin, (GpioPinValue) 0);
+        }
+    }
+}
 
-  CloseAllWindows();
-  RaspiCleanup();
+CloseAllWindows();
+RaspiCleanup();
 ```
 
 </TabItem>
@@ -155,30 +155,29 @@ namespace RaspberryPiButtonLED
         public static void Main()
         {
             SplashKit.RaspiInit();
-            Pins buttonPin = (Pins)29;
-            Pins ledPin = (Pins)11;
-            PinValues ledState = (PinValues)0;
+            GpioPin buttonPin = GpioPin.Pin29;
+            GpioPin ledPin = GpioPin.Pin11;
+            GpioPinValue ledState = GpioPinValue.GpioLow;
 
-            SplashKit.RaspiSetMode(buttonPin, (PinModes)0);
-            SplashKit.RaspiSetMode(ledPin, (PinModes)1);
+            SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+            SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
 
-            SplashKit.RaspiSetPullUpDown(buttonPin, (PullUpDown)1);
+            SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
 
             SplashKit.OpenWindow("dummy_window", 1, 1);
             while (!SplashKit.AnyKeyPressed())
             {
                 SplashKit.ProcessEvents();
-
-                if (SplashKit.RaspiRead(buttonPin) == (PinValues)1)
+                if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
                 {
                     ledState = SplashKit.RaspiRead(ledPin);
-                    if (ledState == (PinValues)0)
+                    if (ledState == GpioPinValue.GpioLow)
                     {
-                        SplashKit.RaspiWrite(ledPin, (PinValues)1);
+                        SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
                     }
                     else
                     {
-                        SplashKit.RaspiWrite(ledPin, (PinValues)0);
+                        SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
                     }
                 }
             }
@@ -200,107 +199,52 @@ namespace RaspberryPiButtonLED
 Lets break down this code and analyse it in sections.
 
 <Steps>
-1. **Part 1**
 
-    <Tabs syncKey="code-language">
-    <TabItem label="C++">
-
-    ```cpp
-    raspi_init();
-    pins button_pin = PIN_29;
-    pins led_pin = PIN_11;
-    pin_values led_state = GPIO_LOW;
-    ```
-
-    </TabItem>
-
-    <TabItem label="C#">
-
-    <Tabs syncKey="csharp-style">
-    <TabItem label="Top-level Statements">
-
-    ```csharp
-    RaspiInit();
-    Pins button_pin = (Pins)29;
-    Pins led_pin = (Pins)11;
-    PinValues led_state = (PinValues) 0;
-    ```
-
-    </TabItem>
-    <TabItem label="Object-Oriented">
-
-    ```csharp
-    SplashKit.RaspiInit();
-    Pins buttonPin = (Pins)29;
-    Pins ledPin = (Pins)11;
-    PinValues ledState = (PinValues)0;
-    ```
-
-    </TabItem>
-    </Tabs>
-    </TabItem>
-    </Tabs>
+1. **Initialise GPIO Hardware:**
 
     We start this code by initialising our hardware through [Raspi Init](/api/raspberry/#raspi-init), we then define the [Pins](/api/types/#gpio-pin) that we're are using for the button (Pin 29), and the LED (Pin 11). We also initialise a variable, `led_state`, to hold the state of the LED at any point in time. We use `led_state` later to determine whether to switch the LED on, or off.
 
-    ---
-
-2. **Part 2**
+    Next, we set the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode). The button pin is set to [`GPIO_INPUT`](/api/types/#gpio-pin-mode) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#gpio-pin-mode). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
 
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-    ```cpp
-    raspi_set_mode(button_pin, GPIO_INPUT);
-    raspi_set_mode(led_pin, GPIO_OUTPUT);
+    ```cpp {5-8,10,11,13}
+    #include "splashkit.h"
 
-    raspi_set_pull_up_down(button_pin, PUD_DOWN);
-    ```
-
-    </TabItem>
-
-    <TabItem label="C#">
-
-    <Tabs syncKey="csharp-style">
-    <TabItem label="Top-level Statements">
-
-    ```csharp
-    RaspiSetMode(button_pin, (PinModes) 0);
-    RaspiSetMode(led_pin, (PinModes) 1);
-
-    RaspiSetPullUpDown(button_pin, (PullUpDown) 1);
-    ```
-
-    </TabItem>
-    <TabItem label="Object-Oriented">
-
-    ```csharp
-    SplashKit.RaspiSetMode(buttonPin, (PinModes)0);
-    SplashKit.RaspiSetMode(ledPin, (PinModes)1);
-
-    SplashKit.RaspiSetPullUpDown(buttonPin, (PullUpDown)1);
-    ```
-
-    </TabItem>
-    </Tabs>
-    </TabItem>
-    </Tabs>
-
-    We begin by setting the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode). The button pin is set to [`GPIO_INPUT`](/api/types/#gpio-pin-mode) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#gpio-pin-mode). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
-
-    ---
-
-3. **Part 3**
-
-    <Tabs syncKey="code-language">
-    <TabItem label="C++">
-
-    ```cpp
-    open_window("dummy_window", 1, 1);
-    while(!any_key_pressed())
+    int main()
     {
-        process_events();
-        ...
+        raspi_init();
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        raspi_set_mode(button_pin, GPIO_INPUT);
+        raspi_set_mode(led_pin, GPIO_OUTPUT);
+
+        raspi_set_pull_up_down(button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(raspi_read(button_pin) == GPIO_HIGH)
+            {
+                led_state = raspi_read(led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    raspi_write(led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    raspi_write(led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        raspi_cleanup();
+        return 0;
     }
     ```
 
@@ -311,124 +255,38 @@ Lets break down this code and analyse it in sections.
     <Tabs syncKey="csharp-style">
     <TabItem label="Top-level Statements">
 
-    ```csharp
+    ```csharp {4-7,9-10,12}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    RaspiInit();
+    GpioPin buttonPin = (GpioPin)29;
+    GpioPin ledPin = (GpioPin)11;
+    GpioPinValue ledState = (GpioPinValue) 0;
+
+    RaspiSetMode(buttonPin, (GpioPinMode) 0);
+    RaspiSetMode(ledPin, (GpioPinMode) 1);
+
+    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+
     OpenWindow("dummy_window", 1, 1);
     while(!AnyKeyPressed())
     {
         ProcessEvents();
-        ...
-    }
-    ```
-
-    </TabItem>
-    <TabItem label="Object-Oriented">
-
-    ```csharp
-    SplashKit.OpenWindow("dummy_window", 1, 1);
-    while (!SplashKit.AnyKeyPressed())
-    {
-        SplashKit.ProcessEvents();
-        ...
-    }
-    ```
-
-    </TabItem>
-    </Tabs>
-    </TabItem>
-    </Tabs>
-
-    Just like in the [first tutorial](/guides/raspberry-gpio/0-blink-led), we create a timer that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
-
-    ---
-
-4. **Part 4**
-
-    <Tabs syncKey="code-language">
-    <TabItem label="C++">
-
-    ```cpp
-    if(raspi_read(button_pin) == GPIO_HIGH)
-    {
-        led_state = raspi_read(led_pin);
-        if(led_state == GPIO_LOW)
+        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
         {
-            raspi_write(led_pin, GPIO_HIGH);
-        }
-        else
-        {
-            raspi_write(led_pin, GPIO_LOW);
+            ledState = RaspiRead(ledPin);
+            if(ledState == (GpioPinValue) 0)
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 1);
+            }
+            else
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 0);
+            }
         }
     }
-    ```
 
-    </TabItem>
-
-    <TabItem label="C#">
-
-    <Tabs syncKey="csharp-style">
-    <TabItem label="Top-level Statements">
-
-    ```csharp
-    if(RaspiRead(button_pin) == (PinValues) 1)
-    {
-        led_state = RaspiRead(led_pin);
-        if(led_state == (PinValues) 0)
-        {
-            RaspiWrite(led_pin, (PinValues) 1);
-        }
-        else
-        {
-            RaspiWrite(led_pin, (PinValues) 0);
-        }
-    }
-    ```
-
-    </TabItem>
-    <TabItem label="Object-Oriented">
-
-    ```csharp
-    if (SplashKit.RaspiRead(buttonPin) == (PinValues)1)
-    {
-        ledState = SplashKit.RaspiRead(ledPin);
-        if (ledState == (PinValues)0)
-        {
-            SplashKit.RaspiWrite(ledPin, (PinValues)1);
-        }
-        else
-        {
-            SplashKit.RaspiWrite(ledPin, (PinValues)0);
-        }
-    }
-    ```
-
-    </TabItem>
-    </Tabs>
-    </TabItem>
-    </Tabs>
-
-    Above is the main section of this code. On each loop we read the state of the button pin using [Raspi Read](/api/raspberry/#raspi-read) and if the result is `GPIO_HIGH`, then this indicates that the button has been pressed. We then read the state of the led, which can either be `GPIO_LOW` indicated the LED is not on, or `GPIO_HIGH` indicating that the LED is on. Once we have this state we can use [Raspi Write](/api/raspberry/#raspi-write) to change the pin to the opposite of what has been read.
-
-    ---
-
-5. **Part 5**
-
-    <Tabs syncKey="code-language">
-    <TabItem label="C++">
-
-    ```cpp
-    close_all_windows();
-    raspi_cleanup();
-    return 0;
-    ```
-
-    </TabItem>
-
-    <TabItem label="C#">
-
-    <Tabs syncKey="csharp-style">
-    <TabItem label="Top-level Statements">
-
-    ```csharp
     CloseAllWindows();
     RaspiCleanup();
     ```
@@ -436,9 +294,48 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     <TabItem label="Object-Oriented">
 
-    ```csharp
-    SplashKit.CloseAllWindows();
-    SplashKit.RaspiCleanup();
+    ```csharp {9-12,14-15,17}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLED
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                SplashKit.RaspiInit();
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+                SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RaspiRead(ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RaspiCleanup();
+            }
+        }
+    }
     ```
 
     </TabItem>
@@ -446,9 +343,429 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-    Just like in the [first tutorial](/guides/raspberry-gpio/0-blink-led) and most projects involving GPIO pins, we must ensure that the hardware and resources we've used are cleaned properly, and we do this by stopping and freeing our timers and calling [Raspi Cleanup](/api/raspberry/#raspi-cleanup).
+2. **Get User Inputs:**
 
-    ---
+    Just like in the first [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led), we create a process that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
+
+    <Tabs syncKey="code-language">
+    <TabItem label="C++">
+
+    ```cpp {15-18,31}
+    #include "splashkit.h"
+
+    int main()
+    {
+        raspi_init();
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        raspi_set_mode(button_pin, GPIO_INPUT);
+        raspi_set_mode(led_pin, GPIO_OUTPUT);
+
+        raspi_set_pull_up_down(button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(raspi_read(button_pin) == GPIO_HIGH)
+            {
+                led_state = raspi_read(led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    raspi_write(led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    raspi_write(led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        raspi_cleanup();
+        return 0;
+    }
+    ```
+
+    </TabItem>
+
+    <TabItem label="C#">
+
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
+
+    ```csharp {14-17,30}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    RaspiInit();
+    GpioPin buttonPin = (GpioPin)29;
+    GpioPin ledPin = (GpioPin)11;
+    GpioPinValue ledState = (GpioPinValue) 0;
+
+    RaspiSetMode(buttonPin, (GpioPinMode) 0);
+    RaspiSetMode(ledPin, (GpioPinMode) 1);
+
+    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        {
+            ledState = RaspiRead(ledPin);
+            if(ledState == (GpioPinValue) 0)
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 1);
+            }
+            else
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 0);
+            }
+        }
+    }
+
+    CloseAllWindows();
+    RaspiCleanup();
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp {19-22,35}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLED
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                SplashKit.RaspiInit();
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+                SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RaspiRead(ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RaspiCleanup();
+            }
+        }
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    </Tabs>
+
+3. **Read the Button Press:**
+
+    Below is the main section of this code. On each loop we read the state of the button pin using [Raspi Read](/api/raspberry/#raspi-read) and if the result is `GPIO_HIGH`, then this indicates that the button has been pressed. We then read the state of the led, which can either be `GPIO_LOW` indicated the LED is not on, or `GPIO_HIGH` indicating that the LED is on. Once we have this state we can use [Raspi Write](/api/raspberry/#raspi-write) to change the pin to the opposite of what has been read.
+
+    <Tabs syncKey="code-language">
+    <TabItem label="C++">
+
+    ```cpp {19-30}
+    #include "splashkit.h"
+
+    int main()
+    {
+        raspi_init();
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        raspi_set_mode(button_pin, GPIO_INPUT);
+        raspi_set_mode(led_pin, GPIO_OUTPUT);
+
+        raspi_set_pull_up_down(button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(raspi_read(button_pin) == GPIO_HIGH)
+            {
+                led_state = raspi_read(led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    raspi_write(led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    raspi_write(led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        raspi_cleanup();
+        return 0;
+    }
+    ```
+
+    </TabItem>
+
+    <TabItem label="C#">
+
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
+
+    ```csharp {18-29}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    RaspiInit();
+    GpioPin buttonPin = (GpioPin)29;
+    GpioPin ledPin = (GpioPin)11;
+    GpioPinValue ledState = (GpioPinValue) 0;
+
+    RaspiSetMode(buttonPin, (GpioPinMode) 0);
+    RaspiSetMode(ledPin, (GpioPinMode) 1);
+
+    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        {
+            ledState = RaspiRead(ledPin);
+            if(ledState == (GpioPinValue) 0)
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 1);
+            }
+            else
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 0);
+            }
+        }
+    }
+
+    CloseAllWindows();
+    RaspiCleanup();
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp {23-34}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLED
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                SplashKit.RaspiInit();
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+                SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RaspiRead(ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RaspiCleanup();
+            }
+        }
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    </Tabs>
+
+4. **Clean Up Memory:**
+
+    Just like in the first [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led) and most projects involving GPIO pins, we must ensure that the hardware and resources we've used are cleaned properly, and we do this by stopping and freeing our timers and calling [Raspi Cleanup](/api/raspberry/#raspi-cleanup).
+
+    <Tabs syncKey="code-language">
+    <TabItem label="C++">
+
+    ```cpp {33-34}
+    #include "splashkit.h"
+
+    int main()
+    {
+        raspi_init();
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        raspi_set_mode(button_pin, GPIO_INPUT);
+        raspi_set_mode(led_pin, GPIO_OUTPUT);
+
+        raspi_set_pull_up_down(button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(raspi_read(button_pin) == GPIO_HIGH)
+            {
+                led_state = raspi_read(led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    raspi_write(led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    raspi_write(led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        raspi_cleanup();
+        return 0;
+    }
+    ```
+
+    </TabItem>
+
+    <TabItem label="C#">
+
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
+
+    ```csharp {32-33}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    RaspiInit();
+    GpioPin buttonPin = (GpioPin)29;
+    GpioPin ledPin = (GpioPin)11;
+    GpioPinValue ledState = (GpioPinValue) 0;
+
+    RaspiSetMode(buttonPin, (GpioPinMode) 0);
+    RaspiSetMode(ledPin, (GpioPinMode) 1);
+
+    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        {
+            ledState = RaspiRead(ledPin);
+            if(ledState == (GpioPinValue) 0)
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 1);
+            }
+            else
+            {
+              RaspiWrite(ledPin, (GpioPinValue) 0);
+            }
+        }
+    }
+
+    CloseAllWindows();
+    RaspiCleanup();
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp {37-38}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLED
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                SplashKit.RaspiInit();
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+                SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RaspiRead(ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RaspiCleanup();
+            }
+        }
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
+
+    </TabItem>
+    </Tabs>
 
 </Steps>
 
