@@ -111,7 +111,6 @@ export default defineConfig({
           collapsed: false,
           items: [
             { label: "Overview", link: "guides/" },
-            { label: "Using SplashKit", link: "guides/0-using-splashkit" },
             { label: "Getting Started", autogenerate: { directory: "guides/getting-started" }, collapsed: false },
             { label: "Raspberry GPIO", autogenerate: { directory: "guides/raspberry-gpio" }, collapsed: true },
             { label: "Physics", autogenerate: { directory: "guides/physics" }, collapsed: true },
