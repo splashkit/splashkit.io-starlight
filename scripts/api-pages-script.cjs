@@ -382,23 +382,6 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
               }
               // Check for cpp files and generate nested tabs
               else if (lang == "cpp" && cppFiles.length > 0) {
-                mdxData += "\n  <Tabs syncKey=\"cpp-style\">\n";
-                cppFiles.slice().reverse().forEach(file => {
-                  if (file.includes(exampleKey)) {
-                    if (file.includes("-sk")) {
-                      mdxData += `    <TabItem label="SplashKit">\n`;
-                      mdxData += `      <Code code={${importTitle}_sk_${lang}} lang="${lang}" mark={"${functionTag}"} />\n`;
-                      mdxData += "    </TabItem>\n";
-                    }
-                    if (file.includes("-beyond")) {
-                      mdxData += `    <TabItem label="Beyond SplashKit">\n`;
-                      mdxData += `      See the [Graphics](/beyond-splashkit/getting-started-with-sdl/0-getting-started-with-graphics/#getting-started-without-splashkit) or [Audio](/beyond-splashkit/getting-started-with-sdl/1-sound-effects/#getting-started-without-splashkit) Beyond SplashKit guides for help compiling without SplashKit.\n`;
-                      mdxData += `      <Code code={${importTitle}_beyond_${lang}} lang="${lang}" mark={"SplashKit.${functionTag}"} />\n`;
-                      mdxData += "    </TabItem>\n";
-                    }
-                  }
-                });
-                mdxData += "  </Tabs>\n\n";
                 mdxData += "  </TabItem>\n";
               }
               else {
