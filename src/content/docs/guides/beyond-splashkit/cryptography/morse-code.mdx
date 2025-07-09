@@ -1,0 +1,549 @@
+---
+title: Morse Code Tutorial
+description: Explore morse code, and how you can use a program to convert text to morse code and back.
+author: Brianna Laird
+lastupdated: December 2024
+sidebar:
+  order: 3
+---
+
+import { Tabs, TabItem, Steps } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+Morse code is a method used in telecommunication to encode text characters as sequences of two different signal durations, called dots and dashes. Named after Samuel Morse, one of the inventors of the telegraph, Morse code is widely used in amateur radio, aviation, and military communications due to its efficiency and reliability.
+
+In this guide, we will explore Morse code and demonstrate how to create programs for encoding text into Morse code and decoding Morse code back into text.
+
+---
+
+## Encoding Text to Morse Code
+
+Encoding text to Morse code involves converting each character into its corresponding Morse code sequence. Each letter, number, or symbol has a unique representation in Morse code, and words are separated by spaces or `/`. How Encoding Works:
+
+- Each character in the input text is matched with its Morse code representation using a dictionary.
+- Characters not present in the dictionary are replaced with a placeholder like `?`.
+- Words are separated by a `/`, and individual characters are separated by spaces.
+
+### Steps for Encoding
+
+<Steps>
+1. Convert the text to uppercase to ensure proper dictionary matching.
+2. Loop through each character in the text and find its Morse code equivalent.
+3. Combine the Morse code sequences into a single string, separating characters with spaces and words with `/`.
+</Steps>
+
+### Implementing the Encoding Program
+
+Here is how you can implement a program to encode text into Morse code:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <sstream>
+
+using namespace std;
+
+unordered_map<char, string> MORSE_CODE_DICT = {
+    {'A', ".-"}, {'B', "-..."}, {'C', "-.-."}, {'D', "-.."}, {'E', "."},
+    {'F', "..-."}, {'G', "--."}, {'H', "...."}, {'I', ".."}, {'J', ".---"},
+    {'K', "-.-"}, {'L', ".-.."}, {'M', "--"}, {'N', "-."}, {'O', "---"},
+    {'P', ".--."}, {'Q', "--.-"}, {'R', ".-."}, {'S', "..."}, {'T', "-"},
+    {'U', "..-"}, {'V', "...-"}, {'W', ".--"}, {'X', "-..-"}, {'Y', "-.--"},
+    {'Z', "--.."}, {'1', ".----"}, {'2', "..---"}, {'3', "...--"}, {'4', "....-"},
+    {'5', "....."}, {'6', "-...."}, {'7', "--..."}, {'8', "---.."}, {'9', "----."},
+    {'0', "-----"}, {',', "--..--"}, {'.', ".-.-.-"}, {'?', "..--.."},
+    {'\'', ".----."}, {'!', "-.-.--"}, {'/', "-..-."}, {'(', "-.--."},
+    {')', "-.--.-"}, {'&', ".-..."}, {':', "---..."}, {';', "-.-.-."},
+    {'=', "-...-"}, {'+', ".-.-."}, {'-', "-....-"}, {'_', "..--.-"},
+    {'"', ".-..-."}, {'$', "...-..-"}, {'@', ".--.-."}, {' ', "/"}
+};
+
+string encode_to_morse(const string &text) {
+    ostringstream encoded_message;
+    for (char c : text) {
+        char upper_c = toupper(c);
+        if (MORSE_CODE_DICT.find(upper_c) != MORSE_CODE_DICT.end()) {
+            encoded_message << MORSE_CODE_DICT[upper_c] << ' ';
+        } else {
+            encoded_message << "? ";
+        }
+    }
+    string result = encoded_message.str();
+    if (!result.empty()) {
+        result.pop_back();  // Remove the trailing space
+    }
+    return result;
+}
+
+int main() {
+    string text;
+    cout << "Enter the text to encode using morse code:" << endl;
+    getline(cin, text);
+    string encoded_text = encode_to_morse(text);
+    cout << "Each Morse code character is separated by a space, and each word is separated by a /" << endl;
+    cout << "The Morse code for '" << text << "' is:" << endl;
+    cout << encoded_text << endl;
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+Dictionary<string, char> morseCodeDict = new Dictionary<string, char>
+{
+    { ".-", 'A' }, { "-...", 'B' }, { "-.-.", 'C' }, { "-..", 'D' },
+    { ".", 'E' }, { "..-.", 'F' }, { "--.", 'G' }, { "....", 'H' },
+    { "..", 'I' }, { ".---", 'J' }, { "-.-", 'K' }, { ".-..", 'L' },
+    { "--", 'M' }, { "-.", 'N' }, { "---", 'O' }, { ".--.", 'P' },
+    { "--.-", 'Q' }, { ".-.", 'R' }, { "...", 'S' }, { "-", 'T' },
+    { "..-", 'U' }, { "...-", 'V' }, { ".--", 'W' }, { "-..-", 'X' },
+    { "-.--", 'Y' }, { "--..", 'Z' }, { "-----", '0' }, { ".----", '1' },
+    { "..---", '2' }, { "...--", '3' }, { "....-", '4' }, { ".....", '5' },
+    { "-....", '6' }, { "--...", '7' }, { "---..", '8' }, { "----.", '9' },
+    { "--..--", ',' }, { ".-.-.-", '.' }, { "..--..", '?' }, { ".----.", '\'' },
+    { "-.-.--", '!' }, { "-..-.", '/' }, { "-.--.", '(' }, { "-.--.-", ')' },
+    { ".-...", '&' }, { "---...", ':' }, { "-.-.-.", ';' }, { "-...-", '=' },
+    { ".-.-.", '+' }, { "-....-", '-' }, { "..--.-", '_' }, { ".-..-.", '"' },
+    { "...-..-", '$' }, { ".--.-.", '@' }, { "/", ' ' }
+};
+
+string EncodeToMorse(string text)
+{
+    StringBuilder encodedMessage = new StringBuilder();
+    foreach (char c in text)
+    {
+        char upperC = char.ToUpper(c);
+        if (MORSE_CODE_DICT.ContainsKey(upperC))
+        {
+            encodedMessage.Append(MORSE_CODE_DICT[upperC] + " ");
+        }
+        else
+        {
+            encodedMessage.Append("? ");
+        }
+    }
+    if (encodedMessage.Length > 0)
+    {
+        encodedMessage.Length--;  // Remove the trailing space
+    }
+    return encodedMessage.ToString();
+}
+
+Console.WriteLine("Enter the text to encode using morse code:");
+string? text = Console.ReadLine();
+if (string.IsNullOrEmpty(text))
+{
+    Console.WriteLine("No input provided.");
+    return;
+}
+string encodedText = EncodeToMorse(text);
+Console.WriteLine("Each Morse code character is separated by a space, and each word is separated by a /");
+Console.WriteLine($"The Morse code for '{text}' is:");
+Console.WriteLine(encodedText);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+class Program
+{
+    
+    static Dictionary<string, char> morseCodeDict = new Dictionary<string, char>
+    {
+        { ".-", 'A' }, { "-...", 'B' }, { "-.-.", 'C' }, { "-..", 'D' },
+        { ".", 'E' }, { "..-.", 'F' }, { "--.", 'G' }, { "....", 'H' },
+        { "..", 'I' }, { ".---", 'J' }, { "-.-", 'K' }, { ".-..", 'L' },
+        { "--", 'M' }, { "-.", 'N' }, { "---", 'O' }, { ".--.", 'P' },
+        { "--.-", 'Q' }, { ".-.", 'R' }, { "...", 'S' }, { "-", 'T' },
+        { "..-", 'U' }, { "...-", 'V' }, { ".--", 'W' }, { "-..-", 'X' },
+        { "-.--", 'Y' }, { "--..", 'Z' }, { "-----", '0' }, { ".----", '1' },
+        { "..---", '2' }, { "...--", '3' }, { "....-", '4' }, { ".....", '5' },
+        { "-....", '6' }, { "--...", '7' }, { "---..", '8' }, { "----.", '9' },
+        { "--..--", ',' }, { ".-.-.-", '.' }, { "..--..", '?' }, { ".----.", '\'' },
+        { "-.-.--", '!' }, { "-..-.", '/' }, { "-.--.", '(' }, { "-.--.-", ')' },
+        { ".-...", '&' }, { "---...", ':' }, { "-.-.-.", ';' }, { "-...-", '=' },
+        { ".-.-.", '+' }, { "-....-", '-' }, { "..--.-", '_' }, { ".-..-.", '"' },
+        { "...-..-", '$' }, { ".--.-.", '@' }, { "/", ' ' }
+    };
+
+    static string EncodeToMorse(string text)
+    {
+        StringBuilder encodedMessage = new StringBuilder();
+        foreach (char c in text)
+        {
+            char upperC = char.ToUpper(c);
+            if (MORSE_CODE_DICT.ContainsKey(upperC))
+            {
+                encodedMessage.Append(MORSE_CODE_DICT[upperC] + " ");
+            }
+            else
+            {
+                encodedMessage.Append("? ");
+            }
+        }
+        if (encodedMessage.Length > 0)
+        {
+            encodedMessage.Length--;  // Remove the trailing space
+        }
+        return encodedMessage.ToString();
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Enter the text to encode using morse code:");
+        string? text = Console.ReadLine();
+        if (text == null)
+        {
+            Console.WriteLine("No input provided.");
+            return;
+        }
+        string encodedText = EncodeToMorse(text);
+        Console.WriteLine("Each Morse code character is separated by a space, and each word is separated by a /");
+        Console.WriteLine($"The Morse code for '{text}' is:");
+        Console.WriteLine(encodedText);
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+# Morse Code Dictionary
+MORSE_CODE_DICT = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
+    'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+    'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
+    'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+    'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--',
+    'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', 
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', 
+    '0': '-----', ',': '--..--', '.': '.-.-.-', '?': '..--..', 
+    "'": '.----.', '!': '-.-.--', '/': '-..-.', '(': '-.--.', 
+    ')': '-.--.-', '&': '.-...', ':': '---...', ';': '-.-.-.', 
+    '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', 
+    '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
+}
+
+# Function to encode text to Morse code
+def encode_to_morse(text):
+    encoded_message = []
+    for char in text.upper():
+        if char in MORSE_CODE_DICT:
+            encoded_message.append(MORSE_CODE_DICT[char])
+        else:
+            encoded_message.append('?')
+    return ' '.join(encoded_message)
+
+print("Enter the text to encode using morse code:")
+text = input()
+encoded_text = encode_to_morse(text)
+print("Each Morse code character is separated by a space, and each word is separated by a /")
+print(f"The Morse code for '{text}' is:")
+print(encoded_text)
+```
+
+</TabItem>
+</Tabs>
+
+### Expected Output
+
+When you run this program, this is how the text "Hello and welcome to SplashKit, its great to have you." would be encoded in Morse code:
+
+```plaintext
+Enter the text to encode using morse code:
+Hello and welcome to SplashKit, its great to have you.
+Each Morse code character is separated by a space, and each word is separated by a /
+The Morse code for 'Hello and welcome to SplashKit, its great to have you.' is:
+.... . .-.. .-.. --- / .- -. -.. / .-- . .-.. -.-. --- -- . / - --- / ... .--. .-.. .- ... .... -.- .. - --..-- / .. - ... / --. .-. . .- - / - --- / .... .- ...- . / -.-- --- ..- .-.-.-
+```
+
+---
+
+## Decoding Morse Code to Text
+
+Decoding Morse code back to text requires reversing the process. The Morse code input is split into sequences representing individual characters, which are then mapped back to their corresponding text representation. Spaces in Morse code are converted back to spaces in the text. How Decoding Works:
+
+- Each Morse code sequence is matched with its corresponding character using a reversed dictionary.
+- Morse code for spaces (`/`) is converted back to spaces in the text.
+- Invalid sequences are replaced with a placeholder like `?`.
+
+### Steps for Decoding
+
+<Steps>
+1. Split the Morse code input into individual sequences using spaces.
+2. Map each sequence to its corresponding character from the reversed dictionary.
+3. Combine the characters to form the decoded text, handling `/` as spaces.
+</Steps>
+
+### Implementing the Decoding Program
+
+Here is how you can implement a program to decode Morse code back into text:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <sstream>
+
+using namespace std;
+
+unordered_map<string, char> morse_code_dict = {
+    {".-", 'A'}, {"-...", 'B'}, {"-.-.", 'C'}, {"-..", 'D'}, {".", 'E'}, 
+    {"..-.", 'F'}, {"--.", 'G'}, {"....", 'H'}, {"..", 'I'}, {".---", 'J'},
+    {"-.-", 'K'}, {".-..", 'L'}, {"--", 'M'}, {"-.", 'N'}, {"---", 'O'},
+    {".--.", 'P'}, {"--.-", 'Q'}, {".-.", 'R'}, {"...", 'S'}, {"-", 'T'},
+    {"..-", 'U'}, {"...-", 'V'}, {".--", 'W'}, {"-..-", 'X'}, {"-.--", 'Y'},
+    {"--..", 'Z'}, {".----", '1'}, {"..---", '2'}, {"...--", '3'}, {"....-", '4'}, 
+    {".....", '5'}, {"-....", '6'}, {"--...", '7'}, {"---..", '8'}, {"----.", '9'}, 
+    {"-----", '0'}, {"--..--", ','}, {".-.-.-", '.'}, {"..--..", '?'}, 
+    {".----.", '\''}, {"-.-.--", '!'}, {"-..-.", '/'}, {"-.--.", '('}, 
+    {"-.--.-", ')'}, {".-...", '&'}, {"---...", ':'}, {"-.-.-.", ';'}, 
+    {"-...-", '='}, {".-.-.", '+'}, {"-....-", '-'}, {"..--.-", '_'}, 
+    {".-..-.", '"'}, {"...-..-", '$'}, {".--.-.", '@'}, {"/", ' '}
+};
+
+string decode_from_morse(const string& morse_code) {
+    istringstream iss(morse_code);
+    string code;
+    string decoded_message;
+    while (iss >> code) {
+        if (morse_code_dict.find(code) != morse_code_dict.end()) {
+            decoded_message += morse_code_dict[code];
+        } else {
+            decoded_message += '?';  // Unknown Morse code
+        }
+    }
+    return decoded_message;
+}
+
+int main() {
+    string text;
+    cout << "Enter the Morse code to decode:" << endl;
+    getline(cin, text);
+    string decoded_text = decode_from_morse(text);
+    cout << "Each Morse code character is separated by a space, and each word is separated by a /" << endl;
+    cout << "The decoded text for '" << text << "' is: " << decoded_text << endl;
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+Dictionary<string, char> morseCodeDict = new Dictionary<string, char>
+{
+    { ".-", 'A' }, { "-...", 'B' }, { "-.-.", 'C' }, { "-..", 'D' },
+    { ".", 'E' }, { "..-.", 'F' }, { "--.", 'G' }, { "....", 'H' },
+    { "..", 'I' }, { ".---", 'J' }, { "-.-", 'K' }, { ".-..", 'L' },
+    { "--", 'M' }, { "-.", 'N' }, { "---", 'O' }, { ".--.", 'P' },
+    { "--.-", 'Q' }, { ".-.", 'R' }, { "...", 'S' }, { "-", 'T' },
+    { "..-", 'U' }, { "...-", 'V' }, { ".--", 'W' }, { "-..-", 'X' },
+    { "-.--", 'Y' }, { "--..", 'Z' }, { "-----", '0' }, { ".----", '1' },
+    { "..---", '2' }, { "...--", '3' }, { "....-", '4' }, { ".....", '5' },
+    { "-....", '6' }, { "--...", '7' }, { "---..", '8' }, { "----.", '9' },
+    { "--..--", ',' }, { ".-.-.-", '.' }, { "..--..", '?' }, { ".----.", '\'' },
+    { "-.-.--", '!' }, { "-..-.", '/' }, { "-.--.", '(' }, { "-.--.-", ')' },
+    { ".-...", '&' }, { "---...", ':' }, { "-.-.-.", ';' }, { "-...-", '=' },
+    { ".-.-.", '+' }, { "-....-", '-' }, { "..--.-", '_' }, { ".-..-.", '"' },
+    { "...-..-", '$' }, { ".--.-.", '@' }, { "/", ' ' }
+};
+
+string DecodeFromMorse(string morseCode)
+{
+    var decodedMessage = new List<char>();
+    var codes = morseCode.Split(' ');
+
+    foreach (var code in codes)
+    {
+        if (morseCodeDict.TryGetValue(code, out char character))
+        {
+            decodedMessage.Add(character);
+        }
+        else
+        {
+            decodedMessage.Add('?');  // Unknown Morse code
+        }
+    }
+
+    return new string(decodedMessage.ToArray());
+}
+
+
+Console.WriteLine("Enter the Morse code to decode:");
+string? text = Console.ReadLine();
+if (text == null)
+{
+    Console.WriteLine("No input provided.");
+    return;
+}
+string decodedText = DecodeFromMorse(text);
+Console.WriteLine("Each Morse code character is separated by a space, and each word is separated by a /");
+Console.WriteLine($"The decoded text for '{text}' is: {decodedText}");
+
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    
+    static Dictionary<string, char> morseCodeDict = new Dictionary<string, char>
+    {
+        { ".-", 'A' }, { "-...", 'B' }, { "-.-.", 'C' }, { "-..", 'D' },
+        { ".", 'E' }, { "..-.", 'F' }, { "--.", 'G' }, { "....", 'H' },
+        { "..", 'I' }, { ".---", 'J' }, { "-.-", 'K' }, { ".-..", 'L' },
+        { "--", 'M' }, { "-.", 'N' }, { "---", 'O' }, { ".--.", 'P' },
+        { "--.-", 'Q' }, { ".-.", 'R' }, { "...", 'S' }, { "-", 'T' },
+        { "..-", 'U' }, { "...-", 'V' }, { ".--", 'W' }, { "-..-", 'X' },
+        { "-.--", 'Y' }, { "--..", 'Z' }, { "-----", '0' }, { ".----", '1' },
+        { "..---", '2' }, { "...--", '3' }, { "....-", '4' }, { ".....", '5' },
+        { "-....", '6' }, { "--...", '7' }, { "---..", '8' }, { "----.", '9' },
+        { "--..--", ',' }, { ".-.-.-", '.' }, { "..--..", '?' }, { ".----.", '\'' },
+        { "-.-.--", '!' }, { "-..-.", '/' }, { "-.--.", '(' }, { "-.--.-", ')' },
+        { ".-...", '&' }, { "---...", ':' }, { "-.-.-.", ';' }, { "-...-", '=' },
+        { ".-.-.", '+' }, { "-....-", '-' }, { "..--.-", '_' }, { ".-..-.", '"' },
+        { "...-..-", '$' }, { ".--.-.", '@' }, { "/", ' ' }
+    };
+
+    static string DecodeFromMorse(string morseCode)
+    {
+        var decodedMessage = new List<char>();
+        var codes = morseCode.Split(' ');
+
+        foreach (var code in codes)
+        {
+            if (morseCodeDict.TryGetValue(code, out char character))
+            {
+                decodedMessage.Add(character);
+            }
+            else
+            {
+                decodedMessage.Add('?');  // Unknown Morse code
+            }
+        }
+
+        return new string(decodedMessage.ToArray());
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Enter the Morse code to decode:");
+        string? text = Console.ReadLine();
+        if (text == null)
+        {
+            Console.WriteLine("No input provided.");
+            return;
+        }
+        string decodedText = DecodeFromMorse(text);
+        Console.WriteLine("Each Morse code character is separated by a space, and each word is separated by a /");
+        Console.WriteLine($"The decoded text for '{text}' is: {decodedText}");
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+# Morse Code Dictionary
+MORSE_CODE_DICT = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
+    'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+    'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
+    'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+    'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--',
+    'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', 
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', 
+    '0': '-----', ',': '--..--', '.': '.-.-.-', '?': '..--..', 
+    "'": '.----.', '!': '-.-.--', '/': '-..-.', '(': '-.--.', 
+    ')': '-.--.-', '&': '.-...', ':': '---...', ';': '-.-.-.', 
+    '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', 
+    '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
+}
+
+# Function to decode Morse code to text
+def decode_from_morse(morse_code):
+    reversed_dict = {v: k for k, v in MORSE_CODE_DICT.items()}
+    decoded_message = []
+    for code in morse_code.split(' '):
+        if code in reversed_dict:
+            decoded_message.append(reversed_dict[code])
+        elif code == '/':  # Morse code for space
+            decoded_message.append(' ')
+        else:
+            decoded_message.append('?')  # Unknown Morse code
+    return ''.join(decoded_message)
+
+print("Enter the Morse code to decode:")
+text = input()
+decoded_text = decode_from_morse(text)
+print("Each Morse code character is separated by a space, and each word is separated by a /")
+print(f"The decoded text for '{text}' is:")
+print(decoded_text)
+```
+
+</TabItem>
+</Tabs>
+
+### Expected Output
+
+When you run this program, this is how the Morse code `.... . .-.. .-.. --- / .- -. -.. / .-- . .-.. -.-. --- -- . / - --- / ... .--. .-.. .- ... .... -.- .. - --..-- / .. - ... / --. .-. . .- - / - --- / .... .- ...- . / -.-- --- ..- .-.-.-` would be decoded back to text:
+
+```plaintext
+Enter the Morse code to decode:
+.... . .-.. .-.. --- / .- -. -.. / .-- . .-.. -.-. --- -- . / - --- / ... .--. .-.. .- ... .... -.- .. - --..-- / .. - ... / --. .-. . .- - / - --- / .... .- ...- . / -.-- --- ..- .-.-.-
+Each Morse code character is separated by a space, and each word is separated by a /
+The decoded text for '.... . .-.. .-.. --- / .- -. -.. / .-- . .-.. -.-. --- -- . / - --- / ... .--. .-.. .- ... .... -.- .. - --..-- / .. - ... / --. .-. . .- - / - --- / .... .- ...- . / -.-- --- ..- .-.-.-' is:
+HELLO AND WELCOME TO SPLASHKIT, ITS GREAT TO HAVE YOU.
+```
+
+## Applications of Morse Code
+
+Morse code remains relevant in various fields due to its simplicity and reliability. Some of its applications include:
+
+- **Emergency Communications**: Using short and long signals to communicate distress (e.g., SOS: `... --- ...`).
+- **Amateur Radio**: Sending messages over long distances where voice communication may be impractical.
+- **Aviation**: Identifying navigational aids with Morse code signals.
