@@ -10,7 +10,7 @@
                 "send_response",
                 "send_html_file_response"
             ],
-            "url": "/guides/networking/0-getting-started-with-servers/"
+            "url": "/guides/networking/getting-started-with-servers/"
         },
         {
             "name": "Routing With Servers",
@@ -23,7 +23,7 @@
                 "send_html_file_response",
                 "is_get_request_for"
             ],
-            "url": "/guides/networking/1-routing-with-servers/"
+            "url": "/guides/networking/routing-with-servers/"
         },
         {
             "name": "How to make a RESTful API call using SplashKit",
@@ -42,7 +42,7 @@
                 "json_read_number_as_int",
                 "json_read_string"
             ],
-            "url": "/guides/networking/2-restful-api-call/"
+            "url": "/guides/networking/restful-api-call/"
         }
     ]
 }

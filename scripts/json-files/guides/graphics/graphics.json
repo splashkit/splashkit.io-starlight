@@ -11,12 +11,12 @@
                 "refresh_screen",
                 "delay"
             ],
-            "url": "/guides/graphics/1-drawing-using-procedures/"
+            "url": "/guides/graphics/drawing-using-procedures/"
         },
         {
             "name": "Understanding Double Buffering",
             "functions": [],
-            "url": "/guides/getting-started/2-double-buffering/"
+            "url": "/guides/getting-started/double-buffering/"
         }
     ]
 }

@@ -5,6 +5,7 @@
             "functions": [
                 "convert_to_integer",
                 "write",
+                "write_line",
                 "write_line_int",
                 "convert_to_double",
                 "write_line_double",
@@ -16,7 +17,7 @@
                 "to_lowercase",
                 "trim"
             ],
-            "url": "/guides/getting-started/10-useful-utilities/"
+            "url": "/guides/utilities/useful-utilities/"
         }
     ]
 }

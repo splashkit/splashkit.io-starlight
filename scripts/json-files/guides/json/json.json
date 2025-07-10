@@ -25,7 +25,7 @@
                 "json_read_object",
                 "json_read_number_as_int"
             ],
-            "url": "/guides/getting-started/9-json_intro/"
+            "url": "/guides/json/getting-started-with-json/"
         }
     ]
 }

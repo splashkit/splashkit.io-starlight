@@ -1,28 +1,16 @@
 {
     "guides": [
         {
-            "name": "Using Mouse Inputs",
+            "name": "User Inputs in Graphical Applications",
             "functions": [
                 "color_red",
                 "color_yellow",
                 "color_white",
-                "process_events",
-                "mouse_clicked",
                 "clear_screen",
-                "refresh_window",
                 "window_close_requested",
                 "mouse_down",
                 "mouse_up",
-                "mouse_movement"
-            ],
-            "url": "/guides/getting-started/3-mouse-button-inputs/"
-        },
-        {
-            "name": "Reading Text",
-            "functions": [
-                "write",
-                "read_line",
-                "write_line",
+                "mouse_movement",
                 "open_window",
                 "quit_requested",
                 "load_font",
@@ -39,7 +27,7 @@
                 "draw_text",
                 "refresh_screen_with_target_fps"
             ],
-            "url": "/guides/getting-started/4-reading-text/"
+            "url": "/guides/input/user-inputs-in-graphical-applications/"
         }
     ]
 }
