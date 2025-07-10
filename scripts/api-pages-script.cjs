@@ -173,9 +173,9 @@ function extractEnumValues(signature, language) {
   let regex;
 
   if (language === 'cpp') {
-    regex = /(\w+)\s*=\s*\d+/g; // Handles the cpp pattern which has no dot in the name
+    regex = /(\w+)\s*=\s*/g; // Handles the cpp pattern which has no dot in the name
   } else {
-    regex = /(\w+\.\w+)\s*=\s*\d+/g; // Handles the other languages which have a dot in the name
+    regex = /(\w+\.\w+)\s*=\s*/g; // Handles the other languages which have a dot in the name
   }
 
   let match;
