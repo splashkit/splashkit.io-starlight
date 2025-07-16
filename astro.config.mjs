@@ -136,9 +136,9 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "guides/beyond-splashkit/" },
-                { label: "Using SDL2", autogenerate: { directory: "beyond-splashkit/sdl2" }, collapsed: false },
-                { label: "Cryptography", autogenerate: { directory: "beyond-splashkit/cryptography" }, collapsed: true },
-                { label: "Utilities", autogenerate: { directory: "beyond-splashkit/utilities" }, collapsed: true },
+                { label: "Using SDL2", autogenerate: { directory: "guides/beyond-splashkit/sdl2" }, collapsed: false },
+                { label: "Cryptography", autogenerate: { directory: "guides/beyond-splashkit/cryptography" }, collapsed: true },
+                { label: "Utilities", autogenerate: { directory: "guides/beyond-splashkit/utilities" }, collapsed: true },
               ],
             },
           ],
