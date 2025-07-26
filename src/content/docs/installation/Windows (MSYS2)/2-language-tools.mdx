@@ -43,7 +43,18 @@ For C++ development, your MSYS2 setup already includes the necessary tools for S
 
 ### Python
 
-To develop with Python in SplashKit, follow these steps to install Python on your system.
+To develop with Python in SplashKit, you can install the `python` and `pip` MSYS2 packages by running the following command in your MINGW64 terminal:
+
+```shell
+pacman -S mingw-w64-x86_64-python mingw-w64-x86_64-python-pip --noconfirm --disable-download-timeout
+```
+
+:::note[Alternative Option]
+
+<details>
+<summary>Follow these steps to install Python from the official website:</summary>
+
+For an alternative option, follow these steps to install Python on your system.
 
 <Steps>
 
@@ -72,6 +83,10 @@ To develop with Python in SplashKit, follow these steps to install Python on you
    Both commands should output version information if the installation was successful.
 
 </Steps>
+
+</details>
+
+:::
 
 ### Other Languages
 
