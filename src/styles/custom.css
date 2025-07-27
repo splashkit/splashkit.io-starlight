@@ -580,6 +580,7 @@ mjx-container svg {
 
 [role="tablist"] {
   border-bottom-color: var(--focused-tab-outline);
+  margin-bottom: 3px;
 }
 
 /* Round out styling using circle pseudo-element - right side */
