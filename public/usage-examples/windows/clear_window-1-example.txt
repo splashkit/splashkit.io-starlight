@@ -1,0 +1,1 @@
+Takes user input to change colour of window using Clear window function.
