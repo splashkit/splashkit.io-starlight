@@ -1,7 +1,0 @@
-Simple Animation Creation
-
-This example demonstrates how to create and display a basic animation using SplashKit.
-
-:::note
-To test this example code you can download these [**Resources**](/usage-examples/animations/create_animation-1-example-resources.zip).
-:::

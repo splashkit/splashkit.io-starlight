@@ -1,1 +1,0 @@
-Checking for Loaded Font using Name string

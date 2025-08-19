@@ -1,5 +1,0 @@
-Hooray! A Red Hat
-
-:::note
-To test this example code you can download these [**Resources**](/usage-examples/graphics/fill_triangle_on_bitmap-1-example-resources.zip).
-:::

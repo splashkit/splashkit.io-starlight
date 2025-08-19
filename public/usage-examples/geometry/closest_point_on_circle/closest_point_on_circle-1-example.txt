@@ -1,3 +1,0 @@
-Closest Point to Mouse on Circle
-
-Note: The blue dot represents the "Mouse" point.

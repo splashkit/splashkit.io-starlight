@@ -1,136 +1,44 @@
 ---
-title: Guide to Creating Usage Examples
+title: Contributing to Usage Examples
 sidebar:
   hidden: true
 ---
 
-This guide explains how to create a usage example for the SplashKit website.
+To contribute a function usage example, you need to create the following files:
 
-## What are Usage Examples?
+- **Text file** (.txt) containing a title and short description of the example.
+- **Output Image/Video file** showing the expected output of the example. This output file needs to be one of the following:
+  - **Image file** (.png)
+  - **Gif file** (.gif) if the example code is interactive
+  - **Webm file** (.webm) if there is audio in the code example.
+- **Code files** with the example code. This must be a complete code example, not just a snippet of code.
+- ***Zip file*** (*only if your code requires resource files*) containing the "Resources" folder created with the `skm resources` command, with any resources needed for your example code to run. (More info about adding this at the end.)
 
-Usage examples demonstrate a specific SplashKit function within a simple, small program. The goal is to keep the program minimal while clearly showing how the function works or how it can be utilised.
+## File Location
 
-For instance, the `write_line` example on the SplashKit site shows how the `write_line` function works, with a relevant title, program code, and a file showing the program output.
+Place the following files into the folder with the **unique global name** located in `/public/usage-examples/<category folder of the function>`:
 
-## Steps to Create a Usage Example
+- The `.txt` text file.
+- The `.cpp` and `.cs` and `.py` code files.
 
-An initial usage example includes 6 files:
+eg. For the `write_line` examples mentioned below, these would be located in `/public/usage-examples/terminal/`.
 
-- C++ version
-- C# (top-level statements) version  
-- C# (Object-Oriented Programming) version
-- Python version
-- Descriptive title for the example, in a text file
-- Screenshot of the output
+## File Naming
 
-### Choosing a Function
+To allow the files to be used to automatically generate the usage example MDX page, you need to follow a specific format when naming your files.
 
-The planner board has numerous usage example suggestions for various functions, however you are welcomed and encouraged to come up with your own creative ideas for these. Scroll through the API Documentation to find various functions you could use for the usage example. When coming up with an idea, make sure to also check to see if anyone else has already done it.
+Here is an example of files for one of the code examples added for the `write_line` function that are demonstrating the use of `void write_line(string line);`:
 
-The goal is to create one usage example per function in the SplashKit library. Building out these single examples for each function is the priority to round out the variety of examples available.
-
-If you come up with a creative idea for a function that already has an example, please share it in the SplashKit group chat or reach out to your Capstone Mentor to discuss whether it's a good idea to add another example for that function.
-
-### Creating The Program
-
-Create the program with as few lines of code as possible. You'll need to write the program in C++, C# (using top-level statements and OOP version), and Python, all using SplashKit. Start with the language you're most comfortable with, then convert it to the others.
-
-**Note for C#**: For top-level statements use `using static SplashKitSDK.SplashKit;`. For the OOP version use `using SplashKitSDK;`.
-
-#### Example
-
-If C++ is your strength, begin by creating a small program like this `dec_to_hex` example:
-
-```cpp
-#include "splashkit.h"
-
-int main()
-{
-    write_line("Hello! Welcome to the decimal to hexadecimal converter.");
-
-    // Prompt the user for a decimal input
-    write_line("Please enter a decimal number:");
-
-    // Read the input as a string
-    string dec_input = read_line();
-
-    // Convert the input string to an unsigned integer
-    unsigned int dec_value = convert_to_integer(dec_input);
-
-    // Convert the decimal value to hexadecimal format
-    string hex_value = dec_to_hex(dec_value);
-
-    // Display the result in hexadecimal format
-    write_line("The decimal value in hexadecimal format is: " + hex_value);
-
-    return 0;
-}
+```plaintext
+write_line-1-example-oop.cs
+write_line-1-example-top-level.cs
+write_line-1-example.cpp
+write_line-1-example.png
+write_line-1-example.py
+write_line-1-example.txt
 ```
 
-This example includes meaningful comments that clearly explain each part of the program, which helps readers understand both the structure and function. When converting to C#, notice that the structure and comments are kept consistent, with syntax changes specific to the language:
-
-```csharp
-using static SplashKitSDK.SplashKit;
-
-WriteLine("Hello! Welcome to the decimal to hexadecimal converter.");
-
-// Prompt the user for a decimal input
-WriteLine("Please enter a decimal number:");
-
-// Read the input as a string
-string dec_input = ReadLine();
-
-// Convert the input string to an unsigned integer
-uint dec_value = ConvertToInteger(dec_input);
-
-// Convert the decimal value to hexadecimal
-string hex_value = DecToHex(dec_value);
-
-// Display the result
-WriteLine("The decimal value in hexadecimal format is: " + hex_value);
-```
-
-### Title and Screenshot
-
-Provide a creative title and a screenshot of the program's output.
-
-**Title**: Simple Decimal to Hexadecimal Converter
-
-Take a screenshot of the output window and save it. If the screenshot is of the terminal window, please crop out any commands used to run the program.
-
-## Adding Files to SplashKit Starlight.io
-
-Now that you're done, you should have the following 6 files when completing an initial usage example PR:
-
-- txt file
-- C++ file  
-- Python file
-- C# (top-level statements) file
-- C# (OOP) file
-- Screenshot of the output
-
-Now you'll need to rename these before adding them to the SplashKit Starlight.io repo.
-
-### Example File Naming
-
-Say you've created a `write_line` program. Rename the files as follows:
-
-- `write_line-1-example-oop.cs`
-- `write_line-1-example-top-level.cs`
-- `write_line-1-example.cpp`
-- `write_line-1-example.png` or `.gif`
-- `write_line-1-example.py`
-- `write_line-1-example.txt`
-
-For additional examples beyond the initial one:
-
-- `write_line-2-hello-world-beyond.cpp`
-
-When you add files, if there are already usage examples using this same function, then you should increment the number in the file name by 1. Furthermore, it is important that you use the function's **unique global name** for the file names (this only applies for functions that are overloaded).
-
-### File Naming Format
-
-Breaking down the file name format:
+Breaking down the first file name from above:
 
 ```plaintext
 write_line-1-example-oop.cs
@@ -147,49 +55,6 @@ write_line-1-example-oop.cs
                               (created using the "unique_global_name" key
                               from SplashKit's "api.json" file, in "scripts/json-files")
 ```
-
-### File Location
-
-Now that your files are named, add all of your files to the `usage-examples` folder under the appropriate function category (e.g., `terminal/`). The location in the Starlight.io repo is:
-
-```
-public/
-└── usage-examples/
-    ├── animations/
-    ├── audio/
-    ├── camera/
-    ├── color/
-    ├── geometry/
-    ├── graphics/
-    ├── input/
-    ├── interface/
-    ├── json/
-    ├── logging/
-    ├── networking/
-    ├── physics/
-    ├── raspberry/
-    ├── resource_bundles/
-    ├── resources/
-    ├── sprites/
-    ├── terminal/
-    │   ├── write_line-1-example-oop.cs
-    │   ├── write_line-1-example-top-level.cs
-    │   ├── write_line-1-example.cpp
-    │   ├── write_line-1-example.png
-    │   ├── write_line-1-example.py
-    │   └── write_line-1-example.txt
-    ├── timers/
-    ├── utilities/
-    └── windows/
-```
-
-Place the following files into the folder with the **unique global name** located in `/public/usage-examples/<category folder of the function>`:
-
-- The `.txt` text file
-- The `.cpp`, `.cs`, and `.py` code files
-- The output image/gif file
-
-For example, the `write_line` examples would be located in `/public/usage-examples/terminal/`.
 
 ## File Contents
 
@@ -210,9 +75,8 @@ ASCII Art - Charlie the Unicorn
 
 Add a screenshot of the output of the example program.
 
-- **Image file** (.png) - for static output
-- **Gif file** (.gif) - if the example code is interactive or includes user input or movement
-- **Webm file** (.webm) - if there is audio in the code example. You can use a tool such as [ffmpeg](https://ffmpeg.org/) to convert your video files to `.webm` files.
+- If the example program includes user input or any movement, please create a Gif showing the program running.
+- If the example program includes audio, please create a Webm file showing the program running. You can use a tool such as [ffmpeg](https://ffmpeg.org/) to convert your video files to `.webm` files.
 
 Remove identifying details from the image/gif/audio where possible.
 
@@ -220,17 +84,12 @@ Remove identifying details from the image/gif/audio where possible.
 
 Please follow the guidelines below:
 
-- Example code should be able to be run by copying the code into an empty code file
+- Example code should be able to be run by copying the code into an empty code file.
 - Make sure to include 4 code files:
   1. `.cpp` file
-  2. `.cs` file using top-level statements style  
+  2. `.cs` file using top-level statements style
   3. `.cs` file using object-oriented style
   4. `.py` file
-- Example code must be a complete code example, not just a snippet of code
-
-## Next Steps
-
-Now follow the steps in **Usage Example Pull Requests**, and submit your usage example for review. For doing a peer review, follow the steps in **Peer Review Guide for Usage Examples**.
 
 ## Adding Zip File Resources
 
@@ -240,7 +99,7 @@ If you have created an example with specific image/sound/etc files, you will nee
 
 Make sure that you have run the `skm resources` command, and put your resource files inside the relevant folder (eg. images).
 
-Then compress/zip the "Resources" folder and give it a relevant name for when users download this file (similar to existing examples' resource zip files).
+Then compress/zip the "Resources" folder and give it a relevant name for when users download this file (similar to exisiting examples' resource zip files).
 
 ### Linking to the Resources
 
@@ -254,7 +113,7 @@ To test this example code you can download these [**Resources**](/usage-examples
 
 Then update the link in the template above to add the `<category>`, `<unique-global-name>` and `<your-zip-file-name>`.
 
-For example, for the first `draw_bitmap_named` example that has been created, the text file contents would look like this:
+eg. For the first `draw_bitmap_named` example that has been created, the text file contents would look like this:
 
 ```plaintext
 Basic Bitmap Drawing

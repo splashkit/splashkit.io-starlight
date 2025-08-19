@@ -1,3 +1,0 @@
-Hello World! This is SplashKit!
-
-*Originally created for the [programmers.guide](https://programmers.guide/) website.*
