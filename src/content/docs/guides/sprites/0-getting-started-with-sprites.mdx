@@ -1,0 +1,511 @@
+---
+title: Getting Started with Sprites
+description: Learn how to create and work with sprites in SplashKit. Sprites are game objects that combine images, positioning, and movement to create interactive elements in your games.
+author: Various Authors
+lastupdated: January 2025
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+Sprites are one of the core concepts in game development with SplashKit. A sprite combines an image (bitmap) with positional data, making it easy to create game objects that can move around the screen, detect collisions, and interact with each other.
+
+## What is a Sprite?
+
+A sprite is essentially a game object that has:
+- An image (bitmap) that defines how it looks
+- A position (x, y coordinates) that defines where it appears on screen
+- A velocity that controls how it moves
+- Other properties like rotation, scale, and layer depth
+
+Think of sprites as the characters, enemies, bullets, and interactive objects in your game.
+
+## Getting Started
+
+To work with sprites in SplashKit, you'll need:
+1. Image files for your sprites
+2. A basic understanding of loading bitmaps
+3. Knowledge of the game loop concept
+
+### Download Tutorial Resources
+
+For this tutorial, you'll need some sample images. Download the BasicSpritesResources.zip file which contains sample sprite images:
+
+[Download BasicSpritesResources.zip](/resources/guides/sprites/basics/BasicSpritesResources.zip)
+
+Extract this zip file to your project's `resources/images` folder.
+
+## Creating Your First Sprite
+
+Here's how to create a basic sprite:
+
+<Tabs>
+<TabItem label="C++">
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    // Open a window
+    open_window("Sprite Demo", 800, 600);
+    
+    // Load a bitmap for the sprite
+    bitmap player_bitmap = load_bitmap("player", "player.png");
+    
+    // Create a sprite using the bitmap
+    sprite player = create_sprite(player_bitmap);
+    
+    // Position the sprite
+    sprite_set_x(player, 400);
+    sprite_set_y(player, 300);
+    
+    // Game loop
+    while (!quit_requested())
+    {
+        process_events();
+        
+        // Clear the screen
+        clear_screen(COLOR_WHITE);
+        
+        // Draw the sprite
+        draw_sprite(player);
+        
+        // Update the display
+        refresh_screen(60);
+    }
+    
+    // Clean up
+    free_sprite(player);
+    close_all_windows();
+    
+    return 0;
+}
+```
+</TabItem>
+<TabItem label="C#">
+```cs
+using SplashKitSDK;
+
+class Program
+{
+    static void Main()
+    {
+        // Open a window
+        SplashKit.OpenWindow("Sprite Demo", 800, 600);
+        
+        // Load a bitmap for the sprite
+        Bitmap playerBitmap = SplashKit.LoadBitmap("player", "player.png");
+        
+        // Create a sprite using the bitmap
+        Sprite player = SplashKit.CreateSprite(playerBitmap);
+        
+        // Position the sprite
+        SplashKit.SpriteSetX(player, 400);
+        SplashKit.SpriteSetY(player, 300);
+        
+        // Game loop
+        while (!SplashKit.QuitRequested())
+        {
+            SplashKit.ProcessEvents();
+            
+            // Clear the screen
+            SplashKit.ClearScreen(Color.White);
+            
+            // Draw the sprite
+            SplashKit.DrawSprite(player);
+            
+            // Update the display
+            SplashKit.RefreshScreen(60);
+        }
+        
+        // Clean up
+        SplashKit.FreeSprite(player);
+        SplashKit.CloseAllWindows();
+    }
+}
+```
+</TabItem>
+<TabItem label="Python">
+```python
+from splashkit import *
+
+# Open a window
+open_window("Sprite Demo", 800, 600)
+
+# Load a bitmap for the sprite
+player_bitmap = load_bitmap("player", "player.png")
+
+# Create a sprite using the bitmap
+player = create_sprite(player_bitmap)
+
+# Position the sprite
+sprite_set_x(player, 400)
+sprite_set_y(player, 300)
+
+# Game loop
+while not quit_requested():
+    process_events()
+    
+    # Clear the screen
+    clear_screen(color_white())
+    
+    # Draw the sprite
+    draw_sprite(player)
+    
+    # Update the display
+    refresh_screen(60)
+
+# Clean up
+free_sprite(player)
+close_all_windows()
+```
+</TabItem>
+</Tabs>
+
+## Moving Sprites
+
+Sprites become more interesting when they can move. You can control sprite movement using velocity:
+
+<Tabs>
+<TabItem label="C++">
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    open_window("Moving Sprite", 800, 600);
+    
+    bitmap player_bitmap = load_bitmap("player", "player.png");
+    sprite player = create_sprite(player_bitmap);
+    
+    // Set initial position
+    sprite_set_x(player, 400);
+    sprite_set_y(player, 300);
+    
+    // Set velocity (pixels per update)
+    sprite_set_dx(player, 2);  // Move right 2 pixels per update
+    sprite_set_dy(player, 1);  // Move down 1 pixel per update
+    
+    while (!quit_requested())
+    {
+        process_events();
+        
+        // Update sprite position based on velocity
+        update_sprite(player);
+        
+        // Bounce off screen edges
+        if (sprite_x(player) > screen_width() || sprite_x(player) < 0)
+        {
+            sprite_set_dx(player, -sprite_dx(player));
+        }
+        if (sprite_y(player) > screen_height() || sprite_y(player) < 0)
+        {
+            sprite_set_dy(player, -sprite_dy(player));
+        }
+        
+        clear_screen(COLOR_WHITE);
+        draw_sprite(player);
+        refresh_screen(60);
+    }
+    
+    free_sprite(player);
+    close_all_windows();
+    return 0;
+}
+```
+</TabItem>
+<TabItem label="C#">
+```cs
+using SplashKitSDK;
+
+class Program
+{
+    static void Main()
+    {
+        SplashKit.OpenWindow("Moving Sprite", 800, 600);
+        
+        Bitmap playerBitmap = SplashKit.LoadBitmap("player", "player.png");
+        Sprite player = SplashKit.CreateSprite(playerBitmap);
+        
+        // Set initial position
+        SplashKit.SpriteSetX(player, 400);
+        SplashKit.SpriteSetY(player, 300);
+        
+        // Set velocity (pixels per update)
+        SplashKit.SpriteSetDx(player, 2);  // Move right 2 pixels per update
+        SplashKit.SpriteSetDy(player, 1);  // Move down 1 pixel per update
+        
+        while (!SplashKit.QuitRequested())
+        {
+            SplashKit.ProcessEvents();
+            
+            // Update sprite position based on velocity
+            SplashKit.UpdateSprite(player);
+            
+            // Bounce off screen edges
+            if (SplashKit.SpriteX(player) > SplashKit.ScreenWidth() || SplashKit.SpriteX(player) < 0)
+            {
+                SplashKit.SpriteSetDx(player, -SplashKit.SpriteDx(player));
+            }
+            if (SplashKit.SpriteY(player) > SplashKit.ScreenHeight() || SplashKit.SpriteY(player) < 0)
+            {
+                SplashKit.SpriteSetDy(player, -SplashKit.SpriteDy(player));
+            }
+            
+            SplashKit.ClearScreen(Color.White);
+            SplashKit.DrawSprite(player);
+            SplashKit.RefreshScreen(60);
+        }
+        
+        SplashKit.FreeSprite(player);
+        SplashKit.CloseAllWindows();
+    }
+}
+```
+</TabItem>
+<TabItem label="Python">
+```python
+from splashkit import *
+
+open_window("Moving Sprite", 800, 600)
+
+player_bitmap = load_bitmap("player", "player.png")
+player = create_sprite(player_bitmap)
+
+# Set initial position
+sprite_set_x(player, 400)
+sprite_set_y(player, 300)
+
+# Set velocity (pixels per update)
+sprite_set_dx(player, 2)  # Move right 2 pixels per update
+sprite_set_dy(player, 1)  # Move down 1 pixel per update
+
+while not quit_requested():
+    process_events()
+    
+    # Update sprite position based on velocity
+    update_sprite(player)
+    
+    # Bounce off screen edges
+    if sprite_x(player) > screen_width() or sprite_x(player) < 0:
+        sprite_set_dx(player, -sprite_dx(player))
+    if sprite_y(player) > screen_height() or sprite_y(player) < 0:
+        sprite_set_dy(player, -sprite_dy(player))
+    
+    clear_screen(color_white())
+    draw_sprite(player)
+    refresh_screen(60)
+
+free_sprite(player)
+close_all_windows()
+```
+</TabItem>
+</Tabs>
+
+## Sprite Input Control
+
+You can make sprites respond to user input for interactive gameplay:
+
+<Tabs>
+<TabItem label="C++">
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    open_window("Controllable Sprite", 800, 600);
+    
+    bitmap player_bitmap = load_bitmap("player", "player.png");
+    sprite player = create_sprite(player_bitmap);
+    
+    sprite_set_x(player, 400);
+    sprite_set_y(player, 300);
+    
+    while (!quit_requested())
+    {
+        process_events();
+        
+        // Reset velocity
+        sprite_set_dx(player, 0);
+        sprite_set_dy(player, 0);
+        
+        // Check for input and set velocity
+        if (key_down(LEFT_KEY) || key_down(A_KEY))
+            sprite_set_dx(player, -3);
+        if (key_down(RIGHT_KEY) || key_down(D_KEY))
+            sprite_set_dx(player, 3);
+        if (key_down(UP_KEY) || key_down(W_KEY))
+            sprite_set_dy(player, -3);
+        if (key_down(DOWN_KEY) || key_down(S_KEY))
+            sprite_set_dy(player, 3);
+        
+        // Update sprite position
+        update_sprite(player);
+        
+        // Keep sprite on screen
+        if (sprite_x(player) < 0)
+            sprite_set_x(player, 0);
+        if (sprite_x(player) > screen_width() - sprite_width(player))
+            sprite_set_x(player, screen_width() - sprite_width(player));
+        if (sprite_y(player) < 0)
+            sprite_set_y(player, 0);
+        if (sprite_y(player) > screen_height() - sprite_height(player))
+            sprite_set_y(player, screen_height() - sprite_height(player));
+        
+        clear_screen(COLOR_WHITE);
+        draw_sprite(player);
+        refresh_screen(60);
+    }
+    
+    free_sprite(player);
+    close_all_windows();
+    return 0;
+}
+```
+</TabItem>
+<TabItem label="C#">
+```cs
+using SplashKitSDK;
+
+class Program
+{
+    static void Main()
+    {
+        SplashKit.OpenWindow("Controllable Sprite", 800, 600);
+        
+        Bitmap playerBitmap = SplashKit.LoadBitmap("player", "player.png");
+        Sprite player = SplashKit.CreateSprite(playerBitmap);
+        
+        SplashKit.SpriteSetX(player, 400);
+        SplashKit.SpriteSetY(player, 300);
+        
+        while (!SplashKit.QuitRequested())
+        {
+            SplashKit.ProcessEvents();
+            
+            // Reset velocity
+            SplashKit.SpriteSetDx(player, 0);
+            SplashKit.SpriteSetDy(player, 0);
+            
+            // Check for input and set velocity
+            if (SplashKit.KeyDown(KeyCode.LeftKey) || SplashKit.KeyDown(KeyCode.AKey))
+                SplashKit.SpriteSetDx(player, -3);
+            if (SplashKit.KeyDown(KeyCode.RightKey) || SplashKit.KeyDown(KeyCode.DKey))
+                SplashKit.SpriteSetDx(player, 3);
+            if (SplashKit.KeyDown(KeyCode.UpKey) || SplashKit.KeyDown(KeyCode.WKey))
+                SplashKit.SpriteSetDy(player, -3);
+            if (SplashKit.KeyDown(KeyCode.DownKey) || SplashKit.KeyDown(KeyCode.SKey))
+                SplashKit.SpriteSetDy(player, 3);
+            
+            // Update sprite position
+            SplashKit.UpdateSprite(player);
+            
+            // Keep sprite on screen
+            if (SplashKit.SpriteX(player) < 0)
+                SplashKit.SpriteSetX(player, 0);
+            if (SplashKit.SpriteX(player) > SplashKit.ScreenWidth() - SplashKit.SpriteWidth(player))
+                SplashKit.SpriteSetX(player, SplashKit.ScreenWidth() - SplashKit.SpriteWidth(player));
+            if (SplashKit.SpriteY(player) < 0)
+                SplashKit.SpriteSetY(player, 0);
+            if (SplashKit.SpriteY(player) > SplashKit.ScreenHeight() - SplashKit.SpriteHeight(player))
+                SplashKit.SpriteSetY(player, SplashKit.ScreenHeight() - SplashKit.SpriteHeight(player));
+            
+            SplashKit.ClearScreen(Color.White);
+            SplashKit.DrawSprite(player);
+            SplashKit.RefreshScreen(60);
+        }
+        
+        SplashKit.FreeSprite(player);
+        SplashKit.CloseAllWindows();
+    }
+}
+```
+</TabItem>
+<TabItem label="Python">
+```python
+from splashkit import *
+
+open_window("Controllable Sprite", 800, 600)
+
+player_bitmap = load_bitmap("player", "player.png")
+player = create_sprite(player_bitmap)
+
+sprite_set_x(player, 400)
+sprite_set_y(player, 300)
+
+while not quit_requested():
+    process_events()
+    
+    # Reset velocity
+    sprite_set_dx(player, 0)
+    sprite_set_dy(player, 0)
+    
+    # Check for input and set velocity
+    if key_down(key_code.left_key) or key_down(key_code.a_key):
+        sprite_set_dx(player, -3)
+    if key_down(key_code.right_key) or key_down(key_code.d_key):
+        sprite_set_dx(player, 3)
+    if key_down(key_code.up_key) or key_down(key_code.w_key):
+        sprite_set_dy(player, -3)
+    if key_down(key_code.down_key) or key_down(key_code.s_key):
+        sprite_set_dy(player, 3)
+    
+    # Update sprite position
+    update_sprite(player)
+    
+    # Keep sprite on screen
+    if sprite_x(player) < 0:
+        sprite_set_x(player, 0)
+    if sprite_x(player) > screen_width() - sprite_width(player):
+        sprite_set_x(player, screen_width() - sprite_width(player))
+    if sprite_y(player) < 0:
+        sprite_set_y(player, 0)
+    if sprite_y(player) > screen_height() - sprite_height(player):
+        sprite_set_y(player, screen_height() - sprite_height(player))
+    
+    clear_screen(color_white())
+    draw_sprite(player)
+    refresh_screen(60)
+
+free_sprite(player)
+close_all_windows()
+```
+</TabItem>
+</Tabs>
+
+## Key Sprite Functions
+
+Here are some essential functions for working with sprites:
+
+### Creating and Managing Sprites
+- `create_sprite(bitmap)` - Creates a new sprite from a bitmap
+- `free_sprite(sprite)` - Releases memory used by a sprite
+- `draw_sprite(sprite)` - Draws the sprite to the screen
+
+### Position and Movement
+- `sprite_x(sprite)` / `sprite_y(sprite)` - Get sprite position
+- `sprite_set_x(sprite, x)` / `sprite_set_y(sprite, y)` - Set sprite position
+- `sprite_dx(sprite)` / `sprite_dy(sprite)` - Get sprite velocity
+- `sprite_set_dx(sprite, dx)` / `sprite_set_dy(sprite, dy)` - Set sprite velocity
+- `update_sprite(sprite)` - Updates sprite position based on velocity
+
+### Size and Properties
+- `sprite_width(sprite)` / `sprite_height(sprite)` - Get sprite dimensions
+- `sprite_set_rotation(sprite, angle)` - Rotate the sprite
+- `sprite_set_scale(sprite, scale)` - Scale the sprite size
+
+## Next Steps
+
+Now that you understand the basics of sprites, you can explore:
+
+1. **Sprite Collision Detection** - Learn how to detect when sprites collide
+2. **Sprite Animations** - Add animated sprites using sprite sheets
+3. **Sprite Layers** - Organize sprites into different drawing layers
+4. **Sprite Groups** - Manage collections of sprites efficiently
+
+Sprites are the foundation of most 2D games, so mastering these concepts will help you create engaging and interactive games with SplashKit!

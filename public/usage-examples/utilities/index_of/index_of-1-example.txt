@@ -1,0 +1,1 @@
+Check the index of a given word in a string

@@ -57,6 +57,13 @@ The physical circuit is show in the below image, where we can see the physical i
 This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
+:::note[Remote GPIO Control]
+For remote GPIO control, you'll also need to start the GPIO daemon on your Raspberry Pi. See the [Remote Access Guide](https://programmers.guide/book/appendix/0-installation/4-0-remote-access-pi/) for detailed setup instructions.
+:::
+
+<Tabs syncKey="gpio-mode">
+<TabItem label="Local">
+
 <Tabs syncKey="code-language">
 <TabItem label="C++">
 
@@ -110,29 +117,29 @@ using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
 RaspiInit();
-GpioPin buttonPin = (GpioPin)29;
-GpioPin ledPin = (GpioPin)11;
-GpioPinValue ledState = (GpioPinValue) 0;
+GpioPin buttonPin = GpioPin.Pin29;
+GpioPin ledPin = GpioPin.Pin11;
+GpioPinValue ledState = GpioPinValue.GpioLow;
 
-RaspiSetMode(buttonPin, (GpioPinMode) 0);
-RaspiSetMode(ledPin, (GpioPinMode) 1);
+RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
 
-RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
 
 OpenWindow("dummy_window", 1, 1);
 while(!AnyKeyPressed())
 {
     ProcessEvents();
-    if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+    if(RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
     {
         ledState = RaspiRead(ledPin);
-        if(ledState == (GpioPinValue) 0)
+        if(ledState == GpioPinValue.GpioLow)
         {
-          RaspiWrite(ledPin, (GpioPinValue) 1);
+            RaspiWrite(ledPin, GpioPinValue.GpioHigh);
         }
         else
         {
-          RaspiWrite(ledPin, (GpioPinValue) 0);
+            RaspiWrite(ledPin, GpioPinValue.GpioLow);
         }
     }
 }
@@ -190,20 +197,254 @@ namespace RaspberryPiButtonLED
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+raspi_init()
+button_pin = GpioPin.pin_29
+led_pin = GpioPin.pin_11
+led_state = GpioPinValue.gpio_low
+
+raspi_set_mode(button_pin, GpioPinMode.gpio_input)
+raspi_set_mode(led_pin, GpioPinMode.gpio_output)
+
+raspi_set_pull_up_down(button_pin, PullUpDown.pud_down)
+
+open_window("dummy_window", 1, 1)
+while not any_key_pressed():
+    process_events()
+    if raspi_read(button_pin) == GpioPinValue.gpio_high:
+        led_state = raspi_read(led_pin)
+        if led_state == GpioPinValue.gpio_low:
+            raspi_write(led_pin, GpioPinValue.gpio_high)
+        else:
+            raspi_write(led_pin, GpioPinValue.gpio_low)
+
+close_all_windows()
+raspi_cleanup()
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Remote">
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    // Initialize remote connection to Raspberry Pi
+    // Parameters: connection name, IP address, port (default 8888)
+    connection pi_connection = remote_raspi_init("pi_connection", "192.168.1.100", 8888);
+    
+    gpio_pin button_pin = PIN_29;
+    gpio_pin led_pin = PIN_11;
+    gpio_pin_value led_state = GPIO_LOW;
+
+    // Set GPIO modes using remote functions
+    remote_raspi_set_mode(pi_connection, button_pin, GPIO_INPUT);
+    remote_raspi_set_mode(pi_connection, led_pin, GPIO_OUTPUT);
+
+    // Set pull-down resistor for button pin
+    remote_raspi_set_pull_up_down(pi_connection, button_pin, PUD_DOWN);
+
+    open_window("dummy_window", 1, 1);
+    while(!any_key_pressed())
+    {
+        process_events();
+        if(remote_raspi_read(pi_connection, button_pin) == GPIO_HIGH)
+        {
+            led_state = remote_raspi_read(pi_connection, led_pin);
+            if(led_state == GPIO_LOW)
+            {
+                remote_raspi_write(pi_connection, led_pin, GPIO_HIGH);
+            }
+            else
+            {
+                remote_raspi_write(pi_connection, led_pin, GPIO_LOW);
+            }
+        }
+    }
+
+    close_all_windows();
+    remote_raspi_cleanup(pi_connection);
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+// Initialize remote connection to Raspberry Pi
+// Parameters: connection name, IP address, port (default 8888)
+Connection piConnection = RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+
+GpioPin buttonPin = GpioPin.Pin29;
+GpioPin ledPin = GpioPin.Pin11;
+GpioPinValue ledState = GpioPinValue.GpioLow;
+
+// Set GPIO modes using remote functions
+RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+// Set pull-down resistor for button pin
+RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+OpenWindow("dummy_window", 1, 1);
+while(!AnyKeyPressed())
+{
+    ProcessEvents();
+    if(RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+    {
+        ledState = RemoteRaspiRead(piConnection, ledPin);
+        if(ledState == GpioPinValue.GpioLow)
+        {
+            RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+        }
+        else
+        {
+            RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+        }
+    }
+}
+
+CloseAllWindows();
+RemoteRaspiCleanup(piConnection);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiButtonLEDRemote
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Initialize remote connection to Raspberry Pi
+            // Parameters: connection name, IP address, port (default 8888)
+            Connection piConnection = SplashKit.RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+            
+            GpioPin buttonPin = GpioPin.Pin29;
+            GpioPin ledPin = GpioPin.Pin11;
+            GpioPinValue ledState = GpioPinValue.GpioLow;
+
+            // Set GPIO modes using remote functions
+            SplashKit.RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+            SplashKit.RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+            // Set pull-down resistor for button pin
+            SplashKit.RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+            SplashKit.OpenWindow("dummy_window", 1, 1);
+            while (!SplashKit.AnyKeyPressed())
+            {
+                SplashKit.ProcessEvents();
+                if (SplashKit.RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+                {
+                    ledState = SplashKit.RemoteRaspiRead(piConnection, ledPin);
+                    if (ledState == GpioPinValue.GpioLow)
+                    {
+                        SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+                    }
+                    else
+                    {
+                        SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+                    }
+                }
+            }
+
+            SplashKit.CloseAllWindows();
+            SplashKit.RemoteRaspiCleanup(piConnection);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+from splashkit import *
+
+# Initialize remote connection to Raspberry Pi
+# Parameters: connection name, IP address, port (default 8888)
+pi_connection = remote_raspi_init("pi_connection", "192.168.1.100", 8888)
+
+button_pin = GpioPin.pin_29
+led_pin = GpioPin.pin_11
+led_state = GpioPinValue.gpio_low
+
+# Set GPIO modes using remote functions
+remote_raspi_set_mode(pi_connection, button_pin, GpioPinMode.gpio_input)
+remote_raspi_set_mode(pi_connection, led_pin, GpioPinMode.gpio_output)
+
+# Set pull-down resistor for button pin
+remote_raspi_set_pull_up_down(pi_connection, button_pin, PullUpDown.pud_down)
+
+open_window("dummy_window", 1, 1)
+while not any_key_pressed():
+    process_events()
+    if remote_raspi_read(pi_connection, button_pin) == GpioPinValue.gpio_high:
+        led_state = remote_raspi_read(pi_connection, led_pin)
+        if led_state == GpioPinValue.gpio_low:
+            remote_raspi_write(pi_connection, led_pin, GpioPinValue.gpio_high)
+        else:
+            remote_raspi_write(pi_connection, led_pin, GpioPinValue.gpio_low)
+
+close_all_windows()
+remote_raspi_cleanup(pi_connection)
+```
+
+</TabItem>
+</Tabs>
+
 </TabItem>
 </Tabs>
 
 ### Understanding the code
 
-Lets break down this code and analyse it in sections.
+Let's break down this code and analyse it in sections.
 
 <Steps>
 
-1. **Initialise GPIO Hardware:**
+1. **Initialize GPIO Hardware:**
 
-    We start this code by initialising our hardware through [Raspi Init](/api/raspberry/#raspi-init), we then define the [Pins](/api/types/#gpio-pin) that we're are using for the button (Pin 29), and the LED (Pin 11). We also initialise a variable, `led_state`, to hold the state of the LED at any point in time. We use `led_state` later to determine whether to switch the LED on, or off.
+    **Local Mode:**
+    We start this code by initialising our hardware through [Raspi Init](/api/raspberry/#raspi-init), we then define the [Pins](/api/types/#gpio-pin) that we're using for the button (Pin 29), and the LED (Pin 11). We also initialise a variable, `led_state`, to hold the state of the LED at any point in time. We use `led_state` later to determine whether to switch the LED on, or off.
 
-    Next, we set the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode). The button pin is set to [`GPIO_INPUT`](/api/types/#gpio-pin-mode) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#gpio-pin-mode). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
+    **Remote Mode:**
+    For remote operations, we use [Remote Raspi Init](/api/raspberry/#remote-raspi-init) instead, which establishes a connection to the Raspberry Pi over the network. This function takes three parameters:
+    - **Name**: A string referencing this particular connection (used by other SplashKit functions like [connection_named](/api/networking/#connection-named))
+    - **IP**: The IP address of the Raspberry Pi (can be found using the `ifconfig` command on the Pi)
+    - **Port**: The port for the connection to the daemon (default is 8888)
+
+    Next, we set the mode for each pin using [Raspi Set Mode](/api/raspberry/#raspi-set-mode) (local) or [Remote Raspi Set Mode](/api/raspberry/#remote-raspi-set-mode) (remote). The button pin is set to [`GPIO_INPUT`](/api/types/#gpio-pin-mode) and the LED pin is set to [`GPIO_OUTPUT`](/api/types/#gpio-pin-mode). We do this as in this program we are detecting the input of the button and are writing the output of the LED. Then we use [Raspi Set Pull Up Down](/api/raspberry/#raspi-set-pull-up-down) (local) or [Remote Raspi Set Pull Up Down](/api/raspberry/#remote-raspi-set-pull-up-down) (remote) on the button pin with the argument [`PUD_DOWN`](/api/types/#pull-up-down). This sets the internal pull-down resistor to prevent the pin from being a ["floating pin."](#floating-pins)
+
+    <Tabs syncKey="gpio-mode">
+    <TabItem label="Local">
 
     <Tabs syncKey="code-language">
     <TabItem label="C++">
@@ -259,29 +500,29 @@ Lets break down this code and analyse it in sections.
     using static SplashKitSDK.SplashKit;
 
     RaspiInit();
-    GpioPin buttonPin = (GpioPin)29;
-    GpioPin ledPin = (GpioPin)11;
-    GpioPinValue ledState = (GpioPinValue) 0;
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
 
-    RaspiSetMode(buttonPin, (GpioPinMode) 0);
-    RaspiSetMode(ledPin, (GpioPinMode) 1);
+    RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+    RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
 
-    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+    RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
 
     OpenWindow("dummy_window", 1, 1);
     while(!AnyKeyPressed())
     {
         ProcessEvents();
-        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        if(RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
         {
             ledState = RaspiRead(ledPin);
-            if(ledState == (GpioPinValue) 0)
+            if(ledState == GpioPinValue.GpioLow)
             {
-              RaspiWrite(ledPin, (GpioPinValue) 1);
+                RaspiWrite(ledPin, GpioPinValue.GpioHigh);
             }
             else
             {
-              RaspiWrite(ledPin, (GpioPinValue) 0);
+                RaspiWrite(ledPin, GpioPinValue.GpioLow);
             }
         }
     }
@@ -342,14 +583,175 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-2. **Get User Inputs:**
-
-    Just like in the first [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led), we create a process that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
+    </TabItem>
+    <TabItem label="Remote">
 
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-    ```cpp {15-18,31}
+    ```cpp {6,9-10,12}
+    #include "splashkit.h"
+
+    int main()
+    {
+        // Initialize remote connection to Raspberry Pi
+        connection pi_connection = remote_raspi_init("pi_connection", "192.168.1.100", 8888);
+        
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        // Set GPIO modes using remote functions
+        remote_raspi_set_mode(pi_connection, button_pin, GPIO_INPUT);
+        remote_raspi_set_mode(pi_connection, led_pin, GPIO_OUTPUT);
+
+        // Set pull-down resistor for button pin
+        remote_raspi_set_pull_up_down(pi_connection, button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(remote_raspi_read(pi_connection, button_pin) == GPIO_HIGH)
+            {
+                led_state = remote_raspi_read(pi_connection, led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    remote_raspi_write(pi_connection, led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    remote_raspi_write(pi_connection, led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        remote_raspi_cleanup(pi_connection);
+        return 0;
+    }
+    ```
+
+    </TabItem>
+    <TabItem label="C#">
+
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
+
+    ```csharp {6,11-12,15}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    // Initialize remote connection to Raspberry Pi
+    // Parameters: connection name, IP address, port (default 8888)
+    Connection piConnection = RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
+
+    // Set GPIO modes using remote functions
+    RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+    RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+    // Set pull-down resistor for button pin
+    RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        if(RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+        {
+            ledState = RemoteRaspiRead(piConnection, ledPin);
+            if(ledState == GpioPinValue.GpioLow)
+            {
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+            }
+            else
+            {
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+            }
+        }
+    }
+
+    CloseAllWindows();
+    RemoteRaspiCleanup(piConnection);
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp {12,17-18,21}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLEDRemote
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                // Initialize remote connection to Raspberry Pi
+                // Parameters: connection name, IP address, port (default 8888)
+                Connection piConnection = SplashKit.RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+                
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                // Set GPIO modes using remote functions
+                SplashKit.RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+                // Set pull-down resistor for button pin
+                SplashKit.RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RemoteRaspiRead(piConnection, ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RemoteRaspiCleanup(piConnection);
+            }
+        }
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    </Tabs>
+
+    </TabItem>
+    </Tabs>
+
+2. **Get User Inputs:**
+
+    Just like in the first [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led), we create a process that limits how long our program runs for. We do this so we know that our pins are cleaned properly upon exiting the program.
+
+    The main difference between local and remote operations is in the function calls used to read and write GPIO pins. For remote operations, all functions require the connection object as the first parameter.
+
+    <Tabs syncKey="gpio-mode">
+    <TabItem label="Local">
+
+    <Tabs syncKey="code-language">
+    <TabItem label="C++">
+
+    ```cpp {15-18,31-32}
     #include "splashkit.h"
 
     int main()
@@ -395,34 +797,34 @@ Lets break down this code and analyse it in sections.
     <Tabs syncKey="csharp-style">
     <TabItem label="Top-level Statements">
 
-    ```csharp {14-17,30}
+    ```csharp {14-17,30-31}
     using SplashKitSDK;
     using static SplashKitSDK.SplashKit;
 
     RaspiInit();
-    GpioPin buttonPin = (GpioPin)29;
-    GpioPin ledPin = (GpioPin)11;
-    GpioPinValue ledState = (GpioPinValue) 0;
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
 
-    RaspiSetMode(buttonPin, (GpioPinMode) 0);
-    RaspiSetMode(ledPin, (GpioPinMode) 1);
+    RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+    RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
 
-    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+    RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
 
     OpenWindow("dummy_window", 1, 1);
     while(!AnyKeyPressed())
     {
         ProcessEvents();
-        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        if(RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
         {
             ledState = RaspiRead(ledPin);
-            if(ledState == (GpioPinValue) 0)
+            if(ledState == GpioPinValue.GpioLow)
             {
-              RaspiWrite(ledPin, (GpioPinValue) 1);
+                RaspiWrite(ledPin, GpioPinValue.GpioHigh);
             }
             else
             {
-              RaspiWrite(ledPin, (GpioPinValue) 0);
+                RaspiWrite(ledPin, GpioPinValue.GpioLow);
             }
         }
     }
@@ -434,7 +836,7 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     <TabItem label="Object-Oriented">
 
-    ```csharp {19-22,35}
+    ```csharp {19-22,35-36}
     using SplashKitSDK;
 
     namespace RaspberryPiButtonLED
@@ -483,9 +885,168 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
+    </TabItem>
+    <TabItem label="Remote">
+
+    <Tabs syncKey="code-language">
+    <TabItem label="C++">
+
+    ```cpp {20-23,36-37}
+    #include "splashkit.h"
+
+    int main()
+    {
+        // Initialize remote connection to Raspberry Pi
+        connection pi_connection = remote_raspi_init("pi_connection", "192.168.1.100", 8888);
+        
+        gpio_pin button_pin = PIN_29;
+        gpio_pin led_pin = PIN_11;
+        gpio_pin_value led_state = GPIO_LOW;
+
+        // Set GPIO modes using remote functions
+        remote_raspi_set_mode(pi_connection, button_pin, GPIO_INPUT);
+        remote_raspi_set_mode(pi_connection, led_pin, GPIO_OUTPUT);
+
+        // Set pull-down resistor for button pin
+        remote_raspi_set_pull_up_down(pi_connection, button_pin, PUD_DOWN);
+
+        open_window("dummy_window", 1, 1);
+        while(!any_key_pressed())
+        {
+            process_events();
+            if(remote_raspi_read(pi_connection, button_pin) == GPIO_HIGH)
+            {
+                led_state = remote_raspi_read(pi_connection, led_pin);
+                if(led_state == GPIO_LOW)
+                {
+                    remote_raspi_write(pi_connection, led_pin, GPIO_HIGH);
+                }
+                else
+                {
+                    remote_raspi_write(pi_connection, led_pin, GPIO_LOW);
+                }
+            }
+        }
+
+        close_all_windows();
+        remote_raspi_cleanup(pi_connection);
+        return 0;
+    }
+    ```
+
+    </TabItem>
+    <TabItem label="C#">
+
+    <Tabs syncKey="csharp-style">
+    <TabItem label="Top-level Statements">
+
+    ```csharp {21-24,37-38}
+    using SplashKitSDK;
+    using static SplashKitSDK.SplashKit;
+
+    // Initialize remote connection to Raspberry Pi
+    // Parameters: connection name, IP address, port (default 8888)
+    Connection piConnection = RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
+
+    // Set GPIO modes using remote functions
+    RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+    RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+    // Set pull-down resistor for button pin
+    RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+    OpenWindow("dummy_window", 1, 1);
+    while(!AnyKeyPressed())
+    {
+        ProcessEvents();
+        if(RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+        {
+            ledState = RemoteRaspiRead(piConnection, ledPin);
+            if(ledState == GpioPinValue.GpioLow)
+            {
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+            }
+            else
+            {
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+            }
+        }
+    }
+
+    CloseAllWindows();
+    RemoteRaspiCleanup(piConnection);
+    ```
+
+    </TabItem>
+    <TabItem label="Object-Oriented">
+
+    ```csharp {26-29,42-43}
+    using SplashKitSDK;
+
+    namespace RaspberryPiButtonLEDRemote
+    {
+        public class Program
+        {
+            public static void Main()
+            {
+                // Initialize remote connection to Raspberry Pi
+                // Parameters: connection name, IP address, port (default 8888)
+                Connection piConnection = SplashKit.RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+                
+                GpioPin buttonPin = GpioPin.Pin29;
+                GpioPin ledPin = GpioPin.Pin11;
+                GpioPinValue ledState = GpioPinValue.GpioLow;
+
+                // Set GPIO modes using remote functions
+                SplashKit.RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+                // Set pull-down resistor for button pin
+                SplashKit.RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
+
+                SplashKit.OpenWindow("dummy_window", 1, 1);
+                while (!SplashKit.AnyKeyPressed())
+                {
+                    SplashKit.ProcessEvents();
+                    if (SplashKit.RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
+                    {
+                        ledState = SplashKit.RemoteRaspiRead(piConnection, ledPin);
+                        if (ledState == GpioPinValue.GpioLow)
+                        {
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
+                        }
+                        else
+                        {
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
+                        }
+                    }
+                }
+
+                SplashKit.CloseAllWindows();
+                SplashKit.RemoteRaspiCleanup(piConnection);
+            }
+        }
+    }
+    ```
+
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    </Tabs>
+
+    </TabItem>
+    </Tabs>
+
 3. **Read the Button Press:**
 
-    Below is the main section of this code. On each loop we read the state of the button pin using [Raspi Read](/api/raspberry/#raspi-read) and if the result is `GPIO_HIGH`, then this indicates that the button has been pressed. We then read the state of the led, which can either be `GPIO_LOW` indicated the LED is not on, or `GPIO_HIGH` indicating that the LED is on. Once we have this state we can use [Raspi Write](/api/raspberry/#raspi-write) to change the pin to the opposite of what has been read.
+    Below is the main section of this code. On each loop we read the state of the button pin using [Raspi Read](/api/raspberry/#raspi-read) (local) or [Remote Raspi Read](/api/raspberry/#remote-raspi-read) (remote) and if the result is `GPIO_HIGH`, then this indicates that the button has been pressed. We then read the state of the led, which can either be `GPIO_LOW` indicated the LED is not on, or `GPIO_HIGH` indicating that the LED is on. Once we have this state we can use [Raspi Write](/api/raspberry/#raspi-write) (local) or [Remote Raspi Write](/api/raspberry/#remote-raspi-write) (remote) to change the pin to the opposite of what has been read.
+
+    <Tabs syncKey="gpio-mode">
+    <TabItem label="Local">
 
     <Tabs syncKey="code-language">
     <TabItem label="C++">
@@ -541,29 +1102,29 @@ Lets break down this code and analyse it in sections.
     using static SplashKitSDK.SplashKit;
 
     RaspiInit();
-    GpioPin buttonPin = (GpioPin)29;
-    GpioPin ledPin = (GpioPin)11;
-    GpioPinValue ledState = (GpioPinValue) 0;
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
 
-    RaspiSetMode(buttonPin, (GpioPinMode) 0);
-    RaspiSetMode(ledPin, (GpioPinMode) 1);
+    RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
+    RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
 
-    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+    RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
 
     OpenWindow("dummy_window", 1, 1);
     while(!AnyKeyPressed())
     {
         ProcessEvents();
-        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        if(RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
         {
             ledState = RaspiRead(ledPin);
-            if(ledState == (GpioPinValue) 0)
+            if(ledState == GpioPinValue.GpioLow)
             {
-              RaspiWrite(ledPin, (GpioPinValue) 1);
+                RaspiWrite(ledPin, GpioPinValue.GpioHigh);
             }
             else
             {
-              RaspiWrite(ledPin, (GpioPinValue) 0);
+                RaspiWrite(ledPin, GpioPinValue.GpioLow);
             }
         }
     }
@@ -624,142 +1185,156 @@ Lets break down this code and analyse it in sections.
     </TabItem>
     </Tabs>
 
-4. **Clean Up Memory:**
-
-    Just like in the first [Blink LED Tutorial](/guides/raspberry-gpio/0-blink-led) and most projects involving GPIO pins, we must ensure that the hardware and resources we've used are cleaned properly, and we do this by stopping and freeing our timers and calling [Raspi Cleanup](/api/raspberry/#raspi-cleanup).
+    </TabItem>
+    <TabItem label="Remote">
 
     <Tabs syncKey="code-language">
     <TabItem label="C++">
 
-    ```cpp {33-34}
+    ```cpp {23-34}
     #include "splashkit.h"
 
     int main()
     {
-        raspi_init();
+        // Initialize remote connection to Raspberry Pi
+        connection pi_connection = remote_raspi_init("pi_connection", "192.168.1.100", 8888);
+        
         gpio_pin button_pin = PIN_29;
         gpio_pin led_pin = PIN_11;
         gpio_pin_value led_state = GPIO_LOW;
 
-        raspi_set_mode(button_pin, GPIO_INPUT);
-        raspi_set_mode(led_pin, GPIO_OUTPUT);
+        // Set GPIO modes using remote functions
+        remote_raspi_set_mode(pi_connection, button_pin, GPIO_INPUT);
+        remote_raspi_set_mode(pi_connection, led_pin, GPIO_OUTPUT);
 
-        raspi_set_pull_up_down(button_pin, PUD_DOWN);
+        // Set pull-down resistor for button pin
+        remote_raspi_set_pull_up_down(pi_connection, button_pin, PUD_DOWN);
 
         open_window("dummy_window", 1, 1);
         while(!any_key_pressed())
         {
             process_events();
-            if(raspi_read(button_pin) == GPIO_HIGH)
+            if(remote_raspi_read(pi_connection, button_pin) == GPIO_HIGH)
             {
-                led_state = raspi_read(led_pin);
+                led_state = remote_raspi_read(pi_connection, led_pin);
                 if(led_state == GPIO_LOW)
                 {
-                    raspi_write(led_pin, GPIO_HIGH);
+                    remote_raspi_write(pi_connection, led_pin, GPIO_HIGH);
                 }
                 else
                 {
-                    raspi_write(led_pin, GPIO_LOW);
+                    remote_raspi_write(pi_connection, led_pin, GPIO_LOW);
                 }
             }
         }
 
         close_all_windows();
-        raspi_cleanup();
+        remote_raspi_cleanup(pi_connection);
         return 0;
     }
     ```
 
     </TabItem>
-
     <TabItem label="C#">
 
     <Tabs syncKey="csharp-style">
     <TabItem label="Top-level Statements">
 
-    ```csharp {32-33}
+    ```csharp {23-34}
     using SplashKitSDK;
     using static SplashKitSDK.SplashKit;
 
-    RaspiInit();
-    GpioPin buttonPin = (GpioPin)29;
-    GpioPin ledPin = (GpioPin)11;
-    GpioPinValue ledState = (GpioPinValue) 0;
+    // Initialize remote connection to Raspberry Pi
+    // Parameters: connection name, IP address, port (default 8888)
+    Connection piConnection = RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
 
-    RaspiSetMode(buttonPin, (GpioPinMode) 0);
-    RaspiSetMode(ledPin, (GpioPinMode) 1);
+    GpioPin buttonPin = GpioPin.Pin29;
+    GpioPin ledPin = GpioPin.Pin11;
+    GpioPinValue ledState = GpioPinValue.GpioLow;
 
-    RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
+    // Set GPIO modes using remote functions
+    RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+    RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
+
+    // Set pull-down resistor for button pin
+    RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
 
     OpenWindow("dummy_window", 1, 1);
     while(!AnyKeyPressed())
     {
         ProcessEvents();
-        if(RaspiRead(buttonPin) == (GpioPinValue) 1)
+        if(RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
         {
-            ledState = RaspiRead(ledPin);
-            if(ledState == (GpioPinValue) 0)
+            ledState = RemoteRaspiRead(piConnection, ledPin);
+            if(ledState == GpioPinValue.GpioLow)
             {
-              RaspiWrite(ledPin, (GpioPinValue) 1);
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
             }
             else
             {
-              RaspiWrite(ledPin, (GpioPinValue) 0);
+                RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
             }
         }
     }
 
     CloseAllWindows();
-    RaspiCleanup();
+    RemoteRaspiCleanup(piConnection);
     ```
 
     </TabItem>
     <TabItem label="Object-Oriented">
 
-    ```csharp {37-38}
+    ```csharp {28-39}
     using SplashKitSDK;
 
-    namespace RaspberryPiButtonLED
+    namespace RaspberryPiButtonLEDRemote
     {
         public class Program
         {
             public static void Main()
             {
-                SplashKit.RaspiInit();
+                // Initialize remote connection to Raspberry Pi
+                // Parameters: connection name, IP address, port (default 8888)
+                Connection piConnection = SplashKit.RemoteRaspiInit("pi_connection", "192.168.1.100", 8888);
+                
                 GpioPin buttonPin = GpioPin.Pin29;
                 GpioPin ledPin = GpioPin.Pin11;
                 GpioPinValue ledState = GpioPinValue.GpioLow;
 
-                SplashKit.RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
-                SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+                // Set GPIO modes using remote functions
+                SplashKit.RemoteRaspiSetMode(piConnection, buttonPin, GpioPinMode.GpioInput);
+                SplashKit.RemoteRaspiSetMode(piConnection, ledPin, GpioPinMode.GpioOutput);
 
-                SplashKit.RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+                // Set pull-down resistor for button pin
+                SplashKit.RemoteRaspiSetPullUpDown(piConnection, buttonPin, PullUpDown.PudDown);
 
                 SplashKit.OpenWindow("dummy_window", 1, 1);
                 while (!SplashKit.AnyKeyPressed())
                 {
                     SplashKit.ProcessEvents();
-                    if (SplashKit.RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+                    if (SplashKit.RemoteRaspiRead(piConnection, buttonPin) == GpioPinValue.GpioHigh)
                     {
-                        ledState = SplashKit.RaspiRead(ledPin);
+                        ledState = SplashKit.RemoteRaspiRead(piConnection, ledPin);
                         if (ledState == GpioPinValue.GpioLow)
                         {
-                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioHigh);
                         }
                         else
                         {
-                            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+                            SplashKit.RemoteRaspiWrite(piConnection, ledPin, GpioPinValue.GpioLow);
                         }
                     }
                 }
 
                 SplashKit.CloseAllWindows();
-                SplashKit.RaspiCleanup();
+                SplashKit.RemoteRaspiCleanup(piConnection);
             }
         }
     }
     ```
 
+    </TabItem>
+    </Tabs>
     </TabItem>
     </Tabs>
 
@@ -787,6 +1362,13 @@ We can build this program with the following command:
   ```
   
 </TabItem>
+<TabItem label="Python">
+
+  ```shell
+  # No build step required for Python
+  ```
+
+</TabItem>
 </Tabs>
 
 We can then run the program with the following command:
@@ -803,6 +1385,17 @@ We can then run the program with the following command:
 
   ```shell
   dotnet run
+  ```
+
+</TabItem>
+<TabItem label="Python">
+
+  ```shell
+  python3 button_press.py
+  ```
+
+</TabItem>
+</Tabs>
   ```
 
 </TabItem>

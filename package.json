@@ -8,9 +8,10 @@
     "build": "npm run setup && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "setup": "node ./scripts/json-files-script.cjs && node ./scripts/api-pages-script.cjs",
+    "setup": "node ./scripts/json-files-script.cjs && node ./scripts/api-pages-script.cjs && node ./scripts/usage-examples-testing-script.cjs",
     "generate-mdx": "node ./scripts/api-pages-script.cjs",
     "generate-json": "node ./scripts/json-files-script.cjs",
+    "generate-usage-examples": "node ./scripts/usage-examples-testing-script.cjs",
     "check-links": "SET CHECK_LINKS=true && npm run build && SET CHECK_LINKS=false"
   },
   "dependencies": {
@@ -29,7 +30,7 @@
     "remark-heading-id": "^1.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.1",
-    "starlight-blog": "^0.21.0",
+    "starlight-blog": "^0.24.1",
     "starlight-links-validator": "^0.16.0",
     "swiper": "^11.1.14"
   },

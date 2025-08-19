@@ -1,0 +1,5 @@
+Sprite x-coordinate
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/sprites/sprite_x-1-example-resources.zip).
+:::

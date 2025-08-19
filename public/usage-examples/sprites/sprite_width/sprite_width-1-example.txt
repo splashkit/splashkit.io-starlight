@@ -1,0 +1,3 @@
+Sprite Width Example
+
+This example demonstrates how to get the width of a sprite using SplashKit.
