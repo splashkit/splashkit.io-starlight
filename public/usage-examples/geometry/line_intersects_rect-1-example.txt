@@ -1,0 +1,1 @@
+A draggable line interacting with a static rectangle.
