@@ -1,0 +1,1 @@
+A rectangular button that changes colour o a random colour when clicked.
