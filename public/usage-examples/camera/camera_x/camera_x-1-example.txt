@@ -1,0 +1,1 @@
+This example shows how to get the individual X and Y coordinates of the camera position. This is useful when you only need one coordinate component for calculations.

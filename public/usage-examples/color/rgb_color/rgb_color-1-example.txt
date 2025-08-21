@@ -1,0 +1,1 @@
+This example demonstrates how to create custom colors using RGB values. You can specify red, green, and blue components to create any color you need.

@@ -89,9 +89,16 @@ then connected to the ground pin through another M/F jumper wire.
 This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
+:::note[Remote GPIO Control]
+For remote operations, you need to start the SplashKit daemon on the Raspberry Pi. The default port is 8888. See the [Remote Access Guide](https://programmers.guide/book/appendix/0-installation/4-0-remote-access-pi/) for setup instructions.
+:::
+
 ### Changing Frequency
 
 Below is an example program to iterate over the entire range of frequencies available.
+
+<Tabs syncKey="gpio-type">
+<TabItem label="Local">
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
@@ -123,6 +130,194 @@ int main()
     return 0;
 }
 ```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+int[] freqs = {10, 20, 40, 50, 80, 100, 160, 200, 250,
+               320, 400, 500, 800, 1000, 1600, 2000, 4000, 8000 };
+int pwmRange = 255;
+
+RaspiInit();
+GpioPin ledPin = GpioPin.Pin11;
+RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+RaspiSetPwmRange(ledPin, pwmRange);
+RaspiSetPwmDutycycle(ledPin, (pwmRange / 2));
+
+for(int i = 0; i < 18; i++)
+{
+    Write("At Frequency: ");
+    WriteLine(freqs[i]);
+    RaspiSetPwmFrequency(ledPin, freqs[i]);
+    Delay(1000);
+}
+
+RaspiCleanup();
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiPWMLED
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int[] freqs = {10, 20, 40, 50, 80, 100, 160, 200, 250,
+                           320, 400, 500, 800, 1000, 1600, 2000, 4000, 8000 };
+            int pwmRange = 255;
+
+            SplashKit.RaspiInit();
+            GpioPin ledPin = GpioPin.Pin11;
+            SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+            SplashKit.RaspiSetPwmRange(ledPin, pwmRange);
+            SplashKit.RaspiSetPwmDutycycle(ledPin, (pwmRange / 2));
+
+            for(int i = 0; i < 18; i++)
+            {
+                SplashKit.Write("At Frequency: ");
+                SplashKit.WriteLine(freqs[i]);
+                SplashKit.RaspiSetPwmFrequency(ledPin, freqs[i]);
+                SplashKit.Delay(1000);
+            }
+
+            SplashKit.RaspiCleanup();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Remote">
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    const int freqs[] = {10, 20, 40, 50, 80, 100, 160, 200, 250,
+                        320, 400, 500, 800, 1000, 1600, 2000, 4000, 8000 };
+    const int pwm_range = 255;
+    
+    // Connect to remote Raspberry Pi
+    connection pi = remote_raspi_init("pwm_pi", "192.168.1.100", 8888);
+    gpio_pin led_pin = PIN_11;
+    remote_raspi_set_mode(pi, led_pin, GPIO_OUTPUT);
+
+    remote_raspi_set_pwm_range(pi, led_pin, pwm_range);
+    remote_raspi_set_pwm_dutycycle(pi, led_pin, (pwm_range / 2));
+
+    for(int i = 0; i < 18; i++)
+    {
+        write("At Frequency: ");
+        write_line(freqs[i]);
+        remote_raspi_set_pwm_frequency(pi, led_pin, freqs[i]);
+        delay(1000);
+    }
+
+    remote_raspi_cleanup(pi);
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+int[] freqs = {10, 20, 40, 50, 80, 100, 160, 200, 250,
+               320, 400, 500, 800, 1000, 1600, 2000, 4000, 8000 };
+int pwmRange = 255;
+
+// Connect to remote Raspberry Pi
+Connection pi = RemoteRaspiInit("pwm_pi", "192.168.1.100", 8888);
+GpioPin ledPin = GpioPin.Pin11;
+RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+
+RemoteRaspiSetPwmRange(pi, ledPin, pwmRange);
+RemoteRaspiSetPwmDutycycle(pi, ledPin, (pwmRange / 2));
+
+for(int i = 0; i < 18; i++)
+{
+    Write("At Frequency: ");
+    WriteLine(freqs[i]);
+    RemoteRaspiSetPwmFrequency(pi, ledPin, freqs[i]);
+    Delay(1000);
+}
+
+RemoteRaspiCleanup(pi);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiPWMLED
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int[] freqs = {10, 20, 40, 50, 80, 100, 160, 200, 250,
+                           320, 400, 500, 800, 1000, 1600, 2000, 4000, 8000 };
+            int pwmRange = 255;
+
+            // Connect to remote Raspberry Pi
+            Connection pi = SplashKit.RemoteRaspiInit("pwm_pi", "192.168.1.100", 8888);
+            GpioPin ledPin = GpioPin.Pin11;
+            SplashKit.RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+
+            SplashKit.RemoteRaspiSetPwmRange(pi, ledPin, pwmRange);
+            SplashKit.RemoteRaspiSetPwmDutycycle(pi, ledPin, (pwmRange / 2));
+
+            for(int i = 0; i < 18; i++)
+            {
+                SplashKit.Write("At Frequency: ");
+                SplashKit.WriteLine(freqs[i]);
+                SplashKit.RemoteRaspiSetPwmFrequency(pi, ledPin, freqs[i]);
+                SplashKit.Delay(1000);
+            }
+
+            SplashKit.RemoteRaspiCleanup(pi);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>

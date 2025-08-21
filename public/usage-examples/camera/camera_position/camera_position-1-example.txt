@@ -1,0 +1,1 @@
+This example shows how to get the current position of the camera in your game world. The camera position represents the top-left corner coordinates of the visible area on screen.

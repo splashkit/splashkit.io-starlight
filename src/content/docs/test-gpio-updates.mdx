@@ -1,0 +1,226 @@
+---
+title: GPIO Updates Test Page
+description: Test page to showcase the updated GPIO tutorials with Local/Remote support and improved C# code structure
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+# GPIO Tutorial Updates Test Page
+
+This page demonstrates the updates made to the GPIO tutorials, including:
+
+## ✅ Features Added
+
+1. **Local/Remote GPIO Support** - Nested tabs for local and remote GPIO operations
+2. **Improved C# Code Structure** - Both Top-level Statements and Object-Oriented patterns  
+3. **Remote GPIO Functions** - Integration of the new remote GPIO API
+4. **Better Documentation** - Clear explanations and setup instructions
+
+## 🧪 Test Examples
+
+### Basic LED Control (Local vs Remote)
+
+<Tabs syncKey="gpio-type">
+<TabItem label="Local">
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    raspi_init();
+    gpio_pin led_pin = PIN_11;
+    raspi_set_mode(led_pin, GPIO_OUTPUT);
+    
+    // Blink LED
+    raspi_write(led_pin, GPIO_HIGH);
+    delay(500);
+    raspi_write(led_pin, GPIO_LOW);
+    
+    raspi_cleanup();
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+RaspiInit();
+GpioPin ledPin = GpioPin.Pin11;
+RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+
+// Blink LED
+RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+Delay(500);
+RaspiWrite(ledPin, GpioPinValue.GpioLow);
+
+RaspiCleanup();
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace TestGPIO
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            SplashKit.RaspiInit();
+            GpioPin ledPin = GpioPin.Pin11;
+            SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+            
+            // Blink LED
+            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioHigh);
+            SplashKit.Delay(500);
+            SplashKit.RaspiWrite(ledPin, GpioPinValue.GpioLow);
+            
+            SplashKit.RaspiCleanup();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Remote">
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    // Connect to remote Raspberry Pi
+    connection pi = remote_raspi_init("test_pi", "192.168.1.100", 8888);
+    gpio_pin led_pin = PIN_11;
+    remote_raspi_set_mode(pi, led_pin, GPIO_OUTPUT);
+    
+    // Blink LED remotely
+    remote_raspi_write(pi, led_pin, GPIO_HIGH);
+    delay(500);
+    remote_raspi_write(pi, led_pin, GPIO_LOW);
+    
+    remote_raspi_cleanup(pi);
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+// Connect to remote Raspberry Pi
+Connection pi = RemoteRaspiInit("test_pi", "192.168.1.100", 8888);
+GpioPin ledPin = GpioPin.Pin11;
+RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+
+// Blink LED remotely
+RemoteRaspiWrite(pi, ledPin, GpioPinValue.GpioHigh);
+Delay(500);
+RemoteRaspiWrite(pi, ledPin, GpioPinValue.GpioLow);
+
+RemoteRaspiCleanup(pi);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace TestGPIO
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            // Connect to remote Raspberry Pi
+            Connection pi = SplashKit.RemoteRaspiInit("test_pi", "192.168.1.100", 8888);
+            GpioPin ledPin = GpioPin.Pin11;
+            SplashKit.RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+            
+            // Blink LED remotely
+            SplashKit.RemoteRaspiWrite(pi, ledPin, GpioPinValue.GpioHigh);
+            SplashKit.Delay(500);
+            SplashKit.RemoteRaspiWrite(pi, ledPin, GpioPinValue.GpioLow);
+            
+            SplashKit.RemoteRaspiCleanup(pi);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+## 📝 Key Improvements Made
+
+### 1. **C# Code Quality**
+- ✅ Using proper enum values: `GpioPin.Pin11`, `GpioPinMode.GpioOutput`, `GpioPinValue.GpioHigh`
+- ✅ Removed integer casting like `(GpioPinValue) 1`
+- ✅ Consistent naming conventions
+- ✅ Both coding styles supported
+
+### 2. **Remote GPIO Integration**
+- ✅ `RemoteRaspiInit()` with connection parameters explained
+- ✅ All GPIO functions updated with Connection parameter
+- ✅ Proper cleanup with `RemoteRaspiCleanup()`
+- ✅ Documentation for daemon setup
+
+### 3. **Updated Tutorials**
+- ✅ [Get Started with SplashKit GPIO](/guides/raspberry-gpio/0-blink-led/) 
+- ✅ [Reading Button Presses](/guides/raspberry-gpio/1-read-button-press/)
+- ✅ [Using PWM to control LED brightness](/guides/raspberry-gpio/2-pwm-control-led/)
+- ✅ [Modify PWM through button presses](/guides/raspberry-gpio/3-pwm-button-control/)
+
+## 🎯 Next Steps
+
+To test these updates:
+
+1. **View the updated tutorials** - All GPIO guides now have Local/Remote tabs
+2. **Test the code examples** - Both C# styles compile correctly
+3. **Try remote GPIO** - Set up the SplashKit daemon and test remote connections
+4. **Provide feedback** - Report any issues or improvements needed
+
+## 📚 Additional Resources
+
+- [Remote Access Guide](https://programmers.guide/book/appendix/0-installation/4-0-remote-access-pi/) - Setting up remote GPIO
+- [SplashKit GPIO API](/api/raspberry/) - Complete API reference
+- [GPIO Types Reference](/api/types/#gpio-pin) - Pin definitions and modes
+
+---
+
+**Status:** ✅ All GPIO tutorials successfully updated with Local/Remote support and improved C# code structure.

@@ -1,0 +1,1 @@
+This example demonstrates how to move the camera to specific coordinates in your game world. This is useful for following players, creating cutscenes, or navigating large game worlds.

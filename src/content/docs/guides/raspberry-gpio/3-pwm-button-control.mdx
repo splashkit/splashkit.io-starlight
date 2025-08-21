@@ -43,7 +43,14 @@ Below we can see the circuit diagram for this project. First we have the Raspber
 This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
+:::note[Remote GPIO Control]
+For remote operations, you need to start the SplashKit daemon on the Raspberry Pi. The default port is 8888. See the [Remote Access Guide](https://programmers.guide/book/appendix/0-installation/4-0-remote-access-pi/) for setup instructions.
+:::
+
 Below is an example program that will detect button presses to increase or decrease the brightness of an LED.
+
+<Tabs syncKey="gpio-type">
+<TabItem label="Local">
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
@@ -108,6 +115,363 @@ int main()
     raspi_cleanup();
     return 0;
 }
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+int brightness = 128;
+int maxBrightness = 255;
+uint lastReadTime = 0;
+uint readInterval = 400;
+
+RaspiInit();
+GpioPin ledPin = GpioPin.Pin11;
+GpioPin increaseBtnPin = GpioPin.Pin13;
+GpioPin decreaseBtnPin = GpioPin.Pin29;
+
+RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+RaspiSetPwmDutycycle(ledPin, brightness);
+
+RaspiSetMode(increaseBtnPin, GpioPinMode.GpioInput);
+RaspiSetMode(decreaseBtnPin, GpioPinMode.GpioInput);
+
+RaspiSetPullUpDown(increaseBtnPin, PullUpDown.PudDown);
+RaspiSetPullUpDown(decreaseBtnPin, PullUpDown.PudDown);
+
+Timer runTimer = CreateTimer("run_timer");
+StartTimer(runTimer);
+uint currentTime = 0;
+
+OpenWindow("dummy_window", 1, 1);
+while(!AnyKeyPressed())
+{
+    ProcessEvents();
+    currentTime = TimerTicks(runTimer);
+    if(currentTime - lastReadTime > readInterval)
+    {
+        if(RaspiRead(increaseBtnPin) == GpioPinValue.GpioHigh)
+        {
+            brightness += 25;
+            if(brightness > maxBrightness)
+                brightness = maxBrightness;
+            RaspiSetPwmDutycycle(ledPin, brightness);
+            lastReadTime = currentTime;
+        }
+        if(RaspiRead(decreaseBtnPin) == GpioPinValue.GpioHigh)
+        {
+            brightness -= 25;
+            if(brightness < 0)
+                brightness = 0;
+            RaspiSetPwmDutycycle(ledPin, brightness);
+            lastReadTime = currentTime;
+        }
+    }
+}
+
+CloseAllWindows();
+StopTimer(runTimer);
+FreeAllTimers();
+RaspiCleanup();
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiPWMButtonControl
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int brightness = 128;
+            int maxBrightness = 255;
+            uint lastReadTime = 0;
+            uint readInterval = 400;
+
+            SplashKit.RaspiInit();
+            GpioPin ledPin = GpioPin.Pin11;
+            GpioPin increaseBtnPin = GpioPin.Pin13;
+            GpioPin decreaseBtnPin = GpioPin.Pin29;
+
+            SplashKit.RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+            SplashKit.RaspiSetPwmDutycycle(ledPin, brightness);
+
+            SplashKit.RaspiSetMode(increaseBtnPin, GpioPinMode.GpioInput);
+            SplashKit.RaspiSetMode(decreaseBtnPin, GpioPinMode.GpioInput);
+
+            SplashKit.RaspiSetPullUpDown(increaseBtnPin, PullUpDown.PudDown);
+            SplashKit.RaspiSetPullUpDown(decreaseBtnPin, PullUpDown.PudDown);
+
+            Timer runTimer = SplashKit.CreateTimer("run_timer");
+            SplashKit.StartTimer(runTimer);
+            uint currentTime = 0;
+
+            SplashKit.OpenWindow("dummy_window", 1, 1);
+            while(!SplashKit.AnyKeyPressed())
+            {
+                SplashKit.ProcessEvents();
+                currentTime = SplashKit.TimerTicks(runTimer);
+                if(currentTime - lastReadTime > readInterval)
+                {
+                    if(SplashKit.RaspiRead(increaseBtnPin) == GpioPinValue.GpioHigh)
+                    {
+                        brightness += 25;
+                        if(brightness > maxBrightness)
+                            brightness = maxBrightness;
+                        SplashKit.RaspiSetPwmDutycycle(ledPin, brightness);
+                        lastReadTime = currentTime;
+                    }
+                    if(SplashKit.RaspiRead(decreaseBtnPin) == GpioPinValue.GpioHigh)
+                    {
+                        brightness -= 25;
+                        if(brightness < 0)
+                            brightness = 0;
+                        SplashKit.RaspiSetPwmDutycycle(ledPin, brightness);
+                        lastReadTime = currentTime;
+                    }
+                }
+            }
+
+            SplashKit.CloseAllWindows();
+            SplashKit.StopTimer(runTimer);
+            SplashKit.FreeAllTimers();
+            SplashKit.RaspiCleanup();
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem label="Remote">
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+  
+```cpp
+#include "splashkit.h"
+
+int main()
+{
+    int brightness = 128;
+    const int max_brightness = 255;
+    unsigned long last_read_time = 0;
+    const unsigned long read_interval = 400;
+
+    // Connect to remote Raspberry Pi
+    connection pi = remote_raspi_init("pwm_control_pi", "192.168.1.100", 8888);
+    gpio_pin led_pin = PIN_11;
+    gpio_pin increase_btn_pin = PIN_13;
+    gpio_pin decrease_btn_pin = PIN_29;
+
+    remote_raspi_set_mode(pi, led_pin, GPIO_OUTPUT);
+    remote_raspi_set_pwm_dutycycle(pi, led_pin, brightness);
+
+    remote_raspi_set_mode(pi, increase_btn_pin, GPIO_INPUT);
+    remote_raspi_set_mode(pi, decrease_btn_pin, GPIO_INPUT);
+
+    remote_raspi_set_pull_up_down(pi, increase_btn_pin, PUD_DOWN);
+    remote_raspi_set_pull_up_down(pi, decrease_btn_pin, PUD_DOWN);
+
+    timer run_timer = create_timer("run_timer");
+    start_timer(run_timer);
+    unsigned long current_time = 0;
+
+    open_window("dummy_window", 1, 1);
+    while(!any_key_pressed())
+    {
+        process_events();
+        current_time = timer_ticks(run_timer);
+        if(current_time - last_read_time > read_interval)
+        {
+            if(remote_raspi_read(pi, increase_btn_pin) == GPIO_HIGH)
+            {
+                brightness += 25;
+                if(brightness > max_brightness)
+                    brightness = max_brightness;
+                remote_raspi_set_pwm_dutycycle(pi, led_pin, brightness);
+                last_read_time = current_time;
+            }
+            if(remote_raspi_read(pi, decrease_btn_pin) == GPIO_HIGH)
+            {
+                brightness -= 25;
+                if(brightness < 0)
+                    brightness = 0;
+                remote_raspi_set_pwm_dutycycle(pi, led_pin, brightness);
+                last_read_time = current_time;
+            }
+        }
+    }
+
+    close_all_windows();
+    stop_timer(run_timer);
+    free_all_timers();
+    remote_raspi_cleanup(pi);
+    return 0;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+<Tabs syncKey="csharp-style">
+<TabItem label="Top-level Statements">
+
+```csharp
+using SplashKitSDK;
+using static SplashKitSDK.SplashKit;
+
+int brightness = 128;
+int maxBrightness = 255;
+uint lastReadTime = 0;
+uint readInterval = 400;
+
+// Connect to remote Raspberry Pi
+Connection pi = RemoteRaspiInit("pwm_control_pi", "192.168.1.100", 8888);
+GpioPin ledPin = GpioPin.Pin11;
+GpioPin increaseBtnPin = GpioPin.Pin13;
+GpioPin decreaseBtnPin = GpioPin.Pin29;
+
+RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+
+RemoteRaspiSetMode(pi, increaseBtnPin, GpioPinMode.GpioInput);
+RemoteRaspiSetMode(pi, decreaseBtnPin, GpioPinMode.GpioInput);
+
+RemoteRaspiSetPullUpDown(pi, increaseBtnPin, PullUpDown.PudDown);
+RemoteRaspiSetPullUpDown(pi, decreaseBtnPin, PullUpDown.PudDown);
+
+Timer runTimer = CreateTimer("run_timer");
+StartTimer(runTimer);
+uint currentTime = 0;
+
+OpenWindow("dummy_window", 1, 1);
+while(!AnyKeyPressed())
+{
+    ProcessEvents();
+    currentTime = TimerTicks(runTimer);
+    if(currentTime - lastReadTime > readInterval)
+    {
+        if(RemoteRaspiRead(pi, increaseBtnPin) == GpioPinValue.GpioHigh)
+        {
+            brightness += 25;
+            if(brightness > maxBrightness)
+                brightness = maxBrightness;
+            RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+            lastReadTime = currentTime;
+        }
+        if(RemoteRaspiRead(pi, decreaseBtnPin) == GpioPinValue.GpioHigh)
+        {
+            brightness -= 25;
+            if(brightness < 0)
+                brightness = 0;
+            RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+            lastReadTime = currentTime;
+        }
+    }
+}
+
+CloseAllWindows();
+StopTimer(runTimer);
+FreeAllTimers();
+RemoteRaspiCleanup(pi);
+```
+
+</TabItem>
+<TabItem label="Object-Oriented">
+
+```csharp
+using SplashKitSDK;
+
+namespace RaspberryPiPWMButtonControl
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int brightness = 128;
+            int maxBrightness = 255;
+            uint lastReadTime = 0;
+            uint readInterval = 400;
+
+            // Connect to remote Raspberry Pi
+            Connection pi = SplashKit.RemoteRaspiInit("pwm_control_pi", "192.168.1.100", 8888);
+            GpioPin ledPin = GpioPin.Pin11;
+            GpioPin increaseBtnPin = GpioPin.Pin13;
+            GpioPin decreaseBtnPin = GpioPin.Pin29;
+
+            SplashKit.RemoteRaspiSetMode(pi, ledPin, GpioPinMode.GpioOutput);
+            SplashKit.RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+
+            SplashKit.RemoteRaspiSetMode(pi, increaseBtnPin, GpioPinMode.GpioInput);
+            SplashKit.RemoteRaspiSetMode(pi, decreaseBtnPin, GpioPinMode.GpioInput);
+
+            SplashKit.RemoteRaspiSetPullUpDown(pi, increaseBtnPin, PullUpDown.PudDown);
+            SplashKit.RemoteRaspiSetPullUpDown(pi, decreaseBtnPin, PullUpDown.PudDown);
+
+            Timer runTimer = SplashKit.CreateTimer("run_timer");
+            SplashKit.StartTimer(runTimer);
+            uint currentTime = 0;
+
+            SplashKit.OpenWindow("dummy_window", 1, 1);
+            while(!SplashKit.AnyKeyPressed())
+            {
+                SplashKit.ProcessEvents();
+                currentTime = SplashKit.TimerTicks(runTimer);
+                if(currentTime - lastReadTime > readInterval)
+                {
+                    if(SplashKit.RemoteRaspiRead(pi, increaseBtnPin) == GpioPinValue.GpioHigh)
+                    {
+                        brightness += 25;
+                        if(brightness > maxBrightness)
+                            brightness = maxBrightness;
+                        SplashKit.RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+                        lastReadTime = currentTime;
+                    }
+                    if(SplashKit.RemoteRaspiRead(pi, decreaseBtnPin) == GpioPinValue.GpioHigh)
+                    {
+                        brightness -= 25;
+                        if(brightness < 0)
+                            brightness = 0;
+                        SplashKit.RemoteRaspiSetPwmDutycycle(pi, ledPin, brightness);
+                        lastReadTime = currentTime;
+                    }
+                }
+            }
+
+            SplashKit.CloseAllWindows();
+            SplashKit.StopTimer(runTimer);
+            SplashKit.FreeAllTimers();
+            SplashKit.RemoteRaspiCleanup(pi);
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
 ```
 
 </TabItem>
