@@ -5,8 +5,6 @@ open_window("Bitmap Bounding Circle", 800, 600)
 vertical_bitmap = load_bitmap("vertical_bitmap", "image1.jpeg")
 horizontal_bitmap = load_bitmap("horizontal_bitmap", "image2.png")
 
-# The 'bitmap_bounding_circle' function creates a circle with a circumference that encompasses the four vertices of it's associated bitmap
-# A Point2D is also given to determine the circle's position
 vert_bitmap_circle = bitmap_bounding_circle(vertical_bitmap, point_at(210, 210))
 hori_bitmap_circle = bitmap_bounding_circle(horizontal_bitmap, point_at(580, 400))
 
