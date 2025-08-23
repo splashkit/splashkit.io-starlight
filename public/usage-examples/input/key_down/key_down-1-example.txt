@@ -1,0 +1,1 @@
+This example demonstrates how to detect when a specific key is being held down. The key_down function returns true while a key is being pressed and held.
