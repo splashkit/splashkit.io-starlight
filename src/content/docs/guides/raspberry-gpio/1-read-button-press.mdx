@@ -57,6 +57,7 @@ The physical circuit is show in the below image, where we can see the physical i
 This code requires the `pigpio` daemon, so make sure it is running! For more information see: [Starting the Daemon](/guides/raspberry-gpio/0-blink-led/#starting-the-daemon)
 :::
 
+
 :::note[Remote GPIO Control]
 For remote operations, you need to start the SplashKit daemon on the Raspberry Pi. The default port is 8888. See the [Remote Access Guide](https://programmers.guide/book/appendix/0-installation/4-0-remote-access-pi/) for setup instructions.
 :::
@@ -117,29 +118,31 @@ using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
 RaspiInit();
-GpioPin buttonPin = GpioPin.Pin29;
-GpioPin ledPin = GpioPin.Pin11;
-GpioPinValue ledState = GpioPinValue.GpioLow;
+GpioPin buttonPin = (GpioPin)29;
+GpioPin ledPin = (GpioPin)11;
+GpioPinValue ledState = (GpioPinValue) 0;
 
-RaspiSetMode(buttonPin, GpioPinMode.GpioInput);
-RaspiSetMode(ledPin, GpioPinMode.GpioOutput);
+RaspiSetMode(buttonPin, (GpioPinMode) 0);
+RaspiSetMode(ledPin, (GpioPinMode) 1);
 
-RaspiSetPullUpDown(buttonPin, PullUpDown.PudDown);
+RaspiSetPullUpDown(buttonPin, (PullUpDown) 1);
 
 OpenWindow("dummy_window", 1, 1);
 while(!AnyKeyPressed())
 {
     ProcessEvents();
-    if(RaspiRead(buttonPin) == GpioPinValue.GpioHigh)
+    if(RaspiRead(buttonPin) == (GpioPinValue) 1)
     {
         ledState = RaspiRead(ledPin);
-        if(ledState == GpioPinValue.GpioLow)
+        if(ledState == (GpioPinValue) 0)
         {
+
           RaspiWrite(ledPin, GpioPinValue.GpioHigh);
         }
         else
         {
           RaspiWrite(ledPin, GpioPinValue.GpioLow);
+
         }
     }
 }

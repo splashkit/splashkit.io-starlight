@@ -34,18 +34,8 @@ const groupNames: GroupName[] = JSON.parse(
 );
 
 // Load and filter posts
-const allPosts = import.meta.glob<{ frontmatter: Frontmatter; url?: string }>("../content/docs/guides/*/*.mdx");
-const posts = await Promise.all(
-  Object.entries(allPosts)
-    .filter(([path]) => !path.endsWith("index.mdx"))
-    .map(async ([path, loadPost]) => {
-      const post = await loadPost();
-      return {
-        ...post,
-        url: path.replace("../content/docs", "").replace(".mdx", "/")
-      };
-    })
-);
+let posts = await Astro.glob<Frontmatter>("../content/docs/guides/*/*.mdx");
+posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
 // Function to check if URL contains the group name
 function urlContainsGroup(url: string, groupName: string): boolean {

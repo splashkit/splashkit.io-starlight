@@ -247,13 +247,7 @@ function getUsageExampleImports(categoryKey, functionKey) {
   let categoryPath = '/usage-examples/' + categoryKey;
   let categoryFilePath = './public/usage-examples/' + categoryKey;
 
-  // Check if function directory exists (new structure)
-  let functionDirectoryPath = path.join(categoryFilePath, functionKey);
-  if (!fs.existsSync(functionDirectoryPath)) {
-    return mdxData; // Return empty if no function directory
-  }
-
-  const functionFiles = getAllFiles(functionDirectoryPath);
+  const functionFiles = getAllFiles(categoryFilePath).filter(file => file.startsWith(functionKey));
   if (functionFiles.length > 0) {
     const txtFiles = functionFiles.filter(file => file.endsWith('.txt'))
     if (txtFiles.length > 0) {
@@ -264,7 +258,7 @@ function getUsageExampleImports(categoryKey, functionKey) {
 
         languageOrder.forEach((lang) => {
           const languageFiles = functionFiles.filter(file => file.endsWith(languageFileExtensions[lang]));
-          let codeFilePath = categoryPath + "/" + functionKey + "/" + exampleTxtKey.replaceAll(".txt", languageFileExtensions[lang]);
+          let codeFilePath = categoryPath + "/" + exampleTxtKey.replaceAll(".txt", languageFileExtensions[lang]);
 
           // import code if available
           if (languageFiles.length > 0) {
@@ -324,14 +318,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
   let categoryFilePath = './public/usage-examples/' + categoryKey;
 
   let exampleKey = functionKey.replaceAll(".txt", "");
-  
-  // Check if function directory exists (new structure)
-  let functionDirectoryPath = path.join(categoryFilePath, functionKey);
-  if (!fs.existsSync(functionDirectoryPath)) {
-    return mdxData; // Return empty if no function directory
-  }
-  
-  const functionFiles = getAllFiles(functionDirectoryPath);
+  const functionFiles = getAllFiles(categoryFilePath).filter(file => file.startsWith(exampleKey));
 
   if (functionFiles.length > 0) {
 
@@ -345,7 +332,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
         // Description
         let exampleNum = exampleKey.replace(/\D/g, '');
         mdxData += `**Example ${exampleNum}**: `;
-        let exampleTxt = fs.readFileSync(path.join(functionDirectoryPath, exampleTxtKey));
+        let exampleTxt = fs.readFileSync(categoryFilePath + "/" + exampleTxtKey);
         mdxData += exampleTxt.toString();
         mdxData += "\n\n";
 
@@ -410,7 +397,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
       // Image or gif output
       mdxData += "**Output**:\n\n";
 
-      let outputFilePath = categoryPath + "/" + functionKey + "/" + exampleTxtKey;
+      let outputFilePath = categoryPath + "/" + exampleTxtKey;
 
 
       const imageFiles = functionFiles.filter(file => file.endsWith(exampleKey + '.png'));

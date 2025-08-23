@@ -1,5 +1,0 @@
-Detect Sprite Collisions with Rectangles
-
-:::note
-To test this example code you can download these [**Resources**](/usage-examples/physics/sprite_rectangle_collision-1-resources.zip).
-:::

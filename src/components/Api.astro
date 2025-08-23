@@ -6,18 +6,8 @@ interface Frontmatter {
   description?: string;
 }
 
-const allPosts = import.meta.glob<{ frontmatter: Frontmatter; url?: string }>("../content/docs/api/*.mdx");
-const posts = await Promise.all(
-  Object.entries(allPosts)
-    .filter(([path]) => !path.endsWith("index.mdx"))
-    .map(async ([path, loadPost]) => {
-      const post = await loadPost();
-      return {
-        ...post,
-        url: path.replace("../content/docs", "").replace(".mdx", "/")
-      };
-    })
-);
+let posts = await Astro.glob<Frontmatter>("../content/docs/api/*.mdx");
+posts = posts.filter((post) => !post.file.endsWith("index.mdx"));
 
 function simplifyFilePath(filePath: string) {
   // Remove leading and trailing slashes

@@ -1,1 +1,0 @@
-Simple Hexadecimal to Decimal String Converter

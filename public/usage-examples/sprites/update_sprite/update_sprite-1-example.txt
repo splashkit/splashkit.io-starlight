@@ -1,3 +1,0 @@
-Update Sprite Animation
-
-This example demonstrates how to update sprite animation and movement using SplashKit.
