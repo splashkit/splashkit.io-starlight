@@ -1,0 +1,48 @@
+{
+    "guides": [
+        {
+            "name": "Getting Started With Servers",
+            "functions": [
+                "write_line",
+                "start_web_server_with_default_port",
+                "stop_web_server",
+                "next_web_request",
+                "send_response",
+                "send_html_file_response"
+            ],
+            "url": "/guides/networking/getting-started-with-servers/"
+        },
+        {
+            "name": "Routing With Servers",
+            "functions": [
+                "write_line",
+                "start_web_server_with_default_port",
+                "stop_web_server",
+                "next_web_request",
+                "send_response",
+                "send_html_file_response",
+                "is_get_request_for"
+            ],
+            "url": "/guides/networking/routing-with-servers/"
+        },
+        {
+            "name": "How to make a RESTful API call using SplashKit",
+            "functions": [
+                "http_get",
+                "http_response_to_string",
+                "free_response",
+                "json_from_string",
+                "write_line",
+                "json_set_string",
+                "json_set_number_integer",
+                "create_json",
+                "http_post_with_headers",
+                "http_response_to_string",
+                "json_from_string",
+                "json_read_number_as_int",
+                "json_read_string"
+            ],
+            "url": "/guides/networking/restful-api-call/"
+        }
+    ]
+}

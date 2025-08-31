@@ -1808,9 +1808,9 @@
       {
         "signature": "void free_animation(animation ani);",
         "name": "free_animation",
-        "method_name": null,
+        "method_name": "free",
         "unique_global_name": "free_animation",
-        "unique_method_name": null,
+        "unique_method_name": "animation.free",
         "suffix_name": null,
         "description": "Disposes of the resources used in the animation.",
         "brief": null,
@@ -1840,6 +1840,7 @@
         "attributes": {
           "class": "animation",
           "destructor": true,
+          "method": "free",
           "self": "ani",
           "group": "animations",
           "static": "animation"
@@ -1852,6 +1853,7 @@
             "def free_animation(ani):"
           ],
           "csharp": [
+            "public void Animation.Free();",
             "public static void SplashKit.FreeAnimation(Animation ani);"
           ],
           "pascal": [
@@ -1862,9 +1864,9 @@
       {
         "signature": "void free_animation_script(animation_script script_to_free);",
         "name": "free_animation_script",
-        "method_name": null,
+        "method_name": "free",
         "unique_global_name": "free_animation_script",
-        "unique_method_name": null,
+        "unique_method_name": "animation_script.free",
         "suffix_name": null,
         "description": "Frees loaded animation frames data. Use this when you will no\nlonger be using the animation for any purpose, including within\nsprite.",
         "brief": null,
@@ -1894,6 +1896,7 @@
         "attributes": {
           "class": "animation_script",
           "destructor": true,
+          "method": "free",
           "self": "script_to_free",
           "group": "animations",
           "static": "animation"
@@ -1906,6 +1909,7 @@
             "def free_animation_script(script_to_free):"
           ],
           "csharp": [
+            "public void AnimationScript.Free();",
             "public static void SplashKit.FreeAnimationScript(AnimationScript scriptToFree);"
           ],
           "pascal": [
@@ -2998,9 +3002,9 @@
       {
         "signature": "void free_music(music effect);",
         "name": "free_music",
-        "method_name": null,
+        "method_name": "free",
         "unique_global_name": "free_music",
-        "unique_method_name": null,
+        "unique_method_name": "music.free",
         "suffix_name": null,
         "description": "Releases the SplashKit resources associated with music.",
         "brief": null,
@@ -3030,6 +3034,7 @@
         "attributes": {
           "class": "music",
           "destructor": true,
+          "method": "free",
           "self": "effect",
           "group": "audio",
           "static": "audio"
@@ -3042,6 +3047,7 @@
             "def free_music(effect):"
           ],
           "csharp": [
+            "public void Music.Free();",
             "public static void SplashKit.FreeMusic(Music effect);"
           ],
           "pascal": [
@@ -18491,9 +18497,9 @@
       {
         "signature": "point_2d random_window_point(window wind);",
         "name": "random_window_point",
-        "method_name": null,
+        "method_name": "random_point",
         "unique_global_name": "random_window_point",
-        "unique_method_name": null,
+        "unique_method_name": "window.random_point",
         "suffix_name": null,
         "description": "Returns a random point on the provided window.",
         "brief": null,
@@ -18521,8 +18527,11 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "random_point",
           "group": "geometry",
-          "static": "geometry"
+          "static": "geometry",
+          "self": "wind"
         },
         "signatures": {
           "cpp": [
@@ -18532,6 +18541,7 @@
             "def random_window_point(wind):"
           ],
           "csharp": [
+            "public Point2D Window.RandomPoint();",
             "public static Point2D SplashKit.RandomWindowPoint(Window wind);"
           ],
           "pascal": [
@@ -21489,6 +21499,173 @@
         }
       },
       {
+        "signature": "void draw_circle(color clr,const point_2d &pt,double radius);",
+        "name": "draw_circle",
+        "method_name": null,
+        "unique_global_name": "draw_circle_at_point",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Draw a circle at a point, with a specified radius, onto the current window.",
+        "brief": null,
+        "return": {
+          "type": "void",
+          "description": null,
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "clr": {
+            "type": "color",
+            "description": "The color of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "pt": {
+            "type": "point_2d",
+            "description": "The location of the center of the circle",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "radius": {
+            "type": "double",
+            "description": "The radius of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "at_point",
+          "group": "graphics"
+        },
+        "signatures": {
+          "cpp": [
+            "void draw_circle(color clr, const point_2d &pt, double radius)"
+          ],
+          "python": [
+            "def draw_circle_at_point(clr, pt, radius):"
+          ],
+          "csharp": [
+            "public static void SplashKit.DrawCircle(Color clr, Point2D pt, double radius);"
+          ],
+          "pascal": [
+            "procedure DrawCircle(clr: Color; const pt: Point2D; radius: Double)"
+          ]
+        }
+      },
+      {
+        "signature": "void draw_circle(color clr,const point_2d &pt,double radius,drawing_options opts);",
+        "name": "draw_circle",
+        "method_name": null,
+        "unique_global_name": "draw_circle_at_point_with_options",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Draw a circle at a point, with a specified radius, using the supplied drawing options. This will use `drawing_options` to determine\nthe destination.",
+        "brief": null,
+        "return": {
+          "type": "void",
+          "description": null,
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "clr": {
+            "type": "color",
+            "description": "The color of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "pt": {
+            "type": "point_2d",
+            "description": "The location of the center of the circle",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "radius": {
+            "type": "double",
+            "description": "The radius of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "opts": {
+            "type": "drawing_options",
+            "description": "Drawing options to configure the drawing operation",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "at_point_with_options",
+          "group": "graphics"
+        },
+        "signatures": {
+          "cpp": [
+            "void draw_circle(color clr, const point_2d &pt, double radius, drawing_options opts)"
+          ],
+          "python": [
+            "def draw_circle_at_point_with_options(clr, pt, radius, opts):"
+          ],
+          "csharp": [
+            "public static void SplashKit.DrawCircle(Color clr, Point2D pt, double radius, DrawingOptions opts);"
+          ],
+          "pascal": [
+            "procedure DrawCircle(clr: Color; const pt: Point2D; radius: Double; opts: DrawingOptions)"
+          ]
+        }
+      },
+      {
         "signature": "void draw_circle(color clr,double x,double y,double radius);",
         "name": "draw_circle",
         "method_name": null,
@@ -22282,6 +22459,173 @@
         }
       },
       {
+        "signature": "void fill_circle(color clr,const point_2d &pt,double radius);",
+        "name": "fill_circle",
+        "method_name": null,
+        "unique_global_name": "fill_circle_at_point",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Fill a circle at a point, with a specified radius, onto the current window.",
+        "brief": null,
+        "return": {
+          "type": "void",
+          "description": null,
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "clr": {
+            "type": "color",
+            "description": "The color of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "pt": {
+            "type": "point_2d",
+            "description": "The location of the center of the circle",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "radius": {
+            "type": "double",
+            "description": "The radius of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "at_point",
+          "group": "graphics"
+        },
+        "signatures": {
+          "cpp": [
+            "void fill_circle(color clr, const point_2d &pt, double radius)"
+          ],
+          "python": [
+            "def fill_circle_at_point(clr, pt, radius):"
+          ],
+          "csharp": [
+            "public static void SplashKit.FillCircle(Color clr, Point2D pt, double radius);"
+          ],
+          "pascal": [
+            "procedure FillCircle(clr: Color; const pt: Point2D; radius: Double)"
+          ]
+        }
+      },
+      {
+        "signature": "void fill_circle(color clr,const point_2d &pt,double radius,drawing_options opts);",
+        "name": "fill_circle",
+        "method_name": null,
+        "unique_global_name": "fill_circle_at_point_with_options",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Fill a circle at a point, with a specified radius, using the supplied drawing options. This will use `drawing_options` to determine\nthe destination.",
+        "brief": null,
+        "return": {
+          "type": "void",
+          "description": null,
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "clr": {
+            "type": "color",
+            "description": "The color of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "pt": {
+            "type": "point_2d",
+            "description": "The location of the center of the circle",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "radius": {
+            "type": "double",
+            "description": "The radius of the circle",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "opts": {
+            "type": "drawing_options",
+            "description": "Drawing options to configure the drawing operation",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "at_point_with_options",
+          "group": "graphics"
+        },
+        "signatures": {
+          "cpp": [
+            "void fill_circle(color clr, const point_2d &pt, double radius, drawing_options opts)"
+          ],
+          "python": [
+            "def fill_circle_at_point_with_options(clr, pt, radius, opts):"
+          ],
+          "csharp": [
+            "public static void SplashKit.FillCircle(Color clr, Point2D pt, double radius, DrawingOptions opts);"
+          ],
+          "pascal": [
+            "procedure FillCircle(clr: Color; const pt: Point2D; radius: Double; opts: DrawingOptions)"
+          ]
+        }
+      },
+      {
         "signature": "void fill_circle(color clr,double x,double y,double radius);",
         "name": "fill_circle",
         "method_name": null,
@@ -23016,9 +23360,9 @@
       {
         "signature": "rectangle current_clip(window wnd);",
         "name": "current_clip",
-        "method_name": null,
+        "method_name": "current_clip",
         "unique_global_name": "current_clip_for_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.current_clip_for_window",
         "suffix_name": null,
         "description": "Returns the rectangle of the current clip area for a window",
         "brief": null,
@@ -23046,6 +23390,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "current_clip",
+          "self": "wnd",
           "suffix": "for_window",
           "group": "graphics"
         },
@@ -23057,6 +23404,7 @@
             "def current_clip_for_window(wnd):"
           ],
           "csharp": [
+            "public Rectangle Window.CurrentClip();",
             "public static Rectangle SplashKit.CurrentClip(Window wnd);"
           ],
           "pascal": [
@@ -23067,9 +23415,9 @@
       {
         "signature": "void pop_clip(window wnd);",
         "name": "pop_clip",
-        "method_name": null,
+        "method_name": "pop_clip",
         "unique_global_name": "pop_clip_for_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.pop_clip_for_window",
         "suffix_name": null,
         "description": "Remove the last clipping rectangle pushed to the window. This\nwill then apply the previously pushed clipping rectangle.",
         "brief": null,
@@ -23097,6 +23445,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "pop_clip",
+          "self": "wnd",
           "suffix": "for_window",
           "group": "graphics"
         },
@@ -23108,6 +23459,7 @@
             "def pop_clip_for_window(wnd):"
           ],
           "csharp": [
+            "public void Window.PopClip();",
             "public static void SplashKit.PopClip(Window wnd);"
           ],
           "pascal": [
@@ -23206,9 +23558,9 @@
       {
         "signature": "void push_clip(window wnd,const rectangle &r);",
         "name": "push_clip",
-        "method_name": null,
+        "method_name": "push_clip",
         "unique_global_name": "push_clip_for_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.push_clip_for_window",
         "suffix_name": null,
         "description": "Add the clipping rectangle of a window and uses the intersect between\nthe new rectangle and previous clip.\n\nWhen a clipping rectangle is provided, drawing operations will only\naffect the area specified in the current clipping rectangle.",
         "brief": null,
@@ -23249,6 +23601,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "push_clip",
+          "self": "wnd",
           "suffix": "for_window",
           "group": "graphics"
         },
@@ -23260,6 +23615,7 @@
             "def push_clip_for_window(wnd, r):"
           ],
           "csharp": [
+            "public void Window.PushClip(Rectangle r);",
             "public static void SplashKit.PushClip(Window wnd, Rectangle r);"
           ],
           "pascal": [
@@ -23472,9 +23828,9 @@
       {
         "signature": "void reset_clip(window wnd);",
         "name": "reset_clip",
-        "method_name": null,
+        "method_name": "reset_clip",
         "unique_global_name": "reset_clip_for_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.reset_clip_for_window",
         "suffix_name": null,
         "description": "Reset the clipping rectangle on a window. This will clear all\nof the clipping rectangles pushed to the window.",
         "brief": null,
@@ -23502,6 +23858,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "reset_clip",
+          "self": "wnd",
           "suffix": "for_window",
           "group": "graphics"
         },
@@ -23513,6 +23872,7 @@
             "def reset_clip_for_window(wnd):"
           ],
           "csharp": [
+            "public void Window.ResetClip();",
             "public static void SplashKit.ResetClip(Window wnd);"
           ],
           "pascal": [
@@ -23637,9 +23997,9 @@
       {
         "signature": "void set_clip(window wnd,const rectangle &r);",
         "name": "set_clip",
-        "method_name": null,
+        "method_name": "set_clip",
         "unique_global_name": "set_clip_for_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.set_clip_for_window",
         "suffix_name": null,
         "description": "Set the clip rectangle of the window. This will clear any existing\nclipping rectangles pushed to the window, and use the supplied rectangle\nfor clipping.",
         "brief": null,
@@ -23680,6 +24040,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "set_clip",
+          "self": "wnd",
           "suffix": "for_window",
           "group": "graphics"
         },
@@ -23691,6 +24054,7 @@
             "def set_clip_for_window(wnd, r):"
           ],
           "csharp": [
+            "public void Window.SetClip(Rectangle r);",
             "public static void SplashKit.SetClip(Window wnd, Rectangle r);"
           ],
           "pascal": [
@@ -23853,9 +24217,9 @@
       {
         "signature": "drawing_options option_draw_to(window dest);",
         "name": "option_draw_to",
-        "method_name": null,
+        "method_name": "option_draw_to",
         "unique_global_name": "option_draw_to_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.option_draw_to_window",
         "suffix_name": null,
         "description": "Use this option to draw to a specified Window. Pass dest the Window you want to draw on.",
         "brief": null,
@@ -23883,6 +24247,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "option_draw_to",
+          "self": "dest",
           "suffix": "window",
           "group": "graphics"
         },
@@ -23894,6 +24261,7 @@
             "def option_draw_to_window(dest):"
           ],
           "csharp": [
+            "public DrawingOptions Window.OptionDrawTo();",
             "public static DrawingOptions SplashKit.OptionDrawTo(Window dest);"
           ],
           "pascal": [
@@ -23904,9 +24272,9 @@
       {
         "signature": "drawing_options option_draw_to(window dest,drawing_options opts);",
         "name": "option_draw_to",
-        "method_name": null,
+        "method_name": "option_draw_to",
         "unique_global_name": "option_draw_to_window_with_options",
-        "unique_method_name": null,
+        "unique_method_name": "window.option_draw_to_window_with_options",
         "suffix_name": null,
         "description": "Use this option to draw to a Bitmap. Pass dest the Bitmap you want to draw on to.\nPass opts the other options you want use.",
         "brief": null,
@@ -23947,6 +24315,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "option_draw_to",
+          "self": "dest",
           "suffix": "window_with_options",
           "group": "graphics"
         },
@@ -23958,6 +24329,7 @@
             "def option_draw_to_window_with_options(dest, opts):"
           ],
           "csharp": [
+            "public DrawingOptions Window.OptionDrawTo(DrawingOptions opts);",
             "public static DrawingOptions SplashKit.OptionDrawTo(Window dest, DrawingOptions opts);"
           ],
           "pascal": [
@@ -28624,9 +28996,9 @@
       {
         "signature": "void take_screenshot(window wind,const string &basename);",
         "name": "take_screenshot",
-        "method_name": null,
+        "method_name": "take_screenshot",
         "unique_global_name": "take_screenshot_of_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.take_screenshot_of_window",
         "suffix_name": null,
         "description": "Saves a screenshot of the current window to a bitmap file. The file will\nbe saved onto the user's desktop.",
         "brief": null,
@@ -28667,6 +29039,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "take_screenshot",
+          "self": "wind",
           "suffix": "of_window",
           "group": "graphics"
         },
@@ -28678,6 +29053,7 @@
             "def take_screenshot_of_window(wind, basename):"
           ],
           "csharp": [
+            "public void Window.TakeScreenshot(string basename);",
             "public static void SplashKit.TakeScreenshot(Window wind, string basename);"
           ],
           "pascal": [
@@ -34337,9 +34713,9 @@
       {
         "signature": "void draw_pixel_on_window(window destination,color clr,const point_2d &pt);",
         "name": "draw_pixel_on_window",
-        "method_name": null,
+        "method_name": "draw_pixel",
         "unique_global_name": "draw_pixel_on_window_at_point",
-        "unique_method_name": null,
+        "unique_method_name": "window.draw_pixel_at_point",
         "suffix_name": null,
         "description": "Draws an individual pixel to the given window.",
         "brief": null,
@@ -34394,8 +34770,10 @@
         },
         "attributes": {
           "class": "window",
+          "method": "draw_pixel",
           "suffix": "at_point",
-          "group": "graphics"
+          "group": "graphics",
+          "self": "destination"
         },
         "signatures": {
           "cpp": [
@@ -34405,6 +34783,7 @@
             "def draw_pixel_on_window_at_point(destination, clr, pt):"
           ],
           "csharp": [
+            "public void Window.DrawPixel(Color clr, Point2D pt);",
             "public static void SplashKit.DrawPixelOnWindow(Window destination, Color clr, Point2D pt);"
           ],
           "pascal": [
@@ -34415,9 +34794,9 @@
       {
         "signature": "void draw_pixel_on_window(window destination,color clr,const point_2d &pt,drawing_options opts);",
         "name": "draw_pixel_on_window",
-        "method_name": null,
+        "method_name": "draw_pixel",
         "unique_global_name": "draw_pixel_on_window_at_point_with_options",
-        "unique_method_name": null,
+        "unique_method_name": "window.draw_pixel_at_point_with_options",
         "suffix_name": null,
         "description": "Draws an individual pixel to the given window with the given drawing options.",
         "brief": null,
@@ -34485,8 +34864,10 @@
         },
         "attributes": {
           "class": "window",
+          "method": "draw_pixel",
           "suffix": "at_point_with_options",
-          "group": "graphics"
+          "group": "graphics",
+          "self": "destination"
         },
         "signatures": {
           "cpp": [
@@ -34496,6 +34877,7 @@
             "def draw_pixel_on_window_at_point_with_options(destination, clr, pt, opts):"
           ],
           "csharp": [
+            "public void Window.DrawPixel(Color clr, Point2D pt, DrawingOptions opts);",
             "public static void SplashKit.DrawPixelOnWindow(Window destination, Color clr, Point2D pt, DrawingOptions opts);"
           ],
           "pascal": [
@@ -34506,9 +34888,9 @@
       {
         "signature": "void draw_pixel_on_window(window destination,color clr,double x,double y);",
         "name": "draw_pixel_on_window",
-        "method_name": null,
+        "method_name": "draw_pixel",
         "unique_global_name": "draw_pixel_on_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.draw_pixel",
         "suffix_name": null,
         "description": "Draws an individual pixel to the given window.",
         "brief": null,
@@ -34576,7 +34958,9 @@
         },
         "attributes": {
           "class": "window",
-          "group": "graphics"
+          "method": "draw_pixel",
+          "group": "graphics",
+          "self": "destination"
         },
         "signatures": {
           "cpp": [
@@ -34586,6 +34970,7 @@
             "def draw_pixel_on_window(destination, clr, x, y):"
           ],
           "csharp": [
+            "public void Window.DrawPixel(Color clr, double x, double y);",
             "public static void SplashKit.DrawPixelOnWindow(Window destination, Color clr, double x, double y);"
           ],
           "pascal": [
@@ -34596,9 +34981,9 @@
       {
         "signature": "void draw_pixel_on_window(window destination,color clr,double x,double y,drawing_options opts);",
         "name": "draw_pixel_on_window",
-        "method_name": null,
+        "method_name": "draw_pixel",
         "unique_global_name": "draw_pixel_on_window_with_options",
-        "unique_method_name": null,
+        "unique_method_name": "window.draw_pixel_with_options",
         "suffix_name": null,
         "description": "Draws an individual pixel to the given window with the given drawing options.",
         "brief": null,
@@ -34679,8 +35064,10 @@
         },
         "attributes": {
           "class": "window",
+          "method": "draw_pixel",
           "suffix": "with_options",
-          "group": "graphics"
+          "group": "graphics",
+          "self": "destination"
         },
         "signatures": {
           "cpp": [
@@ -34690,6 +35077,7 @@
             "def draw_pixel_on_window_with_options(destination, clr, x, y, opts):"
           ],
           "csharp": [
+            "public void Window.DrawPixel(Color clr, double x, double y, DrawingOptions opts);",
             "public static void SplashKit.DrawPixelOnWindow(Window destination, Color clr, double x, double y, DrawingOptions opts);"
           ],
           "pascal": [
@@ -35090,148 +35478,6 @@
           ],
           "pascal": [
             "function GetPixel(wnd: Window; x: Double; y: Double): Color"
-          ]
-        }
-      },
-      {
-        "signature": "color get_pixel_from_window(window destination,const point_2d &pt);",
-        "name": "get_pixel_from_window",
-        "method_name": null,
-        "unique_global_name": "get_pixel_from_window_at_point_from_window",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Returns the color of the pixel at the x,y location on the given\nwindow.",
-        "brief": null,
-        "return": {
-          "type": "color",
-          "description": "The color of the pixel at the supplied location",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-          "destination": {
-            "type": "window",
-            "description": "The window to draw the pixel on",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          },
-          "pt": {
-            "type": "point_2d",
-            "description": "The position of the pixel",
-            "is_pointer": false,
-            "is_const": true,
-            "is_reference": true,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          }
-        },
-        "attributes": {
-          "suffix": "at_point_from_window",
-          "group": "graphics"
-        },
-        "signatures": {
-          "cpp": [
-            "color get_pixel_from_window(window destination, const point_2d &pt)"
-          ],
-          "python": [
-            "def get_pixel_from_window_at_point_from_window(destination, pt):"
-          ],
-          "csharp": [
-            "public static Color SplashKit.GetPixelFromWindow(Window destination, Point2D pt);"
-          ],
-          "pascal": [
-            "function GetPixelFromWindow(destination: Window; const pt: Point2D): Color"
-          ]
-        }
-      },
-      {
-        "signature": "color get_pixel_from_window(window destination,double x,double y);",
-        "name": "get_pixel_from_window",
-        "method_name": null,
-        "unique_global_name": "get_pixel_from_window_from_window",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Returns the color of the pixel at the x,y location on the given\nwindow.",
-        "brief": null,
-        "return": {
-          "type": "color",
-          "description": "The color of the pixel at the supplied location",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-          "destination": {
-            "type": "window",
-            "description": "The window to draw the pixel on",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          },
-          "x": {
-            "type": "double",
-            "description": "The distance from the left edge of the window to the pixel\nto read",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          },
-          "y": {
-            "type": "double",
-            "description": "The distance from the top of the window to the pixel to read",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          }
-        },
-        "attributes": {
-          "class": "window",
-          "suffix": "from_window",
-          "group": "graphics"
-        },
-        "signatures": {
-          "cpp": [
-            "color get_pixel_from_window(window destination, double x, double y)"
-          ],
-          "python": [
-            "def get_pixel_from_window_from_window(destination, x, y):"
-          ],
-          "csharp": [
-            "public static Color SplashKit.GetPixelFromWindow(Window destination, double x, double y);"
-          ],
-          "pascal": [
-            "function GetPixelFromWindow(destination: Window; x: Double; y: Double): Color"
           ]
         }
       },
@@ -37333,9 +37579,9 @@
       {
         "signature": "void fill_quad_on_window(window destination,color clr,const quad &q,const drawing_options &opts);",
         "name": "fill_quad_on_window",
-        "method_name": null,
+        "method_name": "fill_quad",
         "unique_global_name": "fill_quad_on_window_with_options",
-        "unique_method_name": null,
+        "unique_method_name": "window.fill_quad_with_options",
         "suffix_name": null,
         "description": "Fill a quad on the supplied window using the supplied drawing options.",
         "brief": null,
@@ -37403,8 +37649,10 @@
         },
         "attributes": {
           "class": "window",
+          "method": "fill_quad",
           "suffix": "with_options",
-          "group": "graphics"
+          "group": "graphics",
+          "self": "destination"
         },
         "signatures": {
           "cpp": [
@@ -37414,6 +37662,7 @@
             "def fill_quad_on_window_with_options(destination, clr, q, opts):"
           ],
           "csharp": [
+            "public void Window.FillQuad(Color clr, Quad q, DrawingOptions opts);",
             "public static void SplashKit.FillQuadOnWindow(Window destination, Color clr, Quad q, DrawingOptions opts);"
           ],
           "pascal": [
@@ -46315,9 +46564,9 @@
       {
         "signature": "void end_reading_text(window wind);",
         "name": "end_reading_text",
-        "method_name": null,
+        "method_name": "end_reading_text",
         "unique_global_name": "end_reading_text_in_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.end_reading_text_in_window",
         "suffix_name": null,
         "description": "Ends reading text for the passed in window.",
         "brief": null,
@@ -46345,6 +46594,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "end_reading_text",
+          "self": "wind",
           "suffix": "in_window",
           "group": "input"
         },
@@ -46356,6 +46608,7 @@
             "def end_reading_text_in_window(wind):"
           ],
           "csharp": [
+            "public void Window.EndReadingText();",
             "public static void SplashKit.EndReadingText(Window wind);"
           ],
           "pascal": [
@@ -46403,9 +46656,9 @@
       {
         "signature": "bool reading_text(window wind);",
         "name": "reading_text",
-        "method_name": null,
+        "method_name": "reading_text",
         "unique_global_name": "reading_text_in_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.reading_text_in_window",
         "suffix_name": null,
         "description": "Returns true when the window is reading text.",
         "brief": null,
@@ -46433,6 +46686,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "reading_text",
+          "self": "wind",
           "suffix": "in_window",
           "group": "input"
         },
@@ -46444,6 +46700,7 @@
             "def reading_text_in_window(wind):"
           ],
           "csharp": [
+            "public bool Window.ReadingText();",
             "public static bool SplashKit.ReadingText(Window wind);"
           ],
           "pascal": [
@@ -46568,9 +46825,9 @@
       {
         "signature": "void start_reading_text(window wind,rectangle rect);",
         "name": "start_reading_text",
-        "method_name": null,
+        "method_name": "start_reading_text",
         "unique_global_name": "start_reading_text_in_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.start_reading_text_in_window",
         "suffix_name": null,
         "description": "Start reading text in the window within the bounds of the\nsupplied rectangle.",
         "brief": null,
@@ -46611,6 +46868,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "start_reading_text",
+          "self": "wind",
           "suffix": "in_window",
           "group": "input"
         },
@@ -46622,6 +46882,7 @@
             "def start_reading_text_in_window(wind, rect):"
           ],
           "csharp": [
+            "public void Window.StartReadingText(Rectangle rect);",
             "public static void SplashKit.StartReadingText(Window wind, Rectangle rect);"
           ],
           "pascal": [
@@ -46632,9 +46893,9 @@
       {
         "signature": "void start_reading_text(window wind,rectangle rect,string initial_text);",
         "name": "start_reading_text",
-        "method_name": null,
+        "method_name": "start_reading_text",
         "unique_global_name": "start_reading_text_in_window_with_initial_text",
-        "unique_method_name": null,
+        "unique_method_name": "window.start_reading_text_in_window_with_initial_text",
         "suffix_name": null,
         "description": "Start reading text in the window within the bounds of the\nsupplied rectangle. The text will start with an initial value.",
         "brief": null,
@@ -46688,6 +46949,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "start_reading_text",
+          "self": "wind",
           "suffix": "in_window_with_initial_text",
           "group": "input"
         },
@@ -46699,6 +46963,7 @@
             "def start_reading_text_in_window_with_initial_text(wind, rect, initial_text):"
           ],
           "csharp": [
+            "public void Window.StartReadingText(Rectangle rect, string initialText);",
             "public static void SplashKit.StartReadingText(Window wind, Rectangle rect, string initialText);"
           ],
           "pascal": [
@@ -46746,9 +47011,9 @@
       {
         "signature": "bool text_entry_cancelled(window wind);",
         "name": "text_entry_cancelled",
-        "method_name": null,
+        "method_name": "text_entry_cancelled",
         "unique_global_name": "text_entry_cancelled_in_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.text_entry_cancelled_in_window",
         "suffix_name": null,
         "description": "Did the user press escape and cancel the enterring of text?",
         "brief": null,
@@ -46776,6 +47041,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "text_entry_cancelled",
+          "self": "wind",
           "suffix": "in_window",
           "group": "input"
         },
@@ -46787,6 +47055,7 @@
             "def text_entry_cancelled_in_window(wind):"
           ],
           "csharp": [
+            "public bool Window.TextEntryCancelled();",
             "public static bool SplashKit.TextEntryCancelled(Window wind);"
           ],
           "pascal": [
@@ -46834,9 +47103,9 @@
       {
         "signature": "string text_input(window wind);",
         "name": "text_input",
-        "method_name": null,
+        "method_name": "text_input",
         "unique_global_name": "text_input_in_window",
-        "unique_method_name": null,
+        "unique_method_name": "window.text_input_in_window",
         "suffix_name": null,
         "description": "The text the user has currently enterred on the current window.",
         "brief": null,
@@ -46864,6 +47133,9 @@
           }
         },
         "attributes": {
+          "class": "window",
+          "method": "text_input",
+          "self": "wind",
           "suffix": "in_window",
           "group": "input"
         },
@@ -46875,6 +47147,7 @@
             "def text_input_in_window(wind):"
           ],
           "csharp": [
+            "public string Window.TextInput();",
             "public static string SplashKit.TextInput(Window wind);"
           ],
           "pascal": [
@@ -51818,13 +52091,13 @@
         }
       },
       {
-        "signature": "string text_box(const string& value);",
+        "signature": "string text_box(const string& label_text,const string& value,const rectangle& rect);",
         "name": "text_box",
         "method_name": null,
-        "unique_global_name": "text_box",
+        "unique_global_name": "text_box_at_position",
         "unique_method_name": null,
         "suffix_name": null,
-        "description": "Creates a text entry box with a label.\nReturns the updated value of the text box.",
+        "description": "Creates a text entry box at a specific position on screen.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string, rectangle_from(0,0,100,100));\n```",
         "brief": null,
         "return": {
           "type": "string",
@@ -51835,9 +52108,9 @@
           "type_parameter": null
         },
         "parameters": {
-          "value": {
+          "label_text": {
             "type": "string",
-            "description": "The current value of the text box",
+            "description": "Unique identifier for the text box (not drawn)",
             "is_pointer": false,
             "is_const": true,
             "is_reference": true,
@@ -51847,45 +52120,7 @@
             ],
             "is_vector": false,
             "type_parameter": null
-          }
-        },
-        "attributes": {
-          "group": "interface",
-          "static": "interface"
-        },
-        "signatures": {
-          "cpp": [
-            "string text_box(const string &value)"
-          ],
-          "python": [
-            "def text_box(value):"
-          ],
-          "csharp": [
-            "public static string SplashKit.TextBox(string value);"
-          ],
-          "pascal": [
-            "function TextBox(const value: String): String"
-          ]
-        }
-      },
-      {
-        "signature": "string text_box(const string& value,const rectangle& rect);",
-        "name": "text_box",
-        "method_name": null,
-        "unique_global_name": "text_box_at_position",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Creates a text entry box at a specific position on screen.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string);\n```",
-        "brief": null,
-        "return": {
-          "type": "string",
-          "description": "The updated value of the text box",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
+          },
           "value": {
             "type": "string",
             "description": "The current value of the text box",
@@ -51920,16 +52155,16 @@
         },
         "signatures": {
           "cpp": [
-            "string text_box(const string &value, const rectangle &rect)"
+            "string text_box(const string &label_text, const string &value, const rectangle &rect)"
           ],
           "python": [
-            "def text_box_at_position(value, rect):"
+            "def text_box_at_position(label_text, value, rect):"
           ],
           "csharp": [
-            "public static string SplashKit.TextBox(string value, Rectangle rect);"
+            "public static string SplashKit.TextBox(string labelText, string value, Rectangle rect);"
           ],
           "pascal": [
-            "function TextBox(const value: String; const rect: Rectangle): String"
+            "function TextBox(const labelText: String; const value: String; const rect: Rectangle): String"
           ]
         }
       },
@@ -51937,7 +52172,7 @@
         "signature": "string text_box(const string& label_text,const string& value);",
         "name": "text_box",
         "method_name": null,
-        "unique_global_name": "text_box_labeled",
+        "unique_global_name": "text_box",
         "unique_method_name": null,
         "suffix_name": null,
         "description": "Creates a text entry box with a label.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string);\n```",
@@ -51953,7 +52188,7 @@
         "parameters": {
           "label_text": {
             "type": "string",
-            "description": "The label to show in front of the text box",
+            "description": "Unique identifier for the text box (not drawn)",
             "is_pointer": false,
             "is_const": true,
             "is_reference": true,
@@ -51979,7 +52214,6 @@
           }
         },
         "attributes": {
-          "suffix": "labeled",
           "group": "interface",
           "static": "interface"
         },
@@ -51988,13 +52222,91 @@
             "string text_box(const string &label_text, const string &value)"
           ],
           "python": [
-            "def text_box_labeled(label_text, value):"
+            "def text_box(label_text, value):"
           ],
           "csharp": [
             "public static string SplashKit.TextBox(string labelText, string value);"
           ],
           "pascal": [
             "function TextBox(const labelText: String; const value: String): String"
+          ]
+        }
+      },
+      {
+        "signature": "string text_box(const string& label_text,const string& value,bool show_label);",
+        "name": "text_box",
+        "method_name": null,
+        "unique_global_name": "text_box_labeled",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Creates a text entry box with a label that can be shown.\nReturns the updated value of the text box.\n\nExample usage:\n```c++\nmy_string = text_box(\"Name\", my_string, true);\n```",
+        "brief": null,
+        "return": {
+          "type": "string",
+          "description": "The updated value of the text box",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "label_text": {
+            "type": "string",
+            "description": "Unique identifier for the text box (not drawn)",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "value": {
+            "type": "string",
+            "description": "The current value of the text box",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "show_label": {
+            "type": "bool",
+            "description": "Whether to show the label or not",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "suffix": "labeled",
+          "group": "interface",
+          "static": "interface"
+        },
+        "signatures": {
+          "cpp": [
+            "string text_box(const string &label_text, const string &value, bool show_label)"
+          ],
+          "python": [
+            "def text_box_labeled(label_text, value, show_label):"
+          ],
+          "csharp": [
+            "public static string SplashKit.TextBox(string labelText, string value, bool showLabel);"
+          ],
+          "pascal": [
+            "function TextBox(const labelText: String; const value: String; showLabel: Boolean): String"
           ]
         }
       }
@@ -52155,9 +52467,9 @@
       {
         "signature": "void free_json(json j);",
         "name": "free_json",
-        "method_name": null,
+        "method_name": "free",
         "unique_global_name": "free_json",
-        "unique_method_name": null,
+        "unique_method_name": "json.free",
         "suffix_name": null,
         "description": "Frees the SplashKit resources associated with the `json` object.",
         "brief": null,
@@ -52187,6 +52499,7 @@
         "attributes": {
           "class": "json",
           "destructor": true,
+          "method": "free",
           "self": "j",
           "group": "json",
           "static": "json"
@@ -52199,6 +52512,7 @@
             "def free_json(j):"
           ],
           "csharp": [
+            "public void Json.Free();",
             "public static void SplashKit.FreeJson(Json j);"
           ],
           "pascal": [
@@ -72798,9 +73112,9 @@
       {
         "signature": "void close_adc(adc_device adc);",
         "name": "close_adc",
-        "method_name": null,
+        "method_name": "close",
         "unique_global_name": "close_adc",
-        "unique_method_name": null,
+        "unique_method_name": "adc_device.close",
         "suffix_name": null,
         "description": "Closes an ADC device given its pointer.",
         "brief": null,
@@ -72830,6 +73144,7 @@
         "attributes": {
           "class": "adc_device",
           "destructor": true,
+          "method": "close",
           "self": "adc",
           "group": "raspberry",
           "static": "raspberry"
@@ -72842,6 +73157,7 @@
             "def close_adc(adc):"
           ],
           "csharp": [
+            "public void AdcDevice.Close();",
             "public static void SplashKit.CloseAdc(AdcDevice adc);"
           ],
           "pascal": [
@@ -73285,6 +73601,57 @@
         }
       },
       {
+        "signature": "int gpio_pin_to_int(gpio_pin_value value);",
+        "name": "gpio_pin_to_int",
+        "method_name": null,
+        "unique_global_name": "gpio_pin_to_int",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the specified pin value to an integer, to use in calculations.",
+        "brief": "Converts a GPIO Pin Value to an integer.",
+        "return": {
+          "type": "int",
+          "description": "The pin value as an integer.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "value": {
+            "type": "gpio_pin_value",
+            "description": "The pin to read the value from.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "int gpio_pin_to_int(gpio_pin_value value)"
+          ],
+          "python": [
+            "def gpio_pin_to_int(value):"
+          ],
+          "csharp": [
+            "public static int SplashKit.GpioPinToInt(GpioPinValue value);"
+          ],
+          "pascal": [
+            "function GpioPinToInt(value: GpioPinValue): Integer"
+          ]
+        }
+      },
+      {
         "signature": "bool has_gpio();",
         "name": "has_gpio",
         "method_name": null,
@@ -73408,6 +73775,57 @@
           ],
           "pascal": [
             "function RaspiGetMode(pin: GpioPin): GpioPinMode"
+          ]
+        }
+      },
+      {
+        "signature": "int raspi_get_servo_pulsewidth(gpio_pin pin);",
+        "name": "raspi_get_servo_pulsewidth",
+        "method_name": null,
+        "unique_global_name": "raspi_get_servo_pulsewidth",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "This function retrieves the pulse width for the specified pin.",
+        "brief": "Gets the pulse width for the specified pin.",
+        "return": {
+          "type": "int",
+          "description": "The pulse width of the pin.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "pin": {
+            "type": "gpio_pin",
+            "description": "The pin to get the pulse width for.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "int raspi_get_servo_pulsewidth(gpio_pin pin)"
+          ],
+          "python": [
+            "def raspi_get_servo_pulsewidth(pin):"
+          ],
+          "csharp": [
+            "public static int SplashKit.RaspiGetServoPulsewidth(GpioPin pin);"
+          ],
+          "pascal": [
+            "function RaspiGetServoPulsewidth(pin: GpioPin): Integer"
           ]
         }
       },
@@ -73817,6 +74235,70 @@
           ],
           "pascal": [
             "procedure RaspiSetPwmRange(pin: GpioPin; range: Integer)"
+          ]
+        }
+      },
+      {
+        "signature": "void raspi_set_servo_pulsewidth(gpio_pin pin,int pulsewidth);",
+        "name": "raspi_set_servo_pulsewidth",
+        "method_name": null,
+        "unique_global_name": "raspi_set_servo_pulsewidth",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "This function sets the pulse width for the specified pin.",
+        "brief": "Sets the pulse width for the specified pin.",
+        "return": {
+          "type": "void",
+          "description": null,
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "pin": {
+            "type": "gpio_pin",
+            "description": "The pin to set the pulse width for.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          },
+          "pulsewidth": {
+            "type": "int",
+            "description": "The pulse width to set for the pin.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "cpp": [
+            "void raspi_set_servo_pulsewidth(gpio_pin pin, int pulsewidth)"
+          ],
+          "python": [
+            "def raspi_set_servo_pulsewidth(pin, pulsewidth):"
+          ],
+          "csharp": [
+            "public static void SplashKit.RaspiSetServoPulsewidth(GpioPin pin, int pulsewidth);"
+          ],
+          "pascal": [
+            "procedure RaspiSetServoPulsewidth(pin: GpioPin; pulsewidth: Integer)"
           ]
         }
       },
@@ -74825,7 +75307,7 @@
       {
         "signature": "typedef struct _adc_data *adc_device;",
         "name": "adc_device",
-        "description": "The `adc_device` type is used to refer to ADC (Analog-to-Digital Converter)\ndevices that can be managed by the SplashKit ADC code. ADC devices are:\n\n- loaded with `load_adc_device`,\n\n- accessed using `adc_device_named` or checked with `has_adc_device`,\n\n- read using `read_adc_channel` to retrieve analog values from specific channels,\n\n- and must be released using `free_adc_device` (to release a specific\nADC device) or `free_all_adc_devices` (to release all loaded ADC devices).\n\nADC devices allow you to interface with external analog sensors or inputs,\nconverting their signals into digital values for processing in your application.\n\nYou can check if an ADC device is loaded using `has_adc_device`.\n\nUse `free_adc_device` to release resources associated with a specific ADC device,\nor `free_all_adc_devices` to clean up all ADC devices.",
+        "description": "The `adc_device` type is used to refer to ADC (Analog-to-Digital Converter)\ndevices that can be managed by the SplashKit ADC code, such as ADS7830.\nADC devices are:\n\n- loaded with `open_adc`,\n- accessed using `adc_device_named` or checked with `has_adc_device`,\n- read using `read_adc` to retrieve analog values from specific channels,\n- and must be closed using `close_adc` (to release a specific\nADC device) or `close_all_adc` (to release all loaded ADC devices).\n\nADC devices allow you to interface with external analog sensors or inputs,\nconverting their signals into digital values for processing in your application.",
         "brief": null,
         "attributes": {
           "class": "adc_device",
@@ -85043,9 +85525,9 @@
       {
         "signature": "void free_timer(timer to_free);",
         "name": "free_timer",
-        "method_name": null,
+        "method_name": "free",
         "unique_global_name": "free_timer",
-        "unique_method_name": null,
+        "unique_method_name": "timer.free",
         "suffix_name": null,
         "description": "Free the memory used to store this timer.",
         "brief": null,
@@ -85075,9 +85557,10 @@
         "attributes": {
           "class": "timer",
           "destructor": true,
+          "method": "free",
+          "self": "to_free",
           "group": "timers",
-          "static": "timers",
-          "self": "to_free"
+          "static": "timers"
         },
         "signatures": {
           "cpp": [
@@ -85087,6 +85570,7 @@
             "def free_timer(to_free):"
           ],
           "csharp": [
+            "public void Timer.Free();",
             "public static void SplashKit.FreeTimer(Timer toFree);"
           ],
           "pascal": [
@@ -93901,19 +94385,19 @@
             "number": 3
           },
           "ADC_PIN_4": {
-            "description": "Analog Input Channel 4",
+            "description": "Analog Input Channel 4 (only available for ADS7830)",
             "number": 4
           },
           "ADC_PIN_5": {
-            "description": "Analog Input Channel 5",
+            "description": "Analog Input Channel 5 (only available for ADS7830)",
             "number": 5
           },
           "ADC_PIN_6": {
-            "description": "Analog Input Channel 6",
+            "description": "Analog Input Channel 6 (only available for ADS7830)",
             "number": 6
           },
           "ADC_PIN_7": {
-            "description": "Analog Input Channel 7",
+            "description": "Analog Input Channel 7 (only available for ADS7830)",
             "number": 7
           }
         },
@@ -93928,7 +94412,7 @@
         }
       },
       {
-        "signature": "enum adc_type {ADS7830 = 0,// PCF8591 = 1,};",
+        "signature": "enum adc_type {ADS7830 = 0,PCF8591 = 1,};",
         "name": "adc_type",
         "description": "ADC Type:",
         "brief": null,
@@ -93936,16 +94420,20 @@
           "ADS7830": {
             "description": "8-Bit, 8-Channel Sampling A/D Converter with I2C Interface",
             "number": 0
+          },
+          "PCF8591": {
+            "description": "8-Bit, 4-Channel Sampling A/D Converter with I2C Interface",
+            "number": 1
           }
         },
         "attributes": {
           "group": "types"
         },
         "signatures": {
-          "cpp": "class adc_type {ADS7830 = 0};",
-          "python": "public enum {AdcType.ads7830 = 0}",
-          "csharp": "public enum {AdcType.Ads7830 = 0}",
-          "pascal": "public enum {AdcType.Ads7830 = 0}"
+          "cpp": "class adc_type {ADS7830 = 0, PCF8591 = 1};",
+          "python": "public enum {AdcType.ads7830 = 0, AdcType.pcf8591 = 1}",
+          "csharp": "public enum {AdcType.Ads7830 = 0, AdcType.Pcf8591 = 1}",
+          "pascal": "public enum {AdcType.Ads7830 = 0, AdcType.Pcf8591 = 1}"
         }
       },
       {
@@ -94022,7 +94510,7 @@
             "number": 2
           },
           "PIN_3": {
-            "description": "GPIO2 / SDA (I2C)",
+            "description": "GPIO 2 / SDA (I2C)",
             "number": 3
           },
           "PIN_4": {
@@ -94030,7 +94518,7 @@
             "number": 4
           },
           "PIN_5": {
-            "description": "GPIO3 / SCL (I2C)",
+            "description": "GPIO 3 / SCL (I2C)",
             "number": 5
           },
           "PIN_6": {
@@ -94038,11 +94526,11 @@
             "number": 6
           },
           "PIN_7": {
-            "description": "GPIO4",
+            "description": "GPIO 4 / GPCLK0",
             "number": 7
           },
           "PIN_8": {
-            "description": "GPIO14 / TXD (UART)",
+            "description": "GPIO 14 / TXD (UART)",
             "number": 8
           },
           "PIN_9": {
@@ -94050,19 +94538,19 @@
             "number": 9
           },
           "PIN_10": {
-            "description": "GPIO15 / RXD (UART)",
+            "description": "GPIO 15 / RXD (UART)",
             "number": 10
           },
           "PIN_11": {
-            "description": "GPIO17",
+            "description": "GPIO 17",
             "number": 11
           },
           "PIN_12": {
-            "description": "GPIO18 / PCM_CLK",
+            "description": "GPIO 18 / PCM_CLK",
             "number": 12
           },
           "PIN_13": {
-            "description": "GPIO27",
+            "description": "GPIO 27",
             "number": 13
           },
           "PIN_14": {
@@ -94070,11 +94558,11 @@
             "number": 14
           },
           "PIN_15": {
-            "description": "GPIO22",
+            "description": "GPIO 22",
             "number": 15
           },
           "PIN_16": {
-            "description": "GPIO23",
+            "description": "GPIO 23",
             "number": 16
           },
           "PIN_17": {
@@ -94082,11 +94570,11 @@
             "number": 17
           },
           "PIN_18": {
-            "description": "GPIO24",
+            "description": "GPIO 24",
             "number": 18
           },
           "PIN_19": {
-            "description": "GPIO10 / MOSI (SPI)",
+            "description": "GPIO 10 / MOSI (SPI)",
             "number": 19
           },
           "PIN_20": {
@@ -94094,19 +94582,19 @@
             "number": 20
           },
           "PIN_21": {
-            "description": "GPIO9 / MISO (SPI)",
+            "description": "GPIO 9 / MISO (SPI)",
             "number": 21
           },
           "PIN_22": {
-            "description": "GPIO25",
+            "description": "GPIO 25",
             "number": 22
           },
           "PIN_23": {
-            "description": "GPIO11 / SCLK (SPI)",
+            "description": "GPIO 11 / SCLK (SPI)",
             "number": 23
           },
           "PIN_24": {
-            "description": "GPIO8 / CE0 (SPI)",
+            "description": "GPIO 8 / CE0 (SPI)",
             "number": 24
           },
           "PIN_25": {
@@ -94114,7 +94602,7 @@
             "number": 25
           },
           "PIN_26": {
-            "description": "GPIO7 / CE1 (SPI)",
+            "description": "GPIO 7 / CE1 (SPI)",
             "number": 26
           },
           "PIN_27": {
@@ -94126,7 +94614,7 @@
             "number": 28
           },
           "PIN_29": {
-            "description": "GPIO5",
+            "description": "GPIO 5",
             "number": 29
           },
           "PIN_30": {
@@ -94134,15 +94622,15 @@
             "number": 30
           },
           "PIN_31": {
-            "description": "GPIO6",
+            "description": "GPIO 6",
             "number": 31
           },
           "PIN_32": {
-            "description": "GPIO12",
+            "description": "GPIO 12 / PWM0",
             "number": 32
           },
           "PIN_33": {
-            "description": "GPIO13",
+            "description": "GPIO 13",
             "number": 33
           },
           "PIN_34": {
@@ -94150,19 +94638,19 @@
             "number": 34
           },
           "PIN_35": {
-            "description": "GPIO19 / MISO (PCM)",
+            "description": "GPIO 19 / MISO (PCM)",
             "number": 35
           },
           "PIN_36": {
-            "description": "GPIO16 / CE0 (PCM)",
+            "description": "GPIO 16 / CE0 (PCM_FS)",
             "number": 36
           },
           "PIN_37": {
-            "description": "GPIO26",
+            "description": "GPIO 26",
             "number": 37
           },
           "PIN_38": {
-            "description": "GPIO20 / MOSI (PCM)",
+            "description": "GPIO 20 / MOSI (PCM_DIN)",
             "number": 38
           },
           "PIN_39": {
@@ -94170,7 +94658,7 @@
             "number": 39
           },
           "PIN_40": {
-            "description": "GPIO21 / SCLK (PCM)",
+            "description": "GPIO 21 / SCLK (PCM_DOUT)",
             "number": 40
           }
         },
@@ -94386,6 +94874,50 @@
           "python": "public enum {InterfaceStyle.flat_dark_style = 0, InterfaceStyle.shaded_dark_style = 1, InterfaceStyle.flat_light_style = 2, InterfaceStyle.shaded_light_style = 3, InterfaceStyle.bubble = 4, InterfaceStyle.bubble_multicolored = 5}",
           "csharp": "public enum {InterfaceStyle.FlatDarkStyle = 0, InterfaceStyle.ShadedDarkStyle = 1, InterfaceStyle.FlatLightStyle = 2, InterfaceStyle.ShadedLightStyle = 3, InterfaceStyle.Bubble = 4, InterfaceStyle.BubbleMulticolored = 5}",
           "pascal": "public enum {InterfaceStyle.FlatDarkStyle = 0, InterfaceStyle.ShadedDarkStyle = 1, InterfaceStyle.FlatLightStyle = 2, InterfaceStyle.ShadedLightStyle = 3, InterfaceStyle.Bubble = 4, InterfaceStyle.BubbleMulticolored = 5}"
+        }
+      },
+      {
+        "signature": "enum motor_direction {MOTOR_FORWARD,MOTOR_BACKWARD};",
+        "name": "motor_direction",
+        "description": "Motor Movement Directions:",
+        "brief": null,
+        "constants": {
+          "MOTOR_FORWARD": {
+            "description": "Motor moves forward."
+          },
+          "MOTOR_BACKWARD": {
+            "description": "Motor moves backward."
+          }
+        },
+        "attributes": {
+          "group": "types"
+        },
+        "signatures": {
+          "cpp": "class motor_direction {MOTOR_FORWARD = 0, MOTOR_BACKWARD = 0};",
+          "python": "public enum {MotorDirection.motor_forward = 0, MotorDirection.motor_backward = 0}",
+          "csharp": "public enum {MotorDirection.MotorForward = 0, MotorDirection.MotorBackward = 0}",
+          "pascal": "public enum {MotorDirection.MotorForward = 0, MotorDirection.MotorBackward = 0}"
+        }
+      },
+      {
+        "signature": "enum motor_driver_type {L298N = 0,// L293D = 1,// TB6612FNG = 2,// DRV8835 = 3,// DRV8834 = 4,// DRV8825 = 5,// A4988 = 6,};",
+        "name": "motor_driver_type",
+        "description": "Motor Driver Types:",
+        "brief": null,
+        "constants": {
+          "L298N": {
+            "description": "Dual H-Bridge Motor Driver",
+            "number": 0
+          }
+        },
+        "attributes": {
+          "group": "types"
+        },
+        "signatures": {
+          "cpp": "class motor_driver_type {L298N = 0};",
+          "python": "public enum {MotorDriverType.l298n = 0}",
+          "csharp": "public enum {MotorDriverType.L298n = 0}",
+          "pascal": "public enum {MotorDriverType.L298n = 0}"
         }
       },
       {
@@ -94960,7 +95492,7 @@
         "brief": "Calculates the greatest common divisor of two numbers",
         "return": {
           "type": "int",
-          "description": "Greatest common divisor of the two numbers, or 0 if either of the numbers is not a valid integer above 0",
+          "description": "Greatest common divisor of the two numbers, or 0 if both numbers are 0",
           "is_pointer": false,
           "is_reference": false,
           "is_vector": false,
@@ -95598,7 +96130,7 @@
         "brief": "Calculates the least common multiple of two numbers",
         "return": {
           "type": "int",
-          "description": "Least common multiple of the two numbers, or 0 if either of the numbers is not a valid integer above 0",
+          "description": "Least common multiple of the two numbers, or 0 if either of the numbers are 0",
           "is_pointer": false,
           "is_reference": false,
           "is_vector": false,

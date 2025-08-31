@@ -14,7 +14,7 @@ const path = require('path'); // Handle and transform file paths
 // Paths constants
 // ------------------------------------------------------------------------------
 const guidesDir = './src/content/docs/guides'; // Path to base directory containing the "Guides" groups
-const beyondDir = './src/content/docs/beyond-splashkit'; // Path to base directory containing the "Beyond SplashKit" groups
+const beyondDir = './src/content/docs/guides/beyond-splashkit'; // Path to base directory containing the "Beyond SplashKit" groups
 
 const guidesGrouptsOutputJson = './scripts/json-files/guides-groups.json'; // Path where the "Guides" groups output JSON files will be saved
 const beyondSkGroupsOutputJson = './scripts/json-files/beyond-splashkit-groups.json'; // Path where the "Beyond SplashKit" groups output JSON files will be saved

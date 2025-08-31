@@ -1,0 +1,1301 @@
+---
+title: Encoding and Decoding
+description: Explore the essentials of encoding and decoding data using Base64, Caesar Cipher, and URL transformations for secure and efficient data representation.
+author: Brianna Laird
+lastupdated: December 2024
+sidebar:
+  order: 1
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Aside } from '@astrojs/starlight/components';
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+Encoding and decoding play a crucial role in the way data is represented, stored, and transmitted across systems. Whether it's transforming binary data into a readable format, encoding a URL for safe web usage, or encrypting messages using a simple cipher, these operations enable secure and efficient communication. In this guide, we'll explore how to implement popular encoding and decoding techniques like Base64, Caesar Cipher, and URL transformations. These foundational skills not only enhance your understanding of data manipulation but also pave the way for integrating advanced cryptographic solutions into your projects.
+
+## Base64
+
+Base64 encoding is a method used to convert binary data into an ASCII string format by translating it into a radix-64 representation. This is particularly useful for encoding data that needs to be stored and transferred over media that are designed to deal with textual data. Base64 ensures that the data remains intact without modification during transport.
+
+When using Base64, you need to define the characters used in the encoding process. This can be done with:
+
+```cpp
+const string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+```
+
+<Aside type="tip" title="Common Uses of Base64 Encoding">
+Base64 encoding is widely used to safely transmit binary data, such as images or files, over text-based protocols like HTTP, email, or JSON. It is also essential for embedding assets directly in HTML or converting binary data for use in web development.
+</Aside>
+
+### Encoding with Base64
+
+Encoding data with Base64 involves converting the input data into a sequence of characters from the Base64 character set. This process ensures that the data can be safely transmitted over text-based protocols such as HTTP or email. The following code shows how you can implement Base64 encoding to convert a message into a Base64-encoded string.
+
+:::note
+The Base64-encoded message is padded with `=` characters to ensure that the length is a multiple of 4.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string base64_encode(const string &input)
+{
+    string encoded_string;
+    int value = 0, bits = -6;
+    const unsigned int base64_mask = 0x3F;
+
+    for (unsigned char character : input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encoded_string.push_back(BASE64_CHARS[(value >> bits) & base64_mask]);
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encoded_string.push_back(BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]);
+    }
+
+    while (encoded_string.size() % 4)
+    {
+        encoded_string.push_back('='); // Padding to make the length a multiple of 4
+    }
+
+    return encoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string Base64Encode(string input)
+{
+    string encodedString = "";
+    int value = 0, bits = -6;
+    const int base64Mask = 0x3F;
+
+    foreach (char character in input)
+    {
+        value = (value << 8) + character;
+        bits += 8;
+
+        while (bits >= 0)
+        {
+            encodedString += BASE64_CHARS[(value >> bits) & base64Mask];
+            bits -= 6;
+        }
+    }
+
+    if (bits > -6)
+    {
+        encodedString += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64Mask];
+    }
+
+    while (encodedString.Length % 4 != 0)
+    {
+        encodedString += '=';
+    }
+    return encodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def base64_encode(input_string):
+    encoded_string = ""
+    value = 0
+    bits = -6
+    base64_mask = 0x3F
+
+    for character in input_string.encode():
+        value = (value << 8) + character
+        bits += 8
+
+        while bits >= 0:
+            encoded_string += BASE64_CHARS[(value >> bits) & base64_mask]
+            bits -= 6
+    
+    if bits > -6:
+        encoded_string += BASE64_CHARS[((value << 8) >> (bits + 8)) & base64_mask]
+    
+    while len(encoded_string) % 4:
+        encoded_string += "="
+    
+    return encoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `base64_encode` function to encode a message:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string message = "Hello, World!";
+string encoded_message = base64_encode(message);
+std::cout << "Original: " << message << std::endl;
+std::cout << "Encoded: " << encoded_message << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string message = "Hello, World!";
+string encodedMessage = Base64Encode(message);
+Console.WriteLine("Original: " + message);
+Console.WriteLine("Encoded: " + encodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+message = "Hello, World!"
+encoded_message = base64_encode(message)
+print(f"Original: {message}")
+print(f"Encoded: {encoded_message}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The encoded message should be a Base64 representation of the original message.
+
+```plaintext
+Original: "Hello, World!"
+Encoded: "SGVsbG8sIFdvcmxkIQ=="
+```
+
+### Decoding with Base64
+
+Decoding Base64 data involves converting the encoded string back into its original binary form. This process is essential for retrieving the original data after it has been encoded using Base64. The following code shows how you can implement Base64 decoding to convert a Base64-encoded string back into its original form.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string base64_decode(const string &input)
+{
+    string decoded_string;
+    int value = 0, bits = -8;
+    for (unsigned char character : input)
+    {
+        if (BASE64_CHARS.find(character) == string::npos)
+        {
+            if (character == '=')
+                break; // Padding character, stop decoding
+            continue;  // Ignore any characters not in Base64 alphabet
+        }
+
+        value = (value << 6) + BASE64_CHARS.find(character);
+        bits += 6;
+
+        if (bits >= 0)
+        {
+            decoded_string.push_back(char((value >> bits) & 0xFF));
+            bits -= 8;
+        }
+    }
+    return decoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string Base64Decode(string input)
+{
+    string decodedString = "";
+    int value = 0, bits = -8;
+
+    foreach (char character in input)
+    {
+        if (character == '=') break;
+        if (BASE64_CHARS.IndexOf(character) == -1) continue;
+
+        value = (value << 6) + BASE64_CHARS.IndexOf(character);
+        bits += 6;
+
+        if (bits >= 0)
+        {
+            decodedString += (char)((value >> bits) & 0xFF);
+            bits -= 8;
+        }
+    }
+    return decodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def base64_decode(input_string):
+    decoded_string = bytearray()
+    value = 0
+    bits = -8
+
+    for character in input_string:
+        if character not in BASE64_CHARS:
+            if character == "=":
+                break
+            continue
+        
+        value = (value << 6) + BASE64_CHARS.index(character)
+        bits += 6
+
+        if bits >= 0:
+            decoded_string.append((value >> bits) & 0xFF)
+            bits -= 8
+    
+    return decoded_string.decode()
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `base64_decode` function to decode a message:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string encoded_message = "SGVsbG8sIFdvcmxkIQ==";
+string decoded_message = base64_decode(encoded_message);
+std::cout << "Encoded: " << encoded_message << std::endl;
+std::cout << "Decoded: " << decoded_message << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string encodedMessage = "SGVsbG8sIFdvcmxkIQ==";
+string decodedMessage = Base64Decode(encodedMessage);
+Console.WriteLine("Encoded: " + encodedMessage);
+Console.WriteLine("Decoded: " + decodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+encoded_message = "SGVsbG8sIFdvcmxkIQ=="
+decoded_message = base64_decode(encoded_message)
+print(f"Encoded: {encoded_message}")
+print(f"Decoded: {decoded_message}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The decoded message should match the original message that was encoded.
+
+```plaintext
+Encoded: "SGVsbG8sIFdvcmxkIQ=="
+Decoded: "Hello, World!"
+```
+
+## Caesar Cipher
+
+The Caesar Cipher is a simple substitution cipher named after Julius Caesar, who used it to encrypt his private correspondence. It is a type of symmetric encryption, meaning the same key is used for both encryption and decryption. In the Caesar Cipher, each letter in the plaintext is shifted a fixed number of positions down or up the alphabet. For example, with a shift of 3:
+
+- `A` becomes `D`
+- `B` becomes `E`
+- `C` becomes `F`
+
+The process wraps around at the end of the alphabet, so `X` becomes `A`, `Y` becomes `B`, and `Z` becomes `C`. Numbers and punctuation are typically left unchanged, but this can vary based on implementation.
+
+The encryption function can be described mathematically as:
+
+$$
+E(x) = (x + n) \mod 26
+$$
+
+where:
+
+- $E(x)$ is the encrypted letter,
+- $x$ is the position of the plaintext letter in the alphabet ($0$ for $A$, $1$ for $B$, ..., $25$ for $Z$),
+- $n$ is the number of positions to shift (the key),
+- $mod$ denotes the modulo operation.
+
+For decryption, the function is:
+
+$$
+D(x) = (x - n) \mod 26
+$$
+
+where:
+
+- $D(x)$ is the decrypted letter,
+- $x$ is the position of the encrypted letter in the alphabet,
+- $n$ is the number of positions to shift (the key).
+
+<Aside type="tip" title="Common Uses of Ciphers">
+Ciphers are widely used in various applications to ensure secure communication and data protection. They are essential in modern cryptography for encrypting sensitive information, securing online transactions, protecting personal data, and ensuring the confidentiality of communications. Ciphers are also used in digital signatures, authentication protocols, and solving cryptographic puzzles.
+</Aside>
+
+### Encoding with the Caesar Cipher
+
+Encoding data with the Caesar Cipher involves shifting the characters in the input message by a fixed number of positions. This process ensures that the message is encrypted and can only be decrypted using the same shift value. The following code shows how you can implement the Caesar Cipher to encode a message by shifting the characters by a specified number of positions.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string caesar_cipher_encode(const string &input, int shift)
+{
+    string encoded_string;
+    for (char character : input)
+    {
+        if (isalpha(character))
+        {
+            char base = islower(character) ? 'a' : 'A';
+            encoded_string += (character - base + shift) % 26 + base;
+        }
+        else
+        {
+            encoded_string += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string caesarCipherEncode(string input, int shift)
+{
+    string encodedString = "";
+
+    foreach (char character in input)
+    {
+        if (char.IsLetter(character))
+        {
+            char baseChar = char.IsLower(character) ? 'a' : 'A';
+            encodedString += (char)((character - baseChar + shift) % 26 + baseChar);
+        }
+        else
+        {
+            encodedString += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def caesar_cipher_encode(input_string, shift):
+    encoded_string = ""
+    for character in input_string:
+        if character.isalpha():
+            base = ord('a') if character.islower() else ord('A')
+            encoded_string += chr((ord(character) - base + shift) % 26 + base)
+        else:
+            encoded_string += character  # Non-alphabet characters remain unchanged
+    return encoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `caesar_cipher_encode` function to encode a message:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string message = "Hello, World!";
+int shift = 3;  
+string encoded_message = caesar_cipher_encode(message, shift);
+std::cout << "Original: " << message << std::endl;
+std::cout << "Encoded: " << encoded_message << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string message = "Hello, World!";
+int shift = 3;
+string encodedMessage = caesarCipherEncode(message, shift);
+Console.WriteLine("Original: " + message);
+Console.WriteLine("Encoded: " + encodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+message = "Hello, World!"
+shift = 3
+encoded_message = caesar_cipher_encode(message, shift)
+print(f"Original: {message}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The encoded message should be the original message with each character shifted by the specified number of positions.
+
+```plaintext
+Original: "Hello, World!"
+Encoded: "Khoor, Zruog!"
+```
+
+### Decoding with the Caesar Cipher
+
+Decoding data with the Caesar Cipher involves shifting the characters in the input message by the reverse of the encoding shift value. This process ensures that the message is decrypted and can be read in its original form. The following code shows how you can implement the Caesar Cipher to decode a message by shifting the characters back by the specified number of positions.
+
+:::note
+This function relies on the `caesar_cipher_encode` function to decode the message using the reverse shift value.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string caesar_cipher_decode(const string &input, int shift)
+{
+    return caesar_cipher_encode(input, 26 - (shift % 26)); // Reverse the shift
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string caesarCipherDecode(string input, int shift)
+{
+    return caesarCipherEncode(input, 26 - (shift % 26)); // Reverse the shift
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def caesar_cipher_decode(input_string, shift):
+    return caesar_cipher_encode(input_string, -shift)  # Reverse the shift
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+The following code demonstrates how you can use the `caesar_cipher_decode` function to decode a message:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string encoded_message = "Khoor, Zruog!";
+int shift = 3;
+std::cout << "Encoded: " << encoded_message << std::endl;
+std::cout << "Decoded: " << caesar_cipher_decode(encoded_message, shift) << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+
+```csharp
+string encodedMessage = "Khoor, Zruog!";
+int shift = 3;
+Console.WriteLine("Encoded: " + encodedMessage);
+Console.WriteLine("Decoded: " + caesarCipherDecode(encodedMessage, shift));
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+encoded_message = "Khoor, Zruog!"
+shift = 3
+print(f"Encoded: {encoded_message}")
+print(f"Decoded: {caesar_cipher_decode(encoded_message, shift)}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The decoded message should match the original message that was encoded.
+
+```plaintext
+Encoded: "Khoor, Zruog!"
+Decoded: "Hello, World!"
+```
+
+### Brute-Forcing the Caesar Cipher
+
+In some cases, the shift value used in the Caesar Cipher may not be known. To decrypt the message without the key, you can use a brute-force approach to try all possible shift values and find the one that produces a readable message. As there is only 26 possible shift values in the Caesar Cipher, this method is feasible and can be implemented efficiently. Here is how you can brute-force the Caesar Cipher to decrypt a message:
+
+:::note
+This function relies on the `ceasar_cipher_decode` function to decode the message using each possible shift value, which also relies on the `caesar_cipher_encode` function.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+void caesar_cipher_brute_force(const string &input)
+{
+    for (int shift = 0; shift < 26; shift++)
+    {
+        std::cout << "Shift " << shift << "=> " << caesar_cipher_decode(input, shift) << std::endl;
+    }
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+void caesarCipherBruteForce(string input)
+{
+    for (int shift = 0; shift < 26; shift++)
+    {
+        Console.WriteLine("Shift " + shift + "=> " + caesarCipherDecode(input, shift));
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def caesar_cipher_brute_force(input_string):
+    for shift in range(26):
+        print(f"Shift {shift}=> {caesar_cipher_decode(input_string, shift)}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `caesar_cipher_brute_force` function to decrypt a message without knowing the shift value:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+std::cout << "Enter the encoded message: ";
+string encoded_message;
+std::getline(std::cin, encoded_message);
+caesar_cipher_brute_force(encoded_message);
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+Console.WriteLine("Enter the encoded message: ");
+string encodedMessage = Console.ReadLine();
+caesarCipherBruteForce(encodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+print("Enter the encrypted message: ")
+encoded_message = read_line()
+caesar_cipher_brute_force(encoded_message)
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The brute-force method should display all possible decrypted messages for each shift value.
+
+```plaintext
+Enter the encoded message: 
+Khoor Zruog!
+Shift 0=> Khoor Zruog!
+Shift 1=> Jgnnq Yqtnf!
+Shift 2=> Ifmmp Xpsme!
+Shift 3=> Hello World!
+Shift 4=> Gdkkn Vnqkc!
+Shift 5=> Fcjjm Umpjb!
+Shift 6=> Ebiil Tloia!
+Shift 7=> Dahhk Sknhz!
+Shift 8=> Czggj Rjmgy!
+Shift 9=> Byffi Qilfx!
+Shift 10=> Axeeh Phkew!
+Shift 11=> Zwddg Ogjdv!
+Shift 12=> Yvccf Nficu!
+Shift 13=> Xubbe Mehbt!
+Shift 14=> Wtaad Ldgas!
+Shift 15=> Vszzc Kcfzr!
+Shift 16=> Uryyb Jbeyq!
+Shift 17=> Tqxxa Iadxp!
+Shift 18=> Spwwz Hzcwo!
+Shift 19=> Rovvy Gybvn!
+Shift 20=> Qnuux Fxaum!
+Shift 21=> Pmttw Ewztl!
+Shift 22=> Olssv Dvysk!
+Shift 23=> Nkrru Cuxrj!
+Shift 24=> Mjqqt Btwqi!
+Shift 25=> Lipps Asvph!
+```
+
+## Vigenère Cipher
+
+The Vigenère cipher is a method of encrypting alphabetic text using a form of polyalphabetic substitution, which applies multiple Caesar Ciphers based on a keyword. Each letter in the plaintext is shifted by an amount determined by the corresponding letter in the keyword, creating a more secure encryption than a single-shift cipher. This method is more resistant to brute force attacks because the pattern of shifts varies based on the keyword.
+
+Mathematically, the Vigenère cipher relies on modular arithmetic to compute shifts. For encoding, each letter in the plaintext is shifted according to the corresponding letter in the keyword:
+
+$$
+E(x_i) = (x_i + k_i) \mod 26
+$$
+
+where:
+
+- $E(x_i)$ is the encoded letter,
+- $x_i$ is the position of the plaintext letter in the alphabet ($0$ for $A$, $1$ for $B$, ..., $25$ for $Z$),
+- $k_i$ is the position of the keyword letter in the alphabet.
+
+For decoding, the process is reversed:
+
+$$
+D(y_i) = (y_i - k_i + 26) \mod 26
+$$
+
+where:
+
+- $D(y_i)$ is the decoded letter,
+- $y_i$ is the position of the encoded letter in the alphabet,
+- $k_i$ is the position of the keyword letter in the alphabet.
+
+This structured and repeatable process ensures that both encryption and decryption can be performed accurately using the same keyword.
+
+### Encoding with the Vigenère Cipher
+
+Encoding a message with the Vigenère cipher involves applying different shifts to each letter in the plaintext, determined by the corresponding letter in the repeated keyword. This ensures that each character is encrypted with a different substitution, making the resulting ciphertext more complex and secure. The process involves converting characters to numeric values, applying modular arithmetic for the shifts, and converting the results back to alphabetic text.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string vigenere_cipher_encode(const string &input, const string &keyword)
+{
+    string encoded_string;
+    for (size_t i = 0; i < input.size(); i++)
+    {
+        char character = input[i];
+        char key = keyword[i % keyword.size()];
+
+        if (isalpha(character))
+        {
+            char base = islower(character) ? 'a' : 'A';
+            encoded_string += (character - base + key - 'A') % 26 + base;
+        }
+        else
+        {
+            encoded_string += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string vigenereCipherEncode(string input, string keyword)
+{
+    string encodedString = "";
+    for (int i = 0; i < input.Length; i++)
+    {
+        char character = input[i];
+        char key = keyword[i % keyword.Length];
+
+        if (char.IsLetter(character))
+        {
+            char baseChar = char.IsLower(character) ? 'a' : 'A';
+            encodedString += (char)((character - baseChar + key - 'A') % 26 + baseChar);
+        }
+        else
+        {
+            encodedString += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return encodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vigenere_cipher_encode(input_string, keyword):
+    encoded_string = ""
+    for i, character in enumerate(input_string):
+        key = keyword[i % len(keyword)]
+        if character.isalpha():
+            base = ord('a') if character.islower() else ord('A')
+            encoded_string += chr((ord(character) - base + ord(key) - ord('A')) % 26 + base)
+        else:
+            encoded_string += character  # Non-alphabet characters remain unchanged
+    return encoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `vigenere_cipher_encode` function to encode a message using a keyword:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string message = "Hello, World!";
+string keyword = "KEY";
+string encoded_message = vigenere_cipher_encode(message, keyword);
+std::cout << "Original: " << message << std::endl;
+std::cout << "Encoded: " << encoded_message << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string message = "Hello, World!";
+string keyword = "KEY";
+string encodedMessage = vigenereCipherEncode(message, keyword);
+Console.WriteLine("Original: " + message);
+Console.WriteLine("Encoded: " + encodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+message = "Hello, World!"
+keyword = "KEY"
+encoded_message = vigenere_cipher_encode(message, keyword)
+print(f"Original: {message}")
+print(f"Encoded: {encoded_message}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The encoded message should be the original message with each character shifted by the corresponding letter in the keyword.
+
+```plaintext
+Original: "Hello, World!"
+Encoded: "Rijvs, Uyvvn!"
+```
+
+### Decoding with the Vigenère Cipher
+
+Decoding a message encrypted with the Vigenère cipher involves reversing the shifts applied during encryption using the same keyword. By applying the modular arithmetic in reverse, each character is shifted back to its original position, reconstructing the plaintext. This process relies on the keyword to match the shifts used during encryption, ensuring that the message can only be decrypted by someone with the correct key.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string vigenere_cipher_decode(const string &input, const string &keyword)
+{
+    string decoded_string;
+    for (size_t i = 0; i < input.size(); i++)
+    {
+        char character = input[i];
+        char key = keyword[i % keyword.size()];
+
+        if (isalpha(character))
+        {
+            char base = islower(character) ? 'a' : 'A';
+            decoded_string += (character - base - key + 'A' + 26) % 26 + base;
+        }
+        else
+        {
+            decoded_string += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return decoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string vigenereCipherDecode(string input, string keyword)
+{
+    string decodedString = "";
+    for (int i = 0; i < input.Length; i++)
+    {
+        char character = input[i];
+        char key = keyword[i % keyword.Length];
+
+        if (char.IsLetter(character))
+        {
+            char baseChar = char.IsLower(character) ? 'a' : 'A';
+            decodedString += (char)((character - baseChar - key + 'A' + 26) % 26 + baseChar);
+        }
+        else
+        {
+            decodedString += character; // Non-alphabet characters remain unchanged
+        }
+    }
+    return decodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+def vigenere_cipher_decode(input_string, keyword):
+    decoded_string = ""
+    for i, character in enumerate(input_string):
+        key = keyword[i % len(keyword)]
+        if character.isalpha():
+            base = ord('a') if character.islower() else ord('A')
+            decoded_string += chr((ord(character) - base - ord(key) + ord('A') + 26) % 26 + base)
+        else:
+            decoded_string += character  # Non-alphabet characters remain unchanged
+    return decoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `vigenere_cipher_decode` function to decode a message using a keyword:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string encoded_message = "Rijvs, Uyvvn!";
+string keyword = "KEY";
+string decoded_message = vigenere_cipher_decode(encoded_message, keyword);
+std::cout << "Encoded: " << encoded_message << std::endl;
+std::cout << "Decoded: " << decoded_message << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string encodedMessage = "Rijvs, Uyvvn!";
+string keyword = "KEY";
+string decodedMessage = vigenereCipherDecode(encodedMessage, keyword);
+Console.WriteLine("Encoded: " + encodedMessage);
+Console.WriteLine("Decoded: " + decodedMessage);
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+encoded_message = "Rijvs, Uyvvn!"
+keyword = "KEY"
+decoded_message = vigenere_cipher_decode(encoded_message, keyword)
+print(f"Encoded: {encoded_message}")
+print(f"Decoded: {decoded_message}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The decoded message should match the original message that was encoded.
+
+```plaintext
+Encoded: "Rijvs, Uyvvn!"
+Decoded: "Hello, World!"
+```
+
+## URL Transformations
+
+URL transformations are used to encode and decode URLs to ensure that they are safe for use in web applications. URLs may contain special characters that need to be encoded to prevent errors and security vulnerabilities. The most common encoding scheme used for URLs is percent-encoding, which replaces special characters with a percent sign followed by two hexadecimal digits. This ensures that the URL is correctly interpreted by web browsers and servers.
+
+<Aside type="tip" title="Common Uses of URL Encoding and Decoding">
+URL encoding and decoding are essential for ensuring that URLs are correctly interpreted by web browsers and servers. They are commonly used in web development to handle special characters in query parameters, form submissions, and API requests. Proper URL encoding helps prevent errors and security vulnerabilities, ensuring reliable and secure communication between clients and servers.
+</Aside>
+
+### Encoding URLs
+
+Encoding URLs involves replacing special characters with their percent-encoded equivalents. This process ensures that the URL is safe for use in web applications and can be correctly interpreted by browsers and servers. The following code shows how you can implement URL encoding to convert a URL into a percent-encoded string.
+
+:::note
+Here we will need to define a function for converting a string into its hexadecimal representation, then we can use this function to encode the URL.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+// Function to convert a number to its hexadecimal representation
+string to_hex(char num)
+{
+    const char hex_chars[] = "0123456789ABCDEF";
+    return string(1, hex_chars[num & 0xF]);
+}
+
+// Function to encode a URL
+string url_encode(const string &input)
+{
+    string encoded_string;
+    for (char character : input)
+    {
+        if (isalnum(character) || character == '-' || character == '_' || character == '.' || character == '~')
+        {
+            encoded_string += character;
+        }
+        else
+        {
+            encoded_string += '%' + to_hex(character >> 4) + to_hex(character & 0xF);
+        }
+    }
+    return encoded_string;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+// Function to convert a number to its hexadecimal representation
+char ToHex(char num)
+{
+    const string hexChars = "0123456789ABCDEF";
+    return hexChars[num & 0xF];
+}
+
+// Function to encode a URL
+string UrlEncode(string input)
+{
+    string encodedString = "";
+    foreach (char character in input)
+    {
+        if (char.IsLetterOrDigit(character) || character == '-' || character == '_' || character == '.' || character == '~')
+        {
+            encodedString += character;
+        }
+        else
+        {
+            encodedString += '%';
+            encodedString += ToHex((char)(character >> 4));
+            encodedString += ToHex((char)(character & 0xF));
+        }
+    }
+    return encodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+# Function to convert a number to its hexadecimal representation
+def to_hex(num):
+    hex_chars = "0123456789ABCDEF"
+    return hex_chars[num & 0xF]
+
+# Function to encode a URL
+def url_encode(input_string):
+    encoded_string = ""
+    for character in input_string:
+        if character.isalnum() or character in '-_.~':
+            encoded_string += character
+        else:
+            encoded_string += '%' + to_hex(ord(character) >> 4) + to_hex(ord(character) & 0xF)
+    return encoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+Here is an example of how you can use the `url_encode` function to encode a URL:
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string url = "https://www.example.com/search?q=hello world";
+string encoded_url = url_encode(url);
+std::cout << "URL Encode (" << url << ")=> " << url_encode(url) << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string url = "https://www.example.com/search?q=hello world";
+string encodedUrl = UrlEncode(url);
+Console.WriteLine("URL Encode (" + url + ")=> " + UrlEncode(url));
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+url = "https://www.example.com/search?q=hello world"
+encoded_url = url_encode(url)
+print(f"URL Encode ({url})=> {encoded_url}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The encoded URL should replace special characters with their percent-encoded equivalents.
+
+```plaintext
+URL Encode (https://www.example.com/search?q=hello world)=> https%3A%2F%2Fwww.example.com%2Fsearch%3Fq%3Dhello%20world
+```
+
+### Decoding URLs
+
+Decoding URLs involves converting percent-encoded characters back to their original form. This process ensures that the URL is correctly interpreted by web browsers and servers. The following code shows how you can implement URL decoding to convert a percent-encoded string back into its original URL.
+
+:::note
+Here we will need to define a function for converting a hexadecimal string into its decimal representation, then we can use this function to decode the URL.
+:::
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+// Function to convert a hexadecimal character to its decimal representation
+int from_hex(char hex)
+{
+    if (hex >= '0' && hex <= '9') return hex - '0';
+    if (hex >= 'A' && hex <= 'F') return hex - 'A' + 10;
+    if (hex >= 'a' && hex <= 'f') return hex - 'a' + 10;
+    return -1; // Invalid hex character
+}
+
+// Function to decode a URL-encoded string
+string UrlDecode(string input)
+{
+    string decodedString = "";
+    for (int i = 0; i < input.Length; i++)
+    {
+        if (input[i] == '%')
+        {
+            if (i + 2 < input.Length)
+            {
+                char hex1 = input[i + 1];
+                char hex2 = input[i + 2];
+                int decodedChar = (FromHex(hex1) << 4) | FromHex(hex2);
+                if (decodedChar >= 0) // Only append if valid hex
+                {
+                    decodedString += (char)decodedChar;
+                    i += 2; // Skip the two hex characters
+                }
+                else
+                {
+                    // Handle invalid hex gracefully (optional)
+                    decodedString += '%';
+                }
+            }
+            else
+            {
+                // Handle incomplete encoding gracefully
+                decodedString += '%';
+            }
+        }
+        else if (input[i] == '+')
+        {
+            decodedString += ' '; // '+' is interpreted as space in URL encoding
+        }
+        else
+        {
+            decodedString += input[i];
+        }
+    }
+    return decodedString;
+}
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+// Function to convert a hexadecimal character to its decimal representation
+int FromHex(char hex)
+{
+    if (hex >= '0' && hex <= '9') return hex - '0';
+    if (hex >= 'A' && hex <= 'F') return hex - 'A' + 10;
+    if (hex >= 'a' && hex <= 'f') return hex - 'a' + 10;
+    return -1; // Invalid hex character
+}
+
+// Function to decode a URL-encoded string
+string UrlDecode(string input)
+{
+    string decodedString = "";
+    for (int i = 0; i < input.Length; i++)
+    {
+        if (input[i] == '%')
+        {
+            if (i + 2 < input.Length)
+            {
+                char hex1 = input[i + 1];
+                char hex2 = input[i + 2];
+                int decodedChar = (FromHex(hex1) << 4) | FromHex(hex2);
+                if (decodedChar >= 0) // Only append if valid hex
+                {
+                    decodedString += (char)decodedChar;
+                    i += 2; // Skip the two hex characters
+                }
+                else
+                {
+                    // Handle invalid hex gracefully (optional)
+                    decodedString += '%';
+                }
+            }
+            else
+            {
+                // Handle incomplete encoding gracefully
+                decodedString += '%';
+            }
+        }
+        else if (input[i] == '+')
+        {
+            decodedString += ' '; // '+' is interpreted as space in URL encoding
+        }
+        else
+        {
+            decodedString += input[i];
+        }
+    }
+    return decodedString;
+}
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+# Function to convert a hexadecimal character to its decimal representation
+def from_hex(hex):
+    if '0' <= hex <= '9':
+        return ord(hex) - ord('0')
+    if 'A' <= hex <= 'F':
+        return ord(hex) - ord('A') + 10
+    if 'a' <= hex <= 'f':
+        return ord(hex) - ord('a') + 10
+    return -1  # Invalid hex character
+
+# Function to decode a URL-encoded string
+def url_decode(input_string):
+    decoded_string = ""
+    i = 0
+    while i < len(input_string):
+        if input_string[i] == '%':
+            if i + 2 < len(input_string):
+                hex1 = input_string[i + 1]
+                hex2 = input_string[i + 2]
+                decoded_char = (from_hex(hex1) << 4) | from_hex(hex2)
+                if decoded_char >= 0:
+                    decoded_string += chr(decoded_char)
+                    i += 2
+                else:
+                    decoded_string += '%'
+            else:
+                decoded_string += '%'
+        elif input_string[i] == '+':
+            decoded_string += ' '
+        else:
+            decoded_string += input_string[i]
+        i += 1
+    return decoded_string
+```
+
+</TabItem>
+</Tabs>
+
+#### Using this function
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+```cpp
+string encoded_url = "https%3A%2F%2Fwww.example.com%2Fsearch%3Fq%3Dhello%20world";
+std::cout << "URL Decode (" << encoded_url << ")=> " << url_decode(encoded_url) << std::endl;
+```
+
+</TabItem>
+<TabItem label="C#">
+
+```csharp
+string encodedUrl = "https%3A%2F%2Fwww.example.com%2Fsearch%3Fq%3Dhello%20world";
+Console.WriteLine("URL Decode (" + encodedUrl + ")=> " + UrlDecode(encodedUrl));
+```
+
+</TabItem>
+<TabItem label="Python">
+
+```python
+encoded_url = "https%3A%2F%2Fwww.example.com%2Fsearch%3Fq%3Dhello%20world"
+print(f"URL Decode ({encoded_url})=> {url_decode(encoded_url)}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Expected Output
+
+The decoded URL should match the original URL that was encoded.
+
+```plaintext
+URL Decode (https%3A%2F%2Fwww.example.com%2Fsearch%3Fq%3Dhello%20world)=> https://www.example.com/search?q=hello world
+```

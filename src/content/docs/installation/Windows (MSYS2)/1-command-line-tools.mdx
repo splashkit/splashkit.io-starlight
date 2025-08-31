@@ -23,7 +23,13 @@ MSYS2 provides a Unix-like terminal environment for Windows, allowing you to run
 
    Double-click the downloaded executable file and follow the on-screen instructions to complete the installation.
 
-   *We recommend using the default installation path, though you may customize other options as needed.*
+   :::caution[Use the default install path]
+
+   Make sure to use the default install path: `C:\msys64`
+
+   *Using other paths may cause issues.*
+
+   :::
 
 3. **Open the MINGW64 Terminal**
 
@@ -46,9 +52,10 @@ MSYS2 provides a Unix-like terminal environment for Windows, allowing you to run
 
    To prepare for SplashKit, you’ll need to install essential tools using the `pacman` package manager within **MINGW64**.
 
-   Copy and paste the following command into the **MINGW64** terminal window to install `git`, `clang`, `gcc`, and `gdb`:
+   Copy and paste the following commands into the **MINGW64** terminal window to update the packages and then install `git`, `clang`, `gcc`, and `gdb`:
 
    ```shell
+   pacman -Syy
    pacman -S git mingw-w64-x86_64-clang mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb --noconfirm --disable-download-timeout
    ```
 

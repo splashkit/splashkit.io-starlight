@@ -1,7 +1,5 @@
 [
-  "Audio",
-  "Cryptography",
-  "Graphics",
-  "Maths",
-  "Utilities"
+  "cryptography",
+  "sdl2",
+  "utilities"
 ]

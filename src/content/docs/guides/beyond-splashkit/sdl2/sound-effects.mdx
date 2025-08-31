@@ -1,0 +1,154 @@
+---
+title: Playing Sound Effects and Music Without SplashKit
+description: This brief guide provides code to compare how to load and play music and sound effects with and without SplashKit (using SDL).
+author: Simon Rhook and Olivia McKeon
+lastupdated: December 2024
+sidebar:
+  order: 2
+---
+
+import { Code, Tabs, TabItem } from "@astrojs/starlight/components";
+
+import soundEffectsCode_withSK from '/public/guides/beyond-splashkit/code-files/audio/0-sound-effects/with-splashkit.cpp?raw';
+import soundEffectsCode_noSK from '/public/guides/beyond-splashkit/code-files/audio/0-sound-effects/no-splashkit.cpp?raw';
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+## Getting Started without SplashKit
+
+### Installing SDL2 and SDL2_mixer
+
+If you have not already installed SplashKit, you will need to install `SDL2` and `SDL2_mixer` to be able to compile the code shown in this guide.
+
+You can use the following command, which is usually run during the SplashKit installation, which will ensure you have installed the required libraries/dependencies.
+
+<Tabs syncKey="operating-system">
+<TabItem label="Windows (MSYS2)">
+
+```shell
+pacman -S --needed --disable-download-timeout mingw-w64-x86_64-clang mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_gfx mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-SDL2_image mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_net mingw-w64-x86_64-civetweb
+```
+
+</TabItem>
+<TabItem label="MacOS">
+
+```shell
+brew install pkgconfig sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx libpng cmake
+```
+
+</TabItem>
+<TabItem label="Linux (Ubuntu/Debian) and Windows (WSL)">
+
+```shell
+sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
+```
+
+</TabItem>
+</Tabs>
+
+### Compiling Your Code
+
+With C++ programs, you will need to adjust the compiling command to link to any libraries being used. Below you will see the different commands to compile with and without SplashKit.
+
+Now, assuming the code filename is `program.cpp`.
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+As usual, you will compile the SplashKit C++ code using the following command:
+
+```shell
+g++ program.cpp -o test -l SplashKit
+```
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+:::note
+
+When compiling without SplashKit, you may need to include more compiler flags for any libraries used.
+
+:::
+
+You can use this command to compile the code below:
+
+<Tabs syncKey="operating-system">
+<TabItem label="Windows (MSYS2)">
+
+```shell
+g++ program.cpp -o test -lSDL2_mixer -lmingw32 -mwindows -lSDL2main -lSDL2
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 sdl2_mixer
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+<TabItem label="MacOS">
+
+```shell
+g++ program.cpp -o test -L/opt/homebrew/Cellar/sdl2_mixer/2.8.0/lib -lSDL2_mixer -L/opt/homebrew/lib -lSDL2 -I/opt/homebrew/include -I/opt/homebrew/include/SDL2 -D_THREAD_SAFE
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 sdl2_mixer
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+<TabItem label="Linux (Ubuntu/Debian) and Windows (WSL)">
+
+```shell
+g++ program.cpp -o test -lSDL2_mixer -lSDL2 -I/usr/include/SDL2 -D_REENTRANT
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 SDL2_mixer
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+:::tip[Run Your Program]
+
+To run the compiled program using one of the commands above, you would use `./test` (or `./test.exe` if using MSYS2/MINGW64).
+
+:::
+
+## Example Code
+
+The following code compares loading and playing music and sound effects with and without SplashKit (using SDL):
+
+:::note[Resources]
+
+To test the code below, you can download these [**Resources**](/guides/beyond-splashkit/resources/BeyondSplashKit_SoundEffects_Resources.zip).
+
+:::
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={soundEffectsCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={soundEffectsCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>

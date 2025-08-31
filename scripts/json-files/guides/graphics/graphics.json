@@ -1,0 +1,22 @@
+{
+    "guides": [
+        {
+            "name": "Drawing using Procedures",
+            "functions": [
+                "open_window",
+                "clear_screen",
+                "fill_ellipse",
+                "fill_rectangle",
+                "fill_triangle",
+                "refresh_screen",
+                "delay"
+            ],
+            "url": "/guides/graphics/drawing-using-procedures/"
+        },
+        {
+            "name": "Understanding Double Buffering",
+            "functions": [],
+            "url": "/guides/getting-started/double-buffering/"
+        }
+    ]
+}

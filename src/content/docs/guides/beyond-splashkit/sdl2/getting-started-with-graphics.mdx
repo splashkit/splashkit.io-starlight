@@ -1,0 +1,250 @@
+---
+title: Getting Started with SDL2 Graphics
+description: This brief guide provides code to show simple graphics functionality without SplashKit such as how to open a window, keep a window open, draw a rectangle and display a bitmap. These are then combined to create a simple "eye dropper" program to compare with and without SplashKit.
+author: Simon Rhook and Olivia McKeon
+lastupdated: December 2024
+sidebar:
+  order: 1
+---
+
+import { Code, Tabs, TabItem } from "@astrojs/starlight/components";
+
+import openWindowCode_withSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/open_window-with-splashkit.cpp?raw';
+import openWindowCode_noSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/open_window-no-splashkit.cpp?raw';
+
+import quitRequestedCode_withSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/quit_requested-with-splashkit.cpp?raw';
+import quitRequestedCode_noSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/quit_requested-no-splashkit.cpp?raw';
+
+import drawRectangleCode_withSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/draw_rectangle-with-splashkit.cpp?raw';
+import drawRectangleCode_noSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/draw_rectangle-no-splashkit.cpp?raw';
+
+import drawBitmapCode_withSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/draw_bitmap-with-splashkit.cpp?raw';
+import drawBitmapCode_noSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/draw_bitmap-no-splashkit.cpp?raw';
+
+import eyedropperCode_withSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/eyedropper-with-splashkit.cpp?raw';
+import eyedropperCode_noSK from '/public/guides/beyond-splashkit/code-files/graphics/0-getting-started-with-graphics/eyedropper-no-splashkit.cpp?raw';
+
+**{frontmatter.description}**  
+Written by: {frontmatter.author}  
+_Last updated: {frontmatter.lastupdated}_
+
+---
+
+## Getting Started without SplashKit
+
+### Installing SDL2 and SDL2_image
+
+If you have not already installed SplashKit, you will need to install `SDL2` and `SDL2_image` to be able to compile the code shown in this guide.
+
+You can use the following command, which is usually run during the SplashKit installation, which will ensure you have installed the required libraries/dependencies.
+
+<Tabs syncKey="operating-system">
+<TabItem label="Windows (MSYS2)">
+
+```shell
+pacman -S --needed --disable-download-timeout mingw-w64-x86_64-clang mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_gfx mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-SDL2_image mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_net mingw-w64-x86_64-civetweb
+```
+
+</TabItem>
+<TabItem label="MacOS">
+
+```shell
+brew install pkgconfig sdl2 sdl2_ttf sdl2_image sdl2_net sdl2_mixer sdl2_gfx libpng cmake
+```
+
+</TabItem>
+<TabItem label="Linux (Ubuntu/Debian) and Windows (WSL)">
+
+```shell
+sudo apt-get install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses5-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang
+```
+
+</TabItem>
+</Tabs>
+
+### Compiling Your Code
+
+With C++ programs, you will need to adjust the compiling command to link to any libraries being used. Below you will see the different commands to compile with and without SplashKit.
+
+Now, assuming the code filename is `program.cpp`.
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+As usual, you will compile the SplashKit C++ code using the following command:
+
+```shell
+g++ program.cpp -o test -l SplashKit
+```
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+:::note
+
+When compiling without SplashKit, you may need to include more compiler flags for any libraries used.
+
+:::
+
+You can use this command to compile the code below:
+
+<Tabs syncKey="operating-system">
+<TabItem label="Windows (MSYS2)">
+
+```shell
+g++ program.cpp -o test -lSDL2_image -lmingw32 -mwindows -lSDL2main -lSDL2
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 sdl2_image
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+<TabItem label="MacOS">
+
+```shell
+g++ program.cpp -o test -L/opt/homebrew/Cellar/sdl2_image/2.8.8/lib -lSDL2_image -L/opt/homebrew/lib -lSDL2 -I/opt/homebrew/include -I/opt/homebrew/include/SDL2 -D_THREAD_SAFE
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 sdl2_image
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+<TabItem label="Linux (Ubuntu/Debian) and Windows (WSL)">
+
+```shell
+g++ program.cpp -o test -lSDL2_image -lSDL2 -I/usr/include/SDL2 -D_REENTRANT
+```
+
+_Note: If you have issues, you can find out the compiling flags needed using these commands_:
+
+```shell
+pkg-config --libs sdl2 SDL2_image
+pkg-config --cflags sdl2
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+:::tip[Run Your Program]
+
+To run the compiled program using one of the commands above, you would use `./test` (or `./test.exe` if using MSYS2/MINGW64).
+
+:::
+
+## SDL2 Versions of SplashKit Functions
+
+The following sections show how to create the same functionality given in SplashKit, but without using SplashKit. These code examples are using **SDL2** which is actually one of SplashKit's dependencies, and are quite similar to what is happening behind the scenes when using SplashKit functions.
+
+### Open Window
+
+The following code shows how to open a Window with and without SplashKit:
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={openWindowCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={openWindowCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>
+
+### Quit Requested
+
+The following code shows how to open a Window and hold the window open until the user quits, with and without SplashKit:
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={quitRequestedCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={quitRequestedCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>
+
+### Draw Rectangle
+
+The following code shows how to draw a rectangle to the screen (Window), with and without SplashKit:
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={drawRectangleCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={drawRectangleCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>
+
+### Draw Bitmap
+
+The following code shows how to display a bitmap image on the screen (Window), with and without SplashKit:
+
+:::note[Resources]
+
+To test the code below, you can download these [**Resources**](/guides/beyond-splashkit/resources/BeyondSplashKit_Graphics_Resources.zip).
+
+:::
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={drawBitmapCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={drawBitmapCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>
+
+## Combining Functionality
+
+You can then combine the elements above into a small program such as the eyedropper (colour picker) program shown below.
+
+### Eyedropper Program
+
+This program combines the above into a small program that will change the screen (Window) colour based on the colour of the image at the point where you click on it:
+
+:::note[Resources]
+
+To test the code below, you can download these [**Resources**](/guides/beyond-splashkit/resources/BeyondSplashKit_Graphics_Resources.zip).
+
+:::
+
+<Tabs syncKey="beyond-splashkit">
+<TabItem label="With SplashKit">
+
+<Code code={eyedropperCode_withSK} lang="cpp" />
+
+</TabItem>
+<TabItem label="Without SplashKit">
+
+<Code code={eyedropperCode_noSK} lang="cpp" />
+
+</TabItem>
+</Tabs>
+
+---

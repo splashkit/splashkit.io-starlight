@@ -1,0 +1,20 @@
+{
+    "guides": [
+        {
+            "name": "Get Started with SplashKit Audio",
+            "functions": [
+                    "set_font_style_name_as_string",
+                    "draw_text_font_as_string",
+                    "load_sound_effect",
+                    "refresh_screen_with_target_fpsm",
+                    "key_typed",
+                    "sound_effect_named",
+                    "play_sound_effect",
+                    "clear_screen",
+                    "fill_rectangle",
+                    "draw_line"
+            ],
+            "url": "/guides/audio/getting-started-with-audio/"
+        }
+    ]
+}

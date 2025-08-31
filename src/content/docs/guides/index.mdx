@@ -5,14 +5,274 @@ sidebar:
   order: 0
 ---
 
+import { CardGrid, LinkCard, Tabs, TabItem } from "@astrojs/starlight/components";
 
 :::tip[SplashKit SDK]
-
 SplashKit provides a versatile set of categories, encompassing graphics, audio, input, and more, offering developers a comprehensive toolkit for game and multimedia development.
+:::
+
+### Getting Started
+
+*Get started coding with different areas of SplashKit:*
+
+<CardGrid>
+<LinkCard
+  title="Using SplashKit (end of this page)"
+  href="/guides#using-splashkit"
+/>
+<LinkCard
+  title="Drawing using Procedures"
+  href="/guides/graphics/drawing-using-procedures/"
+/>
+<LinkCard
+  title="Double Buffering"
+  href="/guides/graphics/double-buffering/"
+/>
+<LinkCard
+  title="User Inputs in Graphical Applications"
+  href="/guides/input/user-inputs-in-graphical-applications/"
+/>
+<LinkCard
+  title="Loading Resources with Bundles"
+  href="/guides/resources/loading-resources-with-bundles/"
+/>
+<LinkCard
+  title="Get Started with SplashKit Audio"
+  href="/guides/audio/getting-started-with-audio/"
+/>
+<LinkCard
+  title="Using Animations in SplashKit"
+  href="/guides/animations/using-animations/"
+/>
+<LinkCard
+  title="SplashKit Camera"
+  href="/guides/camera/using-splashkit-camera/"
+/>
+<LinkCard
+  title="Useful Utilities"
+  href="/guides/utilities/useful-utilities/"
+/>
+<LinkCard
+  title="Using JSON in SplashKit"
+  href="/guides/json/getting-started-with-json/"
+/>
+<LinkCard
+  title="SplashKit Colors"
+  href="/guides/color/splashkit-colors/"
+/>
+</CardGrid>
+
+### Raspberry Pi GPIO
+
+*Discover how to use SplashKit on a Raspberry Pi to work with LEDs and buttons:*
+
+<CardGrid>
+<LinkCard
+  title="Get Started with SplashKit GPIO"
+  href="/guides/raspberry-gpio/0-blink-led/"
+/>
+<LinkCard
+  title="Reading Button Presses"
+  href="/guides/raspberry-gpio/1-read-button-press/"
+/>
+<LinkCard
+  title="Using PWM to control LED brightness"
+  href="/guides/raspberry-gpio/2-pwm-control-led/"
+/>
+<LinkCard
+  title="Modify PWM through button presses"
+  href="/guides/raspberry-gpio/3-pwm-button-control/"
+/>
+</CardGrid>
+
+### Physics
+
+*Learn more about using vectors and related functionality in SplashKit:*
+
+<CardGrid>
+<LinkCard
+  title="Introduction to Vectors"
+  href="/guides/physics/0-introduction-to-vectors/"
+/>
+<LinkCard
+  title="Vector Magnitudes"
+  href="/guides/physics/1-vector-magnitudes/"
+/>
+<LinkCard
+  title="Vector Arithmetic"
+  href="/guides/physics/2-vector-arithmetic/"
+/>
+<LinkCard
+  title="Vector Angles"
+  href="/guides/physics/3-vector-geometry-angles/"
+/>
+<LinkCard
+  title="Resolving Collisions Using Vectors"
+  href="/guides/physics/4-collision-detection-using-vectors/"
+/>
+<LinkCard
+  title="Collisions and Gravity"
+  href="/guides/physics/5-collisions-and-gravity/"
+/>
+<LinkCard
+  title="Raycasting Basics"
+  href="/guides/physics/6-raycasting-basics/"
+/>
+<LinkCard
+  title="Raycasting and Illumination"
+  href="/guides/physics/7-raycasting-light/"
+/>
+<LinkCard
+  title="2D to 3D Projection"
+  href="/guides/physics/8-3d-projection-raycasting/"
+/>
+</CardGrid>
+
+### Interface
+
+*See how you can create user interface panels with different layouts and styling:*
+
+<CardGrid>
+<LinkCard
+  title="Getting Started Creating User Interfaces"
+  href="/guides/interface/getting-started-with-interfaces/"
+/>
+<LinkCard
+  title="Layouts in User Interfaces"
+  href="/guides/interface/interface-layouts/"
+/>
+<LinkCard
+  title="Styling User Interfaces"
+  href="/guides/interface/interface-styling/"
+/>
+</CardGrid>
+
+### Networking
+
+*Find out more about using SplashKit's web server functionality:*
+
+<CardGrid>
+<LinkCard
+  title="Getting Started With Servers"
+  href="/guides/networking/getting-started-with-servers/"
+/>
+<LinkCard
+  title="Routing With Servers"
+  href="/guides/networking/routing-with-servers/"
+/>
+<LinkCard
+  title="How to make a RESTful API call using SplashKit"
+  href="/guides/networking/restful-api-call/"
+/>
+</CardGrid>
+
+## Using SplashKit
+
+### Compile and Run SplashKit Code
+
+Here is a basic overview of how to compile and run SplashKit programs in C++, C# and python.
+
+<Tabs syncKey="code-language">
+<TabItem label="C++">
+
+To compile C++ SplashKit code, you will use the following command (assuming the code file is named `program.cpp`):
+
+```shell
+clang++ program.cpp -l SplashKit -o test_program
+```
+
+Or:
+
+```shell
+g++ program.cpp -l SplashKit -o test_program
+```
+
+Then you can run the program with:
+
+```shell
+./test_program
+```
+
+Or, if using MSYS2 (MINGW64):
+
+```shell
+./test_program.exe
+```
+
+:::note[With 'skm']
+
+You can also compile your C++ code using the following command:
+
+```shell
+skm clang++ program.cpp -o test_program
+```
+
+Or:
+
+```shell
+skm g++ program.cpp -o test_program
+```
 
 :::
 
-import GuidesList from "../../../components/Guides.astro";
+</TabItem>
+<TabItem label="C#">
 
-<GuidesList>
-</GuidesList>
+To run C# SplashKit code with dotnet, you will need to first run the command below:
+
+```shell
+dotnet add package SplashKit
+```
+
+This will add the SplashKit NuGet package, to link the SplashKit SDK to your project.
+
+Then you can run the program using:
+
+```shell
+dotnet run
+```
+
+:::note[With 'skm']
+
+You can also build and run your C# code using the following command:
+
+```shell
+skm dotnet run
+```
+
+:::
+
+</TabItem>
+<TabItem label="Python">
+
+To run SplashKit python code, you will use the following command (assuming the code file is named `program.py`):
+
+```shell
+python3 program.py
+```
+
+:::note[With 'skm']
+
+You can also run your Python code using the following command:
+
+```shell
+skm python3 program.py
+```
+
+:::
+
+</TabItem>
+</Tabs>
+
+### More Information
+
+More detailed guides on getting started with SplashKit coming soon...
+
+For now, you can look at these guides in the [programmers.guide](https://programmers.guide/) online textbook:
+
+| Language | Overview                                      | Link                                                                                                                                   |
+| -------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| C#       | Setting up a basic SplashKit C# project.      | [**Your First Program**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/1-hello-world-cli/)          |
+| C#       | Building a graphical (GUI) SplashKit program. | [**Build Graphical Hello World**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/1-hello-world-cli/) |
+| C++      | Setting up a basic SplashKit C++ program.     | [**Hello from C/C++**](https://programmers.guide/book/part-0-getting-started/3-building-programs/1-tour/3-hello-cpp/)                  |
+| C++      | More in-depth C++ guide.                      | [**Building a C/C++ Program**](https://programmers.guide/book/part-2-organised-code/1-starting-cpp/2-trailside/1-0-building-cpp/)      |

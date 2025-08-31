@@ -18,7 +18,7 @@
                 "key_down",
                 "assign_animation"
             ],
-            "url": "/guides/animations/0-using-animations/"
+            "url": "/guides/animations/using-animations/"
         }
     ],
     "audio": [
@@ -36,7 +36,7 @@
                 "fill_rectangle",
                 "draw_line"
             ],
-            "url": "/guides/audio/0-getting-started-with-audio/"
+            "url": "/guides/audio/getting-started-with-audio/"
         }
     ],
     "camera": [
@@ -54,7 +54,7 @@
                 "fill_circle",
                 "refresh_screen_with_target_fps"
             ],
-            "url": "/guides/camera/0-using-splashkit-camera/"
+            "url": "/guides/camera/using-splashkit-camera/"
         }
     ],
     "graphics": [
@@ -69,21 +69,26 @@
                 "refresh_screen",
                 "delay"
             ],
-            "url": "/guides/graphics/0-drawing-using-procedures/"
+            "url": "/guides/graphics/drawing-using-procedures/"
         },
         {
             "name": "Understanding Double Buffering",
             "functions": [],
-            "url": "/guides/graphics/1-double-buffering/"
+            "url": "/guides/getting-started/double-buffering/"
         }
     ],
     "input": [
         {
-            "name": "Reading Text",
+            "name": "User Inputs in Graphical Applications",
             "functions": [
-                "write",
-                "read_line",
-                "write_line",
+                "color_red",
+                "color_yellow",
+                "color_white",
+                "clear_screen",
+                "window_close_requested",
+                "mouse_down",
+                "mouse_up",
+                "mouse_movement",
                 "open_window",
                 "quit_requested",
                 "load_font",
@@ -100,24 +105,7 @@
                 "draw_text",
                 "refresh_screen_with_target_fps"
             ],
-            "url": "/guides/input/0-reading-text/"
-        },
-        {
-            "name": "Using Mouse Inputs",
-            "functions": [
-                "color_red",
-                "color_yellow",
-                "color_white",
-                "process_events",
-                "mouse_clicked",
-                "clear_screen",
-                "refresh_window",
-                "window_close_requested",
-                "mouse_down",
-                "mouse_up",
-                "mouse_movement"
-            ],
-            "url": "/guides/input/1-mouse-button-inputs/"
+            "url": "/guides/input/user-inputs-in-graphical-applications/"
         }
     ],
     "interface": [
@@ -134,35 +122,23 @@
                 "draw_interface",
                 "refresh_screen"
             ],
-            "url": "/guides/interface/00-interface/"
+            "url": "/guides/interface/getting-started-with-interfaces/"
         }
     ],
     "json": [
         {
-            "name": "Introduction to JSON in SplashKit",
+            "name": "Using JSON in SplashKit",
             "functions": [
                 "json_from_file",
                 "json_read_string",
                 "write_line",
                 "free_json",
-                "json_has_key"
-            ],
-            "url": "/guides/json/0-json_intro/"
-        },
-        {
-            "name": "Reading JSON Data in SplashKit",
-            "functions": [
+                "json_has_key",
                 "json_read_array_of_string",
                 "write_line",
                 "write",
                 "json_read_object",
-                "json_read_number_as_int"
-            ],
-            "url": "/guides/json/1-json_reading/"
-        },
-        {
-            "name": "Writing JSON Data in SplashKit",
-            "functions": [
+                "json_read_number_as_int",
                 "create_json",
                 "json_set_string",
                 "json_set_bool",
@@ -175,7 +151,7 @@
                 "json_read_object",
                 "json_read_number_as_int"
             ],
-            "url": "/guides/json/2-json_writing/"
+            "url": "/guides/json/getting-started-with-json/"
         }
     ],
     "networking": [
@@ -189,7 +165,7 @@
                 "send_response",
                 "send_html_file_response"
             ],
-            "url": "/guides/networking/0-getting-started-with-servers/"
+            "url": "/guides/networking/getting-started-with-servers/"
         },
         {
             "name": "Routing With Servers",
@@ -202,7 +178,7 @@
                 "send_html_file_response",
                 "is_get_request_for"
             ],
-            "url": "/guides/networking/1-routing-with-servers/"
+            "url": "/guides/networking/routing-with-servers/"
         },
         {
             "name": "How to make a RESTful API call using SplashKit",
@@ -221,7 +197,7 @@
                 "json_read_number_as_int",
                 "json_read_string"
             ],
-            "url": "/guides/networking/2-restful-api-call/"
+            "url": "/guides/networking/restful-api-call/"
         }
     ],
     "physics": [
@@ -394,7 +370,7 @@
         {
             "name": "Loading Resources with Bundles",
             "functions": [],
-            "url": "/guides/resource-bundles/0-loading-resources-with-bundles/"
+            "url": "/guides/resources/loading-resources-with-bundles/"
         }
     ],
     "utilities": [
@@ -403,6 +379,7 @@
             "functions": [
                 "convert_to_integer",
                 "write",
+                "write_line",
                 "write_line_int",
                 "convert_to_double",
                 "write_line_double",
@@ -414,7 +391,7 @@
                 "to_lowercase",
                 "trim"
             ],
-            "url": "/guides/utilities/0-useful-utilities/"
+            "url": "/guides/utilities/useful-utilities/"
         }
     ]
 }

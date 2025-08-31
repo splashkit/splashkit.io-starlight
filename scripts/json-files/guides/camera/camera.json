@@ -1,0 +1,20 @@
+{
+    "guides": [
+        {
+            "name": "SplashKit Camera",
+            "functions": [
+                "camera_x",
+                "camera_y",
+                "move_camera_by",
+                "key_down",
+                "draw_text_no_font_no_size_with_options",
+                "clear_screen",
+                "fill_rectangle",
+                "draw_text_no_font_no_size_with_options",
+                "fill_circle",
+                "refresh_screen_with_target_fps"
+            ],
+            "url": "/guides/camera/using-splashkit-camera/"
+        }
+    ]
+}
