@@ -1,0 +1,7 @@
+Checking Button Clicks with button_clicked Function
+
+This example demonstrates how to check if a button has been clicked using the `button_clicked()` function. The program will create buttons and detect when they are clicked, showing interactive UI functionality.
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/interface/button_clicked-1-example-resources.zip).
+::: 
