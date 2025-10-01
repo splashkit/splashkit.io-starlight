@@ -12,17 +12,20 @@ namespace LineIntersectsRectExample
             Point2D startPt = SplashKit.PointAt(150, 100);
             Rectangle rectangle = SplashKit.RectangleFrom(250, 200, 300, 200);
 
+            // Define a draggable line
+            Point2D endPt = SplashKit.MousePosition();
+            Line line = SplashKit.LineFrom(startPt, endPt);
+
             while (!SplashKit.QuitRequested())
             {
                 SplashKit.ProcessEvents();
 
-                // Define a draggable line
-                Point2D endPt = SplashKit.MousePosition();
-                Line line = SplashKit.LineFrom(startPt, endPt);
-
-                SplashKit.ClearScreen();
+                // Update draggable line
+                endPt = SplashKit.MousePosition();
+                line = SplashKit.LineFrom(startPt, endPt);
 
                 // Draw the line and rectangle
+                SplashKit.ClearScreen();
                 SplashKit.DrawLine(Color.Black, line);
                 SplashKit.DrawCircle(Color.Black, SplashKit.CircleAt(startPt, 5));
                 SplashKit.DrawCircle(Color.Black, SplashKit.CircleAt(endPt, 5));
@@ -37,9 +40,9 @@ namespace LineIntersectsRectExample
                 {
                     SplashKit.DrawText("Line and Rectangle do not intersect", Color.Green, 250, 100);
                 }
-
                 SplashKit.RefreshScreen();
             }
+
             SplashKit.CloseAllWindows();
         }
     }

@@ -1,1 +1,1 @@
-A draggable line interacting with a static rectangle.
+Avoid the Rectangle
