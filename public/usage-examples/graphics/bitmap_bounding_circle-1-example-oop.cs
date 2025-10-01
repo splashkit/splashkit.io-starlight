@@ -8,7 +8,7 @@ namespace BitmapBoundingCircleExample
         {
             SplashKit.OpenWindow("Bitmap Bounding Circle", 800, 600);
 
-            Bitmap vertical_bitmap = SplashKit.LoadBitmap("vertical_bitmap", "image1.jpeg");
+            Bitmap vertical_bitmap = SplashKit.LoadBitmap("vertical_bitmap", "image1.png");
             Bitmap horizontal_bitmap = SplashKit.LoadBitmap("horizontal_bitmap", "image2.png");
 
             Circle vert_bitmap_circle = SplashKit.BitmapBoundingCircle(vertical_bitmap, SplashKit.PointAt(210, 210));

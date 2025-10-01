@@ -2,7 +2,7 @@ from splashkit import *
 
 open_window("Bitmap Bounding Circle", 800, 600)
 
-vertical_bitmap = load_bitmap("vertical_bitmap", "image1.jpeg")
+vertical_bitmap = load_bitmap("vertical_bitmap", "image1.png")
 horizontal_bitmap = load_bitmap("horizontal_bitmap", "image2.png")
 
 vert_bitmap_circle = bitmap_bounding_circle(vertical_bitmap, point_at(210, 210))

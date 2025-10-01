@@ -4,7 +4,7 @@ int main()
 {
     open_window("Bitmap Bounding Circle", 800, 600);
 
-    bitmap vertical_bitmap = load_bitmap("vertical_bitmap", "image1.jpeg");
+    bitmap vertical_bitmap = load_bitmap("vertical_bitmap", "image1.png");
     bitmap horizontal_bitmap = load_bitmap("horizontal_bitmap", "image2.png");
 
     circle vert_bitmap_circle = bitmap_bounding_circle(vertical_bitmap, point_at(210, 210));

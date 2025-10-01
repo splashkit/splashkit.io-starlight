@@ -3,7 +3,7 @@ using static SplashKitSDK.SplashKit;
 
 OpenWindow("Bitmap Bounding Circle", 800, 600);
 
-Bitmap vertical_bitmap = LoadBitmap("vertical_bitmap", "image1.jpeg");
+Bitmap vertical_bitmap = LoadBitmap("vertical_bitmap", "image1.png");
 Bitmap horizontal_bitmap = LoadBitmap("horizontal_bitmap", "image2.png");
 
 Circle vert_bitmap_circle = BitmapBoundingCircle(vertical_bitmap, PointAt(210, 210));
