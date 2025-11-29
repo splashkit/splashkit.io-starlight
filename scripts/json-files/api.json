@@ -73641,6 +73641,57 @@
         }
       },
       {
+        "signature": "unsigned short get_alpha_font_14_seg(char ascii_char);",
+        "name": "get_alpha_font_14_seg",
+        "method_name": null,
+        "unique_global_name": "get_alpha_font_14_seg",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts an ASCII character to a binary value to be used with the Quad 14-segment display module (HT16K33 backpack).",
+        "brief": null,
+        "return": {
+          "type": "unsigned short",
+          "description": "The binary value used to display a character on the 14-segment display.",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "ascii_char": {
+            "type": "char",
+            "description": "The ascii character to be converted to a 16-bit binary value.",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "raspberry",
+          "static": "raspberry"
+        },
+        "signatures": {
+          "python": [
+            "def get_alpha_font_14_seg(ascii_char):"
+          ],
+          "cpp": [
+            "unsigned short get_alpha_font_14_seg(char ascii_char)"
+          ],
+          "csharp": [
+            "public static ushort SplashKit.GetAlphaFont14Seg(char asciiChar);"
+          ],
+          "pascal": [
+            "function GetAlphaFont14Seg(asciiChar: Char): Word"
+          ]
+        }
+      },
+      {
         "signature": "int gpio_pin_to_int(gpio_pin_value value);",
         "name": "gpio_pin_to_int",
         "method_name": null,
