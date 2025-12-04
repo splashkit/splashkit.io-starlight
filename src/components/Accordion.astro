@@ -38,8 +38,18 @@ let uniqueContent = uniqueID + "-content";
                     if (accordionContent != null) {
                         if (accordionContent.style.display !== "none") {
                             accordionContent.style.display = "none";
+                            button.style.borderTopLeftRadius = "28px";
+                            button.style.borderTopRightRadius = "28px";
+                            button.style.borderBottomLeftRadius = "28px";
+                            button.style.borderBottomRightRadius = "28px";
+                            button.style.paddingBottom = "8px";
                         } else {
                             accordionContent.style.display = "block";
+                            button.style.borderTopLeftRadius = "24px";
+                            button.style.borderTopRightRadius = "24px";
+                            button.style.borderBottomLeftRadius = "0";
+                            button.style.borderBottomRightRadius = "0";
+                            button.style.paddingBottom = "14px";
                         }
                     }
                 };
@@ -53,9 +63,10 @@ let uniqueContent = uniqueID + "-content";
 <style>
     .accordionButton {
         margin-top: 10px;
+        /* margin-bottom: 3px; */
         padding: 0.5rem 1.25rem;
         border: 2px solid #ddd;
-        border-radius: 50px;
+        border-radius: 28px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
@@ -63,14 +74,16 @@ let uniqueContent = uniqueID + "-content";
         color: black;
     }
     .accordionButton:hover {
-        border: 2px solid var(--sl-color-white);
+        border: 2px solid var(--sl-color-white) !important;
     }
     .accordionContent {
         padding: 10px;
+        padding-left: 15px;
         background: var(--sl-color-gray-7);
-        border: 1px solid #ddd;
+        border: 1px solid var(--sl-color-gray-5);
         border-radius: 4px;
-        margin-top: 5px;
+        border-top-left-radius: 0;
+        margin-top: -1px;
     }
     .accordionContentList {
         list-style-type: none;
