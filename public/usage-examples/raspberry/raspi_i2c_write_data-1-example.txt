@@ -1,0 +1,10 @@
+LED Text Scrolling
+
+The following example requires the [Quad 14 Segment Alphanumeric Display Module](https://www.jaycar.com.au/quad-14-segment-alphanumeric-display-module/p/XC3715), connected to the Raspberry Pi GPIO pins using the wiring diagram below.
+
+<details>
+<summary>Wiring diagram:</summary>
+
+![Quad 14-segment Display wiring diagram](/usage-examples/raspberry/raspi_i2c_write_data-1-wiring-diagram.png)
+
+</details>
