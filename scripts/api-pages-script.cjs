@@ -144,7 +144,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[typedef.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[typedef.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/_/g, "-").replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.structs.forEach((struct) => {
       // Add structs to typeMappings
@@ -152,7 +152,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[struct.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[struct.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-").replace(/_/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
     category.enums.forEach((enumm) => {
       // Add structs to typeMappings
@@ -160,7 +160,7 @@ function Mappings(jsonData) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
-      typeMappings[enumm.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
+      typeMappings[enumm.name] = `[\`${name}\`](/api/${categoryKey.toLowerCase().replace(/\s+/g, "-").replace(/_/g, "-")}/#${name.toLowerCase().replace(/\s+/g, "-")})`;
     });
   }
 }
@@ -489,15 +489,18 @@ const usageExamples = getAllFinishedExamples();
 Mappings(jsonData);
 console.log(`\nGenerating MDX files for API Documentation pages...\n`);
 
-// Please select an option: "animations, audio, camera, color, geometry, graphics, input, json, networking, physics, resource_bundles, resources, sprites, terminal, timers, types, utilities, windows"
+// Please select an option: "animations, audio, camera, color, generative_ai, geometry, graphics, input, json, networking, physics, resource_bundles, resources, sprites, terminal, timers, types, utilities, windows"
 for (const categoryKey in jsonData) {
   const category = jsonData[categoryKey];
-  let input = categoryKey;
+  let input = categoryKey.replace(/_/g, "-");
   const categoryFunctions = category.functions;
   let mdxContent = "";
-  name = input.split("_")
+  name = input.split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" "); //name of the category
+  if (name == "Generative Ai") {
+    name = "Generative AI";
+  }
   const functionNames = category.functions.map((func) => func.name);
 
   mdxContent += "---\n";
