@@ -1,0 +1,1 @@
+Draws a rectangle in a color based on a string derived RGBA hex code. The rectangle's RGB values are also displayed on screen
