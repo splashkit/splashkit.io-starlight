@@ -1,0 +1,68 @@
+---
+title: "#include <string> 'string' file not found"
+sidebar:
+  label: 11. 'string' file not found
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::caution[Issue:]
+
+When trying to run `skm global install` (or other commands that include the global install) in the terminal, you may encounter an error related to the `#include <string>` line in the types.h file: `fatal error: 'string' file not found`, as shown below. This is most commonly caused by an issue with the Command Line Tools.
+
+![string error during global install](/images/troubleshoot/macos/string-issue-global-install.png)
+
+:::
+
+---
+
+## Solution(s)
+
+### 1: Check if Command Line Tools needs to be updated
+
+<Steps>
+
+1. To check for software updates, run the following command:
+
+    ```shell
+    softwareupdate --list
+    ```
+
+    :::note
+
+    If you need to update the Command Line tools, you will see something that looks like this:
+
+    ![Running softwareupdate --list terminal command](/images/troubleshoot/macos/software-update-list.png)
+
+    Look for the "Label" keyword (green box), and then copy the Label text (orange box) to use in the next step.
+
+    :::
+
+2. If you see any updates available, you can either:
+
+    <Steps>
+
+    1. Open *System Settings*, then go to *General* > *Software Update* and install from there.
+
+    2. Or, run the following command in the terminal:
+
+        ```shell
+        softwareupdate --install "<product name>"
+        ```
+
+        Replace `<product name>` with the text you copied in the previous step.
+
+        :::note
+
+        Using the example shown above, the commmand would look like this:
+
+        ![Running softwareupdate --install terminal command](/images/troubleshoot/macos/software-update-clt-for-xcode.png)
+
+        :::
+
+    </Steps>
+
+</Steps>
+
+---
