@@ -38,6 +38,28 @@
             ]
         }
     ],
+    "color": [
+        {
+            "funcKey": "string_to_color",
+            "title": "Color from Hex Code",
+            "url": "/api/color/#string-to-color",
+            "functions": [
+                "open_window",
+                "rectangle_from",
+                "clear_screen",
+                "color_white",
+                "fill_rectangle_record",
+                "draw_text_no_font_no_size",
+                "color_black",
+                "red_of",
+                "green_of",
+                "blue_of",
+                "refresh_screen",
+                "delay",
+                "close_all_windows"
+            ]
+        }
+    ],
     "geometry": [
         {
             "funcKey": "center_point",
@@ -1219,6 +1241,25 @@
                 "color_black",
                 "refresh_screen",
                 "delay",
+                "close_all_windows"
+            ]
+        },
+        {
+            "funcKey": "option_scale_bmp",
+            "title": "Ring Flying Towards The Screen",
+            "url": "/api/graphics/#option-scale-bmp",
+            "functions": [
+                "create_bitmap",
+                "clear_bitmap",
+                "color_black",
+                "fill_circle_on_bitmap",
+                "color_white",
+                "open_window",
+                "quit_requested",
+                "process_events",
+                "clear_screen",
+                "draw_bitmap_with_options",
+                "refresh_screen_with_target_fps",
                 "close_all_windows"
             ]
         },
