@@ -36,6 +36,28 @@
                 "free_all_music",
                 "close_all_windows"
             ]
+        },
+        {
+            "funcKey": "stop_music",
+            "title": "Stop/Start Music",
+            "url": "/api/audio/#stop-music",
+            "functions": [
+                "audio_ready",
+                "open_audio",
+                "load_music",
+                "play_music",
+                "open_window",
+                "quit_requested",
+                "process_events",
+                "mouse_clicked",
+                "music_playing",
+                "clear_screen",
+                "color_white",
+                "draw_text_no_font_no_size",
+                "color_black",
+                "refresh_screen",
+                "free_all_music"
+            ]
         }
     ],
     "color": [

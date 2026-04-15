@@ -30,7 +30,6 @@ namespace StopMusicExample
                     {
                         // Stop if playing
                         SplashKit.StopMusic();
-                        // music.Stop(); (Alternative to line above)
                     }
                     else
                     {
