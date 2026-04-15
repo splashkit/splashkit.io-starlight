@@ -3,6 +3,7 @@
 int main()
 {
     open_window("String To Color", 800, 600);
+    
     // Change this string's value to produce different colors ↓
     string color_hex = "#921e64d9";
     color color = string_to_color(color_hex);
