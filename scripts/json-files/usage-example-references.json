@@ -1322,6 +1322,29 @@
             ]
         }
     ],
+    "interface": [
+        {
+            "funcKey": "button",
+            "title": "Button Click Counter",
+            "url": "/api/interface/#button",
+            "functions": [
+                "open_window",
+                "quit_requested",
+                "process_events",
+                "clear_screen_to_white",
+                "draw_text_no_font_no_size",
+                "color_black",
+                "start_panel",
+                "rectangle_from",
+                "end_panel",
+                "color_red",
+                "color_blue",
+                "color_green",
+                "refresh_screen_with_target_fps",
+                "close_all_windows"
+            ]
+        }
+    ],
     "networking": [
         {
             "funcKey": "dec_to_hex",
