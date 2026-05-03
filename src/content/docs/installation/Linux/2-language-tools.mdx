@@ -51,6 +51,38 @@ If the .NET installer does not automatically update your shell profile, you can 
 
 For C++, you should already have the necessary tools if you have a standard Linux development environment. No additional setup is required specifically for SplashKit.
 
+:::note
+
+If you have issues with the SplashKit installation, when building the library, you may need to install the dependencies separately.
+
+Run the following command to install the dependencies for your distro:
+
+<Tabs syncKey="linux-distro">
+   <TabItem label="Ubuntu/Debian">
+
+   ```shell
+   sudo apt -y install cmake libpng-dev libcurl4-openssl-dev libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev libsdl2-ttf-dev libmikmod-dev libncurses-dev libbz2-dev libflac-dev libvorbis-dev libwebp-dev libfreetype6-dev build-essential clang libstdc++-12-dev g++ gdb jq moreutils
+   ```
+
+   </TabItem>
+   <TabItem label="Arch">
+
+   ```shell
+   sudo pacman -S --needed base-devel cmake libpng sdl2 sdl2_mixer sdl2_gfx sdl2_image sdl2_net sdl2_ttf libmikmod clang jq moreutils
+   ```
+
+   </TabItem>
+   <TabItem label="Fedora">
+
+   ```shell
+   sudo dnf install cmake libpng-devel libcurl-devel SDL2-devel SDL2_mixer-devel SDL2_gfx-devel SDL2_image-devel SDL2_net-devel SDL2_ttf-devel libmikmod-devel ncurses-devel bzip2-devel flac-devel libvorbis-devel libwebp-devel freetype-devel clang jq moreutils
+   ```
+
+   </TabItem>
+</Tabs>
+
+:::
+
 ### Python
 
 Most Linux distributions include Python pre-installed. If Python isn’t installed, or if you need additional Python tools, follow the steps below.
