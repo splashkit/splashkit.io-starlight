@@ -121,7 +121,7 @@ export default defineConfig({
                 { label: "Loading Resources with Bundles", link: "guides/resources/loading-resources-with-bundles" },
                 { label: "Getting Started With Audio", link: "guides/audio/getting-started-with-audio" },
                 { label: "Using Animations", link: "guides/animations/using-animations" },
-                { label: "SplashKit Camera", link: "guides/input/using-splashkit-camera" },
+                { label: "SplashKit Camera", link: "guides/camera/using-splashkit-camera" },
                 { label: "Useful Utilities", link: "guides/utilities/useful-utilities" },
                 { label: "Using JSON in SplashKit", link: "guides/json/getting-started-with-json" },
                 { label: "SplashKit Colors", link: "guides/color/splashkit-colors" },
