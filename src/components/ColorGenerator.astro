@@ -337,15 +337,15 @@ let hsbPythonCode = "hsb_color(180.00, 0.50, 0.50)";
           <!-- Hue slider -->
           <div>
             <label for="hue-slider"
-              >Hue: <span id="hue-value">180.00</span></label
+              >Hue: <span id="hue-value">0.5</span></label
             >
             <input
               id="hue-slider"
               type="range"
               min="0"
-              max="360"
-              step="1"
-              value="180"
+              max="1"
+              step="0.01"
+              value="0.5"
             />
           </div>
           <!-- Saturation slider -->
@@ -516,26 +516,26 @@ let hsbPythonCode = "hsb_color(180.00, 0.50, 0.50)";
 
       // Update preview box color
       if (hsbPreview)
-        hsbPreview.style.backgroundColor = `hsl(${hue}, ${saturation * 100}%, ${brightness * 50}%)`;
+        hsbPreview.style.backgroundColor = `hsl(${hue * 360}, ${saturation * 100}%, ${brightness * 50}%)`;
 
       // Update slider colors
       if (hueSlider) {
         hueSlider.style.setProperty(
           "--hue-thumb-color",
-          `hsl(${hue}, 100%, 50%)`,
+          `hsl(${hue * 360}, 100%, 50%)`,
         );
       }
       if (saturationSlider) {
-        saturationSlider.style.background = `linear-gradient(to right, hsl(${hue}, 0%, ${brightness * 50}%), hsl(${hue}, 100%, ${brightness * 50}%))`;
+        saturationSlider.style.background = `linear-gradient(to right, hsl(${hue * 360}, 0%, ${brightness * 50}%), hsl(${hue * 360}, 100%, ${brightness * 50}%))`;
         saturationSlider.style.setProperty(
           "--saturation-thumb-color",
-          `hsl(${hue}, ${saturation * 100}%, ${brightness * 50}%)`,
+          `hsl(${hue * 360}, ${saturation * 100}%, ${brightness * 50}%)`,
         );
       }
       if (brightnessSlider) {
         brightnessSlider.style.setProperty(
           "--brightness-thumb-color",
-          `hsl(${hue}, 0%, ${brightness * 100}%)`,
+          `hsl(${hue * 360}, 0%, ${brightness * 100}%)`,
         );
       }
 
