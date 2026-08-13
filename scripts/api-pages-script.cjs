@@ -348,9 +348,12 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
 
         // Description
         let exampleNum = exampleKey.replace(/\D/g, '');
-        mdxData += `**Example ${exampleNum}**: `;
+        mdxData += "<details>\n";
+        mdxData += `<summary>Example ${exampleNum}: `;
         let exampleTxt = fs.readFileSync(categoryFilePath + "/" + exampleTxtKey);
-        mdxData += exampleTxt.toString();
+        mdxData += exampleTxt.toString().split(/\r?\n/)[0]; // Get first line of txt file as heading
+        mdxData += "</summary>";
+        mdxData += exampleTxt.toString().split(/\r?\n/).slice(1).join('\n')
         mdxData += "\n\n";
 
         // Code tabs
@@ -444,6 +447,7 @@ function getUsageExampleContent(jsonData, categoryKey, groupName, functionKey) {
           }
         }
       }
+      mdxData += "\n</details>\n";
     });
   }
   return mdxData;
