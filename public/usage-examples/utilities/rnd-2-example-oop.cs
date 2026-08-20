@@ -16,7 +16,7 @@ namespace RndExample
             SplashKit.WriteLine("4. Will I find what I'm looking for?");
             
             SplashKit.WriteLine("Your choice (1-4): ");
-            int choice = SplashKit.ConvertToInteger(SplashKit.ReadLine());
+            int choice = SplashKit.ToInteger(SplashKit.ReadLine());
             
             SplashKit.WriteLine("\nShaking the Magic 8-Ball...");
             SplashKit.Delay(2000); // Add suspense

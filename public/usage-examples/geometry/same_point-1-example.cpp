@@ -17,8 +17,8 @@ point_2d get_point(string prompt)
     }
 
     // Convert input
-    double guess_x = convert_to_double(coords[0]);
-    double guess_y = convert_to_double(coords[1]);
+    double guess_x = to_double(coords[0]);
+    double guess_y = to_double(coords[1]);
     return point_at(guess_x, guess_y);
 }
 

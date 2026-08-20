@@ -19,7 +19,7 @@ int main()
     }
 
     // Convert input to integer
-    int number = convert_to_integer(input);
+    int number = to_integer(input);
     write_line("Great! You've entered a valid integer: " + std::to_string(number));
 
     write_line("Thank you for using the Integer Validation Checker!");

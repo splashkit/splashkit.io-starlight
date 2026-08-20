@@ -10,7 +10,7 @@ WriteLine("3. Should I take that risk?");
 WriteLine("4. Will I find what I'm looking for?");
 
 WriteLine("Your choice (1-4): ");
-int choice = ConvertToInteger(ReadLine());
+int choice = ToInteger(ReadLine());
 
 WriteLine("\nShaking the Magic 8-Ball...");
 Delay(2000); // Add suspense

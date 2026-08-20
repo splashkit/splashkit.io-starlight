@@ -14,8 +14,8 @@ def get_point(prompt):
         coords = split(guess_input, ',')
 
     # Convert input
-    guess_x = convert_to_double(coords[0])
-    guess_y = convert_to_double(coords[1])
+    guess_x = to_double(coords[0])
+    guess_y = to_double(coords[1])
     return point_at(guess_x, guess_y)
 
 def main():

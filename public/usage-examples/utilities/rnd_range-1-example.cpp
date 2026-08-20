@@ -12,10 +12,10 @@ int main()
     {
         // Get user input for the range
         write_line("Please enter the minimum number:");
-        min_value = convert_to_integer(read_line());
+        min_value = to_integer(read_line());
 
         write_line("Please enter the maximum number:");
-        max_value = convert_to_integer(read_line());
+        max_value = to_integer(read_line());
 
         // Check if min is smaller than max
         if (min_value >= max_value)
@@ -32,6 +32,6 @@ int main()
 
     write_line("Your lucky number is: " + std::to_string(random_number) + "!");
     write_line("How does it feel? Want to try again?");
-    
+
     return 0;
 }

@@ -10,10 +10,10 @@ int main()
     write_line("2. Is it my lucky day?");
     write_line("3. Should I take that risk?");
     write_line("4. Will I find what I'm looking for?");
-    
+
     write_line("Your choice (1-4): ");
-    int choice = convert_to_integer(read_line());
-    
+    int choice = to_integer(read_line());
+
     write_line("\nShaking the Magic 8-Ball...");
     delay(2000); // Add suspense
 

@@ -17,7 +17,7 @@ while (guess != secretNumber)
     if (IsInteger(input))
     {
         // Convert input string to integer
-        guess = ConvertToInteger(input);
+        guess = ToInteger(input);
 
         // Check if the guess is correct
         if (guess > secretNumber)

@@ -23,7 +23,7 @@ namespace IsIntegerExample
             }
 
             // Convert input to integer
-            int number = SplashKit.ConvertToInteger(input);
+            int number = SplashKit.ToInteger(input);
             SplashKit.WriteLine($"Great! You've entered a valid integer: {number}");
 
             SplashKit.WriteLine("Thank you for using the Integer Validation Checker!");

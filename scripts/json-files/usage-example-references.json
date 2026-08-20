@@ -579,7 +579,7 @@
                 "split",
                 "is_double",
                 "write_line",
-                "convert_to_double",
+                "to_double",
                 "point_at",
                 "main",
                 "inside"
@@ -1330,7 +1330,7 @@
             "functions": [
                 "write_line",
                 "read_line",
-                "convert_to_integer"
+                "to_integer"
             ]
         },
         {
@@ -1712,29 +1712,6 @@
             ]
         },
         {
-            "funcKey": "convert_to_double",
-            "title": "Simple Interest Calculator",
-            "url": "/api/utilities/#convert-to-double",
-            "functions": [
-                "write_line",
-                "amount",
-                "read_line",
-                "rate",
-                "period",
-                "delay"
-            ]
-        },
-        {
-            "funcKey": "convert_to_integer",
-            "title": "Guessing Game",
-            "url": "/api/utilities/#convert-to-integer",
-            "functions": [
-                "write_line",
-                "read_line",
-                "is_integer"
-            ]
-        },
-        {
             "funcKey": "current_ticks",
             "title": "How many ticks?",
             "url": "/api/utilities/#current-ticks",
@@ -1782,7 +1759,7 @@
                 "write_line",
                 "read_line",
                 "valid",
-                "convert_to_integer"
+                "to_integer"
             ]
         },
         {
@@ -1820,6 +1797,32 @@
             "functions": [
                 "write_line",
                 "read_line"
+            ]
+        },
+        {
+            "funcKey": "to_double",
+            "title": "Simple Interest Calculator",
+            "url": "/api/utilities/#to-double",
+            "functions": [
+                "write_line",
+                "user",
+                "write",
+                "amount",
+                "read_line",
+                "rate",
+                "period",
+                "delay",
+                "to_string_from_double_with_precision"
+            ]
+        },
+        {
+            "funcKey": "to_integer",
+            "title": "Guessing Game",
+            "url": "/api/utilities/#to-integer",
+            "functions": [
+                "write_line",
+                "read_line",
+                "is_integer"
             ]
         },
         {

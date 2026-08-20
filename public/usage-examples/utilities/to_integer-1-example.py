@@ -15,7 +15,7 @@ while guess != secret_number:
     # Validate if the input is a valid integer
     if is_integer(input_value):
         # Convert input string to integer
-        guess = convert_to_integer(input_value)
+        guess = to_integer(input_value)
 
         # Check if the guess is correct
         if guess > secret_number:

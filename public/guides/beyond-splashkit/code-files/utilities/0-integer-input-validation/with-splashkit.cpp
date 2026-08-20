@@ -1,4 +1,4 @@
-#include <splashkit.h>
+#include "splashkit.h"
 
 int read_integer(string prompt)
 {
@@ -19,7 +19,7 @@ int read_integer(string prompt)
     }
 
     // Convert to integer and return
-    return convert_to_integer(input_string);
+    return to_integer(input_string);
 }
 
 int main(int argc, char *argv[])

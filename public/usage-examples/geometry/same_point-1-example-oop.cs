@@ -21,8 +21,8 @@ namespace SamePointExample
             }
 
             // Convert input
-            double guessX = SplashKit.ConvertToDouble(coords[0]);
-            double guessY = SplashKit.ConvertToDouble(coords[1]);
+            double guessX = SplashKit.ToDouble(coords[0]);
+            double guessY = SplashKit.ToDouble(coords[1]);
             return SplashKit.PointAt(guessX, guessY);
         }
 

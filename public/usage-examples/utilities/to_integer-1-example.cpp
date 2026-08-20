@@ -19,7 +19,7 @@ int main()
         if (is_integer(input))
         {
             // Convert input string to integer
-            guess = convert_to_integer(input);
+            guess = to_integer(input);
 
             // Check if the guess is correct
             if (guess > secret_number)

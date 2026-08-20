@@ -11,7 +11,7 @@ int main()
     string dec_input = read_line();
 
     // Convert the input string to an unsigned integer
-    unsigned int dec_value = convert_to_integer(dec_input);
+    unsigned int dec_value = to_integer(dec_input);
 
     // Convert the decimal value to hexadecimal format
     string hex_value = dec_to_hex(dec_value);

@@ -1,6 +1,6 @@
 ﻿using SplashKitSDK;
 
-namespace ConvertToIntegerExample
+namespace ToIntegerExample
 {
     public class Program
     {
@@ -23,7 +23,7 @@ namespace ConvertToIntegerExample
                 if (SplashKit.IsInteger(input))
                 {
                     // Convert input string to integer
-                    guess = SplashKit.ConvertToInteger(input);
+                    guess = SplashKit.ToInteger(input);
 
                     // Check if the guess is correct
                     if (guess > secretNumber)

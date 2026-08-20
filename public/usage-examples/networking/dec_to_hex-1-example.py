@@ -9,7 +9,7 @@ write_line("Please enter a decimal number:")
 dec_input = read_line()
 
 # Convert the input string to an unsigned integer
-dec_value = convert_to_integer(dec_input)
+dec_value = to_integer(dec_input)
 
 # Convert the decimal value to hexadecimal
 hex_value = dec_to_hex(dec_value)

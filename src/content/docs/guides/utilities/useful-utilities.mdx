@@ -145,14 +145,14 @@ int main()
 {
     // Convert the string "2017" to an integer 2017
     string some_string = "2017";
-    int some_number = convert_to_integer(some_string);
+    int some_number = to_integer(some_string);
 
     write("The value of some_number is: ");
     write_line(some_number);
 
     // Convert the string "3.14159265358979" to a double ~3.141593
     string pi_string = "3.14159265358979";
-    double pi = convert_to_double(pi_string);
+    double pi = to_double(pi_string);
 
     write("The value of pi is: ");
     write_line(pi);
@@ -172,14 +172,14 @@ using static SplashKitSDK.SplashKit;
 
 //Convert the string "2017" to an integer 2017
 string some_string = "2017";
-int some_number = ConvertToInteger(some_string);
+int some_number = ToInteger(some_string);
 
 Write("The value of some_number is: ");
 WriteLine(some_number);
 
 //Convert the string "3.14159265358979" to a double ~3.141593
 string pi_string = "3.14159265358979";
-double pi = ConvertToDouble(pi_string);
+double pi = ToDouble(pi_string);
 
 Write("The value of pi is: ");
 WriteLine(pi);
@@ -199,14 +199,14 @@ namespace UsefulUtilities
         {
             //Convert the string "2017" to an integer 2017
             string some_string = "2017";
-            int some_number = SplashKit.ConvertToInteger(some_string);
+            int some_number = SplashKit.ToInteger(some_string);
 
             SplashKit.Write("The value of some_number is: ");
             SplashKit.WriteLine(some_number);
 
             //Convert the string "3.14159265358979" to a double ~3.141593
             string pi_string = "3.14159265358979";
-            double pi = SplashKit.ConvertToDouble(pi_string);
+            double pi = SplashKit.ToDouble(pi_string);
 
             SplashKit.Write("The value of pi is: ");
             SplashKit.WriteLine(pi);
@@ -226,14 +226,14 @@ from splashkit import *
 
 ## Convert the string "2017" to an integer 2017
 some_string = "2017"
-some_number = convert_to_integer(some_string)
+some_number = to_integer(some_string)
 
 write("The value of some_number is: ")
 write_line_int(some_number)
 
 ## Convert the string "3.14159265358979" to a double ~3.141593
 pi_string = "3.14159265358979"
-pi = convert_to_double(pi_string)
+pi = to_double(pi_string)
 
 write("The value of pi is: ")
 write_line_double(pi)
@@ -244,7 +244,7 @@ write_line_double(pi)
 
 ### Usage scenario: Converting user input to an integer
 
-Consider you want to write a program that accepts two numbers as input from a user, multiplies them, and outputs the result. One way to accomplish this is to use SplashKit's [Convert To Integer](/api/utilities/#convert-to-integer) function.
+Consider you want to write a program that accepts two numbers as input from a user, multiplies them, and outputs the result. One way to accomplish this is to use SplashKit's [To Integer](/api/utilities/#convert-to-integer) function.
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
@@ -267,8 +267,8 @@ int main()
     snum_2 = read_line();
 
     // Convert user input to integers
-    inum_1 = convert_to_integer(snum_1);
-    inum_2 = convert_to_integer(snum_2);
+    inum_1 = to_integer(snum_1);
+    inum_2 = to_integer(snum_2);
 
     // Compute the result
     result = inum_1 * inum_2;
@@ -281,7 +281,7 @@ int main()
 }
 ```
 
-The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `to_integer` with `to_double`, and using the appropriate data types.
 
 ```cpp
 //...
@@ -291,8 +291,8 @@ double inum_1, inum_2, result;
 
 //...
 
-inum_1 = convert_to_double(snum_1);
-inum_2 = convert_to_double(snum_2);
+inum_1 = to_double(snum_1);
+inum_2 = to_double(snum_2);
 
 //...
 ```
@@ -319,8 +319,8 @@ Write("Enter second number: ");
 snum_2 = ReadLine();
 
 //Convert user input to integers
-inum_1 = ConvertToInteger(snum_1);
-inum_2 = ConvertToInteger(snum_2);
+inum_1 = ToInteger(snum_1);
+inum_2 = ToInteger(snum_2);
 
 //Compute the result
 result = inum_1 * inum_2;
@@ -330,7 +330,7 @@ Write(snum_1 + " multiplied by " + snum_2 + " equals ");
 WriteLine(result);
 ```
 
-The same can be achieved for decimal numbers, simply by swapping `ConvertToInteger`with `ConvertToDouble`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `ToInteger`with `ToDouble`, and using the appropriate data types.
 
 ```csharp
 //...
@@ -340,8 +340,8 @@ double inum_1, inum_2, result;
 
 //...
 
-inum_1 = ConvertToDouble(snum_1);
-inum_2 = ConvertToDouble(snum_2);
+inum_1 = ToDouble(snum_1);
+inum_2 = ToDouble(snum_2);
 
 //...
 ```
@@ -371,8 +371,8 @@ namespace UsefulUtilities
             snum_2 = SplashKit.ReadLine();
 
             //Convert user input to integers
-            inum_1 = SplashKit.ConvertToInteger(snum_1);
-            inum_2 = SplashKit.ConvertToInteger(snum_2);
+            inum_1 = SplashKit.ToInteger(snum_1);
+            inum_2 = SplashKit.ToInteger(snum_2);
 
             //Compute the result
             result = inum_1 * inum_2;
@@ -385,7 +385,7 @@ namespace UsefulUtilities
 }
 ```
 
-The same can be achieved for decimal numbers, simply by swapping `SplashKit.ConvertToInteger`with `SplashKit.ConvertToDouble`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `SplashKit.ToInteger`with `SplashKit.ToDouble`, and using the appropriate data types.
 
 ```csharp
 //...
@@ -395,8 +395,8 @@ double inum_1, inum_2, result;
 
 //...
 
-inum_1 = SplashKit.ConvertToDouble(snum_1);
-inum_2 = SplashKit.ConvertToDouble(snum_2);
+inum_1 = SplashKit.ToDouble(snum_1);
+inum_2 = SplashKit.ToDouble(snum_2);
 
 //...
 ```
@@ -418,8 +418,8 @@ snum_2 = read_line()
 
 
 # Convert user inputs to integers
-inum_1 = convert_to_integer(snum_1)
-inum_2 = convert_to_integer(snum_2)
+inum_1 = to_integer(snum_1)
+inum_2 = to_integer(snum_2)
 
 # Compute the result
 result = inum_1 * inum_2
@@ -429,14 +429,14 @@ write(snum_1 + " multiplied by " + snum_2 + " equals ")
 write_line_int(result)
 ```
 
-The same can be achieved for decimal numbers, simply by swapping `convert_to_integer` with `convert_to_double`, and using the appropriate data types.
+The same can be achieved for decimal numbers, simply by swapping `to_integer` with `to_double`, and using the appropriate data types.
 
 ```python
 #...
 
 # Don't uses integers, instead use doubles
-inum_1 = convert_to_double(snum_1)
-inum_2 = convert_to_double(snum_2)
+inum_1 = to_double(snum_1)
+inum_2 = to_double(snum_2)
 
 #...
 ```
@@ -638,7 +638,7 @@ int read_integer(string prompt)
     }
 
     // Convert the user input to an integer before returning it.
-    return convert_to_integer(line);
+    return to_integer(line);
 }
 
 int main()
@@ -680,7 +680,7 @@ static int ReadInteger(string prompt)
         line = ReadLine();
     }
     // Convert the user input to an integer before returning it.
-    return ConvertToInteger(line);
+    return ToInteger(line);
 }
 
 // Start of "main" code
@@ -719,7 +719,7 @@ namespace UsefulUtilities
                 line = SplashKit.ReadLine();
             }
             // Convert the user input to an integer before returning it.
-            return SplashKit.ConvertToInteger(line);
+            return SplashKit.ToInteger(line);
         }
 
         public static void Main()
@@ -760,7 +760,7 @@ def read_integer(prompt):
         line = read_line()
 
     # Convert the user input to an integer before returning it.
-    return convert_to_integer(line)
+    return to_integer(line)
 
 # Start of "main" code
 height = read_integer("Enter your height in centimetres: ")

@@ -3,11 +3,11 @@
         {
             "name": "Useful Utilities",
             "functions": [
-                "convert_to_integer",
+                "to_integer",
                 "write",
                 "write_line",
                 "write_line_int",
-                "convert_to_double",
+                "to_double",
                 "write_line_double",
                 "read_line",
                 "is_integer",

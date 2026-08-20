@@ -18,8 +18,8 @@ static Point2D GetPoint(string prompt)
     }
 
     // Convert input
-    double guessX = ConvertToDouble(coords[0]);
-    double guessY = ConvertToDouble(coords[1]);
+    double guessX = ToDouble(coords[0]);
+    double guessY = ToDouble(coords[1]);
     return PointAt(guessX, guessY);
 }
 

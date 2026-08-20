@@ -15,7 +15,7 @@ while (not is_integer(input)):
     input = read_line()
 
 # Convert input to integer
-number = convert_to_integer(input)
+number = to_integer(input)
 write_line(f"Great! You've entered a valid integer: {number}")
 
 write_line("Thank you for using the Integer Validation Checker!")

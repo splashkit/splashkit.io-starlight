@@ -17,7 +17,7 @@ while (!IsInteger(input))
 }
 
 // Convert input to integer
-int number = ConvertToInteger(input);
+int number = ToInteger(input);
 WriteLine($"Great! You've entered a valid integer: {number}");
 
 WriteLine("Thank you for using the Integer Validation Checker!");
