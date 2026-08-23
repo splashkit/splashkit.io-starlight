@@ -1,0 +1,1 @@
+Draws a rectangle in a random colour. The colour's saturation value is displayed on screen

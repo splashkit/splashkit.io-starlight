@@ -1,0 +1,5 @@
+The program automatically cycles through font styles for a given font (also displaying example text), with the numerical value of each style being shown on screen
+
+:::note
+To test this example code you can download these [**Resources**](/usage-examples/graphics/get_font_style-1-example-resources.zip).
+:::

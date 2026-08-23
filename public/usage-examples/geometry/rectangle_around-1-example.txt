@@ -1,0 +1,1 @@
+A perpetually moving circle which increases and decreases in size, surrounded by a rectangle shape

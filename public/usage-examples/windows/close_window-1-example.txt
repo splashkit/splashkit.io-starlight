@@ -1,0 +1,1 @@
+Starts a countdown to close the window at the push of a button.

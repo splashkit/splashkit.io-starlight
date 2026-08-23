@@ -101,7 +101,7 @@ function getAllFinishedExamples() {
     var apiData = fs.readFileSync(`${__dirname}/json-files/api.json`);
     apiJsonData = JSON.parse(apiData);
   } catch (error) {
-    console.error(kluer.red("Error occurred when trying to parse API Json data: ", error));
+    console.error(kleur.red("Error occurred when trying to parse API Json data: ", error));
   }
 
   const categories = []

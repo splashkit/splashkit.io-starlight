@@ -1,0 +1,72 @@
+Simple Terminal AI Conversation Example
+========================================
+
+Overview
+--------
+This example demonstrates how to create a simple terminal-based AI conversation 
+using the generate_text() function from SplashKit.
+
+How It Works
+-----------
+1. The program displays a welcome message
+2. User types a message and presses Enter
+3. The message is sent to generate_text()
+4. The AI response is printed in the terminal
+5. The user can continue the conversation or type 'quit' to exit
+
+Key Concepts
+-----------
+- Input/Output: Reading user input and displaying responses
+- generate_text(): The SplashKit function that generates AI responses
+- Loops: Using a while loop to maintain the conversation
+- String Handling: Working with text input and output
+
+Code Flow
+---------
+Welcome Message
+     ↓
+Loop Start
+     ↓
+Get User Input
+     ↓
+Check for 'quit'
+     ↓
+Generate AI Response
+     ↓
+Display Response
+     ↓
+Loop Back (until user types 'quit')
+
+Example Usage
+-----------
+=== Terminal AI Conversation ===
+Type your message and press Enter to chat with AI
+Type 'quit' to exit
+
+You: Hello, how are you?
+AI: I'm doing well, thank you for asking! How can I assist you today?
+
+You: What is SplashKit?
+AI: SplashKit is a cross-platform C++ library that makes it easy to learn 
+    and teach programming through games and multimedia applications.
+
+You: quit
+Goodbye!
+
+Files Included
+--------------
+1. generate-convo-1-example.cpp        - C++ version
+2. generate-convo-1-example-top-level.cs - C# top-level statements version
+3. generate-convo-1-example-oop.cs     - C# object-oriented version
+4. generate-convo-1-example.py         - Python version
+5. generate-convo-1-example.txt        - This documentation file
+
+Learning Tips
+-------------
+- Start with the Python version if you're new to programming
+- The top-level C# version is good for understanding basic structure
+- The OOP versions show how to organize code into reusable methods
+- Try modifying the program to add new features like:
+  * Saving conversation history
+  * Adding more elaborate welcome messages
+  * Creating a conversation history log
