@@ -17,11 +17,11 @@ In this article you will see how to get started with SplashKit with some simple 
 
 ## Step 1: Creating a Window
 
-In SplashKit you can open a Window to draw on and interact with. To open the window you need to call [Open Window](/api/windows/#open-window). This procedure requires you to pass it the window’s title, width and height. For example `open_window("House Drawing", 800, 600);` will open a window that is 800 pixels wide and 600 pixels high with the title "House Drawing", as shown in the following image. Please note that the house and hill are drawn by additional code. You must close the window when you are done using it, even if your program is otherwise finished. If you do not, the window will not be freed from memory when the program exits. You can close a window by calling a [close window](/api/windows/#close-window) function E.G. close_all_windows().
+In SplashKit you can open a Window to draw on and interact with. To open the window you need to call [Open Window](/api/windows/#open-window). This procedure requires you to pass it the window’s title, width and height. For example `open_window("House Drawing", 800, 600);` will open a window that is 800 pixels wide and 600 pixels high with the title "House Drawing", as shown in the following image. Please note that the house and hill are drawn by additional code. You must close the window when you are done using it, even if your program is otherwise finished. If you do not, the window will not be freed from memory when the program exits. You can close a window by calling a Close Window function, e.g. close_all_windows(). 
 
 ![Window with dimensions illustrated](./images/drawing/NewWindow.png)
 
-Lets get this started by opening a new Window, and using SplashKit to delay us for a few seconds. Give the following code a try:
+Let's get started by opening a new window and using SplashKit to delay the program for a few seconds. Give the following code a try:
 
 <Tabs syncKey="code-language">
 <TabItem label="C++">
@@ -110,7 +110,7 @@ dotnet run
 <TabItem label="Python">
 
 ```shell
-skm python3 program.cpp
+skm python3 program.py
 ```
 
 </TabItem>
@@ -246,7 +246,7 @@ dotnet run
 <TabItem label="Python">
 
 ```shell
-skm python3 program.cpp
+skm python3 program.py
 ```
 
 </TabItem>
@@ -256,29 +256,29 @@ Make sure it all looks correct before moving on.
 
 ## Pixels and Coordinates
 
-The images you see on your computers screen are made up of dots called pixels: picture elements. The screen has many pixels arranged into a grid (columns and rows), with each pixel having its own color and unique location (a combination of an `x` and `y` value, where `x` indicates the column and `y` the row).
+The images you see on your computer's screen are made up of dots called pixels: picture elements. The screen has many pixels arranged into a grid (columns and rows), with each pixel having its own color and unique location (a combination of an `x` and `y` value, where `x` indicates the column and `y` the row).
 
-The following image shows an example of two rectangles (one filled, one outlined). The top left corner of the screen is at row (x) 0 and column (y) 0, and these numbers increase as you go to the right and down the screen. The call to `fill_rectangle` and `draw_rectangle` take in a color, a `x` value, a `y` value, and a `width` and a `height`. So the blue rectangle is filled at x 1, y 1, is 7 pixels wide, and 3 pixels high.
+The following image shows an example of two rectangles (one filled, one outlined). The top left corner of the screen is at column (x) 0 and row (y) 0, and these numbers increase as you go to the right and down the screen. The calls to fill_rectangle and draw_rectangle take a color, an x value, a y value, a width, and a height. So the blue rectangle is filled at x 1, y 1, is 7 pixels wide, and 3 pixels high.
 
 ![Pixel locations are based on x and y locations.](./images/drawing/DrawFill.png)
 
 Positions on the screen are determined using two values, one for x and the other for y. The x value determines the number of pixels from the left side of the screen. The y value determines the number of pixels from the top of the screen.
 
-For example: the magenta rectangle is drawn at 10, 1. This means its x value is 10 and its y is 1. This rectangle is drawn 10 pixels from the left of the screen, and its 1 pixel from the top.
+For example, the magenta rectangle is drawn at 10, 1. This means its x value is 10 and its y is 1. This rectangle is drawn 10 pixels from the left of the screen, and it's 1 pixel from the top.
 
 ## Drawing Procedures
 
 To draw a shape with SplashKit you need to call one of the shape drawing procedures. All of the shape drawing operations in SplashKit take a number of parameter values:
 
 * The **color** to draw the shape.
-    SplashKit has a number of colors you can use. See the list of colors starting with [Alice Blue](/api/color#color-alice-blue). For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type `COLOR_` then hit ctrl+space. Though this only works if you opened the project folder.
+    SplashKit has a number of colors you can use. See the list of colors starting with [Alice Blue](/api/color#color-alice-blue). For example, in C++ the colors are written as `COLOR_WHITE`, `COLOR_GREEN`, `COLOR_BLUE`, `COLOR_BLACK`, `COLOR_RED`, and many others. VS Code should show you a list once you type COLOR_ and then press Ctrl+Space. This only works if you have opened the project folder.
 * An **x** value, representing the x position of the shape (column).
 
     This is a number of pixels from the left edge of the screen. Larger values are further to the right.
 * A **y** value, representing the y position of the shape (row).
 
     This is a number of pixels from the top edge of the screen. Larger values are further down the screen.
-* and other values for the size of the shape, these will differ depending on the kind of shape being drawn (e.g., rectangle has a width and height, as does ellipse, circles would have a radius).
+* Other values specify the size of the shape. These differ depending on the kind of shape being drawn. For example, rectangles and ellipses have a width and height, while circles have a radius.
 
 See the following for examples of what you can call:
 
@@ -295,12 +295,12 @@ See the following for examples of what you can call:
 
 ## Autocomplete
 
-You should be able to get Visual Studio Code to show you to list of parameters. Type the start of the procedure name then press `ctrl-space`. There are usually a couple of different ways to draw each shape, by pressing the up down arrows you should be able to explore this list. An example with C++ is shown below.
+You should be able to get Visual Studio Code to show you a list of parameters. Type the start of the procedure name, then press Ctrl+Space. There are usually a couple of different ways to draw each shape. You can use the up and down arrow keys to explore this list. An example with C++ is shown below.
 
 ![Use `ctrl-space` to bring up the autocomplete for procedures you want to call.](./images/drawing/AutoComplete.png)
 
 ## Double Buffering
 
-To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in **sequence**). However, we dont want each element to appear individually, we just want the whole picture to appear at once, so in this case the whole house should show all at once. SplashKit uses a technique called **Double Buffering** to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user.  With SplashKit, the shapes are all shown together when you call the `refresh_screen` procedure. This is illustrated below.
+To draw a picture, like the house shown above, the computer executes the code to draw the individual shapes one at a time in the order they appear in the code (in sequence). However, we don't want each element to appear individually. Instead, we want the whole picture—in this case, the house—to appear at once. SplashKit uses a technique called Double Buffering to enable this. When double buffering, the computer first draws the shapes, then waits for a command to display the shapes to the user. With SplashKit, the shapes are all shown together when you call the refresh_screen procedure. This is illustrated below.
 
 ![Illustration of double buffering, and the need to refresh screen](./images/drawing/RefreshScreen.png)
