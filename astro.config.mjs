@@ -120,6 +120,7 @@ export default defineConfig({
                 { label: "Graphical User Inputs", link: "guides/input/user-inputs-in-graphical-applications" },
                 { label: "Loading Resources with Bundles", link: "guides/resources/loading-resources-with-bundles" },
                 { label: "Getting Started With Audio", link: "guides/audio/getting-started-with-audio" },
+                { label: "Getting Started With Sprites", link: "guides/sprites/getting-started-with-sprites" },
                 { label: "Using Animations", link: "guides/animations/using-animations" },
                 { label: "SplashKit Camera", link: "guides/camera/using-splashkit-camera" },
                 { label: "Useful Utilities", link: "guides/utilities/useful-utilities" },
